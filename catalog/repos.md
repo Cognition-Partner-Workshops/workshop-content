@@ -204,6 +204,18 @@ Some repos are intentionally duplicated from the same upstream source so that di
 
 ## Technology Stack Repos (`ts-`)
 
+### ts-python-abinitio-etl-framework
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-python-abinitio-etl-framework |
+| **Description** | Ab Initio Co>Operating System ETL framework — legacy enterprise codebase with graph execution patterns (parallel loader, CDC processor), PSET management, DML record layouts, KornShell job orchestration, AutoSys monitoring, and ServiceNow/UrbanCode deployment automation. Represents a typical enterprise Ab Initio estate for migration to Databricks. |
+| **Tech Stack** | Python, Ab Initio (DML, PSETs, graphs), KornShell (ksh), AutoSys, Oracle, Teradata |
+| **License** | None (no license file in upstream) |
+| **Default Branch** | `main` |
+| **Cluster** | None |
+| **Key Contents** | DML record layouts (customer, orders, transactions, packed decimals, nested records), PSET templates (environment-aware parameters), parallel graph execution, CDC detection via row hashing, shell orchestration scripts (`air sandbox run`), sample delimited data files |
+| **Challenges** | Ab Initio to Databricks migration, ETL modernization |
+
 ### ts-informatica-powercenter
 | | |
 |---|---|

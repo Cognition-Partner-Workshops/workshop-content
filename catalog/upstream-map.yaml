@@ -474,6 +474,13 @@ repos:
     import_method: original
     cluster: null
 
+  ts-python-abinitio-etl-framework:
+    upstream: karthikgundaladataeng-cloud/ab-initio-etl-framework
+    upstream_url: https://github.com/karthikgundaladataeng-cloud/ab-initio-etl-framework
+    import_method: clone-and-push
+    cluster: null
+    note: "Ab Initio ETL framework with DML schemas, PSETs, graph patterns, CDC, monitoring, and deployment automation. Enhanced with additional DML samples and shell orchestration scripts. No license in upstream."
+
   ts-informatica-powercenter:
     upstream: HHS/Informatica
     upstream_url: https://github.com/HHS/Informatica
