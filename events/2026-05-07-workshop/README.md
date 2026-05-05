@@ -41,7 +41,7 @@ A few tips to maximize your hands-on time:
 | 0:15 | **Lab 1:** Gap Analysis on Banking Microservices | Lab 1 |
 | 0:45 | **Lab 2:** API-Spec-Driven Microservice Generation | Lab 2 |
 | 1:15 | **Lab 3a:** Data Anomaly Detection | Lab 3a |
-| 1:25 | **Lab 3b:** Data Source Migration (Legacy → Modern) | Lab 3b |
+| 1:30 | **Lab 3b:** Data Source Migration (Legacy → Modern) | Lab 3b |
 | 1:45 | Wrap-up, showcase results, Q&A | — |
 
 > **Pacing tip for facilitators:** Each lab is designed so participants kick off the Devin session in the first 5 minutes, then use Ask Devin / DeepWiki while waiting. When transitioning to the next lab, participants should start the new session immediately — they can review earlier PRs during any downtime. Lab 3 has two parts (3a and 3b) — participants should kick off both sessions back-to-back, then use the remaining time to review PRs from all labs. By the wrap-up, participants will have 4 Devin sessions running or completed.
