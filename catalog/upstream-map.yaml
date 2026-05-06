@@ -356,6 +356,11 @@ repos:
     import_method: github-fork
     cluster: C4
 
+  etl-workflow:
+    upstream: null
+    import_method: original
+    cluster: null
+
   fineract:
     upstream: apache/fineract
     upstream_url: https://github.com/apache/fineract

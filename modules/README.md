@@ -20,7 +20,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [DevOps & CI/CD](devops-cicd/) | DevOps Engineer, Release Engineer | 5 modules |
 | [Cloud & Infrastructure](cloud-infrastructure/) | Cloud Engineer, Platform Engineer | 6 modules |
 | [Observability & SRE](observability-sre/) | SRE, Observability Engineer | 4 modules |
-| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 7 modules |
+| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 9 modules |
 | [Architecture & Design](architecture-design/) | Solution Architect, Enterprise Architect | 5 modules |
 | [AI & ML Engineering](ai-ml-engineering/) | ML Engineer, AI Engineer | 3 modules |
 | [Technical Documentation](technical-documentation/) | Technical Writer, Documentation Engineer | 6 modules |
@@ -120,6 +120,8 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [SAS to Python/Snowflake](data-engineering/sas-to-python-snowflake.md) | Intermediate–Advanced | 60 min | Multiple repos |
 | [Informatica PowerCenter Analysis](data-engineering/informatica-powercenter-analysis.md) | Intermediate | 45 min | ts-informatica-powercenter |
 | [Informatica PowerCenter to Snowflake Migration](data-engineering/informatica-to-snowflake-migration.md) | Advanced | 75 min | ts-informatica-powercenter, uc-dw-migration-teradata-to-snowflake |
+| [COBOL Copybook to PySpark/JSON](data-engineering/cobol-copybook-to-pyspark-json.md) | Intermediate | 45 min | aws-mainframe-modernization-carddemo |
+| [Databricks Platform Migration](data-engineering/databricks-platform-migration.md) | Intermediate–Advanced | 60 min | streamify-data-engineering, uc-data-source-migration-legacy-to-modern, etl-workflow |
 
 ### Architecture & Design
 

@@ -34,6 +34,7 @@ Reusable workshop definitions that can be instantiated as events. Each workshop 
 | [Feature Development](feature-development/) | New features on existing applications | 1-2 hours | 1-2 | Application Development modules |
 | [Quality Engineering & Assurance](quality-engineering/) | Test automation, E2E testing, continuous quality, and code review | 4-6 hours | 9 (3 tracks × 3 labs) | Testing & QA, DevOps-CICD, Technical Documentation modules |
 | [General](general/) | Security, modernization, and feature development — 3-track broad tour | 4-6 hours | 9 (3 tracks × 3 labs) | Security, Migration-Modernization, Application Development, Testing & QA modules |
+| [Databricks Migration](databricks-migration/) | Converting PySpark/Airflow/dbt/SQL ETL to Databricks Lakehouse — notebooks, Delta Lake, Workflows | 1-6 hours | 6 (2 tracks × 3 labs) | Data Engineering modules |
 
 ## Creating a New Workshop
 
