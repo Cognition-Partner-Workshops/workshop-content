@@ -1,6 +1,6 @@
 # Collaboration Model
 
-Devin integrates into existing engineering workflows through pull requests, CI/CD pipelines, and team communication channels. It does not require new processes — it participates in the ones your team already uses.
+Devin integrates into existing engineering workflows through pull requests, CI/CD pipelines, and team communication channels. It participates in the processes your team already uses — no new tools or workflows required.
 
 ## The PR Feedback Loop
 
@@ -37,7 +37,7 @@ Multiple team members can interact with the same Devin session through PR commen
 - Devin reads both comments, addresses both requests in subsequent commits
 - Both reviewers see Devin's response and can continue the conversation
 
-This works because Devin monitors its PRs for new comments. When any comment arrives, Devin resumes from its hibernated state, reads the full context, and responds.
+This works because Devin monitors its PRs for new comments. When any comment arrives, Devin resumes from its hibernated state, reads the full conversation context, and responds. The session persists across the entire lifecycle of the task — there is no context loss between interactions.
 
 ## CI Check Monitoring
 
@@ -78,18 +78,19 @@ Devin connects to your team's existing toolchain through MCP servers and API int
 | **Cloud Platforms** | AWS, Azure, GCP | Deploy resources, query infrastructure state, manage environments |
 | **Databases** | PostgreSQL, MySQL, MongoDB | Query schemas, run migrations, validate data integrity |
 
-These integrations are configured once at the organization level and are available to every session automatically.
+These integrations are configured once at the organization level as part of Devin's shared context layer (see [Architecture Strengths → Shared Context Layer](architecture-strengths.md#shared-context-layer)) and are available to every session automatically.
 
 ## Continuous Improvement Cycle
 
-Devin's effectiveness compounds over time as the team invests in configuration:
+Devin's effectiveness compounds over time as the team invests in the shared context layer:
 
 ```
 Initial Setup
-    ├── Connect repos
-    ├── Configure environment (runtimes, tools)
-    ├── Add knowledge notes (standards, conventions)
-    └── Set up MCP servers (Jira, Datadog, etc.)
+    ├── Connect repos (Git connections)
+    ├── Configure environment (VM blueprints with runtimes, tools)
+    ├── Add knowledge notes (standards, conventions, domain glossary)
+    ├── Provision secrets (API keys, service account credentials)
+    └── Set up MCP servers (Jira, Datadog, Confluence, etc.)
         ↓
 First Sessions
     ├── Devin learns the codebase through context retrieval

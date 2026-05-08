@@ -70,7 +70,7 @@ Devin's cost model is consumption-based (ACU — Agent Compute Units):
 - **Pay for active work** — Devin hibernates during idle time. You pay for compute only when Devin is executing
 - **Predictable budgeting** — ACU budgets can be set at the organization, team, or user level with hard enforcement
 - **ROI measurement** — Each session produces measurable output (PRs merged, findings remediated, tests added). ROI is directly attributable
-- **Licensing cost avoidance** — Migration from expensive proprietary tools/languages (COBOL, SAS, Oracle Forms, Informatica) to open-source alternatives reduces ongoing license costs. Devin accelerates the migration that unlocks those savings
+- **Licensing cost avoidance** — Migration from expensive proprietary platforms (COBOL/mainframe, SAS, Oracle Forms, Informatica) to open-source or cloud-native alternatives eliminates ongoing per-seat, per-CPU, or per-transaction licensing. The business case for migration is often already approved — the blocker is engineering capacity to execute. Devin removes that blocker
 
 **Narrative:** "The ACU cost for this migration campaign is a fraction of the engineering salary cost, and it delivers the licensing savings months earlier than a manual approach."
 

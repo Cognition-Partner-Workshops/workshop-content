@@ -48,10 +48,16 @@ Devin can create child sessions to parallelize work. A parent agent breaks a lar
 
 Devin is not a per-user tool. It operates as a shared team resource with organizational context.
 
-**Shared configuration:**
-- **Context layer** — Knowledge notes, environment setup, and MCP connections apply to all sessions in the organization. Configure once, benefit everywhere
+**Shared configuration (the context layer):**
+- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, runtimes, and tools baked in. Sessions boot ready to build
+- **Knowledge notes** — Persistent, human-curated context (coding standards, architecture decisions, conventions) retrieved automatically based on the task
+- **Playbooks** — Repeatable procedures encoding institutional methodology, shared across the org
+- **MCP servers** — Pre-configured integrations (Jira, Datadog, Confluence, Azure DevOps) available to every session without per-session setup
+- **Secrets** — Scoped credentials injected into the environment at session start via the platform's secrets management layer
+- **Git connections** — Repository access configured at the org level. All sessions can clone and push to connected repos
 - **Automations** — Webhooks, scheduled sessions, and trigger rules are organization-wide. Every team member's events route through the same automation layer
-- **Git connections** — Repository access is configured at the org level. All sessions can clone and push to connected repos
+
+This shared context layer means that configuring Devin is a one-time investment: one engineer sets up the environment, knowledge, and integrations, and every subsequent session — from any team member — inherits that configuration automatically.
 
 **Multi-user collaboration:**
 - Multiple team members can comment on the same Devin-created PR
@@ -83,4 +89,4 @@ Devin sessions have a deliberate lifecycle optimized for efficiency:
 3. **Hibernated** — After a period of inactivity, Devin hibernates its VM. The session state is preserved but compute resources are released
 4. **Resumed** — When new feedback arrives (PR comment, CI result, user message), Devin resumes from the hibernated state with full context. No work is lost
 
-This lifecycle means Devin does not waste compute while waiting for human review. It acts immediately when feedback arrives and sleeps efficiently in between.
+This lifecycle means Devin does not waste compute while waiting for human review. It acts immediately when feedback arrives and sleeps efficiently in between. Long-running tasks — multi-day code reviews, back-and-forth iterations, waiting on a blocked dependency — are natural. The session persists across the entire lifecycle of a task.

@@ -2,16 +2,29 @@
 
 ## Clean-Room Execution
 
-Devin starts every session with access to nothing. Each session runs on its own isolated VM with a fresh environment. This is a feature, not a limitation:
+Each Devin session runs on its own isolated VM. By default, a session has access to nothing — no ambient credentials, no inherited permissions. This isolation is a security feature, not a limitation.
 
-- **Security by default** — Devin cannot access resources you have not explicitly granted. No ambient credentials, no inherited permissions, no lateral movement risk
+- **Security by default** — Devin cannot access resources you have not explicitly granted. No lateral movement risk between sessions or systems
 - **Service account friendly** — Organizations provision scoped credentials (API keys, PATs, cloud IAM roles) that Devin uses to access exactly the systems it needs. This mirrors how you would onboard any new team member — with least-privilege access
 - **Ephemeral testing environments** — Devin can deploy into throwaway environments (containers, cloud sandboxes) for integration testing, then tear them down. No persistent state leaks between sessions
 - **Reproducible from scratch** — Every session starts from the same base. No "works on my machine" drift. Environment configuration is codified and versioned
 
+### Shared Context Layer
+
+While each session's runtime is isolated, Devin does not start from scratch. A shared context and configuration layer persists across every session in an organization:
+
+- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, language runtimes, tools, and startup scripts baked in. Sessions boot ready to build, not waiting for `npm install`
+- **Knowledge notes** — Persistent, human-curated context (coding standards, architecture decisions, team conventions, domain glossary) that Devin retrieves automatically based on the task at hand
+- **Playbooks** — Repeatable procedures that encode institutional methodology. Every session that invokes a playbook follows the same proven steps
+- **MCP servers** — Pre-configured integrations (Jira, Datadog, Confluence, Azure DevOps) available to every session in the org without per-session setup
+- **Secrets** — Scoped credentials injected into the environment at session start. No credentials embedded in prompts or code — they flow through the platform's secrets management layer
+- **Git connections** — Repository access configured at the org level. All sessions can clone and push to connected repos immediately
+
+This design gives you both: **clean-room isolation for security** and a **shared context layer for productivity**. Each worker VM is sandboxed, but the organization's accumulated knowledge and configuration flow into every session automatically.
+
 ## Context Retrieval
 
-Devin does not guess. It retrieves context programmatically before acting:
+Devin retrieves context programmatically before acting — it pulls from indexed codebases, configured integrations, and remote resources rather than relying on assumptions:
 
 | Source | How Devin Uses It |
 |--------|-------------------|
@@ -44,7 +57,7 @@ Devin is designed to verify its own work:
 
 Devin operates as a team member, not a black box:
 
-- **Shared configuration** — Environment setup, knowledge notes, playbooks, and automations are shared across all sessions in an organization. Configure once, benefit everywhere
+- **Organizational configuration** — The shared context layer (environment configs, knowledge, playbooks, MCP servers, secrets, Git connections) applies to every session in the organization. One engineer configures it; every subsequent session benefits. See [Clean-Room Execution → Shared Context Layer](#shared-context-layer) above
 - **PR-based communication** — Multiple team members can comment on the same Devin PR. Devin reads all comments and responds to feedback from any reviewer
 - **Session continuity** — Devin hibernates its VM after inactivity and resumes from the hibernated state when new feedback arrives. Context is preserved across the full lifecycle of a task
 - **Audit trail** — Every session has a full log of actions, decisions, and outputs. Nothing is opaque

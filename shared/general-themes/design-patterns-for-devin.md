@@ -6,14 +6,14 @@ Proven patterns for structuring work, codebases, and processes so that Devin del
 
 **Principle:** If a human developer can clone the repo and run `make test` (or equivalent) with no external dependencies, Devin can too.
 
-**Why it matters:** Devin verifies its own changes by running your build and test suite. If the build requires a VPN, a licensed IDE, a proprietary database, or manual setup steps, Devin cannot complete the feedback loop.
+**Why it matters:** Devin verifies its own changes by running your build and test suite on its VM. If the build requires a VPN, a licensed IDE, a proprietary database, or manual setup steps that cannot be automated, Devin cannot complete the feedback loop. The more self-contained your build is, the tighter Devin's verify-and-iterate cycle becomes.
 
 **How to apply:**
 - Containerize dependencies (Docker Compose for databases, message brokers, caches)
 - Use in-memory or file-based databases for tests (SQLite, H2, Testcontainers)
 - Provide seed data scripts that create a working test environment from scratch
 - Document the build/test command in the README (`npm test`, `./gradlew check`, `dotnet test`)
-- Use environment variables for configuration — Devin can inject these via secrets management
+- Use environment variables for configuration — Devin injects these via the platform's secrets management layer (configured once at the org level, available to every session)
 
 ## Pattern 2: Event-Driven Triggers
 
@@ -112,13 +112,14 @@ The `[SAST Tool]` slot can be filled by:
 
 ## Pattern 6: Context Layer Configuration
 
-**Principle:** Invest in configuring Devin's persistent context layer once to benefit every future session.
+**Principle:** Invest in configuring Devin's shared context layer once to benefit every future session.
 
 **Components:**
-- **Knowledge notes** — Coding standards, architecture decisions, team conventions, domain glossary. Devin retrieves these automatically when relevant
-- **Environment configuration** — Pre-installed tools, language runtimes, environment variables, startup scripts. Sessions start ready to build
-- **Playbooks** — Step-by-step procedures for recurring tasks (deploy, migrate, audit). Devin follows playbooks precisely
-- **MCP servers** — External tool connections (Jira, Datadog, Confluence) that persist across sessions. Configure once, use everywhere
+- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, language runtimes, tools, and startup scripts baked in. Sessions boot ready to build, not waiting for installation
+- **Knowledge notes** — Coding standards, architecture decisions, team conventions, domain glossary. Devin retrieves these automatically when relevant to the task
+- **Playbooks** — Step-by-step procedures for recurring tasks (deploy, migrate, audit). Devin follows playbooks precisely, ensuring consistent execution across team members
+- **MCP servers** — External tool connections (Jira, Datadog, Confluence, Azure DevOps) that persist across sessions. Configure once, use everywhere
+- **Secrets** — Scoped credentials (API keys, service account tokens, database passwords) injected at session start. No credentials in prompts or code
 - **Git connections** — Repository access that applies to all sessions in the organization
 
-**ROI:** The upfront investment in context configuration pays dividends across every subsequent session. A well-configured Devin organization starts every task with the right tools, knowledge, and access — no per-session setup friction.
+**ROI:** The upfront investment in context configuration pays dividends across every subsequent session. A well-configured Devin organization starts every task with the right tools, knowledge, credentials, and access — no per-session setup friction. This is the mechanism behind the [clean-room + shared context](architecture-strengths.md#shared-context-layer) design: runtime isolation for security, persistent configuration for productivity.
