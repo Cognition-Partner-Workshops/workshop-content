@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Date** | 2026-05-08 |
+| **Date** | 2026-05-20 |
 | **Location** | Virtual |
 | **Host Organization** | *(customer)* |
 | **Duration** | 1 hour |
