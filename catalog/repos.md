@@ -540,6 +540,16 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | C11 (OrderManager monolith-to-microservices) |
 | **Challenges** | [Release Management](../modules/devops-cicd/release-management.md), [Incident Response & Triage](../modules/observability-sre/incident-response-triage.md), [Configuration Management & Feature Flags](../modules/devops-cicd/configuration-management-feature-flags.md), [Platform-Conformant Microservice Decomposition](../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (context) |
 
+### otterworks
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/otterworks |
+| **Description** | Polyglot microservices platform for real-time collaborative document editing and file management. 10 backend services (Go, Java, Rust, Python x2, Node.js, Kotlin, Scala, Ruby, C#), 2 frontends (React, Angular), full observability stack (Prometheus, Grafana, Jaeger), chaos engineering framework, legacy ETL pipelines, and intentionally planted security vulnerabilities. Designed as a multi-challenge advanced workshop repo. |
+| **Tech Stack** | Rust (Actix), Python (FastAPI, Flask), Node.js (Socket.IO, Yjs), Java (Spring Boot), Go, Kotlin (Ktor), Scala (Akka), Ruby (Rails), C# (.NET), TypeScript (Next.js, Angular), PostgreSQL, DynamoDB, Redis, MeiliSearch, AWS (S3, SNS, SQS), Terraform, Docker, Prometheus, Grafana, Jaeger |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Challenges** | [OtterWorks Workshop](../applications/otterworks/README.md) — ETL modernization (cron to Airflow), framework upgrades (Java 8 to 17), language translation (Flask to FastAPI), incident response (chaos engineering), security remediation (CVE triage), API contract audit, test coverage |
+
 ### Other Repos
 
 | Repo | Description | Tech Stack |
