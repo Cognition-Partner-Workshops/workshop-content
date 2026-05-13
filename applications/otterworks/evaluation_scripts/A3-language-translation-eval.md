@@ -21,7 +21,8 @@ Compare the branch against `main` to identify what the participant changed in `s
    - `GET /search`
    - `GET /suggest`
    - `POST /advanced-search`
-   - `POST /index`
+   - `POST /index/document`
+   - `POST /index/file`
    - `GET /health`
    - `GET /ready`
    Verify by reading the route definitions. Compare against the OpenAPI spec at `shared/openapi/search-service.yaml`.
