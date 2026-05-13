@@ -31,6 +31,34 @@ Unlike the General workshop where participants paste provided prompts, this work
 
 ---
 
+## Interact with the System (5 min)
+
+Before diving into prompts and labs, get the OtterWorks platform running and click around.
+
+**If a hosted instance is available (live event):**
+
+> Your facilitator will provide the URL. Open the **web app** and the **admin dashboard** in separate tabs. Create a document, upload a file, and try a search to see the system working end-to-end.
+
+**If running locally (self-paced or on Devin's machine):**
+
+```bash
+# Clone and start the full stack
+git clone https://github.com/Cognition-Partner-Workshops/otterworks.git
+cd otterworks
+docker compose up -d
+```
+
+Once services are healthy (~2 min):
+- **Web app:** http://localhost:3000 — register, create documents, upload files, search
+- **Admin dashboard:** http://localhost:4200 — view system health, user management, chaos scenarios
+- **Grafana:** http://localhost:3001 — dashboards for service metrics, chaos scenarios, incident overview
+- **Jaeger:** http://localhost:16686 — distributed traces across services
+- **Prometheus:** http://localhost:9090 — raw metrics and alert rules
+
+Spend a few minutes exploring the web app and admin dashboard. This gives you a feel for what OtterWorks does as a product before you start working on the code.
+
+---
+
 ## Getting Oriented (10 min — do this first)
 
 OtterWorks is a large polyglot codebase. Before jumping into a lab, spend 10 minutes using **Ask Devin** to explore the repo and build a mental model. Open Ask Devin, point it at the otterworks repo, and try these prompts:
