@@ -20,7 +20,7 @@ These labs extend the live workshop with four additional use cases. Each lab is 
 
 ## Lab 1 — Legacy Modernization: COBOL → Java (60 min)
 
-- **Module:** [COBOL to Java](../../modules/migration-modernization/cobol-to-java.md#uc-legacy-modernization-cobol-to-java)
+- **Module:** [COBOL to Java](../../../modules/migration-modernization/cobol-to-java.md#uc-legacy-modernization-cobol-to-java)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Explore a real COBOL mainframe application and use Devin to modernize part of it — you choose the scope, target, and approach
 
@@ -64,7 +64,7 @@ Once Devin opens a PR from step 1:
 
 ## Lab 2 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)
 
-- **Module:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md#uc-framework-upgrade-monolith-to-microservices) + [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md#uc-framework-upgrade-monolith-to-microservices)
+- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md#uc-framework-upgrade-monolith-to-microservices) + [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md#uc-framework-upgrade-monolith-to-microservices)
 - **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
@@ -107,10 +107,10 @@ Once Devin opens a PR from step 1:
 
 ## Lab 3 — CVE Remediations & Regulatory Code Standards (60 min)
 
-- **Module:** [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../modules/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
+- **Module:** [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../../modules/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** A Spring Boot 2.6.3 service has accumulated vulnerable dependencies (Spring4Shell, SnakeYAML RCE, SQLite JDBC RCE, and more). Scan, remediate, and add automated compliance checks
-- **Known CVEs:** See the [full CVE findings report](../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
+- **Known CVEs:** See the [full CVE findings report](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
@@ -153,7 +153,7 @@ Once Devin opens a PR from step 1:
 
 ## Lab 4 — DW Migration: Teradata → Snowflake (60 min)
 
-- **Module:** [DW Migration: Teradata to Snowflake](../../modules/data-engineering/dw-migration-teradata-to-snowflake.md#uc-dw-migration-teradata-to-snowflake)
+- **Module:** [DW Migration: Teradata to Snowflake](../../../modules/data-engineering/dw-migration-teradata-to-snowflake.md#uc-dw-migration-teradata-to-snowflake)
 - **Repository:** [uc-dw-migration-teradata-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake)
 - **Objective:** A Teradata-based data warehouse needs to be migrated to Snowflake. Convert DDL/DML, build a migration runbook, and set up validation
 
@@ -186,7 +186,7 @@ Once Devin opens a PR from step 1:
   - *"Generate validation queries that compare row counts and checksums between Teradata and Snowflake"*
 - Try leaving inline feedback on specific SQL statements to see how Devin handles dialect-level corrections
 
-See the full challenge details in [DW Migration: Teradata to Snowflake](../../modules/data-engineering/dw-migration-teradata-to-snowflake.md) for more ideas — the repo includes a complete [Teradata features reference](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake/blob/initial-code/docs/teradata_features_reference.md) with Snowflake equivalents.
+See the full challenge details in [DW Migration: Teradata to Snowflake](../../../modules/data-engineering/dw-migration-teradata-to-snowflake.md) for more ideas — the repo includes a complete [Teradata features reference](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake/blob/initial-code/docs/teradata_features_reference.md) with Snowflake equivalents.
 
 ### Target Outcomes (any of these count)
 
@@ -211,7 +211,7 @@ All repos are in the [Cognition-Partner-Workshops](https://github.com/Cognition-
 
 ## Repo Duplication Notes
 
-Labs 2 and 3 both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../catalog/repos.md)). They are intentionally separate repos so each lab gets an isolated starting point with no risk of cross-contamination.
+Labs 2 and 3 both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../catalog/repos.md)). They are intentionally separate repos so each lab gets an isolated starting point with no risk of cross-contamination.
 
 ---
 
@@ -250,6 +250,6 @@ Track how many Devin features you exercise across all four labs:
 | Resource | Link |
 |----------|------|
 | Live workshop (60 min) | [README.md](README.md) |
-| Module catalog | [modules/](../../modules/) |
-| Facilitator guide | [shared/facilitator-guide.md](../../shared/facilitator-guide.md) |
-| Devin Features Appendix | [modules/devin-features](../../modules/devin-features/README.md) |
+| Module catalog | [modules/](../../../modules/) |
+| Facilitator guide | [shared/facilitator-guide.md](../../../shared/facilitator-guide.md) |
+| Devin Features Appendix | [modules/devin-features](../../../modules/devin-features/README.md) |

@@ -13,7 +13,7 @@
 This event features 4 structured labs using purpose-built repositories, focused on agentic AI patterns — multi-agent coordination, document processing, test automation, and anomaly detection:
 
 ### Lab 1 — Automated Pod Remediation After Credential Rotations (60 min)
-- **Module:** [Pod Remediation After Credential Rotation After Credential Rotation](../../modules/observability-sre/pod-remediation-credential-rotation.md)
+- **Module:** [Pod Remediation After Credential Rotation After Credential Rotation](../../../modules/observability-sre/pod-remediation-credential-rotation.md)
 - **Repository:** [uc-pod-remediation-credential-rotation](https://github.com/Cognition-Partner-Workshops/uc-pod-remediation-credential-rotation)
 - **Objective:** Explore a multi-agent Python system that automates detection, approval, and remediation of pod failures caused by credential rotations — enhance it with emergency rotation detection
 
@@ -44,7 +44,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving both general comments and inline code comments to see how Devin handles each
 
-See the full challenge details for [Pod Remediation After Credential Rotation](../../modules/observability-sre/pod-remediation-credential-rotation.md) for more ideas.
+See the full challenge details for [Pod Remediation After Credential Rotation](../../../modules/observability-sre/pod-remediation-credential-rotation.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Emergency rotation detection method with unit tests
@@ -54,7 +54,7 @@ See the full challenge details for [Pod Remediation After Credential Rotation](.
   - PR with review comments and Devin's responses
 
 ### Lab 2 — Document Review Automation for Loan Processing (45 min)
-- **Module:** [Document Review Automation](../../modules/technical-documentation/document-review-automation.md)
+- **Module:** [Document Review Automation](../../../modules/technical-documentation/document-review-automation.md)
 - **Repository:** [uc-document-review-automation](https://github.com/Cognition-Partner-Workshops/uc-document-review-automation)
 - **Objective:** Work with a multi-agent document review system — enhance the fuzzy matching comparator with an alternative string similarity strategy and evaluate accuracy
 
@@ -84,7 +84,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Leave a comment on the PR** asking Devin to fix something (e.g., *"Add a batch processing CLI that reads a directory of documents and outputs a comparison report"* or *"The Levenshtein distance should be normalized by string length"*)
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 
-See the full challenge details for [Document Review Automation](../../modules/technical-documentation/document-review-automation.md) for more ideas.
+See the full challenge details for [Document Review Automation](../../../modules/technical-documentation/document-review-automation.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Levenshtein distance comparator with YAML configuration
@@ -94,7 +94,7 @@ See the full challenge details for [Document Review Automation](../../modules/te
   - PR with review comments and Devin's responses
 
 ### Lab 3 — BDD Test Case Generation for REST APIs (60 min)
-- **Module:** [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
+- **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
 - **Repositories:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api), [ts-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-swagger-petstore)
 - **Objective:** Generate BDD test cases from a Swagger/OpenAPI specification and produce executable Cucumber tests covering happy paths, error cases, and edge cases
 
@@ -124,7 +124,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Leave a comment on the PR** asking Devin to fix something (e.g., *"Add data-driven scenarios using Cucumber Scenario Outlines with Examples tables"* or *"The step definitions should use more descriptive method names"*)
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 
-See the full challenge details for [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md) for more ideas.
+See the full challenge details for [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Gherkin feature files covering CRUD operations, validation errors, and edge cases
@@ -134,7 +134,7 @@ See the full challenge details for [BDD Test Generation](../../modules/testing-q
   - PR with review comments and Devin's responses
 
 ### Lab 4 — Volume-Based Anomaly Detection (60 min)
-- **Module:** [Volume Anomaly Detection](../../modules/observability-sre/volume-anomaly-detection.md)
+- **Module:** [Volume Anomaly Detection](../../../modules/observability-sre/volume-anomaly-detection.md)
 - **Repository:** [uc-volume-anomaly-detection](https://github.com/Cognition-Partner-Workshops/uc-volume-anomaly-detection)
 - **Objective:** Work with a multi-agent anomaly detection framework — enhance the seasonal detector to support a time-of-day-only mode and evaluate detection accuracy
 
@@ -164,7 +164,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Leave a comment on the PR** asking Devin to fix something (e.g., *"Add a CLI entrypoint that processes the sample CSV data and prints detected anomalies"* or *"The baseline calculation should handle missing data points gracefully"*)
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 
-See the full challenge details for [Volume Anomaly Detection](../../modules/observability-sre/volume-anomaly-detection.md) for more ideas.
+See the full challenge details for [Volume Anomaly Detection](../../../modules/observability-sre/volume-anomaly-detection.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Time-of-day-only seasonal detection mode with YAML configuration
@@ -175,7 +175,7 @@ See the full challenge details for [Volume Anomaly Detection](../../modules/obse
 
 ## Additional Challenges
 
-Participants may also attempt any challenge from the full [module catalog](../../modules/) as creative inspiration. The labs above are the primary structured activities.
+Participants may also attempt any challenge from the full [module catalog](../../../modules/) as creative inspiration. The labs above are the primary structured activities.
 
 ## Repos Required on Devin's Machine
 
@@ -192,4 +192,4 @@ Participants may also attempt any challenge from the full [module catalog](../..
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the session.

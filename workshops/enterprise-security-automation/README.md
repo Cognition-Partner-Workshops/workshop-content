@@ -1,15 +1,13 @@
-# Enterprise Demo Track: Devin as Autonomous Security & Remediation Agent
+# Workshop: Enterprise Security Automation
 
-## Event Details
+## Overview
 
 | | |
 |---|---|
-| **Variant Name** | Enterprise Demo Track |
 | **Focus** | Event-driven security automation, agent orchestration, and long-term reasoning for tech debt remediation |
 | **Duration** | ~4 hours (3 labs × 90 min + breaks) |
-| **Facilitator** | *(facilitator name and email)* |
-| **Event Site** | https://partner-workshops.devinenterprise.com |
 | **Audience** | Engineering leadership, AppSec/DevSecOps, platform engineering, enterprise architecture |
+| **Key Modules** | [Event-Driven SAST Remediation](../../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../../modules/security/mass-security-backlog-remediation.md) |
 
 ## Abstract
 

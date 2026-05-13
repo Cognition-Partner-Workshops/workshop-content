@@ -51,7 +51,7 @@ Open the **DeepWiki** page for [uc-cve-remediation-regulatory-compliance](https:
 
 **Value driver:** *Devin works autonomously. Give it a well-defined task, walk away, come back to a PR.*
 
-- **Module:** [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md)
+- **Module:** [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md)
 - **Repos:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance), [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet)
 
 This is your first Devin session. Paste a prompt, Devin scans for CVEs, upgrades dependencies, and opens a PR. You don't need to watch — move on to Ask Devin while it works.
@@ -93,7 +93,7 @@ When Devin opens a PR:
 
 **Value driver:** *Devin has its own machine with Docker. It can run any tool you'd run locally — SonarQube, OWASP DC, Trivy — and interpret the results.*
 
-- **Module:** [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md)
+- **Module:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md)
 - **Repo:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 
 This lab goes beyond dependency scanning. Devin sets up SonarQube locally via Docker, runs both dependency and code-level SAST scans, and remediates findings. You can watch Devin set up SonarQube and navigate its dashboard in the Desktop tab.
@@ -131,7 +131,7 @@ Open **Ask Devin** and dig deeper:
 
 **Value driver:** *Devin doesn't just fix the current problem — it sets up guardrails (pre-commit hooks, CI steps) that prevent it from recurring.*
 
-- **Module:** [Secrets Management & Detection](../../modules/security/secrets-management-detection.md)
+- **Module:** [Secrets Management & Detection](../../../modules/security/secrets-management-detection.md)
 - **Repos:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 
 Devin scans for hardcoded secrets, migrates them to environment variables, and installs preventive controls so no one can accidentally commit secrets again.
@@ -169,7 +169,7 @@ Use **Ask Devin** to understand the current state:
 
 **Value driver:** *Devin creates CI/CD workflows from scratch. The scanning tools from Labs A1–A3 now run automatically on every PR.*
 
-- **Module:** [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Module:** [Shift Left Security](../../../modules/security/shift-left-security.md)
 - **Repos:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance), [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet)
 
 This lab ties everything together into an automated CI pipeline. Devin writes the GitHub Actions workflow that scans every PR for vulnerabilities and blocks merges on critical findings.
@@ -211,7 +211,7 @@ Study the existing `sonar-devin-fix.yml` — this is the foundation pattern for 
 
 **Value driver:** *Devin isn't just a tool you open manually. It can be triggered by CI events and remediate findings autonomously — scan, fix, verify, all without human intervention.*
 
-- **Module:** [Event-Driven SAST Remediation](../../modules/security/event-driven-sast-remediation.md)
+- **Module:** [Event-Driven SAST Remediation](../../../modules/security/event-driven-sast-remediation.md)
 - **Repos:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 
 This is the capstone. Participants build a closed-loop pipeline: CI scans for vulnerabilities → triggers Devin via API → Devin remediates and pushes a fix → CI re-scans to verify. This is the enterprise pattern: Devin as a team member that handles security findings autonomously.
@@ -264,7 +264,7 @@ Open the **DeepWiki** page for [app_timesheet](https://github.com/Cognition-Part
 
 **Value driver:** *Devin works autonomously. Give it a well-defined task, walk away, come back to a PR.*
 
-- **Module:** [Unit Testing](../../modules/testing-qa/unit-testing.md)
+- **Module:** [Unit Testing](../../../modules/testing-qa/unit-testing.md)
 - **Repos:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [ts-java-spring-boot-realworld-example-app](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-realworld-example-app)
 
 This is your first Devin session. Paste a prompt, Devin analyzes test coverage, writes tests, and opens a PR. You don't need to watch.
@@ -311,7 +311,7 @@ Open **Ask Devin** and explore:
 
 **Value driver:** *Devin has a full VM with a browser. It starts the app, navigates the UI, writes Playwright tests, and takes screenshots as evidence. You can watch it work in the Desktop tab.*
 
-- **Module:** [End-to-End Testing](../../modules/testing-qa/end-to-end-testing.md)
+- **Module:** [End-to-End Testing](../../../modules/testing-qa/end-to-end-testing.md)
 - **Repo:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet)
 
 This lab showcases a unique capability: Devin runs the app on its own machine, opens a real browser, and interacts with the running UI.
@@ -353,7 +353,7 @@ Use **Ask Devin** to explore:
 
 **Value driver:** *Devin excels at repetitive, file-by-file work. The same conversion pattern applied consistently across dozens of files. You can fan out into parallel sessions for speed.*
 
-- **Module:** [Test Framework Migration](../../modules/testing-qa/test-framework-migration.md)
+- **Module:** [Test Framework Migration](../../../modules/testing-qa/test-framework-migration.md)
 - **Repos:** [app_petclinic-angular](https://github.com/Cognition-Partner-Workshops/app_petclinic-angular), [ts-angular-realworld-example-app](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld-example-app) (reference)
 
 Migrate app_petclinic-angular from deprecated test frameworks (Karma + Jasmine + Protractor) to modern replacements (Jest/Vitest + Playwright). This is tedious for humans but ideal for Devin.
@@ -398,7 +398,7 @@ After the migration succeeds, consider asking Devin to **create a Playbook** cap
 
 **Value driver:** *Devin reads existing framework patterns and generates consistent output. When you leave PR comments, Devin wakes up and addresses them — this is the core workflow for iterating with Devin.*
 
-- **Module:** [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
+- **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
 - **Repo:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
 
 Give Devin a Spring Boot + Cucumber BDD framework and prompt it to generate new test scenarios, build a new API resource, and produce executable Cucumber tests. Then practice the PR feedback loop.
@@ -444,7 +444,7 @@ This back-and-forth is how real teams work with Devin in production.
 
 **Value driver:** *Devin isn't just a tool you use once. Scheduled Sessions, Playbooks, and Knowledge turn Devin into an ongoing team member that monitors quality automatically.*
 
-- **Module:** [Continuous Quality Engineering](../../modules/testing-qa/continuous-quality-engineering.md)
+- **Module:** [Continuous Quality Engineering](../../../modules/testing-qa/continuous-quality-engineering.md)
 - **Repos:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
 
 This is the capstone. Set up Devin as an ongoing quality engineering team member using Scheduled Sessions, Playbooks, and Knowledge.
@@ -496,24 +496,24 @@ These Knowledge items automatically inform all future Devin sessions.
 
 ## Additional Challenges
 
-Participants who finish early can try any challenge from the full [module catalog](../../modules/). Recommended extras:
+Participants who finish early can try any challenge from the full [module catalog](../../../modules/). Recommended extras:
 
 ### Security Extras
 
 | Challenge | Module | Difficulty | Time |
 |-----------|--------|-----------|------|
-| Security Antipatterns | [Security Antipatterns](../../modules/security/security-antipatterns.md) | Intermediate | 45 min |
-| Mass Security Backlog Remediation | [Mass Security Backlog Remediation](../../modules/security/mass-security-backlog-remediation.md) | Advanced | 90 min |
+| Security Antipatterns | [Security Antipatterns](../../../modules/security/security-antipatterns.md) | Intermediate | 45 min |
+| Mass Security Backlog Remediation | [Mass Security Backlog Remediation](../../../modules/security/mass-security-backlog-remediation.md) | Advanced | 90 min |
 
 ### QA Extras
 
 | Challenge | Module | Difficulty | Time |
 |-----------|--------|-----------|------|
-| Linting & Static Analysis | [Linting & Static Analysis](../../modules/testing-qa/linting-static-analysis.md) | Beginner | 30 min |
-| Performance Testing | [Performance Testing](../../modules/testing-qa/performance-testing.md) | Intermediate–Advanced | 60 min |
-| Visual Regression Testing | [Visual Regression Testing](../../modules/testing-qa/visual-regression-testing.md) | Intermediate | 45 min |
-| Mutation Testing | [Mutation Testing](../../modules/testing-qa/mutation-testing.md) | Intermediate–Advanced | 60 min |
-| Contract Testing | [Contract Testing](../../modules/testing-qa/contract-testing.md) | Intermediate–Advanced | 60 min |
+| Linting & Static Analysis | [Linting & Static Analysis](../../../modules/testing-qa/linting-static-analysis.md) | Beginner | 30 min |
+| Performance Testing | [Performance Testing](../../../modules/testing-qa/performance-testing.md) | Intermediate–Advanced | 60 min |
+| Visual Regression Testing | [Visual Regression Testing](../../../modules/testing-qa/visual-regression-testing.md) | Intermediate | 45 min |
+| Mutation Testing | [Mutation Testing](../../../modules/testing-qa/mutation-testing.md) | Intermediate–Advanced | 60 min |
+| Contract Testing | [Contract Testing](../../../modules/testing-qa/contract-testing.md) | Intermediate–Advanced | 60 min |
 
 ## Repos Required on Devin's Machine
 
@@ -559,4 +559,4 @@ Participants who finish early can try any challenge from the full [module catalo
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the session.

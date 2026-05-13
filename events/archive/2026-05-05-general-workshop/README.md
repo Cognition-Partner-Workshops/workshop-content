@@ -6,7 +6,7 @@
 |---|---|
 | **Date** | 2026-05-05 |
 | **Location** | Virtual |
-| **Based On** | [workshops/general](../../workshops/general/) |
+| **Based On** | [workshops/general](../../../workshops/general/) |
 | **Duration** | Flexible (3 tracks, 3 labs each) |
 | **Audience** | Development teams, engineering leaders, platform teams evaluating Devin across multiple use cases |
 | **Tracks** | **Track A:** Security & Issue Triage · **Track B:** Modernization · **Track C:** Feature Development & Testing |
@@ -16,7 +16,7 @@
 
 This is a hands-on general workshop covering the three most common categories of engineering work: keeping systems secure and stable, modernizing legacy technology, and building new features with quality. Each track is self-contained — participants can follow all three in sequence for a full-day experience, or focus on one or two tracks in a shorter session.
 
-This event supplements the [standard general workshop](../../workshops/general/) with **industry-inspired spotlight prompts** — bonus activities drawn from real-world enterprise patterns that participants can try alongside or in place of the standard labs. These spotlight prompts highlight how Devin handles tasks like API-spec-driven code generation, automated data anomaly detection, security report generation, API contract validation, and codebase knowledge extraction.
+This event supplements the [standard general workshop](../../../workshops/general/) with **industry-inspired spotlight prompts** — bonus activities drawn from real-world enterprise patterns that participants can try alongside or in place of the standard labs. These spotlight prompts highlight how Devin handles tasks like API-spec-driven code generation, automated data anomaly detection, security report generation, API contract validation, and codebase knowledge extraction.
 
 ## Getting the Most from This Workshop
 
@@ -53,31 +53,31 @@ A few tips to maximize your hands-on time:
 
 Track A demonstrates Devin as a security and reliability agent. Participants will run SAST scans and remediate findings, investigate and fix bugs with root cause analysis, and set up automated scheduled sessions for ongoing dependency hygiene.
 
-> Follow the full lab instructions in the [general workshop guide](../../workshops/general/README.md#track-a-security--issue-triage). The labs below are summarized with links — see the general guide for complete step-by-step walkthroughs.
+> Follow the full lab instructions in the [general workshop guide](../../../workshops/general/README.md#track-a-security--issue-triage). The labs below are summarized with links — see the general guide for complete step-by-step walkthroughs.
 
 ### Lab A1 — SAST Scans & Vulnerability Remediation
 
-- **Modules:** [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md) + [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Modules:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md) + [Shift Left Security](../../../modules/security/shift-left-security.md)
 - **Repositories:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance), [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet)
 - **Objective:** Run SAST tools to identify vulnerabilities, remediate the most critical findings, and add security scanning to CI
 
-See [general workshop Lab A1](../../workshops/general/README.md#lab-a1--sast-scans--vulnerability-remediation) for full instructions.
+See [general workshop Lab A1](../../../workshops/general/README.md#lab-a1--sast-scans--vulnerability-remediation) for full instructions.
 
 ### Lab A2 — Bug Fixes & Root Cause Analysis
 
-- **Modules:** [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../modules/migration-modernization/cross-service-bug-investigation.md)
+- **Modules:** [Fix Runtime Bug](../../../modules/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../../modules/migration-modernization/cross-service-bug-investigation.md)
 - **Repositories:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [app_dotnet_angular_containerized_decomposition_microservices](https://github.com/Cognition-Partner-Workshops/app_dotnet_angular_containerized_decomposition_microservices)
 - **Objective:** Find and fix bugs in running applications, perform root cause analysis
 
-See [general workshop Lab A2](../../workshops/general/README.md#lab-a2--bug-fixes--root-cause-analysis) for full instructions.
+See [general workshop Lab A2](../../../workshops/general/README.md#lab-a2--bug-fixes--root-cause-analysis) for full instructions.
 
 ### Lab A3 — Scheduled Dependency Hygiene
 
-- **Modules:** [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md)
+- **Modules:** [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md)
 - **Repositories:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance), [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet)
 - **Objective:** Set up recurring Devin scheduled sessions for automated dependency upgrades
 
-See [general workshop Lab A3](../../workshops/general/README.md#lab-a3--scheduled-dependency-hygiene) for full instructions.
+See [general workshop Lab A3](../../../workshops/general/README.md#lab-a3--scheduled-dependency-hygiene) for full instructions.
 
 ### Spotlight: Comprehensive Security Reporting
 
@@ -121,30 +121,30 @@ Open a PR with the report and the fixes.
 
 Track B demonstrates Devin handling large-scale structural changes to codebases. Participants will extract microservices from a monolith, upgrade end-of-life frameworks, and translate legacy code to a modern language.
 
-> Follow the full lab instructions in the [general workshop guide](../../workshops/general/README.md#track-b-modernization).
+> Follow the full lab instructions in the [general workshop guide](../../../workshops/general/README.md#track-b-modernization).
 
 ### Lab B1 — Rearchitecting Monolith to Microservice
 
-- **Module:** [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md)
+- **Module:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 - **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Objective:** Analyze domain boundaries in a monolith, extract a bounded context as a standalone microservice
 
-See [general workshop Lab B1](../../workshops/general/README.md#lab-b1--rearchitecting-monolith-to-microservice) for full instructions.
+See [general workshop Lab B1](../../../workshops/general/README.md#lab-b1--rearchitecting-monolith-to-microservice) for full instructions.
 
 ### Lab B2 — Upgrading EOL Systems to LTS Versions
 
-- **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md)
+- **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../../modules/migration-modernization/repetitive-framework-upgrades.md)
 - **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices), [app_petclinic-angular](https://github.com/Cognition-Partner-Workshops/app_petclinic-angular), [ts-angular-realworld-example-app](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld-example-app)
 - **Objective:** Run parallel Devin sessions upgrading frameworks across multiple repos
 
-See [general workshop Lab B2](../../workshops/general/README.md#lab-b2--upgrading-eol-systems-to-lts-versions) for full instructions.
+See [general workshop Lab B2](../../../workshops/general/README.md#lab-b2--upgrading-eol-systems-to-lts-versions) for full instructions.
 
 ### Lab B3 — Language Translation
 
 - **Repositories:** [ts-angular-realworld-example-app](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld-example-app), [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Objective:** Translate code between languages (e.g., Java to Kotlin, Ruby to Java) while maintaining functional parity
 
-See [general workshop Lab B3](../../workshops/general/README.md#lab-b3--language-translation) for full instructions.
+See [general workshop Lab B3](../../../workshops/general/README.md#lab-b3--language-translation) for full instructions.
 
 ### Spotlight: API-Spec-Driven Microservice Generation
 
@@ -230,31 +230,31 @@ Write the analysis to `docs/DECOMPOSITION_ANALYSIS.md`. Open a PR.
 
 Track C demonstrates Devin as a day-to-day development partner. Participants will build features, add test coverage, and run E2E tests that discover and fix bugs.
 
-> Follow the full lab instructions in the [general workshop guide](../../workshops/general/README.md#track-c-feature-development--testing).
+> Follow the full lab instructions in the [general workshop guide](../../../workshops/general/README.md#track-c-feature-development--testing).
 
 ### Lab C1 — Add a Feature + PR Review Feedback
 
-- **Module:** [New Feature Development](../../modules/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../../modules/application-development/new-feature-development.md)
 - **Repositories:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Objective:** Build a new feature from requirements, see PR Review in action, and iterate via comments
 
-See [general workshop Lab C1](../../workshops/general/README.md#lab-c1--add-a-feature--pr-review-feedback) for full instructions.
+See [general workshop Lab C1](../../../workshops/general/README.md#lab-c1--add-a-feature--pr-review-feedback) for full instructions.
 
 ### Lab C2 — Add Test Coverage
 
-- **Modules:** [Unit Testing](../../modules/testing-qa/unit-testing.md) + [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
+- **Modules:** [Unit Testing](../../../modules/testing-qa/unit-testing.md) + [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
 - **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices), [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
 - **Objective:** Increase test coverage with meaningful unit and BDD tests
 
-See [general workshop Lab C2](../../workshops/general/README.md#lab-c2--add-test-coverage) for full instructions.
+See [general workshop Lab C2](../../../workshops/general/README.md#lab-c2--add-test-coverage) for full instructions.
 
 ### Lab C3 — Perform E2E Tests & Fix Issues
 
-- **Modules:** [End-to-End Testing](../../modules/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md)
+- **Modules:** [End-to-End Testing](../../../modules/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../../modules/application-development/fix-runtime-bug.md)
 - **Repositories:** [app_timesheet](https://github.com/Cognition-Partner-Workshops/app_timesheet), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
 - **Objective:** Write and run E2E tests, discover issues through testing, and fix them
 
-See [general workshop Lab C3](../../workshops/general/README.md#lab-c3--perform-e2e-tests--fix-issues) for full instructions.
+See [general workshop Lab C3](../../../workshops/general/README.md#lab-c3--perform-e2e-tests--fix-issues) for full instructions.
 
 ### Spotlight: Automated Data Anomaly Detection & Triage
 
@@ -343,17 +343,17 @@ Open a PR with all three documents.
 
 ## Additional Challenges
 
-Participants who finish early or want to explore further can try any challenge from the full [module catalog](../../modules/). Recommended extras:
+Participants who finish early or want to explore further can try any challenge from the full [module catalog](../../../modules/). Recommended extras:
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
-| Data Quality Validation | [Data Quality & Validation](../../modules/data-engineering/data-quality-validation.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
-| Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../modules/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
-| Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../modules/migration-modernization/dotnet-monolith-decomposition.md) | dotnet-modular-monolith | B | Advanced |
-| Code Refactoring & Tech Debt | [Code Refactoring](../../modules/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
-| API Design Review | [API Design Review](../../modules/architecture-design/api-design-review.md) | Any | C | Intermediate |
-| API Documentation | [API Documentation](../../modules/technical-documentation/api-documentation.md) | Any | C | Beginner |
+| Data Source Migration | [Data Source Migration](../../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
+| Data Quality Validation | [Data Quality & Validation](../../../modules/data-engineering/data-quality-validation.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
+| Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../../modules/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
+| Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../../modules/migration-modernization/dotnet-monolith-decomposition.md) | dotnet-modular-monolith | B | Advanced |
+| Code Refactoring & Tech Debt | [Code Refactoring](../../../modules/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
+| API Design Review | [API Design Review](../../../modules/architecture-design/api-design-review.md) | Any | C | Intermediate |
+| API Documentation | [API Documentation](../../../modules/technical-documentation/api-documentation.md) | Any | C | Beginner |
 
 ## Suggested Formats
 
@@ -406,7 +406,7 @@ The spotlight prompts in this event were inspired by the following enterprise pa
 | Microservice code generation from API specs (controllers, services, mappers, validation, config, JUnit for 90% coverage) | Yes | **API-Spec-Driven Microservice Generation** spotlight in Track B |
 | Auto-detect data anomalies, issue creation, RCA, pipeline fixes | Yes | **Automated Data Anomaly Detection & Triage** spotlight in Track C |
 | Application knowledge base generation, gap analysis, implementation roadmaps | Yes (generalized) | **Codebase Knowledge Extraction & Gap Analysis** spotlight in Track C |
-| Control/config file generation from feed files and copybooks | No | Too specialized (mainframe/COBOL domain) for a general audience. See the [COBOL modules](../../modules/migration-modernization/cobol-to-java.md) for dedicated labs |
+| Control/config file generation from feed files and copybooks | No | Too specialized (mainframe/COBOL domain) for a general audience. See the [COBOL modules](../../../modules/migration-modernization/cobol-to-java.md) for dedicated labs |
 | Payment payload gap analysis vs. industry standard, business capability decomposition | Yes (generalized) | **Domain Decomposition Analysis** spotlight in Track B (business capability mapping). API contract validation is covered in the standard API Design Review module |
 | Automated security remediation, SAST/DAST/SCA reports | Yes | **Comprehensive Security Reporting** spotlight in Track A |
 
@@ -426,4 +426,4 @@ The spotlight prompts in this event were inspired by the following enterprise pa
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the session.

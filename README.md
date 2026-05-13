@@ -158,20 +158,27 @@ workshop-metadata/
 │   ├── dotnet-cloud-native-modernization/
 │   ├── agentic-ai/
 │   ├── feature-development/
-│   └── quality-engineering/
+│   ├── quality-engineering/
+│   ├── general/
+│   ├── application-development-maintenance/
+│   ├── digital-engineering/
+│   ├── cobol-modernization/               ← promoted from events
+│   ├── enterprise-security-automation/    ← promoted from events
+│   └── quality-engineering-security/      ← promoted from events
 ├── events/                                ← specific workshop instances
 │   ├── README.md
 │   ├── _template/
-│   ├── 2026-03-09-oslo/
-│   ├── 2026-03-09-san-francisco/
-│   ├── 2026-04-dc/
-│   ├── 2026-03-17-zurich/
-│   ├── 2026-03-25-remote-workshop/
-│   ├── dc-2/
-│   ├── cobol-modernization-workshop/
-│   ├── enterprise-demo-track/
-│   ├── platform-microservice-decomposition/
-│   └── workshop-variant-2/
+│   ├── active/                            ← upcoming events
+│   └── archive/                           ← past events
+│       ├── 2026-03-09-oslo/
+│       ├── 2026-03-09-san-francisco/
+│       ├── 2026-03-13-washington-dc-2/
+│       ├── 2026-03-17-zurich/
+│       ├── 2026-03-25-remote-workshop/
+│       ├── 2026-04-dc/
+│       ├── 2026-04-09-virtual-workshop/
+│       ├── 2026-05-05-general-workshop/
+│       └── 2026-05-07-workshop/
 └── shared/
     ├── repo-naming-convention.md
     ├── runtime-resources.md
@@ -203,7 +210,7 @@ Browse all modules: [modules/README.md](modules/README.md)
 1. **Browse workshops** in `workshops/` to find a pre-built workshop that matches your audience
 2. **Or pick modules** from `modules/` to build a custom workshop — see [modules/README.md](modules/README.md) for the full index
 3. **Check repo requirements** in `catalog/repos.md` to see what needs to be set up
-4. **Copy `events/_template/`** and fill in your event details, referencing the workshop(s)
+4. **Copy `events/_template/`** to `events/active/YYYY-MM-DD-<event-id>/` and fill in event details
 5. **Review `shared/facilitator-guide.md`** for runtime setup and logistics
 
 ## Contributing

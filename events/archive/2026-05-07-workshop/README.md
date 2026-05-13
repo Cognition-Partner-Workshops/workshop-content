@@ -53,7 +53,7 @@ A few tips to maximize your hands-on time:
 **Value driver:** *Devin reads an entire codebase and produces structured technical documentation — the kind of assessment that normally takes a senior engineer a week.*
 
 - **Repository:** [ts-java-spring-boot-internet-banking-microservices](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking-microservices)
-- **Modules:** [API Design Review](../../modules/architecture-design/api-design-review.md), [Dependency Graph Analysis](../../modules/architecture-design/dependency-graph-analysis.md)
+- **Modules:** [API Design Review](../../../modules/architecture-design/api-design-review.md), [Dependency Graph Analysis](../../../modules/architecture-design/dependency-graph-analysis.md)
 
 This is your first Devin session. The task is pure analysis — Devin reads code and produces documents, no risky code changes. This lets you focus on learning the platform workflow: paste a prompt, watch Devin plan and execute, review the PR.
 
@@ -116,7 +116,7 @@ When Devin opens a PR:
 **Value driver:** *Give Devin an API specification, get back a complete production-ready Spring Boot microservice with controllers, services, validation, configuration, and 90% test coverage.*
 
 - **Repository:** [ts-java-spring-petclinic-rest-api](https://github.com/Cognition-Partner-Workshops/ts-java-spring-petclinic-rest-api)
-- **Modules:** [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md)
+- **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 
 Now you'll see Devin write real code. The PetClinic REST API repo ships a rich OpenAPI 3.0 specification (2,168 lines, 35 operations, 15 schemas, 8 domain areas). You'll give Devin this spec and have it generate a complete microservice from scratch.
 
@@ -163,7 +163,7 @@ When Devin opens a PR:
 **Value driver:** *Devin analyzes legacy data for quality issues, documents every anomaly with business impact, and implements validation code that prevents them — turning a week of data profiling into a single session.*
 
 - **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
-- **Module:** [Data Quality & Validation](../../modules/data-engineering/data-quality-validation.md)
+- **Module:** [Data Quality & Validation](../../../modules/data-engineering/data-quality-validation.md)
 
 The repo is a Spring Boot 3.2 / Java 17 loan management application that reads from legacy CDW (Corporate Data Warehouse) tables with known data quality issues: all-VARCHAR typing, cryptic column names, no foreign keys, code abbreviations. Devin will analyze the data for anomalies, trace root causes through the code, and implement validation to catch them.
 
@@ -197,7 +197,7 @@ Open a PR with the anomaly report, root cause analysis, validation code, and tes
 **Value driver:** *Your loan data is trapped in a legacy Corporate Data Warehouse with all-VARCHAR columns and cryptic names. Devin generates a complete Databricks-ready migration — PySpark ingestion scripts, Delta Lake table definitions, transformation logic, and a data quality validation framework.*
 
 - **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
-- **Module:** [Data Source Migration](../../modules/data-engineering/data-source-migration.md)
+- **Module:** [Data Source Migration](../../../modules/data-engineering/data-source-migration.md)
 
 Same repo, different story. Where Lab 3a finds what's wrong with the data, Lab 3b generates the migration pipeline to move it to a modern platform. Devin will read the legacy schema and column mappings, then produce PySpark scripts, Delta Lake table definitions, and validation code — everything a data engineering team needs to execute the migration in Databricks.
 
@@ -257,7 +257,7 @@ Participants who want to keep exploring after the workshop can try these additio
 ### Exercise A: COBOL Copybook to PySpark/JSON Config Generation
 
 - **Repository:** [aws-mainframe-modernization-carddemo](https://github.com/Cognition-Partner-Workshops/aws-mainframe-modernization-carddemo)
-- **Module:** [COBOL Copybook to PySpark/JSON](../../modules/data-engineering/cobol-copybook-to-pyspark-json.md)
+- **Module:** [COBOL Copybook to PySpark/JSON](../../../modules/data-engineering/cobol-copybook-to-pyspark-json.md)
 - **Shows:** Devin reading legacy COBOL data definitions and generating modern data engineering artifacts
 
 #### Paste into Devin
@@ -280,7 +280,7 @@ Open a PR with all generated artifacts and a `COPYBOOK_PARSING_NOTES.md` documen
 ### Exercise B: Automated Security Remediation & Vulnerability Reporting
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
-- **Modules:** [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Modules:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
 - **Shows:** Devin running SAST/SCA analysis, producing an executive security report, and remediating critical findings
 
 #### Paste into Devin
@@ -306,7 +306,7 @@ Open a PR with the report and the fixes.
 ### Exercise C: Payment Payload Gap Analysis & Business Capability Decomposition
 
 - **Repository:** [ts-java-spring-boot-internet-banking-microservices](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking-microservices)
-- **Modules:** [API Design Review](../../modules/architecture-design/api-design-review.md), [Dependency Graph Analysis](../../modules/architecture-design/dependency-graph-analysis.md)
+- **Modules:** [API Design Review](../../../modules/architecture-design/api-design-review.md), [Dependency Graph Analysis](../../../modules/architecture-design/dependency-graph-analysis.md)
 - **Shows:** Devin analyzing payment domain code against industry standards and recommending a service decomposition strategy
 
 #### Paste into Devin
@@ -342,7 +342,7 @@ Open a PR with all three documents.
 ### Exercise D: SAS to Python/Snowflake Migration
 
 - **Repositories:** [ts-sas-legacy-codebase](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-codebase), [uc-data-migration-sas-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake)
-- **Module:** [SAS to Python/Snowflake](../../modules/data-engineering/sas-to-python-snowflake.md)
+- **Module:** [SAS to Python/Snowflake](../../../modules/data-engineering/sas-to-python-snowflake.md)
 - **Shows:** Devin reading legacy SAS programs and producing equivalent Python (pandas) functions and Snowflake SQL — cross-language ETL migration
 - **Audience:** SAS developers, ETL engineers, data platform teams
 
@@ -368,7 +368,7 @@ Open a PR with the Python functions, tests, Snowflake DDL, and migration notes.
 ### Exercise E: Monolith-to-Microservices Extraction (Spring Boot Upgrade)
 
 - **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
-- **Module:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md)
+- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 - **Shows:** Devin upgrading a Spring Boot 2.x monolith to 3.x (javax→jakarta namespace migration) and extracting a bounded context into a standalone microservice with Docker Compose
 - **Audience:** Java/Spring Boot developers, monolith-to-microservices teams
 

@@ -1,15 +1,13 @@
-# COBOL Modernization Workshop
+# Workshop: COBOL Modernization
 
-## Event Details
+## Overview
 
 | | |
 |---|---|
-| **Variant Name** | COBOL Modernization Workshop |
 | **Focus** | End-to-end COBOL mainframe modernization — from system understanding through migration execution |
 | **Duration** | ~4 hours (4 labs × 60 min + breaks) |
-| **Facilitator** | *(facilitator name and email)* |
-| **Event Site** | https://partner-workshops.devinenterprise.com |
 | **Audience** | Enterprise architects, mainframe modernization teams, application portfolio managers, migration program leads |
+| **Key Modules** | [COBOL System Understanding](../../modules/migration-modernization/cobol-system-understanding.md), [COBOL to Java](../../modules/migration-modernization/cobol-to-java.md) |
 
 ## Abstract
 

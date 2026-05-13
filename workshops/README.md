@@ -9,7 +9,7 @@ Reusable workshop definitions that can be instantiated as events. Each workshop 
 | **Purpose** | Reusable reference template | Specific instance with date, location, audience |
 | **Location** | `workshops/` | `events/` |
 | **Contains** | Labs, modules, repos, structure, timing | Links to a workshop + facilitator overrides, audience context, event-specific customizations |
-| **Example** | `workshops/legacy-modernization/` | `events/2026-04-dc/` |
+| **Example** | `workshops/legacy-modernization/` | `events/active/2026-06-15-new-york/` |
 
 ## How It Works
 
@@ -34,6 +34,9 @@ Reusable workshop definitions that can be instantiated as events. Each workshop 
 | [Feature Development](feature-development/) | New features on existing applications | 1-2 hours | 1-2 | Application Development modules |
 | [Quality Engineering & Assurance](quality-engineering/) | Test automation, E2E testing, continuous quality, and code review | 4-6 hours | 9 (3 tracks × 3 labs) | Testing & QA, DevOps-CICD, Technical Documentation modules |
 | [General](general/) | Security, modernization, and feature development — 3-track broad tour | 4-6 hours | 9 (3 tracks × 3 labs) | Security, Migration-Modernization, Application Development, Testing & QA modules |
+| [COBOL Modernization](cobol-modernization/) | End-to-end COBOL mainframe modernization — system understanding through migration execution | ~4 hours | 4 | COBOL System Understanding, COBOL to Java modules |
+| [Enterprise Security Automation](enterprise-security-automation/) | Event-driven SAST remediation, mass backlog remediation, and one-shot tech debt | ~4 hours | 3 | Event-Driven SAST Remediation, Mass Security Backlog Remediation modules |
+| [Quality Engineering & Security](quality-engineering-security/) | Quality engineering + security vulnerability remediation combined | ~3 hours | 4 | Linting, Unit Testing, Upgrade Dependencies, Remediate Vulnerabilities modules |
 
 ## Creating a New Workshop
 
@@ -45,7 +48,7 @@ Reusable workshop definitions that can be instantiated as events. Each workshop 
 
 ## Creating an Event from a Workshop
 
-1. Copy `events/_template/` to a new directory named `YYYY-MM-DD-city/`
+1. Copy `events/_template/` to `events/active/YYYY-MM-DD-<event-id>/`
 2. Reference the workshop(s) this event is based on
 3. Add event-specific details (date, location, audience context)
 4. Override any workshop content as needed for this specific audience

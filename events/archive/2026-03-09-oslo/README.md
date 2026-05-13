@@ -1,14 +1,14 @@
-# Workshop: Hands-on Devin Workshop — Zurich
+# Workshop: Hands-on Devin Workshop — Oslo
 
 ## Event Details
 
 | | |
 |---|---|
-| **Date** | 2026-03-17 |
-| **Location** | Zurich |
+| **Date** | 2026-03-09 |
+| **Location** | Oslo, Norway |
 | **Host Organization** | *(customer)* |
-| **Duration** | N/A |
-| **Facilitator** | Sachet Agarwal, sachet.agarwal@cognition.ai |
+| **Duration** | 14:00–15:30 CET (90 minutes) |
+| **Facilitator** | Brian Smitches, brian.smitches@cognition.ai |
 | **Event Site** | https://partner-workshops.devinenterprise.com |
 
 ## Featured Labs
@@ -16,7 +16,7 @@
 This event features 4 structured labs using purpose-built repositories:
 
 ### Lab 1 — Legacy Modernization: COBOL → Java (60 min)
-- **Module:** [COBOL to Java](../../modules/migration-modernization/cobol-to-java.md#uc-legacy-modernization-cobol-to-java)
+- **Module:** [COBOL to Java](../../../modules/migration-modernization/cobol-to-java.md#uc-legacy-modernization-cobol-to-java)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Explore a real COBOL mainframe application and use Devin to modernize part of it — you choose the scope, target, and approach
 
@@ -47,7 +47,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - **Advanced: Try PR Review** — Open [this example PR review](https://partner-workshops.devinenterprise.com/review/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java/pull/1) to see Devin's **PR Review** feature in action — it provides an AI-powered summary and analysis of the changes. This is the most advanced way to review Devin's work.
 
-See the [full challenge details](../../modules/migration-modernization/cobol-to-java.md) for more ideas — there is no single right answer.
+See the [full challenge details](../../../modules/migration-modernization/cobol-to-java.md) for more ideas — there is no single right answer.
 
 - **Target Outcomes (any of these count):**
   - Java/Kotlin/Python source code + tests with a working build
@@ -57,7 +57,7 @@ See the [full challenge details](../../modules/migration-modernization/cobol-to-
   - PR with review comments and Devin's responses
 
 ### Lab 2 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)
-- **Module:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md#uc-framework-upgrade-monolith-to-microservices) + [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md#uc-framework-upgrade-monolith-to-microservices)
+- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md#uc-framework-upgrade-monolith-to-microservices) + [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md#uc-framework-upgrade-monolith-to-microservices)
 - **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
@@ -88,7 +88,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving both general comments and inline code comments to see how Devin handles each
 
-See the full challenge details for [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) and [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md) for more ideas.
+See the full challenge details for [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md) and [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Application builds and tests on Java 17+ / Spring Boot 3.x
@@ -98,10 +98,10 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
   - PR with review comments and Devin's responses
 
 ### Lab 3 — CVE Remediations & Regulatory Code Standards (60 min)
-- **Module:** [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../modules/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
+- **Module:** [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../../modules/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** A Spring Boot 2.6.3 service has accumulated vulnerable dependencies (Spring4Shell, SnakeYAML RCE, SQLite JDBC RCE, and more). Scan, remediate, and add automated compliance checks
-- **Known CVEs:** See the [full CVE findings report](../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
+- **Known CVEs:** See the [full CVE findings report](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
@@ -130,7 +130,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving both general comments and inline code comments to see how Devin handles each
 
-See the full challenge details for [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md), and [Shift Left Security](../../modules/security/shift-left-security.md) for more ideas.
+See the full challenge details for [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), and [Shift Left Security](../../../modules/security/shift-left-security.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - OWASP Dependency-Check report with high/critical CVEs remediated
@@ -141,7 +141,7 @@ See the full challenge details for [Upgrade Dependencies](../../modules/security
   - PR with review comments and Devin's responses
 
 ### Lab 4 — DW Migration: Teradata → Snowflake (60 min)
-- **Module:** [DW Migration: Teradata to Snowflake](../../modules/data-engineering/dw-migration-teradata-to-snowflake.md#uc-dw-migration-teradata-to-snowflake)
+- **Module:** [DW Migration: Teradata to Snowflake](../../../modules/data-engineering/dw-migration-teradata-to-snowflake.md#uc-dw-migration-teradata-to-snowflake)
 - **Repository:** [uc-dw-migration-teradata-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake)
 - **Objective:** A Teradata-based data warehouse needs to be migrated to Snowflake. Convert DDL/DML, build a migration runbook, and set up validation
 
@@ -172,7 +172,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving inline comments on specific SQL statements to see how Devin handles dialect-level corrections
 
-See the full challenge details in [DW Migration: Teradata to Snowflake](../../modules/data-engineering/dw-migration-teradata-to-snowflake.md) for more ideas — the repo includes a complete [Teradata features reference](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake/blob/initial-code/docs/teradata_features_reference.md) with Snowflake equivalents.
+See the full challenge details in [DW Migration: Teradata to Snowflake](../../../modules/data-engineering/dw-migration-teradata-to-snowflake.md) for more ideas — the repo includes a complete [Teradata features reference](https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-snowflake/blob/initial-code/docs/teradata_features_reference.md) with Snowflake equivalents.
 
 - **Target Outcomes (any of these count):**
   - Converted Snowflake DDL/DML for tables and views
@@ -184,7 +184,7 @@ See the full challenge details in [DW Migration: Teradata to Snowflake](../../mo
 
 ## Additional Challenges
 
-Participants may also attempt any challenge from the full [module catalog](../../modules/) as creative inspiration. The labs above are the primary structured activities.
+Participants may also attempt any challenge from the full [module catalog](../../../modules/) as creative inspiration. The labs above are the primary structured activities.
 
 ## Repos Required on Devin's Machine
 
@@ -195,7 +195,7 @@ Participants may also attempt any challenge from the full [module catalog](../..
 
 ## Repo Duplication Notes
 
-Labs 2 and 3 both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../catalog/repos.md)). They are intentionally separate repos so each lab gets an isolated starting point with no risk of cross-contamination during the workshop.
+Labs 2 and 3 both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../catalog/repos.md)). They are intentionally separate repos so each lab gets an isolated starting point with no risk of cross-contamination during the workshop.
 
 ## Context
 
@@ -205,4 +205,4 @@ Labs 2 and 3 both originate from `spring-boot-realworld-example-app` (Cluster C1
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the day.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the day.

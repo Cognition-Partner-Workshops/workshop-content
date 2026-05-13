@@ -1,15 +1,13 @@
-# Workshop Variant 2: Quality Engineering & Security Vulnerability Remediation
+# Workshop: Quality Engineering & Security Vulnerability Remediation
 
-## Event Details
+## Overview
 
 | | |
 |---|---|
-| **Variant Name** | Workshop Variant 2 |
 | **Focus** | Quality engineering (first half) + security vulnerability remediation (second half) |
 | **Duration** | ~3 hours (flexible: 90 min per half + breaks) |
-| **Facilitator** | Brian Smitches, brian.smitches@cognition.ai |
-| **Event Site** | https://partner-workshops.devinenterprise.com |
 | **Audience** | QA/QE engineers, AppSec/DevSecOps practitioners, engineering leads responsible for test coverage or security compliance |
+| **Key Modules** | [Linting & Static Analysis](../../modules/testing-qa/linting-static-analysis.md), [Unit Testing](../../modules/testing-qa/unit-testing.md), [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md) |
 
 ## Abstract
 
