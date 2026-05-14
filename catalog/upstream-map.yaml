@@ -176,6 +176,7 @@ clusters:
       - platform-engineering-shared-services
       - ordermanager-monolith
       - ordermanager-iac
+      - ordermanager-microservices
 
   C12:
     label: ".NET/Angular Containerized Decomposition"
@@ -238,6 +239,21 @@ repos:
     upstream: null
     import_method: original
     cluster: C6
+
+  ordermanager-monolith:
+    upstream: null
+    import_method: original
+    cluster: C11
+
+  ordermanager-iac:
+    upstream: null
+    import_method: original
+    cluster: C11
+
+  ordermanager-microservices:
+    upstream: null
+    import_method: original
+    cluster: C11
 
   quickapp-monolith:
     upstream: null
