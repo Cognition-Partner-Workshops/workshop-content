@@ -98,12 +98,12 @@ clusters:
     upstream: calcom/cal.com
     shared_initial_commit: null  # app is fork; infra + dataeng are original
     reason: >
-      The main calcom app plus infrastructure and data engineering repos
+      The main Cal.com app plus infrastructure and data engineering repos
       built around it for workshop demos.
     repos:
       - calcom           # fork of calcom/cal.com
-      - calcom-infra     # original — AWS CDK infra for calcom
-      - calcom-dataeng   # original — data engineering for calcom
+      - calcom-infra     # original — AWS CDK infra for Cal.com
+      - calcom-dataeng   # original — data engineering for Cal.com
 
   C6:
     label: "EventFlow multi-service demo"

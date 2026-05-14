@@ -88,8 +88,8 @@ Large-scale open-source scheduling platform with a complex monorepo structure â€
 
 ### Step 2: Research with Ask Devin
 
-- *"What is the monorepo structure of calcom? What are the key apps and packages, and how do they depend on each other?"*
-- *"What is the development workflow for calcom? How do Turborepo, Prisma, and tRPC fit together in the build and development process?"*
+- *"What is the monorepo structure of Cal.com? What are the key apps and packages, and how do they depend on each other?"*
+- *"What is the development workflow for Cal.com? How do Turborepo, Prisma, and tRPC fit together in the build and development process?"*
 
 ### Step 3 (Optional): Read the DeepWiki
 

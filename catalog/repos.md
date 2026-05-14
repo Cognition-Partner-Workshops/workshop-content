@@ -469,7 +469,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | | |
 |---|---|
 | **URL** | https://github.com/Cognition-Partner-Workshops/calcom-infra |
-| **Description** | Infrastructure as code for calcom deployment. |
+| **Description** | Infrastructure as code for Cal.com deployment. |
 | **Tech Stack** | IaC |
 | **License** | — |
 | **Challenges** | [IaC Translation](../modules/cloud-infrastructure/iac-translation.md) |
@@ -478,7 +478,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | | |
 |---|---|
 | **URL** | https://github.com/Cognition-Partner-Workshops/calcom-dataeng |
-| **Description** | Data engineering setup for calcom. |
+| **Description** | Data engineering setup for Cal.com. |
 | **Tech Stack** | Data engineering |
 | **License** | — |
 | **Challenges** | Data pipeline demos |
