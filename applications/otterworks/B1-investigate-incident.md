@@ -2,11 +2,11 @@
 
 ## Objective
 
-Trigger a chaos scenario in the OtterWorks platform and investigate the resulting incident across three escalation levels: manual investigation with Grafana/Jaeger, one-click Devin session from the Incidents page, and fully automatic alert-driven Devin investigation.
+Trigger a chaos scenario in the OtterWorks platform and experience three levels of incident response automation — from manual investigation to fully autonomous Devin-driven remediation. Use the **Auto-Investigate toggle** to control which flow is active.
 
 ## What's Wrong
 
-OtterWorks has a chaos engineering framework that injects failures into production-like services. When chaos is active, services exhibit real failure modes: 500 errors on search suggestions, file upload rejections, notification processing failures, or document-service latency spikes. The admin dashboard has "Trigger Chaos" buttons for each scenario.
+OtterWorks has a chaos engineering framework that injects failures into production-like services. When chaos is active, services exhibit real failure modes: 500 errors on search suggestions, file upload rejections, notification processing failures, or document-service latency spikes. The admin dashboard's Incidents page has "Demo Controls" with chaos trigger buttons for each scenario.
 
 The available chaos scenarios are:
 1. **Search Suggest 500** — MeiliSearch ranking score enrichment path triggers a KeyError
@@ -16,75 +16,72 @@ The available chaos scenarios are:
 
 ## Three Investigation Flows
 
-This lab supports three ways to investigate incidents, from fully manual to fully automatic. Try all three to see the progression.
+The Incidents page has an **Auto-Investigate** toggle in the Demo Controls panel. This controls whether Grafana alerts automatically create Devin sessions or just create incidents for manual investigation.
 
-### Flow 1: Manual Investigation (Current Workflow)
+### Flow 1: Manual Investigation (Auto-Investigate OFF)
 
-1. Trigger a chaos scenario via the admin dashboard's "Trigger Chaos" buttons
-2. Open Grafana dashboards to see error rate spikes or latency increases
-3. Use Jaeger traces (or read the service code) to pinpoint the root cause
-4. Manually open a Devin session and paste an investigation prompt describing the symptoms
-5. Watch Devin investigate, identify the root cause, and open a fix PR
+1. Ensure Auto-Investigate is **OFF**
+2. Click a chaos trigger button (e.g., "Break Search Autocomplete")
+3. Open Grafana dashboards to see the error rate spike (~30s-2m)
+4. An incident is auto-created on the Incidents page from the Grafana alert — but NO Devin session is launched
+5. Investigate manually: read Grafana dashboards, Jaeger traces, and service logs
+6. Optionally open [app.devin.ai](https://app.devin.ai) and paste your own investigation prompt
 
-This is the baseline workflow — you see the symptoms, interpret them, and ask Devin to investigate.
+### Flow 2: One-Click from Incidents Page (Auto-Investigate OFF)
 
-### Flow 2: One-Click from Incidents Page
+1. Ensure Auto-Investigate is **OFF**
+2. Trigger chaos — an incident appears on the Incidents page with "No Devin session"
+3. Click **"Launch Devin"** on the incident card
+4. A Devin session is created via the API with full incident context
+5. Follow the session link to watch Devin investigate
 
-1. Trigger a chaos scenario via the admin dashboard
-2. Navigate to the **Incidents** page in the admin dashboard
-3. Within 1-2 minutes, Grafana detects the metric anomaly and fires an alert rule
-4. The alert routes via a webhook contact point to the admin-service `/api/v1/admin/alerts/ingest` endpoint, which auto-creates an incident
-5. See the auto-created incident appear on the Incidents page with severity, affected service, and description
-6. Click **"Investigate with Devin"** on the incident — this calls `DevinSessionService` to create a Devin API session automatically with full context (title, severity, affected service, architecture context)
-7. Follow the session link to watch Devin work
+### Flow 3: Fully Automatic (Auto-Investigate ON)
 
-This flow reduces human effort to a single click — the system detects the problem and creates the incident for you.
-
-### Flow 3: Fully Automatic (No Human Needed)
-
-When chaos is triggered, the entire pipeline runs without human intervention:
-
-1. Chaos injection causes a service failure (errors, latency, etc.)
-2. Prometheus scrapes the failing metrics
-3. Grafana alert rules (`SearchSuggestHighErrorRate`, `FileUploadHighErrorRate`, `NotificationConsumerProcessingErrors`, `DocumentServiceHighLatency`) detect the anomaly
-4. Grafana fires the alert and routes it via the webhook contact point to admin-service
-5. The `/api/v1/admin/alerts/ingest` endpoint auto-creates an Incident record
-6. `DevinSessionService` automatically creates a Devin API session with full incident context
-7. Devin investigates the incident and opens a fix PR — zero human intervention after the initial chaos trigger
-
-This is the "Devin as an always-on on-call engineer" pattern.
+1. Turn Auto-Investigate **ON**
+2. Trigger chaos
+3. Grafana detects the metric anomaly and fires an alert (~30s-2m)
+4. The alert webhook hits the admin-service, which auto-creates an incident AND automatically launches a Devin session
+5. The incident appears on the Incidents page with a Devin session already attached
+6. Click "View Session" to watch Devin investigate and open a fix PR — zero human intervention after the chaos trigger
 
 ## Where to Look
 
-- `frontend/admin-dashboard/` — Admin UI with chaos trigger buttons
-- `frontend/admin-dashboard/src/app/pages/incidents/` — Incidents page with chaos triggers and "Investigate with Devin" button
-- `services/admin-service/app/services/devin_session_service.rb` — Devin API integration service
-- `services/admin-service/app/controllers/api/v1/admin/incidents_controller.rb` — Incidents API
+- `frontend/admin-dashboard/src/app/pages/incidents/` — Incidents page with chaos triggers, Auto-Investigate toggle, and Devin session tracking
+- `services/admin-service/app/controllers/api/v1/admin/alerts_controller.rb` — Grafana alert ingestion → incident creation → conditional Devin session
+- `services/admin-service/app/controllers/api/v1/admin/incidents_controller.rb` — Manual incident creation and "Launch Devin" button handler
+- `services/admin-service/app/services/devin_session_service.rb` — Devin API integration (builds prompts, calls POST /v3/.../sessions)
+- `services/admin-service/app/services/admin_settings_service.rb` — Redis-backed Auto-Investigate toggle state
 - `services/admin-service/app/controllers/api/v1/admin/chaos_controller.rb` — Chaos trigger/reset API
 - `services/admin-service/app/services/chaos_probe_service.rb` — Synthetic traffic for metrics
-- `observability/grafana/provisioning/alerting/alert-rules.yml` — Grafana alert rules for chaos scenarios
-- `observability/grafana/provisioning/alerting/contact-points.yml` — Webhook contact point configuration
+- `observability/grafana/provisioning/alerting/alert-rules.yml` — Grafana alert rules for each chaos scenario
+- `observability/grafana/provisioning/alerting/contact-points.yml` — Webhook contact point → admin-service
 - `observability/grafana/dashboards/chaos-scenarios.json` — Grafana dashboard for chaos metrics
-- `observability/grafana/dashboards/incident-overview.json` — Cross-service incident overview
-- `docs/runbooks/` — Skeleton runbooks for each scenario (investigation steps are incomplete)
+- `docs/runbooks/` — Skeleton runbooks for each scenario
 
 ## What Done Looks Like
 
+### Flow 1 (Manual)
+- [ ] Auto-Investigate toggle is OFF
 - [ ] Triggered at least one chaos scenario via the admin dashboard
-- [ ] Used Grafana dashboards to identify which service is affected and what the symptom is (error spike vs. latency spike)
-- [ ] Used Jaeger traces (or asked Devin to read the service code) to identify the root cause
+- [ ] Observed an incident auto-created from the Grafana alert (no Devin session attached)
+- [ ] Used Grafana dashboards to identify which service is affected and what the symptom is
+- [ ] Used Jaeger traces (or asked Devin manually) to identify the root cause
 - [ ] Can explain the root cause: what code path fails, why, and how to fix it
-- [ ] Optionally: fixed the root cause and verified the service recovers after chaos reset
-- [ ] Observed Grafana alert fire automatically after triggering chaos (~1-2 min)
-- [ ] Saw an incident auto-created on the Incidents page from the Grafana alert
-- [ ] Used the "Investigate with Devin" button (or observed DevinSessionService auto-trigger) to create a Devin API session
-- [ ] Watched Devin investigate the incident and open a fix PR
-- [ ] Can explain the full event-driven pipeline: chaos → metrics → Grafana alert → webhook → incident → Devin session
+
+### Flow 2 (One-Click)
+- [ ] Saw an incident with "No Devin session" and a "Launch Devin" button
+- [ ] Clicked "Launch Devin" and observed a Devin session being created
+- [ ] Followed the session link and watched Devin investigate
+
+### Flow 3 (Fully Automatic)
+- [ ] Auto-Investigate toggle is ON
+- [ ] Triggered chaos and observed the full pipeline: chaos → Grafana alert → auto-incident → auto-Devin session
+- [ ] Can explain the event-driven pipeline: chaos → Prometheus metrics → Grafana alert rule → webhook → AlertsController → Incident + DevinSessionService → Devin API session
 
 ## Hints (for facilitators — reveal progressively if participants are stuck)
 
 ### Hint 1 — Getting Started
-Start by triggering the "Search Suggest 500" chaos scenario from the admin dashboard. Then check the Grafana "Chaos Scenarios" dashboard to see the error rate spike.
+Start with **Auto-Investigate OFF** and trigger the "Search Suggest 500" chaos scenario. Watch the Incidents page — within 30s-2m, an incident should appear from the Grafana alert. Then check the Grafana "Chaos Scenarios" dashboard to see the error rate spike.
 
 ### Hint 2 — Specific Direction
 Ask Devin to read `services/search-service/app/api/search.py` and find the code path that runs when `chaos:search-service:suggest_500` is active. The bug is a missing key access on MeiliSearch results.
@@ -92,8 +89,8 @@ Ask Devin to read `services/search-service/app/api/search.py` and find the code 
 ### Hint 3 — Approach
 Ask Devin: "Read the chaos-related code in `services/search-service/app/api/search.py`, specifically the `suggest()` function. What happens when the chaos flag is active? Identify the bug and fix it."
 
-### Hint 4 — Event-Driven Flow
-If you want to see the fully automatic flow, trigger chaos and then watch the Incidents page. Within 1-2 minutes, Grafana should fire an alert, the admin-service will auto-create an incident, and DevinSessionService will create a Devin API session. Check the admin-service logs to see the Devin API call.
+### Hint 4 — Event-Driven Pipeline
+Turn Auto-Investigate ON, trigger a different chaos scenario, and watch the Incidents page. The full pipeline (chaos → alert → incident → Devin session) should fire without any human intervention. Check admin-service logs (`docker compose logs admin-service`) to see the Devin API call.
 
 ## Time Budget
-~45-60 minutes per chaos scenario investigation.
+~45-60 minutes per chaos scenario investigation. Try Flow 1 first, then escalate to Flow 2 and Flow 3 to experience the full spectrum.

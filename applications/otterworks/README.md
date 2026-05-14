@@ -130,14 +130,13 @@ Focus: Investigating production incidents, building runbooks, and improving obse
 ### Lab B1 — Investigate Production Incident (45-60 min)
 
 - **Lab Guide:** [B1-investigate-incident.md](B1-investigate-incident.md)
-- **Objective:** Trigger a chaos scenario and investigate the resulting incident across three escalation levels: manual investigation with Grafana/Jaeger, one-click Devin session from the Incidents page, and fully automatic alert-driven Devin investigation
+- **Objective:** Trigger a chaos scenario and experience three levels of incident response automation — manual, one-click, and fully automatic — controlled by an Auto-Investigate toggle
 
 **Key Takeaways:**
 - Devin can correlate signals across dashboards, logs, and traces to identify root causes
 - Different incident signatures (error spikes vs. latency spikes) require different investigation approaches
-- Having Devin read observability data directly is faster than describing symptoms manually
 - **Event-driven pattern:** Grafana alerts → webhook → auto-created incidents → Devin API sessions demonstrate "Devin as an always-on on-call engineer"
-- The three-flow escalation (manual → one-click → fully automatic) shows how teams can adopt Devin incrementally
+- The Auto-Investigate toggle lets teams experience the escalation from manual → one-click → fully automatic, showing how to adopt Devin incrementally
 
 ---
 
