@@ -15,13 +15,13 @@ Some workshop challenges require a running application. This document tracks hos
 
 When hosted instances are unavailable, participants can ask Devin to run applications locally on its machine.
 
-### client-timesheet-app
+### timesheet-app
 ```bash
 # Backend (port 3001)
-cd ~/repos/client-timesheet-app/backend && npm run dev
+cd ~/repos/timesheet-app/backend && npm run dev
 
 # Frontend (port 5173)
-cd ~/repos/client-timesheet-app/frontend && npm run dev
+cd ~/repos/timesheet-app/frontend && npm run dev
 
 # Access: http://localhost:5173
 # Login: any email address (no password required)
@@ -59,7 +59,7 @@ To provision hosted instances for a workshop event:
 
 | Challenge | Application Needed | Can Run Locally? |
 |-----------|-------------------|-----------------|
-| A3 — E2E Testing | calcom or client-timesheet-app | Yes |
+| A3 — E2E Testing | calcom or timesheet-app | Yes |
 | D3 — Fix Runtime Bug | calcom | Yes |
-| D4 — Fix UI Bug | client-timesheet-app | Yes |
-| D5 — Fix Data Bug | client-timesheet-app | Yes (but code analysis also works) |
+| D4 — Fix UI Bug | timesheet-app | Yes |
+| D5 — Fix Data Bug | timesheet-app | Yes (but code analysis also works) |

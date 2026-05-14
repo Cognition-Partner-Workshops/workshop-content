@@ -440,7 +440,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Client timesheet and billable hours tracking application. React 19 + Node.js/Express + SQLite. Full CRUD, auth, reporting, CSV/PDF export. Multi-part app (backend + frontend + Docker). |
 | **Tech Stack** | React 19, TypeScript, Node.js, Express, SQLite, Material-UI, Vite |
 | **License** | — |
-| **Renamed From** | `client-timesheet-app` (applied `app_` prefix for multi-repo application) |
+| **Renamed From** | `client-timesheet-app` → `app_timesheet` → `timesheet-app` (identity-first naming) |
 | **Challenges** | [Linting & Static Analysis](../modules/testing-qa/linting-static-analysis.md), [Upgrade Dependencies](../modules/security/upgrade-dependencies.md), [Event-Driven SAST Remediation](../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../modules/security/mass-security-backlog-remediation.md), [Fix UI Bug](../modules/application-development/fix-ui-bug.md), [Fix Data Bug](../modules/application-development/fix-data-bug.md), [New Feature Development](../modules/application-development/new-feature-development.md), [CI/CD Pipeline](../modules/devops-cicd/cicd-pipeline.md), [Continuous Quality Engineering](../modules/testing-qa/continuous-quality-engineering.md) |
 
 ---
