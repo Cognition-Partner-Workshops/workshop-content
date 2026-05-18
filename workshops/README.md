@@ -37,6 +37,7 @@ Reusable workshop definitions that can be instantiated as events. Each workshop 
 | [COBOL Modernization](cobol-modernization/) | End-to-end COBOL mainframe modernization — system understanding through migration execution | ~4 hours | 4 | COBOL System Understanding, COBOL to Java modules |
 | [Enterprise Security Automation](enterprise-security-automation/) | Event-driven SAST remediation, mass backlog remediation, and one-shot tech debt | ~4 hours | 3 | Event-Driven SAST Remediation, Mass Security Backlog Remediation modules |
 | [Quality Engineering & Security](quality-engineering-security/) | Quality engineering + security vulnerability remediation combined | ~3 hours | 4 | Linting, Unit Testing, Upgrade Dependencies, Remediate Vulnerabilities modules |
+| [OtterWorks](otterworks/) | Polyglot microservices — modernization, incident response, security & quality (300-level) | 4-6 hours | 9 (3 tracks × 3 labs) | ETL Modernization, Framework Upgrade, Language Translation, Incident Response, Security, Contract Audit, Test Coverage modules |
 
 ## Creating a New Workshop
 
