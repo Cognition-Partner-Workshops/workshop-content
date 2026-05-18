@@ -20,7 +20,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [DevOps & CI/CD](devops-cicd/) | DevOps Engineer, Release Engineer | 5 modules |
 | [Cloud & Infrastructure](cloud-infrastructure/) | Cloud Engineer, Platform Engineer | 6 modules |
 | [Observability & SRE](observability-sre/) | SRE, Observability Engineer | 4 modules |
-| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 7 modules |
+| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 9 modules |
 | [Architecture & Design](architecture-design/) | Solution Architect, Enterprise Architect | 5 modules |
 | [AI & ML Engineering](ai-ml-engineering/) | ML Engineer, AI Engineer | 3 modules |
 | [Technical Documentation](technical-documentation/) | Technical Writer, Documentation Engineer | 6 modules |

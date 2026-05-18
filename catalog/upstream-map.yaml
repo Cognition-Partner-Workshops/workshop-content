@@ -153,12 +153,14 @@ clusters:
       - ts-angularjs-dashboard-widgets                  # from dtpublic/malhar-angular-dashboard
 
   C10:
-    label: "SAS to Snowflake migration"
+    label: "SAS to dbt/Databricks"
     upstream: scottbass/SAS
     shared_initial_commit: null
     reason: >
-      Legacy SAS source codebase paired with the Snowflake migration
-      validation tooling built for demos.
+      Enterprise SAS analytics estate (banking/insurance programs, macros,
+      formats, batch orchestration) paired with dbt target architecture
+      (Databricks), lineage metadata, validation toolkit, and SAS-to-dbt
+      construct mapping.
     repos:
       - ts-sas-legacy-analytics            # SAS source (from scottbass/SAS)
       - uc-data-migration-sas-to-snowflake  # migration validation tooling
@@ -508,7 +510,7 @@ repos:
     upstream: null
     import_method: original
     cluster: C10
-    note: "Migration validation tooling built for SAS-to-Snowflake demos"
+    note: "Migration validation toolkit with dbt/Databricks target architecture, lineage metadata, and SAS-to-dbt construct mapping"
 
   uc-data-source-migration-legacy-to-modern:
     upstream: null
