@@ -36,23 +36,23 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
 | [Gather Requirements](application-development/gather-requirements.md) | Beginner | 30 min | timesheet-app, calcom |
-| [Test-Driven Development](application-development/test-driven-development.md) | Intermediate | 60 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices |
+| [Test-Driven Development](application-development/test-driven-development.md) | Intermediate | 60 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction |
 | [Fix Runtime Bug](application-development/fix-runtime-bug.md) | Intermediate | 45 min | timesheet-app, calcom, eventflow-storefront |
 | [Fix UI Bug](application-development/fix-ui-bug.md) | Beginner–Intermediate | 30 min | timesheet-app |
 | [Fix Data Bug](application-development/fix-data-bug.md) | Intermediate | 45 min | timesheet-app |
-| [New Feature Development](application-development/new-feature-development.md) | Intermediate–Advanced | 60 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, uc-data-source-migration-legacy-to-modern |
-| [Database Schema Evolution](application-development/database-schema-evolution.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, uc-data-source-migration-legacy-to-modern |
+| [New Feature Development](application-development/new-feature-development.md) | Intermediate–Advanced | 60 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, uc-data-source-migration-jdbc-normalization |
+| [Database Schema Evolution](application-development/database-schema-evolution.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, uc-data-source-migration-jdbc-normalization |
 
 ### Testing & QA
 
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
 | [Linting & Static Analysis](testing-qa/linting-static-analysis.md) | Beginner | 30 min | timesheet-app, timesheet-infra |
-| [Unit Testing](testing-qa/unit-testing.md) | Beginner–Intermediate | 45 min | timesheet-app, ts-java-spring-boot-realworld, uc-framework-upgrade-monolith-to-microservices |
+| [Unit Testing](testing-qa/unit-testing.md) | Beginner–Intermediate | 45 min | timesheet-app, ts-java-spring-boot-realworld, uc-spring-boot-upgrade-microservice-extraction |
 | [End-to-End Testing](testing-qa/end-to-end-testing.md) | Intermediate | 60 min | timesheet-app, calcom, ts-java-selenium-testng |
-| [Performance Testing & Optimization](testing-qa/performance-testing.md) | Intermediate–Advanced | 60 min | timesheet-app, calcom, uc-framework-upgrade-monolith-to-microservices |
+| [Performance Testing & Optimization](testing-qa/performance-testing.md) | Intermediate–Advanced | 60 min | timesheet-app, calcom, uc-spring-boot-upgrade-microservice-extraction |
 | [Accessibility Compliance](testing-qa/accessibility-compliance.md) | Intermediate | 45 min | timesheet-app, calcom |
-| [BDD Test Generation](testing-qa/bdd-test-generation.md) | Intermediate | 60 min | uc-bdd-test-generation-rest-api, ts-java-swagger-petstore |
+| [BDD Test Generation](testing-qa/bdd-test-generation.md) | Intermediate | 60 min | uc-bdd-test-generation-cucumber, ts-java-swagger-petstore |
 | [Contract Testing](testing-qa/contract-testing.md) | Intermediate–Advanced | 60 min | petclinic-microservices, quickapp-microservices |
 | [Mutation Testing](testing-qa/mutation-testing.md) | Intermediate–Advanced | 60 min | Multiple repos |
 | [Load Testing & Benchmarking](testing-qa/load-testing-benchmarking.md) | Intermediate–Advanced | 60 min | Multiple repos |
@@ -67,7 +67,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [Remediate Vulnerabilities](security/remediate-vulnerabilities.md) | Intermediate | 60 min | timesheet-app, uc-cve-remediation-regulatory-compliance |
 | [Shift Left Security](security/shift-left-security.md) | Intermediate–Advanced | 60 min | timesheet-app, uc-cve-remediation-regulatory-compliance |
 | [Security Antipatterns](security/security-antipatterns.md) | Intermediate | 45 min | timesheet-app, uc-cve-remediation-regulatory-compliance, Online-Banking-System-using-Java |
-| [Secrets Management & Detection](security/secrets-management-detection.md) | Intermediate | 45 min | timesheet-app, uc-cve-remediation-regulatory-compliance, uc-framework-upgrade-monolith-to-microservices |
+| [Secrets Management & Detection](security/secrets-management-detection.md) | Intermediate | 45 min | timesheet-app, uc-cve-remediation-regulatory-compliance, uc-spring-boot-upgrade-microservice-extraction |
 | [Event-Driven SAST Remediation](security/event-driven-sast-remediation.md) | Advanced | 90 min | timesheet-app, uc-cve-remediation-regulatory-compliance |
 | [Mass Security Backlog Remediation](security/mass-security-backlog-remediation.md) | Advanced | 90 min | timesheet-app, uc-cve-remediation-regulatory-compliance |
 
@@ -83,11 +83,11 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
-| [CI/CD Pipeline](devops-cicd/cicd-pipeline.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices |
-| [PR Review Automation](devops-cicd/pr-review-automation.md) | Beginner–Intermediate | 30 min | timesheet-app, ts-java-spring-boot-realworld, uc-framework-upgrade-monolith-to-microservices |
-| [CI Failure Resolution](devops-cicd/ci-failure-resolution.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices |
-| [Release Management](devops-cicd/release-management.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, ordermanager-monolith |
-| [Configuration Mgmt & Feature Flags](devops-cicd/configuration-management-feature-flags.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, platform-engineering-shared-services |
+| [CI/CD Pipeline](devops-cicd/cicd-pipeline.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction |
+| [PR Review Automation](devops-cicd/pr-review-automation.md) | Beginner–Intermediate | 30 min | timesheet-app, ts-java-spring-boot-realworld, uc-spring-boot-upgrade-microservice-extraction |
+| [CI Failure Resolution](devops-cicd/ci-failure-resolution.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction |
+| [Release Management](devops-cicd/release-management.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, ordermanager-monolith |
+| [Configuration Mgmt & Feature Flags](devops-cicd/configuration-management-feature-flags.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, platform-engineering-shared-services |
 
 ### Cloud & Infrastructure
 
@@ -104,8 +104,8 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
-| [Observability & Monitoring](observability-sre/observability-monitoring.md) | Intermediate–Advanced | 60 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices |
-| [Incident Response & Triage](observability-sre/incident-response-triage.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, ordermanager-monolith, eventflow-storefront |
+| [Observability & Monitoring](observability-sre/observability-monitoring.md) | Intermediate–Advanced | 60 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction |
+| [Incident Response & Triage](observability-sre/incident-response-triage.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, ordermanager-monolith, eventflow-storefront |
 | [Pod Remediation After Credential Rotation](observability-sre/pod-remediation-credential-rotation.md) | Advanced | 60 min | uc-pod-remediation-credential-rotation |
 | [Volume Anomaly Detection](observability-sre/volume-anomaly-detection.md) | Intermediate–Advanced | 60 min | uc-volume-anomaly-detection |
 
@@ -114,7 +114,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
 | [DW Migration: Teradata to Snowflake](data-engineering/dw-migration-teradata-to-snowflake.md) | Intermediate–Advanced | 60 min | uc-dw-migration-teradata-to-snowflake |
-| [Data Source Migration](data-engineering/data-source-migration.md) | Intermediate | 60 min | uc-data-source-migration-legacy-to-modern |
+| [Data Source Migration](data-engineering/data-source-migration.md) | Intermediate | 60 min | uc-data-source-migration-jdbc-normalization |
 | [ETL Pipeline Modernization](data-engineering/etl-pipeline-modernization.md) | Intermediate–Advanced | 60 min | uc-dw-migration-teradata-to-snowflake |
 | [Data Quality & Validation](data-engineering/data-quality-validation.md) | Intermediate | 45 min | uc-dw-migration-teradata-to-snowflake |
 | [SAS to Python/Snowflake](data-engineering/sas-to-python-snowflake.md) | Intermediate–Advanced | 60 min | Multiple repos |
@@ -128,7 +128,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [Architecture Decision Records](architecture-design/architecture-decision-records.md) | Intermediate | 45 min | Multiple repos |
 | [API Design Review](architecture-design/api-design-review.md) | Intermediate | 45 min | Multiple repos |
 | [Dependency Graph Analysis](architecture-design/dependency-graph-analysis.md) | Intermediate–Advanced | 60 min | Multiple repos |
-| [API Consolidation](architecture-design/api-consolidation.md) | Intermediate | 45 min | uc-framework-upgrade-monolith-to-microservices |
+| [API Consolidation](architecture-design/api-consolidation.md) | Intermediate | 45 min | uc-spring-boot-upgrade-microservice-extraction |
 | [Code Refactoring & Tech Debt](architecture-design/code-refactoring-tech-debt.md) | Intermediate | 45 min | timesheet-app, calcom, ts-java-spring-boot-realworld |
 
 ### AI & ML Engineering
@@ -144,7 +144,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | Module | Difficulty | Time | Repos |
 |--------|-----------|------|-------|
 | [Inline Documentation](technical-documentation/inline-documentation.md) | Beginner | 30 min | timesheet-app, ts-java-spring-boot-realworld, uc-dw-migration-teradata-to-snowflake |
-| [API Documentation](technical-documentation/api-documentation.md) | Intermediate | 45 min | timesheet-app, uc-framework-upgrade-monolith-to-microservices, uc-data-source-migration-legacy-to-modern |
+| [API Documentation](technical-documentation/api-documentation.md) | Intermediate | 45 min | timesheet-app, uc-spring-boot-upgrade-microservice-extraction, uc-data-source-migration-jdbc-normalization |
 | [Document Review Automation](technical-documentation/document-review-automation.md) | Intermediate | 45 min | uc-document-review-automation |
 | [Runbook Generation](technical-documentation/runbook-generation.md) | Intermediate | 45 min | platform-engineering-shared-services, eventflow-infra |
 | [Onboarding Guide Generation](technical-documentation/onboarding-guide-generation.md) | Intermediate | 45 min | Multiple repos |
@@ -158,12 +158,12 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [COBOL System Understanding](migration-modernization/cobol-system-understanding.md) | Intermediate | 60 min | uc-legacy-modernization-cobol-to-java |
 | [COBOL Migration Planning](migration-modernization/cobol-migration-planning.md) | Intermediate–Advanced | 60 min | uc-legacy-modernization-cobol-to-java |
 | [Migration Test Harness](migration-modernization/migration-test-harness.md) | Intermediate–Advanced | 60 min | uc-legacy-modernization-cobol-to-java |
-| [Framework Upgrade](migration-modernization/framework-upgrade.md) | Intermediate | 60 min | uc-framework-upgrade-monolith-to-microservices, petclinic-angular, ts-angular-realworld |
+| [Framework Upgrade](migration-modernization/framework-upgrade.md) | Intermediate | 60 min | uc-spring-boot-upgrade-microservice-extraction, petclinic-angular, ts-angular-realworld |
 | [Repetitive Framework Upgrades](migration-modernization/repetitive-framework-upgrades.md) | Intermediate | 60 min | Multiple repos (parallel sessions) |
-| [Containerization & Microservice Extraction](migration-modernization/containerization-microservice-extraction.md) | Intermediate–Advanced | 60 min | uc-framework-upgrade-monolith-to-microservices, petclinic-microservices |
-| [Cloud-Native Refactor](migration-modernization/cloud-native-refactor.md) | Intermediate–Advanced | 60 min | uc-framework-upgrade-monolith-to-microservices, timesheet-app |
+| [Containerization & Microservice Extraction](migration-modernization/containerization-microservice-extraction.md) | Intermediate–Advanced | 60 min | uc-spring-boot-upgrade-microservice-extraction, petclinic-microservices |
+| [Cloud-Native Refactor](migration-modernization/cloud-native-refactor.md) | Intermediate–Advanced | 60 min | uc-spring-boot-upgrade-microservice-extraction, timesheet-app |
 | [Legacy Modernization Combined](migration-modernization/legacy-modernization-combined.md) | Advanced | 60 min | Multiple repos |
-| [One-Shot Tech Debt Remediation](migration-modernization/one-shot-tech-debt-remediation.md) | Advanced | 75 min | uc-framework-upgrade-monolith-to-microservices, uc-cve-remediation-regulatory-compliance |
+| [One-Shot Tech Debt Remediation](migration-modernization/one-shot-tech-debt-remediation.md) | Advanced | 75 min | uc-spring-boot-upgrade-microservice-extraction, uc-cve-remediation-regulatory-compliance |
 | [.NET Monolith Decomposition](migration-modernization/dotnet-monolith-decomposition.md) | Intermediate–Advanced | 75 min | quickapp-monolith, quickapp-microservices |
 | [Cross-Service Bug Investigation](migration-modernization/cross-service-bug-investigation.md) | Intermediate | 45 min | quickapp-microservices |
 | [Oracle Forms System Understanding](migration-modernization/oracle-forms-system-understanding.md) | Intermediate | 60 min | ts-plsql-oracle-forms-hrms |

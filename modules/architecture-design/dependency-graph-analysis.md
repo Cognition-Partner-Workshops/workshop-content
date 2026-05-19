@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [calcom](#calcom)
 
 ---
@@ -42,19 +42,19 @@ Intermediate to Advanced
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with interleaved REST and GraphQL layers sharing service and data access components — a realistic target for dependency analysis in a Java codebase.
 
 ### Step 1: Paste into Devin
 
-> Analyze the internal dependency graph of uc-framework-upgrade-monolith-to-microservices. Map the package-level dependencies across the application — controllers, datafetchers, services, repositories, and domain models. Identify: (1) any circular dependencies between packages, (2) tightly coupled modules where changes in one package would cascade across many others, (3) packages with the highest fan-in and fan-out counts. Produce a dependency analysis report in `docs/dependency-analysis.md` that includes a text-based dependency graph, a list of coupling hotspots, and prioritized refactoring recommendations. Implement the top quick-win decoupling change and open a PR with the report and any code changes.
+> Analyze the internal dependency graph of uc-spring-boot-upgrade-microservice-extraction. Map the package-level dependencies across the application — controllers, datafetchers, services, repositories, and domain models. Identify: (1) any circular dependencies between packages, (2) tightly coupled modules where changes in one package would cascade across many others, (3) packages with the highest fan-in and fan-out counts. Produce a dependency analysis report in `docs/dependency-analysis.md` that includes a text-based dependency graph, a list of coupling hotspots, and prioritized refactoring recommendations. Implement the top quick-win decoupling change and open a PR with the report and any code changes.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the package-level dependencies in uc-framework-upgrade-monolith-to-microservices? Which packages have the most incoming and outgoing dependencies?"*
+- *"What are the package-level dependencies in uc-spring-boot-upgrade-microservice-extraction? Which packages have the most incoming and outgoing dependencies?"*
 - *"Are there any circular dependencies between the REST controllers, GraphQL datafetchers, and the service layer?"*
 
 ### Step 3 (Optional): Read the DeepWiki

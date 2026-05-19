@@ -18,13 +18,13 @@ Data source migration is not just schema work — the application must be rewire
 ### Lab 1 — Data Source Rewrite + App Reconnection + Testing
 
 - **Module:** [Data Source Migration](../../modules/data-engineering/data-source-migration.md)
-- **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+- **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Objective:** Transform a legacy data warehouse (all-VARCHAR, denormalized) to a modern normalized schema, rewire the app, and validate with comprehensive tests
 - **Duration:** 60 min
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the legacy CDW schema in uc-data-source-migration-legacy-to-modern. This loan management app reads from denormalized tables where all columns are VARCHAR.
+> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This loan management app reads from denormalized tables where all columns are VARCHAR.
 >
 > Part 1 — Rewrite the data source: Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long, enums). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Add data reconciliation tests that verify record counts and field values.
 >
@@ -50,7 +50,7 @@ Focus on the testing story: data transformation correctness, reconciliation test
 
 ## Repos Required
 
-- [ ] uc-data-source-migration-legacy-to-modern
+- [ ] uc-data-source-migration-jdbc-normalization
 
 ## Key Takeaways
 

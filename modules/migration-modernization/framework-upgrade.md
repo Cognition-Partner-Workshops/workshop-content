@@ -4,7 +4,7 @@
 
 - [petclinic-angular](#petclinic-angular)
 - [ts-angular-realworld](#ts-angular-realworld)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -107,19 +107,19 @@ Open the repo's DeepWiki page to understand the application architecture. Focus 
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 / Java 11 monolith. Upgrade to Java 17+ and Spring Boot 3.x — handling javax to jakarta namespace migration, Gradle plugin updates, and deprecated API removal.
 
 ### Step 1: Paste into Devin
 
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the biggest risks when upgrading uc-framework-upgrade-monolith-to-microservices from Spring Boot 2 to 3? Which files will need the most changes?"*
+- *"What are the biggest risks when upgrading uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2 to 3? Which files will need the most changes?"*
 - *"What's the best order to tackle the javax to jakarta migration, the Gradle plugin updates, and the deprecated API removals?"*
 - Use the refined plan as your Devin session prompt — compare the result to your first attempt
 

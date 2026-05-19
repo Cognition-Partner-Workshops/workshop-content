@@ -3,7 +3,7 @@
 ## Repositories
 
 - [petclinic-microservices](#petclinic-microservices)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -80,19 +80,19 @@ Open the repo's DeepWiki page to understand the service decomposition, API contr
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 monolith with three clear bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles). The Comments domain is the simplest extraction; Users/Profiles is the hardest because authentication is cross-cutting.
 
 ### Step 1: Paste into Devin
 
-> Analyze the domain boundaries in uc-framework-upgrade-monolith-to-microservices. Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services. Open a PR.
+> Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction. Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the domain boundaries in uc-framework-upgrade-monolith-to-microservices? Which bounded context would be easiest to extract and which would be hardest?"*
+- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which bounded context would be easiest to extract and which would be hardest?"*
 - *"If I extract the Articles domain from this monolith, what shared code and database tables will need to be handled? What communication pattern should I use?"*
 - Use the refined analysis as your Devin session prompt — compare the result to your first attempt
 

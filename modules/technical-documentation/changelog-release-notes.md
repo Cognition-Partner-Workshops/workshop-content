@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -76,19 +76,19 @@ Open the repo's DeepWiki page to understand the application features and API sur
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with frontend — a complex application where changelog generation must account for both backend and frontend changes.
 
 ### Step 1: Paste into Devin
 
-> Analyze the git history of uc-framework-upgrade-monolith-to-microservices and generate release documentation. Create: (1) `CHANGELOG.md` following Keep a Changelog format — separately categorize backend (API, database, service layer) and frontend (UI, components, routing) changes, (2) `docs/release-notes/v1.0.md` — user-facing release notes organized by feature area, (3) `scripts/generate-changelog.sh` — an automated changelog generation script, and (4) `MIGRATION.md` documenting any breaking changes found in the history with step-by-step upgrade instructions. Open a PR.
+> Analyze the git history of uc-spring-boot-upgrade-microservice-extraction and generate release documentation. Create: (1) `CHANGELOG.md` following Keep a Changelog format — separately categorize backend (API, database, service layer) and frontend (UI, components, routing) changes, (2) `docs/release-notes/v1.0.md` — user-facing release notes organized by feature area, (3) `scripts/generate-changelog.sh` — an automated changelog generation script, and (4) `MIGRATION.md` documenting any breaking changes found in the history with step-by-step upgrade instructions. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What is the commit history structure of uc-framework-upgrade-monolith-to-microservices? Are there distinct phases (initial build, feature additions, refactors) visible in the history?"*
+- *"What is the commit history structure of uc-spring-boot-upgrade-microservice-extraction? Are there distinct phases (initial build, feature additions, refactors) visible in the history?"*
 - *"Are there any database schema changes or API contract changes in the history that would constitute breaking changes?"*
 
 ### Step 3 (Optional): Read the DeepWiki

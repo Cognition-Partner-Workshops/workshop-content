@@ -23,7 +23,7 @@ Challenges focused on dependency management, vulnerability remediation, security
 | timesheet-app | [Upgrade Dependencies](upgrade-dependencies.md), [Remediate Vulnerabilities](remediate-vulnerabilities.md), [Shift Left Security](shift-left-security.md), [Security Antipatterns](security-antipatterns.md), [Secrets Management & Detection](secrets-management-detection.md), [Event-Driven SAST Remediation](event-driven-sast-remediation.md), [Mass Security Backlog Remediation](mass-security-backlog-remediation.md) |
 | Online-Banking-System-using-Java | [Security Antipatterns](security-antipatterns.md) |
 | uc-cve-remediation-regulatory-compliance | [Upgrade Dependencies](upgrade-dependencies.md), [Remediate Vulnerabilities](remediate-vulnerabilities.md), [Shift Left Security](shift-left-security.md), [Security Antipatterns](security-antipatterns.md), [Secrets Management & Detection](secrets-management-detection.md), [Event-Driven SAST Remediation](event-driven-sast-remediation.md), [Mass Security Backlog Remediation](mass-security-backlog-remediation.md) |
-| uc-framework-upgrade-monolith-to-microservices | [Secrets Management & Detection](secrets-management-detection.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [Secrets Management & Detection](secrets-management-detection.md) |
 
 ## When to Use This Category
 

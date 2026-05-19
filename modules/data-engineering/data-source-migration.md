@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
 
 ---
 
@@ -59,15 +59,15 @@ Intermediate
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot 3.2 / Java 17 loan management application reading from legacy CDW-style tables. Includes modern target schema DDL, column mappings, and 5 workshop migration tasks.
 
 ### Step 1: Paste into Devin
 
-> Review the legacy CDW schema in uc-data-source-migration-legacy-to-modern. Create modern JPA entities matching the target schema in data/modern-schema/modern_tables.sql. Write a migration service that reads from legacy tables, transforms the data (parse dates, amounts, expand codes per data/mappings/column_mappings.md), and inserts into modern tables. Then update LoanService.java to read from modern repositories instead of legacy ones. Verify all API endpoints return the same data. Open a PR.
+> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. Create modern JPA entities matching the target schema in data/modern-schema/modern_tables.sql. Write a migration service that reads from legacy tables, transforms the data (parse dates, amounts, expand codes per data/mappings/column_mappings.md), and inserts into modern tables. Then update LoanService.java to read from modern repositories instead of legacy ones. Verify all API endpoints return the same data. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

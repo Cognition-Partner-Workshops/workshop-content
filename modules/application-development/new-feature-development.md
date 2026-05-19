@@ -3,8 +3,8 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -76,15 +76,15 @@ Open the repo's DeepWiki page to understand the existing feature patterns. The n
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot loan service — add new API endpoints, filtering, pagination, or reporting capabilities.
 
 ### Step 1: Paste into Devin
 
-> Add a loan payment history API to uc-data-source-migration-legacy-to-modern. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint. Open a PR.
+> Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
@@ -102,15 +102,15 @@ Open the repo's DeepWiki page to understand the existing API contracts and data 
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot RealWorld app — add new API endpoints or enhance existing ones with additional functionality.
 
 ### Step 1: Paste into Devin
 
-> Add an "article statistics" feature to uc-framework-upgrade-monolith-to-microservices. Create a new endpoint GET /api/articles/:slug/stats that returns: view count, favorite count, comment count, and days since published. Add a GET /api/stats/trending endpoint that returns the top 10 most-favorited articles in the last 7 days. Write tests for both endpoints. Open a PR.
+> Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create a new endpoint GET /api/articles/:slug/stats that returns: view count, favorite count, comment count, and days since published. Add a GET /api/stats/trending endpoint that returns the top 10 most-favorited articles in the last 7 days. Write tests for both endpoints. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

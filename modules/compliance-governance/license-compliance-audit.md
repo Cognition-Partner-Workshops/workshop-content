@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,20 +69,20 @@ Open the repo's DeepWiki page to understand the dependency structure and which p
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot/Gradle monolith with Java dependencies — try license auditing using Gradle plugins in a JVM ecosystem.
 
 ### Step 1: Paste into Devin
 
-> Scan all dependencies in uc-framework-upgrade-monolith-to-microservices for license compliance. Add the `com.github.jk1.dependency-license-report` Gradle plugin (or a similar license reporting plugin) to generate a full dependency license report. Also generate an SBOM using CycloneDX Gradle plugin (`org.cyclonedx.bom`). Analyze the results — flag any copyleft (GPL, AGPL), restrictive, or unknown licenses. Create a `LICENSE_COMPLIANCE_REPORT.md` with: license distribution summary, flagged dependencies with risk levels, and recommended actions. Open a PR with the SBOM, license report output, and compliance documentation.
+> Scan all dependencies in uc-spring-boot-upgrade-microservice-extraction for license compliance. Add the `com.github.jk1.dependency-license-report` Gradle plugin (or a similar license reporting plugin) to generate a full dependency license report. Also generate an SBOM using CycloneDX Gradle plugin (`org.cyclonedx.bom`). Analyze the results — flag any copyleft (GPL, AGPL), restrictive, or unknown licenses. Create a `LICENSE_COMPLIANCE_REPORT.md` with: license distribution summary, flagged dependencies with risk levels, and recommended actions. Open a PR with the SBOM, license report output, and compliance documentation.
 
 ### Step 2: Research with Ask Devin
 
 - *"What Gradle plugins are available for license compliance reporting? Which one provides the most detailed output?"*
-- *"Are there any dependencies in uc-framework-upgrade-monolith-to-microservices with GPL or AGPL licenses that could affect distribution?"*
+- *"Are there any dependencies in uc-spring-boot-upgrade-microservice-extraction with GPL or AGPL licenses that could affect distribution?"*
 
 ### Step 3 (Optional): Read the DeepWiki
 

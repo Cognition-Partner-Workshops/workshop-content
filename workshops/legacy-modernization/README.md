@@ -289,8 +289,8 @@ Open both repos' DeepWiki pages to understand the legacy architecture and target
 
 ### Optional (for extended challenges)
 
-- [ ] uc-framework-upgrade-monolith-to-microservices
-- [ ] uc-data-source-migration-legacy-to-modern
+- [ ] uc-spring-boot-upgrade-microservice-extraction
+- [ ] uc-data-source-migration-jdbc-normalization
 
 ## Key Takeaways
 

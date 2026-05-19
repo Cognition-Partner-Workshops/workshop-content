@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
 
 ---
 
@@ -76,19 +76,19 @@ Open the repo's DeepWiki page to understand the data model and API structure. Id
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot loan service with legacy and modern schemas — ideal for building a data quality scoring model that validates migrated records.
 
 ### Step 1: Paste into Devin
 
-> Add a data quality scoring pipeline to uc-data-source-migration-legacy-to-modern. Create a Python-based ML pipeline under `ml/` that: (1) reads loan and borrower records from the H2 database or exported CSV, (2) engineers features for data quality (completeness, format consistency, value range checks, cross-field validation), (3) trains an anomaly detection model to flag potentially corrupted or incorrectly migrated records, and (4) outputs a scored report of records ranked by quality risk. Include a training script, requirements.txt, sample output report, and a README explaining the scoring methodology. Open a PR.
+> Add a data quality scoring pipeline to uc-data-source-migration-jdbc-normalization. Create a Python-based ML pipeline under `ml/` that: (1) reads loan and borrower records from the H2 database or exported CSV, (2) engineers features for data quality (completeness, format consistency, value range checks, cross-field validation), (3) trains an anomaly detection model to flag potentially corrupted or incorrectly migrated records, and (4) outputs a scored report of records ranked by quality risk. Include a training script, requirements.txt, sample output report, and a README explaining the scoring methodology. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the key differences between the legacy CDW schema and the modern schema in uc-data-source-migration-legacy-to-modern? What data quality issues are most common during migration?"*
+- *"What are the key differences between the legacy CDW schema and the modern schema in uc-data-source-migration-jdbc-normalization? What data quality issues are most common during migration?"*
 - *"What transformations happen in the LoanService translation layer? Which transformations are most likely to introduce data quality issues?"*
 
 ### Step 3 (Optional): Read the DeepWiki

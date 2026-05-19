@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -68,15 +68,15 @@ Open the repo's DeepWiki page to understand the build system and test framework.
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot/Gradle application — create a CI pipeline with Gradle build, test, and coverage steps.
 
 ### Step 1: Paste into Devin
 
-> Create a GitHub Actions CI workflow for uc-framework-upgrade-monolith-to-microservices. The workflow should: trigger on push to main and on pull requests, set up Java 17, run Gradle build with tests, generate JaCoCo coverage report, upload test results and coverage as artifacts, and fail if coverage drops below 60%. Add Gradle caching. Open a PR.
+> Create a GitHub Actions CI workflow for uc-spring-boot-upgrade-microservice-extraction. The workflow should: trigger on push to main and on pull requests, set up Java 17, run Gradle build with tests, generate JaCoCo coverage report, upload test results and coverage as artifacts, and fail if coverage drops below 60%. Add Gradle caching. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

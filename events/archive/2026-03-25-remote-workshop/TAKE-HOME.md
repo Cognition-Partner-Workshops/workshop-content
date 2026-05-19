@@ -64,18 +64,18 @@ Once Devin opens a PR from step 1:
 
 ## Lab 2 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)
 
-- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md#uc-framework-upgrade-monolith-to-microservices) + [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md#uc-framework-upgrade-monolith-to-microservices)
-- **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md#uc-spring-boot-upgrade-microservice-extraction) + [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md#uc-spring-boot-upgrade-microservice-extraction)
+- **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
 
 ### Step 2: Level Up with AskDevin
 
 Open a new AskDevin conversation and try:
-- *"What are the domain boundaries in uc-framework-upgrade-monolith-to-microservices? Which bounded context would be easiest to extract as a microservice?"*
+- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which bounded context would be easiest to extract as a microservice?"*
 - *"What's the best order to tackle the javax to jakarta migration, the Gradle plugin updates, and the deprecated API removals?"*
 - Use the refined understanding to start a **second session** — try extracting a microservice, or upgrade with a different strategy
 
@@ -203,7 +203,7 @@ See the full challenge details in [DW Migration: Teradata to Snowflake](../../..
 Before starting, verify all repos are set up via **Settings > Machine configuration > Add repository**:
 
 - [ ] uc-legacy-modernization-cobol-to-java
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] uc-cve-remediation-regulatory-compliance
 - [ ] uc-dw-migration-teradata-to-snowflake
 

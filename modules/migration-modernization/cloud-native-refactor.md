@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -68,15 +68,15 @@ Open the repo's DeepWiki page to understand the application's configuration and 
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with Spring Boot Actuator potential — add health checks, graceful shutdown, config externalization, and container readiness.
 
 ### Step 1: Paste into Devin
 
-> Make uc-framework-upgrade-monolith-to-microservices more cloud-native: enable Spring Boot Actuator with /health and /info endpoints, externalize database configuration to environment variables, add graceful shutdown configuration, create a Dockerfile with multi-stage build, and add a Kubernetes deployment manifest with liveness and readiness probes pointing to Actuator. Open a PR.
+> Make uc-spring-boot-upgrade-microservice-extraction more cloud-native: enable Spring Boot Actuator with /health and /info endpoints, externalize database configuration to environment variables, add graceful shutdown configuration, create a Dockerfile with multi-stage build, and add a Kubernetes deployment manifest with liveness and readiness probes pointing to Actuator. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

@@ -2,8 +2,8 @@
 
 ## Repositories
 
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [uc-legacy-modernization-cobol-to-java](#uc-legacy-modernization-cobol-to-java)
 
 ---
@@ -56,15 +56,15 @@ Advanced (combined); Individual phases are Intermediate
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 **Phase 3 — Data Source Migration (20 min)**
 
 ### Step 1: Paste into Devin
 
-> Review the legacy CDW schema in uc-data-source-migration-legacy-to-modern. The current app reads from denormalized tables where everything is VARCHAR. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Verify API responses match. Open a PR.
+> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. The current app reads from denormalized tables where everything is VARCHAR. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Verify API responses match. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
@@ -82,15 +82,15 @@ Open the repo's DeepWiki page to understand the loan service domain model and da
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 **Phase 2 — Microservice Extraction (20 min)**
 
 ### Step 1: Paste into Devin
 
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Open a PR.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

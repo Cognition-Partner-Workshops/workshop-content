@@ -62,9 +62,8 @@ Track A demonstrates Devin as a test automation engineer. Participants will gene
 
 - **Module:** [Unit Testing](../../modules/testing-qa/unit-testing.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot app with existing JUnit infrastructure
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit infrastructure
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with Jest (alternative)
-  - [uc-quality-engineering-assurance](https://github.com/Cognition-Partner-Workshops/uc-quality-engineering-assurance) — Dedicated QE use-case repo (alternative)
 - **Objective:** Analyze existing test coverage, identify under-tested modules, and generate meaningful unit tests that verify real behavior — not just padding coverage
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -73,17 +72,12 @@ Choose one or run multiple in parallel:
 
 **Option A — JUnit Tests (Spring Boot):**
 ```
-Analyze the current test coverage of uc-framework-upgrade-monolith-to-microservices. Run the existing tests and generate a JaCoCo coverage report. Identify the top 5 modules with the lowest test coverage. Write JUnit tests for each, following the existing test patterns: use MockMvc for controller tests, Mockito for service tests, and integration tests for repository layer. Aim for at least 80% line coverage on each module. Include negative test cases (invalid inputs, not-found scenarios, unauthorized access). Open a PR with the new tests and the coverage report showing improvement.
+Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Run the existing tests and generate a JaCoCo coverage report. Identify the top 5 modules with the lowest test coverage. Write JUnit tests for each, following the existing test patterns: use MockMvc for controller tests, Mockito for service tests, and integration tests for repository layer. Aim for at least 80% line coverage on each module. Include negative test cases (invalid inputs, not-found scenarios, unauthorized access). Open a PR with the new tests and the coverage report showing improvement.
 ```
 
 **Option B — Jest Tests (Node.js):**
 ```
 Analyze the test coverage of timesheet-app's backend. Run `npm test -- --coverage` to see current coverage. Identify the 5 least-tested API routes and service modules. Write Jest tests for each: (1) Unit tests for service functions with mocked dependencies, (2) Integration tests for API routes using supertest, (3) Edge case tests for error handling, empty inputs, and boundary conditions. Follow existing test patterns. Open a PR with the new tests and updated coverage report.
-```
-
-**Option C — Multi-layer Testing:**
-```
-Add comprehensive tests to uc-quality-engineering-assurance following the test pyramid: (1) Unit tests for all business logic functions with edge cases, (2) Integration tests for database interactions, (3) Contract tests for any API endpoints. Use the existing test framework. Generate a coverage report. Document the testing strategy in a `TEST_STRATEGY.md`. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -134,20 +128,20 @@ Once Devin opens a PR, focus your review on **test quality**:
 
 - **Module:** [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
 - **Repositories:**
-  - [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api) — Spring Boot + Cucumber BDD framework with pre-built step definitions
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot RealWorld app (alternative — add Cucumber to an existing app)
+  - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework with pre-built step definitions
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative — add Cucumber to an existing app)
 - **Objective:** Generate BDD test scenarios from API specifications — write Gherkin feature files that describe business behavior, implement step definitions, and run the full BDD suite
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 **Option A — Extend Existing BDD Suite:**
 ```
-Review the uc-bdd-test-generation-rest-api codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing 16 scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: (1) Creating a user with missing required fields (expect 400), (2) Creating a user with duplicate ID (expect 409 or appropriate error), (3) Pagination and sorting, (4) Input validation (invalid email, too-long names). Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Use Scenario Outlines with Examples tables for data-driven testing. Open a PR.
+Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing 16 scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: (1) Creating a user with missing required fields (expect 400), (2) Creating a user with duplicate ID (expect 409 or appropriate error), (3) Pagination and sorting, (4) Input validation (invalid email, too-long names). Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Use Scenario Outlines with Examples tables for data-driven testing. Open a PR.
 ```
 
 **Option B — Add BDD to Existing App:**
 ```
-Add Cucumber BDD testing to uc-framework-upgrade-monolith-to-microservices. Set up the Cucumber test infrastructure (dependencies, test runner, feature file directory). Write Gherkin feature files for the Articles API: (1) Feature: Create Article — scenarios for valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed — scenarios for global feed, user feed, tag filtering, pagination, (3) Feature: Favorite Article — scenarios for favoriting, unfavoriting, favorite count. Implement step definitions that call the API. Run all scenarios and verify they pass. Open a PR.
+Add Cucumber BDD testing to uc-spring-boot-upgrade-microservice-extraction. Set up the Cucumber test infrastructure (dependencies, test runner, feature file directory). Write Gherkin feature files for the Articles API: (1) Feature: Create Article — scenarios for valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed — scenarios for global feed, user feed, tag filtering, pagination, (3) Feature: Favorite Article — scenarios for favoriting, unfavoriting, favorite count. Implement step definitions that call the API. Run all scenarios and verify they pass. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -197,7 +191,7 @@ Once Devin opens a PR, focus your review on **BDD quality**:
 
 - **Module:** [Mutation Testing](../../modules/testing-qa/mutation-testing.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot app with existing JUnit tests
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit tests
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with Jest tests (alternative)
 - **Objective:** Use mutation testing to evaluate test quality — mutants that survive indicate tests that pass without actually verifying behavior. Kill surviving mutants by adding meaningful assertions.
 
@@ -205,7 +199,7 @@ Once Devin opens a PR, focus your review on **BDD quality**:
 
 **Option A — PIT Mutation Testing (Java):**
 ```
-Set up PIT mutation testing for uc-framework-upgrade-monolith-to-microservices. Add the PIT Gradle plugin and configure it to run on the Articles domain (io.spring.core.article and io.spring.application.article packages). Run mutation testing and analyze the report — identify which mutants survived (tests that pass even when code is changed). For the top 10 surviving mutants, improve the existing tests or write new ones that kill the mutant by adding assertions that would fail if the mutation were present. Document the before/after mutation scores in a `MUTATION_TESTING_REPORT.md`. Open a PR.
+Set up PIT mutation testing for uc-spring-boot-upgrade-microservice-extraction. Add the PIT Gradle plugin and configure it to run on the Articles domain (io.spring.core.article and io.spring.application.article packages). Run mutation testing and analyze the report — identify which mutants survived (tests that pass even when code is changed). For the top 10 surviving mutants, improve the existing tests or write new ones that kill the mutant by adding assertions that would fail if the mutation were present. Document the before/after mutation scores in a `MUTATION_TESTING_REPORT.md`. Open a PR.
 ```
 
 **Option B — Stryker Mutation Testing (JavaScript):**
@@ -388,7 +382,7 @@ Focus on **integration quality**:
 - **Modules:** [Performance Testing](../../modules/testing-qa/performance-testing.md) + [Load Testing & Benchmarking](../../modules/testing-qa/load-testing-benchmarking.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (establish baseline and identify bottlenecks)
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot app (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app (alternative)
 - **Objective:** Create performance tests that establish baselines, identify bottlenecks, and verify the application handles expected load — demonstrating Devin building load testing infrastructure
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -400,7 +394,7 @@ Set up k6 load testing for timesheet-app. Create load test scripts that: (1) Sim
 
 **Option B — Gatling Load Testing (Java):**
 ```
-Set up Gatling load testing for uc-framework-upgrade-monolith-to-microservices. Create simulation scripts that: (1) Test the articles API under load (list, create, read single article), (2) Simulate realistic traffic patterns (80% reads, 15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5 minutes, (4) Measure p50, p95, and p99 response times. Establish SLO-style thresholds (p95 < 200ms, error rate < 1%). Document findings and any optimizations in `PERFORMANCE_REPORT.md`. Open a PR.
+Set up Gatling load testing for uc-spring-boot-upgrade-microservice-extraction. Create simulation scripts that: (1) Test the articles API under load (list, create, read single article), (2) Simulate realistic traffic patterns (80% reads, 15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5 minutes, (4) Measure p50, p95, and p99 response times. Establish SLO-style thresholds (p95 < 200ms, error rate < 1%). Document findings and any optimizations in `PERFORMANCE_REPORT.md`. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -454,7 +448,7 @@ Track C demonstrates Devin as a quality advocate. Participants will set up linti
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js (ESLint, Prettier)
   - [timesheet-infra](https://github.com/Cognition-Partner-Workshops/timesheet-infra) — Terraform (terraform fmt, tflint)
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Java/Gradle (Spotless, Checkstyle) (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Java/Gradle (Spotless, Checkstyle) (alternative)
 - **Objective:** Set up and enforce code quality standards through automated linting, formatting, and static analysis — catch issues before they reach code review
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -517,7 +511,7 @@ Focus on **enforcement value**:
 
 - **Modules:** [PR Review Automation](../../modules/devops-cicd/pr-review-automation.md) + [Inline Documentation](../../modules/technical-documentation/inline-documentation.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot (Javadoc)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot (Javadoc)
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js (JSDoc/TSDoc) (alternative)
 - **Objective:** Use Devin to generate comprehensive documentation for public APIs and key modules, and observe how PR Review automatically provides quality feedback on the documentation PR itself
 
@@ -525,7 +519,7 @@ Focus on **enforcement value**:
 
 **Option A — Javadoc Generation (Spring Boot):**
 ```
-Review the codebase of uc-framework-upgrade-monolith-to-microservices and add Javadoc documentation to all public interfaces, classes, and methods that are currently undocumented. Focus on: (1) All REST controller methods (describe the endpoint, parameters, response, and error cases), (2) All service layer public methods (describe business logic), (3) All repository interfaces (describe the query). Follow existing documentation style. Also create a `CODE_REVIEW.md` that identifies the top 10 code quality concerns (missing validation, error handling gaps, coupling issues, naming problems). Open a PR.
+Review the codebase of uc-spring-boot-upgrade-microservice-extraction and add Javadoc documentation to all public interfaces, classes, and methods that are currently undocumented. Focus on: (1) All REST controller methods (describe the endpoint, parameters, response, and error cases), (2) All service layer public methods (describe business logic), (3) All repository interfaces (describe the query). Follow existing documentation style. Also create a `CODE_REVIEW.md` that identifies the top 10 code quality concerns (missing validation, error handling gaps, coupling issues, naming problems). Open a PR.
 ```
 
 **Option B — JSDoc/TSDoc Generation (Node.js/React):**
@@ -654,10 +648,9 @@ Participants who finish early or want to explore further can attempt any challen
 ## Repos Required
 
 ### Track A (Test Automation & Coverage)
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] timesheet-app (optional alternative for Labs A1, A3)
-- [ ] uc-bdd-test-generation-rest-api (for Lab A2)
-- [ ] uc-quality-engineering-assurance (optional alternative for Lab A1)
+- [ ] uc-bdd-test-generation-cucumber (for Lab A2)
 
 ### Track B (End-to-End & Integration Testing)
 - [ ] timesheet-app (for Lab B1, B3)
@@ -668,7 +661,7 @@ Participants who finish early or want to explore further can attempt any challen
 ### Track C (Continuous Quality & Code Review)
 - [ ] timesheet-app (for Labs C1, C3)
 - [ ] timesheet-infra (for Lab C1 Session B)
-- [ ] uc-framework-upgrade-monolith-to-microservices (for Lab C2 Option A)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (for Lab C2 Option A)
 - [ ] petclinic-angular (optional, for Lab C3 alternative)
 
 ## Context

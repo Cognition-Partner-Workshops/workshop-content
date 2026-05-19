@@ -4,7 +4,7 @@
 
 - [timesheet-app](#timesheet-app)
 - [ts-java-spring-boot-realworld](#ts-java-spring-boot-realworld)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -101,15 +101,15 @@ Open the repo's DeepWiki page to understand the existing code patterns. Flag any
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with GraphQL + REST — review PRs for architectural consistency.
 
 ### Step 1: Paste into Devin
 
-> Review the open PR on uc-framework-upgrade-monolith-to-microservices. Focus on: architectural consistency (does the change follow existing patterns?), Spring Security configuration, GraphQL schema design, database migration safety, and test coverage. Leave inline comments and provide a summary.
+> Review the open PR on uc-spring-boot-upgrade-microservice-extraction. Focus on: architectural consistency (does the change follow existing patterns?), Spring Security configuration, GraphQL schema design, database migration safety, and test coverage. Leave inline comments and provide a summary.
 
 ### Step 2: Research with Ask Devin
 

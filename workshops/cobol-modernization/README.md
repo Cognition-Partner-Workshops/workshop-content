@@ -192,9 +192,9 @@ Participants who finish early or want to go deeper may attempt:
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
 | Combined Modernization (COBOL + Framework + Data) | [Legacy Modernization Combined](../../modules/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
-| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) | uc-framework-upgrade-monolith-to-microservices | Intermediate | 60 min |
-| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-legacy-to-modern | Intermediate | 60 min |
-| One-Shot Tech Debt Remediation | [One-Shot Tech Debt Remediation](../../modules/migration-modernization/one-shot-tech-debt-remediation.md) | uc-framework-upgrade-monolith-to-microservices | Advanced | 75 min |
+| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
+| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
+| One-Shot Tech Debt Remediation | [One-Shot Tech Debt Remediation](../../modules/migration-modernization/one-shot-tech-debt-remediation.md) | uc-spring-boot-upgrade-microservice-extraction | Advanced | 75 min |
 
 ---
 
@@ -204,8 +204,8 @@ Participants who finish early or want to go deeper may attempt:
 
 ### Optional (for extended challenges)
 
-- [ ] uc-framework-upgrade-monolith-to-microservices
-- [ ] uc-data-source-migration-legacy-to-modern
+- [ ] uc-spring-boot-upgrade-microservice-extraction
+- [ ] uc-data-source-migration-jdbc-normalization
 
 ## Runtime Resources
 

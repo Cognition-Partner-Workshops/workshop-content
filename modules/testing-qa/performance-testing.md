@@ -4,7 +4,7 @@
 
 - [timesheet-app](#timesheet-app)
 - [calcom](#calcom)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -99,15 +99,15 @@ Open the repo's DeepWiki page to understand the booking engine and availability 
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with MyBatis and SQLite — opportunities for query optimization, connection pooling, and caching.
 
 ### Step 1: Paste into Devin
 
-> Run uc-framework-upgrade-monolith-to-microservices locally and profile the article listing and feed endpoints. Enable SQL logging to identify slow queries. Add Spring Boot Actuator for metrics. Optimize the top 3 performance bottlenecks (query optimization, caching with Spring Cache, pagination improvements). Open a PR with evidence.
+> Run uc-spring-boot-upgrade-microservice-extraction locally and profile the article listing and feed endpoints. Enable SQL logging to identify slow queries. Add Spring Boot Actuator for metrics. Optimize the top 3 performance bottlenecks (query optimization, caching with Spring Cache, pagination improvements). Open a PR with evidence.
 
 ### Step 2: Research with Ask Devin
 

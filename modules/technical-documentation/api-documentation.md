@@ -3,8 +3,8 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,15 +69,15 @@ Open the repo's DeepWiki page to understand the full API surface. Cross-referenc
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot loan service with REST endpoints — generate Springdoc OpenAPI documentation.
 
 ### Step 1: Paste into Devin
 
-> Add Springdoc OpenAPI to uc-data-source-migration-legacy-to-modern. Annotate all REST controllers with @Operation, @ApiResponse, and @Schema annotations. Configure Swagger UI at /swagger-ui.html. Ensure all loan-related endpoints are documented with proper schemas, examples, and error responses. Open a PR.
+> Add Springdoc OpenAPI to uc-data-source-migration-jdbc-normalization. Annotate all REST controllers with @Operation, @ApiResponse, and @Schema annotations. Configure Swagger UI at /swagger-ui.html. Ensure all loan-related endpoints are documented with proper schemas, examples, and error responses. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
@@ -95,15 +95,15 @@ Open the repo's DeepWiki page to understand the API contracts. Verify that the g
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with both REST and GraphQL APIs — document the REST API surface with OpenAPI.
 
 ### Step 1: Paste into Devin
 
-> Add Springdoc OpenAPI to uc-framework-upgrade-monolith-to-microservices. Document all REST endpoints with @Operation annotations, request/response schemas, authentication requirements, and example payloads. Configure Swagger UI. Also document the GraphQL schema if possible (GraphQL Voyager or similar). Open a PR.
+> Add Springdoc OpenAPI to uc-spring-boot-upgrade-microservice-extraction. Document all REST endpoints with @Operation annotations, request/response schemas, authentication requirements, and example payloads. Configure Swagger UI. Also document the GraphQL schema if possible (GraphQL Voyager or similar). Open a PR.
 
 ### Step 2: Research with Ask Devin
 

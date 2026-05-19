@@ -18,7 +18,7 @@ Challenges focused on monitoring, incident response, reliability engineering, an
 | Repository | Compatible Modules |
 |------------|--------------------|
 | timesheet-app | [Observability & Monitoring](observability-monitoring.md), [Incident Response & Triage](incident-response-triage.md) |
-| uc-framework-upgrade-monolith-to-microservices | [Observability & Monitoring](observability-monitoring.md), [Incident Response & Triage](incident-response-triage.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [Observability & Monitoring](observability-monitoring.md), [Incident Response & Triage](incident-response-triage.md) |
 | ordermanager-monolith | [Incident Response & Triage](incident-response-triage.md) |
 | eventflow-storefront | [Incident Response & Triage](incident-response-triage.md) |
 | uc-pod-remediation-credential-rotation | [Pod Remediation After Credential Rotation](pod-remediation-credential-rotation.md) |

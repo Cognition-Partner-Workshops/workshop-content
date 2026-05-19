@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
 
 ---
 
@@ -76,15 +76,15 @@ Open the repo's DeepWiki page to understand the data model and identify which se
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot loan service — build an evaluation harness for a data quality scoring model that validates migration accuracy.
 
 ### Step 1: Paste into Devin
 
-> Create a model evaluation framework for the data quality scoring pipeline in uc-data-source-migration-legacy-to-modern under `ml/evaluation/`. Build an evaluation harness that: (1) generates labeled test data by introducing known data quality issues (corrupted dates, invalid amounts, mismatched status codes) into clean records, (2) evaluates the anomaly detection model's precision and recall at identifying corrupted records, (3) runs cross-validation with 5 folds, (4) checks fairness across loan product types and borrower segments — does the model flag certain loan types disproportionately?, and (5) outputs a metrics report in both JSON and markdown format. Include a README explaining the evaluation methodology. Open a PR.
+> Create a model evaluation framework for the data quality scoring pipeline in uc-data-source-migration-jdbc-normalization under `ml/evaluation/`. Build an evaluation harness that: (1) generates labeled test data by introducing known data quality issues (corrupted dates, invalid amounts, mismatched status codes) into clean records, (2) evaluates the anomaly detection model's precision and recall at identifying corrupted records, (3) runs cross-validation with 5 folds, (4) checks fairness across loan product types and borrower segments — does the model flag certain loan types disproportionately?, and (5) outputs a metrics report in both JSON and markdown format. Include a README explaining the evaluation methodology. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

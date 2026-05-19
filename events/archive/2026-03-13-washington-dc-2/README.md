@@ -95,12 +95,12 @@ See the full challenge details for [Document Review Automation](../../../modules
 
 ### Lab 3 — BDD Test Case Generation for REST APIs (60 min)
 - **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
-- **Repositories:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api), [ts-java-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-java-swagger-petstore)
+- **Repositories:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber), [ts-java-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-java-swagger-petstore)
 - **Objective:** Generate BDD test cases from a Swagger/OpenAPI specification and produce executable Cucumber tests covering happy paths, error cases, and edge cases
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-bdd-test-generation-rest-api codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions. Open a PR.
+> Review the uc-bdd-test-generation-cucumber codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions. Open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -181,7 +181,7 @@ Participants may also attempt any challenge from the full [module catalog](../..
 
 - [ ] uc-pod-remediation-credential-rotation
 - [ ] uc-document-review-automation
-- [ ] uc-bdd-test-generation-rest-api
+- [ ] uc-bdd-test-generation-cucumber
 - [ ] ts-java-swagger-petstore
 - [ ] uc-volume-anomaly-detection
 

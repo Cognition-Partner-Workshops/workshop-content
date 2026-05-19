@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-bdd-test-generation-rest-api](#uc-bdd-test-generation-rest-api)
+- [uc-bdd-test-generation-cucumber](#uc-bdd-test-generation-cucumber)
 - [ts-java-swagger-petstore](#ts-java-swagger-petstore)
 
 ---
@@ -44,15 +44,15 @@ Intermediate
 
 ---
 
-## <a id="uc-bdd-test-generation-rest-api"></a>uc-bdd-test-generation-rest-api
+## <a id="uc-bdd-test-generation-cucumber"></a>uc-bdd-test-generation-cucumber
 
-**Repository:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+**Repository:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 
 Spring Boot + Cucumber BDD test framework for REST API validation. Imported from RedFroggy/spring-cucumber-rest-api (MIT license).
 
 ### Step 1: Paste into Devin
 
-> Review the uc-bdd-test-generation-rest-api codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions. Open a PR.
+> Review the uc-bdd-test-generation-cucumber codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

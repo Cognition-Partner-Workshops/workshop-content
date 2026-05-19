@@ -3,7 +3,7 @@
 ## Repositories
 
 - [petclinic-microservices](#petclinic-microservices)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,15 +69,15 @@ Open the repo's DeepWiki page to understand the service architecture — particu
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with a Next.js frontend — generate K8s manifests for deploying as separate backend and frontend services.
 
 ### Step 1: Paste into Devin
 
-> Analyze uc-framework-upgrade-monolith-to-microservices and generate Kubernetes manifests for deploying the Spring Boot backend and Next.js frontend as separate services. Create: Deployments with appropriate health checks, Services, Ingress with path-based routing (/api/* to backend, /* to frontend), ConfigMaps for environment configuration, HPA for the backend based on CPU utilization, and a PersistentVolumeClaim for the SQLite database. Use a Helm chart structure with values files for dev and prod. Open a PR with the manifests and a deployment README.
+> Analyze uc-spring-boot-upgrade-microservice-extraction and generate Kubernetes manifests for deploying the Spring Boot backend and Next.js frontend as separate services. Create: Deployments with appropriate health checks, Services, Ingress with path-based routing (/api/* to backend, /* to frontend), ConfigMaps for environment configuration, HPA for the backend based on CPU utilization, and a PersistentVolumeClaim for the SQLite database. Use a Helm chart structure with values files for dev and prod. Open a PR with the manifests and a deployment README.
 
 ### Step 2: Research with Ask Devin
 

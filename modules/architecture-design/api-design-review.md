@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [timesheet-app](#timesheet-app)
 
 ---
@@ -42,19 +42,19 @@ Intermediate
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith exposing both REST controllers and a GraphQL API via the DGS framework — an ideal target for cross-style API design review.
 
 ### Step 1: Paste into Devin
 
-> Perform an API design review of uc-framework-upgrade-monolith-to-microservices. This app exposes both REST endpoints and a GraphQL API (DGS framework). Audit the full API surface for: (1) REST naming conventions and HTTP method usage, (2) error handling consistency — are errors returned in a standard format across both REST and GraphQL? (3) pagination support, (4) input validation patterns, and (5) missing or outdated documentation. Produce a review report in `docs/api-review.md` with findings and severity ratings. Generate or update OpenAPI/Swagger documentation for the REST endpoints. Open a PR with the report and any documentation improvements.
+> Perform an API design review of uc-spring-boot-upgrade-microservice-extraction. This app exposes both REST endpoints and a GraphQL API (DGS framework). Audit the full API surface for: (1) REST naming conventions and HTTP method usage, (2) error handling consistency — are errors returned in a standard format across both REST and GraphQL? (3) pagination support, (4) input validation patterns, and (5) missing or outdated documentation. Produce a review report in `docs/api-review.md` with findings and severity ratings. Generate or update OpenAPI/Swagger documentation for the REST endpoints. Open a PR with the report and any documentation improvements.
 
 ### Step 2: Research with Ask Devin
 
-- *"What REST endpoints does uc-framework-upgrade-monolith-to-microservices expose, and do they follow RESTful naming conventions?"*
+- *"What REST endpoints does uc-spring-boot-upgrade-microservice-extraction expose, and do they follow RESTful naming conventions?"*
 - *"How does the GraphQL schema compare to the REST API — are there capabilities available in one but not the other?"*
 
 ### Step 3 (Optional): Read the DeepWiki

@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -70,15 +70,15 @@ Open the repo's DeepWiki page to understand the application's dependencies and p
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith — create incident response materials for a Java application with database and API layers.
 
 ### Step 1: Paste into Devin
 
-> Create incident response materials for uc-framework-upgrade-monolith-to-microservices: (1) Analyze the application architecture to identify failure modes (database connection exhaustion, JVM heap issues, API timeouts, authentication failures), (2) Create a RUNBOOK.md with diagnostic commands and recovery procedures for each scenario, (3) Add GitHub Issue templates for incidents with Spring Boot-specific diagnostic fields (thread dumps, heap dumps, Actuator endpoints), (4) Create a diagnostic script that collects application state via Actuator endpoints. Open a PR.
+> Create incident response materials for uc-spring-boot-upgrade-microservice-extraction: (1) Analyze the application architecture to identify failure modes (database connection exhaustion, JVM heap issues, API timeouts, authentication failures), (2) Create a RUNBOOK.md with diagnostic commands and recovery procedures for each scenario, (3) Add GitHub Issue templates for incidents with Spring Boot-specific diagnostic fields (thread dumps, heap dumps, Actuator endpoints), (4) Create a diagnostic script that collects application state via Actuator endpoints. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

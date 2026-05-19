@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-bdd-test-generation-rest-api](#uc-bdd-test-generation-rest-api)
+- [uc-bdd-test-generation-cucumber](#uc-bdd-test-generation-cucumber)
 - [petclinic-angular](#petclinic-angular)
 
 ---
@@ -117,15 +117,15 @@ This demonstrates how teams use Devin for continuous code hygiene — the QA equ
 
 ---
 
-## <a id="uc-bdd-test-generation-rest-api"></a>uc-bdd-test-generation-rest-api
+## <a id="uc-bdd-test-generation-cucumber"></a>uc-bdd-test-generation-cucumber
 
-**Repository:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+**Repository:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 
 Spring Boot + Cucumber BDD framework — use for continuous BDD coverage monitoring and scenario gap detection.
 
 ### Step 1: Paste into Devin
 
-> Analyze the BDD test coverage in uc-bdd-test-generation-rest-api. Map every REST API endpoint to its corresponding Gherkin feature file. Identify endpoints that have no BDD scenarios, endpoints with only happy-path coverage (no error scenarios), and endpoints missing boundary condition tests.
+> Analyze the BDD test coverage in uc-bdd-test-generation-cucumber. Map every REST API endpoint to its corresponding Gherkin feature file. Identify endpoints that have no BDD scenarios, endpoints with only happy-path coverage (no error scenarios), and endpoints missing boundary condition tests.
 >
 > Generate a `BDD_COVERAGE_MATRIX.md` that shows: endpoint → feature file → scenarios (happy path, error, boundary). Fill the gaps by writing new Gherkin scenarios for uncovered endpoints.
 >

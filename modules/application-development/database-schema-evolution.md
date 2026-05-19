@@ -3,8 +3,8 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -70,15 +70,15 @@ Open the repo's DeepWiki page to understand the current database schema and ORM 
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot with JPA and H2 — add Flyway migrations for schema evolution.
 
 ### Step 1: Paste into Devin
 
-> Add Flyway database migration support to uc-data-source-migration-legacy-to-modern. Create versioned migration scripts that: (1) create the modern schema tables from data/modern-schema/modern_tables.sql, (2) add audit columns (created_at, updated_at, created_by) to all modern tables, (3) add a loan_payment_history table for payment tracking. Configure Flyway in application.properties. Verify migrations run on startup. Open a PR.
+> Add Flyway database migration support to uc-data-source-migration-jdbc-normalization. Create versioned migration scripts that: (1) create the modern schema tables from data/modern-schema/modern_tables.sql, (2) add audit columns (created_at, updated_at, created_by) to all modern tables, (3) add a loan_payment_history table for payment tracking. Configure Flyway in application.properties. Verify migrations run on startup. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
@@ -96,15 +96,15 @@ Open the repo's DeepWiki page to understand the current schema setup and JPA ent
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot with Flyway and MyBatis — add new migrations for schema changes.
 
 ### Step 1: Paste into Devin
 
-> Review the existing Flyway migrations in uc-framework-upgrade-monolith-to-microservices. Add new migrations that: (1) add a "bookmarks" join table between users and articles, (2) add a "tags" count column to articles for denormalized tag counting, (3) add database indexes on commonly queried columns (article slug, user email). Ensure all existing tests still pass. Open a PR.
+> Review the existing Flyway migrations in uc-spring-boot-upgrade-microservice-extraction. Add new migrations that: (1) add a "bookmarks" join table between users and articles, (2) add a "tags" count column to articles for denormalized tag counting, (3) add database indexes on commonly queried columns (article slug, user email). Ensure all existing tests still pass. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
