@@ -264,14 +264,14 @@ Track B demonstrates Devin handling large-scale structural changes to codebases.
 
 - **Module:** [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot 2.6.3 monolith with three clear bounded contexts (Articles, Users/Profiles, Comments)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 monolith with three clear bounded contexts (Articles, Users/Profiles, Comments)
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Reference microservices architecture for comparison (optional)
 - **Objective:** Analyze domain boundaries in a monolith, extract a bounded context as a standalone microservice with its own API, Dockerfile, and database, and wire the services together with Docker Compose
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Analyze the domain boundaries in uc-framework-upgrade-monolith-to-microservices. This Spring Boot monolith has three bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles).
+Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction. This Spring Boot monolith has three bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles).
 
 Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly. Open a PR.
 ```
@@ -279,7 +279,7 @@ Extract the Comments domain into a standalone Spring Boot microservice with its 
 #### Step 2: Research with Ask Devin
 
 While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the domain boundaries in uc-framework-upgrade-monolith-to-microservices? Which bounded context would be easiest to extract and which would be hardest?"*
+- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which bounded context would be easiest to extract and which would be hardest?"*
 - *"If I extract the Articles domain from this monolith, what shared code and database tables will need to be handled? What communication pattern should I use?"*
 - *"What integration tests are needed when extracting a microservice from a monolith? How do we test the HTTP communication between the two services?"*
 - Use the refined analysis to start a **second session** — try extracting a different bounded context (Articles is harder than Comments) and compare Devin's approaches
@@ -329,7 +329,7 @@ See the full challenge details for [Containerization & Microservice Extraction](
 
 - **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot 2.6.3 / Java 11 (EOL) → Spring Boot 3.x / Java 17+ (LTS)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 / Java 11 (EOL) → Spring Boot 3.x / Java 17+ (LTS)
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular version upgrade (second repo for parallel comparison)
 - **Objective:** Run parallel Devin sessions upgrading frameworks and language versions across multiple repos — demonstrating how Devin handles repetitive upgrade tasks at enterprise scale
@@ -340,7 +340,7 @@ Run these as **parallel sessions** to see how the same upgrade pattern scales ac
 
 **Session A — Spring Boot + Java Upgrade:**
 ```
-Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description. Open a PR.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description. Open a PR.
 ```
 
 **Session B — Angular Upgrade (PetClinic):**
@@ -365,7 +365,7 @@ While Devin works on the upgrades, open **AskDevin** and explore:
 #### Step 3 (Optional): Read the DeepWiki
 
 Open each repo's **DeepWiki** page to understand the codebase before the upgrade:
-1. **uc-framework-upgrade-monolith-to-microservices** — Understand the build configuration, Spring Security setup, and dependency graph. These are the areas most affected by the Spring Boot 2 to 3 migration.
+1. **uc-spring-boot-upgrade-microservice-extraction** — Understand the build configuration, Spring Security setup, and dependency graph. These are the areas most affected by the Spring Boot 2 to 3 migration.
 2. **petclinic-angular** — Understand the component hierarchy and module structure. Identify deprecated Angular patterns (NgModules vs. standalone components).
 3. **ts-angular-realworld** — Compare with the PetClinic Angular app. Different codebases may hit different breaking changes for the same upgrade.
 
@@ -409,20 +409,20 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
 
 - **Module:** [Language Translation](../../modules/migration-modernization/legacy-modernization-combined.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot (Java) RealWorld app — source language
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot (Java) RealWorld app — source language
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular (TypeScript) RealWorld app — reference for alternative target
 - **Objective:** Translate a Java Spring Boot service layer into an equivalent Python (Flask/FastAPI) application, preserving API contracts and proving functional equivalence with parity tests. Both source and target compile and run on Ubuntu.
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Translate the Articles API from uc-framework-upgrade-monolith-to-microservices (Java/Spring Boot) into a Python FastAPI application. The Python version should expose the same REST endpoints: GET /api/articles, GET /api/articles/:slug, POST /api/articles, PUT /api/articles/:slug, DELETE /api/articles/:slug, and GET /api/articles/feed. Use SQLAlchemy for persistence and Pydantic for request/response models. Preserve the same JSON response shape so the API is a drop-in replacement. Write pytest tests that verify the Python endpoints return identical responses to the Java version for the same inputs. Document the translation decisions in a `MIGRATION_NOTES.md`. Open a PR.
+Translate the Articles API from uc-spring-boot-upgrade-microservice-extraction (Java/Spring Boot) into a Python FastAPI application. The Python version should expose the same REST endpoints: GET /api/articles, GET /api/articles/:slug, POST /api/articles, PUT /api/articles/:slug, DELETE /api/articles/:slug, and GET /api/articles/feed. Use SQLAlchemy for persistence and Pydantic for request/response models. Preserve the same JSON response shape so the API is a drop-in replacement. Write pytest tests that verify the Python endpoints return identical responses to the Java version for the same inputs. Document the translation decisions in a `MIGRATION_NOTES.md`. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
 
 While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the main API endpoints in uc-framework-upgrade-monolith-to-microservices? What does each one do and what are the request/response shapes?"*
+- *"What are the main API endpoints in uc-spring-boot-upgrade-microservice-extraction? What does each one do and what are the request/response shapes?"*
 - *"What's the best Python web framework for translating a Spring Boot REST API — Flask, FastAPI, or Django REST Framework? Compare trade-offs."*
 - *"What are the riskiest Java-to-Python translation patterns — type safety, null handling, dependency injection, ORM differences?"*
 - Use the analysis to start a **second session** — try translating the same service to **TypeScript (Express/NestJS)** in parallel and compare the results
@@ -487,7 +487,7 @@ Track C demonstrates Devin as a day-to-day development partner. Participants wil
 - **Module:** [New Feature Development](../../modules/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot RealWorld app (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative)
 - **Objective:** Build a new feature on an existing application, then observe how PR Review automatically flags potential bugs and issues in the implementation — and have Devin address the feedback
 
 #### Step 1: Start with Ask Devin (recommended)
@@ -505,7 +505,7 @@ Add a "Projects" management feature to timesheet-app. Users should be able to cr
 
 **Option B — API Feature (Spring Boot RealWorld app):**
 ```
-Add an "article statistics" feature to uc-framework-upgrade-monolith-to-microservices. Create a new endpoint GET /api/articles/:slug/stats that returns: view count, favorite count, comment count, and days since published. Add a GET /api/stats/trending endpoint that returns the top 10 most-favorited articles in the last 7 days. Write tests for both endpoints. Open a PR.
+Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create a new endpoint GET /api/articles/:slug/stats that returns: view count, favorite count, comment count, and days since published. Add a GET /api/stats/trending endpoint that returns the top 10 most-favorited articles in the last 7 days. Write tests for both endpoints. Open a PR.
 ```
 
 #### Step 2 (Optional): Read the DeepWiki
@@ -551,9 +551,9 @@ See the full challenge details for [New Feature Development](../../modules/appli
 
 - **Modules:** [Unit Testing](../../modules/testing-qa/unit-testing.md) + [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot app with existing JUnit infrastructure
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit infrastructure
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with Jest tests (alternative)
-  - [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api) — Spring Boot + Cucumber BDD framework (alternative)
+  - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Analyze existing test coverage, generate meaningful tests for under-tested modules, and optionally create BDD test scenarios for REST APIs
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -562,7 +562,7 @@ Choose one or run multiple in parallel:
 
 **Option A — Unit Test Coverage (Spring Boot):**
 ```
-Analyze the current test coverage of uc-framework-upgrade-monolith-to-microservices. Identify the modules with the lowest test coverage. Write JUnit tests for the top 5 least-tested modules, following the existing test patterns and framework. Aim for at least 80% line coverage on each module. Generate a JaCoCo coverage report. Open a PR with the new tests.
+Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Identify the modules with the lowest test coverage. Write JUnit tests for the top 5 least-tested modules, following the existing test patterns and framework. Aim for at least 80% line coverage on each module. Generate a JaCoCo coverage report. Open a PR with the new tests.
 ```
 
 **Option B — Unit Test Coverage (Node.js):**
@@ -572,7 +572,7 @@ Analyze the current test coverage of timesheet-app. Add missing Jest unit tests 
 
 **Option C — BDD Test Generation (Cucumber):**
 ```
-Review the uc-bdd-test-generation-rest-api codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: creating a user with missing required fields (expect 400), creating a user with duplicate ID (expect 409 or appropriate error), pagination and sorting, and input validation. Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Open a PR.
+Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: creating a user with missing required fields (expect 400), creating a user with duplicate ID (expect 409 or appropriate error), pagination and sorting, and input validation. Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -626,7 +626,7 @@ See the full challenge details for [Unit Testing](../../modules/testing-qa/unit-
 - **Module:** [End-to-End Testing](../../modules/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
-  - [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api) — Spring Boot + Cucumber BDD framework (alternative)
+  - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Write and run E2E tests against a running application, discover issues through testing, and fix them — demonstrating the full test-discover-fix cycle
 
 This lab completes the testing story: after adding unit tests (Lab C2), now run the application end-to-end, write Playwright tests that exercise the full user workflow, discover issues through testing, and fix what you find.
@@ -640,7 +640,7 @@ Set up and run timesheet-app locally (backend on port 3001, frontend on port 517
 
 **Option B — API E2E Tests (BDD framework):**
 ```
-Review the uc-bdd-test-generation-rest-api codebase. Run `mvn test` to verify the existing 16 scenarios pass. Then write new end-to-end Gherkin scenarios that test the full user lifecycle: create a user, verify they appear in the list, update their details, verify the update, then delete them and verify they're gone. Also test cross-resource relationships — create a user, create orders for that user, verify the orders appear when querying by user. Run all tests and fix any failures. Open a PR.
+Review the uc-bdd-test-generation-cucumber codebase. Run `mvn test` to verify the existing 16 scenarios pass. Then write new end-to-end Gherkin scenarios that test the full user lifecycle: create a user, verify they appear in the list, update their details, verify the update, then delete them and verify they're gone. Also test cross-resource relationships — create a user, create orders for that user, verify the orders appear when querying by user. Run all tests and fix any failures. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -694,7 +694,7 @@ Participants who finish early or want to explore further can attempt any challen
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
+| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | B | Intermediate |
 | Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../modules/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
 | Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../modules/migration-modernization/dotnet-monolith-decomposition.md) | modular-monolith-ddd | B | Advanced |
 | Code Refactoring & Tech Debt | [Code Refactoring](../../modules/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
@@ -718,18 +718,18 @@ Participants who finish early or want to explore further can attempt any challen
 - [ ] quickapp-microservices (optional, for Lab A2 Option B)
 
 ### Track B (Modernization)
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] petclinic-angular
 - [ ] ts-angular-realworld (Lab B3 translation target reference; also useful for parallel comparison)
 
 ### Track C (Feature Development & Testing)
 - [ ] timesheet-app
-- [ ] uc-framework-upgrade-monolith-to-microservices (optional, for Lab C1 Option B)
-- [ ] uc-bdd-test-generation-rest-api (optional, for Lab C2 Option C / Lab C3 Option B)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (optional, for Lab C1 Option B)
+- [ ] uc-bdd-test-generation-cucumber (optional, for Lab C2 Option C / Lab C3 Option B)
 
 ## Repo Duplication Notes
 
-- `uc-framework-upgrade-monolith-to-microservices` and `uc-cve-remediation-regulatory-compliance` both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../catalog/repos.md)). They are intentionally separate repos so each use case gets an isolated starting point.
+- `uc-spring-boot-upgrade-microservice-extraction` and `uc-cve-remediation-regulatory-compliance` both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../catalog/repos.md)). They are intentionally separate repos so each use case gets an isolated starting point.
 
 ## Context
 

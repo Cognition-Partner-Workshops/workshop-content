@@ -74,13 +74,13 @@ Review the Levenshtein implementation. Ask Devin to add batch processing or addi
 ### Lab 3 — BDD Test Case Generation
 
 - **Module:** [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
-- **Repositories:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api), [ts-java-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-java-swagger-petstore)
+- **Repositories:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber), [ts-java-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-java-swagger-petstore)
 - **Objective:** Generate BDD test cases from OpenAPI specs and produce executable Cucumber tests
 - **Duration:** 60 min
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-bdd-test-generation-rest-api codebase. Add Gherkin feature files that test a Petstore-style API (pets CRUD). Include scenarios for successful operations, validation errors, not-found cases, and pagination. Implement step definitions. Open a PR.
+> Review the uc-bdd-test-generation-cucumber codebase. Add Gherkin feature files that test a Petstore-style API (pets CRUD). Include scenarios for successful operations, validation errors, not-found cases, and pagination. Implement step definitions. Open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -129,7 +129,7 @@ Review the time-of-day mode. Ask Devin to add CLI processing or alternative dete
 
 - [ ] uc-pod-remediation-credential-rotation
 - [ ] uc-document-review-automation
-- [ ] uc-bdd-test-generation-rest-api
+- [ ] uc-bdd-test-generation-cucumber
 - [ ] ts-java-swagger-petstore
 - [ ] uc-volume-anomaly-detection
 

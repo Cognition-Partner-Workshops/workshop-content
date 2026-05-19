@@ -22,8 +22,8 @@ Challenges focused on inline code documentation, API documentation, runbooks, on
 | timesheet-app | [Inline Documentation](inline-documentation.md), [API Documentation](api-documentation.md) |
 | ts-java-spring-boot-realworld | [Inline Documentation](inline-documentation.md) |
 | uc-dw-migration-teradata-to-snowflake | [Inline Documentation](inline-documentation.md) |
-| uc-framework-upgrade-monolith-to-microservices | [API Documentation](api-documentation.md) |
-| uc-data-source-migration-legacy-to-modern | [API Documentation](api-documentation.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [API Documentation](api-documentation.md) |
+| uc-data-source-migration-jdbc-normalization | [API Documentation](api-documentation.md) |
 | uc-document-review-automation | [Document Review Automation](document-review-automation.md) |
 | platform-engineering-shared-services | [Runbook Generation](runbook-generation.md) |
 | eventflow-infra | [Runbook Generation](runbook-generation.md) |

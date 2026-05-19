@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -74,9 +74,9 @@ Open the repo's DeepWiki page to understand the existing API patterns and test c
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot application with JUnit test infrastructure — write API-level tests first, then implement.
 
@@ -84,7 +84,7 @@ Spring Boot application with JUnit test infrastructure — write API-level tests
 
 **Session 1 — Write Tests:**
 
-> I want to add a "bookmark articles" feature to uc-framework-upgrade-monolith-to-microservices. Write failing JUnit tests for: POST /api/articles/:slug/bookmark (bookmark an article), DELETE /api/articles/:slug/bookmark (remove bookmark), GET /api/articles/bookmarked (list bookmarked articles for current user). Test authentication requirements, duplicate bookmark handling, and 404 for non-existent articles. Commit tests to a new branch.
+> I want to add a "bookmark articles" feature to uc-spring-boot-upgrade-microservice-extraction. Write failing JUnit tests for: POST /api/articles/:slug/bookmark (bookmark an article), DELETE /api/articles/:slug/bookmark (remove bookmark), GET /api/articles/bookmarked (list bookmarked articles for current user). Test authentication requirements, duplicate bookmark handling, and 404 for non-existent articles. Commit tests to a new branch.
 
 **Session 2 — Implement:**
 

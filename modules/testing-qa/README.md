@@ -30,8 +30,8 @@ Challenges focused on test automation, static analysis, performance validation, 
 | calcom | [End-to-End Testing](end-to-end-testing.md), [Performance Testing](performance-testing.md), [Accessibility Compliance](accessibility-compliance.md) |
 | ts-java-spring-boot-realworld | [Unit Testing](unit-testing.md) |
 | timesheet-infra | [Linting & Static Analysis](linting-static-analysis.md) |
-| uc-framework-upgrade-monolith-to-microservices | [Unit Testing](unit-testing.md), [Performance Testing](performance-testing.md) |
-| uc-bdd-test-generation-rest-api | [BDD Test Generation](bdd-test-generation.md), [Continuous Quality Engineering](continuous-quality-engineering.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [Unit Testing](unit-testing.md), [Performance Testing](performance-testing.md) |
+| uc-bdd-test-generation-cucumber | [BDD Test Generation](bdd-test-generation.md), [Continuous Quality Engineering](continuous-quality-engineering.md) |
 | ts-java-swagger-petstore | [BDD Test Generation](bdd-test-generation.md) |
 | ts-java-selenium-testng | [End-to-End Testing](end-to-end-testing.md) |
 | petclinic-microservices | [Contract Testing](contract-testing.md) |

@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-data-source-migration-legacy-to-modern](#uc-data-source-migration-legacy-to-modern)
+- [uc-data-source-migration-jdbc-normalization](#uc-data-source-migration-jdbc-normalization)
 
 ---
 
@@ -41,19 +41,19 @@ Intermediate
 
 ---
 
-## <a id="uc-data-source-migration-legacy-to-modern"></a>uc-data-source-migration-legacy-to-modern
+## <a id="uc-data-source-migration-jdbc-normalization"></a>uc-data-source-migration-jdbc-normalization
 
-**Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+**Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 
 Spring Boot 3.2 / Java 17 loan management service with legacy CDW tables (all-VARCHAR, cryptic column names, denormalized). Includes column mappings in `data/mappings/column_mappings.md`, modern target schema DDL, and 5 legacy seed data records per table.
 
 ### Step 1: Paste into Devin
 
-> Analyze the data flow in uc-data-source-migration-legacy-to-modern from legacy CDW tables through LoanService.java to the API DTOs. Using the column mappings in data/mappings/column_mappings.md and the legacy schema in src/main/resources/schema-legacy.sql, build a data quality validation framework: (1) Create validation rules for each legacy table — check for null required fields, valid date formats (MM/DD/YYYY), parseable amounts, valid status codes (ACT/CLO/DFT/FRB), and referential integrity between CDW_LN_ACCT and CDW_BORR_MSTR. (2) Add schema contract tests that verify the shape and types of API responses from /api/loans and /api/borrowers. (3) Create a data quality report service that scores each record's quality. Write a DATA_QUALITY_REPORT.md summarizing the validation rules and findings. Open a PR.
+> Analyze the data flow in uc-data-source-migration-jdbc-normalization from legacy CDW tables through LoanService.java to the API DTOs. Using the column mappings in data/mappings/column_mappings.md and the legacy schema in src/main/resources/schema-legacy.sql, build a data quality validation framework: (1) Create validation rules for each legacy table — check for null required fields, valid date formats (MM/DD/YYYY), parseable amounts, valid status codes (ACT/CLO/DFT/FRB), and referential integrity between CDW_LN_ACCT and CDW_BORR_MSTR. (2) Add schema contract tests that verify the shape and types of API responses from /api/loans and /api/borrowers. (3) Create a data quality report service that scores each record's quality. Write a DATA_QUALITY_REPORT.md summarizing the validation rules and findings. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What data quality issues exist in the legacy CDW tables in uc-data-source-migration-legacy-to-modern? Check for null values, inconsistent formats, orphaned records, and invalid codes in data-legacy.sql."*
+- *"What data quality issues exist in the legacy CDW tables in uc-data-source-migration-jdbc-normalization? Check for null values, inconsistent formats, orphaned records, and invalid codes in data-legacy.sql."*
 - *"What validation rules should be applied to the column transformations defined in data/mappings/column_mappings.md? Which transformations are most likely to produce data loss or corruption?"*
 - Use the analysis to refine your validation framework to focus on the highest-risk transformations
 

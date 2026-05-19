@@ -4,7 +4,7 @@
 
 - [timesheet-app](#timesheet-app)
 - [uc-cve-remediation-regulatory-compliance](#uc-cve-remediation-regulatory-compliance)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -96,15 +96,15 @@ Open the repo's DeepWiki page to understand the application configuration and da
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith — scan for secrets in application config, JWT signing keys, and database credentials.
 
 ### Step 1: Paste into Devin
 
-> Run gitleaks on uc-framework-upgrade-monolith-to-microservices to detect any hardcoded secrets. Review the application configuration for hardcoded database URLs, JWT secrets, and API keys. Externalize all sensitive values to environment variables. Add a pre-commit hook for secrets detection. Open a PR.
+> Run gitleaks on uc-spring-boot-upgrade-microservice-extraction to detect any hardcoded secrets. Review the application configuration for hardcoded database URLs, JWT secrets, and API keys. Externalize all sensitive values to environment variables. Add a pre-commit hook for secrets detection. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

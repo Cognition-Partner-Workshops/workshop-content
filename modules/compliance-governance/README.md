@@ -16,7 +16,7 @@ Challenges focused on license compliance, data privacy regulations, and regulato
 
 | Repository | Compatible Modules |
 |------------|--------------------|
-| uc-framework-upgrade-monolith-to-microservices | [License Compliance Audit](license-compliance-audit.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [License Compliance Audit](license-compliance-audit.md) |
 
 ## When to Use This Category
 

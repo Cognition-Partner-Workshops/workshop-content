@@ -19,7 +19,7 @@ Framework upgrades are one of the most common and repetitive tasks in enterprise
 
 - **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot 2.6.3 → 3.x
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 → 3.x
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular version upgrade (parallel comparison)
 - **Objective:** Run parallel Devin sessions upgrading Angular and Spring Boot across multiple repos
@@ -30,7 +30,7 @@ Framework upgrades are one of the most common and repetitive tasks in enterprise
 Run as **parallel sessions**:
 
 **Session A — Spring Boot:**
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change. Open a PR.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change. Open a PR.
 
 **Session B — Angular:**
 > Upgrade petclinic-angular to the latest Angular version. Handle breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds. Document every breaking change. Open a PR.
@@ -54,7 +54,7 @@ Open each repo's DeepWiki page to understand the codebase before the upgrade. Fo
 
 ## Repos Required
 
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] petclinic-angular
 - [ ] ts-angular-realworld (optional, for parallel comparison)
 

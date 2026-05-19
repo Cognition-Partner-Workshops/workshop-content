@@ -55,7 +55,7 @@ clusters:
     repos:
       - ts-java-spring-boot-realworld   # original import (renamed)
       - uc-cve-remediation-regulatory-compliance     # Lab 3: security
-      - uc-framework-upgrade-monolith-to-microservices  # Lab 2: upgrade
+      - uc-spring-boot-upgrade-microservice-extraction  # Lab 2: upgrade
 
   C2:
     label: "AWS CardDemo (COBOL mainframe)"
@@ -480,12 +480,7 @@ repos:
     import_method: github-fork
     cluster: null
 
-  uc-quality-engineering-assurance:
-    upstream: null
-    import_method: original
-    cluster: null
-
-  uc-bdd-test-generation-rest-api:
+  uc-bdd-test-generation-cucumber:
     upstream: RedFroggy/spring-cucumber-rest-api
     upstream_url: https://github.com/RedFroggy/spring-cucumber-rest-api
     import_method: clone-and-push
@@ -510,7 +505,7 @@ repos:
     cluster: C10
     note: "Migration validation tooling built for SAS-to-Snowflake demos"
 
-  uc-data-source-migration-legacy-to-modern:
+  uc-data-source-migration-jdbc-normalization:
     upstream: null
     import_method: original
     cluster: null
@@ -526,14 +521,14 @@ repos:
     import_method: original
     cluster: null
 
-  uc-framework-upgrade-monolith-to-microservices:
+  uc-spring-boot-upgrade-microservice-extraction:
     upstream: gothinkster/spring-boot-realworld-example-app
     upstream_url: https://github.com/gothinkster/spring-boot-realworld-example-app
     import_method: clone-and-push
     cluster: C1
     note: "Lab 2 — framework upgrade copy of the Spring Boot monolith"
 
-  uc-language-upgrade-java-broadleaf:
+  uc-java-upgrade-broadleaf-commerce:
     upstream: BroadleafCommerce/BroadleafCommerce
     upstream_url: https://github.com/BroadleafCommerce/BroadleafCommerce
     import_method: github-fork

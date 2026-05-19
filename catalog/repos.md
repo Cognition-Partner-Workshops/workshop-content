@@ -23,7 +23,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 
 | Cluster | Label | Upstream Source | Repos | Reason |
 |---------|-------|----------------|-------|--------|
-| **C1** | Spring Boot RealWorld | [`gothinkster/spring-boot-realworld-example-app`](https://github.com/gothinkster/spring-boot-realworld-example-app) | `ts-java-spring-boot-realworld`, `uc-framework-upgrade-monolith-to-microservices`, `uc-cve-remediation-regulatory-compliance` | Labs 2 and 3 start from the same Spring Boot 2.6.3 monolith but have different objectives (upgrade vs. CVE remediation). Original import retained with `ts-` prefix. |
+| **C1** | Spring Boot RealWorld | [`gothinkster/spring-boot-realworld-example-app`](https://github.com/gothinkster/spring-boot-realworld-example-app) | `ts-java-spring-boot-realworld`, `uc-spring-boot-upgrade-microservice-extraction`, `uc-cve-remediation-regulatory-compliance` | Labs 2 and 3 start from the same Spring Boot 2.6.3 monolith but have different objectives (upgrade vs. CVE remediation). Original import retained with `ts-` prefix. |
 | **C2** | AWS CardDemo (COBOL) | [`aws-samples/aws-mainframe-modernization-carddemo`](https://github.com/aws-samples/aws-mainframe-modernization-carddemo) | `ts-cobol-carddemo`, `uc-legacy-modernization-cobol-to-java` | Lab 1 uses a dedicated copy for COBOL-to-Java migration. Original fork retained. |
 | **C3** | Spring PetClinic | [`spring-projects/spring-petclinic`](https://github.com/spring-projects/spring-petclinic) (family) | `petclinic-angular`, `petclinic-backend`, `petclinic-microservices`, `petclinic-rest-api` | Four repos for the same application ecosystem (Angular frontend, backend monolith, microservices variant, REST API with OpenAPI spec). |
 | **C4** | Modular Monolith DDD | [`kgrzybek/modular-monolith-with-ddd`](https://github.com/kgrzybek/modular-monolith-with-ddd) | `modular-monolith-ddd`, `modular-monolith-ddd-react` | Backend (.NET) + frontend (React) from the same upstream DDD project. |
@@ -63,10 +63,10 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Key Contents** | Migration plan (assessment, strategy, component mapping, risk register, timeline, ADRs), Java target (Spring Boot project with Employee module), test harness (YAML business scenarios, Python result comparator), architecture docs |
 | **Challenges** | [Oracle Forms to Java](../modules/migration-modernization/oracle-forms-to-java.md), [Oracle Forms Migration Planning](../modules/migration-modernization/oracle-forms-migration-planning.md), [Migration Test Harness](../modules/migration-modernization/migration-test-harness.md) |
 
-### uc-framework-upgrade-monolith-to-microservices
+### uc-spring-boot-upgrade-microservice-extraction
 | | |
 |---|---|
-| **URL** | https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices |
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction |
 | **Description** | Spring Boot 2.6.3 REST+GraphQL monolith (articles, users, comments domains). Java 11, Gradle, SQLite, Flyway migrations. |
 | **Tech Stack** | Java 11, Spring Boot 2.6.3, Gradle, MyBatis, SQLite, GraphQL (DGS) |
 | **License** | MIT |
@@ -87,10 +87,10 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Workflows Removed** | `gradle.yml` (PAT lacked `workflow` scope) |
 | **Challenges** | [Upgrade Dependencies](../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../modules/security/shift-left-security.md), [Security Antipatterns](../modules/security/security-antipatterns.md), [Event-Driven SAST Remediation](../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../modules/security/mass-security-backlog-remediation.md), [One-Shot Tech Debt Remediation](../modules/migration-modernization/one-shot-tech-debt-remediation.md) |
 
-### uc-data-source-migration-legacy-to-modern
+### uc-data-source-migration-jdbc-normalization
 | | |
 |---|---|
-| **URL** | https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern |
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization |
 | **Description** | Spring Boot 3.2 / Java 17 loan management application reading from legacy CDW-style tables (all-VARCHAR, cryptic column names, denormalized). Includes modern target schema, column mappings, and 5 workshop migration tasks. |
 | **Tech Stack** | Java 17, Spring Boot 3.2, Spring Data JPA, H2 |
 | **License** | MIT |
@@ -129,10 +129,10 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Challenges** | General data pipeline/orchestration demos |
 
-### uc-language-upgrade-java-broadleaf
+### uc-java-upgrade-broadleaf-commerce
 | | |
 |---|---|
-| **URL** | https://github.com/Cognition-Partner-Workshops/uc-language-upgrade-java-broadleaf |
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-java-upgrade-broadleaf-commerce |
 | **Description** | Broadleaf Commerce CE — eCommerce framework based on Java and Spring. For Java language upgrade demos. |
 | **Tech Stack** | Java, Spring |
 | **License** | Apache 2.0 |
@@ -169,10 +169,10 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | None (scaffolded from scratch) |
 | **Challenges** | [Document Review Automation](../modules/technical-documentation/document-review-automation.md) |
 
-### uc-bdd-test-generation-rest-api
+### uc-bdd-test-generation-cucumber
 | | |
 |---|---|
-| **URL** | https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api |
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber |
 | **Description** | BDD test case generation for REST APIs. Spring Boot + Cucumber + Gherkin framework for automated Swagger-to-test transformation. Imported from RedFroggy/spring-cucumber-rest-api (MIT license). |
 | **Tech Stack** | Java, Spring Boot, Cucumber, Gherkin, Maven |
 | **License** | MIT |
@@ -190,15 +190,6 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | None (scaffolded from scratch) |
 | **Challenges** | [Volume Anomaly Detection](../modules/observability-sre/volume-anomaly-detection.md) |
-
-### uc-quality-engineering-assurance
-| | |
-|---|---|
-| **URL** | https://github.com/Cognition-Partner-Workshops/uc-quality-engineering-assurance |
-| **Description** | Quality engineering and assurance use case repo. |
-| **Tech Stack** | — |
-| **License** | — |
-| **Challenges** | [Unit Testing](../modules/testing-qa/unit-testing.md), [End-to-End Testing](../modules/testing-qa/end-to-end-testing.md) |
 
 ---
 

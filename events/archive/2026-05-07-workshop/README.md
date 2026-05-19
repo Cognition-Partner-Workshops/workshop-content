@@ -162,7 +162,7 @@ When Devin opens a PR:
 
 **Value driver:** *Devin analyzes legacy data for quality issues, documents every anomaly with business impact, and implements validation code that prevents them — turning a week of data profiling into a single session.*
 
-- **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+- **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Module:** [Data Quality & Validation](../../../modules/data-engineering/data-quality-validation.md)
 
 The repo is a Spring Boot 3.2 / Java 17 loan management application that reads from legacy CDW (Corporate Data Warehouse) tables with known data quality issues: all-VARCHAR typing, cryptic column names, no foreign keys, code abbreviations. Devin will analyze the data for anomalies, trace root causes through the code, and implement validation to catch them.
@@ -170,7 +170,7 @@ The repo is a Spring Boot 3.2 / Java 17 loan management application that reads f
 ### Paste into Devin
 
 ```
-Analyze the data layer in uc-data-source-migration-legacy-to-modern for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
+Analyze the data layer in uc-data-source-migration-jdbc-normalization for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
 
 1. **Anomaly Detection:** Examine the legacy seed data in `src/main/resources/data-legacy.sql` and the schema in `src/main/resources/schema-legacy.sql`. Identify anomalies: null values in required fields, date format inconsistencies, invalid status codes, orphaned records (foreign key violations), numeric values stored as strings with parsing risks, and duplicate or near-duplicate records.
 
@@ -196,7 +196,7 @@ Open a PR with the anomaly report, root cause analysis, validation code, and tes
 
 **Value driver:** *Your loan data is trapped in a legacy Corporate Data Warehouse with all-VARCHAR columns and cryptic names. Devin generates a complete Databricks-ready migration — PySpark ingestion scripts, Delta Lake table definitions, transformation logic, and a data quality validation framework.*
 
-- **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+- **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Module:** [Data Source Migration](../../../modules/data-engineering/data-source-migration.md)
 
 Same repo, different story. Where Lab 3a finds what's wrong with the data, Lab 3b generates the migration pipeline to move it to a modern platform. Devin will read the legacy schema and column mappings, then produce PySpark scripts, Delta Lake table definitions, and validation code — everything a data engineering team needs to execute the migration in Databricks.
@@ -204,7 +204,7 @@ Same repo, different story. Where Lab 3a finds what's wrong with the data, Lab 3
 ### Paste into Devin
 
 ```
-Analyze the legacy CDW schema in uc-data-source-migration-legacy-to-modern. This loan management application reads from legacy tables with all-VARCHAR columns, cryptic names (BORR_FST_NM, LN_CURR_BAL, PMT_ESCROW_AMT), no foreign keys, and status code abbreviations (ACT, CLO, DFT, FRB). Review the schema in `src/main/resources/schema-legacy.sql`, the seed data in `src/main/resources/data-legacy.sql`, and the column mappings in `data/mappings/column_mappings.md`.
+Analyze the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This loan management application reads from legacy tables with all-VARCHAR columns, cryptic names (BORR_FST_NM, LN_CURR_BAL, PMT_ESCROW_AMT), no foreign keys, and status code abbreviations (ACT, CLO, DFT, FRB). Review the schema in `src/main/resources/schema-legacy.sql`, the seed data in `src/main/resources/data-legacy.sql`, and the column mappings in `data/mappings/column_mappings.md`.
 
 Generate a complete Databricks/PySpark migration pipeline:
 
@@ -232,7 +232,7 @@ Open a PR with all generated artifacts.
 ### While Devin works on 3a and 3b: try Ask Devin
 
 - *"What data quality issues are most common in CDW-to-modern migrations? What validation patterns should the ingestion pipeline implement?"*
-- *"How does the column mapping in uc-data-source-migration-legacy-to-modern translate legacy column names to modern field names? Which transformations are riskiest?"*
+- *"How does the column mapping in uc-data-source-migration-jdbc-normalization translate legacy column names to modern field names? Which transformations are riskiest?"*
 - *"What's the best Delta Lake partitioning strategy for loan data — by status, origination date, or something else?"*
 
 ### Review the PRs
@@ -367,7 +367,7 @@ Open a PR with the Python functions, tests, Snowflake DDL, and migration notes.
 
 ### Exercise E: Monolith-to-Microservices Extraction (Spring Boot Upgrade)
 
-- **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+- **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 - **Shows:** Devin upgrading a Spring Boot 2.x monolith to 3.x (javax→jakarta namespace migration) and extracting a bounded context into a standalone microservice with Docker Compose
 - **Audience:** Java/Spring Boot developers, monolith-to-microservices teams
@@ -375,7 +375,7 @@ Open a PR with the Python functions, tests, Snowflake DDL, and migration notes.
 #### Paste into Devin
 
 ```
-Analyze uc-framework-upgrade-monolith-to-microservices — this is a Spring Boot monolith implementing the RealWorld blogging platform (articles, users, comments, tags, favorites).
+Analyze uc-spring-boot-upgrade-microservice-extraction — this is a Spring Boot monolith implementing the RealWorld blogging platform (articles, users, comments, tags, favorites).
 
 Perform a two-phase modernization:
 
@@ -456,14 +456,14 @@ Open a PR with all Databricks artifacts and the migration runbook.
 **Core labs (required):**
 - [ ] ts-java-spring-boot-internet-banking (Lab 1)
 - [ ] petclinic-rest-api (Lab 2)
-- [ ] uc-data-source-migration-legacy-to-modern (Lab 3a & 3b)
+- [ ] uc-data-source-migration-jdbc-normalization (Lab 3a & 3b)
 
 **Post-session exercises (optional):**
 - [ ] ts-cobol-carddemo (Exercise A)
 - [ ] uc-cve-remediation-regulatory-compliance (Exercise B)
 - [ ] ts-sas-legacy-analytics (Exercise D)
 - [ ] uc-data-migration-sas-to-snowflake (Exercise D)
-- [ ] uc-framework-upgrade-monolith-to-microservices (Exercise E)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (Exercise E)
 - [ ] ts-python-abinitio-etl (Exercise F)
 
 ### Integration Requirements

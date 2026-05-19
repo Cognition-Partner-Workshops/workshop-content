@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -42,19 +42,19 @@ Intermediate
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 monolith with both REST controllers and GraphQL mutations/fetchers (DGS framework) serving the same data.
 
 ### Step 1: Paste into Devin
 
-> The uc-framework-upgrade-monolith-to-microservices repo has both REST controllers and GraphQL mutations/fetchers serving the same data. Consolidate to REST only: remove all GraphQL-related code (DGS framework, schema files, datafetchers, mutations), update the build.gradle to remove DGS dependencies, and ensure all functionality is accessible via REST endpoints. Verify tests pass. Open a PR.
+> The uc-spring-boot-upgrade-microservice-extraction repo has both REST controllers and GraphQL mutations/fetchers serving the same data. Consolidate to REST only: remove all GraphQL-related code (DGS framework, schema files, datafetchers, mutations), update the build.gradle to remove DGS dependencies, and ensure all functionality is accessible via REST endpoints. Verify tests pass. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What GraphQL operations exist in uc-framework-upgrade-monolith-to-microservices? Is there any functionality available only through GraphQL that would be lost if we remove it?"*
+- *"What GraphQL operations exist in uc-spring-boot-upgrade-microservice-extraction? Is there any functionality available only through GraphQL that would be lost if we remove it?"*
 - *"What would it take to go the other direction — keep GraphQL and remove REST? Which approach requires fewer changes?"*
 
 ### Step 3 (Optional): Read the DeepWiki

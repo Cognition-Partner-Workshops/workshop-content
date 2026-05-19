@@ -20,8 +20,8 @@ Feature development is the most common daily activity for development teams. Thi
 - **Module:** [New Feature Development](../../modules/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
-  - [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern) — Spring Boot loan service (alternative)
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot RealWorld app (alternative)
+  - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative)
 - **Objective:** Build a new feature from requirements through implementation and testing
 - **Duration:** 60 min
 
@@ -33,10 +33,10 @@ Choose one:
 > Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add backend API endpoints and frontend UI. Follow existing patterns. Write tests. Open a PR.
 
 **Option B — Spring Boot API (loan service):**
-> Add a loan payment history API to uc-data-source-migration-legacy-to-modern. Create GET /api/loans/:id/payments with pagination, date range filtering, and payment type filtering. Add error handling and JUnit tests. Open a PR.
+> Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create GET /api/loans/:id/payments with pagination, date range filtering, and payment type filtering. Add error handling and JUnit tests. Open a PR.
 
 **Option C — Spring Boot API (RealWorld app):**
-> Add an "article statistics" feature to uc-framework-upgrade-monolith-to-microservices. Create GET /api/articles/:slug/stats (view count, favorite count, comment count, days since published) and GET /api/stats/trending (top 10 most-favorited in last 7 days). Write tests. Open a PR.
+> Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create GET /api/articles/:slug/stats (view count, favorite count, comment count, days since published) and GET /api/stats/trending (top 10 most-favorited in last 7 days). Write tests. Open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -58,8 +58,8 @@ Open the repo's DeepWiki page. Try adding validation rules, frontend tests, audi
 
 Choose one or more:
 - [ ] timesheet-app
-- [ ] uc-data-source-migration-legacy-to-modern
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-data-source-migration-jdbc-normalization
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 
 ## Key Takeaways
 

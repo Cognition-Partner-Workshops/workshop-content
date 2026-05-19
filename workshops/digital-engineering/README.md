@@ -63,7 +63,7 @@ Track A demonstrates Devin building and managing delivery pipelines. Participant
 - **Module:** [CI/CD Pipeline](../../modules/devops-cicd/cicd-pipeline.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack app (no existing CI)
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot app with Gradle (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with Gradle (alternative)
 - **Objective:** Create a production-ready CI/CD pipeline from scratch — build, test, lint, security scan, and deploy stages — using GitHub Actions
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -77,7 +77,7 @@ Create a GitHub Actions CI/CD pipeline for timesheet-app that handles both the b
 
 **Session B — Gradle Pipeline (Spring Boot):**
 ```
-Create a GitHub Actions CI/CD pipeline for uc-framework-upgrade-monolith-to-microservices that: (1) Builds with Gradle, (2) Runs unit tests, (3) Runs integration tests, (4) Generates a JaCoCo coverage report, (5) Runs OWASP Dependency-Check, (6) Fails if any dependency has CVSS >= 7.0, (7) Caches Gradle dependencies between runs. Trigger on PRs and push to main. Open a PR.
+Create a GitHub Actions CI/CD pipeline for uc-spring-boot-upgrade-microservice-extraction that: (1) Builds with Gradle, (2) Runs unit tests, (3) Runs integration tests, (4) Generates a JaCoCo coverage report, (5) Runs OWASP Dependency-Check, (6) Fails if any dependency has CVSS >= 7.0, (7) Caches Gradle dependencies between runs. Trigger on PRs and push to main. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -639,7 +639,7 @@ Participants who finish early or want to explore further can attempt any challen
 
 ### Track A (CI/CD & Delivery Automation)
 - [ ] timesheet-app
-- [ ] uc-framework-upgrade-monolith-to-microservices (optional, for Lab A1 Session B)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (optional, for Lab A1 Session B)
 - [ ] uc-cve-remediation-regulatory-compliance (optional, for Lab A2 Option B)
 - [ ] ordermanager-monolith (for Lab A3 Option A)
 

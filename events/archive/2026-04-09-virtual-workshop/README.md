@@ -30,7 +30,7 @@ A few tips:
 | **For** | AppSec engineers, DevSecOps, security-conscious developers | QA engineers, SDETs, test automation engineers |
 | **You'll learn** | How Devin finds and fixes vulnerabilities, hardens CI, and remediates autonomously | How Devin writes tests, migrates frameworks, and monitors quality continuously |
 | **Tools** | OWASP Dependency-Check, SonarQube, gitleaks, Trivy, GitHub Advanced Security | Jest/Vitest, Playwright, Cucumber/Gherkin, coverage tools |
-| **Primary repos** | uc-cve-remediation-regulatory-compliance, timesheet-app | timesheet-app, petclinic-angular, uc-bdd-test-generation-rest-api |
+| **Primary repos** | uc-cve-remediation-regulatory-compliance, timesheet-app | timesheet-app, petclinic-angular, uc-bdd-test-generation-cucumber |
 | **Story arc** | Find → Fix → Prevent → Automate → Autonomous pipeline | Assess → Automate → Migrate → Generate → Continuous QA |
 
 All tools in both tracks are free and run locally on Devin's VM — no commercial licenses required.
@@ -399,13 +399,13 @@ After the migration succeeds, consider asking Devin to **create a Playbook** cap
 **Value driver:** *Devin reads existing framework patterns and generates consistent output. When you leave PR comments, Devin wakes up and addresses them — this is the core workflow for iterating with Devin.*
 
 - **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
-- **Repo:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+- **Repo:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 
 Give Devin a Spring Boot + Cucumber BDD framework and prompt it to generate new test scenarios, build a new API resource, and produce executable Cucumber tests. Then practice the PR feedback loop.
 
 #### Give Devin a task
 
-> Review the uc-bdd-test-generation-rest-api codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
+> Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
 >
 > Then add new Gherkin feature files that test edge cases for the existing Users API:
 > - `src/test/resources/features/users-edge-cases.feature` covering:
@@ -445,7 +445,7 @@ This back-and-forth is how real teams work with Devin in production.
 **Value driver:** *Devin isn't just a tool you use once. Scheduled Sessions, Playbooks, and Knowledge turn Devin into an ongoing team member that monitors quality automatically.*
 
 - **Module:** [Continuous Quality Engineering](../../../modules/testing-qa/continuous-quality-engineering.md)
-- **Repos:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+- **Repos:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 
 This is the capstone. Set up Devin as an ongoing quality engineering team member using Scheduled Sessions, Playbooks, and Knowledge.
 
@@ -527,13 +527,13 @@ Participants who finish early can try any challenge from the full [module catalo
 - [ ] timesheet-app
 - [ ] petclinic-angular
 - [ ] ts-angular-realworld
-- [ ] uc-bdd-test-generation-rest-api
+- [ ] uc-bdd-test-generation-cucumber
 
 #### Optional (for extended challenges)
 
 - [ ] ts-java-spring-boot-realworld
 - [ ] Online-Banking-System-using-Java
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] petclinic-microservices
 - [ ] calcom
 

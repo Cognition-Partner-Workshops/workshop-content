@@ -3,7 +3,7 @@
 ## Repositories
 
 - [uc-cve-remediation-regulatory-compliance](#uc-cve-remediation-regulatory-compliance)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -67,15 +67,15 @@ Advanced
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 / Java 11 / Gradle monolith. The tech debt: outdated framework, legacy namespace (javax.*), no containerization, missing CI, outdated dependencies.
 
 ### Step 1: Paste into Devin — The One-Shot Prompt
 
-> **Objective:** Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2 in a single session with provable results.
+> **Objective:** Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2 in a single session with provable results.
 >
 > **Execution order:**
 > 1. Before making any changes, run `./gradlew build` and capture the output as `build-before.log`. Record: Java version, Spring Boot version, dependency count, test count, test pass/fail.
@@ -94,7 +94,7 @@ Spring Boot 2.6.3 / Java 11 / Gradle monolith. The tech debt: outdated framework
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the riskiest parts of upgrading uc-framework-upgrade-monolith-to-microservices from Spring Boot 2 to 3? Which files have the most javax imports?"*
+- *"What are the riskiest parts of upgrading uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2 to 3? Which files have the most javax imports?"*
 - *"What test infrastructure does this project have? Which tests are pure unit tests vs. integration tests that need external services?"*
 - Use the analysis to refine the prompt — add specific file paths, known problem areas, or additional proof requirements
 

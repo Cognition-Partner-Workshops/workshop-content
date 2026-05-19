@@ -38,8 +38,8 @@ This event features 5 labs that follow a progressive modernization narrative:
 - **Module:** [Legacy Modernization Combined](../../../modules/migration-modernization/legacy-modernization-combined.md)
 - **Repositories:**
   - [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java) — COBOL mainframe application (source)
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Java monolith to decompose (microservice extraction)
-  - [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern) — Legacy data warehouse to modern schema (data source migration)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Java monolith to decompose (microservice extraction)
+  - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Legacy data warehouse to modern schema (data source migration)
 - **Objective:** Walk through the full modernization journey: migrate legacy code to a modern tech stack, extract microservices from a monolith, migrate the data source — and verify correctness with tests at each phase
 
 This lab demonstrates the combined modernization pipeline that enterprises face: legacy code that needs a new tech stack, a monolith that needs to be decomposed, and a legacy data warehouse that needs to be replaced — all while keeping the system functional and tested.
@@ -52,10 +52,10 @@ Choose one of the three phases to start with, or run all three as parallel sessi
 > Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical output to the COBOL version for the sample data files in the repo. Document the field mappings in a `MIGRATION_NOTES.md`. Open a PR.
 
 **Phase B — Microservice Extraction:**
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly. Open a PR.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly. Open a PR.
 
 **Phase C — Data Source Migration:**
-> Review the legacy CDW schema in uc-data-source-migration-legacy-to-modern. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types. Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Add validation tests that compare API responses before and after the migration to verify data integrity. Open a PR.
+> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types. Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Add validation tests that compare API responses before and after the migration to verify data integrity. Open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -69,8 +69,8 @@ While Devin works on step 1, open **AskDevin** and explore the testing story:
 
 Open each repo's **DeepWiki** page to understand the architecture before and after modernization:
 1. **uc-legacy-modernization-cobol-to-java** — Understand the COBOL program structure, copybook layouts, and I/O operations. Use this to evaluate whether the Java translation preserves all business logic.
-2. **uc-framework-upgrade-monolith-to-microservices** — Understand the domain boundaries (Articles, Users, Comments) and dependency graph. Use this to plan which bounded context to extract and where the seams are.
-3. **uc-data-source-migration-legacy-to-modern** — Understand the legacy schema (all-VARCHAR, denormalized) vs. the modern schema (proper types, normalized). Use this to evaluate the data transformation logic.
+2. **uc-spring-boot-upgrade-microservice-extraction** — Understand the domain boundaries (Articles, Users, Comments) and dependency graph. Use this to plan which bounded context to extract and where the seams are.
+3. **uc-data-source-migration-jdbc-normalization** — Understand the legacy schema (all-VARCHAR, denormalized) vs. the modern schema (proper types, normalized). Use this to evaluate the data transformation logic.
 
 Try different approaches:
 - Run **all three phases as parallel Devin sessions** and compare the testing artifacts each produces — this mirrors how enterprise teams would staff multiple workstreams, except each one runs autonomously
@@ -110,7 +110,7 @@ See the full challenge details for [Legacy Modernization Combined](../../../modu
 
 - **Module:** [Repetitive Framework Upgrades](../../../modules/migration-modernization/repetitive-framework-upgrades.md) + [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot 2.6.3 → 3.x upgrade
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 → 3.x upgrade
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular version upgrade (second repo for parallel comparison)
 - **Objective:** Run parallel Devin sessions upgrading Angular and Spring Boot across multiple repos — demonstrating how Devin handles repetitive upgrade tasks at enterprise scale
@@ -120,7 +120,7 @@ See the full challenge details for [Legacy Modernization Combined](../../../modu
 Run these as **parallel sessions** to see how the same upgrade pattern scales across repos. Each session works independently — kick off all three and let Devin handle the tedious migration work while you explore Ask Devin:
 
 **Session A — Spring Boot Upgrade:**
-> Upgrade uc-framework-upgrade-monolith-to-microservices from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description. Open a PR.
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description. Open a PR.
 
 **Session B — Angular Upgrade (PetClinic):**
 > Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully. Document every breaking change encountered. Open a PR.
@@ -140,7 +140,7 @@ While Devin works on the upgrades, open **AskDevin** and explore:
 #### Step 3 (Optional): Read the DeepWiki
 
 Open each repo's **DeepWiki** page to understand the codebase before the upgrade:
-1. **uc-framework-upgrade-monolith-to-microservices** — Understand the build configuration, Spring Security setup, and dependency graph. These are the areas most affected by the Spring Boot 2→3 migration.
+1. **uc-spring-boot-upgrade-microservice-extraction** — Understand the build configuration, Spring Security setup, and dependency graph. These are the areas most affected by the Spring Boot 2→3 migration.
 2. **petclinic-angular** — Understand the component hierarchy and module structure. Identify deprecated Angular patterns (NgModules vs. standalone components).
 3. **ts-angular-realworld** — Compare with the PetClinic Angular app. Different codebases may hit different breaking changes for the same upgrade.
 
@@ -182,7 +182,7 @@ See the full challenge details for [Repetitive Framework Upgrades](../../../modu
 ### Lab 3 — Data Source Migration: Rewrite + Reconnect + Test (60 min)
 
 - **Module:** [Data Source Migration](../../../modules/data-engineering/data-source-migration.md)
-- **Repository:** [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern)
+- **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Objective:** Take an existing loan management app connected to a legacy data warehouse (all-VARCHAR, denormalized, cryptic column names), rewrite it to a modern normalized schema, rewire the app to point to the new data source, and prove correctness with comprehensive testing
 
 This lab has two distinct parts:
@@ -191,7 +191,7 @@ This lab has two distinct parts:
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the legacy CDW schema in uc-data-source-migration-legacy-to-modern. This is a loan management application currently reading from a denormalized legacy data warehouse where all columns are VARCHAR.
+> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This is a loan management application currently reading from a denormalized legacy data warehouse where all columns are VARCHAR.
 >
 > Part 1 — Rewrite the data source:
 > Create modern JPA entities matching the target schema in data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long, enums). Write a migration service that reads from legacy tables, transforms the data (parse dates, convert amounts, expand status codes per data/mappings/column_mappings.md), and inserts into modern tables. Add data reconciliation tests that verify record counts match and field values are correctly transformed.
@@ -256,7 +256,7 @@ See the full challenge details for [Data Source Migration](../../../modules/data
 - **Module:** [New Feature Development](../../../modules/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
-  - [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern) — Spring Boot loan service (alternative)
+  - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service (alternative)
 - **Objective:** Build a new feature on an existing application — from requirements through implementation, testing, and PR creation
 
 #### Step 1: Start with Ask Devin (recommended)
@@ -271,7 +271,7 @@ Then use what you learn to refine one of these prompts before pasting it into a 
 > Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add both the backend API endpoints and the frontend UI page. Follow the existing patterns in the codebase for the data model, API structure, and React components. Write tests for the backend endpoints. Open a PR.
 
 **Option B — API Feature (loan service):**
-> Add a loan payment history API to uc-data-source-migration-legacy-to-modern. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint. Open a PR.
+> Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint. Open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -316,12 +316,12 @@ See the full challenge details for [New Feature Development](../../../modules/ap
 
 ### Lab 5 — BDD Test Case Generation for REST APIs (60 min)
 - **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
-- **Repository:** [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+- **Repository:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 - **Objective:** Give Devin a Spring Boot + Cucumber BDD framework and prompt it to generate new test scenarios, build a new API resource, and produce executable Cucumber tests
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-bdd-test-generation-rest-api codebase. This is a Spring Boot + Cucumber BDD framework (from RedFroggy, MIT license) with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
+> Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework (from RedFroggy, MIT license) with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
 >
 > Then add new Gherkin feature files that test edge cases for the existing Users API:
 > - `src/test/resources/features/users-edge-cases.feature` covering:
@@ -384,12 +384,12 @@ Participants may also attempt any challenge from the full [module catalog](../..
 ## Repos Required on Devin's Machine
 
 - [ ] uc-legacy-modernization-cobol-to-java
-- [ ] uc-framework-upgrade-monolith-to-microservices
-- [ ] uc-data-source-migration-legacy-to-modern
+- [ ] uc-spring-boot-upgrade-microservice-extraction
+- [ ] uc-data-source-migration-jdbc-normalization
 - [ ] petclinic-angular
 - [ ] ts-angular-realworld
 - [ ] timesheet-app
-- [ ] uc-bdd-test-generation-rest-api
+- [ ] uc-bdd-test-generation-cucumber
 
 ### Optional (for extended challenges)
 
@@ -398,7 +398,7 @@ Participants may also attempt any challenge from the full [module catalog](../..
 
 ## Repo Duplication Notes
 
-- `uc-framework-upgrade-monolith-to-microservices` and `uc-cve-remediation-regulatory-compliance` both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../catalog/repos.md)). They are intentionally separate repos so each use case gets an isolated starting point.
+- `uc-spring-boot-upgrade-microservice-extraction` and `uc-cve-remediation-regulatory-compliance` both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../catalog/repos.md)). They are intentionally separate repos so each use case gets an isolated starting point.
 - `uc-legacy-modernization-cobol-to-java` originates from `ts-cobol-carddemo` (Cluster C2).
 
 ## Context

@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,15 +69,15 @@ Open the repo's DeepWiki page to understand the middleware chain and request lif
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot application — add Spring Boot Actuator, Micrometer metrics, and structured logging with Logback.
 
 ### Step 1: Paste into Devin
 
-> Add observability to uc-framework-upgrade-monolith-to-microservices: (1) Enable Spring Boot Actuator with health, info, metrics, and prometheus endpoints, (2) Add Micrometer Prometheus registry for metrics export, (3) Configure Logback for structured JSON logging with MDC correlation IDs, (4) Add custom metrics for article and user operations. Open a PR.
+> Add observability to uc-spring-boot-upgrade-microservice-extraction: (1) Enable Spring Boot Actuator with health, info, metrics, and prometheus endpoints, (2) Add Micrometer Prometheus registry for metrics export, (3) Configure Logback for structured JSON logging with MDC correlation IDs, (4) Add custom metrics for article and user operations. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

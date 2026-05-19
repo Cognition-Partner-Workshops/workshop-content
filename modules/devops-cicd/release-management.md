@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,15 +69,15 @@ Open the repo's DeepWiki page to understand the current versioning approach (if 
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot/Gradle application — set up Gradle release plugin with GitHub Actions.
 
 ### Step 1: Paste into Devin
 
-> Set up automated release management for uc-framework-upgrade-monolith-to-microservices: (1) Configure the Gradle release plugin for semantic versioning, (2) Create a GitHub Actions workflow that builds a release artifact (JAR), creates a GitHub Release, and attaches the JAR when a version tag is pushed, (3) Add a CHANGELOG.md template with categorized sections. Open a PR.
+> Set up automated release management for uc-spring-boot-upgrade-microservice-extraction: (1) Configure the Gradle release plugin for semantic versioning, (2) Create a GitHub Actions workflow that builds a release artifact (JAR), creates a GitHub Release, and attaches the JAR when a version tag is pushed, (3) Add a CHANGELOG.md template with categorized sections. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

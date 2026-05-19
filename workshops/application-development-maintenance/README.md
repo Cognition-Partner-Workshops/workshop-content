@@ -126,28 +126,28 @@ See the full challenge details for [New Feature Development](../../modules/appli
 
 - **Module:** [Test-Driven Development](../../modules/application-development/test-driven-development.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot 2.6.3 RealWorld app with JUnit infrastructure
-  - [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api) — Spring Boot + Cucumber BDD framework (alternative)
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 RealWorld app with JUnit infrastructure
+  - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Implement a new API feature using test-driven development — write failing tests first, then implement until they pass
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 **Option A — TDD with JUnit (Spring Boot RealWorld):**
 ```
-Using test-driven development, add an "article statistics" feature to uc-framework-upgrade-monolith-to-microservices. First, write failing JUnit tests for two new endpoints: GET /api/articles/:slug/stats (returns view count, favorite count, comment count, days since published) and GET /api/stats/trending (returns top 10 most-favorited articles in the last 7 days). Then implement the endpoints to make the tests pass. Follow existing code patterns. Open a PR showing the TDD progression (tests written first, then implementation).
+Using test-driven development, add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. First, write failing JUnit tests for two new endpoints: GET /api/articles/:slug/stats (returns view count, favorite count, comment count, days since published) and GET /api/stats/trending (returns top 10 most-favorited articles in the last 7 days). Then implement the endpoints to make the tests pass. Follow existing code patterns. Open a PR showing the TDD progression (tests written first, then implementation).
 ```
 
 **Option B — BDD-First (Cucumber):**
 ```
-Using behavior-driven development, add an order management feature to uc-bdd-test-generation-rest-api. First, write Gherkin feature files describing the behavior: create an order, list orders, get order by ID, update order status, delete order. Then implement an OrderController, OrderService, and Order entity to make all scenarios pass. Follow existing project patterns for step definitions and entity structure. Open a PR.
+Using behavior-driven development, add an order management feature to uc-bdd-test-generation-cucumber. First, write Gherkin feature files describing the behavior: create an order, list orders, get order by ID, update order status, delete order. Then implement an OrderController, OrderService, and Order entity to make all scenarios pass. Follow existing project patterns for step definitions and entity structure. Open a PR.
 ```
 
 #### Step 2: Research with Ask Devin
 
 While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the existing test patterns in uc-framework-upgrade-monolith-to-microservices? How are controller tests structured?"*
+- *"What are the existing test patterns in uc-spring-boot-upgrade-microservice-extraction? How are controller tests structured?"*
 - *"What's the difference between MockMvc tests and integration tests in this codebase? Which is more appropriate for API endpoint testing?"*
-- *"How does the Cucumber framework in uc-bdd-test-generation-rest-api handle test data setup and teardown?"*
+- *"How does the Cucumber framework in uc-bdd-test-generation-cucumber handle test data setup and teardown?"*
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -188,7 +188,7 @@ Once Devin opens a PR, focus your review on **TDD discipline**:
 - **Modules:** [Gather Requirements](../../modules/application-development/gather-requirements.md) + [New Feature Development](../../modules/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
-  - [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern) — Spring Boot loan management service (alternative)
+  - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan management service (alternative)
 - **Objective:** Start from vague business requirements, use Ask Devin to refine them into technical specifications, then have Devin implement the feature — demonstrating the full requirements-to-code pipeline
 
 #### Step 1: Start with Ask Devin (required for this lab)
@@ -378,7 +378,7 @@ Focus your review on whether the fix is complete:
 
 - **Modules:** [Fix Data Bug](../../modules/application-development/fix-data-bug.md) + [Database Schema Evolution](../../modules/application-development/database-schema-evolution.md)
 - **Repositories:**
-  - [uc-data-source-migration-legacy-to-modern](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-legacy-to-modern) — Spring Boot loan service with legacy CDW-style tables
+  - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service with legacy CDW-style tables
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with SQLite (alternative)
 - **Objective:** Investigate and fix a data-related bug — incorrect query results, type conversion errors, or schema inconsistencies — and evolve the schema to prevent recurrence
 
@@ -386,7 +386,7 @@ Focus your review on whether the fix is complete:
 
 **Option A — Legacy Data Types (loan service):**
 ```
-The loan service in uc-data-source-migration-legacy-to-modern is reading from legacy CDW-style tables where all columns are VARCHAR (including amounts, dates, and IDs). Some loan balance queries return incorrect results because string comparison is used instead of numeric comparison — for example, a loan with balance "99.50" appears as greater than one with balance "1000.00" because string sort puts "9" after "1". Identify all repository queries that compare or sort numeric VARCHAR fields. Fix the queries to properly cast to numeric types. Add JUnit tests that verify correct ordering and comparison. Document the fix in a `DATA_BUG_ANALYSIS.md`. Open a PR.
+The loan service in uc-data-source-migration-jdbc-normalization is reading from legacy CDW-style tables where all columns are VARCHAR (including amounts, dates, and IDs). Some loan balance queries return incorrect results because string comparison is used instead of numeric comparison — for example, a loan with balance "99.50" appears as greater than one with balance "1000.00" because string sort puts "9" after "1". Identify all repository queries that compare or sort numeric VARCHAR fields. Fix the queries to properly cast to numeric types. Add JUnit tests that verify correct ordering and comparison. Document the fix in a `DATA_BUG_ANALYSIS.md`. Open a PR.
 ```
 
 **Option B — SQLite Type Issues (timesheet app):**
@@ -495,7 +495,7 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
 
 - **Module:** [Database Schema Evolution](../../modules/application-development/database-schema-evolution.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot with Flyway migrations and SQLite
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot with Flyway migrations and SQLite
   - [ts-java-angular-jhipster](https://github.com/Cognition-Partner-Workshops/ts-java-angular-jhipster) — JHipster app with Liquibase (alternative)
 - **Objective:** Evolve a database schema safely — add new tables, modify existing columns, migrate data, and ensure backward compatibility with the application layer
 
@@ -503,7 +503,7 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
 
 **Option A — Flyway Migrations (Spring Boot):**
 ```
-Evolve the database schema of uc-framework-upgrade-monolith-to-microservices to support article tags as a first-class entity. Currently tags are stored as strings in the articles table. Create Flyway migration scripts that: (1) Create a new `tags` table with id and name columns, (2) Create a junction table `article_tags` for the many-to-many relationship, (3) Migrate existing tag data from the articles table to the new structure, (4) Update the MyBatis mappers and Java domain model to use the new schema. Ensure existing tests still pass and write new tests for the tag CRUD operations. Open a PR.
+Evolve the database schema of uc-spring-boot-upgrade-microservice-extraction to support article tags as a first-class entity. Currently tags are stored as strings in the articles table. Create Flyway migration scripts that: (1) Create a new `tags` table with id and name columns, (2) Create a junction table `article_tags` for the many-to-many relationship, (3) Migrate existing tag data from the articles table to the new structure, (4) Update the MyBatis mappers and Java domain model to use the new schema. Ensure existing tests still pass and write new tests for the tag CRUD operations. Open a PR.
 ```
 
 **Option B — Liquibase Changesets (JHipster):**
@@ -556,7 +556,7 @@ Focus on **migration safety**:
 
 - **Module:** [Code Refactoring & Tech Debt](../../modules/architecture-design/code-refactoring-tech-debt.md)
 - **Repositories:**
-  - [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) — Spring Boot monolith with identifiable tech debt
+  - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot monolith with identifiable tech debt
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (alternative)
 - **Objective:** Identify and refactor tech debt in an existing codebase — extract methods, improve naming, reduce duplication, and improve testability — while preserving behavior
 
@@ -564,7 +564,7 @@ Focus on **migration safety**:
 
 **Option A — Spring Boot Refactoring:**
 ```
-Analyze uc-framework-upgrade-monolith-to-microservices for code quality issues. Focus on the Articles domain: identify long methods, duplicated code, unclear naming, missing error handling, and tight coupling. Refactor the top 5 most impactful issues. For each refactoring: (1) explain what the problem was, (2) describe the refactoring approach, (3) verify existing tests still pass after the change. Document all changes in a `REFACTORING_LOG.md`. Open a PR.
+Analyze uc-spring-boot-upgrade-microservice-extraction for code quality issues. Focus on the Articles domain: identify long methods, duplicated code, unclear naming, missing error handling, and tight coupling. Refactor the top 5 most impactful issues. For each refactoring: (1) explain what the problem was, (2) describe the refactoring approach, (3) verify existing tests still pass after the change. Document all changes in a `REFACTORING_LOG.md`. Open a PR.
 ```
 
 **Option B — React/Node.js Refactoring:**
@@ -620,7 +620,7 @@ Participants who finish early or want to explore further can attempt any challen
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
 | Fix UI Bug | [Fix UI Bug](../../modules/application-development/fix-ui-bug.md) | timesheet-app | B | Beginner |
-| Test-Driven Development | [TDD](../../modules/application-development/test-driven-development.md) | uc-framework-upgrade-monolith-to-microservices | A | Intermediate |
+| Test-Driven Development | [TDD](../../modules/application-development/test-driven-development.md) | uc-spring-boot-upgrade-microservice-extraction | A | Intermediate |
 | CI/CD Pipeline | [CI/CD Pipeline](../../modules/devops-cicd/cicd-pipeline.md) | timesheet-app | C | Intermediate |
 | PR Review Automation | [PR Review](../../modules/devops-cicd/pr-review-automation.md) | Any | A | Beginner |
 | API Documentation | [API Documentation](../../modules/technical-documentation/api-documentation.md) | Any | C | Beginner |
@@ -639,21 +639,21 @@ Participants who finish early or want to explore further can attempt any challen
 
 ### Track A (Feature Development)
 - [ ] timesheet-app
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] ts-java-angular-jhipster (optional, for Lab A1 Option B)
-- [ ] uc-bdd-test-generation-rest-api (optional, for Lab A2 Option B)
-- [ ] uc-data-source-migration-legacy-to-modern (optional, for Lab A3)
+- [ ] uc-bdd-test-generation-cucumber (optional, for Lab A2 Option B)
+- [ ] uc-data-source-migration-jdbc-normalization (optional, for Lab A3)
 
 ### Track B (Bug Fixing & Root Cause Analysis)
 - [ ] timesheet-app
 - [ ] quickapp-microservices (for Lab B2 Option A)
 - [ ] eventflow-order-service + eventflow-payment-service (optional, for Lab B2 Option B)
-- [ ] uc-data-source-migration-legacy-to-modern (for Lab B3)
+- [ ] uc-data-source-migration-jdbc-normalization (for Lab B3)
 
 ### Track C (Maintenance & Evolution)
 - [ ] uc-cve-remediation-regulatory-compliance
 - [ ] timesheet-app (optional, for Lab C1 npm variant)
-- [ ] uc-framework-upgrade-monolith-to-microservices (for Labs C2, C3)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (for Labs C2, C3)
 - [ ] ts-java-angular-jhipster (optional, for Lab C2 Option B)
 
 ## Context

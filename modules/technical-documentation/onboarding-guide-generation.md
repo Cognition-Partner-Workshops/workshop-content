@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [calcom](#calcom)
 
 ---
@@ -49,19 +49,19 @@ Intermediate
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with a Next.js frontend — a complex full-stack application ideal for testing onboarding guide quality.
 
 ### Step 1: Paste into Devin
 
-> Analyze the uc-framework-upgrade-monolith-to-microservices repository and create a comprehensive developer onboarding guide in `docs/onboarding/`. Generate: (1) `architecture-overview.md` — high-level architecture diagram (in markdown/mermaid) showing backend services, frontend, database, and their interactions, (2) `local-setup-guide.md` — step-by-step setup instructions with prerequisites, environment variables, and verification steps, (3) `codebase-map.md` — directory-by-directory guide explaining what each module does and where to find key files, and (4) `common-tasks.md` — how-to guides for adding a new API endpoint, adding a frontend page, running tests, and debugging common issues. Open a PR.
+> Analyze the uc-spring-boot-upgrade-microservice-extraction repository and create a comprehensive developer onboarding guide in `docs/onboarding/`. Generate: (1) `architecture-overview.md` — high-level architecture diagram (in markdown/mermaid) showing backend services, frontend, database, and their interactions, (2) `local-setup-guide.md` — step-by-step setup instructions with prerequisites, environment variables, and verification steps, (3) `codebase-map.md` — directory-by-directory guide explaining what each module does and where to find key files, and (4) `common-tasks.md` — how-to guides for adding a new API endpoint, adding a frontend page, running tests, and debugging common issues. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the main architectural layers in uc-framework-upgrade-monolith-to-microservices? How do the backend and frontend communicate?"*
+- *"What are the main architectural layers in uc-spring-boot-upgrade-microservice-extraction? How do the backend and frontend communicate?"*
 - *"What build tools, test frameworks, and development scripts are available? What does a typical development workflow look like?"*
 
 ### Step 3 (Optional): Read the DeepWiki

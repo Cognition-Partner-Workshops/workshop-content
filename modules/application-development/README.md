@@ -22,8 +22,8 @@ Challenges focused on requirements gathering, test-driven development, bug fixin
 |------------|--------------------|
 | timesheet-app | [Gather Requirements](gather-requirements.md), [Test-Driven Development](test-driven-development.md), [Fix Runtime Bug](fix-runtime-bug.md), [Fix UI Bug](fix-ui-bug.md), [Fix Data Bug](fix-data-bug.md), [New Feature Development](new-feature-development.md), [Database Schema Evolution](database-schema-evolution.md) |
 | calcom | [Gather Requirements](gather-requirements.md), [Fix Runtime Bug](fix-runtime-bug.md) |
-| uc-data-source-migration-legacy-to-modern | [New Feature Development](new-feature-development.md), [Database Schema Evolution](database-schema-evolution.md) |
-| uc-framework-upgrade-monolith-to-microservices | [Test-Driven Development](test-driven-development.md), [New Feature Development](new-feature-development.md), [Database Schema Evolution](database-schema-evolution.md) |
+| uc-data-source-migration-jdbc-normalization | [New Feature Development](new-feature-development.md), [Database Schema Evolution](database-schema-evolution.md) |
+| uc-spring-boot-upgrade-microservice-extraction | [Test-Driven Development](test-driven-development.md), [New Feature Development](new-feature-development.md), [Database Schema Evolution](database-schema-evolution.md) |
 
 ## When to Use This Category
 

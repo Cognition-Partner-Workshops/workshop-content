@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -69,15 +69,15 @@ Open the repo's DeepWiki page to understand the API routes and their dependencie
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with REST and GraphQL APIs — suitable for Gatling or k6 load testing across both API surfaces.
 
 ### Step 1: Paste into Devin
 
-> Create a Gatling load test suite for uc-framework-upgrade-monolith-to-microservices. Write simulation scripts that cover: user authentication, article CRUD operations, comment creation, and tag listing. Include both REST API and GraphQL endpoint scenarios. Define load profiles with graduated ramp-up (10 to 100 users over 2 minutes) and sustained load. Set performance thresholds and document baseline results. Open a PR with the Gatling simulations, build configuration, and a baseline performance report.
+> Create a Gatling load test suite for uc-spring-boot-upgrade-microservice-extraction. Write simulation scripts that cover: user authentication, article CRUD operations, comment creation, and tag listing. Include both REST API and GraphQL endpoint scenarios. Define load profiles with graduated ramp-up (10 to 100 users over 2 minutes) and sustained load. Set performance thresholds and document baseline results. Open a PR with the Gatling simulations, build configuration, and a baseline performance report.
 
 ### Step 2: Research with Ask Devin
 

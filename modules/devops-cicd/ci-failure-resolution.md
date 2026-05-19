@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -74,15 +74,15 @@ Open the repo's DeepWiki page to understand the build system and test configurat
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot/Gradle application — diagnose Gradle build failures, test failures, or Java version mismatches.
 
 ### Step 1: Paste into Devin
 
-> The CI pipeline for uc-framework-upgrade-monolith-to-microservices is failing. Examine the GitHub Actions logs, identify the root cause (build failure, test failure, dependency issue, Java version mismatch), and fix it. If multiple issues exist, fix them in priority order. Open a PR with the fixes and document the root cause analysis.
+> The CI pipeline for uc-spring-boot-upgrade-microservice-extraction is failing. Examine the GitHub Actions logs, identify the root cause (build failure, test failure, dependency issue, Java version mismatch), and fix it. If multiple issues exist, fix them in priority order. Open a PR with the fixes and document the root cause analysis.
 
 ### Step 2: Research with Ask Devin
 

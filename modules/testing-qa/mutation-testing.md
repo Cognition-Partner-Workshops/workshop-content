@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [timesheet-app](#timesheet-app)
 
 ---
@@ -42,19 +42,19 @@ Intermediate to Advanced
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 monolith with an existing JUnit test suite and Gradle build — ideal for PIT mutation testing.
 
 ### Step 1: Paste into Devin
 
-> Set up PIT (pitest) mutation testing for uc-framework-upgrade-monolith-to-microservices. Configure the Gradle pitest plugin, run the mutation analysis against the service and controller layers, and generate a mutation coverage report. Identify the top surviving mutants and add or improve JUnit tests to kill them. Open a PR with the pitest configuration, mutation report summary, and improved tests.
+> Set up PIT (pitest) mutation testing for uc-spring-boot-upgrade-microservice-extraction. Configure the Gradle pitest plugin, run the mutation analysis against the service and controller layers, and generate a mutation coverage report. Identify the top surviving mutants and add or improve JUnit tests to kill them. Open a PR with the pitest configuration, mutation report summary, and improved tests.
 
 ### Step 2: Research with Ask Devin
 
-- *"What is the current test coverage of uc-framework-upgrade-monolith-to-microservices? Which packages have the weakest coverage that mutation testing would expose?"*
+- *"What is the current test coverage of uc-spring-boot-upgrade-microservice-extraction? Which packages have the weakest coverage that mutation testing would expose?"*
 - *"What PIT mutators are most valuable for a Spring Boot REST API? Should we use the default set or add custom mutators?"*
 
 ### Step 3 (Optional): Read the DeepWiki

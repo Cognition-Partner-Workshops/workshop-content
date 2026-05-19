@@ -5,7 +5,7 @@
 - [petclinic-backend](#petclinic-backend)
 - [timesheet-app](#timesheet-app)
 - [ts-java-spring-boot-realworld](#ts-java-spring-boot-realworld)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -122,15 +122,15 @@ Open the repo's DeepWiki page to understand the article/user/comment domain mode
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot 2.6.3 monolith with JUnit test infrastructure.
 
 ### Step 1: Paste into Devin
 
-> Analyze the current test coverage of uc-framework-upgrade-monolith-to-microservices. Add missing JUnit tests targeting the service and controller layers. Generate a JaCoCo coverage report and ensure all tests pass. Open a PR.
+> Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Add missing JUnit tests targeting the service and controller layers. Generate a JaCoCo coverage report and ensure all tests pass. Open a PR.
 
 ### Step 2: Research with Ask Devin
 

@@ -2,7 +2,7 @@
 
 ## Repositories
 
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 - [timesheet-app](#timesheet-app)
 
 ---
@@ -42,19 +42,19 @@ Intermediate
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot monolith with both REST and GraphQL APIs, DGS framework integration, and multiple data access patterns — rich ground for architectural decision documentation.
 
 ### Step 1: Paste into Devin
 
-> Analyze the architecture of uc-framework-upgrade-monolith-to-microservices. This is a Spring Boot monolith that uses both REST controllers and GraphQL via the DGS framework. Identify the key architectural decisions — including why both REST and GraphQL coexist, the choice of the DGS framework, data access patterns (MyBatis vs JPA), the security model, and the monolithic structure. Generate Architecture Decision Records (ADRs) in `docs/adr/` following the MADR template (Title, Status, Context, Decision, Consequences). Also produce a high-level architecture description in `docs/adr/README.md`. Open a PR with all ADR documents.
+> Analyze the architecture of uc-spring-boot-upgrade-microservice-extraction. This is a Spring Boot monolith that uses both REST controllers and GraphQL via the DGS framework. Identify the key architectural decisions — including why both REST and GraphQL coexist, the choice of the DGS framework, data access patterns (MyBatis vs JPA), the security model, and the monolithic structure. Generate Architecture Decision Records (ADRs) in `docs/adr/` following the MADR template (Title, Status, Context, Decision, Consequences). Also produce a high-level architecture description in `docs/adr/README.md`. Open a PR with all ADR documents.
 
 ### Step 2: Research with Ask Devin
 
-- *"What are the main architectural layers in uc-framework-upgrade-monolith-to-microservices, and how do requests flow from the API layer to the database?"*
+- *"What are the main architectural layers in uc-spring-boot-upgrade-microservice-extraction, and how do requests flow from the API layer to the database?"*
 - *"Why does this application use both REST and GraphQL? Are there specific endpoints that are only available through one API style?"*
 
 ### Step 3 (Optional): Read the DeepWiki

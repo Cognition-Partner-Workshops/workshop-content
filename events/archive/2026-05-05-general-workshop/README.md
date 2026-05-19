@@ -126,7 +126,7 @@ Track B demonstrates Devin handling large-scale structural changes to codebases.
 ### Lab B1 — Rearchitecting Monolith to Microservice
 
 - **Module:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
-- **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+- **Repositories:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Objective:** Analyze domain boundaries in a monolith, extract a bounded context as a standalone microservice
 
 See [general workshop Lab B1](../../../workshops/general/README.md#lab-b1--rearchitecting-monolith-to-microservice) for full instructions.
@@ -134,14 +134,14 @@ See [general workshop Lab B1](../../../workshops/general/README.md#lab-b1--rearc
 ### Lab B2 — Upgrading EOL Systems to LTS Versions
 
 - **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../../modules/migration-modernization/repetitive-framework-upgrades.md)
-- **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices), [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular), [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld)
+- **Repositories:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction), [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular), [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld)
 - **Objective:** Run parallel Devin sessions upgrading frameworks across multiple repos
 
 See [general workshop Lab B2](../../../workshops/general/README.md#lab-b2--upgrading-eol-systems-to-lts-versions) for full instructions.
 
 ### Lab B3 — Language Translation
 
-- **Repositories:** [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld), [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+- **Repositories:** [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld), [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Objective:** Translate code between languages (e.g., Java to Kotlin, Ruby to Java) while maintaining functional parity
 
 See [general workshop Lab B3](../../../workshops/general/README.md#lab-b3--language-translation) for full instructions.
@@ -200,7 +200,7 @@ Before extracting microservices, teams need to understand their domain boundarie
 #### Paste into Devin
 
 ```
-Analyze uc-framework-upgrade-monolith-to-microservices and produce a domain decomposition analysis. This Spring Boot monolith implements a social blogging platform.
+Analyze uc-spring-boot-upgrade-microservice-extraction and produce a domain decomposition analysis. This Spring Boot monolith implements a social blogging platform.
 
 Deliverables:
 1. **Business Capability Map** — identify each bounded context (e.g., User Management, Content Publishing, Social Graph, Content Discovery) and map the current codebase packages, entities, and APIs to each capability
@@ -235,7 +235,7 @@ Track C demonstrates Devin as a day-to-day development partner. Participants wil
 ### Lab C1 — Add a Feature + PR Review Feedback
 
 - **Module:** [New Feature Development](../../../modules/application-development/new-feature-development.md)
-- **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+- **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Objective:** Build a new feature from requirements, see PR Review in action, and iterate via comments
 
 See [general workshop Lab C1](../../../workshops/general/README.md#lab-c1--add-a-feature--pr-review-feedback) for full instructions.
@@ -243,7 +243,7 @@ See [general workshop Lab C1](../../../workshops/general/README.md#lab-c1--add-a
 ### Lab C2 — Add Test Coverage
 
 - **Modules:** [Unit Testing](../../../modules/testing-qa/unit-testing.md) + [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
-- **Repositories:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices), [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+- **Repositories:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction), [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 - **Objective:** Increase test coverage with meaningful unit and BDD tests
 
 See [general workshop Lab C2](../../../workshops/general/README.md#lab-c2--add-test-coverage) for full instructions.
@@ -251,7 +251,7 @@ See [general workshop Lab C2](../../../workshops/general/README.md#lab-c2--add-t
 ### Lab C3 — Perform E2E Tests & Fix Issues
 
 - **Modules:** [End-to-End Testing](../../../modules/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../../modules/application-development/fix-runtime-bug.md)
-- **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-rest-api](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-rest-api)
+- **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app), [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 - **Objective:** Write and run E2E tests, discover issues through testing, and fix them
 
 See [general workshop Lab C3](../../../workshops/general/README.md#lab-c3--perform-e2e-tests--fix-issues) for full instructions.
@@ -265,7 +265,7 @@ This spotlight shows Devin playing the role of a data reliability engineer — a
 #### Paste into Devin
 
 ```
-Analyze the data layer in uc-data-source-migration-legacy-to-modern for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
+Analyze the data layer in uc-data-source-migration-jdbc-normalization for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
 
 1. **Anomaly Detection:** Query the legacy seed data in `src/main/resources/data-legacy.sql` and the schema in `src/main/resources/schema-legacy.sql`. Identify anomalies: null values in required fields, date format inconsistencies, invalid status codes, orphaned records (foreign key violations), numeric values stored as strings with parsing risks, and duplicate or near-duplicate records.
 
@@ -347,8 +347,8 @@ Participants who finish early or want to explore further can try any challenge f
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Data Source Migration | [Data Source Migration](../../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
-| Data Quality Validation | [Data Quality & Validation](../../../modules/data-engineering/data-quality-validation.md) | uc-data-source-migration-legacy-to-modern | B | Intermediate |
+| Data Source Migration | [Data Source Migration](../../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | B | Intermediate |
+| Data Quality Validation | [Data Quality & Validation](../../../modules/data-engineering/data-quality-validation.md) | uc-data-source-migration-jdbc-normalization | B | Intermediate |
 | Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../../modules/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
 | Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../../modules/migration-modernization/dotnet-monolith-decomposition.md) | modular-monolith-ddd | B | Advanced |
 | Code Refactoring & Tech Debt | [Code Refactoring](../../../modules/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
@@ -385,17 +385,17 @@ The spotlight prompts are industry-inspired bonus activities that can be used al
 - [ ] quickapp-microservices (optional, for Lab A2 Option B)
 
 ### Track B (Modernization)
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 - [ ] petclinic-angular
 - [ ] ts-angular-realworld
 
 ### Track C (Feature Development & Testing)
 - [ ] timesheet-app
-- [ ] uc-framework-upgrade-monolith-to-microservices (optional, for Lab C1 Option B)
-- [ ] uc-bdd-test-generation-rest-api (optional, for Lab C2 Option C / Lab C3 Option B)
+- [ ] uc-spring-boot-upgrade-microservice-extraction (optional, for Lab C1 Option B)
+- [ ] uc-bdd-test-generation-cucumber (optional, for Lab C2 Option C / Lab C3 Option B)
 
 ### Spotlight Prompts (additional)
-- [ ] uc-data-source-migration-legacy-to-modern (for Data Anomaly Detection spotlight)
+- [ ] uc-data-source-migration-jdbc-normalization (for Data Anomaly Detection spotlight)
 
 ## Use Case Inspiration Notes
 

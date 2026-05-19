@@ -104,7 +104,7 @@ Three labs that build on each other in a progressive arc:
 ### Lab 3 — One-Shot Tech Debt Remediation via Long-Term Reasoning (75 min)
 
 - **Module:** [One-Shot Tech Debt Remediation](../../modules/migration-modernization/one-shot-tech-debt-remediation.md)
-- **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) or [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
+- **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) or [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Demonstrate that a single, well-engineered prompt can achieve 80-90% completion of a major tech debt remediation — with provable results and honest acknowledgement of testing gaps
 
 #### What to Try
@@ -149,7 +149,7 @@ Participants who finish early may attempt any challenge from the full [module ca
 
 - [ ] timesheet-app
 - [ ] uc-cve-remediation-regulatory-compliance
-- [ ] uc-framework-upgrade-monolith-to-microservices
+- [ ] uc-spring-boot-upgrade-microservice-extraction
 
 ## Runtime Resources
 

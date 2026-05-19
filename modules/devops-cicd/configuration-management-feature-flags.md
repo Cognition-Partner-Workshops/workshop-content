@@ -3,7 +3,7 @@
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
-- [uc-framework-upgrade-monolith-to-microservices](#uc-framework-upgrade-monolith-to-microservices)
+- [uc-spring-boot-upgrade-microservice-extraction](#uc-spring-boot-upgrade-microservice-extraction)
 
 ---
 
@@ -70,15 +70,15 @@ Open the repo's DeepWiki page to identify all hardcoded configuration values acr
 
 ---
 
-## <a id="uc-framework-upgrade-monolith-to-microservices"></a>uc-framework-upgrade-monolith-to-microservices
+## <a id="uc-spring-boot-upgrade-microservice-extraction"></a>uc-spring-boot-upgrade-microservice-extraction
 
-**Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
+**Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 
 Spring Boot application — use Spring Profiles and add feature flag support.
 
 ### Step 1: Paste into Devin
 
-> Implement configuration management for uc-framework-upgrade-monolith-to-microservices: (1) Create Spring Profile configurations for dev, staging, and production (application-dev.yml, application-staging.yml, application-prod.yml), (2) Externalize all hardcoded values to configuration properties, (3) Add Togglz or FF4J for feature flag support, (4) Use a feature flag to gate the GraphQL API — when the flag is off, only REST endpoints are available. Open a PR.
+> Implement configuration management for uc-spring-boot-upgrade-microservice-extraction: (1) Create Spring Profile configurations for dev, staging, and production (application-dev.yml, application-staging.yml, application-prod.yml), (2) Externalize all hardcoded values to configuration properties, (3) Add Togglz or FF4J for feature flag support, (4) Use a feature flag to gate the GraphQL API — when the flag is off, only REST endpoints are available. Open a PR.
 
 ### Step 2: Research with Ask Devin
 
