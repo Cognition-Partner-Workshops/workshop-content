@@ -32,7 +32,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **C7** | Apache Fineract | [`apache/fineract`](https://github.com/apache/fineract) | `fineract`, `fineract-web-app` | Backend (Fineract) + frontend (Mifos web app) from the same banking platform. |
 | **C8** | Client Timesheet | *original* | `timesheet-app`, `timesheet-infra` | The timesheet app and its Terraform hosting/infra repo. |
 | **C9** | AngularJS 1.x admins | *different upstreams* | `ts-angularjs-blur-admin`, `ts-angularjs-dashboard-widgets` | Two AngularJS 1.x admin dashboards for framework migration demos. |
-| **C10** | SAS to Snowflake | [`scottbass/SAS`](https://github.com/scottbass/SAS) | `ts-sas-legacy-analytics`, `uc-data-migration-sas-to-snowflake` | Legacy SAS source paired with Snowflake migration validation tooling. |
+| **C10** | SAS Migration | [`scottbass/SAS`](https://github.com/scottbass/SAS) | `ts-sas-legacy-analytics`, `uc-data-migration-sas-to-snowflake`, `uc-data-migration-sas-to-databricks` | Enterprise SAS analytics estate (banking/insurance programs, macros, formats, batch orchestration) paired with Snowflake validation toolkit and dbt/Databricks target architecture. |
 | **C11** | OrderManager Monolith-to-Microservices | *original* | `platform-engineering-shared-services`, `ordermanager-monolith`, `ordermanager-iac`, `ordermanager-microservices` | Platform standard + .NET/Angular monolith + service IaC + microservices landing repo for decomposition demos. Platform repo provides the shared EKS/ArgoCD/monitoring infrastructure; monolith is the source; microservices repo receives all decomposed services and service-level IaC. |
 | **C12** | Oracle Forms HRMS Modernization | *original* | `ts-plsql-oracle-forms-hrms`, `uc-legacy-modernization-oracle-forms-to-java` | Legacy Oracle Forms/PL/SQL HRMS application paired with Java/Spring Boot migration artifacts, test harness, and architecture documentation. Legacy repo is the static analysis target; use-case repo holds migration planning, target code, and equivalence tests. |
 
@@ -118,7 +118,18 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | SAS to Snowflake migration validation app — sample SAS data (.sas7bdat), lineage mapping, transformation scenarios, validation configs. Streamlit UI with Gemini LLM integration. |
 | **Tech Stack** | Python, Streamlit, SAS data files |
 | **License** | — |
-| **Challenges** | General data migration demos |
+| **Cluster** | C10 |
+| **Challenges** | [SAS to Python/Snowflake](../modules/data-engineering/sas-to-python-snowflake.md) |
+
+### uc-data-migration-sas-to-databricks
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks |
+| **Description** | SAS to dbt/Databricks migration target — dbt project with staging/intermediate/marts layers, Jinja macros replacing PROC FORMAT catalogs, SAS-to-dbt construct mapping documentation. Maps 1:1 from SAS programs in ts-sas-legacy-analytics. |
+| **Tech Stack** | dbt, SQL, Jinja, Databricks |
+| **License** | — |
+| **Cluster** | C10 |
+| **Challenges** | [SAS Migration Analysis](../modules/data-engineering/sas-migration-analysis.md) |
 
 ### uc-data-migration-airflow
 | | |
@@ -242,10 +253,11 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | | |
 |---|---|
 | **URL** | https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics |
-| **Description** | Legacy SAS programs and macros — represents a legacy SAS analytics environment for migration demos. |
+| **Description** | Enterprise SAS analytics estate — 7 banking/insurance business programs, 92 utility macros, Enterprise Guide projects, deployment packages, PROC FORMAT definitions, batch orchestrators with error handling, and sample production logs. |
 | **Tech Stack** | SAS |
 | **License** | Unlicense |
-| **Challenges** | SAS-to-Snowflake migration demos |
+| **Cluster** | C10 |
+| **Challenges** | [SAS to Python/Snowflake](../modules/data-engineering/sas-to-python-snowflake.md), [SAS Migration Analysis](../modules/data-engineering/sas-migration-analysis.md) |
 
 ### ts-java-selenium-testng
 | | |

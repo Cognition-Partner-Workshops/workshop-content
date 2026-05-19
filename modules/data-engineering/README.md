@@ -16,6 +16,7 @@ Challenges focused on data warehouse migration, ETL pipeline modernization, data
 | [Informatica PowerCenter Analysis](informatica-powercenter-analysis.md) | Intermediate | 45 min |
 | [Informatica PowerCenter to Snowflake Migration](informatica-to-snowflake-migration.md) | Advanced | 75 min |
 | [COBOL Copybook to PySpark/JSON](cobol-copybook-to-pyspark-json.md) | Intermediate | 45 min |
+| [SAS Migration Analysis](sas-migration-analysis.md) | Intermediate–Advanced | 75 min |
 
 ## Repositories
 
@@ -25,6 +26,9 @@ Challenges focused on data warehouse migration, ETL pipeline modernization, data
 | uc-data-source-migration-jdbc-normalization | [Data Source Migration](data-source-migration.md) |
 | ts-informatica-powercenter | [Informatica PowerCenter Analysis](informatica-powercenter-analysis.md), [Informatica PowerCenter to Snowflake Migration](informatica-to-snowflake-migration.md) |
 | ts-cobol-carddemo | [COBOL Copybook to PySpark/JSON](cobol-copybook-to-pyspark-json.md) |
+| ts-sas-legacy-analytics | [SAS to Python/Snowflake](sas-to-python-snowflake.md), [SAS Migration Analysis](sas-migration-analysis.md) |
+| uc-data-migration-sas-to-snowflake | [SAS to Python/Snowflake](sas-to-python-snowflake.md) |
+| uc-data-migration-sas-to-databricks | [SAS Migration Analysis](sas-migration-analysis.md) |
 
 ## When to Use This Category
 
