@@ -11,6 +11,26 @@
 | **Event Site** | https://partner-workshops.devinenterprise.com |
 | **Audience** | Enterprise architects, Oracle Forms modernization teams, application portfolio managers, migration program leads |
 
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Structure](#structure)
+- [Featured Labs](#featured-labs)
+  - [Lab 1 — System Understanding & Reverse Engineering (60 min)](#lab-1-system-understanding-reverse-engineering-60-min)
+  - [Lab 2 — Migration Planning & Strategy (60 min)](#lab-2-migration-planning-strategy-60-min)
+  - [Lab 3 — Migration Test Harness & Validation (60 min)](#lab-3-migration-test-harness-validation-60-min)
+  - [Lab 4 — Oracle Forms to Java Code Migration (60 min)](#lab-4-oracle-forms-to-java-code-migration-60-min)
+- [Accelerated Variant](#accelerated-variant)
+- [Additional Challenges](#additional-challenges)
+- [Repos Required on Devin's Machine](#repos-required-on-devins-machine)
+  - [Optional (for extended challenges)](#optional-for-extended-challenges)
+- [Runtime Resources](#runtime-resources)
+- [Context](#context)
+  - [Suitability Notes](#suitability-notes)
+  - [Key Constraints](#key-constraints)
+- [Devin Features Checklist](#devin-features-checklist)
+- [Post-Event](#post-event)
+
 ## Abstract
 
 > This track walks through the complete Oracle Forms modernization lifecycle in four progressive labs using a realistic Oracle Forms 11g/12c HR Management System:
@@ -245,6 +265,15 @@ Participants who finish early or want to go deeper may attempt:
 - **Multi-layer complexity** — business logic spans Forms triggers, PLL libraries, PL/SQL packages, and database triggers; analysis must cross all layers
 - **No Oracle Forms runtime** — Forms cannot be compiled or run in Devin's Linux VM; analysis is static based on XML exports and PL/SQL source
 - **Validation drift** — client-side (PLL) and server-side (package) validation have diverged; migration must choose which rules to keep
+
+## Related Themes
+
+The following [general themes](../../shared/general-themes/) reinforce the narratives in this workshop:
+
+- [Architecture Strengths](../../shared/general-themes/architecture-strengths.md) — clean-room execution and context retrieval are central to how Devin analyzes multi-layer Oracle Forms codebases
+- [Design Patterns](../../shared/general-themes/design-patterns-for-devin.md) — the divide-and-conquer pattern applies directly to analyzing PL/SQL packages independently before cross-referencing
+- [Collaboration Model](../../shared/general-themes/collaboration-model.md) — the PR feedback loop is exercised in Labs 3 and 4
+- [Value Narratives](../../shared/general-themes/value-narratives.md) — modernization risk reduction and velocity framing apply to the full lab arc
 
 ## Devin Features Checklist
 

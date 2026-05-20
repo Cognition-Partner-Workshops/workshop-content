@@ -12,6 +12,26 @@
 | **Facilitator** | TBD |
 | **Event Site** | Remote |
 
+## Table of Contents
+
+- [Abstract](#abstract)
+- [Agenda](#agenda)
+- [Lab Walkthrough](#lab-walkthrough)
+  - [Opening (5 min)](#opening-5-min)
+  - [Phase 1 — Launch the Decomposition (5 min)](#phase-1-launch-the-decomposition-5-min)
+  - [Phase 2 — Explore While Devin Works (15 min)](#phase-2-explore-while-devin-works-15-min)
+  - [Phase 3 — Interact and Refine (25 min)](#phase-3-interact-and-refine-25-min)
+  - [Wrap-up (10 min)](#wrap-up-10-min)
+- [Devin Features Exercised](#devin-features-exercised)
+- [Devin Features Checklist](#devin-features-checklist)
+- [Key Takeaways](#key-takeaways)
+- [Differences from Full 90-Minute Version](#differences-from-full-90-minute-version)
+- [Facilitator Notes](#facilitator-notes)
+  - [Before the Lab](#before-the-lab)
+  - [During the Lab](#during-the-lab)
+  - [Common Issues](#common-issues)
+- [Related Resources](#related-resources)
+
 ## Abstract
 
 > Participants use Devin to decompose the Inventory bounded context from a .NET 8 + Angular 17 monolith into a standalone, platform-conformant microservice — complete with Helm chart, ArgoCD manifests, Dockerfile, CI/CD pipeline, and HTTP-based service communication.
@@ -55,24 +75,26 @@
 
 Create a new Devin session and paste the following prompt. Replace `<participant>` with your name:
 
-> Decompose the Inventory module from @Cognition-Partner-Workshops/ordermanager-monolith into a standalone microservice.
->
-> Work on branch workshop-mason in both repos.
->
-> Use these repos as context for platform patterns and IaC standards:
-> - @Cognition-Partner-Workshops/platform-engineering-shared-services — defines the platform standard (namespaces, network policies, monitoring, ArgoCD)
-> - @Cognition-Partner-Workshops/ordermanager-iac — contains the existing Helm chart, Dockerfile, and ArgoCD patterns to follow
->
-> Deliverables:
-> - New .NET 8 Web API for the inventory-service with its own models, controllers, services, and EF Core DbContext
-> - Angular 17 frontend components for inventory management
-> - Dockerfile — multi-stage build following the pattern in ordermanager-iac/docker/Dockerfile
-> - Helm chart — deployment, service, network policy, service monitor, HPA (follow ordermanager-iac/helm/)
-> - ArgoCD application manifests for dev and staging (follow ordermanager-iac/argocd/)
-> - GitHub Actions CI/CD pipeline — build, test, push to ECR, trigger ArgoCD sync
-> - Monolith refactoring — replace in-process Inventory calls with an HTTP client that calls the new service
->
-> Push the new inventory-service code and all service-level IaC to @Cognition-Partner-Workshops/ordermanager-microservices on branch workshop-mason. Create a PR. Push the monolith refactoring changes to ordermanager-monolith on branch workshop-mason. Create a PR. Build and test both services locally to verify they work together.
+```
+Decompose the Inventory module from @Cognition-Partner-Workshops/ordermanager-monolith into a standalone microservice.
+
+Work on branch workshop-mason in both repos.
+
+Use these repos as context for platform patterns and IaC standards:
+- @Cognition-Partner-Workshops/platform-engineering-shared-services — defines the platform standard (namespaces, network policies, monitoring, ArgoCD)
+- @Cognition-Partner-Workshops/ordermanager-iac — contains the existing Helm chart, Dockerfile, and ArgoCD patterns to follow
+
+Deliverables:
+- New .NET 8 Web API for the inventory-service with its own models, controllers, services, and EF Core DbContext
+- Angular 17 frontend components for inventory management
+- Dockerfile — multi-stage build following the pattern in ordermanager-iac/docker/Dockerfile
+- Helm chart — deployment, service, network policy, service monitor, HPA (follow ordermanager-iac/helm/)
+- ArgoCD application manifests for dev and staging (follow ordermanager-iac/argocd/)
+- GitHub Actions CI/CD pipeline — build, test, push to ECR, trigger ArgoCD sync
+- Monolith refactoring — replace in-process Inventory calls with an HTTP client that calls the new service
+
+Push the new inventory-service code and all service-level IaC to @Cognition-Partner-Workshops/ordermanager-microservices on branch workshop-mason. Push the monolith refactoring changes to ordermanager-monolith on branch workshop-mason. Build and test both services locally to verify they work together.
+```
 
 ### Phase 2 — Explore While Devin Works (15 min)
 

@@ -12,6 +12,44 @@
 | **Tracks** | Single progressive track: Analyze → Generate → Detect & Migrate |
 | **Event Site** | TBD |
 
+## Table of Contents
+
+- [Workshop Overview](#workshop-overview)
+- [Getting the Most from This Workshop](#getting-the-most-from-this-workshop)
+- [Agenda](#agenda)
+- [Lab 1 — Gap Analysis on Banking Microservices (30 min)](#lab-1-gap-analysis-on-banking-microservices-30-min)
+  - [Paste into Devin](#paste-into-devin)
+  - [While Devin works: try Ask Devin](#while-devin-works-try-ask-devin)
+  - [Review the PR](#review-the-pr)
+  - [Key Takeaways](#key-takeaways)
+- [Lab 2 — API-Spec-Driven Microservice Generation (30 min)](#lab-2-api-spec-driven-microservice-generation-30-min)
+  - [Paste into Devin](#paste-into-devin)
+  - [While Devin works: try Ask Devin](#while-devin-works-try-ask-devin)
+  - [Review the PR](#review-the-pr)
+  - [Key Takeaways](#key-takeaways)
+- [Lab 3a — Data Anomaly Detection (15 min)](#lab-3a-data-anomaly-detection-15-min)
+  - [Paste into Devin](#paste-into-devin)
+  - [Key Takeaways](#key-takeaways)
+- [Lab 3b — Legacy CDW to Databricks Migration (15 min)](#lab-3b-legacy-cdw-to-databricks-migration-15-min)
+  - [Paste into Devin](#paste-into-devin)
+  - [While Devin works on 3a and 3b: try Ask Devin](#while-devin-works-on-3a-and-3b-try-ask-devin)
+  - [Review the PRs](#review-the-prs)
+  - [Key Takeaways](#key-takeaways)
+- [Post-Session Exercises](#post-session-exercises)
+  - [Exercise A: COBOL Copybook to PySpark/JSON Config Generation](#exercise-a-cobol-copybook-to-pysparkjson-config-generation)
+  - [Exercise B: Automated Security Remediation & Vulnerability Reporting](#exercise-b-automated-security-remediation-vulnerability-reporting)
+  - [Exercise C: Payment Payload Gap Analysis & Business Capability Decomposition](#exercise-c-payment-payload-gap-analysis-business-capability-decomposition)
+  - [Exercise D: SAS to Python/Snowflake Migration](#exercise-d-sas-to-pythonsnowflake-migration)
+  - [Exercise E: Monolith-to-Microservices Extraction (Spring Boot Upgrade)](#exercise-e-monolith-to-microservices-extraction-spring-boot-upgrade)
+  - [Exercise F: Ab Initio ETL Framework → Databricks Migration](#exercise-f-ab-initio-etl-framework-databricks-migration)
+- [Prerequisites](#prerequisites)
+  - [Repos Required (must be available in the target GitHub org)](#repos-required-must-be-available-in-the-target-github-org)
+  - [Integration Requirements](#integration-requirements)
+  - [Participant Requirements](#participant-requirements)
+- [External GitHub Considerations](#external-github-considerations)
+- [Notes](#notes)
+- [Post-Event](#post-event)
+
 ## Workshop Overview
 
 This is a hands-on workshop for teams getting their first experience with Devin. The labs are structured as a progressive ramp — starting with low-risk analysis, building to code generation, and finishing with data quality and migration. By the end, participants will have used Devin to analyze a codebase, generate a microservice from an API spec, detect data anomalies, and migrate a legacy data layer to a modern schema.
@@ -87,7 +125,7 @@ Perform a comprehensive technical assessment of ts-java-spring-boot-internet-ban
 3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
    Prioritize the gaps into a phased plan: Phase 1 (quick wins), Phase 2 (important), Phase 3 (polish). Include sample Devin prompts for each remediation item.
 
-Open a PR with all three documents.
+
 ```
 
 ### While Devin works: try Ask Devin
@@ -135,7 +173,7 @@ Generate all components following Spring Boot conventions:
 7. **Exception handling** — global handler with RFC 7807 Problem Details responses
 8. **JUnit tests** — aim for 90%+ line coverage. Include unit tests for service logic, integration tests for the controller layer (@WebMvcTest), and repository tests (@DataJpaTest)
 
-Use an H2 in-memory database for dev/test. Structure the project in a new `vet-service/` directory. Open a PR.
+Use an H2 in-memory database for dev/test. Structure the project in a new `vet-service/` directory.
 ```
 
 ### While Devin works: try Ask Devin
@@ -180,7 +218,7 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 
 4. **Fix:** Implement data validation in the service layer that catches these anomalies at ingestion time — add input validation, type coercion with error handling, and fallback defaults where appropriate. Add tests that verify the validation catches each anomaly type.
 
-Open a PR with the anomaly report, root cause analysis, validation code, and tests.
+
 ```
 
 > **Tip:** Kick off this session and immediately move to Lab 3b below — both use the same repo but are independent Devin sessions.
@@ -226,7 +264,7 @@ Generate a complete Databricks/PySpark migration pipeline:
 
 4. **Migration Runbook** (`docs/DATABRICKS_MIGRATION_RUNBOOK.md`): Document every transformation decision, the mapping from legacy column names to modern names, type conversion choices, partitioning rationale, and the recommended execution order in Databricks.
 
-Open a PR with all generated artifacts.
+
 ```
 
 ### While Devin works on 3a and 3b: try Ask Devin
@@ -272,7 +310,7 @@ Generate:
 
 Then repeat for `CUSTREC.cpy` → `custdata.txt` and `CVACT02Y.cpy` → `carddata.txt`.
 
-Open a PR with all generated artifacts and a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e.g., COMP-3 → DecimalType, PIC X → StringType).
+Include a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e.g., COMP-3 → DecimalType, PIC X → StringType).
 ```
 
 ---
@@ -298,7 +336,7 @@ Produce a unified `SECURITY_POSTURE_REPORT.md` that includes:
 - A prioritized remediation roadmap — what to fix first and why
 - Fix the top 3 most critical findings and re-verify
 
-Open a PR with the report and the fixes.
+
 ```
 
 ---
@@ -334,7 +372,7 @@ Deliverables:
    - Include a dependency diagram (in text/markdown) showing current vs. proposed service interactions
    - Prioritize recommendations by impact and feasibility
 
-Open a PR with all three documents.
+
 ```
 
 ---
@@ -360,7 +398,7 @@ Then analyze the sample datasets in uc-data-migration-sas-to-snowflake/sample_da
 
 Document all translation decisions in `SAS_MIGRATION_NOTES.md` — especially how SAS-specific constructs (macro variables, formats, informats, missing value handling) map to Python/Snowflake equivalents.
 
-Open a PR with the Python functions, tests, Snowflake DDL, and migration notes.
+
 ```
 
 ---
@@ -397,7 +435,7 @@ Perform a two-phase modernization:
    - Create `docs/UPGRADE_NOTES.md` with every breaking change encountered and how it was resolved
    - Create `docs/EXTRACTION_DECISIONS.md` explaining the domain boundary choices
 
-Open a PR with the upgraded monolith, extracted microservice, Docker Compose, and documentation.
+
 ```
 
 ---
@@ -444,7 +482,7 @@ Migrate this estate to Databricks Lakehouse architecture:
    - Execution order for the migration
    - Risks and mitigations (e.g., packed decimal handling, partition strategy differences)
 
-Open a PR with all Databricks artifacts and the migration runbook.
+
 ```
 
 ---

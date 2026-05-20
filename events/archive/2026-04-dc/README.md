@@ -9,6 +9,22 @@
 | **Duration** | ~5 hours (5 labs + breaks) |
 | **Event Site** | https://partner-workshops-no-anthropic.devinenterprise.com |
 
+## Table of Contents
+
+- [Getting the Most from This Workshop](#getting-the-most-from-this-workshop)
+- [Featured Labs](#featured-labs)
+  - [Lab 1 — End-to-End Legacy Modernization: New Tech Stack + Microservices + Data Source (75 min)](#lab-1-end-to-end-legacy-modernization-new-tech-stack-microservices-data-source-75-min)
+  - [Lab 2 — Framework Upgrades: Angular + Spring Boot (60 min)](#lab-2-framework-upgrades-angular-spring-boot-60-min)
+  - [Lab 3 — Data Source Migration: Rewrite + Reconnect + Test (60 min)](#lab-3-data-source-migration-rewrite-reconnect-test-60-min)
+  - [Lab 4 — New Feature Development (45 min, as time permits)](#lab-4-new-feature-development-45-min-as-time-permits)
+  - [Lab 5 — BDD Test Case Generation for REST APIs (60 min)](#lab-5-bdd-test-case-generation-for-rest-apis-60-min)
+- [Additional Challenges](#additional-challenges)
+- [Repos Required on Devin's Machine](#repos-required-on-devins-machine)
+  - [Optional (for extended challenges)](#optional-for-extended-challenges)
+- [Repo Duplication Notes](#repo-duplication-notes)
+- [Context](#context)
+- [Devin Features Checklist](#devin-features-checklist)
+
 ## Getting the Most from This Workshop
 
 > **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
@@ -49,13 +65,19 @@ This lab demonstrates the combined modernization pipeline that enterprises face:
 Choose one of the three phases to start with, or run all three as parallel sessions. Each session runs independently on Devin's machine — kick them off and move on to Step 2 while Devin works.
 
 **Phase A — Tech Stack Migration (COBOL → Java):**
-> Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical output to the COBOL version for the sample data files in the repo. Document the field mappings in a `MIGRATION_NOTES.md`. Open a PR.
+```
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical output to the COBOL version for the sample data files in the repo. Document the field mappings in a `MIGRATION_NOTES.md`.
+```
 
 **Phase B — Microservice Extraction:**
-> Upgrade uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly. Open a PR.
+```
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly.
+```
 
 **Phase C — Data Source Migration:**
-> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types. Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Add validation tests that compare API responses before and after the migration to verify data integrity. Open a PR.
+```
+Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types. Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Add validation tests that compare API responses before and after the migration to verify data integrity.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -120,13 +142,19 @@ See the full challenge details for [Legacy Modernization Combined](../../../modu
 Run these as **parallel sessions** to see how the same upgrade pattern scales across repos. Each session works independently — kick off all three and let Devin handle the tedious migration work while you explore Ask Devin:
 
 **Session A — Spring Boot Upgrade:**
-> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description. Open a PR.
+```
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description.
+```
 
 **Session B — Angular Upgrade (PetClinic):**
-> Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully. Document every breaking change encountered. Open a PR.
+```
+Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully. Document every breaking change encountered.
+```
 
 **Session C — Angular Upgrade (RealWorld) (optional, for comparison):**
-> Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass. Open a PR.
+```
+Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -191,15 +219,17 @@ This lab has two distinct parts:
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This is a loan management application currently reading from a denormalized legacy data warehouse where all columns are VARCHAR.
->
-> Part 1 — Rewrite the data source:
-> Create modern JPA entities matching the target schema in data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long, enums). Write a migration service that reads from legacy tables, transforms the data (parse dates, convert amounts, expand status codes per data/mappings/column_mappings.md), and inserts into modern tables. Add data reconciliation tests that verify record counts match and field values are correctly transformed.
->
-> Part 2 — Reconnect the app:
-> Update LoanService.java to read from modern repositories instead of legacy ones. Ensure all existing API endpoints return the same data as before. Add golden-file validation tests that capture API responses before the migration and assert they match after.
->
-> Create a `TESTING_REPORT.md` that documents: what tests were added, what they validate, and how to verify the migration is correct. Open a PR.
+```
+Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This is a loan management application currently reading from a denormalized legacy data warehouse where all columns are VARCHAR.
+
+Part 1 — Rewrite the data source:
+Create modern JPA entities matching the target schema in data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long, enums). Write a migration service that reads from legacy tables, transforms the data (parse dates, convert amounts, expand status codes per data/mappings/column_mappings.md), and inserts into modern tables. Add data reconciliation tests that verify record counts match and field values are correctly transformed.
+
+Part 2 — Reconnect the app:
+Update LoanService.java to read from modern repositories instead of legacy ones. Ensure all existing API endpoints return the same data as before. Add golden-file validation tests that capture API responses before the migration and assert they match after.
+
+Create a `TESTING_REPORT.md` that documents: what tests were added, what they validate, and how to verify the migration is correct.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -268,10 +298,14 @@ For example, ask: *"What existing patterns does timesheet-app use for CRUD featu
 Then use what you learn to refine one of these prompts before pasting it into a Devin session:
 
 **Option A — Full-Stack CRUD Feature (timesheet-app):**
-> Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add both the backend API endpoints and the frontend UI page. Follow the existing patterns in the codebase for the data model, API structure, and React components. Write tests for the backend endpoints. Open a PR.
+```
+Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add both the backend API endpoints and the frontend UI page. Follow the existing patterns in the codebase for the data model, API structure, and React components. Write tests for the backend endpoints.
+```
 
 **Option B — API Feature (loan service):**
-> Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint. Open a PR.
+```
+Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create a new endpoint GET /api/loans/:id/payments that returns a paginated list of payment records for a given loan. Include filtering by date range and payment type. Add proper error handling for invalid loan IDs. Write JUnit tests for the new endpoint.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -321,16 +355,18 @@ See the full challenge details for [New Feature Development](../../../modules/ap
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework (from RedFroggy, MIT license) with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
->
-> Then add new Gherkin feature files that test edge cases for the existing Users API:
-> - `src/test/resources/features/users-edge-cases.feature` covering:
->   - Creating a user with missing required fields (expect 400)
->   - Creating a user with duplicate ID (expect 409 or appropriate error)
->   - Pagination and sorting of the users list
->   - Input validation (invalid age values, empty name fields)
->
-> Also create a new `OrderController` in the test application with endpoints for managing orders (linked to users). Write corresponding Gherkin feature files that test the order lifecycle (create, read, update, delete) and cross-resource relationships (e.g., get orders for a specific user). Open a PR.
+```
+Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework (from RedFroggy, MIT license) with pre-built step definitions for REST API testing. Run `mvn test` to see the 16 existing scenarios pass.
+
+Then add new Gherkin feature files that test edge cases for the existing Users API:
+- `src/test/resources/features/users-edge-cases.feature` covering:
+  - Creating a user with missing required fields (expect 400)
+  - Creating a user with duplicate ID (expect 409 or appropriate error)
+  - Pagination and sorting of the users list
+  - Input validation (invalid age values, empty name fields)
+
+Also create a new `OrderController` in the test application with endpoints for managing orders (linked to users). Write corresponding Gherkin feature files that test the order lifecycle (create, read, update, delete) and cross-resource relationships (e.g., get orders for a specific user).
+```
 
 #### Step 2: Research with Ask Devin
 

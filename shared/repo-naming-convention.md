@@ -29,7 +29,7 @@ All repositories in the [Cognition-Partner-Workshops](https://github.com/Cogniti
 | "We need frontend + backend + infra repos for EventFlow" | App (`eventflow-*`) | Multiple repos for one application — app name groups them |
 | "We need a Spring Boot codebase to show the tech stack" | `ts-java-spring-boot-*` | The tech stack drove the need |
 | "We need a lab for CVE remediation using SonarQube" | `uc-cve-remediation-sonarqube` | The task/exercise drove the need (tech-agnostic) |
-| "We forked Keycloak for IAM demos" | `keycloak` | Well-known project, keep upstream name |
+| "We forked Keycloak for IAM workshops" | `keycloak` | Well-known project, keep upstream name |
 
 ## Repo Description Format
 

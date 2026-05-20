@@ -2,6 +2,8 @@
 
 Guide for setting up and running a Hands-on Devin Workshop.
 
+> **Quality standards:** All event content should follow the [Quality Checklist](quality-checklist.md). Review it before creating or editing event README files.
+
 ## Pre-Event Checklist (1 week before)
 
 ### Repos and Code
@@ -27,31 +29,33 @@ Guide for setting up and running a Hands-on Devin Workshop.
 - [ ] Run through each selected challenge yourself (or with Devin) to identify gotchas
 - [ ] Prepare "hint cards" for common stuck points
 - [ ] Have backup challenges ready if primary ones are completed quickly
-- [ ] Test screen sharing and demo setup
+- [ ] Test screen sharing and presentation setup
+- [ ] Review the [Quality Checklist](quality-checklist.md) against the event README
+- [ ] If the event needs facilitator-specific pacing or recovery notes, create a `FACILITATOR_COMPANION.md` in the event directory (see [Quality Checklist § Facilitator Companion](quality-checklist.md#facilitator-companion))
 
 ## Day-of Checklist
 
 ### Setup (30 min before start)
 - [ ] Verify hosted apps are running (health check endpoints)
 - [ ] Open all relevant repos in browser tabs
-- [ ] Prepare a demo Devin session (pre-loaded, ready to show)
+- [ ] Prepare a Devin session (pre-loaded, ready to show)
 - [ ] Test WiFi/network connectivity
-- [ ] Set up screen for live Devin demo
+- [ ] Set up screen for live Devin walkthrough
 
 ### Opening (15 min)
 1. Welcome and introductions
-2. Brief Devin overview (what it is, what it can do)
+2. Brief Devin overview (what it is, what it can do) — draw from [general themes](general-themes/) for positioning
 3. Show the event site with challenge instructions
 4. Explain the repo naming convention and where to find code
 5. Point out the Devin Features checklist (Appendix)
-6. Set expectations: "These are creative challenges, not exams"
+6. Set expectations: "These are hands-on workshops, not exams"
 
 ### During the Workshop
 - **Float and assist:** Walk around, check in on participants
 - **Watch for:** Participants stuck on authentication, repo access, or environment issues
 - **Encourage:** Trying different approaches, experimenting with Devin features
 - **Remind:** Check the Devin Features checklist — try to discover features organically
-- **Demo:** If many people are stuck on the same thing, do a quick live demo
+- **Live walkthrough:** If many people are stuck on the same thing, do a quick walkthrough
 
 ### Common Issues and Solutions
 
@@ -77,7 +81,8 @@ Guide for setting up and running a Hands-on Devin Workshop.
 - [ ] Collect and review participant feedback
 - [ ] Document any issues discovered during the workshop
 - [ ] Update challenge modules if problems were found
-- [ ] Archive event-specific resources
+- [ ] Archive event-specific resources (move event directory to `events/archive/`)
+- [ ] Run a final [Quality Checklist](quality-checklist.md) pass on the event README before archiving
 - [ ] Send follow-up email with:
   - Links to Devin documentation
   - Links to their PRs/sessions from the workshop
@@ -85,9 +90,9 @@ Guide for setting up and running a Hands-on Devin Workshop.
 
 ## Workshop Format Variations
 
-### Lightning Demo (1 hour)
+### Lightning Walkthrough (1 hour)
 - Facilitator-driven
-- Show 2-3 challenges live
+- Show 2–3 challenges live
 - Participants watch, then try one challenge in the remaining time
 - Best for: executive audiences, first introductions
 

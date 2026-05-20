@@ -26,7 +26,9 @@ These labs extend the live workshop with four additional use cases. Each lab is 
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
-> Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs. Open a PR with the Java code and tests.
+```
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs.
+```
 
 ### Step 2: Level Up with AskDevin
 
@@ -70,7 +72,9 @@ Once Devin opens a PR from step 1:
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
-> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
+```
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass.
+```
 
 ### Step 2: Level Up with AskDevin
 
@@ -114,7 +118,9 @@ Once Devin opens a PR from step 1:
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
-> Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results and open a PR.
+```
+Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results.
+```
 
 ### Step 2: Level Up with AskDevin
 
@@ -159,7 +165,9 @@ Once Devin opens a PR from step 1:
 
 ### Step 1: Get Started Fast (copy-paste this prompt into Devin)
 
-> Analyze all Teradata DDL in uc-dw-migration-teradata-to-snowflake/ddl/. Convert every table and view to Snowflake-compatible SQL, handling all Teradata-specific features (SET/MULTISET, PRIMARY INDEX, PARTITION BY RANGE_N, COMPRESS, CASESPECIFIC, FORMAT, QUALIFY, CSUM, MAVG). Place converted files in a new snowflake/ directory mirroring the original structure. Create a MIGRATION_RUNBOOK.md documenting every translation decision. Open a PR.
+```
+Analyze all Teradata DDL in uc-dw-migration-teradata-to-snowflake/ddl/. Convert every table and view to Snowflake-compatible SQL, handling all Teradata-specific features (SET/MULTISET, PRIMARY INDEX, PARTITION BY RANGE_N, COMPRESS, CASESPECIFIC, FORMAT, QUALIFY, CSUM, MAVG). Place converted files in a new snowflake/ directory mirroring the original structure. Create a MIGRATION_RUNBOOK.md documenting every translation decision.
+```
 
 ### Step 2: Level Up with AskDevin
 

@@ -12,6 +12,40 @@
 | **Tracks** | **Track A:** Security & Issue Triage · **Track B:** Modernization · **Track C:** Feature Development & Testing |
 | **Event Site** | TBD |
 
+## Table of Contents
+
+- [Workshop Overview](#workshop-overview)
+- [Getting the Most from This Workshop](#getting-the-most-from-this-workshop)
+- [Agenda](#agenda)
+- [Track A: Security & Issue Triage](#track-a-security-issue-triage)
+  - [Lab A1 — SAST Scans & Vulnerability Remediation](#lab-a1-sast-scans-vulnerability-remediation)
+  - [Lab A2 — Bug Fixes & Root Cause Analysis](#lab-a2-bug-fixes-root-cause-analysis)
+  - [Lab A3 — Scheduled Dependency Hygiene](#lab-a3-scheduled-dependency-hygiene)
+  - [Spotlight: Comprehensive Security Reporting](#spotlight-comprehensive-security-reporting)
+- [Track B: Modernization](#track-b-modernization)
+  - [Lab B1 — Rearchitecting Monolith to Microservice](#lab-b1-rearchitecting-monolith-to-microservice)
+  - [Lab B2 — Upgrading EOL Systems to LTS Versions](#lab-b2-upgrading-eol-systems-to-lts-versions)
+  - [Lab B3 — Language Translation](#lab-b3-language-translation)
+  - [Spotlight: API-Spec-Driven Microservice Generation](#spotlight-api-spec-driven-microservice-generation)
+  - [Spotlight: Domain Decomposition Analysis](#spotlight-domain-decomposition-analysis)
+- [Track C: Feature Development & Testing](#track-c-feature-development-testing)
+  - [Lab C1 — Add a Feature + PR Review Feedback](#lab-c1-add-a-feature-pr-review-feedback)
+  - [Lab C2 — Add Test Coverage](#lab-c2-add-test-coverage)
+  - [Lab C3 — Perform E2E Tests & Fix Issues](#lab-c3-perform-e2e-tests-fix-issues)
+  - [Spotlight: Automated Data Anomaly Detection & Triage](#spotlight-automated-data-anomaly-detection-triage)
+  - [Spotlight: Codebase Knowledge Extraction & Gap Analysis](#spotlight-codebase-knowledge-extraction-gap-analysis)
+- [Additional Challenges](#additional-challenges)
+- [Suggested Formats](#suggested-formats)
+- [Spotlight Prompts Summary](#spotlight-prompts-summary)
+- [Repos Required](#repos-required)
+  - [Track A (Security & Issue Triage)](#track-a-security-issue-triage)
+  - [Track B (Modernization)](#track-b-modernization)
+  - [Track C (Feature Development & Testing)](#track-c-feature-development-testing)
+  - [Spotlight Prompts (additional)](#spotlight-prompts-additional)
+- [Use Case Inspiration Notes](#use-case-inspiration-notes)
+- [Context](#context)
+- [Devin Features Checklist](#devin-features-checklist)
+
 ## Workshop Overview
 
 This is a hands-on general workshop covering the three most common categories of engineering work: keeping systems secure and stable, modernizing legacy technology, and building new features with quality. Each track is self-contained — participants can follow all three in sequence for a full-day experience, or focus on one or two tracks in a shorter session.
@@ -100,7 +134,7 @@ Produce a unified `SECURITY_POSTURE_REPORT.md` that includes:
 - A prioritized remediation roadmap — what to fix first and why
 - Fix the top 3 most critical findings and re-verify
 
-Open a PR with the report and the fixes.
+
 ```
 
 #### Why Try This
@@ -176,7 +210,7 @@ Generate all components following Spring Boot conventions:
 7. **Exception handling** — global handler with RFC 7807 Problem Details responses
 8. **JUnit tests** — aim for 90%+ line coverage. Include unit tests for service logic, integration tests for the controller layer (@WebMvcTest), and repository tests (@DataJpaTest)
 
-Use an H2 in-memory database for dev/test. Structure the project with a clean package layout. Open a PR.
+Use an H2 in-memory database for dev/test. Structure the project with a clean package layout.
 ```
 
 #### Why Try This
@@ -209,7 +243,7 @@ Deliverables:
 4. **API Contract Gaps** — compare the existing REST API endpoints against RESTful design best practices (consistent naming, proper HTTP methods, pagination, error format, versioning). Document gaps and recommendations
 5. **Target Architecture Diagram** — describe (in text/markdown) the target microservice architecture: which services exist, how they communicate (sync HTTP vs. async events), and what shared infrastructure they need
 
-Write the analysis to `docs/DECOMPOSITION_ANALYSIS.md`. Open a PR.
+Write the analysis to `docs/DECOMPOSITION_ANALYSIS.md`.
 ```
 
 #### Why Try This
@@ -275,7 +309,7 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 
 4. **Fix:** Implement data validation in the service layer that catches these anomalies at ingestion time — add input validation, type coercion with error handling, and fallback defaults where appropriate. Add tests that verify the validation catches each anomaly type.
 
-Open a PR with the anomaly report, root cause analysis, validation code, and tests.
+
 ```
 
 #### Why Try This
@@ -324,7 +358,7 @@ Perform a comprehensive technical assessment of timesheet-app. Produce the follo
 3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
    Prioritize the gaps into a phased plan: Phase 1 (quick wins — high impact, low effort), Phase 2 (important — high impact, medium effort), Phase 3 (polish — lower impact improvements). Include sample Devin prompts for each remediation item so the team can immediately start fixing gaps.
 
-Open a PR with all three documents.
+
 ```
 
 #### Why Try This
