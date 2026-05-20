@@ -5,6 +5,7 @@
 - [Challenge](#challenge)
 - [Quick Start](#quick-start)
 - [Repositories](#repositories)
+- [Legacy Schema Characteristics](#legacy-schema-characteristics)
 - [Target Outcomes](#target-outcomes)
 - [What Participants Will Learn](#what-participants-will-learn)
 - [Devin Features Exercised](#devin-features-exercised)
