@@ -20,7 +20,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [DevOps & CI/CD](devops-cicd/) | DevOps Engineer, Release Engineer | 5 modules |
 | [Cloud & Infrastructure](cloud-infrastructure/) | Cloud Engineer, Platform Engineer | 6 modules |
 | [Observability & SRE](observability-sre/) | SRE, Observability Engineer | 4 modules |
-| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 8 modules |
+| [Data Engineering](data-engineering/) | Data Engineer, Analytics Engineer | 9 modules |
 | [Architecture & Design](architecture-design/) | Solution Architect, Enterprise Architect | 5 modules |
 | [AI & ML Engineering](ai-ml-engineering/) | ML Engineer, AI Engineer | 3 modules |
 | [Technical Documentation](technical-documentation/) | Technical Writer, Documentation Engineer | 6 modules |
@@ -121,6 +121,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | [Informatica PowerCenter Analysis](data-engineering/informatica-powercenter-analysis.md) | Intermediate | 45 min | ts-informatica-powercenter |
 | [Informatica PowerCenter to Snowflake Migration](data-engineering/informatica-to-snowflake-migration.md) | Advanced | 75 min | ts-informatica-powercenter, uc-dw-migration-teradata-to-snowflake |
 | [SAS Migration Analysis](data-engineering/sas-migration-analysis.md) | Intermediate–Advanced | 75 min | ts-sas-legacy-analytics, uc-data-migration-sas-to-databricks |
+| [SAS CI/CD & Operationalization](data-engineering/sas-cicd-operationalization.md) | Intermediate–Advanced | 60 min | ts-sas-legacy-analytics, uc-data-migration-sas-to-databricks |
 
 ### Architecture & Design
 
