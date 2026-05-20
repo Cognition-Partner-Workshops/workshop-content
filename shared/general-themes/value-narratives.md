@@ -74,6 +74,45 @@ Devin's cost model is consumption-based (ACU — Agent Compute Units):
 
 **Narrative:** "The ACU cost for this migration campaign is a fraction of the engineering salary cost, and it delivers the licensing savings months earlier than a manual approach."
 
+## Operating Model Efficiency
+
+**For: SI Practice Leads, Delivery Directors, P&L Owners, Engagement Controllers**
+
+The near-term opportunity is to build the most efficient operating model atop digital and human workers. Efficiency is the primary value driver; quality rises as a consequence of embedding AI intelligence in every task.
+
+### The Efficiency → Quality → Outcomes Cycle
+
+The hybrid operating model creates a virtuous cycle:
+
+1. **Efficiency first**: Devin handles high-volume, well-defined execution at consistent throughput — no idle time, no ramp cost, no context-switching loss
+2. **Quality rises**: Consistency and standardization (playbooks, Devin Review, automated testing) raise baseline quality without adding cost
+3. **Outcomes improve**: Fewer defects → less rework → faster delivery → shorter time-to-remediation → more capacity for the next cycle
+
+This cycle compounds. As playbooks mature and knowledge notes accumulate, Devin's first-pass success rate improves, human review burden decreases, and margin expands.
+
+### Estimatability Through Standardization
+
+Devin's consistency makes work more estimatable than traditional human delivery. When every task follows the same playbook and produces the same artifact structure, variance in execution time and cost narrows dramatically. This matters for:
+
+- **SIs bidding on contracts**: Bottom-up cost estimates built from standard units of work (bug fix, migration unit, test module) have lower estimation risk
+- **Internal delivery teams**: Sprint planning becomes more reliable when the Devin-executed portion has predictable throughput
+- **Managed service providers**: Monthly operational costs are consistent and forecastable
+
+**Metric framing:** "Our estimation accuracy improves because the AI-executed portion of work has low variance. The risk concentrates in the human judgment work — which is a smaller portion of total effort."
+
+### Unit-of-Work Economics
+
+The organization that defines the low-level unit of work controls the cost model. Whether an SI bidding on a migration or an internal team planning a quarter, the formula is:
+
+```
+Unit cost = (ACUs per unit × $/ACU) + (Review hours per unit × Blended rate)
+Total bid = Σ(Unit cost × Quantity) + Orchestration overhead + Margin
+```
+
+**Narrative:** "We decompose every engagement into standard units of work. Each unit has a known Devin cost and a known human review cost. This gives us — and you — predictable pricing with tighter confidence intervals than traditional estimation."
+
+See [Billing Model Transformation](https://github.com/Devin-Samples/field-kit/blob/main/docs/sales-guides/billing-model-transformation.md) for worked examples, staffing model scenarios, and engagement billing models.
+
 ## Audience-Specific Talking Points
 
 ### For Sales Engineering
@@ -86,6 +125,13 @@ Devin's cost model is consumption-based (ACU — Agent Compute Units):
 - Emphasize **toolchain-agnostic stubs** — customers do not need to change their tool stack
 - Show **scheduled sessions** as ongoing value that extends beyond the initial engagement
 
+### For Systems Integrators and Managed Service Delivery
+- Lead with **operating model efficiency** — the hybrid model (human + digital workers) produces the most competitive cost structure for bidding
+- Show the **unit-of-work estimation** model — standardized Devin tasks have low variance, making bids more predictable and margins more defensible
+- Emphasize **quality as a built-in outcome** — automated review, testing, and security remediation are not separate line items; they are inherent in the operating model
+- Frame **scalability without staffing risk** — Devin capacity scales immediately without bench cost, recruitment lag, or attrition risk
+- Show the **margin improvement** path — as playbooks mature, Devin's first-pass success rate improves, human review burden decreases, and margin expands over the life of the engagement
+
 ### For Training & Enablement
 - Lead with the **collaboration model** — Devin works the way engineers already work (PRs, CI, code review)
 - Use **hands-on labs** from the partner workshops to demonstrate capabilities in a safe environment
@@ -95,3 +141,4 @@ Devin's cost model is consumption-based (ACU — Agent Compute Units):
 - Lead with **risk reduction** and **cost optimization** — these are the decision-making factors
 - Frame Devin as **team augmentation**, not replacement — the engineering team becomes more effective, not smaller
 - Show the **compounding value** model — initial setup investment yields growing returns over time
+- For P&L owners: show the **efficiency → quality → outcomes cycle** — efficiency gains are the entry point, quality improvements compound the value, and the financial impact grows over time
