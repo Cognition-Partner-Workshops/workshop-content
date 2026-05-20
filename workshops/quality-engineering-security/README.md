@@ -39,8 +39,7 @@ A few tips to maximize your hands-on time:
   - [Lab 2 — E2E Testing & Documentation](#lab-2--e2e-testing--documentation-45-min)
   - [Lab 3 — CVE Remediation with Local SAST Tools](#lab-3--cve-remediation-with-local-sast-tools-60-min)
   - [Lab 4 — Shift Left & Security Antipatterns](#lab-4--shift-left--security-antipatterns-45-min)
-- [Repos Required](#repos-required)
-- [Key Takeaways](#key-takeaways)
+- [Repos Required](#repos-required-on-devins-machine)
 
 ---
 

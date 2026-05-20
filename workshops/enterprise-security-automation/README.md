@@ -40,8 +40,7 @@ A few tips to maximize your hands-on time:
   - [Lab 1 — Event-Driven SAST Remediation](#lab-1--event-driven-sast-remediation-90-min)
   - [Lab 2 — Mass Security Backlog Remediation with Agent Orchestration](#lab-2--mass-security-backlog-remediation-with-agent-orchestration-90-min)
   - [Lab 3 — One-Shot Tech Debt Remediation](#lab-3--one-shot-tech-debt-remediation-via-long-term-reasoning-75-min)
-- [Repos Required](#repos-required)
-- [Key Takeaways](#key-takeaways)
+- [Repos Required](#repos-required-on-devins-machine)
 
 ---
 

@@ -43,9 +43,8 @@ A few tips to maximize your hands-on time:
   - [Lab 2 — Migration Planning & Domain Decomposition](#lab-2--migration-planning--domain-decomposition-60-min)
   - [Lab 3 — Migration Test Harness & Validation Strategy](#lab-3--migration-test-harness--validation-strategy-60-min)
   - [Lab 4 — COBOL to Java Code Migration](#lab-4--cobol-to-java-code-migration-60-min)
-- [Duration Variants](#duration-variants)
-- [Repos Required](#repos-required)
-- [Key Takeaways](#key-takeaways)
+- [Accelerated Variant](#accelerated-variant)
+- [Repos Required](#repos-required-on-devins-machine)
 
 ---
 

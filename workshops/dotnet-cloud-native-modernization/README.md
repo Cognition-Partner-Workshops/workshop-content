@@ -39,7 +39,6 @@ A few tips to maximize your hands-on time:
   - [Lab 2 — Integration Testing Between Monolith & Microservice](#lab-2--integration-testing-between-monolith--microservice-45-min)
   - [Lab 3 — Cross-Service Bug Hunt](#lab-3--cross-service-bug-hunt-45-min)
 - [Repos Required](#repos-required)
-- [Key Takeaways](#key-takeaways)
 
 ---
 
