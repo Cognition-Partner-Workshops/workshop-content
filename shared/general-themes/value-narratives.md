@@ -90,13 +90,17 @@ The hybrid operating model creates a virtuous cycle:
 
 This cycle compounds. As playbooks mature and knowledge notes accumulate, Devin's first-pass success rate improves, human review burden decreases, and margin expands.
 
-### Estimatability Through Standardization
+### Task Decomposition and Estimatability
 
-Devin's consistency makes work more estimatable than traditional human delivery. When every task follows the same playbook and produces the same artifact structure, variance in execution time and cost narrows dramatically. This matters for:
+The key cost lever is **how well you decompose a large effort into smaller units of work**. A "Spring Boot upgrade" is a campaign with dozens of units. The cost depends on how granularly you carve it, the outcome distribution at each unit (complete on first pass, rework needed, or scrapped for human takeover), and how well the surrounding system supports the agent (environment blueprints, playbooks, CI/CD, test coverage).
+
+Devin's consistency makes each unit more estimatable than traditional human delivery. When every task follows the same playbook and produces the same artifact structure, variance in execution time and cost narrows dramatically. This matters for:
 
 - **SIs bidding on contracts**: Bottom-up cost estimates built from standard units of work (bug fix, migration unit, test module) have lower estimation risk
 - **Internal delivery teams**: Sprint planning becomes more reliable when the Devin-executed portion has predictable throughput
 - **Managed service providers**: Monthly operational costs are consistent and forecastable
+
+The right granularity is **per-resource or per-module**, not per-line-of-code. Cost can be anchored on whichever proxy the audience uses: per human labor hour equivalent, per people-day, per story point, per ticket, or per module.
 
 **Metric framing:** "Our estimation accuracy improves because the AI-executed portion of work has low variance. The risk concentrates in the human judgment work — which is a smaller portion of total effort."
 
@@ -131,6 +135,7 @@ See [Billing Model Transformation](https://github.com/Devin-Samples/field-kit/bl
 - Emphasize **quality as a built-in outcome** — automated review, testing, and security remediation are not separate line items; they are inherent in the operating model
 - Frame **scalability without staffing risk** — Devin capacity scales immediately without bench cost, recruitment lag, or attrition risk
 - Show the **margin improvement** path — as playbooks mature, Devin's first-pass success rate improves, human review burden decreases, and margin expands over the life of the engagement
+- **Name the competitive displacement risk** — in RFP scenarios, the SI with the most efficient operating model wins. If a competitor bids with a hybrid workforce and you bid headcount-only, you lose on cost, timeline, and quality simultaneously. The cost of not adopting is losing work to organizations that operate more efficiently
 
 ### For Training & Enablement
 - Lead with the **collaboration model** — Devin works the way engineers already work (PRs, CI, code review)
