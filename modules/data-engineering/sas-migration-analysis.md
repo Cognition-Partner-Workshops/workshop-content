@@ -90,9 +90,9 @@ Intermediate to Advanced — 75 minutes
 
 ---
 
-<a id="lab-1-estate-discovery"></a>
 ## Hands-On Labs
 
+<a id="lab-1-estate-discovery"></a>
 ### Lab 1: Estate Discovery
 
 **Repository:** [ts-sas-legacy-analytics](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics)
