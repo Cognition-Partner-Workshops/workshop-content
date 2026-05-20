@@ -1,5 +1,16 @@
 # Remediate Vulnerabilities
 
+## Table of Contents
+
+- [Challenge](#challenge)
+- [Quick Start](#quick-start)
+- [Target Outcomes](#target-outcomes)
+- [What Participants Will Learn](#what-participants-will-learn)
+- [Devin Features Exercised](#devin-features-exercised)
+- [timesheet-app](#timesheet-app)
+- [uc-cve-remediation-regulatory-compliance](#uc-cve-remediation-regulatory-compliance)
+- [Going Further](#going-further)
+
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
@@ -11,6 +22,19 @@
 
 Use local SAST tools to identify and remediate the most critical preexisting vulnerabilities in a repository. Both dependency-level CVEs and code-level security issues are in scope.
 
+## Quick Start
+
+Paste this prompt into Devin to get started immediately:
+
+```
+Run npm audit on timesheet-app to identify dependency
+vulnerabilities. Then run Trivy (install if needed) to
+scan for additional issues. Remediate all critical and
+high severity findings. Re-run scans to verify fixes.
+Create a SECURITY_REMEDIATION.md with before/after
+evidence.
+```
+
 ## Target Outcomes
 
 - OWASP Dependency-Check report generated (before and after remediation)
@@ -18,7 +42,7 @@ Use local SAST tools to identify and remediate the most critical preexisting vul
 - High/critical vulnerabilities patched or upgraded
 - Secure coding checks added: format/lint + static analysis (SAST)
 - `SECURITY_REMEDIATION.md` with before/after evidence
-- PR with all remediations documented
+- PR with remediations documented
 
 ## What Participants Will Learn
 
@@ -54,7 +78,14 @@ Node.js application with Trivy scanning already configured.
 
 ### Step 1: Paste into Devin
 
-> Run `npm audit` on timesheet-app to identify dependency vulnerabilities. Then run Trivy (install if needed) to scan for additional issues. Remediate all critical and high severity findings. Re-run scans to verify fixes. Create a `SECURITY_REMEDIATION.md` with before/after evidence. Open a PR.
+```
+Run npm audit on timesheet-app to identify dependency
+vulnerabilities. Then run Trivy (install if needed) to
+scan for additional issues. Remediate all critical and
+high severity findings. Re-run scans to verify fixes.
+Create a SECURITY_REMEDIATION.md with before/after
+evidence.
+```
 
 ### Step 2: Research with Ask Devin
 
@@ -70,6 +101,13 @@ Open the repo's DeepWiki page to understand the authentication flow and data han
 - **Review the diff** — did Devin address both dependency and code-level vulnerabilities?
 - **Leave a comment** asking Devin to also add a CI workflow that fails on CRITICAL CVEs
 - **Watch Devin respond** and push a follow-up commit
+
+### Key Takeaways
+
+- **Dual-layer scanning**: Combining `npm audit` (dependency CVEs) with Trivy (container and filesystem scanning) catches issues at multiple levels
+- **Before/after evidence**: The `SECURITY_REMEDIATION.md` provides auditable proof that remediation was effective
+- **Scan → fix → re-scan**: The verification loop confirms fixes actually resolve the detected issues — not just suppress warnings
+- **Incremental hardening**: Starting with dependency upgrades, then adding code-level fixes, builds a layered security posture
 
 ---
 
@@ -117,7 +155,16 @@ The repo ships with Spring Boot 2.6.3 and several outdated dependencies. Key fin
 
 ### Step 1: Paste into Devin
 
-> Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results and open a PR.
+```
+Run ./gradlew dependencyCheckAnalyze on
+uc-cve-remediation-regulatory-compliance to identify
+dependency CVEs. Remediate the top 5 most critical
+findings (CVSS >= 7.0) — start with Spring Boot 2.6.3,
+SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the
+scan to verify the fixes. Create a
+SECURITY_REMEDIATION.md documenting the before/after
+results.
+```
 
 ### Step 2: Research with Ask Devin
 
@@ -140,3 +187,18 @@ Open the repo's DeepWiki page to understand the codebase architecture. Use what 
 - **Watch Devin respond** and push a fix
 
 > **Note:** SonarQube Community Edition runs locally via Docker (`docker-compose.sonarqube.yml` is included in the repo). OWASP Dependency-Check downloads the NVD database locally on first run. Neither tool requires a paid license or cloud account.
+
+### Key Takeaways
+
+- **Local SAST tooling**: Both OWASP Dependency-Check and SonarQube run entirely on Devin's VM — no cloud accounts or paid licenses required
+- **Severity-driven prioritization**: Focusing on CVSS 7.0+ findings first addresses the highest-risk vulnerabilities within limited workshop time
+- **Transitive dependency resolution**: Upgrading Spring Boot resolves multiple downstream CVEs (Spring Security, Tomcat) automatically
+- **Iterative feedback**: Leaving PR comments that ask for specific fixes (e.g., "upgrade SnakeYAML to 2.x") demonstrates Devin's ability to respond to targeted review feedback
+
+---
+
+## Going Further
+
+- **Webhook-driven automation**: Connect OWASP Dependency-Check or SonarQube to Devin via webhooks so that new HIGH/CRITICAL findings automatically trigger a remediation session — no manual scan-and-assign workflow needed.
+- **Divide and conquer with child sessions**: When a dependency audit reveals vulnerabilities across multiple microservices, use a parent Devin session to triage the findings and spawn one child session per service. Each child upgrades its dependencies independently, opens its own PR, and the parent produces a consolidated remediation report.
+- **Scheduled recurring analysis**: Configure a weekly scheduled Devin session to run `./gradlew dependencyCheckAnalyze` (or `npm audit`) and remediate new findings automatically. Over time, this prevents vulnerability backlogs from accumulating and keeps your dependency posture continuously up to date.
