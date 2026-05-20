@@ -57,7 +57,7 @@ This is the capstone module that ties together all the individual migration skil
 ## Target Outcomes
 
 - **Phase 1**: Java translation of a COBOL program with JUnit parity tests
-- **Phase 2**: Spring Boot 3 upgrade with javax→jakarta migration, plus Comments domain extracted as a separate microservice with Dockerfile and docker-compose
+- **Phase 2**: Spring Boot 3 upgrade with javax→jakarta migration, plus article management domain extracted as a separate microservice with Dockerfile and docker-compose
 - **Phase 3**: Modern JPA entities with proper types, migration service for data transformation, and rewired application layer using modern repositories with API parity verification
 - Three PRs (one per repo), each demonstrating a different modernization pattern
 
