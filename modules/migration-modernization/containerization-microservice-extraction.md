@@ -112,8 +112,8 @@ Open the repo's DeepWiki page to understand the service architecture, communicat
 
 ### Step 4 (Optional): Review & Give Feedback
 
-- **Review the diff** — does the extraction look clean? Are there leftover dependencies on the monolith?
-- **Leave a comment** asking Devin to improve something (e.g., *"The Dockerfile should use a multi-stage build"* or *"Add health check endpoints to both services"*)
+- **Review the diff** — does the Docker Compose setup work correctly? Are health checks configured for all services? Does the reverse proxy route traffic properly?
+- **Leave a comment** asking Devin to improve something (e.g., *"The Dockerfile should use a multi-stage build"* or *"Add health check endpoints to all services"*)
 - **Watch Devin respond** to your PR comment and push a fix
 - Try leaving an inline comment on a specific line of the Dockerfile or docker-compose.yml
 

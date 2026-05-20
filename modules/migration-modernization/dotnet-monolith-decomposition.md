@@ -34,7 +34,7 @@ Deliverables:
    for inter-service communication
 3. Dockerfile — multi-stage build for the order-service
 4. Docker Compose — local development setup running the
-   monolith, order-service, and PostgreSQL together
+   monolith and order-service together (SQLite per service)
 5. Monolith refactoring — replace in-process Order calls
    with an HTTP client that calls the new service
 6. Integration smoke test — verify order creation flows
@@ -138,7 +138,7 @@ Deliverables:
    for inter-service communication
 3. Dockerfile — multi-stage build for the order-service
 4. Docker Compose — local development setup running the
-   monolith, order-service, and PostgreSQL together
+   monolith and order-service together (SQLite per service)
 5. Monolith refactoring — replace in-process Order calls
    with an HTTP client that calls the new service
 6. Integration smoke test — verify order creation flows
