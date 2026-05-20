@@ -81,8 +81,8 @@ Guide for setting up and running a Hands-on Devin Workshop.
 - [ ] Collect and review participant feedback
 - [ ] Document any issues discovered during the workshop
 - [ ] Update challenge modules if problems were found
-- [ ] Archive event-specific resources (move event directory to `events/archive/`)
 - [ ] Run a final [Quality Checklist](quality-checklist.md) pass on the event README before archiving
+- [ ] Archive event-specific resources (move event directory to `events/archive/`)
 - [ ] Send follow-up email with:
   - Links to Devin documentation
   - Links to their PRs/sessions from the workshop
