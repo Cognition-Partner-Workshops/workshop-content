@@ -28,6 +28,7 @@
 - [Context](#context)
   - [Suitability Notes](#suitability-notes)
   - [Key Constraints](#key-constraints)
+- [Related Themes](#related-themes)
 - [Devin Features Checklist](#devin-features-checklist)
 - [Post-Event](#post-event)
 
