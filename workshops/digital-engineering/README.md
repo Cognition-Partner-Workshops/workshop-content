@@ -72,12 +72,12 @@ Run these as **parallel sessions** — one for the backend pipeline, one for the
 
 **Session A — Full Pipeline (timesheet-app):**
 ```
-Create a GitHub Actions CI/CD pipeline for timesheet-app that handles both the backend and frontend. The pipeline should: (1) Install dependencies for both backend and frontend, (2) Run linting (ESLint), (3) Run unit tests with coverage reporting, (4) Build the production bundles, (5) Run a security audit (npm audit), (6) Upload test coverage as a build artifact. The pipeline should trigger on PRs to main and on push to main. Use a matrix strategy to test on Node 18 and Node 20. Open a PR with the workflow file.
+Create a GitHub Actions CI/CD pipeline for timesheet-app that handles both the backend and frontend. The pipeline should: (1) Install dependencies for both backend and frontend, (2) Run linting (ESLint), (3) Run unit tests with coverage reporting, (4) Build the production bundles, (5) Run a security audit (npm audit), (6) Upload test coverage as a build artifact. The pipeline should trigger on PRs to main and on push to main. Use a matrix strategy to test on Node 18 and Node 20.
 ```
 
 **Session B — Gradle Pipeline (Spring Boot):**
 ```
-Create a GitHub Actions CI/CD pipeline for uc-spring-boot-upgrade-microservice-extraction that: (1) Builds with Gradle, (2) Runs unit tests, (3) Runs integration tests, (4) Generates a JaCoCo coverage report, (5) Runs OWASP Dependency-Check, (6) Fails if any dependency has CVSS >= 7.0, (7) Caches Gradle dependencies between runs. Trigger on PRs and push to main. Open a PR.
+Create a GitHub Actions CI/CD pipeline for uc-spring-boot-upgrade-microservice-extraction that: (1) Builds with Gradle, (2) Runs unit tests, (3) Runs integration tests, (4) Generates a JaCoCo coverage report, (5) Runs OWASP Dependency-Check, (6) Fails if any dependency has CVSS >= 7.0, (7) Caches Gradle dependencies between runs. Trigger on PRs and push to main.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -135,12 +135,12 @@ Once Devin opens a PR, focus your review on **pipeline quality**:
 
 **Option A — Fix Failing Tests (Node.js):**
 ```
-The CI pipeline for timesheet-app is failing on the test step. Investigate the CI logs, identify which tests are failing and why, fix the underlying issues (not the tests unless the tests themselves are wrong), and get the pipeline back to green. Document what was wrong and how you fixed it in the PR description. Open a PR.
+The CI pipeline for timesheet-app is failing on the test step. Investigate the CI logs, identify which tests are failing and why, fix the underlying issues (not the tests unless the tests themselves are wrong), and get the pipeline back to green. Document what was wrong and how you fixed it in the PR description.
 ```
 
 **Option B — Fix Security Scan Failures (Gradle):**
 ```
-The CI pipeline for uc-cve-remediation-regulatory-compliance is failing because the OWASP Dependency-Check found CRITICAL vulnerabilities. Investigate which dependencies are flagged, upgrade them to versions without known CVEs, verify the build still passes, and re-run the security scan to confirm the issues are resolved. Open a PR documenting which CVEs were resolved.
+The CI pipeline for uc-cve-remediation-regulatory-compliance is failing because the OWASP Dependency-Check found CRITICAL vulnerabilities. Investigate which dependencies are flagged, upgrade them to versions without known CVEs, verify the build still passes, and re-run the security scan to confirm the issues are resolved. documenting which CVEs were resolved.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -196,12 +196,12 @@ Focus on **root cause accuracy**:
 
 **Option A — Release Pipeline (.NET):**
 ```
-Add release management to ordermanager-monolith: (1) Create a GitHub Actions workflow that automatically generates a CHANGELOG.md from conventional commits, (2) Implement semantic versioning using git tags, (3) Create a release workflow that builds a Docker image, tags it with the version, and creates a GitHub Release with release notes. Add a `RELEASING.md` documenting the release process. Open a PR.
+Add release management to ordermanager-monolith: (1) Create a GitHub Actions workflow that automatically generates a CHANGELOG.md from conventional commits, (2) Implement semantic versioning using git tags, (3) Create a release workflow that builds a Docker image, tags it with the version, and creates a GitHub Release with release notes. Add a `RELEASING.md` documenting the release process.
 ```
 
 **Option B — Feature Flags (Node.js):**
 ```
-Add a feature flag system to timesheet-app. Implement a simple feature flag service that reads flags from a JSON config file. Add flags for: (1) 'enable_csv_export' — gates the CSV export feature, (2) 'enable_dark_mode' — gates a UI theme toggle, (3) 'enable_bulk_operations' — gates batch operations on work entries. Add a feature flag admin endpoint (GET /api/flags, PUT /api/flags/:name) and integrate flag checks into the relevant frontend components and API routes. Write tests for the feature flag service. Open a PR.
+Add a feature flag system to timesheet-app. Implement a simple feature flag service that reads flags from a JSON config file. Add flags for: (1) 'enable_csv_export' — gates the CSV export feature, (2) 'enable_dark_mode' — gates a UI theme toggle, (3) 'enable_bulk_operations' — gates batch operations on work entries. Add a feature flag admin endpoint (GET /api/flags, PUT /api/flags/:name) and integrate flag checks into the relevant frontend components and API routes. Write tests for the feature flag service.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -261,12 +261,12 @@ Track B demonstrates Devin managing infrastructure as code. Participants will tr
 
 **Option A — Terraform to CDK:**
 ```
-Translate the Terraform infrastructure in timesheet-infra to AWS CDK (TypeScript). Preserve all resources, security groups, IAM roles, and networking configuration. The CDK stack should produce the same infrastructure as the Terraform code. Add a `MIGRATION_NOTES.md` documenting the mapping between Terraform resources and CDK constructs, any differences in behavior, and verification steps. Include CDK unit tests using the assertions module. Open a PR.
+Translate the Terraform infrastructure in timesheet-infra to AWS CDK (TypeScript). Preserve all resources, security groups, IAM roles, and networking configuration. The CDK stack should produce the same infrastructure as the Terraform code. Add a `MIGRATION_NOTES.md` documenting the mapping between Terraform resources and CDK constructs, any differences in behavior, and verification steps. Include CDK unit tests using the assertions module.
 ```
 
 **Option B — CDK Module Extraction:**
 ```
-The platform-engineering-shared-services repo has a large CDK stack. Extract the VPC and networking configuration into a reusable CDK construct library that can be shared across multiple stacks. The construct should accept parameters for CIDR ranges, availability zones, and subnet configuration. Add unit tests and a README explaining how to use the construct. Open a PR.
+The platform-engineering-shared-services repo has a large CDK stack. Extract the VPC and networking configuration into a reusable CDK construct library that can be shared across multiple stacks. The construct should accept parameters for CIDR ranges, availability zones, and subnet configuration. Add unit tests and a README explaining how to use the construct.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -322,12 +322,12 @@ Focus on **translation fidelity**:
 
 **Option A — Helm Chart Creation:**
 ```
-Create a production-ready Helm chart for a new microservice in ordermanager-iac. The chart should include: Deployment (with health checks, resource limits, rolling update strategy), Service (ClusterIP), HorizontalPodAutoscaler (min 2, max 10 replicas, 70% CPU target), ConfigMap for environment variables, ServiceAccount with IRSA annotation, and NetworkPolicy restricting ingress. Follow the existing chart patterns in the repo. Add a values.yaml with sensible defaults and a values-production.yaml overlay. Open a PR.
+Create a production-ready Helm chart for a new microservice in ordermanager-iac. The chart should include: Deployment (with health checks, resource limits, rolling update strategy), Service (ClusterIP), HorizontalPodAutoscaler (min 2, max 10 replicas, 70% CPU target), ConfigMap for environment variables, ServiceAccount with IRSA annotation, and NetworkPolicy restricting ingress. Follow the existing chart patterns in the repo. Add a values.yaml with sensible defaults and a values-production.yaml overlay.
 ```
 
 **Option B — ArgoCD Application Setup:**
 ```
-Configure ArgoCD GitOps deployment for ordermanager-iac. Create ArgoCD Application manifests that: (1) Point to the Helm chart in this repo, (2) Configure auto-sync with self-heal and prune enabled, (3) Set up sync waves for proper deployment ordering (namespace → configmap → deployment → service → ingress), (4) Add health checks that ArgoCD uses to determine deployment success. Follow the ArgoCD patterns in platform-engineering-shared-services for reference. Open a PR.
+Configure ArgoCD GitOps deployment for ordermanager-iac. Create ArgoCD Application manifests that: (1) Point to the Helm chart in this repo, (2) Configure auto-sync with self-heal and prune enabled, (3) Set up sync waves for proper deployment ordering (namespace → configmap → deployment → service → ingress), (4) Add health checks that ArgoCD uses to determine deployment success. Follow the ArgoCD patterns in platform-engineering-shared-services for reference.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -384,7 +384,7 @@ Focus on **production readiness**:
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Prepare the Orders module from ordermanager-monolith for deployment on the platform defined in platform-engineering-shared-services. Create all required platform-conformant artifacts: (1) Multi-stage Dockerfile optimized for .NET 8, (2) Helm chart following the platform's chart conventions (check existing charts in ordermanager-iac), (3) ArgoCD Application manifest pointing to the Helm chart, (4) GitHub Actions CI/CD pipeline that builds the Docker image, pushes to ECR, and updates the Helm values with the new image tag, (5) Namespace request following the platform's provisioning pattern (resource quotas, limit ranges, network policies). Reference the platform conventions in platform-engineering-shared-services for all standards. Open a PR to ordermanager-iac.
+Prepare the Orders module from ordermanager-monolith for deployment on the platform defined in platform-engineering-shared-services. Create all required platform-conformant artifacts: (1) Multi-stage Dockerfile optimized for .NET 8, (2) Helm chart following the platform's chart conventions (check existing charts in ordermanager-iac), (3) ArgoCD Application manifest pointing to the Helm chart, (4) GitHub Actions CI/CD pipeline that builds the Docker image, pushes to ECR, and updates the Helm values with the new image tag, (5) Namespace request following the platform's provisioning pattern (resource quotas, limit ranges, network policies). Reference the platform conventions in platform-engineering-shared-services for all standards. to ordermanager-iac.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -449,12 +449,12 @@ Track C demonstrates Devin as an SRE partner. Participants will set up observabi
 
 **Option A — Node.js Observability (timesheet-app):**
 ```
-Add production observability to timesheet-app: (1) Structured JSON logging using Winston or Pino (replace console.log calls), (2) Prometheus metrics endpoint at /metrics exposing request count, latency histograms, and error rate, (3) Health check endpoints at /health/live and /health/ready, (4) Request correlation IDs (X-Request-ID header) propagated through all log entries, (5) Error tracking with stack traces in structured format. Add a `docker-compose.monitoring.yml` that runs Prometheus and Grafana alongside the app, with a pre-configured Grafana dashboard showing the key metrics. Open a PR.
+Add production observability to timesheet-app: (1) Structured JSON logging using Winston or Pino (replace console.log calls), (2) Prometheus metrics endpoint at /metrics exposing request count, latency histograms, and error rate, (3) Health check endpoints at /health/live and /health/ready, (4) Request correlation IDs (X-Request-ID header) propagated through all log entries, (5) Error tracking with stack traces in structured format. Add a `docker-compose.monitoring.yml` that runs Prometheus and Grafana alongside the app, with a pre-configured Grafana dashboard showing the key metrics.
 ```
 
 **Option B — Spring Boot Observability (microservices):**
 ```
-Review the observability setup in petclinic-microservices. Add or improve: (1) Distributed tracing configuration using Micrometer Tracing (ensure trace IDs propagate across service calls), (2) Custom business metrics (appointment count, vet availability), (3) Grafana dashboards for the key service metrics, (4) Alert rules for error rate > 5% and p99 latency > 2 seconds. Document the observability architecture in an `OBSERVABILITY.md`. Open a PR.
+Review the observability setup in petclinic-microservices. Add or improve: (1) Distributed tracing configuration using Micrometer Tracing (ensure trace IDs propagate across service calls), (2) Custom business metrics (appointment count, vet availability), (3) Grafana dashboards for the key service metrics, (4) Alert rules for error rate > 5% and p99 latency > 2 seconds. Document the observability architecture in an `OBSERVABILITY.md`.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -510,12 +510,12 @@ Focus on **observability quality**:
 
 **Option A — Alert-to-Fix Pipeline (EventFlow):**
 ```
-Review the eventflow-devin-integration codebase. This system receives Azure Monitor alert webhooks and triggers Devin sessions to investigate production incidents. Set up the FastAPI webhook receiver locally. Simulate an alert for a "500 Internal Server Error" spike in the payment-service. Verify the system generates the correct investigation prompt for Devin. Add a new alert handler for "High Latency" alerts that generates an appropriate investigation prompt focused on database query performance and connection pool exhaustion. Write tests for the new handler. Open a PR.
+Review the eventflow-devin-integration codebase. This system receives Azure Monitor alert webhooks and triggers Devin sessions to investigate production incidents. Set up the FastAPI webhook receiver locally. Simulate an alert for a "500 Internal Server Error" spike in the payment-service. Verify the system generates the correct investigation prompt for Devin. Add a new alert handler for "High Latency" alerts that generates an appropriate investigation prompt focused on database query performance and connection pool exhaustion. Write tests for the new handler.
 ```
 
 **Option B — Credential Rotation Remediation:**
 ```
-Review the uc-pod-remediation-credential-rotation system. This automates the remediation of pod failures after credential rotations. Set up the system locally and simulate a scenario where database credentials are rotated and pods start CrashLoopBackOff. Verify the system detects the failure, identifies it as credential-related, and generates the appropriate remediation steps. Add support for a new credential type (API keys for external services) that follows the same detection → approval → remediation pattern. Write tests. Open a PR.
+Review the uc-pod-remediation-credential-rotation system. This automates the remediation of pod failures after credential rotations. Set up the system locally and simulate a scenario where database credentials are rotated and pods start CrashLoopBackOff. Verify the system detects the failure, identifies it as credential-related, and generates the appropriate remediation steps. Add support for a new credential type (API keys for external services) that follows the same detection → approval → remediation pattern. Write tests.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -569,7 +569,7 @@ Focus on **operational safety**:
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Review the uc-volume-anomaly-detection system. This Python application detects volume-based anomalies using z-score analysis and seasonal decomposition. Set up and run the system locally. Then extend it: (1) Add a new detector type that uses rate-of-change analysis (detect when a metric is changing faster than historical norms, even if the absolute value is still within bounds), (2) Add a correlation engine that checks whether volume anomalies in one service coincide with changes in upstream services, (3) Add a recommendation engine that suggests runbook actions based on the anomaly pattern and correlated services. Write tests for the new detector and correlation engine. Open a PR.
+Review the uc-volume-anomaly-detection system. This Python application detects volume-based anomalies using z-score analysis and seasonal decomposition. Set up and run the system locally. Then extend it: (1) Add a new detector type that uses rate-of-change analysis (detect when a metric is changing faster than historical norms, even if the absolute value is still within bounds), (2) Add a correlation engine that checks whether volume anomalies in one service coincide with changes in upstream services, (3) Add a recommendation engine that suggests runbook actions based on the anomaly pattern and correlated services. Write tests for the new detector and correlation engine.
 ```
 
 #### Step 2: Research with Ask Devin

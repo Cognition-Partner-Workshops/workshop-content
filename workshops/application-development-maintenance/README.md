@@ -78,12 +78,12 @@ Then use what you learn to refine the prompt before pasting it into a Devin sess
 
 **Option A — React + Node.js (timesheet-app):**
 ```
-Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add both the backend API endpoints and the frontend UI page. Follow the existing patterns in the codebase for the data model, API structure, and React components. Write tests for the backend endpoints. Open a PR.
+Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add both the backend API endpoints and the frontend UI page. Follow the existing patterns in the codebase for the data model, API structure, and React components. Write tests for the backend endpoints.
 ```
 
 **Option B — Angular + Spring Boot (JHipster):**
 ```
-Add an "Invoice" management feature to ts-java-angular-jhipster. Users should be able to create, view, edit, and delete invoices. Each invoice has a number, date, due date, amount, status (draft/sent/paid/overdue), and is linked to a bank account. Add both the Spring Boot backend (JPA entity, REST controller, service layer) and the Angular frontend (list view, create/edit form, detail view). Follow JHipster conventions for entity generation patterns. Write JUnit tests for the backend. Open a PR.
+Add an "Invoice" management feature to ts-java-angular-jhipster. Users should be able to create, view, edit, and delete invoices. Each invoice has a number, date, due date, amount, status (draft/sent/paid/overdue), and is linked to a bank account. Add both the Spring Boot backend (JPA entity, REST controller, service layer) and the Angular frontend (list view, create/edit form, detail view). Follow JHipster conventions for entity generation patterns. Write JUnit tests for the backend.
 ```
 
 #### Step 3 (Optional): Read the DeepWiki
@@ -134,12 +134,12 @@ See the full challenge details for [New Feature Development](../../modules/appli
 
 **Option A — TDD with JUnit (Spring Boot RealWorld):**
 ```
-Using test-driven development, add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. First, write failing JUnit tests for two new endpoints: GET /api/articles/:slug/stats (returns view count, favorite count, comment count, days since published) and GET /api/stats/trending (returns top 10 most-favorited articles in the last 7 days). Then implement the endpoints to make the tests pass. Follow existing code patterns. Open a PR showing the TDD progression (tests written first, then implementation).
+Using test-driven development, add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. First, write failing JUnit tests for two new endpoints: GET /api/articles/:slug/stats (returns view count, favorite count, comment count, days since published) and GET /api/stats/trending (returns top 10 most-favorited articles in the last 7 days). Then implement the endpoints to make the tests pass. Follow existing code patterns. showing the TDD progression (tests written first, then implementation).
 ```
 
 **Option B — BDD-First (Cucumber):**
 ```
-Using behavior-driven development, add an order management feature to uc-bdd-test-generation-cucumber. First, write Gherkin feature files describing the behavior: create an order, list orders, get order by ID, update order status, delete order. Then implement an OrderController, OrderService, and Order entity to make all scenarios pass. Follow existing project patterns for step definitions and entity structure. Open a PR.
+Using behavior-driven development, add an order management feature to uc-bdd-test-generation-cucumber. First, write Gherkin feature files describing the behavior: create an order, list orders, get order by ID, update order status, delete order. Then implement an OrderController, OrderService, and Order entity to make all scenarios pass. Follow existing project patterns for step definitions and entity structure.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -208,13 +208,13 @@ Implement the following feature for timesheet-app based on this specification:
 
 [Paste the technical spec from Ask Devin here]
 
-Follow existing code patterns. Add backend API endpoints, frontend React components, and tests. Open a PR.
+Follow existing code patterns. Add backend API endpoints, frontend React components, and tests.
 ```
 
 Alternatively, if you want to try a less-refined approach:
 
 ```
-A manager wants a "Team Workload Dashboard" in timesheet-app. They should be able to see: which team members have logged the most hours this week, who has upcoming deadlines, and which clients have the most active work entries. Figure out the best way to implement this given the existing data model and codebase patterns. Add backend calculations, an API endpoint, and a frontend dashboard page. Open a PR.
+A manager wants a "Team Workload Dashboard" in timesheet-app. They should be able to see: which team members have logged the most hours this week, who has upcoming deadlines, and which clients have the most active work entries. Figure out the best way to implement this given the existing data model and codebase patterns. Add backend calculations, an API endpoint, and a frontend dashboard page.
 ```
 
 #### Step 3 (Optional): Read the DeepWiki
@@ -263,7 +263,7 @@ Track B demonstrates Devin as a debugger and investigator. Participants will hun
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Start timesheet-app locally (backend: `cd backend && npm run dev`, frontend: `cd frontend && npm run dev`). Explore the application — create work entries, manage clients, try the reporting features, test edge cases (empty inputs, special characters, date boundaries, concurrent operations). Find and document any bugs or unexpected behavior. Fix the most impactful bug you find. Take before/after screenshots. Write a `ROOT_CAUSE_ANALYSIS.md` explaining the bug, why it happened, and how you fixed it. Open a PR.
+Start timesheet-app locally (backend: `cd backend && npm run dev`, frontend: `cd frontend && npm run dev`). Explore the application — create work entries, manage clients, try the reporting features, test edge cases (empty inputs, special characters, date boundaries, concurrent operations). Find and document any bugs or unexpected behavior. Fix the most impactful bug you find. Take before/after screenshots. Write a `ROOT_CAUSE_ANALYSIS.md` explaining the bug, why it happened, and how you fixed it.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -318,7 +318,7 @@ Once Devin opens a PR, focus your review on the **root cause analysis**:
 - **Module:** [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../modules/migration-modernization/cross-service-bug-investigation.md)
 - **Repositories:**
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — decomposed .NET microservices with a planted cross-service bug
-  - [eventflow-order-service](https://github.com/Cognition-Partner-Workshops/eventflow-order-service) + [eventflow-payment-service](https://github.com/Cognition-Partner-Workshops/eventflow-payment-service) — EventFlow multi-service demo (alternative)
+  - [eventflow-order-service](https://github.com/Cognition-Partner-Workshops/eventflow-order-service) + [eventflow-payment-service](https://github.com/Cognition-Partner-Workshops/eventflow-payment-service) — EventFlow multi-service application (alternative)
 - **Objective:** Investigate a bug that manifests in one service but has its root cause in another — demonstrating Devin's ability to trace issues across service boundaries
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -330,7 +330,7 @@ Order confirmation notification emails are showing wrong amounts after the micro
 
 **Option B — EventFlow (currency precision bug):**
 ```
-The EventFlow payment service is incorrectly processing JPY (Japanese Yen) orders. JPY is a zero-decimal currency but the payment service is dividing by 100 like other currencies, resulting in incorrect amounts. Investigate the payment processing logic in eventflow-payment-service, identify where zero-decimal currency handling should be added, fix the bug, and add unit tests covering JPY, USD, and EUR. Open a PR with a root cause analysis.
+The EventFlow payment service is incorrectly processing JPY (Japanese Yen) orders. JPY is a zero-decimal currency but the payment service is dividing by 100 like other currencies, resulting in incorrect amounts. Investigate the payment processing logic in eventflow-payment-service, identify where zero-decimal currency handling should be added, fix the bug, and add unit tests covering JPY, USD, and EUR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -386,12 +386,12 @@ Focus your review on whether the fix is complete:
 
 **Option A — Legacy Data Types (loan service):**
 ```
-The loan service in uc-data-source-migration-jdbc-normalization is reading from legacy CDW-style tables where all columns are VARCHAR (including amounts, dates, and IDs). Some loan balance queries return incorrect results because string comparison is used instead of numeric comparison — for example, a loan with balance "99.50" appears as greater than one with balance "1000.00" because string sort puts "9" after "1". Identify all repository queries that compare or sort numeric VARCHAR fields. Fix the queries to properly cast to numeric types. Add JUnit tests that verify correct ordering and comparison. Document the fix in a `DATA_BUG_ANALYSIS.md`. Open a PR.
+The loan service in uc-data-source-migration-jdbc-normalization is reading from legacy CDW-style tables where all columns are VARCHAR (including amounts, dates, and IDs). Some loan balance queries return incorrect results because string comparison is used instead of numeric comparison — for example, a loan with balance "99.50" appears as greater than one with balance "1000.00" because string sort puts "9" after "1". Identify all repository queries that compare or sort numeric VARCHAR fields. Fix the queries to properly cast to numeric types. Add JUnit tests that verify correct ordering and comparison. Document the fix in a `DATA_BUG_ANALYSIS.md`.
 ```
 
 **Option B — SQLite Type Issues (timesheet app):**
 ```
-Investigate the date handling in timesheet-app's backend. SQLite stores dates as text, which can cause issues with date range queries, sorting, and timezone handling. Find any bugs related to date storage or retrieval (e.g., work entries on boundary dates not appearing in reports, timezone-related off-by-one errors). Fix the issues and add tests that verify correct behavior across date boundaries. Open a PR.
+Investigate the date handling in timesheet-app's backend. SQLite stores dates as text, which can cause issues with date range queries, sorting, and timezone handling. Find any bugs related to date storage or retrieval (e.g., work entries on boundary dates not appearing in reports, timezone-related off-by-one errors). Fix the issues and add tests that verify correct behavior across date boundaries.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -450,7 +450,7 @@ Track C demonstrates Devin as a maintenance engineer. Participants will set up a
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Check all dependencies in uc-cve-remediation-regulatory-compliance for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it. Open a PR with all successful upgrades and a `DEPENDENCY_UPDATES.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
+Check all dependencies in uc-cve-remediation-regulatory-compliance for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
 ```
 
 #### Step 2: Research with Ask Devin
@@ -466,7 +466,7 @@ While Devin works on step 1, open **AskDevin** and explore:
 Once you're happy with the output from step 1, turn it into a recurring task:
 
 ```
-Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it. Open a PR with the upgrades and a summary in DEPENDENCY_UPDATES.md."
+Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it.md."
 ```
 
 #### Step 4 (Optional): Extend to Multiple Repos
@@ -474,7 +474,7 @@ Create a Devin scheduled session that runs weekly on Monday mornings against uc-
 Try running the same pattern for **timesheet-app** with an npm-flavored prompt:
 
 ```
-Check all npm dependencies in timesheet-app for available minor and patch version updates. Run `npm update` to upgrade to latest minor versions. Run `npm test` and `npm run build` to verify everything still works. Open a PR with the upgrades and a `DEPENDENCY_UPDATES.md`.
+Check all npm dependencies in timesheet-app for available minor and patch version updates. Run `npm update` to upgrade to latest minor versions. Run `npm test` and `npm run build` to verify everything still works.md`.
 ```
 
 - **Key Takeaways:**
@@ -503,12 +503,12 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
 
 **Option A — Flyway Migrations (Spring Boot):**
 ```
-Evolve the database schema of uc-spring-boot-upgrade-microservice-extraction to support article tags as a first-class entity. Currently tags are stored as strings in the articles table. Create Flyway migration scripts that: (1) Create a new `tags` table with id and name columns, (2) Create a junction table `article_tags` for the many-to-many relationship, (3) Migrate existing tag data from the articles table to the new structure, (4) Update the MyBatis mappers and Java domain model to use the new schema. Ensure existing tests still pass and write new tests for the tag CRUD operations. Open a PR.
+Evolve the database schema of uc-spring-boot-upgrade-microservice-extraction to support article tags as a first-class entity. Currently tags are stored as strings in the articles table. Create Flyway migration scripts that: (1) Create a new `tags` table with id and name columns, (2) Create a junction table `article_tags` for the many-to-many relationship, (3) Migrate existing tag data from the articles table to the new structure, (4) Update the MyBatis mappers and Java domain model to use the new schema. Ensure existing tests still pass and write new tests for the tag CRUD operations.
 ```
 
 **Option B — Liquibase Changesets (JHipster):**
 ```
-Add a "transaction categories" feature to ts-java-angular-jhipster. Create Liquibase changesets that: (1) Add a `category` table with id, name, color, icon, and user_id, (2) Add a category_id foreign key to the operation table, (3) Create seed data with default categories (Income, Groceries, Transport, Entertainment). Update the JPA entities, Spring Data repositories, and REST controllers to support CRUD on categories and category assignment to operations. Open a PR.
+Add a "transaction categories" feature to ts-java-angular-jhipster. Create Liquibase changesets that: (1) Add a `category` table with id, name, color, icon, and user_id, (2) Add a category_id foreign key to the operation table, (3) Create seed data with default categories (Income, Groceries, Transport, Entertainment). Update the JPA entities, Spring Data repositories, and REST controllers to support CRUD on categories and category assignment to operations.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -564,12 +564,12 @@ Focus on **migration safety**:
 
 **Option A — Spring Boot Refactoring:**
 ```
-Analyze uc-spring-boot-upgrade-microservice-extraction for code quality issues. Focus on the Articles domain: identify long methods, duplicated code, unclear naming, missing error handling, and tight coupling. Refactor the top 5 most impactful issues. For each refactoring: (1) explain what the problem was, (2) describe the refactoring approach, (3) verify existing tests still pass after the change. Document all changes in a `REFACTORING_LOG.md`. Open a PR.
+Analyze uc-spring-boot-upgrade-microservice-extraction for code quality issues. Focus on the Articles domain: identify long methods, duplicated code, unclear naming, missing error handling, and tight coupling. Refactor the top 5 most impactful issues. For each refactoring: (1) explain what the problem was, (2) describe the refactoring approach, (3) verify existing tests still pass after the change. Document all changes in a `REFACTORING_LOG.md`.
 ```
 
 **Option B — React/Node.js Refactoring:**
 ```
-Analyze timesheet-app for code quality issues. Focus on: duplicated API call patterns that could use a shared utility, React components that are too large (> 200 lines) that should be split, inconsistent error handling across API routes, and any remaining TODO comments in the code. Refactor the top 5 most impactful issues while keeping all existing behavior intact. Run tests to verify nothing broke. Document changes in a `REFACTORING_LOG.md`. Open a PR.
+Analyze timesheet-app for code quality issues. Focus on: duplicated API call patterns that could use a shared utility, React components that are too large (> 200 lines) that should be split, inconsistent error handling across API routes, and any remaining TODO comments in the code. Refactor the top 5 most impactful issues while keeping all existing behavior intact. Run tests to verify nothing broke. Document changes in a `REFACTORING_LOG.md`.
 ```
 
 #### Step 2: Research with Ask Devin

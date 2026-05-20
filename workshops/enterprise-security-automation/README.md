@@ -21,11 +21,32 @@
 >
 > **Who should attend:** Engineering leaders evaluating Devin for enterprise adoption, AppSec teams with large vulnerability backlogs, platform engineers building developer tooling, and architects designing AI-augmented SDLC pipelines.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Structure](#structure)
+- [Featured Labs](#featured-labs)
+  - [Lab 1 — Event-Driven SAST Remediation](#lab-1--event-driven-sast-remediation-90-min)
+  - [Lab 2 — Mass Security Backlog Remediation with Agent Orchestration](#lab-2--mass-security-backlog-remediation-with-agent-orchestration-90-min)
+  - [Lab 3 — One-Shot Tech Debt Remediation](#lab-3--one-shot-tech-debt-remediation-via-long-term-reasoning-75-min)
+- [Repos Required](#repos-required-on-devins-machine)
+
 ---
 
 ## Structure
 
-Three labs that build on each other in a progressive arc:
+Three labs that build on each other in a progressive sequence:
 
 1. **Lab 1 — Event-Driven SAST Remediation (90 min):** Devin as a reactive agent triggered by CI events
 2. **Break (15 min)**
@@ -33,7 +54,7 @@ Three labs that build on each other in a progressive arc:
 4. **Break (15 min)**
 5. **Lab 3 — One-Shot Tech Debt via Long-Term Reasoning (75 min):** Devin executing a complex, multi-step task from a single prompt
 
-**Progression arc:**
+**Progression:**
 - Lab 1: Devin responds to *one finding on one repo* autonomously
 - Lab 2: Devin coordinates *many findings across multiple repos* in parallel
 - Lab 3: Devin executes *a complete upgrade in one shot* with proof of completion
@@ -64,7 +85,7 @@ Three labs that build on each other in a progressive arc:
 #### Target Outcomes
 
 - Working `sast-auto-remediate.yml` workflow with Devin API integration
-- Live demo of the scan → fix → re-scan loop
+- Live walkthrough of the scan → fix → re-scan loop
 - `ARCHITECTURE.md` documenting the event-driven flow
 - PR with the workflow and documentation
 
@@ -159,7 +180,7 @@ Participants who finish early may attempt any challenge from the full [module ca
 ## Context
 
 - **Audience:** Enterprise engineering leadership evaluating Devin for organizational adoption
-- **Narrative arc:** Reactive agent (Lab 1) → Coordinated agents (Lab 2) → Autonomous one-shot execution (Lab 3)
+- **Narrative progression:** Reactive agent (Lab 1) → Coordinated agents (Lab 2) → Autonomous one-shot execution (Lab 3)
 - **Enterprise value props demonstrated:**
   - Lab 1: Devin reduces MTTR for security findings to near-zero
   - Lab 2: Devin scales security remediation across the entire portfolio, not one repo at a time

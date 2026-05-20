@@ -21,6 +21,38 @@ General Workshop (200)  ──>  OtterWorks Workshop (300)
 
 This is a **300-level** workshop. Participants are expected to have completed at least one General Devin workshop (200-level) and be comfortable with core workflows: creating sessions, reviewing PRs, giving feedback, and using Ask Devin for research.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Craft your own prompts.** Unlike the General workshop, this workshop does not give you copy-paste prompts. You must decompose the problem and figure out how to direct Devin.
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research — Devin keeps working in the background.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Interact with the System](#interact-with-the-system-5-min)
+- [Getting Oriented](#getting-oriented-10-min--do-this-first)
+- [Track A: Modernization & Migration](#track-a-modernization--migration)
+  - [Lab A1 — ETL Pipeline Modernization](#lab-a1--etl-pipeline-modernization-60-90-min)
+  - [Lab A2 — Report Service Framework Upgrade](#lab-a2--report-service-framework-upgrade-60-90-min)
+  - [Lab A3 — Language Translation](#lab-a3--language-translation-60-90-min)
+- [Track B: Incident Response & Reliability](#track-b-incident-response--reliability)
+  - [Lab B1 — Investigate Production Incident](#lab-b1--investigate-production-incident-45-60-min)
+  - [Lab B2 — Complete the Runbooks](#lab-b2--complete-the-runbooks-45-60-min)
+  - [Lab B3 — Add Observability to Under-Instrumented Services](#lab-b3--add-observability-to-under-instrumented-services-45-60-min)
+- [Track C: Security & Quality](#track-c-security--quality)
+  - [Lab C1 — Monorepo Security Sprint](#lab-c1--monorepo-security-sprint-60-90-min)
+  - [Lab C2 — API Contract Audit](#lab-c2--api-contract-audit-45-60-min)
+  - [Lab C3 — Test Coverage Blitz](#lab-c3--test-coverage-blitz-45-60-min)
+- [Duration Variants](#duration-variants)
+
+---
+
 OtterWorks is a polyglot microservices platform for real-time collaborative document editing and file management. It has **10 backend services** (Go, Java, Rust, Python x2, Node.js, Kotlin, Scala, Ruby, C#), **2 frontends** (React, Angular), and a full observability stack (Prometheus, Grafana, Jaeger). It is intentionally messy: legacy ETL scripts, outdated dependencies, incomplete runbooks, drifting API contracts, and planted security vulnerabilities.
 
 Unlike the General workshop where participants paste provided prompts, this workshop requires participants to **craft their own prompts**. Each lab describes what is wrong, where to look, and what done looks like. Participants must decompose the problem and figure out how to direct Devin to fix it.

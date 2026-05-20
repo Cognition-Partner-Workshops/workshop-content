@@ -13,6 +13,26 @@
 
 Framework upgrades are one of the most common and repetitive tasks in enterprise software. This workshop demonstrates how Devin handles the same upgrade pattern applied consistently across different services — and how parallel sessions show enterprise scale.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Lab 1 — Spring Boot + Angular Parallel Upgrades](#lab-1--spring-boot--angular-parallel-upgrades)
+- [Repos Required](#repos-required)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 ## Labs
 
 ### Lab 1 — Spring Boot + Angular Parallel Upgrades
@@ -30,10 +50,14 @@ Framework upgrades are one of the most common and repetitive tasks in enterprise
 Run as **parallel sessions**:
 
 **Session A — Spring Boot:**
-> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change. Open a PR.
+```
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change.
+```
 
 **Session B — Angular:**
-> Upgrade petclinic-angular to the latest Angular version. Handle breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds. Document every breaking change. Open a PR.
+```
+Upgrade petclinic-angular to the latest Angular version. Handle breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds. Document every breaking change.
+```
 
 #### Step 2: Research with Ask Devin
 

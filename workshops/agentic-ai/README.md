@@ -13,6 +13,29 @@
 
 This workshop explores agentic AI use cases — multi-agent coordination, approval-gated workflows, and intelligent automation. Each lab works with a purpose-built Python or Java codebase that implements a multi-agent pattern, and participants enhance it with Devin's help.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Lab 1 — Automated Pod Remediation After Credential Rotations](#lab-1--automated-pod-remediation-after-credential-rotations)
+- [Lab 2 — Document Review Automation](#lab-2--document-review-automation)
+- [Lab 3 — BDD Test Case Generation](#lab-3--bdd-test-case-generation)
+- [Lab 4 — Volume-Based Anomaly Detection](#lab-4--volume-based-anomaly-detection)
+- [Repos Required](#repos-required)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 ## Labs
 
 ### Lab 1 — Automated Pod Remediation After Credential Rotations
@@ -24,7 +47,9 @@ This workshop explores agentic AI use cases — multi-agent coordination, approv
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-pod-remediation-credential-rotation codebase. The rotation_monitor agent needs to detect rotations that happen outside the scheduled cron window (emergency rotations). Add a method `detect_emergency_rotations` that compares last_rotated_at against the cron schedule and flags any rotation more than 24 hours before the next window. Add unit tests. Open a PR.
+```
+Review the uc-pod-remediation-credential-rotation codebase. The rotation_monitor agent needs to detect rotations that happen outside the scheduled cron window (emergency rotations). Add a method `detect_emergency_rotations` that compares last_rotated_at against the cron schedule and flags any rotation more than 24 hours before the next window. Add unit tests.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -52,7 +77,9 @@ Review the emergency rotation detection. Ask Devin to add integration tests or e
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-document-review-automation codebase. The fuzzy_comparator currently uses Jaccard similarity on bigrams. Enhance it to also support Levenshtein distance as an alternative strategy, configurable via comparison_rules.yaml. Add unit tests comparing accuracy of both strategies on sample name pairs. Open a PR.
+```
+Review the uc-document-review-automation codebase. The fuzzy_comparator currently uses Jaccard similarity on bigrams. Enhance it to also support Levenshtein distance as an alternative strategy, configurable via comparison_rules.yaml. Add unit tests comparing accuracy of both strategies on sample name pairs.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -80,7 +107,9 @@ Review the Levenshtein implementation. Ask Devin to add batch processing or addi
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-bdd-test-generation-cucumber codebase. Add Gherkin feature files that test a Petstore-style API (pets CRUD). Include scenarios for successful operations, validation errors, not-found cases, and pagination. Implement step definitions. Open a PR.
+```
+Review the uc-bdd-test-generation-cucumber codebase. Add Gherkin feature files that test a Petstore-style API (pets CRUD). Include scenarios for successful operations, validation errors, not-found cases, and pagination. Implement step definitions.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -108,7 +137,9 @@ Review the Gherkin scenarios for readability. Ask Devin to add Scenario Outlines
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the uc-volume-anomaly-detection codebase. The seasonal detector currently builds baselines by day-of-week. Enhance it to support a "time-of-day only" mode that ignores day-of-week. Add a configuration option in detection_rules.yaml. Add unit tests for both modes. Open a PR.
+```
+Review the uc-volume-anomaly-detection codebase. The seasonal detector currently builds baselines by day-of-week. Enhance it to support a "time-of-day only" mode that ignores day-of-week. Add a configuration option in detection_rules.yaml. Add unit tests for both modes.
+```
 
 #### Step 2: Research with Ask Devin
 

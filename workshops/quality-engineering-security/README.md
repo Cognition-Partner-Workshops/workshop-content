@@ -19,6 +19,28 @@
 >
 > **Who should attend:** QA/QE engineers, AppSec and DevSecOps practitioners, engineering leads responsible for test coverage or security compliance, and anyone curious about applying AI assistants to quality and security workflows.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Structure](#structure)
+- [Featured Labs](#featured-labs)
+  - [Lab 1 — Linting & Unit Testing](#lab-1--linting--unit-testing-45-min)
+  - [Lab 2 — E2E Testing & Documentation](#lab-2--e2e-testing--documentation-45-min)
+  - [Lab 3 — CVE Remediation with Local SAST Tools](#lab-3--cve-remediation-with-local-sast-tools-60-min)
+  - [Lab 4 — Shift Left & Security Antipatterns](#lab-4--shift-left--security-antipatterns-45-min)
+- [Repos Required](#repos-required-on-devins-machine)
+
 ---
 
 ## Structure

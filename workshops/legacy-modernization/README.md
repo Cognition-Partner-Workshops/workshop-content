@@ -11,7 +11,7 @@
 
 ## Workshop Narrative
 
-This workshop follows a progressive modernization arc that applies to **both** legacy platforms:
+This workshop follows a progressive modernization sequence that applies to **both** legacy platforms:
 
 1. **Understand** — What does this legacy system do? (system inventory, dependencies, business rules, technical debt)
 2. **Plan** — How should we modernize it? (strategy options, component mapping, phased cutover)
@@ -19,6 +19,34 @@ This workshop follows a progressive modernization arc that applies to **both** l
 4. **Execute** — Translate legacy code to modern tech stack with test validation
 
 Each phase's output feeds the next, mirroring how real enterprise modernization programs operate. Participants choose the track matching their legacy platform — or try both in a full-day event.
+
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Track A: COBOL Modernization](#track-a-cobol-modernization-mainframe--java)
+  - [Lab A1 — System Understanding & Reverse Engineering](#lab-a1--system-understanding--reverse-engineering-60-min)
+  - [Lab A2 — Migration Planning & Domain Decomposition](#lab-a2--migration-planning--domain-decomposition-60-min)
+  - [Lab A3 — Migration Test Harness & Validation Strategy](#lab-a3--migration-test-harness--validation-strategy-60-min)
+  - [Lab A4 — Code Migration: COBOL → Java](#lab-a4--code-migration-cobol--java-60-min)
+- [Track B: Oracle Forms Modernization](#track-b-oracle-forms-modernization-formsplsql--spring-boot)
+  - [Lab B1 — System Understanding & Reverse Engineering](#lab-b1--system-understanding--reverse-engineering-60-min)
+  - [Lab B2 — Migration Planning & Strategy](#lab-b2--migration-planning--strategy-60-min)
+  - [Lab B3 — Migration Test Harness & Validation](#lab-b3--migration-test-harness--validation-60-min)
+  - [Lab B4 — Code Migration: Oracle Forms → Java](#lab-b4--code-migration-oracle-forms--java-60-min)
+- [Duration Variants](#duration-variants)
+- [Repos Required](#repos-required)
+- [Key Takeaways](#key-takeaways)
 
 ---
 
@@ -37,7 +65,9 @@ Each phase's output feeds the next, mirroring how real enterprise modernization 
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Analyze the entire COBOL codebase in uc-legacy-modernization-cobol-to-java. Produce: (1) `APPLICATION_INVENTORY.md` cataloging all 30+ programs, copybooks, JCL jobs, and BMS maps with classifications, (2) `DATA_DICTIONARY.md` extracting business entities from copybook PIC clauses into a business-friendly format, (3) `DEPENDENCY_MAP.md` with the call graph and data lineage showing which programs call which and which jobs read/write which files, (4) `HOTSPOT_REPORT.md` with the top 10 modules prioritized by complexity, risk, and business impact. Open a PR with all artifacts.
+```
+Analyze the entire COBOL codebase in uc-legacy-modernization-cobol-to-java. Produce: (1) `APPLICATION_INVENTORY.md` cataloging all 30+ programs, copybooks, JCL jobs, and BMS maps with classifications, (2) `DATA_DICTIONARY.md` extracting business entities from copybook PIC clauses into a business-friendly format, (3) `DEPENDENCY_MAP.md` with the call graph and data lineage showing which programs call which and which jobs read/write which files, (4) `HOTSPOT_REPORT.md` with the top 10 modules prioritized by complexity, risk, and business impact.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -64,7 +94,9 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Using the COBOL codebase in uc-legacy-modernization-cobol-to-java, produce a modernization blueprint. Create: (1) `MODERNIZATION_BLUEPRINT.md` evaluating strangler, replatform, refactor, and rewrite strategies for each functional area, (2) `DOMAIN_DECOMPOSITION.md` identifying bounded contexts with extraction seam analysis, (3) `CUTOVER_PLAN.md` with a phased migration sequence from lowest-risk to highest-risk, (4) `RISK_REGISTER.md` with top risks and mitigations. Open a PR.
+```
+Using the COBOL codebase in uc-legacy-modernization-cobol-to-java, produce a modernization blueprint. Create: (1) `MODERNIZATION_BLUEPRINT.md` evaluating strangler, replatform, refactor, and rewrite strategies for each functional area, (2) `DOMAIN_DECOMPOSITION.md` identifying bounded contexts with extraction seam analysis, (3) `CUTOVER_PLAN.md` with a phased migration sequence from lowest-risk to highest-risk, (4) `RISK_REGISTER.md` with top risks and mitigations.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -91,7 +123,9 @@ Open the repo's DeepWiki page to understand domain structure and coupling patter
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Build a migration test harness for uc-legacy-modernization-cobol-to-java. Create: (1) `TEST_STRATEGY.md` covering four testing dimensions (golden-file, differential, reconciliation, contract), (2) Parse ASCII data files using copybook layouts and produce structured JSON golden references in a `golden-files/` directory, (3) Build a `test-harness/` directory with parser utilities, comparison functions, and reconciliation checks, (4) `RECONCILIATION_CHECKS.md` with per-job validation specifications. Open a PR.
+```
+Build a migration test harness for uc-legacy-modernization-cobol-to-java. Create: (1) `TEST_STRATEGY.md` covering four testing dimensions (golden-file, differential, reconciliation, contract), (2) Parse ASCII data files using copybook layouts and produce structured JSON golden references in a `golden-files/` directory, (3) Build a `test-harness/` directory with parser utilities, comparison functions, and reconciliation checks, (4) `RECONCILIATION_CHECKS.md` with per-job validation specifications.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -118,7 +152,9 @@ Open the repo's DeepWiki page to understand data file layouts and batch processi
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for sample inputs. Produce a `MIGRATION_NOTES.md` documenting translation decisions. Open a PR.
+```
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for sample inputs. Produce a `MIGRATION_NOTES.md` documenting translation decisions.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -155,7 +191,9 @@ Open the repo's DeepWiki page. Try migrating different programs, targeting diffe
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Analyze the entire Oracle Forms/PL/SQL estate in ts-plsql-oracle-forms-hrms. Produce: (1) `APPLICATION_INVENTORY.md` cataloging every Forms XML export, PLL library, PL/SQL package, trigger, view, and schema object with layer classifications, (2) `DATA_DICTIONARY.md` extracting business entities from DDL schemas grouped by domain, (3) `DEPENDENCY_MAP.md` with a multi-layer call graph (Forms → PLL → packages → tables) and circular dependency identification, (4) `TECHNICAL_DEBT_REPORT.md` finding security vulnerabilities, race conditions, performance anti-patterns, and validation drift ranked by severity. Open a PR with all artifacts.
+```
+Analyze the entire Oracle Forms/PL/SQL estate in ts-plsql-oracle-forms-hrms. Produce: (1) `APPLICATION_INVENTORY.md` cataloging every Forms XML export, PLL library, PL/SQL package, trigger, view, and schema object with layer classifications, (2) `DATA_DICTIONARY.md` extracting business entities from DDL schemas grouped by domain, (3) `DEPENDENCY_MAP.md` with a multi-layer call graph (Forms → PLL → packages → tables) and circular dependency identification, (4) `TECHNICAL_DEBT_REPORT.md` finding security vulnerabilities, race conditions, performance anti-patterns, and validation drift ranked by severity.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -182,7 +220,9 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Analyze the Oracle Forms/PL/SQL HRMS application in ts-plsql-oracle-forms-hrms and produce a migration plan. Create: (1) `MIGRATION_STRATEGY.md` evaluating strangler fig, big-bang rewrite, and re-platform (APEX) approaches for each functional area, (2) `COMPONENT_MAPPING.md` mapping every Forms element to its Java/React equivalent, (3) `MODULE_ORDERING.md` with a safe migration sequence respecting package dependencies, (4) `RISK_REGISTER.md` with top 10 Forms-specific migration risks. Open a PR.
+```
+Analyze the Oracle Forms/PL/SQL HRMS application in ts-plsql-oracle-forms-hrms and produce a migration plan. Create: (1) `MIGRATION_STRATEGY.md` evaluating strangler fig, big-bang rewrite, and re-platform (APEX) approaches for each functional area, (2) `COMPONENT_MAPPING.md` mapping every Forms element to its Java/React equivalent, (3) `MODULE_ORDERING.md` with a safe migration sequence respecting package dependencies, (4) `RISK_REGISTER.md` with top 10 Forms-specific migration risks.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -210,7 +250,9 @@ Open both repos' DeepWiki pages. Compare the legacy architecture with the target
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Review the existing test harness in uc-legacy-modernization-oracle-forms-to-java/test-harness/. Extend it with: (1) Additional business scenarios covering edge cases — terminated employee payroll exclusion, overlapping leave requests, overtime with holidays, (2) Enhanced result comparator with financial tolerance rules and wildcard matching, (3) Per-module reconciliation checks — payroll totals must balance, leave balances must sum correctly, employee counts must match. Open a PR.
+```
+Review the existing test harness in uc-legacy-modernization-oracle-forms-to-java/test-harness/. Extend it with: (1) Additional business scenarios covering edge cases — terminated employee payroll exclusion, overlapping leave requests, overtime with holidays, (2) Enhanced result comparator with financial tolerance rules and wildcard matching, (3) Per-module reconciliation checks — payroll totals must balance, leave balances must sum correctly, employee counts must match.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -237,7 +279,9 @@ Open the repo's DeepWiki page to understand the test harness structure and scena
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
-> Analyze PKG_EMPLOYEE in ts-plsql-oracle-forms-hrms (spec + body). Also review the HRMS_EMPLOYEE Forms XML and HRMS_VALIDATION_LIB PLL. Migrate the employee management functionality to Java Spring Boot: (1) EmployeeService with all CRUD operations, search, org chart, transfer, (2) JPA entities for EMPLOYEES and related tables, (3) REST API endpoints, (4) Unified validation from PLL and package layers, (5) Fix SQL injection, race condition, and circular dependency, (6) Unit tests for parity, (7) MIGRATION_NOTES.md. Use the project in uc-legacy-modernization-oracle-forms-to-java/java-target/. Open a PR.
+```
+Analyze PKG_EMPLOYEE in ts-plsql-oracle-forms-hrms (spec + body). Also review the HRMS_EMPLOYEE Forms XML and HRMS_VALIDATION_LIB PLL. Migrate the employee management functionality to Java Spring Boot: (1) EmployeeService with all CRUD operations, search, org chart, transfer, (2) JPA entities for EMPLOYEES and related tables, (3) REST API endpoints, (4) Unified validation from PLL and package layers, (5) Fix SQL injection, race condition, and circular dependency, (6) Unit tests for parity, (7) MIGRATION_NOTES.md. Use the project in uc-legacy-modernization-oracle-forms-to-java/java-target/.
+```
 
 #### Step 2: Research with Ask Devin
 
@@ -298,4 +342,4 @@ Open both repos' DeepWiki pages to understand the legacy architecture and target
 - **"Test before you migrate"** — building the safety net first is the single most important risk mitigation
 - **"Informed migration, not blind translation"** — by Lab 4, participants have complete understanding, a strategy, and a test harness
 - **"Technical debt resolved, not preserved"** — Devin fixes security vulnerabilities and performance issues during migration rather than translating bugs to the new platform
-- **"Same methodology, different platforms"** — the Understand → Plan → Safeguard → Execute arc works for COBOL, Oracle Forms, and any other legacy platform
+- **"Same methodology, different platforms"** — the Understand → Plan → Safeguard → Execute sequence works for COBOL, Oracle Forms, and any other legacy platform

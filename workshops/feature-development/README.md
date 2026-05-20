@@ -13,6 +13,25 @@
 
 Feature development is the most common daily activity for development teams. This workshop demonstrates how Devin analyzes existing code patterns, implements full-stack changes, and creates tests — all while following the codebase's established conventions.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+
+## Table of Contents
+
+- [Lab 1 — Full-Stack CRUD Feature](#lab-1--full-stack-crud-feature)
+- [Repos Required](#repos-required)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 ## Labs
 
 ### Lab 1 — Full-Stack CRUD Feature
@@ -30,13 +49,19 @@ Feature development is the most common daily activity for development teams. Thi
 Choose one:
 
 **Option A — React + Node.js (timesheet-app):**
-> Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add backend API endpoints and frontend UI. Follow existing patterns. Write tests. Open a PR.
+```
+Add a "Projects" management feature to timesheet-app. Users should be able to create, view, edit, and delete projects. Each project has a name, description, client assignment, start date, and status (active/completed/on-hold). Add backend API endpoints and frontend UI. Follow existing patterns. Write tests.
+```
 
 **Option B — Spring Boot API (loan service):**
-> Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create GET /api/loans/:id/payments with pagination, date range filtering, and payment type filtering. Add error handling and JUnit tests. Open a PR.
+```
+Add a loan payment history API to uc-data-source-migration-jdbc-normalization. Create GET /api/loans/:id/payments with pagination, date range filtering, and payment type filtering. Add error handling and JUnit tests.
+```
 
 **Option C — Spring Boot API (RealWorld app):**
-> Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create GET /api/articles/:slug/stats (view count, favorite count, comment count, days since published) and GET /api/stats/trending (top 10 most-favorited in last 7 days). Write tests. Open a PR.
+```
+Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create GET /api/articles/:slug/stats (view count, favorite count, comment count, days since published) and GET /api/stats/trending (top 10 most-favorited in last 7 days). Write tests.
+```
 
 #### Step 2: Research with Ask Devin
 

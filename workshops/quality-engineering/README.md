@@ -72,12 +72,12 @@ Choose one or run multiple in parallel:
 
 **Option A — JUnit Tests (Spring Boot):**
 ```
-Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Run the existing tests and generate a JaCoCo coverage report. Identify the top 5 modules with the lowest test coverage. Write JUnit tests for each, following the existing test patterns: use MockMvc for controller tests, Mockito for service tests, and integration tests for repository layer. Aim for at least 80% line coverage on each module. Include negative test cases (invalid inputs, not-found scenarios, unauthorized access). Open a PR with the new tests and the coverage report showing improvement.
+Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Run the existing tests and generate a JaCoCo coverage report. Identify the top 5 modules with the lowest test coverage. Write JUnit tests for each, following the existing test patterns: use MockMvc for controller tests, Mockito for service tests, and integration tests for repository layer. Aim for at least 80% line coverage on each module. Include negative test cases (invalid inputs, not-found scenarios, unauthorized access).
 ```
 
 **Option B — Jest Tests (Node.js):**
 ```
-Analyze the test coverage of timesheet-app's backend. Run `npm test -- --coverage` to see current coverage. Identify the 5 least-tested API routes and service modules. Write Jest tests for each: (1) Unit tests for service functions with mocked dependencies, (2) Integration tests for API routes using supertest, (3) Edge case tests for error handling, empty inputs, and boundary conditions. Follow existing test patterns. Open a PR with the new tests and updated coverage report.
+Analyze the test coverage of timesheet-app's backend. Run `npm test -- --coverage` to see current coverage. Identify the 5 least-tested API routes and service modules. Write Jest tests for each: (1) Unit tests for service functions with mocked dependencies, (2) Integration tests for API routes using supertest, (3) Edge case tests for error handling, empty inputs, and boundary conditions. Follow existing test patterns.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -136,12 +136,12 @@ Once Devin opens a PR, focus your review on **test quality**:
 
 **Option A — Extend Existing BDD Suite:**
 ```
-Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing 16 scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: (1) Creating a user with missing required fields (expect 400), (2) Creating a user with duplicate ID (expect 409 or appropriate error), (3) Pagination and sorting, (4) Input validation (invalid email, too-long names). Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Use Scenario Outlines with Examples tables for data-driven testing. Open a PR.
+Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing 16 scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: (1) Creating a user with missing required fields (expect 400), (2) Creating a user with duplicate ID (expect 409 or appropriate error), (3) Pagination and sorting, (4) Input validation (invalid email, too-long names). Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Use Scenario Outlines with Examples tables for data-driven testing.
 ```
 
 **Option B — Add BDD to Existing App:**
 ```
-Add Cucumber BDD testing to uc-spring-boot-upgrade-microservice-extraction. Set up the Cucumber test infrastructure (dependencies, test runner, feature file directory). Write Gherkin feature files for the Articles API: (1) Feature: Create Article — scenarios for valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed — scenarios for global feed, user feed, tag filtering, pagination, (3) Feature: Favorite Article — scenarios for favoriting, unfavoriting, favorite count. Implement step definitions that call the API. Run all scenarios and verify they pass. Open a PR.
+Add Cucumber BDD testing to uc-spring-boot-upgrade-microservice-extraction. Set up the Cucumber test infrastructure (dependencies, test runner, feature file directory). Write Gherkin feature files for the Articles API: (1) Feature: Create Article — scenarios for valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed — scenarios for global feed, user feed, tag filtering, pagination, (3) Feature: Favorite Article — scenarios for favoriting, unfavoriting, favorite count. Implement step definitions that call the API. Run all scenarios and verify they pass.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -199,12 +199,12 @@ Once Devin opens a PR, focus your review on **BDD quality**:
 
 **Option A — PIT Mutation Testing (Java):**
 ```
-Set up PIT mutation testing for uc-spring-boot-upgrade-microservice-extraction. Add the PIT Gradle plugin and configure it to run on the Articles domain (io.spring.core.article and io.spring.application.article packages). Run mutation testing and analyze the report — identify which mutants survived (tests that pass even when code is changed). For the top 10 surviving mutants, improve the existing tests or write new ones that kill the mutant by adding assertions that would fail if the mutation were present. Document the before/after mutation scores in a `MUTATION_TESTING_REPORT.md`. Open a PR.
+Set up PIT mutation testing for uc-spring-boot-upgrade-microservice-extraction. Add the PIT Gradle plugin and configure it to run on the Articles domain (io.spring.core.article and io.spring.application.article packages). Run mutation testing and analyze the report — identify which mutants survived (tests that pass even when code is changed). For the top 10 surviving mutants, improve the existing tests or write new ones that kill the mutant by adding assertions that would fail if the mutation were present. Document the before/after mutation scores in a `MUTATION_TESTING_REPORT.md`.
 ```
 
 **Option B — Stryker Mutation Testing (JavaScript):**
 ```
-Set up Stryker mutation testing for timesheet-app's backend. Configure Stryker to run on the service layer modules. Run mutation testing and analyze which mutants survive. For surviving mutants, add or improve test assertions to kill them. Focus on: (1) Conditional mutations (if statements changed), (2) Return value mutations (return true changed to return false), (3) Arithmetic mutations (+ changed to -). Document findings in a `MUTATION_TESTING_REPORT.md`. Open a PR.
+Set up Stryker mutation testing for timesheet-app's backend. Configure Stryker to run on the service layer modules. Run mutation testing and analyze which mutants survive. For surviving mutants, add or improve test assertions to kill them. Focus on: (1) Conditional mutations (if statements changed), (2) Return value mutations (return true changed to return false), (3) Arithmetic mutations (+ changed to -). Document findings in a `MUTATION_TESTING_REPORT.md`.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -264,12 +264,12 @@ Track B demonstrates Devin as a system tester. Participants will write and run E
 
 **Option A — Full E2E Suite (timesheet-app):**
 ```
-Set up and run timesheet-app locally (backend on port 3001, frontend on port 5173). Write Playwright E2E tests for the core user workflows: (1) Login flow — valid credentials succeed, invalid credentials show error, (2) Client management — create, edit, delete a client, (3) Work entry lifecycle — create entry for a client, verify it appears in list, edit hours, delete, (4) Reporting — verify reports show correct totals after creating entries, (5) Edge cases — submit empty forms, special characters in names, very long text. Run the tests and take a screen recording. If any tests fail because of application bugs, fix the bugs too. Open a PR with the test files and any bug fixes.
+Set up and run timesheet-app locally (backend on port 3001, frontend on port 5173). Write Playwright E2E tests for the core user workflows: (1) Login flow — valid credentials succeed, invalid credentials show error, (2) Client management — create, edit, delete a client, (3) Work entry lifecycle — create entry for a client, verify it appears in list, edit hours, delete, (4) Reporting — verify reports show correct totals after creating entries, (5) Edge cases — submit empty forms, special characters in names, very long text. Run the tests and take a screen recording. If any tests fail because of application bugs, fix the bugs too.
 ```
 
 **Option B — Extend Existing E2E Tests (Angular):**
 ```
-Review the existing Playwright tests in ts-angular-realworld (in the e2e/ directory). Run the existing tests to verify they pass. Then extend the test suite with: (1) Article lifecycle — create, read, update, delete an article, (2) Social features — follow a user, favorite an article, comment on an article, (3) Tag filtering — create articles with tags and verify tag-based filtering works, (4) Error scenarios — verify graceful handling of 401, 404, 500 responses. Take a screen recording of the full test run. Open a PR.
+Review the existing Playwright tests in ts-angular-realworld (in the e2e/ directory). Run the existing tests to verify they pass. Then extend the test suite with: (1) Article lifecycle — create, read, update, delete an article, (2) Social features — follow a user, favorite an article, comment on an article, (3) Tag filtering — create articles with tags and verify tag-based filtering works, (4) Error scenarios — verify graceful handling of 401, 404, 500 responses. Take a screen recording of the full test run.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -328,12 +328,12 @@ Once Devin opens a PR, focus your review on **test robustness**:
 
 **Option A — .NET Microservices Integration:**
 ```
-Write cross-service integration tests for quickapp-microservices. Focus on the Order → Product → Notification flow: (1) Create a product via the Product service, (2) Place an order via the Order service referencing that product, (3) Verify the Notification service receives the order-placed event with correct data, (4) Verify the Order service correctly validates product existence before accepting orders, (5) Test error scenarios — order for non-existent product, order with invalid customer. Use Docker Compose to run all services together. Open a PR with the integration test project and docker-compose test configuration.
+Write cross-service integration tests for quickapp-microservices. Focus on the Order → Product → Notification flow: (1) Create a product via the Product service, (2) Place an order via the Order service referencing that product, (3) Verify the Notification service receives the order-placed event with correct data, (4) Verify the Order service correctly validates product existence before accepting orders, (5) Test error scenarios — order for non-existent product, order with invalid customer. Use Docker Compose to run all services together.
 ```
 
 **Option B — Spring Boot Microservices Integration:**
 ```
-Write cross-service integration tests for petclinic-microservices. Test the full workflow: (1) Register a new pet owner via the customers-service, (2) Add a pet via the customers-service, (3) Schedule a visit via the visits-service, (4) Verify the API gateway correctly routes and aggregates data from both services, (5) Test circuit breaker behavior — what happens when the visits-service is down? Use Docker Compose to run the services and write tests using RestAssured or similar. Open a PR.
+Write cross-service integration tests for petclinic-microservices. Test the full workflow: (1) Register a new pet owner via the customers-service, (2) Add a pet via the customers-service, (3) Schedule a visit via the visits-service, (4) Verify the API gateway correctly routes and aggregates data from both services, (5) Test circuit breaker behavior — what happens when the visits-service is down? Use Docker Compose to run the services and write tests using RestAssured or similar.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -389,12 +389,12 @@ Focus on **integration quality**:
 
 **Option A — k6 Load Testing (Node.js):**
 ```
-Set up k6 load testing for timesheet-app. Create load test scripts that: (1) Simulate 50 concurrent users performing typical workflows (login, create entry, view reports), (2) Run a ramp-up test from 1 to 100 users over 5 minutes, (3) Establish performance baselines (p95 latency, error rate, throughput), (4) Identify the breaking point — at what concurrency does the application start failing? Document findings in a `PERFORMANCE_REPORT.md` including baseline metrics, bottleneck analysis, and recommendations. If you identify a performance bottleneck (e.g., missing database index, N+1 query), fix it and re-run to show improvement. Open a PR.
+Set up k6 load testing for timesheet-app. Create load test scripts that: (1) Simulate 50 concurrent users performing typical workflows (login, create entry, view reports), (2) Run a ramp-up test from 1 to 100 users over 5 minutes, (3) Establish performance baselines (p95 latency, error rate, throughput), (4) Identify the breaking point — at what concurrency does the application start failing? Document findings in a `PERFORMANCE_REPORT.md` including baseline metrics, bottleneck analysis, and recommendations. If you identify a performance bottleneck (e.g., missing database index, N+1 query), fix it and re-run to show improvement.
 ```
 
 **Option B — Gatling Load Testing (Java):**
 ```
-Set up Gatling load testing for uc-spring-boot-upgrade-microservice-extraction. Create simulation scripts that: (1) Test the articles API under load (list, create, read single article), (2) Simulate realistic traffic patterns (80% reads, 15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5 minutes, (4) Measure p50, p95, and p99 response times. Establish SLO-style thresholds (p95 < 200ms, error rate < 1%). Document findings and any optimizations in `PERFORMANCE_REPORT.md`. Open a PR.
+Set up Gatling load testing for uc-spring-boot-upgrade-microservice-extraction. Create simulation scripts that: (1) Test the articles API under load (list, create, read single article), (2) Simulate realistic traffic patterns (80% reads, 15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5 minutes, (4) Measure p50, p95, and p99 response times. Establish SLO-style thresholds (p95 < 200ms, error rate < 1%). Document findings and any optimizations in `PERFORMANCE_REPORT.md`.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -457,12 +457,12 @@ Run these as **parallel sessions** for different tech stacks:
 
 **Session A — JavaScript/TypeScript Linting:**
 ```
-Set up comprehensive linting for timesheet-app: (1) Configure ESLint with TypeScript rules for both frontend and backend, (2) Add Prettier for consistent formatting, (3) Create a pre-commit hook (using Husky + lint-staged) that auto-formats and lints on every commit, (4) Fix all existing lint errors and warnings, (5) Add a CI step that fails the build on lint violations. Document the lint configuration choices in a `CODING_STANDARDS.md`. Open a PR.
+Set up comprehensive linting for timesheet-app: (1) Configure ESLint with TypeScript rules for both frontend and backend, (2) Add Prettier for consistent formatting, (3) Create a pre-commit hook (using Husky + lint-staged) that auto-formats and lints on every commit, (4) Fix all existing lint errors and warnings, (5) Add a CI step that fails the build on lint violations. Document the lint configuration choices in a `CODING_STANDARDS.md`.
 ```
 
 **Session B — Terraform Linting:**
 ```
-Set up Terraform quality enforcement for timesheet-infra: (1) Run `terraform fmt -check` and fix any formatting issues, (2) Add tflint with the AWS ruleset for Terraform best practices, (3) Add checkov or tfsec for security scanning of Terraform configurations, (4) Create a CI pipeline that runs fmt check + tflint + security scan on PRs, (5) Fix any security findings. Document IaC standards in an `IAC_STANDARDS.md`. Open a PR.
+Set up Terraform quality enforcement for timesheet-infra: (1) Run `terraform fmt -check` and fix any formatting issues, (2) Add tflint with the AWS ruleset for Terraform best practices, (3) Add checkov or tfsec for security scanning of Terraform configurations, (4) Create a CI pipeline that runs fmt check + tflint + security scan on PRs, (5) Fix any security findings. Document IaC standards in an `IAC_STANDARDS.md`.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -519,12 +519,12 @@ Focus on **enforcement value**:
 
 **Option A — Javadoc Generation (Spring Boot):**
 ```
-Review the codebase of uc-spring-boot-upgrade-microservice-extraction and add Javadoc documentation to all public interfaces, classes, and methods that are currently undocumented. Focus on: (1) All REST controller methods (describe the endpoint, parameters, response, and error cases), (2) All service layer public methods (describe business logic), (3) All repository interfaces (describe the query). Follow existing documentation style. Also create a `CODE_REVIEW.md` that identifies the top 10 code quality concerns (missing validation, error handling gaps, coupling issues, naming problems). Open a PR.
+Review the codebase of uc-spring-boot-upgrade-microservice-extraction and add Javadoc documentation to all public interfaces, classes, and methods that are currently undocumented. Focus on: (1) All REST controller methods (describe the endpoint, parameters, response, and error cases), (2) All service layer public methods (describe business logic), (3) All repository interfaces (describe the query). Follow existing documentation style. Also create a `CODE_REVIEW.md` that identifies the top 10 code quality concerns (missing validation, error handling gaps, coupling issues, naming problems).
 ```
 
 **Option B — JSDoc/TSDoc Generation (Node.js/React):**
 ```
-Review timesheet-app's codebase and add JSDoc/TSDoc documentation to all exported functions, React components, and API route handlers that are currently undocumented. For React components, document the props interface. For API routes, document the request/response shapes and error codes. For utility functions, document parameters, return values, and edge cases. Also create a `CODE_REVIEW.md` listing architectural concerns and tech debt items. Open a PR.
+Review timesheet-app's codebase and add JSDoc/TSDoc documentation to all exported functions, React components, and API route handlers that are currently undocumented. For React components, document the props interface. For API routes, document the request/response shapes and error codes. For utility functions, document parameters, return values, and edge cases. Also create a `CODE_REVIEW.md` listing architectural concerns and tech debt items.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -577,7 +577,7 @@ Once Devin opens a PR, observe how **PR Review** handles documentation changes:
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
 ```
-Build a comprehensive continuous quality pipeline for timesheet-app using GitHub Actions. The pipeline should enforce these quality gates on every PR: (1) Linting passes (ESLint + Prettier), (2) All unit tests pass, (3) Code coverage does not drop below the current baseline (fail if new code has < 80% coverage), (4) No new security vulnerabilities (npm audit), (5) No TypeScript type errors (tsc --noEmit), (6) Bundle size does not increase by more than 10% (for frontend). Add a quality dashboard comment on each PR showing the results of each gate (pass/fail with metrics). Create a `QUALITY_GATES.md` documenting each gate, its threshold, and how to fix failures. Open a PR.
+Build a comprehensive continuous quality pipeline for timesheet-app using GitHub Actions. The pipeline should enforce these quality gates on every PR: (1) Linting passes (ESLint + Prettier), (2) All unit tests pass, (3) Code coverage does not drop below the current baseline (fail if new code has < 80% coverage), (4) No new security vulnerabilities (npm audit), (5) No TypeScript type errors (tsc --noEmit), (6) Bundle size does not increase by more than 10% (for frontend). Add a quality dashboard comment on each PR showing the results of each gate (pass/fail with metrics). Create a `QUALITY_GATES.md` documenting each gate, its threshold, and how to fix failures.
 ```
 
 #### Step 2: Research with Ask Devin

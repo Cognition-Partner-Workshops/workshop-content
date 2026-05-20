@@ -23,11 +23,34 @@
 >
 > **Who should attend:** Enterprise architects evaluating modernization strategies, mainframe teams planning migration programs, application portfolio managers prioritizing legacy estates, and anyone responsible for de-risking large-scale COBOL migration.
 
+## Getting the Most from This Workshop
+
+> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+
+A few tips to maximize your hands-on time:
+
+- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
+- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+
+## Table of Contents
+
+- [Structure](#structure)
+- [Featured Labs](#featured-labs)
+  - [Lab 1 — System Understanding & Reverse Engineering](#lab-1--system-understanding--reverse-engineering-60-min)
+  - [Lab 2 — Migration Planning & Domain Decomposition](#lab-2--migration-planning--domain-decomposition-60-min)
+  - [Lab 3 — Migration Test Harness & Validation Strategy](#lab-3--migration-test-harness--validation-strategy-60-min)
+  - [Lab 4 — COBOL to Java Code Migration](#lab-4--cobol-to-java-code-migration-60-min)
+- [Accelerated Variant](#accelerated-variant)
+- [Repos Required](#repos-required-on-devins-machine)
+
 ---
 
 ## Structure
 
-Four labs that build on each other in a progressive arc:
+Four labs that build on each other in a progressive sequence:
 
 1. **Lab 1 — System Understanding & Reverse Engineering (60 min):** Discover what the system does
 2. **Break (15 min)**
@@ -37,7 +60,7 @@ Four labs that build on each other in a progressive arc:
 6. **Break (15 min)**
 7. **Lab 4 — COBOL to Java Code Migration (60 min):** Execute the migration
 
-**Progression arc:**
+**Progression:**
 - Lab 1: **Understand** — What does this system do? What are the programs, data, dependencies, and risks?
 - Lab 2: **Plan** — How should we modernize it? What are the domains, strategies, and phases?
 - Lab 3: **Safeguard** — How do we know the migration is correct? What tests catch regressions?
@@ -178,7 +201,7 @@ For shorter workshops (2 hours), use [Legacy Modernization Combined](../../modul
 
 | Duration | Recommended Format |
 |----------|-------------------|
-| 4+ hours | Full arc: Lab 1 → Lab 2 → Lab 3 → Lab 4 |
+| 4+ hours | Full workshop: Lab 1 → Lab 2 → Lab 3 → Lab 4 |
 | 3 hours | Labs 1, 3, 4 (skip planning, focus on understand → test → migrate) |
 | 2 hours | Abbreviated Lab 1 (30 min) + MM10 combined hands-on (60 min) + discussion |
 | 1 hour | Walkthrough only: show pre-built artifacts from each lab phase |
@@ -216,7 +239,7 @@ Participants who finish early or want to go deeper may attempt:
 ## Context
 
 - **Audience:** Enterprise modernization teams with COBOL estates
-- **Narrative arc:** Understand (Lab 1) → Plan (Lab 2) → Safeguard (Lab 3) → Execute (Lab 4)
+- **Narrative progression:** Understand (Lab 1) → Plan (Lab 2) → Safeguard (Lab 3) → Execute (Lab 4)
 - **Enterprise value props shown hands-on:**
   - Lab 1: Devin compresses months of discovery into hours — dependency maps, data dictionaries, and hotspot analysis without SME interviews
   - Lab 2: Devin produces decision-ready modernization blueprints with multiple strategy options, not just "rewrite everything"
