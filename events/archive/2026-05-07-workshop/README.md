@@ -12,30 +12,6 @@
 | **Tracks** | Single progressive track: Analyze → Generate → Detect & Migrate |
 | **Event Site** | TBD |
 
-## Table of Contents
-
-- [Workshop Overview](#workshop-overview)
-- [Getting the Most from This Workshop](#getting-the-most-from-this-workshop)
-- [Agenda](#agenda)
-- [Lab 1 — Gap Analysis on Banking Microservices (30 min)](#lab-1-gap-analysis-on-banking-microservices-30-min)
-- [Lab 2 — API-Spec-Driven Microservice Generation (30 min)](#lab-2-api-spec-driven-microservice-generation-30-min)
-- [Lab 3a — Data Anomaly Detection (15 min)](#lab-3a-data-anomaly-detection-15-min)
-- [Lab 3b — Legacy CDW to Databricks Migration (15 min)](#lab-3b-legacy-cdw-to-databricks-migration-15-min)
-- [Post-Session Exercises](#post-session-exercises)
-  - [Exercise A: COBOL Copybook to PySpark/JSON Config Generation](#exercise-a-cobol-copybook-to-pysparkjson-config-generation)
-  - [Exercise B: Automated Security Remediation & Vulnerability Reporting](#exercise-b-automated-security-remediation-vulnerability-reporting)
-  - [Exercise C: Payment Payload Gap Analysis & Business Capability Decomposition](#exercise-c-payment-payload-gap-analysis-business-capability-decomposition)
-  - [Exercise D: SAS to Python/Snowflake Migration](#exercise-d-sas-to-pythonsnowflake-migration)
-  - [Exercise E: Monolith-to-Microservices Extraction (Spring Boot Upgrade)](#exercise-e-monolith-to-microservices-extraction-spring-boot-upgrade)
-  - [Exercise F: Ab Initio ETL Framework → Databricks Migration](#exercise-f-ab-initio-etl-framework-databricks-migration)
-- [Prerequisites](#prerequisites)
-  - [Repos Required (must be available in the target GitHub org)](#repos-required-must-be-available-in-the-target-github-org)
-  - [Integration Requirements](#integration-requirements)
-  - [Participant Requirements](#participant-requirements)
-- [External GitHub Considerations](#external-github-considerations)
-- [Notes](#notes)
-- [Post-Event](#post-event)
-
 ## Workshop Overview
 
 This is a hands-on workshop for teams getting their first experience with Devin. The labs are structured as a progressive ramp — starting with low-risk analysis, building to code generation, and finishing with data quality and migration. By the end, participants will have used Devin to analyze a codebase, generate a microservice from an API spec, detect data anomalies, and migrate a legacy data layer to a modern schema.
@@ -84,6 +60,7 @@ This is your first Devin session. The task is pure analysis — Devin reads code
 The repo is a Java 21 / Spring Boot 3.2.4 banking application with 6 microservices: core-banking, fund-transfer, user-service, utility-payment, API gateway, and service registry. It uses Keycloak auth, RabbitMQ messaging, and Zipkin tracing.
 
 ### Paste into Devin
+
 ```
 Perform a comprehensive technical assessment of ts-java-spring-boot-internet-banking. This is a Java 21 / Spring Boot 3.2.4 banking application with 6 microservices. Produce the following deliverables:
 
@@ -109,6 +86,8 @@ Perform a comprehensive technical assessment of ts-java-spring-boot-internet-ban
 
 3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
    Prioritize the gaps into a phased plan: Phase 1 (quick wins), Phase 2 (important), Phase 3 (polish). Include sample Devin prompts for each remediation item.
+
+Open a PR with all three documents.
 ```
 
 ### While Devin works: try Ask Devin
@@ -142,6 +121,7 @@ When Devin opens a PR:
 Now you'll see Devin write real code. The PetClinic REST API repo ships a rich OpenAPI 3.0 specification (2,168 lines, 35 operations, 15 schemas, 8 domain areas). You'll give Devin this spec and have it generate a complete microservice from scratch.
 
 ### Paste into Devin
+
 ```
 Using the OpenAPI specification at `src/main/resources/openapi.yml` in petclinic-rest-api as the source of truth, generate a brand new Spring Boot microservice that implements the "Vet" domain (veterinarians and specialties). The new service should be fully standalone — not a modification of the existing monolith.
 
@@ -155,7 +135,7 @@ Generate all components following Spring Boot conventions:
 7. **Exception handling** — global handler with RFC 7807 Problem Details responses
 8. **JUnit tests** — aim for 90%+ line coverage. Include unit tests for service logic, integration tests for the controller layer (@WebMvcTest), and repository tests (@DataJpaTest)
 
-Use an H2 in-memory database for dev/test. Structure the project in a new `vet-service/` directory.
+Use an H2 in-memory database for dev/test. Structure the project in a new `vet-service/` directory. Open a PR.
 ```
 
 ### While Devin works: try Ask Devin
@@ -188,6 +168,7 @@ When Devin opens a PR:
 The repo is a Spring Boot 3.2 / Java 17 loan management application that reads from legacy CDW (Corporate Data Warehouse) tables with known data quality issues: all-VARCHAR typing, cryptic column names, no foreign keys, code abbreviations. Devin will analyze the data for anomalies, trace root causes through the code, and implement validation to catch them.
 
 ### Paste into Devin
+
 ```
 Analyze the data layer in uc-data-source-migration-jdbc-normalization for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
 
@@ -198,6 +179,8 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 3. **Root Cause Analysis:** For the top 3 most critical anomalies, trace through the code (LoanService.java, the repository layer, and the column mappings in `data/mappings/column_mappings.md`) to identify where the anomaly would cause a runtime failure or incorrect API response. Document the root cause in `docs/ROOT_CAUSE_ANALYSIS.md`.
 
 4. **Fix:** Implement data validation in the service layer that catches these anomalies at ingestion time — add input validation, type coercion with error handling, and fallback defaults where appropriate. Add tests that verify the validation catches each anomaly type.
+
+Open a PR with the anomaly report, root cause analysis, validation code, and tests.
 ```
 
 > **Tip:** Kick off this session and immediately move to Lab 3b below — both use the same repo but are independent Devin sessions.
@@ -219,6 +202,7 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 Same repo, different story. Where Lab 3a finds what's wrong with the data, Lab 3b generates the migration pipeline to move it to a modern platform. Devin will read the legacy schema and column mappings, then produce PySpark scripts, Delta Lake table definitions, and validation code — everything a data engineering team needs to execute the migration in Databricks.
 
 ### Paste into Devin
+
 ```
 Analyze the legacy CDW schema in uc-data-source-migration-jdbc-normalization. This loan management application reads from legacy tables with all-VARCHAR columns, cryptic names (BORR_FST_NM, LN_CURR_BAL, PMT_ESCROW_AMT), no foreign keys, and status code abbreviations (ACT, CLO, DFT, FRB). Review the schema in `src/main/resources/schema-legacy.sql`, the seed data in `src/main/resources/data-legacy.sql`, and the column mappings in `data/mappings/column_mappings.md`.
 
@@ -241,6 +225,8 @@ Generate a complete Databricks/PySpark migration pipeline:
    - Generate a `DATA_QUALITY_REPORT.md` summarizing pass/fail results
 
 4. **Migration Runbook** (`docs/DATABRICKS_MIGRATION_RUNBOOK.md`): Document every transformation decision, the mapping from legacy column names to modern names, type conversion choices, partitioning rationale, and the recommended execution order in Databricks.
+
+Open a PR with all generated artifacts.
 ```
 
 ### While Devin works on 3a and 3b: try Ask Devin
@@ -275,6 +261,7 @@ Participants who want to keep exploring after the workshop can try these additio
 - **Shows:** Devin reading legacy COBOL data definitions and generating modern data engineering artifacts
 
 #### Paste into Devin
+
 ```
 Analyze the COBOL copybook `app/cpy/CVACT01Y.cpy` in ts-cobol-carddemo. This defines the ACCOUNT-RECORD layout (300 bytes) with fields like ACCT-ID (PIC 9(11)), ACCT-CURR-BAL (PIC S9(10)V99), dates (PIC X(10)), and FILLER.
 
@@ -285,7 +272,7 @@ Generate:
 
 Then repeat for `CUSTREC.cpy` → `custdata.txt` and `CVACT02Y.cpy` → `carddata.txt`.
 
-Include a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e.g., COMP-3 → DecimalType, PIC X → StringType).
+Open a PR with all generated artifacts and a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e.g., COMP-3 → DecimalType, PIC X → StringType).
 ```
 
 ---
@@ -297,6 +284,7 @@ Include a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e
 - **Shows:** Devin running SAST/SCA analysis, producing an executive security report, and remediating critical findings
 
 #### Paste into Devin
+
 ```
 Perform a comprehensive security assessment of uc-cve-remediation-regulatory-compliance. Run three types of analysis:
 
@@ -309,6 +297,8 @@ Produce a unified `SECURITY_POSTURE_REPORT.md` that includes:
 - Findings table organized by category (SCA, SAST, Configuration) with severity, description, and recommended fix
 - A prioritized remediation roadmap — what to fix first and why
 - Fix the top 3 most critical findings and re-verify
+
+Open a PR with the report and the fixes.
 ```
 
 ---
@@ -320,6 +310,7 @@ Produce a unified `SECURITY_POSTURE_REPORT.md` that includes:
 - **Shows:** Devin analyzing payment domain code against industry standards and recommending a service decomposition strategy
 
 #### Paste into Devin
+
 ```
 Analyze ts-java-spring-boot-internet-banking and produce a payment domain assessment. This banking application has 6 microservices including fund-transfer and utility-payment services.
 
@@ -342,6 +333,8 @@ Deliverables:
    - For each recommendation, explain the business justification and the technical approach
    - Include a dependency diagram (in text/markdown) showing current vs. proposed service interactions
    - Prioritize recommendations by impact and feasibility
+
+Open a PR with all three documents.
 ```
 
 ---
@@ -354,6 +347,7 @@ Deliverables:
 - **Audience:** SAS developers, ETL engineers, data platform teams
 
 #### Paste into Devin
+
 ```
 Analyze the SAS macros in ts-sas-legacy-analytics/Macro/ — focus on the data transformation macros: transpose.sas, subset_data.sas, compare.sas, dedup_string.sas, dedup_mstring.sas, and the export family (export_csv.sas, export_xlsx.sas, export_dbms.sas).
 
@@ -365,6 +359,8 @@ For each macro:
 Then analyze the sample datasets in uc-data-migration-sas-to-snowflake/sample_data/ (CUST_ACCOUNTS.csv, DAILY_BALANCE.csv, MONTHLY_AMB.csv). Create Snowflake-compatible DDL for each dataset with proper column types, constraints, and clustering keys. Write `COPY INTO` statements for bulk loading and validation queries comparing row counts and checksums.
 
 Document all translation decisions in `SAS_MIGRATION_NOTES.md` — especially how SAS-specific constructs (macro variables, formats, informats, missing value handling) map to Python/Snowflake equivalents.
+
+Open a PR with the Python functions, tests, Snowflake DDL, and migration notes.
 ```
 
 ---
@@ -377,6 +373,7 @@ Document all translation decisions in `SAS_MIGRATION_NOTES.md` — especially ho
 - **Audience:** Java/Spring Boot developers, monolith-to-microservices teams
 
 #### Paste into Devin
+
 ```
 Analyze uc-spring-boot-upgrade-microservice-extraction — this is a Spring Boot monolith implementing the RealWorld blogging platform (articles, users, comments, tags, favorites).
 
@@ -399,6 +396,8 @@ Perform a two-phase modernization:
 3. **Documentation:**
    - Create `docs/UPGRADE_NOTES.md` with every breaking change encountered and how it was resolved
    - Create `docs/EXTRACTION_DECISIONS.md` explaining the domain boundary choices
+
+Open a PR with the upgraded monolith, extracted microservice, Docker Compose, and documentation.
 ```
 
 ---
@@ -410,6 +409,7 @@ Perform a two-phase modernization:
 - **Audience:** Ab Initio developers, ETL engineers, data platform migration teams
 
 #### Paste into Devin
+
 ```
 Analyze the Ab Initio ETL framework in ts-python-abinitio-etl. This is an enterprise ETL estate with:
 - DML record layouts in `dml/` (Ab Initio schema definitions)
@@ -443,6 +443,8 @@ Migrate this estate to Databricks Lakehouse architecture:
    - Complete concept mapping table (Graph→Notebook, DML→StructType, PSET→Parameters, etc.)
    - Execution order for the migration
    - Risks and mitigations (e.g., packed decimal handling, partition strategy differences)
+
+Open a PR with all Databricks artifacts and the migration runbook.
 ```
 
 ---

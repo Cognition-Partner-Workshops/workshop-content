@@ -29,6 +29,9 @@ Read `shared/quality-checklist.md` before creating or editing any workshop conte
 - Use generic placeholders like "*(customer)*"
 - Do not identify the user requester in PR descriptions or commit messages
 
+### Archived Events
+- Files under `events/archive/` must **never be modified**. Archived events are historical records and should be left exactly as they were at the time of archiving. Quality sweeps, language fixes, and formatting updates apply only to active events, the event template, and shared files.
+
 ### Structure
 - Modules longer than 3 sections need a Table of Contents with `<a id="..."></a>` anchors
 - Include a "Quick Start" section near the top of hands-on modules so experienced users can jump to the first prompt

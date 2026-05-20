@@ -11,19 +11,6 @@
 | **Facilitator** | Brian Smitches, brian.smitches@cognition.ai |
 | **Event Site** | https://partner-workshops.devinenterprise.com |
 
-## Table of Contents
-
-- [Featured Labs](#featured-labs)
-  - [Lab 1 — Legacy Modernization: COBOL → Java (60 min)](#lab-1-legacy-modernization-cobol-java-60-min)
-  - [Lab 2 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)](#lab-2-framework-upgrade-refactor-monolith-microservices-60-min)
-  - [Lab 3 — CVE Remediations & Regulatory Code Standards (60 min)](#lab-3-cve-remediations-regulatory-code-standards-60-min)
-  - [Lab 4 — DW Migration: Teradata → Snowflake (60 min)](#lab-4-dw-migration-teradata-snowflake-60-min)
-- [Additional Challenges](#additional-challenges)
-- [Repos Required on Devin's Machine](#repos-required-on-devins-machine)
-- [Repo Duplication Notes](#repo-duplication-notes)
-- [Context](#context)
-- [Devin Features Checklist](#devin-features-checklist)
-
 ## Featured Labs
 
 This event features 4 structured labs using purpose-built repositories:
@@ -34,9 +21,8 @@ This event features 4 structured labs using purpose-built repositories:
 - **Objective:** Explore a real COBOL mainframe application and use Devin to modernize part of it — you choose the scope, target, and approach
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs.
-```
+
+> Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs. Open a PR with the Java code and tests.
 
 #### Step 2: Research with Ask Devin
 
@@ -76,9 +62,8 @@ See the [full challenge details](../../../modules/migration-modernization/cobol-
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass.
-```
+
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
 
 #### Step 2: Research with Ask Devin
 
@@ -119,9 +104,8 @@ See the full challenge details for [Framework Upgrade](../../../modules/migratio
 - **Known CVEs:** See the [full CVE findings report](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results.
-```
+
+> Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results and open a PR.
 
 #### Step 2: Research with Ask Devin
 
@@ -162,9 +146,8 @@ See the full challenge details for [Upgrade Dependencies](../../../modules/secur
 - **Objective:** A Teradata-based data warehouse needs to be migrated to Snowflake. Convert DDL/DML, build a migration runbook, and set up validation
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Analyze all Teradata DDL in uc-dw-migration-teradata-to-snowflake/ddl/. Convert every table and view to Snowflake-compatible SQL, handling all Teradata-specific features (SET/MULTISET, PRIMARY INDEX, PARTITION BY RANGE_N, COMPRESS, CASESPECIFIC, FORMAT, QUALIFY, CSUM, MAVG). Place converted files in a new snowflake/ directory mirroring the original structure. Create a MIGRATION_RUNBOOK.md documenting every translation decision.
-```
+
+> Analyze all Teradata DDL in uc-dw-migration-teradata-to-snowflake/ddl/. Convert every table and view to Snowflake-compatible SQL, handling all Teradata-specific features (SET/MULTISET, PRIMARY INDEX, PARTITION BY RANGE_N, COMPRESS, CASESPECIFIC, FORMAT, QUALIFY, CSUM, MAVG). Place converted files in a new snowflake/ directory mirroring the original structure. Create a MIGRATION_RUNBOOK.md documenting every translation decision. Open a PR.
 
 #### Step 2: Research with Ask Devin
 

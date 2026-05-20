@@ -8,17 +8,6 @@
 | **Location** | San Francisco, CA |
 | **Event Site** | https://partner-workshops.devinenterprise.com |
 
-## Table of Contents
-
-- [Featured Labs](#featured-labs)
-  - [Lab 1 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)](#lab-1-framework-upgrade-refactor-monolith-microservices-60-min)
-  - [Lab 2 — CVE Remediations & Regulatory Code Standards (60 min)](#lab-2-cve-remediations-regulatory-code-standards-60-min)
-- [Additional Challenges](#additional-challenges)
-- [Repos Required on Devin's Machine](#repos-required-on-devins-machine)
-- [Repo Duplication Notes](#repo-duplication-notes)
-- [Context](#context)
-- [Devin Features Checklist](#devin-features-checklist)
-
 ## Featured Labs
 
 This event features 2 structured labs using purpose-built repositories:
@@ -29,9 +18,8 @@ This event features 2 structured labs using purpose-built repositories:
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass.
-```
+
+> Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Open a PR with the changes.
 
 #### Step 2: Research with Ask Devin
 
@@ -72,9 +60,8 @@ See the full challenge details for [Framework Upgrade](../../../modules/migratio
 - **Known CVEs:** See the [full CVE findings report](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
-```
-Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results.
-```
+
+> Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results and open a PR.
 
 #### Step 2: Research with Ask Devin
 

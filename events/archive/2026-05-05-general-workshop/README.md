@@ -12,40 +12,6 @@
 | **Tracks** | **Track A:** Security & Issue Triage · **Track B:** Modernization · **Track C:** Feature Development & Testing |
 | **Event Site** | TBD |
 
-## Table of Contents
-
-- [Workshop Overview](#workshop-overview)
-- [Getting the Most from This Workshop](#getting-the-most-from-this-workshop)
-- [Agenda](#agenda)
-- [Track A: Security & Issue Triage](#track-a-security-issue-triage)
-  - [Lab A1 — SAST Scans & Vulnerability Remediation](#lab-a1-sast-scans-vulnerability-remediation)
-  - [Lab A2 — Bug Fixes & Root Cause Analysis](#lab-a2-bug-fixes-root-cause-analysis)
-  - [Lab A3 — Scheduled Dependency Hygiene](#lab-a3-scheduled-dependency-hygiene)
-  - [Spotlight: Comprehensive Security Reporting](#spotlight-comprehensive-security-reporting)
-- [Track B: Modernization](#track-b-modernization)
-  - [Lab B1 — Rearchitecting Monolith to Microservice](#lab-b1-rearchitecting-monolith-to-microservice)
-  - [Lab B2 — Upgrading EOL Systems to LTS Versions](#lab-b2-upgrading-eol-systems-to-lts-versions)
-  - [Lab B3 — Language Translation](#lab-b3-language-translation)
-  - [Spotlight: API-Spec-Driven Microservice Generation](#spotlight-api-spec-driven-microservice-generation)
-  - [Spotlight: Domain Decomposition Analysis](#spotlight-domain-decomposition-analysis)
-- [Track C: Feature Development & Testing](#track-c-feature-development-testing)
-  - [Lab C1 — Add a Feature + PR Review Feedback](#lab-c1-add-a-feature-pr-review-feedback)
-  - [Lab C2 — Add Test Coverage](#lab-c2-add-test-coverage)
-  - [Lab C3 — Perform E2E Tests & Fix Issues](#lab-c3-perform-e2e-tests-fix-issues)
-  - [Spotlight: Automated Data Anomaly Detection & Triage](#spotlight-automated-data-anomaly-detection-triage)
-  - [Spotlight: Codebase Knowledge Extraction & Gap Analysis](#spotlight-codebase-knowledge-extraction-gap-analysis)
-- [Additional Challenges](#additional-challenges)
-- [Suggested Formats](#suggested-formats)
-- [Spotlight Prompts Summary](#spotlight-prompts-summary)
-- [Repos Required](#repos-required)
-  - [Track A (Security & Issue Triage)](#track-a-security--issue-triage-1)
-  - [Track B (Modernization)](#track-b-modernization-1)
-  - [Track C (Feature Development & Testing)](#track-c-feature-development--testing-1)
-  - [Spotlight Prompts (additional)](#spotlight-prompts-additional)
-- [Use Case Inspiration Notes](#use-case-inspiration-notes)
-- [Context](#context)
-- [Devin Features Checklist](#devin-features-checklist)
-
 ## Workshop Overview
 
 This is a hands-on general workshop covering the three most common categories of engineering work: keeping systems secure and stable, modernizing legacy technology, and building new features with quality. Each track is self-contained — participants can follow all three in sequence for a full-day experience, or focus on one or two tracks in a shorter session.
@@ -120,6 +86,7 @@ See [general workshop Lab A3](../../../workshops/general/README.md#lab-a3--sched
 This spotlight goes beyond single-tool scanning. Instead of running one SAST tool, have Devin produce a unified security posture report combining multiple analysis techniques — the kind of report a security team would present to leadership.
 
 #### Paste into Devin
+
 ```
 Perform a comprehensive security assessment of uc-cve-remediation-regulatory-compliance. Run three types of analysis:
 
@@ -132,6 +99,8 @@ Produce a unified `SECURITY_POSTURE_REPORT.md` that includes:
 - Findings table organized by category (SCA, SAST, Configuration) with severity, description, and recommended fix
 - A prioritized remediation roadmap — what to fix first and why
 - Fix the top 3 most critical findings and re-verify
+
+Open a PR with the report and the fixes.
 ```
 
 #### Why Try This
@@ -184,6 +153,7 @@ See [general workshop Lab B3](../../../workshops/general/README.md#lab-b3--langu
 Instead of extracting a service from an existing monolith (Lab B1), this spotlight starts from a clean API specification and has Devin generate a complete, production-ready microservice from scratch — controllers, services, validation, configuration, and tests targeting 90% coverage.
 
 #### Paste into Devin
+
 ```
 Generate a complete Spring Boot microservice from the following API specification. The service manages "Notifications" for a messaging platform.
 
@@ -206,7 +176,7 @@ Generate all components following Spring Boot conventions:
 7. **Exception handling** — global handler with RFC 7807 Problem Details responses
 8. **JUnit tests** — aim for 90%+ line coverage. Include unit tests for service logic, integration tests for the controller layer (@WebMvcTest), and repository tests (@DataJpaTest)
 
-Use an H2 in-memory database for dev/test. Structure the project with a clean package layout.
+Use an H2 in-memory database for dev/test. Structure the project with a clean package layout. Open a PR.
 ```
 
 #### Why Try This
@@ -228,6 +198,7 @@ Use an H2 in-memory database for dev/test. Structure the project with a clean pa
 Before extracting microservices, teams need to understand their domain boundaries. This spotlight has Devin analyze a codebase and produce a decomposition strategy aligned to business capabilities — the planning step that usually takes architects weeks.
 
 #### Paste into Devin
+
 ```
 Analyze uc-spring-boot-upgrade-microservice-extraction and produce a domain decomposition analysis. This Spring Boot monolith implements a social blogging platform.
 
@@ -238,7 +209,7 @@ Deliverables:
 4. **API Contract Gaps** — compare the existing REST API endpoints against RESTful design best practices (consistent naming, proper HTTP methods, pagination, error format, versioning). Document gaps and recommendations
 5. **Target Architecture Diagram** — describe (in text/markdown) the target microservice architecture: which services exist, how they communicate (sync HTTP vs. async events), and what shared infrastructure they need
 
-Write the analysis to `docs/DECOMPOSITION_ANALYSIS.md`.
+Write the analysis to `docs/DECOMPOSITION_ANALYSIS.md`. Open a PR.
 ```
 
 #### Why Try This
@@ -292,6 +263,7 @@ See [general workshop Lab C3](../../../workshops/general/README.md#lab-c3--perfo
 This spotlight shows Devin playing the role of a data reliability engineer — analyzing application data for anomalies, documenting findings as structured issues, performing root cause analysis, and fixing the underlying pipeline logic.
 
 #### Paste into Devin
+
 ```
 Analyze the data layer in uc-data-source-migration-jdbc-normalization for data quality anomalies. This Spring Boot service reads from legacy CDW (Corporate Data Warehouse) tables with known quality issues.
 
@@ -302,6 +274,8 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 3. **Root Cause Analysis:** For the top 3 most critical anomalies, trace through the code (LoanService.java, the repository layer, and the column mappings in `data/mappings/column_mappings.md`) to identify where the anomaly would cause a runtime failure or incorrect API response. Document the root cause.
 
 4. **Fix:** Implement data validation in the service layer that catches these anomalies at ingestion time — add input validation, type coercion with error handling, and fallback defaults where appropriate. Add tests that verify the validation catches each anomaly type.
+
+Open a PR with the anomaly report, root cause analysis, validation code, and tests.
 ```
 
 #### Why Try This
@@ -323,6 +297,7 @@ Analyze the data layer in uc-data-source-migration-jdbc-normalization for data q
 This spotlight demonstrates Devin as a technical analyst — reading an entire codebase, producing a structured knowledge base, and identifying gaps against engineering best practices. This is the kind of assessment that typically takes a senior engineer a week; Devin can draft it in a session.
 
 #### Paste into Devin
+
 ```
 Perform a comprehensive technical assessment of timesheet-app. Produce the following deliverables:
 
@@ -348,6 +323,8 @@ Perform a comprehensive technical assessment of timesheet-app. Produce the follo
 
 3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
    Prioritize the gaps into a phased plan: Phase 1 (quick wins — high impact, low effort), Phase 2 (important — high impact, medium effort), Phase 3 (polish — lower impact improvements). Include sample Devin prompts for each remediation item so the team can immediately start fixing gaps.
+
+Open a PR with all three documents.
 ```
 
 #### Why Try This
