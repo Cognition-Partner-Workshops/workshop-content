@@ -1,40 +1,68 @@
 # Test Framework Migration
 
-## Repositories
-
+<a id="table-of-contents"></a>
+## Table of Contents
+- [Challenge](#challenge)
+- [Quick Start](#quick-start)
+- [Target Outcomes](#target-outcomes)
+- [What Participants Will Learn](#what-participants-will-learn)
+- [Devin Features Exercised](#devin-features-exercised)
+- [Difficulty](#difficulty)
+- [Estimated Time](#estimated-time)
 - [petclinic-angular](#petclinic-angular)
 - [ts-angular-realworld](#ts-angular-realworld)
+- [Going Further](#going-further)
+
+## Repositories
+
+- [petclinic-angular](#petclinic-angular) — source (Karma/Jasmine → Vitest/Playwright)
+- [ts-angular-realworld](#ts-angular-realworld) — reference target (already uses Vitest + Playwright)
 
 ---
 
+<a id="challenge"></a>
 ## Challenge
 
-Migrate a codebase from a deprecated or legacy test framework to a modern replacement. This covers converting test files, updating configuration, resolving API differences, and verifying all migrated tests pass. The repetitive, file-by-file nature of this work is where Devin excels — participants see how Devin applies consistent migration patterns across dozens of files while they focus on review.
+Migrate from deprecated test frameworks to modern alternatives. This challenge covers the full migration lifecycle: analyzing existing tests, setting up the new framework, converting tests, and verifying parity. Test framework migrations are large-scale, pattern-driven tasks — exactly the kind of work where Devin adds the most value by handling repetitive conversions while engineers review for correctness.
 
+<a id="quick-start"></a>
+## Quick Start
+
+Paste this into a new Devin session to get started immediately:
+
+```
+Migrate the test infrastructure in petclinic-angular from
+Karma/Jasmine to Vitest. Analyze all .spec.ts files,
+convert them to Vitest syntax, update the test
+configuration, and ensure all tests pass with the new
+runner. Remove the Karma/Jasmine dependencies.
+```
+
+<a id="target-outcomes"></a>
 ## Target Outcomes
 
-- Legacy test framework fully replaced (dependencies removed, config files updated)
-- All existing test files converted to the new framework's API
-- Migrated test suite passes with equivalent coverage
-- Migration runbook documenting patterns, gotchas, and manual interventions
-- PR with migrated tests and evidence of passing suite
+- Test framework migrated from Karma/Jasmine to Vitest (unit) and Playwright (E2E)
+- All existing tests converted and passing under the new framework
+- Old framework dependencies removed
+- Migration runbook documenting the conversion patterns
+- PR with the migrated test suite
 
+<a id="what-participants-will-learn"></a>
 ## What Participants Will Learn
 
-- How Devin learns migration patterns from the first few files and applies them consistently across the rest
-- How parallel child sessions can fan out repetitive file-by-file conversions
-- How to capture migration patterns as a Playbook for reuse across other repos
-- The difference between automated pattern conversion and cases requiring human judgment
-- How Devin's Knowledge layer accumulates migration context that improves subsequent conversions
+- How Devin analyzes existing test patterns and maps them to new framework equivalents
+- How Devin handles bulk test file conversion while preserving test intent
+- How to use a reference repository to guide the migration target architecture
+- Devin's ability to iterate: convert → run → fix → re-run
+- How divide-and-conquer patterns (child sessions per test file) can accelerate large migrations
 
+<a id="devin-features-exercised"></a>
 ## Devin Features Exercised
 
-- Parallel child sessions (fan out across spec files)
-- Long-running autonomous work
-- Knowledge layer (learns patterns, applies consistently)
-- Playbook creation (capture migration runbook for reuse)
-- Multi-repo workspace (reference a modern repo as the target pattern)
-- PR creation with migration evidence
+- Multi-file codebase transformation
+- Build system configuration (karma.conf.js → vitest.config.ts)
+- Test framework API mapping
+- PR creation with migration documentation
 
 ## Difficulty
 
@@ -50,50 +78,39 @@ Intermediate
 
 **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
 
-Angular frontend using Karma + Jasmine for unit tests and Protractor for E2E tests — both deprecated. Migrate to modern Angular testing with Jest/Vitest and Playwright.
+Angular application currently using Karma + Jasmine for unit tests and Protractor for E2E. Migrate to Vitest + Playwright.
 
 ### Step 1: Paste into Devin
 
-> Analyze the test infrastructure in petclinic-angular. The project currently uses Karma + Jasmine for unit tests and Protractor for E2E tests — both are deprecated in the Angular ecosystem.
->
-> Phase 1 — Unit test migration:
-> Replace Karma + Jasmine with Jest (or Vitest). Update the test configuration, convert all `.spec.ts` files to use the new test runner's API, and ensure all unit tests pass. Remove the Karma dependencies and configuration files.
->
-> Phase 2 — E2E test migration:
-> Replace Protractor with Playwright. Convert any existing E2E tests (or create new ones if none exist) to use Playwright's API. Add a Playwright configuration file and ensure the E2E tests can run against the dev server.
->
-> Create a `MIGRATION_RUNBOOK.md` documenting: which patterns were converted automatically, which required manual intervention, and common gotchas for teams doing similar migrations. Open a PR.
+```
+Migrate the test infrastructure in petclinic-angular from
+Karma/Jasmine to Vitest. Analyze all .spec.ts files,
+convert them to Vitest syntax, update the test
+configuration, and ensure all tests pass with the new
+runner. Remove the Karma/Jasmine dependencies.
+```
 
 ### Step 2: Research with Ask Devin
 
-- *"What Karma/Jasmine patterns in petclinic-angular will be hardest to convert to Jest — are there any custom matchers, async test helpers, or TestBed configurations that need special handling?"*
-- *"What is the recommended Jest or Vitest configuration for Angular 16? Are there specific Angular testing utilities that need to be updated?"*
-- *"How does ts-angular-realworld structure its Vitest + Playwright setup? Can we use it as a reference for the migration target?"*
-- Use the analysis to plan the migration before Devin starts — this is the **Ask Devin for requirement gathering** pattern
+- *"What are the key differences between Karma/Jasmine and Vitest for Angular testing? What patterns require manual attention during migration?"*
+- *"Are there any Angular-specific test utilities (TestBed, ComponentFixture) that behave differently under Vitest vs. Karma?"*
 
 ### Step 3 (Optional): Read the DeepWiki
 
-Open the repo's **DeepWiki** page to understand the test file structure and testing patterns. Key things to look for:
-1. How many `.spec.ts` files exist and what patterns they use (TestBed, mocks, spies)
-2. Whether tests use Karma-specific features (custom reporters, preprocessors)
-3. Whether there are E2E tests in the `e2e/` directory using Protractor
-
-Try different approaches:
-- Run **parallel Devin sessions** — one for unit test migration (Phase 1) and one for E2E migration (Phase 2). Each session gets its own VM, so they don't interfere
-- Have Devin use `ts-angular-realworld` as a **reference repo** — it already uses Vitest + Playwright, so Devin can learn the target patterns from a working example
-- After the migration succeeds, ask Devin to **create a Playbook** capturing the migration steps so the same pattern can be applied to other Angular repos with one click
+Open the repo's DeepWiki page to understand the test architecture and identify which test files use the most complex Karma/Jasmine features (async testing, custom matchers).
 
 ### Step 4 (Optional): Review & Give Feedback
-
-Once Devin opens a PR, focus your review on:
-- **Correctness:** Do the migrated tests still test the same behavior? Were any assertions lost in translation?
-- **Completeness:** Are all `.spec.ts` files converted? Are there any leftover Karma/Protractor references?
-- **Configuration:** Is the new test runner properly configured for Angular (TestBed, zone.js handling)?
 
 **Leave a feedback comment** and watch Devin respond:
 - *"This test still imports from @angular/core/testing with a Karma-specific setup — please update to the Jest/Vitest equivalent"*
 - *"The Protractor-style element selectors need to be converted to Playwright locators"*
 - *"Add the migration runbook to the PR description so reviewers can understand the conversion patterns"*
+
+### Key Takeaways
+
+- Test framework migrations are highly pattern-driven — once Devin learns the mapping, it applies consistently
+- The migration runbook is as valuable as the code changes — it documents the patterns for future reference
+- Angular's TestBed configuration changes between frameworks and needs careful attention
 
 ---
 
@@ -105,14 +122,25 @@ Angular app that already uses Vitest + Playwright — use as a **reference targe
 
 ### Step 1: Paste into Devin
 
-> Review the test infrastructure in ts-angular-realworld. This repo already uses Vitest for unit tests and Playwright for E2E tests. Analyze the test configuration patterns, helper utilities, and test structure. Then apply what you learn to petclinic-angular — use this repo as the reference implementation for the migration target.
->
-> Specifically:
-> 1. Document the Vitest configuration pattern (vitest.config.ts, test setup files, Angular-specific configuration)
-> 2. Document the Playwright configuration pattern (playwright.config.ts, test helpers, authentication fixtures)
-> 3. Create a migration guide comparing the Karma/Jasmine patterns in petclinic-angular to the equivalent Vitest/Playwright patterns in this repo
->
-> Open a PR with the migration guide.
+```
+Review the test infrastructure in ts-angular-realworld.
+This repo already uses Vitest for unit tests and
+Playwright for E2E tests. Analyze the test configuration
+patterns, helper utilities, and test structure. Then apply
+what you learn to petclinic-angular — use this repo as
+the reference implementation for the migration target.
+
+Specifically:
+1. Document the Vitest configuration pattern
+   (vitest.config.ts, test setup files, Angular-specific
+   configuration)
+2. Document the Playwright configuration pattern
+   (playwright.config.ts, test helpers, authentication
+   fixtures)
+3. Create a migration guide comparing the Karma/Jasmine
+   patterns in petclinic-angular to the equivalent
+   Vitest/Playwright patterns in this repo
+```
 
 ### Step 2: Research with Ask Devin
 
@@ -127,3 +155,39 @@ Compare both repos' DeepWiki pages side-by-side. Look for differences in test he
 
 - **Review the migration guide** — is it detailed enough for a developer to follow without Devin's help?
 - **Leave a comment** asking Devin to add before/after code examples for the most common conversion patterns
+
+### Key Takeaways
+
+- Using a reference repo gives Devin a concrete target architecture — better results than abstract migration instructions
+- Migration guides document the patterns for future manual migrations in other repos
+- Side-by-side comparison reveals subtle differences that automated migration tools miss
+
+---
+
+<a id="going-further"></a>
+## Going Further
+
+### Divide and Conquer for Large Migrations
+
+For repos with many test files, spawn child Devin sessions to convert files in parallel:
+
+1. Parent session analyzes the test suite and groups files by complexity
+2. Spawns child sessions — one per group of test files
+3. Each child converts its files and verifies they pass
+4. Parent merges results and runs the full suite for integration verification
+
+### Event-Driven Migration Verification
+
+After the initial migration, set up a CI check that flags any remaining references to the old framework:
+
+```
+PR introduces a new test file
+    → CI checks for Karma/Jasmine imports
+    → If found, Devin session starts:
+       "New test file uses Karma/Jasmine syntax. Convert
+        to Vitest following the migration guide."
+```
+
+### Playbook for Framework Migrations
+
+Capture the migration methodology as a Playbook that can be applied to other Angular repos with the same Karma/Jasmine → Vitest migration path. The Playbook encodes the conversion patterns, configuration templates, and verification steps.

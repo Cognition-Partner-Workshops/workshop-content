@@ -1,5 +1,20 @@
 # Continuous Quality Engineering
 
+<a id="table-of-contents"></a>
+## Table of Contents
+- [Challenge](#challenge)
+- [Quick Start](#quick-start)
+- [Target Outcomes](#target-outcomes)
+- [What Participants Will Learn](#what-participants-will-learn)
+- [Devin Features Exercised](#devin-features-exercised)
+- [Difficulty](#difficulty)
+- [Estimated Time](#estimated-time)
+- [Notes](#notes)
+- [timesheet-app](#timesheet-app)
+- [uc-bdd-test-generation-cucumber](#uc-bdd-test-generation-cucumber)
+- [petclinic-angular](#petclinic-angular)
+- [Going Further](#going-further)
+
 ## Repositories
 
 - [timesheet-app](#timesheet-app)
@@ -8,36 +23,53 @@
 
 ---
 
+<a id="challenge"></a>
 ## Challenge
 
-Set up Devin as a continuous quality engineering agent — scheduled sessions that monitor test coverage, detect flaky tests, audit test quality, and open PRs to remediate gaps automatically. This is the capstone QA challenge: participants move from "Devin writes tests on demand" to "Devin maintains test quality continuously as a team member."
+Set up Devin as a continuous quality engineer — using Playbooks, Knowledge, and Scheduled Sessions to perform recurring test coverage audits, flaky test detection, and test quality improvement. This is the most advanced testing module: participants don't just use Devin for a single task, they configure a persistent quality practice.
 
+This exercises Devin's platform capabilities beyond one-shot prompts: Playbooks encode methodology, Knowledge captures project-specific conventions, and Scheduled Sessions run the methodology on a recurring basis.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Paste this into a new Devin session to get started immediately:
+
+```
+Run the test suite for timesheet-app and generate a
+quality report covering: overall test coverage, tests
+that are likely flaky (non-deterministic), test files
+that haven't been updated in the last 6 months, and
+test anti-patterns (empty assertions, commented-out tests,
+tests with no assertions).
+```
+
+<a id="target-outcomes"></a>
 ## Target Outcomes
 
-- Scheduled Devin session configured for recurring test coverage monitoring
-- Playbook capturing the team's test quality standards (coverage thresholds, forbidden patterns, required test types)
-- Knowledge items encoding project-specific testing conventions
-- Flaky test detection run with identified flaky tests and proposed fixes
-- Test smell audit identifying anti-patterns (shared state, over-mocking, missing assertions)
-- PR(s) with coverage improvements and/or test quality fixes
+- Quality audit report identifying coverage gaps, flaky tests, and test anti-patterns
+- Playbook created for recurring quality audits
+- Knowledge item capturing project-specific testing conventions
+- Scheduled Session configured (or documented) for weekly QA runs
+- PR with coverage improvements and quality report
 
+<a id="what-participants-will-learn"></a>
 ## What Participants Will Learn
 
-- How to configure Devin scheduled sessions for continuous QA hygiene
-- How Playbooks encode repeatable QA methodology that any team member can trigger
-- How Knowledge items build a shared context layer that makes Devin's test output better over time
-- How Devin's VM lifecycle enables persistent state between scheduled runs (coverage baselines, trend data)
-- How multi-repo workspace allows Devin to monitor quality across an entire service portfolio
+- How to create Devin Playbooks that encode repeatable QA methodology
+- How to use Knowledge items to capture project-specific testing standards
+- How to configure Scheduled Sessions for continuous quality monitoring
+- The difference between one-shot Devin tasks and continuous Devin practices
+- How event-driven triggers complement scheduled sessions for comprehensive coverage
 
+<a id="devin-features-exercised"></a>
 ## Devin Features Exercised
 
-- Scheduled sessions (recurring QA automation)
-- Playbooks (encode test methodology)
-- Knowledge layer (project-specific test conventions)
-- Multi-repo workspace (cross-repo quality monitoring)
-- Child sessions (fan out coverage work across repos)
-- VM lifecycle (persistent state between runs)
-- Ask Devin (plan the QA strategy before automating)
+- Playbook creation and execution
+- Knowledge item creation
+- Scheduled Session configuration
+- Test suite analysis and improvement
+- PR creation with quality reports
 
 ## Difficulty
 
@@ -45,12 +77,13 @@ Advanced
 
 ## Estimated Time
 
-45 minutes
+75 minutes
 
 ## Notes
 
-- This lab works best as a capstone after participants have completed other QA labs (Unit Testing, E2E Testing, BDD Test Generation). The Knowledge items and Playbooks created in this lab build on patterns discovered in earlier labs.
-- Participants don't need to wait for a scheduled session to actually execute — the goal is to set up the schedule and Playbook, then manually trigger a session to demonstrate the workflow.
+- Participants don't need to wait for a scheduled session to actually execute — the goal is to set up the schedule and Playbook, then manually trigger a session to try the workflow
+- This module is best run after participants have completed at least one other testing module (unit-testing, e2e-testing, etc.) so they have context for what "quality" means
+- The Playbook and Knowledge created in this module can be reused across other repos
 
 ---
 
@@ -58,44 +91,44 @@ Advanced
 
 **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 
-React + Node.js full-stack application — good target for continuous QA monitoring with both frontend and backend test surfaces.
+Node.js/Express + React application — use for an initial quality audit and Playbook creation.
 
-### Step 1: Start with Ask Devin (recommended)
+### Step 1: Paste into Devin
 
-Before creating a session, use **Ask Devin** to plan the QA strategy:
-- *"What is the current test coverage of timesheet-app? Which areas have the weakest coverage and would benefit most from automated monitoring?"*
-- *"What recurring QA tasks would benefit from weekly automation — coverage checks, dependency audits, lint enforcement, test smell detection?"*
-- *"What test quality standards should we encode in a Playbook for this project? What coverage threshold, which test types are required for new code, what anti-patterns should be flagged?"*
+```
+Run the test suite for timesheet-app and generate a
+quality report covering: overall test coverage, tests
+that are likely flaky (non-deterministic), test files
+that haven't been updated in the last 6 months, and
+test anti-patterns (empty assertions, commented-out tests,
+tests with no assertions).
+```
 
-Use the answers to craft a Playbook and Knowledge items before proceeding.
+### Step 2: Review and Refine
 
-### Step 2: Paste into Devin (copy-paste this prompt into Devin)
-
-> Set up a continuous quality engineering practice for timesheet-app.
->
-> Part 1 — Test coverage baseline:
-> Run the existing test suite and generate a coverage report. Identify the 5 files/modules with the lowest coverage. Write tests to bring the worst offender above 80% coverage.
->
-> Part 2 — Flaky test detection:
-> Run the test suite 10 times in sequence. Log pass/fail results for each test across all runs. Identify any tests that produce inconsistent results. For each flaky test found, diagnose the root cause (timing dependency, shared state, environment sensitivity) and propose a fix.
->
-> Part 3 — Test smell audit:
-> Scan the test suite for common anti-patterns: tests that depend on execution order, tests with no assertions, tests that mock too many dependencies (>3 mocks), tests with hardcoded dates/timestamps, and tests that write to shared state. Document findings in a `TEST_QUALITY_REPORT.md`.
->
-> Open a PR with coverage improvements, flaky test fixes, and the quality report.
+Review the quality report. Use it to inform the Playbook you'll create in the next step — what checks produced the most actionable findings?
 
 ### Step 3: Create a Playbook
 
-After reviewing Devin's output from Step 2, create a **Playbook** that encodes the QA methodology:
+Based on the results, create a Playbook for recurring quality audits:
 
-> **Playbook: Weekly QA Audit**
-> 1. Run test suite and generate coverage report
-> 2. Compare coverage against baseline (80% threshold per module)
-> 3. If any module drops below threshold, generate tests to close the gap
-> 4. Run flaky test detection (10 consecutive runs)
-> 5. Report flaky tests with root cause analysis
-> 6. Scan for test smells and anti-patterns
-> 7. Open a PR with improvements and a summary report
+```
+Playbook: Weekly QA Audit
+
+1. Run the full test suite and capture pass/fail/skip
+   counts
+2. Generate coverage report and compare against the
+   baseline (80% target)
+3. Identify flaky tests (run suite 3x, flag tests that
+   pass inconsistently)
+4. Scan for test anti-patterns: empty assertions,
+   commented-out tests, tests with no assertions,
+   tests that never fail
+5. Check for stale test files (not updated in 6+ months
+   while source files changed)
+6. Fix the top 3 highest-priority issues found
+7. Open a PR with improvements and a summary report
+```
 
 This Playbook can be triggered by any team member or scheduled to run weekly.
 
@@ -107,13 +140,19 @@ Configure a **Devin Scheduled Session** that runs the Weekly QA Audit Playbook:
 - **Repository:** timesheet-app
 - **Expected outcome:** PR opened with any coverage improvements and a quality report
 
-This demonstrates how teams use Devin for continuous code hygiene — the QA equivalent of automated dependency bumps.
+This is how teams use Devin for continuous code hygiene — the QA equivalent of automated dependency bumps.
 
 ### Step 5 (Optional): Review & Give Feedback
 
 - **Review the quality report** — are the identified test smells real issues or false positives?
 - **Leave a comment** asking Devin to prioritize fixing a specific anti-pattern
 - **Create a Knowledge item** capturing a project-specific testing convention (e.g., "All API route tests must include both happy path and 400/404 error cases")
+
+### Key Takeaways
+
+- Playbooks encode methodology that any team member can trigger — not just the person who wrote the original prompt
+- Scheduled Sessions turn Devin from a reactive tool into a continuous practice
+- Knowledge items accumulate project context over time, making each Devin session more effective
 
 ---
 
@@ -125,30 +164,49 @@ Spring Boot + Cucumber BDD framework — use for continuous BDD coverage monitor
 
 ### Step 1: Paste into Devin
 
-> Analyze the BDD test coverage in uc-bdd-test-generation-cucumber. Map every REST API endpoint to its corresponding Gherkin feature file. Identify endpoints that have no BDD scenarios, endpoints with only happy-path coverage (no error scenarios), and endpoints missing boundary condition tests.
->
-> Generate a `BDD_COVERAGE_MATRIX.md` that shows: endpoint → feature file → scenarios (happy path, error, boundary). Fill the gaps by writing new Gherkin scenarios for uncovered endpoints.
->
-> Open a PR with the coverage matrix and new scenarios.
+```
+Analyze the BDD test coverage in
+uc-bdd-test-generation-cucumber. Map every REST API
+endpoint to its corresponding Gherkin feature file.
+Identify endpoints that have no BDD scenarios, endpoints
+with only happy-path coverage (no error scenarios), and
+endpoints missing boundary condition tests.
+
+Generate a BDD_COVERAGE_MATRIX.md that shows: endpoint
+→ feature file → scenarios (happy path, error, boundary).
+Fill the gaps by writing new Gherkin scenarios for
+uncovered endpoints.
+```
 
 ### Step 2: Create a Playbook
 
 After reviewing results, create a Playbook for recurring BDD coverage auditing:
 
-> **Playbook: BDD Coverage Audit**
-> 1. List all REST API endpoints from controllers
-> 2. Map each endpoint to its Gherkin feature file
-> 3. For each endpoint, check: has happy path scenario? has error scenario? has boundary scenario?
-> 4. Generate missing scenarios following existing Cucumber step definition patterns
-> 5. Run `mvn test` to verify all scenarios pass
-> 6. Update the BDD_COVERAGE_MATRIX.md
-> 7. Open a PR with new scenarios and updated matrix
+```
+Playbook: BDD Coverage Audit
+
+1. List all REST API endpoints from controllers
+2. Map each endpoint to its Gherkin feature file
+3. For each endpoint, check: has happy path scenario?
+   has error scenario? has boundary scenario?
+4. Generate missing scenarios following existing Cucumber
+   step definition patterns
+5. Run `mvn test` to verify all scenarios pass
+6. Update the BDD_COVERAGE_MATRIX.md
+7. Open a PR with new scenarios and updated matrix
+```
 
 ### Step 3 (Optional): Review & Give Feedback
 
 - **Review the coverage matrix** — does it accurately reflect which endpoints need more BDD coverage?
 - **Leave a comment** asking Devin to add data-driven Scenario Outlines for the most complex endpoints
 - **Create a Knowledge item** about the project's Gherkin style conventions
+
+### Key Takeaways
+
+- BDD coverage matrices make test gaps visible to the whole team
+- A Playbook ensures the audit methodology stays consistent across runs and team members
+- Scenario Outlines with Examples tables are ideal for systematic boundary testing
 
 ---
 
@@ -160,22 +218,41 @@ Angular frontend — use for continuous frontend test quality monitoring across 
 
 ### Step 1: Paste into Devin
 
-> Analyze the test quality in petclinic-angular. For each Angular component, check whether it has a corresponding `.spec.ts` file. For each existing spec file, audit: does it test user-visible behavior (not implementation details)? Does it cover error states? Does it test input validation? Are the mocks minimal and realistic?
->
-> Generate a `COMPONENT_TEST_AUDIT.md` that shows: component → has spec? → tests behavior? → tests errors? → tests validation? → mock quality.
->
-> For the 3 components with the weakest test quality, rewrite or improve their tests following Angular testing best practices. Open a PR with the audit report and improved tests.
+```
+Analyze the test quality in petclinic-angular. For each
+Angular component, check whether it has a corresponding
+.spec.ts file. For each existing spec file, audit: does
+it test user-visible behavior (not implementation
+details)? Does it cover error states? Does it test input
+validation? Are the mocks minimal and realistic?
+
+Generate a COMPONENT_TEST_AUDIT.md that shows: component
+→ has spec? → tests behavior? → tests errors? → tests
+validation? → mock quality.
+
+For the 3 components with the weakest test quality,
+rewrite or improve their tests following Angular testing
+best practices.
+```
 
 ### Step 2: Create a Knowledge Item
 
 Based on the audit, create a Knowledge item that captures the project's testing standards:
 
-> **Knowledge: PetClinic Angular Testing Standards**
-> - Every component must have a `.spec.ts` file
-> - Tests should assert on user-visible behavior (rendered text, element visibility), not implementation details (private methods, internal state)
-> - Error states must be tested: what does the component show when the API returns an error?
-> - Forms must have validation tests: required fields, min/max length, pattern matching
-> - Mocks should be minimal: prefer HttpClientTestingModule over mocking the entire service
+```
+Knowledge: PetClinic Angular Testing Standards
+
+- Every component must have a .spec.ts file
+- Tests should assert on user-visible behavior (rendered
+  text, element visibility), not implementation details
+  (private methods, internal state)
+- Error states must be tested: what does the component
+  show when the API returns an error?
+- Forms must have validation tests: required fields,
+  min/max length, pattern matching
+- Mocks should be minimal: prefer HttpClientTestingModule
+  over mocking the entire service
+```
 
 This Knowledge item will automatically inform future Devin sessions working on this repo.
 
@@ -183,3 +260,44 @@ This Knowledge item will automatically inform future Devin sessions working on t
 
 - **Review the audit** — do the quality scores match your intuition about which components have weak tests?
 - **Leave a comment** asking Devin to apply the testing standards to a specific untested component
+
+### Key Takeaways
+
+- Knowledge items persist across sessions — once captured, the testing standard applies to all future work on this repo
+- Component test audits reveal whether tests are testing behavior or implementation details
+- Angular's TestBed patterns can be opinionated — Knowledge items help Devin follow the team's preferences
+
+---
+
+<a id="going-further"></a>
+## Going Further
+
+### Full Continuous Quality Pipeline
+
+Combine event-driven and scheduled approaches for comprehensive quality engineering:
+
+```
+Scheduled (weekly):
+    → Devin runs the QA Audit Playbook
+    → Opens a PR with coverage improvements and trend report
+
+Event-driven (per PR):
+    → Devin Review checks new PRs for test quality
+    → Flags missing tests, weak assertions, test anti-patterns
+
+Event-driven (CI failure):
+    → Test failure in CI triggers Devin session
+    → Devin diagnoses and fixes the failure
+    → Pushes a fix commit
+```
+
+### Team-Based Quality Operation
+
+Position Devin as a shared team resource for quality:
+- Multiple team members can trigger the same Playbook with different parameters
+- Knowledge items accumulate project conventions from different team members
+- Scheduled sessions run independently of who is available — quality doesn't depend on a single person's availability
+
+### Cross-Repo Quality Dashboard
+
+Use a parent Devin session to run quality audits across multiple repositories and generate a consolidated quality dashboard showing coverage trends, flaky test counts, and anti-pattern scores for the entire portfolio.
