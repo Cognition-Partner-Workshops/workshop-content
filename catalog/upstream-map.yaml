@@ -375,6 +375,13 @@ repos:
     import_method: github-fork
     cluster: C7
 
+  i-retail-mern-ecommerce:
+    upstream: mohamedsamara/mern-ecommerce
+    upstream_url: https://github.com/mohamedsamara/mern-ecommerce
+    import_method: clone-and-push
+    cluster: null
+    note: "B2C MERN ecommerce store with buyer/seller/admin flows. buggy branch has 8 planted bugs for bug-hunt workshops."
+
   ofbiz-framework:
     upstream: vijaysengodan/ofbiz-framework
     upstream_url: https://github.com/vijaysengodan/ofbiz-framework

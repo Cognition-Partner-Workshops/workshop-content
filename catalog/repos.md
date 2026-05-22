@@ -204,6 +204,22 @@ Some repos are intentionally duplicated from the same upstream source so that di
 
 ---
 
+## Industry Vertical Repos (`i-`)
+
+### i-retail-mern-ecommerce
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/i-retail-mern-ecommerce |
+| **Description** | MERN stack B2C ecommerce store with buyer, seller/merchant, and admin flows. React + Redux frontend, Express/Node.js backend, MongoDB data layer. Includes a `buggy` branch with 8 intentionally planted bugs across frontend and backend for bug-hunt workshops. |
+| **Tech Stack** | JavaScript, React, Redux, Express, Node.js, MongoDB, Docker |
+| **License** | MIT |
+| **Default Branch** | `init` (to be renamed `main`) |
+| **Branches** | `init` (clean), `buggy` (8 planted bugs) |
+| **Cluster** | None (standalone import) |
+| **Challenges** | [Bug Hunt — MERN Ecommerce](../modules/application-development/bug-hunt-mern-ecommerce.md) |
+
+---
+
 ## Technology Stack Repos (`ts-`)
 
 ### ts-informatica-powercenter
