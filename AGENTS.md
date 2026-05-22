@@ -2,20 +2,22 @@
 
 ## Repository Purpose
 
-This repo is the central metadata hub for technical workshops in the Cognition-Partner-Workshops organization. It contains:
-- `modules/` — Atomic challenge tasks organized by category (security, migration, data-engineering, etc.)
-- `workshops/` — Reusable lab sequences and workshop templates
-- `events/` — Point-in-time workshop instances (active and archived)
-- `shared/` — Facilitator guide, general-themes narrative, quality checklist, naming conventions
+This repo is the **attendee-facing** content hub for Devin hands-on workshops. It contains the lab instructions, prompts, and reference material that participants use during a workshop session.
+
+- `modules/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
+- `workshops/` — Structured lab sequences bundling modules into tracks
+- `events/` — Event-specific agendas and customizations (active and archived)
+- `shared/` — General Devin themes and runtime resource docs
 - `catalog/` — Repository inventory and upstream provenance
 
 All content is Markdown. There is no application code in this repo.
 
-## Quality Standards
-
-Read `shared/quality-checklist.md` before creating or editing any workshop content. It is the authoritative quality standard.
+**Facilitator-facing content** (day-of logistics, quality checklist, repo naming conventions, module facilitator notes, event templates, provisioning scripts) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
 
 ## Content Rules
+
+### Audience
+This repo is written for the **hands-on lab attendee** — the person sitting at the keyboard, pasting prompts into Devin, and reviewing PRs. Content should be action-oriented and help them succeed in the lab.
 
 ### Language
 - Never say "demo" — use "try", "hands-on", or "walkthrough"
@@ -32,7 +34,6 @@ Read `shared/quality-checklist.md` before creating or editing any workshop conte
 ### Structure
 - Modules longer than 3 sections need a Table of Contents with `<a id="..."></a>` anchors
 - Include a "Quick Start" section near the top of hands-on modules so experienced users can jump to the first prompt
-- Main module files are for the attendee (the person with the problem). Facilitator-only content goes in a sibling `-facilitator.md` file
 
 ### Prompts
 - All paste-into-Devin prompts use triple-backtick fenced code blocks (for GitHub copy button)
@@ -62,12 +63,10 @@ Every module and workshop should incorporate applicable principles from `shared/
 
 ## Reference Files
 
-- Quality checklist: `shared/quality-checklist.md`
 - General themes: `shared/general-themes/` (7 files)
-- Facilitator guide: `shared/facilitator-guide.md`
-- Repo naming: `shared/repo-naming-convention.md`
+- Runtime resources: `shared/runtime-resources.md`
 - Exemplar module: `modules/data-engineering/sas-migration-analysis.md`
-- Exemplar facilitator companion: `modules/data-engineering/sas-migration-analysis-facilitator.md`
+- Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
 
 ## Playbooks
 

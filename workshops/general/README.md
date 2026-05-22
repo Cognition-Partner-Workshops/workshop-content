@@ -714,45 +714,28 @@ Participants who finish early or want to explore further can attempt any challen
 | Format | Recommended Approach |
 |--------|---------------------|
 | Full day | All 3 tracks: Track A (morning) + Track B (midday) + Track C (afternoon) |
-| Half day | 2 tracks: Choose any two tracks based on audience interest |
+| Half day | 2 tracks: Choose any two tracks based on your interest |
 | Short session | 1 full track + 1 lab from another track |
 | Sampler | Pick 1 lab from each track (e.g., A1 + B2 + C1) for breadth |
 | Single lab | A1 (security) or C1 (feature dev) recommended for impact |
 
-## Repos Required
+## Repos Used
 
 ### Track A (Security & Issue Triage)
-- [ ] uc-cve-remediation-regulatory-compliance
-- [ ] timesheet-app
-- [ ] quickapp-microservices (optional, for Lab A2 Option B)
+- uc-cve-remediation-regulatory-compliance
+- timesheet-app
+- quickapp-microservices (optional, for Lab A2 Option B)
 
 ### Track B (Modernization)
-- [ ] uc-spring-boot-upgrade-microservice-extraction
-- [ ] petclinic-angular
-- [ ] ts-angular-realworld (Lab B3 translation target reference; also useful for parallel comparison)
+- uc-spring-boot-upgrade-microservice-extraction
+- petclinic-angular
+- ts-angular-realworld (Lab B3 translation target reference)
 
 ### Track C (Feature Development & Testing)
-- [ ] timesheet-app
-- [ ] uc-spring-boot-upgrade-microservice-extraction (optional, for Lab C1 Option B)
-- [ ] uc-bdd-test-generation-cucumber (optional, for Lab C2 Option C / Lab C3 Option B)
-
-## Repo Duplication Notes
-
-- `uc-spring-boot-upgrade-microservice-extraction` and `uc-cve-remediation-regulatory-compliance` both originate from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../catalog/repos.md)). They are intentionally separate repos so each use case gets an isolated starting point.
-
-## Context
-
-- **Audience:** General engineering teams — this workshop is designed to be relevant regardless of tech stack specialty
-- **Focus:** Breadth across security, modernization, and feature development — demonstrating Devin's versatility
-- **Devin value themes woven throughout:**
-  - Autonomous, off-machine execution — kick off sessions and move on
-  - Parallel sessions for scaling repetitive work across repos
-  - Ask Devin for requirement gathering and task scoping before sessions
-  - Knowledge and Playbooks for building reusable team context
-  - PR Review agent + CI checks as automatic feedback loops
-  - Scheduled sessions for continuous code hygiene (dependency bumps, test generation)
-  - Long-running task handling — Devin works while you're in meetings
+- timesheet-app
+- uc-spring-boot-upgrade-microservice-extraction (optional, for Lab C1 Option B)
+- uc-bdd-test-generation-cucumber (optional, for Lab C2 Option C / Lab C3 Option B)
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session.
+Track your progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session — try to discover as many Devin capabilities as you can.

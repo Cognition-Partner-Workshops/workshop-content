@@ -44,8 +44,6 @@ A few tips to maximize your hands-on time:
 | 1:30 | **Lab 3b:** Legacy CDW to Databricks Migration | Lab 3b |
 | 1:45 | Wrap-up, showcase results, Q&A | — |
 
-> **Pacing tip for facilitators:** Each lab is designed so participants kick off the Devin session in the first 5 minutes, then use Ask Devin / DeepWiki while waiting. When transitioning to the next lab, participants should start the new session immediately — they can review earlier PRs during any downtime. Lab 3 has two parts (3a and 3b) — participants should kick off both sessions back-to-back, then use the remaining time to review PRs from all labs. By the wrap-up, participants will have 4 Devin sessions running or completed.
-
 ---
 
 ## Lab 1 — Gap Analysis on Banking Microservices (30 min)
@@ -484,19 +482,11 @@ This workshop runs against an external GitHub organization (not Cognition-Partne
 1. **Fork or clone repos** — All repos listed above must be available in the target org. Use `git clone --bare` + `git push --mirror` to preserve full history, or fork if the target org has access to the source.
 2. **Remove workflows** — If the target org's GitHub Actions runners differ, review `.github/workflows/` in each repo and adjust or remove as needed.
 3. **Devin GitHub App** — Ensure the Devin GitHub App is installed on the target org with access to the relevant repos.
-4. **Branch protection** — Ensure Devin can create branches and open PRs. If branch protection rules require reviews, configure Devin as an allowed bypass or ensure facilitators can approve quickly during labs.
+4. **Branch protection** — Ensure Devin can create branches and open PRs.
 
 ## Notes
 
 - **First-time audience:** Labs are ordered from lowest risk (analysis/documentation) to highest complexity (code generation, data migration). This builds confidence before asking participants to evaluate generated code.
-- **2-hour pacing:** The key to fitting the labs in 2 hours is overlapping sessions. Participants kick off Lab N+1 while reviewing Lab N. Labs 3a and 3b are kicked off back-to-back — they use the same repo but are independent Devin sessions. By the wrap-up, all 4 sessions should be running or completed. Facilitators should keep transitions tight — 2 minutes max between labs.
 - **Ask Devin throughout:** Every lab includes Ask Devin prompts. Emphasize that Ask Devin is a research tool for scoping tasks before creating sessions — better prompts lead to better results.
 - **Post-session exercises:** Six additional exercises cover the full audience: COBOL copybook (Exercise A), security remediation (B), payment gap analysis (C), SAS→Snowflake (D), monolith→microservices (E), Ab Initio→Databricks (F). Share the workshop README with participants so they can try the ones most relevant to their role.
-- **Jira integration (facilitator talking point):** Devin supports Jira ticket creation via the Atlassian MCP — for example, Lab 3a could be extended to have Devin create a Jira ticket for each anomaly found. This is a good topic to mention during the wrap-up or when discussing production workflows, but it is not included in the hands-on prompts for this workshop.
 
-## Post-Event
-
-- [ ] Collect participant feedback
-- [ ] Archive any event-specific branches in the target org
-- [ ] Share session recordings and PR links with participants
-- [ ] Review Devin Knowledge items created during the workshop — these persist and help future sessions

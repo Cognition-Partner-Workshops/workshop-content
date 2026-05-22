@@ -251,5 +251,4 @@ Track how many Devin features you exercise across all four labs:
 |----------|------|
 | Live workshop (60 min) | [README.md](README.md) |
 | Module catalog | [modules/](../../../modules/) |
-| Facilitator guide | [shared/facilitator-guide.md](../../../shared/facilitator-guide.md) |
 | Devin Features Appendix | [modules/devin-features](../../../modules/devin-features/README.md) |

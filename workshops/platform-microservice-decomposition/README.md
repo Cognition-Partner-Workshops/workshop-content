@@ -250,36 +250,6 @@ The platform team owns the platform-level infrastructure. Each service team owns
 
 ---
 
-## Facilitator Notes
-
-### Before the Lab
-
-1. Verify all 4 repos are on the Devin machine snapshot (Settings > Machine configuration)
-2. Confirm participants have Devin accounts and GitHub access
-3. Pre-assign participant names (for `workshop-<participant>` branches) or let participants choose
-
-### During the Lab
-
-- **Phase 1 is hands-off** — participants submit the prompt and wait. Use this time to explain the architecture on a whiteboard or walk through the repos.
-- **Phase 2 is exploratory** — encourage participants to use AskDevin and DeepWiki actively. This is a good time for questions.
-- **Phase 3 is the most interactive** — participants review real PRs and leave real feedback. Walk around and help participants craft good PR comments.
-- **If Devin finishes early** — move to Phase 4 bonus challenges or have participants compare results.
-
-### Common Issues
-
-- **Devin creates a separate repo instead of pushing to the landing repo:** The prompt explicitly says to push to `ordermanager-microservices`. If Devin tries to create a new repo, leave a comment redirecting it.
-- **Branch conflicts between participants:** Each participant uses their own `workshop-<participant>` branch, so conflicts should not occur. If they do, it means two participants used the same name.
-- **IaC doesn't match platform standard:** This is a good teaching moment. Have the participant leave a PR comment asking Devin to fix the conformance issue.
-
-### After the Lab
-
-- [ ] Collect participant feedback — especially: did Devin's IaC conform to the platform standard?
-- [ ] Archive workshop branches if needed
-- [ ] Update [DA8 module](../../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) if issues were discovered
-- [ ] Share session recordings/artifacts with participants
-
----
-
 ## Related Modules
 
 | Module | Relationship |

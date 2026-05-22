@@ -2,7 +2,7 @@
 
 ## Repository Context
 
-This repo contains workshop content (modules, workshops, events) and shared materials (general-themes, facilitator guide, quality checklist) for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials.
+This repo contains **attendee-facing** workshop content (modules, workshops, events) and shared reference materials for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
 
 ## Priority Review Areas
 
@@ -16,7 +16,7 @@ This repo contains workshop content (modules, workshops, events) and shared mate
 
 ### Content Separation (High Priority)
 
-- **Attendee vs. facilitator content** — The main module/workshop file is for the end audience (the person with the problem). Facilitator-only content (MCP setup, presales positioning, timing guides) should be in a sibling `-facilitator.md` file. Flag presales-oriented framing (e.g., "This matters for presales") in attendee-facing files. **Exception**: Technical comparisons that explain practical differences (e.g., "static analysis requires no environment changes, unlike runtime trace tools") are general guidance that belongs in the attendee module — only the sales/delivery *framing* of those comparisons belongs in the facilitator file.
+- **Attendee-only content** — This entire repo is for attendees. Flag any facilitator-only content (MCP setup, presales positioning, timing guides, pacing tips for facilitators, post-event checklists). These belong in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo. **Exception**: Technical comparisons that explain practical differences (e.g., "static analysis requires no environment changes, unlike runtime trace tools") are general guidance that belongs here — only the sales/delivery *framing* of those comparisons belongs in operator.
 
 ### Prompt Formatting (Medium Priority)
 
@@ -50,7 +50,7 @@ This repo contains workshop content (modules, workshops, events) and shared mate
 
 ## Common Pitfalls
 
-- Mixing facilitator/presales content into attendee-facing modules
+- Including facilitator/presales content in this repo (it belongs in operator)
 - Using blockquote format for prompts instead of fenced code blocks (loses GitHub copy button)
 - Including "Open a PR" in prompts
 - Absolute statements about DeepWiki coverage or AI analysis completeness

@@ -252,30 +252,6 @@ For the full version with bonus challenges, see [platform-microservice-decomposi
 
 ---
 
-## Facilitator Notes
-
-### Before the Lab
-
-1. Verify all 4 repos are on the Devin machine snapshot (Settings > Machine configuration)
-2. Confirm participants have Devin accounts and GitHub access
-3. Pre-assign participant names (for `workshop-<participant>` branches)
-
-### During the Lab
-
-- **Opening is critical** — use the 4-repo architecture table to orient participants. Without this context, the prompt is overwhelming.
-- **Phase 1 is hands-off** — once participants submit the prompt, use the wait time to walk through the repos on screen or answer questions.
-- **Phase 2 moves fast** — suggest participants pick either AskDevin or DeepWiki rather than trying both. Monitor the room to see when Devin starts producing PRs.
-- **Phase 3 is the most valuable** — this is where learning happens. Walk around and help participants craft good PR comments. Encourage everyone to leave at least one comment.
-- **Time management** — if Devin takes longer than expected to produce PRs, shift the balance: extend Phase 2 and shorten Phase 3. The PR review is more impactful but can be done with even 15 minutes.
-
-### Common Issues
-
-- **Devin creates a separate repo instead of pushing to the landing repo:** The prompt explicitly says to push to `ordermanager-microservices`. If Devin tries to create a new repo, have the participant leave a comment redirecting it.
-- **Branch conflicts between participants:** Each participant uses their own `workshop-<participant>` branch, so conflicts should not occur.
-- **IaC doesn't match platform standard:** Good teaching moment — have the participant leave a PR comment asking Devin to fix it.
-
----
-
 ## Related Resources
 
 | Resource | Link |
@@ -283,5 +259,4 @@ For the full version with bonus challenges, see [platform-microservice-decomposi
 | Full 90-min event | [platform-microservice-decomposition](../../../workshops/platform-microservice-decomposition/) |
 | Core module | [Platform-Conformant Microservice Decomposition](../../../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
 | Workshop template | [workshops/platform-microservice-decomposition](../../../workshops/platform-microservice-decomposition/) |
-| Facilitator guide | [shared/facilitator-guide.md](../../../shared/facilitator-guide.md) |
 | Devin Features Appendix | [modules/devin-features](../../../modules/devin-features/README.md) |
