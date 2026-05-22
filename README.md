@@ -29,7 +29,7 @@ workshop-metadata/
 | Category | What You'll Try | Labs |
 |----------|----------------|------|
 | [Application Development](modules/application-development/) | Build features, fix bugs, evolve schemas | 7 |
-| [Testing & QA](modules/testing-qa/) | Linting, unit tests, E2E tests, performance, accessibility | 11 |
+| [Testing & QA](modules/testing-qa/) | Linting, unit tests, E2E tests, performance, accessibility | 13 |
 | [Security](modules/security/) | Dependency upgrades, vulnerability remediation, SAST | 7 |
 | [Compliance & Governance](modules/compliance-governance/) | License audits, PII detection, regulatory reporting | 3 |
 | [DevOps & CI/CD](modules/devops-cicd/) | Pipelines, PR automation, CI failure resolution | 5 |
