@@ -60,6 +60,7 @@ Your facilitator may have directed you to a specific workshop. Each workshop bun
 | [Digital Engineering](workshops/digital-engineering/) | CI/CD, cloud infrastructure, observability | 4-6 hours |
 | [Quality Engineering & Assurance](workshops/quality-engineering/) | Test automation, E2E, continuous quality | 4-6 hours |
 | [Quality Engineering & Security](workshops/quality-engineering-security/) | QE + security remediation combined | ~3 hours |
+| [.NET Cloud-Native Modernization](workshops/dotnet-cloud-native-modernization/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours |
 | [Platform Microservice Decomposition](workshops/platform-microservice-decomposition/) | Monolith → platform-conformant microservices | 1.5-2 hours |
 | [Agentic AI](workshops/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
 | [Feature Development](workshops/feature-development/) | New features on existing apps | 1-2 hours |

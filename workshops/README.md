@@ -28,6 +28,7 @@ Labs reference individual modules from [`modules/`](../modules/) — the detaile
 | [Digital Engineering](digital-engineering/) | CI/CD, cloud infrastructure, observability, platform engineering | 4-6 hours | 9 (3 tracks × 3 labs) |
 | [Quality Engineering & Assurance](quality-engineering/) | Test automation, E2E testing, continuous quality, code review | 4-6 hours | 9 (3 tracks × 3 labs) |
 | [Quality Engineering & Security](quality-engineering-security/) | QE + security vulnerability remediation combined | ~3 hours | 4 |
+| [.NET Cloud-Native Modernization](dotnet-cloud-native-modernization/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours | 3 |
 | [Platform Microservice Decomposition](platform-microservice-decomposition/) | Monolith → platform-conformant microservices with IaC | 1.5-2 hours | 1 |
 | [Agentic AI](agentic-ai/) | Multi-agent systems, document processing, anomaly detection | 2-4 hours | 2-4 |
 | [Feature Development](feature-development/) | New features on existing applications | 1-2 hours | 1-2 |
