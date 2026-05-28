@@ -48,6 +48,7 @@ A few tips to maximize your hands-on time:
 - **Overlap sessions.** Kick off Lab 2's Devin session while reviewing Lab 1's PR. Devin works in the background — there's no reason to wait. This is how teams use Devin in production.
 - **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
 
 ## Table of Contents
 
@@ -342,24 +343,6 @@ The following repos must be available in the workshop org:
 - [ ] [aws-mainframe-modernization-carddemo](https://github.com/Cognition-Partner-Workshops/aws-mainframe-modernization-carddemo) (Lab 1)
 - [ ] [ts-java-spring-boot-internet-banking](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking) (Lab 2)
 - [ ] [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) (Lab 3)
-
-### Mirroring Instructions
-
-Use the operator repo's mirror script to clone these repos into the workshop org:
-
-```bash
-# From the operator repo
-./scripts/mirror-github-org.sh \
-  --source-org Cognition-Partner-Workshops \
-  --target-org <workshop-org> \
-  --repos aws-mainframe-modernization-carddemo,ts-java-spring-boot-internet-banking,uc-cve-remediation-regulatory-compliance
-```
-
-### Integration Requirements
-
-- [ ] Devin GitHub App installed on the workshop org
-- [ ] Participant Devin accounts provisioned
-- [ ] SonarQube access (Devin can run SonarQube locally via Docker for Lab 3)
 
 ### Participant Requirements
 
