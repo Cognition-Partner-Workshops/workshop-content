@@ -238,6 +238,9 @@ Build the following in the core-banking-service:
    - Unit tests for the service layer (use Mockito,
      follow the pattern in `TransactionServiceTest`)
    - Integration tests for the new API endpoints
+   - Note: the existing `TransactionServiceTest` has a
+     compilation error (all-args constructor call on a
+     `@Data` class) — fix it if encountered
 
 Follow existing code conventions: Lombok `@Data`/
 `@Builder` for DTOs, `@Getter`/`@Setter`/`@Builder`
@@ -284,10 +287,14 @@ uc-cve-remediation-regulatory-compliance. This is a Spring
 Boot 2.6.3 / Java 11 application with known vulnerable
 dependencies and pre-configured security scanning tools.
 
-1. **Run OWASP Dependency-Check:**
-   Run `./gradlew dependencyCheckAnalyze` to scan all
-   dependencies for known CVEs. The report is generated
-   at `build/reports/dependency-check-report.html`.
+1. **Upgrade and Run OWASP Dependency-Check:**
+   The repo ships with dependency-check plugin v7.4.4,
+   which uses the retired NVD v1.1 data feed. First
+   upgrade the plugin to 10.x+ in `build.gradle` (the
+   `org.owasp.dependencycheck` plugin line), then run:
+   `./gradlew dependencyCheckAnalyze`
+   The report is at
+   `build/reports/dependency-check-report.html`.
 
 2. **Run SonarQube Analysis:**
    Start the pre-configured SonarQube instance:
