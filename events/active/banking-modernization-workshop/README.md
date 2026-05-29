@@ -70,7 +70,7 @@ A few tips to maximize your hands-on time:
 
 **Value driver:** *Devin reads COBOL copybook record layouts and 3270 screen definitions from a mainframe credit card application and generates modern TypeScript interfaces — showing how PIC clauses, COMP-3 packed decimals, and FILLER fields map to clean typed models.*
 
-- **Repository:** [aws-mainframe-modernization-carddemo](https://github.com/Cognition-Partner-Workshops/aws-mainframe-modernization-carddemo)
+- **Repository:** [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo)
 - **Module:** [COBOL System Understanding](../../../modules/migration-modernization/cobol-system-understanding.md)
 
 The CardDemo application is a real mainframe credit card management system with 29 COBOL programs, 30 copybooks defining record layouts (accounts, customers, cards, transactions), and 17 BMS screen maps for 3270 terminal interactions.
@@ -79,7 +79,7 @@ The CardDemo application is a real mainframe credit card management system with 
 
 ```
 Analyze the mainframe CardDemo application in
-aws-mainframe-modernization-carddemo and generate modern
+ts-cobol-carddemo and generate modern
 TypeScript models from the COBOL data structures.
 
 **Step 1 — Extract the data model:** Read the COBOL
@@ -313,7 +313,7 @@ Generates a complete 10-component Angular Material application with full routing
 
 ```
 Analyze the mainframe CardDemo application in
-aws-mainframe-modernization-carddemo and generate a modern
+ts-cobol-carddemo and generate a modern
 Angular frontend that replaces the 3270 terminal screens.
 
 **Step 1 — Understand the data model:** Read the COBOL
@@ -526,7 +526,7 @@ dependencies and pre-configured security scanning tools.
 
 The following repos must be available in the workshop org:
 
-- [ ] [aws-mainframe-modernization-carddemo](https://github.com/Cognition-Partner-Workshops/aws-mainframe-modernization-carddemo) (Lab 1)
+- [ ] [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo) (Lab 1)
 - [ ] [ts-java-spring-boot-internet-banking](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking) (Lab 2)
 - [ ] [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) (Lab 3)
 
