@@ -40,7 +40,7 @@ A few tips to maximize your hands-on time:
 - [Agenda](#agenda)
 - [Lab 1 — Mainframe UI Modernization](#lab-1--mainframe-ui-modernization-angular-frontend-for-carddemo)
 - [Lab 2 — Banking Feature Development](#lab-2--banking-feature-development-account-statements)
-- [Lab 3 — Security Remediation](#lab-3--security-remediation)
+- [Lab 3 — Security Remediation with SonarQube](#lab-3--security-remediation-with-sonarqube)
 - [Stretch Goals: Full-Scope Prompts](#stretch-goals-full-scope-prompts)
 - [Repos Required](#repos-required)
 - [Workshop Key Takeaways](#workshop-key-takeaways)
@@ -226,14 +226,15 @@ When Devin opens a PR:
 
 <a id="lab-3"></a>
 
-## Lab 3 — Security Remediation
+## Lab 3 — Security Remediation with SonarQube
 
-**Value driver:** *Devin identifies vulnerable dependencies, upgrades them, fixes any breaking API changes introduced by the upgrade, verifies tests pass, and documents the security impact — turning version bumps into verified, documented remediation.*
+**Value driver:** *Devin connects to SonarQube via MCP to fetch real findings, remediates the critical vulnerabilities, fixes breaking API changes from the upgrades, and verifies the quality gate — showing the tool-augmented remediation loop.*
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Module:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
+- **MCP Integration:** [SonarQube MCP](https://docs.devin.ai/work-with-devin/mcp#sonarqube) (must be installed on the workshop org)
 
-This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies. The outdated Spring Boot version (2.6.3) carries Spring4Shell and related CVEs, transitive SnakeYAML vulnerabilities, and sqlite-jdbc 3.36.0.3 has known exploits.
+This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies. The project is connected to SonarCloud, which tracks vulnerabilities, code smells, and security hotspots. Devin uses the SonarQube MCP to read findings directly from SonarCloud — no manual scanning required.
 
 ### Paste into Devin
 
@@ -243,29 +244,34 @@ uc-cve-remediation-regulatory-compliance. This is a Spring
 Boot 2.6.3 / Java 11 application with known vulnerable
 dependencies.
 
-1. **Identify vulnerabilities:** Review `build.gradle` and
-   identify the outdated dependencies. The key ones are:
+1. **Check SonarQube findings:** Use the SonarQube MCP to
+   fetch the current open issues and quality gate status
+   for this project. List any vulnerabilities, security
+   hotspots, and bugs by severity.
+
+2. **Identify dependency vulnerabilities:** Review
+   `build.gradle` and identify the outdated dependencies:
    - Spring Boot 2.6.3 (Spring4Shell, multiple CVEs)
    - SnakeYAML (transitive via Spring Boot — known RCE:
      CVE-2022-1471)
    - sqlite-jdbc 3.36.0.3 (multiple CVEs)
    Document what you find in a brief `SECURITY_TRIAGE.md`.
 
-2. **Upgrade Spring Boot:** Upgrade from 2.6.3 to the
+3. **Upgrade Spring Boot:** Upgrade from 2.6.3 to the
    latest 2.7.x in `build.gradle`. Note: upgrading to
    3.x requires Java 17+ — stay on 2.7.x for this lab.
 
-3. **Fix breaking changes:** Spring Boot 2.7 deprecates
+4. **Fix breaking changes:** Spring Boot 2.7 deprecates
    `WebSecurityConfigurerAdapter`. Migrate the security
    config to use `SecurityFilterChain` @Bean method
    instead. Fix any other compilation errors.
 
-4. **Override transitive vulnerabilities:** Add version
+5. **Override transitive vulnerabilities:** Add version
    overrides in `build.gradle` for:
    - SnakeYAML → 2.0+ (fixes CVE-2022-1471)
    - sqlite-jdbc → 3.42.0.1+ (fixes known CVEs)
 
-5. **Verify:** Run `./gradlew test` to confirm all tests
+6. **Verify:** Run `./gradlew test` to confirm all tests
    pass after upgrades. Create `SECURITY_REMEDIATION.md`
    documenting: which dependencies were upgraded, which
    CVEs are resolved, and the before/after versions.
@@ -287,9 +293,9 @@ When Devin opens a PR:
 
 ### Key Takeaways
 
+- **"MCP connects Devin to your tools"** — Devin reads SonarQube findings through MCP rather than running scans manually, mirroring how enterprise teams work with centralized quality platforms
 - **"Upgrade + fix + verify in one session"** — Devin doesn't just bump versions; it fixes the breaking API changes and runs tests to verify nothing regressed
 - **"Evidence-based remediation"** — the triage and remediation documents provide auditable evidence for compliance teams
-- **"The PR comment drives iteration"** — asking for a CI workflow in a review comment shows how Devin responds to feedback with follow-up commits
 
 ---
 
@@ -451,7 +457,7 @@ for entities, the existing package structure under
 <details>
 <summary><strong>Lab 3 Full Scope: Comprehensive Security Audit + CI Gating</strong></summary>
 
-Performs full OWASP Dependency-Check scan, SonarQube analysis, comprehensive triage, multi-dependency remediation, before/after verification, and adds CI gating workflow.
+Uses SonarQube MCP to fetch baseline findings, performs full OWASP Dependency-Check scan, comprehensive triage, multi-dependency remediation, before/after verification, and adds CI gating workflow.
 
 ```
 Perform a comprehensive security remediation on
@@ -459,7 +465,12 @@ uc-cve-remediation-regulatory-compliance. This is a Spring
 Boot 2.6.3 / Java 11 application with known vulnerable
 dependencies and pre-configured security scanning tools.
 
-1. **Upgrade and Run OWASP Dependency-Check:**
+1. **Check SonarQube baseline:** Use the SonarQube MCP to
+   fetch the current quality gate status, open
+   vulnerabilities, security hotspots, and bugs. This is
+   the "before" snapshot for comparison.
+
+2. **Upgrade and Run OWASP Dependency-Check:**
    The repo ships with dependency-check plugin v7.4.4,
    which uses the retired NVD v1.1 data feed. First
    upgrade the plugin to 10.x+ in `build.gradle` (the
@@ -468,16 +479,8 @@ dependencies and pre-configured security scanning tools.
    The report is at
    `build/reports/dependency-check-report.html`.
 
-2. **Run SonarQube Analysis:**
-   Start the pre-configured SonarQube instance:
-   `docker compose -f docker-compose.sonarqube.yml up -d`
-   Wait for SonarQube to be ready at http://localhost:9000
-   (default credentials: admin/admin), create a project
-   token, then run:
-   `./gradlew sonar -Dsonar.token=<YOUR_TOKEN>`
-   Note: the task is `sonar`, not `sonarqube`.
-
 3. **Triage Findings:**
+   Combine the SonarQube MCP findings and OWASP report.
    Create `SECURITY_TRIAGE.md` documenting findings with:
    - CVE ID (for dependency vulnerabilities)
    - Severity (Critical/High/Medium/Low)
@@ -500,9 +503,9 @@ dependencies and pre-configured security scanning tools.
      insecure crypto, etc.)
 
 5. **Verify:**
-   Re-run both scans after remediation. Document the
-   before/after results in `SECURITY_REMEDIATION.md`
-   with:
+   Re-run OWASP and use the SonarQube MCP to check the
+   updated quality gate. Document before/after results
+   in `SECURITY_REMEDIATION.md` with:
    - Summary table: vulnerability count before vs. after
    - Specific CVEs resolved
    - Any remaining findings with justification for
@@ -526,16 +529,29 @@ The following repos must be available in the workshop org:
 - [ ] [ts-java-spring-boot-internet-banking](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking) (Lab 2)
 - [ ] [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) (Lab 3)
 
+### MCP Setup (Lab 3)
+
+Lab 3 uses the **SonarQube MCP** so Devin can read findings directly from SonarCloud. Install it before the workshop:
+
+1. Go to **Settings → MCP Marketplace → SonarQube** ([setup link](https://docs.devin.ai/work-with-devin/mcp#sonarqube))
+2. Provide:
+   - **SonarQube URL:** `https://sonarcloud.io`
+   - **SonarQube Org:** the SonarCloud organization name
+   - **SonarQube Token:** generate at [My Account → Security](https://sonarcloud.io/account/security)
+3. Verify the project appears — Devin should be able to list issues for `uc-cve-remediation-regulatory-compliance`
+
 ### Participant Requirements
 
 - [ ] Devin account access
 - [ ] GitHub access to the workshop org
 - [ ] Browser (Chrome recommended)
+- [ ] SonarQube MCP installed on the workshop org (for Lab 3)
 
 ## Workshop Key Takeaways
 
 - **"Modernization is more than rewriting code"** — Lab 1 shows Devin extracting business knowledge locked in COBOL copybooks and 3270 screens, then using that understanding to generate modern typed models. The legacy system is the specification.
 - **"Devin follows your conventions"** — Lab 2 demonstrates that Devin reads existing patterns before implementing, producing code that fits the codebase — not generic boilerplate.
 - **"Security remediation at speed"** — Lab 3 turns a vulnerability backlog into remediated code with passing tests in a single session, handling the breaking changes that make manual upgrades tedious.
+- **"MCP extends Devin's reach"** — Lab 3 shows Devin reading SonarQube findings through MCP, demonstrating how tool integrations give Devin access to the same platforms your team already uses.
 - **"Asynchronous by design"** — all three labs run in parallel. While reviewing one PR, the others are still working. This mirrors how teams use Devin in production — multiple sessions running concurrently across different workstreams.
 - **"The PR is the interface"** — every lab ends with reviewing a PR and leaving a comment. This is the real workflow: Devin proposes, you review, you steer with feedback, Devin iterates.
