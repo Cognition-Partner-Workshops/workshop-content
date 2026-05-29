@@ -232,9 +232,9 @@ When Devin opens a PR:
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Module:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
-- **MCP Integration:** [SonarQube MCP](https://docs.devin.ai/work-with-devin/mcp#sonarqube) (must be installed on the workshop org)
+- **MCP Integration (optional):** [SonarQube MCP](https://docs.devin.ai/work-with-devin/mcp#sonarqube) — if installed on the workshop org, Devin reads findings directly from SonarCloud
 
-This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies. The project is connected to SonarCloud, which tracks vulnerabilities, code smells, and security hotspots. Devin uses the SonarQube MCP to read findings directly from SonarCloud — no manual scanning required.
+This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies. If the SonarQube MCP is installed on the org, Devin reads findings directly from SonarCloud for a richer triage experience. Without it, Devin analyzes `build.gradle` directly — the lab works either way.
 
 ### Paste into Devin
 
@@ -244,10 +244,11 @@ uc-cve-remediation-regulatory-compliance. This is a Spring
 Boot 2.6.3 / Java 11 application with known vulnerable
 dependencies.
 
-1. **Check SonarQube findings:** Use the SonarQube MCP to
-   fetch the current open issues and quality gate status
-   for this project. List any vulnerabilities, security
-   hotspots, and bugs by severity.
+1. **Check SonarQube findings (if MCP available):** If
+   the SonarQube MCP is connected, use it to fetch the
+   current open issues and quality gate status for this
+   project. List any vulnerabilities, security hotspots,
+   and bugs by severity.
 
 2. **Identify dependency vulnerabilities:** Review
    `build.gradle` and identify the outdated dependencies:
@@ -529,9 +530,9 @@ The following repos must be available in the workshop org:
 - [ ] [ts-java-spring-boot-internet-banking](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking) (Lab 2)
 - [ ] [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) (Lab 3)
 
-### MCP Setup (Lab 3)
+### MCP Setup (optional, enhances Lab 3)
 
-Lab 3 uses the **SonarQube MCP** so Devin can read findings directly from SonarCloud. Install it before the workshop:
+If you want Lab 3 to show the SonarQube MCP integration, install it on the **workshop org** before the event (org-level — participants don't need to set anything up):
 
 1. Go to **Settings → MCP Marketplace → SonarQube** ([setup link](https://docs.devin.ai/work-with-devin/mcp#sonarqube))
 2. Provide:
@@ -540,12 +541,13 @@ Lab 3 uses the **SonarQube MCP** so Devin can read findings directly from SonarC
    - **SonarQube Token:** generate at [My Account → Security](https://sonarcloud.io/account/security)
 3. Verify the project appears — Devin should be able to list issues for `uc-cve-remediation-regulatory-compliance`
 
+> Lab 3 works without SonarQube MCP (Devin analyzes `build.gradle` directly), but the MCP adds a compelling "tool-augmented Devin" moment.
+
 ### Participant Requirements
 
 - [ ] Devin account access
 - [ ] GitHub access to the workshop org
 - [ ] Browser (Chrome recommended)
-- [ ] SonarQube MCP installed on the workshop org (for Lab 3)
 
 ## Workshop Key Takeaways
 
