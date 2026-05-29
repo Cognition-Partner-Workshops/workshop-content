@@ -79,7 +79,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 - **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
 - **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 
-The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. Participants will ask Devin to migrate this to a React + TypeScript application, preserving all functionality.
+The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. Participants will ask Devin to migrate this to a React + TypeScript application, preserving the existing functionality.
 
 ### Paste into Devin
 
