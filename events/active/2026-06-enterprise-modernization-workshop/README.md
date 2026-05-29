@@ -77,7 +77,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 **Value driver:** *Devin reads an entire Angular frontend, understands its component hierarchy and routing, and rewrites it as a modern React application — the kind of migration that normally takes a team weeks.*
 
 - **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
-- **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md)
+- **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 
 The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. Participants will ask Devin to migrate this to a React + TypeScript application, preserving all functionality.
 
@@ -157,7 +157,7 @@ When Devin opens a PR:
 **Value driver:** *Devin runs SAST scans, interprets CVE reports, remediates critical findings, and re-verifies — the scan-fix-rescan loop that normally takes a security engineer days.*
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
-- **Modules:** [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Modules:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
 
 This Spring Boot 2.6.3 application ships with known CVEs including Spring4Shell (CVSS 9.8), SnakeYAML unsafe deserialization (CVSS 9.8), and multiple Spring Security bypasses. OWASP Dependency-Check and SonarQube are pre-configured as Gradle plugins.
 
@@ -226,7 +226,7 @@ When Devin opens a PR:
 **Value driver:** *Devin handles the javax→jakarta namespace migration, Gradle configuration changes, deprecated API replacements, and test verification — the tedious but critical work of a major framework upgrade.*
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
-- **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md)
+- **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 
 This is a Spring Boot 2.6.3 / Java 11 monolith with three domains (Articles, Users/Profiles, Comments), MyBatis persistence, GraphQL (DGS), Flyway migrations, and Selenium E2E tests. The upgrade to Java 17 / Spring Boot 3.x touches nearly every file due to the `javax` → `jakarta` namespace change.
 
@@ -287,7 +287,7 @@ When Devin opens a PR:
 **Value driver:** *Devin takes a feature idea from requirements gathering through full-stack implementation, testing, and deployment pipeline generation — demonstrating the complete product development lifecycle.*
 
 - **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
-- **Modules:** [Gather Requirements](../../modules/application-development/gather-requirements.md), [New Feature Development](../../modules/application-development/new-feature-development.md), [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Modules:** [Gather Requirements](../../../modules/application-development/gather-requirements.md), [New Feature Development](../../../modules/application-development/new-feature-development.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
 
 The timesheet app is a React 19 + Node.js/Express + SQLite application for tracking billable hours. It has existing CRUD features for clients and work entries. Participants will take a new feature idea through the full lifecycle — from requirements to deployed artifact.
 
@@ -404,7 +404,7 @@ A few things to be aware of as you work through the labs:
 
 ## Devin Features Checklist
 
-Track your progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session — try to discover as many Devin capabilities as you can.
+Track your progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the session — try to discover as many Devin capabilities as you can.
 
 | Feature | Lab(s) Where You'll See It |
 |---------|---------------------------|
@@ -426,6 +426,6 @@ Track your progress on the [Devin Features Appendix](../../modules/devin-feature
 
 ## Context
 
-This workshop is a customized variant of the [General Workshop](../../workshops/general/README.md), drawing from Tracks A (Security), B (Modernization), and C (Feature Development) and adding the Angular → React migration use case.
+This workshop is a customized variant of the [General Workshop](../../../workshops/general/README.md), drawing from Tracks A (Security), B (Modernization), and C (Feature Development) and adding the Angular → React migration use case.
 
-For a full-day experience with more labs and deeper dives, see the [General Workshop](../../workshops/general/README.md).
+For a full-day experience with more labs and deeper dives, see the [General Workshop](../../../workshops/general/README.md).
