@@ -1,4 +1,4 @@
-# Workshop: OneApp Modernization — Hands-On with Devin
+# Workshop: Enterprise Modernization — Hands-On with Devin
 
 ## Event Details
 
@@ -8,22 +8,17 @@
 | **Location** | TBD |
 | **Host Organization** | *(customer)* |
 | **Duration** | 2 hours |
-| **Audience** | Development teams working on enterprise modernization, security hardening, and greenfield product development |
-| **Tracks** | Single progressive track: UI Migration → Security Remediation → Java Modernization → New Product Development |
+| **Audience** | Development teams experiencing Devin hands-on for the first time |
+| **Tracks** | Single progressive track: Migrate → Harden → Upgrade → Build |
 | **Event Site** | TBD |
 
 ## Workshop Overview
 
-This is a hands-on workshop covering four core engineering challenges that enterprise teams face when consolidating and modernizing a platform ("OneApp"):
+This is a hands-on workshop for teams getting their first experience with Devin. The labs are structured as a progressive ramp — starting with a framework migration, building to security remediation and a major version upgrade, and finishing with greenfield feature development. By the end, participants will have used Devin to rewrite an Angular frontend in React, remediate critical CVEs, upgrade a Java/Spring Boot application, and take a feature idea from requirements through implementation.
 
-1. **Migrating UI from Angular to React** — rewriting a legacy Angular frontend as a modern React application while preserving functionality
-2. **Security Vulnerabilities Remediation** — scanning for CVEs, remediating critical findings, and shifting security left into CI
-3. **Java Upgrades/Modernization** — upgrading from EOL Java 11 / Spring Boot 2.x to LTS Java 17+ / Spring Boot 3.x
-4. **New Product Development (Ideas to Deployment)** — taking a feature idea from requirements gathering through implementation, testing, and deployment pipeline generation
+The workshop uses a mix of frontend, backend, and full-stack repositories. Each lab builds on a different Devin capability — codebase analysis, code generation, dependency management, and end-to-end feature development — so participants see the breadth of what Devin can do in a real engineering workflow.
 
-Each lab is self-contained with a copy-pasteable prompt. Participants kick off a Devin session, explore with Ask Devin while it works, then review the PR and iterate via comments.
-
-> **Note:** This workshop runs against the Cognition-Partner-Workshops GitHub organization. All repos listed below must be available in the target org before the event.
+> **Note:** This workshop runs against an external GitHub organization. All repos listed below must be forked or cloned into the target org before the event.
 
 ## Getting the Most from This Workshop
 
@@ -389,7 +384,7 @@ A few things to be aware of as you work through the labs:
 
 - **Lab 1 (Angular → React):** There is no pre-built React target to compare against — Devin creates the React app from scratch. This means your PR review is the primary quality check. Consider running the generated app locally to verify it works.
 - **Lab 4 (Ideas to Deployment):** The deployment artifacts (Dockerfile, CI workflow) are code-only — there is no live deployment environment to push to during the workshop. The lab focuses on producing deployment-ready artifacts rather than a running deployment.
-- **Each lab uses a different repository.** The "OneApp" theme connects the use cases conceptually, but you'll work across four separate codebases rather than a single unified application.
+- **Each lab uses a different repository.** You'll work across four separate codebases rather than a single unified application.
 
 ---
 
@@ -431,6 +426,6 @@ Track your progress on the [Devin Features Appendix](../../modules/devin-feature
 
 ## Context
 
-This workshop is a customized variant of the [General Workshop](../../workshops/general/README.md), focused on the four use cases most relevant to OneApp-style enterprise modernization programs. It draws from Tracks A (Security), B (Modernization), and C (Feature Development) of the general workshop and adds the Angular → React migration use case.
+This workshop is a customized variant of the [General Workshop](../../workshops/general/README.md), drawing from Tracks A (Security), B (Modernization), and C (Feature Development) and adding the Angular → React migration use case.
 
 For a full-day experience with more labs and deeper dives, see the [General Workshop](../../workshops/general/README.md).
