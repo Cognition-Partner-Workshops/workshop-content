@@ -267,7 +267,7 @@ When Devin opens a PR:
 
 ### Key Takeaways
 
-- **"Namespace migration at scale"** — the javax→jakarta change touches dozens of files. Devin handles it systematically, typically catching imports across the entire codebase
+- **"Namespace migration at scale"** — the javax→jakarta change touches dozens of files. Devin handles it systematically, typically catching imports throughout the codebase
 - **"Build-test-fix loop"** — Devin iterates through compilation errors and test failures until the build is green, documenting each fix
 - **"Upgrade documentation as a deliverable"** — the PR description serves as a migration guide that other teams can follow for their own services
 - **"Repeatable across a portfolio"** — the same prompt (with minor variations) can typically be applied to other Spring Boot 2.x services in an organization. Consider saving it as a Playbook for reuse
@@ -285,7 +285,7 @@ When Devin opens a PR:
 <a id="lab-4"></a>
 ## Lab 4 — New Product Development: Ideas to Deployment (15 min)
 
-**Value driver:** *Devin takes a feature idea from requirements gathering through full-stack implementation, testing, and deployment pipeline generation — demonstrating the complete product development lifecycle.*
+**Value driver:** *Devin takes a feature idea from requirements gathering through full-stack implementation, testing, and deployment pipeline generation — demonstrating much of the product development lifecycle in a single session.*
 
 - **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 - **Modules:** [Gather Requirements](../../../modules/application-development/gather-requirements.md), [New Feature Development](../../../modules/application-development/new-feature-development.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
@@ -362,10 +362,10 @@ When Devin opens a PR:
 
 ### Key Takeaways
 
-- **"Ideas to deployment in one session"** — Devin handles the full lifecycle: requirements → issue → implementation → tests → deployment artifacts
+- **"Ideas to deployment in one session"** — Devin typically handles the lifecycle end-to-end: requirements → issue → implementation → tests → deployment artifacts
 - **"Pattern matching across features"** — Devin analyzes existing CRUD features and replicates the conventions for the new feature, typically maintaining consistency
 - **"Requirements as a deliverable"** — the GitHub Issue serves as documentation and can be refined before implementation begins. Session B shows Devin doing pure discovery without writing code
-- **"CI/CD as code"** — the generated Dockerfile and GitHub Actions workflow are production-ready artifacts the team can use immediately
+- **"CI/CD as code"** — the generated Dockerfile and GitHub Actions workflow are deployment-ready starting points the team can typically use with minimal modification
 
 ### Target Outcomes (any of these count)
 
