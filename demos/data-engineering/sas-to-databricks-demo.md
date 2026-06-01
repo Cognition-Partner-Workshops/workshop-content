@@ -7,17 +7,11 @@ programmatic reconciliation, catch a real divergence and fix it, then fan the
 work out across many programs in parallel. The second half runs the produced
 artifact end to end (before/after, IaC, CD) and reverts — safe to repeat.
 
-This is the presenter thread. The reusable conversion procedure it drives is a
-Devin Playbook whose source lives in the code repo at
+The prompts below invoke the `!convert-sas-to-databricks` Devin Playbook — the
+reusable conversion procedure — whose source lives in the code repo at
 [`uc-data-migration-sas-to-databricks/.workshop/playbooks/sas-to-databricks-conversion.devin.md`](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks/blob/main/.workshop/playbooks/sas-to-databricks-conversion.devin.md).
-
-> **Facilitator prerequisite:** before the demo, copy that playbook file's
-> contents into your Devin organization (Settings → Playbooks → *Create a new
-> Playbook*) so the prompts below can invoke it as `!convert-sas-to-databricks`.
-> The repo-specific commands are auto-loaded from the repo's Skill
-> (`.agents/skills/sas-to-databricks-conversion/SKILL.md`); see the
-> [Playbooks](https://docs.devin.ai/product-guides/creating-playbooks) and
-> [Skills](https://docs.devin.ai/product-guides/skills) docs.
+The repo-specific `make demo-up` / `make reconcile` mechanics come from that
+repo's Skill (`.agents/skills/sas-to-databricks-conversion/SKILL.md`).
 
 ## Table of Contents
 
