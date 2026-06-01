@@ -44,9 +44,9 @@ Devin multiplies throughput without multiplying headcount. For large-scale campa
 
 Devin applies checks consistently and tirelessly:
 - **Devin Review** catches bugs in every PR — not just the ones a reviewer happens to notice
-- **Scheduled SAST** finds and remediates vulnerabilities before they reach production
-- **Test generation** fills coverage gaps systematically, not opportunistically
-- **Compliance audits** run on every dependency change, not just before release
+- **SAST via Automations** — schedule recurring code-scan sessions that find and remediate vulnerabilities before they reach production
+- **Test generation** fills coverage gaps when prompted — trigger it via Automations on a schedule or in response to coverage reports
+- **Compliance audits via Automations** — configure webhook-triggered sessions that audit dependencies on every PR, not just before release
 
 **Narrative:** "Devin does not forget to run the security scan. It does not skip the accessibility check because the sprint is tight. It applies the same rigor to every change, every time."
 
@@ -67,8 +67,8 @@ Devin reduces operational risk through consistency and speed:
 **For: FinOps, Finance, Executive Leadership**
 
 Devin's cost model is consumption-based (ACU — Agent Compute Units):
-- **Pay for active work** — Devin hibernates during idle time. You pay for compute only when Devin is executing
-- **Predictable budgeting** — ACU budgets can be set at the organization, team, or user level with hard enforcement
+- **Pay for active work** — Devin sleeps during idle time. You pay for compute only when Devin is executing
+- **Predictable budgeting** — ACU budgets can be set at the organization, organization-group, and per-session level with hard enforcement
 - **ROI measurement** — Each session produces measurable output (PRs merged, findings remediated, tests added). ROI is directly attributable
 - **Licensing cost avoidance** — Migration from expensive proprietary platforms (COBOL/mainframe, SAS, Oracle Forms, Informatica) to open-source or cloud-native alternatives eliminates ongoing per-seat, per-CPU, or per-transaction licensing. The business case for migration is often already approved — the blocker is engineering capacity to execute. Devin removes that blocker
 

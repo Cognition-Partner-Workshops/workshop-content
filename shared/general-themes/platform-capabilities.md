@@ -109,7 +109,7 @@ Devin sessions have a deliberate lifecycle optimized for efficiency:
 
 1. **Active** — Devin is executing tasks, running builds, writing code
 2. **Waiting for feedback** — Devin has opened a PR or asked a question. It monitors for PR comments and CI check results
-3. **Hibernated** — After a period of inactivity, Devin hibernates its VM. The session state is preserved but compute resources are released
-4. **Resumed** — When new feedback arrives (PR comment, CI result, user message), Devin resumes from the hibernated state with full context. No work is lost
+3. **Sleeping** — After a period of inactivity, Devin puts its VM to sleep. The session state is preserved but compute resources are released
+4. **Resumed** — When new feedback arrives (PR comment, CI result, user message), Devin resumes from the saved state with full context. No work is lost
 
 This lifecycle means Devin does not waste compute while waiting for human review. It acts immediately when feedback arrives and sleeps efficiently in between. Long-running tasks — multi-day code reviews, back-and-forth iterations, waiting on a blocked dependency — are natural. The session persists across the entire lifecycle of a task.

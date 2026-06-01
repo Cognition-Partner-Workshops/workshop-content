@@ -8,5 +8,5 @@ Background on Devin's architecture, capabilities, and collaboration model. These
 | [Architecture Strengths](architecture-strengths.md) | Clean-room execution, shared context layer, dedicated VM differentiator (Windows + Linux), declarative layered blueprints, VM persistence, context retrieval, and verification model |
 | [Design Patterns](design-patterns-for-devin.md) | Proven patterns for structuring work so Devin succeeds: locally testable code, event-driven triggers, divide-and-conquer |
 | [Platform Capabilities](platform-capabilities.md) | Scheduled sessions, playbooks, child agents, declarative environment blueprints, team-based operation, and Devin Review |
-| [Collaboration Model](collaboration-model.md) | The PR feedback loop, multi-user interaction, CI monitoring, VM persistence, and hibernation/resume behavior |
+| [Collaboration Model](collaboration-model.md) | The PR feedback loop, multi-user interaction, CI monitoring, VM persistence, and sleep/resume behavior |
 | [Value Narratives](value-narratives.md) | Capacity unlocking, velocity, quality, risk reduction, cost optimization, and managed SaaS with customer-specific VPC deployment model |

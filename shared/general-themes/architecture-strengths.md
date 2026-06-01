@@ -100,8 +100,8 @@ The VM is not disposable — it is **persistent and resumable**. When Devin fini
 
 - **Full state preservation** — Running processes, filesystem state, environment variables, installed packages, open files, shell history, and in-progress builds are all captured
 - **Resume on demand** — When new input arrives (PR comment, CI result, user message), the VM resumes from exactly where it left off. No re-cloning, no re-building, no re-installing
-- **Multi-day workflows** — A session can span days or weeks across multiple human review cycles. The VM hibernates between interactions and wakes instantly when needed. Context is never lost
-- **Cost efficiency** — Compute resources are released during hibernation. You pay for active work, not idle wait time. A session waiting for code review consumes zero compute
+- **Multi-day workflows** — A session can span days or weeks across multiple human review cycles. The VM sleeps between interactions and wakes instantly when needed. Context is never lost
+- **Cost efficiency** — Compute resources are released during sleep. You pay for active work, not idle wait time. A session waiting for code review consumes zero compute
 
 This persistence model means Devin operates like a team member who keeps their laptop open with the project loaded — not like a CI job that starts from scratch every time. The accumulated state (build caches, compiled artifacts, installed tools, test databases) persists across the entire lifecycle of a task.
 
@@ -129,5 +129,5 @@ Devin operates as a team member, not a black box:
 
 - **Organizational configuration** — The shared context layer (environment configs, knowledge, playbooks, MCP servers, secrets, Git connections) applies to every session in the organization. One engineer configures it; every subsequent session benefits. See [Clean-Room Execution → Shared Context Layer](#shared-context-layer) above
 - **PR-based communication** — Multiple team members can comment on the same Devin PR. Devin reads all comments and responds to feedback from any reviewer
-- **Session continuity** — Devin hibernates its VM after inactivity and resumes from the hibernated state when new feedback arrives. Context is preserved across the full lifecycle of a task
+- **Session continuity** — Devin puts its VM to sleep after inactivity and resumes from the saved state when new feedback arrives. Context is preserved across the full lifecycle of a task
 - **Audit trail** — Every session has a full log of actions, decisions, and outputs. Nothing is opaque
