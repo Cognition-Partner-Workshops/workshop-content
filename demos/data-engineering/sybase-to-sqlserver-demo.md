@@ -183,8 +183,7 @@ bar applied many times in parallel instead of once in series.
 | 5 | `vw_active_loan_portfolio` | `*=` outer join (view), `COMPUTE BY` removal | `010_vw_active_loan_portfolio.sql` |
 
 Each session uses its own namespace (`NS=session1`, …) so the live deployments
-never collide. Map this to the pilot: `NS=state1` through `NS=state7` for
-per-client-state migrations.
+never collide.
 
 <a id="act-4"></a>
 ### Act 4 — Confidence = programmatic verification
@@ -255,9 +254,6 @@ make reconcile NS=alice
 make demo-down NS=alice
 ```
 
-This maps directly to the pilot: 7 client states → `NS=state1` through
-`NS=state7`, each running independently.
-
 ---
 
 <a id="ssma"></a>
@@ -269,10 +265,6 @@ showing what SSMA handles well (schema DDL, simple CRUD, data types) and where
 it struggles (`*=` outer joins, `@@sqlstatus`, `SET ROWCOUNT`, `COMPUTE BY`,
 error handling patterns, and — critically — no reconciliation or CI
 integration).
-
-For the pilot, the recommendation is to run both approaches in parallel:
-SSMA-assisted + Devin fix-up vs. Devin end-to-end — and compare accuracy,
-speed, and scalability after 15 days.
 
 ---
 
