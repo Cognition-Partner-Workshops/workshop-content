@@ -1,9 +1,9 @@
-# SAS → dbt/Databricks — End-to-End Migration Demo (Facilitator-Led)
+# SAS → dbt/Databricks — End-to-End Migration Demo
 
-A **facilitator-led demo module**. Unlike the hands-on modules in `modules/`,
-this is a scripted showcase a presenter runs live against a real Databricks
-workspace to tell the SAS → dbt/Databricks migration story end to end. Attendees
-watch and discuss; they do not drive it themselves.
+A single linear demo that tells the SAS → dbt/Databricks migration story end to
+end against a real Databricks workspace: seed the "before" data, build the
+"after" with dbt, show the PySpark alternative, deploy it as IaC, run it, and
+revert — safe to repeat.
 
 The commands and prompts here are kept **identical** to the runbook in the code
 repo: [`uc-data-migration-sas-to-databricks/docs/DEMO_RUNBOOK.md`](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks/blob/main/docs/DEMO_RUNBOOK.md).
@@ -12,10 +12,8 @@ If you change one, change the other.
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-- [What This Demonstrates](#what-this-demonstrates)
 - [Repositories](#repositories)
 - [The Before / After Model](#before-after)
-- [Difficulty & Estimated Time](#difficulty--estimated-time)
 - [Demo Script](#demo-script)
   - [Setup (once)](#setup)
   - [Step 1 — Show the Before](#step-1)
@@ -35,8 +33,8 @@ If you change one, change the other.
 <a id="quick-start"></a>
 ## Quick Start
 
-Set workspace credentials, then run the lifecycle from the repo root on the demo
-branch:
+Set workspace credentials, then run the full lifecycle from the repo root on the
+demo branch:
 
 ```bash
 export DATABRICKS_HOST="https://<workspace>.cloud.databricks.com"
@@ -54,20 +52,8 @@ make destroy TARGET=dev   # revert deploy
 make demo-down NS=dev     # drop after-state schemas (raw untouched)
 ```
 
----
-
-<a id="what-this-demonstrates"></a>
-## What This Demonstrates
-
-- A legacy SAS estate (DATA steps, PROC SQL, PROC FORMAT, hash objects, Control-M
-  batch) migrated to a working dbt project on Databricks with Unity Catalog.
-- Two migration paths side by side: **dbt** (set-based, primary) and a **custom
-  PySpark job** (imperative, for procedural multi-output programs).
-- The operational spine the narrative needs but legacy estates lack: synthetic
-  data seeding, **IaC** via Databricks Asset Bundles, and **CI/CD** that deploys
-  the pipeline.
-- A repeatable before→after story: durable raw "before" data, disposable
-  per-namespace "after" outputs, and a one-command revert — safe to run many times.
+Prerequisites: a Databricks workspace with Unity Catalog + a serverless SQL
+warehouse, and a PAT that can use the warehouse and create catalogs/schemas/jobs.
 
 ---
 
@@ -87,17 +73,8 @@ make demo-down NS=dev     # drop after-state schemas (raw untouched)
 | **Before** | `main` branch + the SAS estate | `banking_analytics.raw.*` (durable; never overwritten) |
 | **After** | the demo branch (full models + PySpark + IaC + CD) | `banking_analytics.<NS>_staging / _intermediate / _marts / _curated` (per-run, disposable) |
 
-The before state is durable; the after state is namespaced and disposable. This
-is what makes the demo safe to repeat and safe to run concurrently.
-
----
-
-<a id="difficulty--estimated-time"></a>
-## Difficulty & Estimated Time
-
-- **Difficulty:** Intermediate (facilitator should be comfortable with dbt and the Databricks CLI)
-- **Estimated Time:** 20–30 minutes live
-- **Prerequisites:** Databricks workspace with Unity Catalog + a serverless SQL warehouse; a PAT that can use the warehouse and create catalogs/schemas/jobs
+The before state is durable; the after state is namespaced and disposable. That
+is what makes this safe to repeat and safe to run concurrently.
 
 ---
 
@@ -123,7 +100,7 @@ make seed                         # seed before-state raw data (idempotent)
 <a id="step-1"></a>
 ### Step 1 — Show the Before
 
-Narrate the legacy estate, then show the raw inputs exist in Unity Catalog:
+Confirm the raw inputs exist in Unity Catalog:
 
 ```sql
 SHOW TABLES IN banking_analytics.raw;
@@ -131,7 +108,7 @@ SELECT * FROM banking_analytics.raw.cust_accounts LIMIT 10;
 SELECT * FROM banking_analytics.raw.claims        LIMIT 10;
 ```
 
-Open one SAS source for contrast, e.g.
+For contrast, open one SAS source, e.g.
 `ts-sas-legacy-analytics/Programs/Insurance/claims_processing.sas`.
 
 <a id="step-2"></a>
@@ -141,10 +118,10 @@ Open one SAS source for contrast, e.g.
 make demo-up NS=dev
 ```
 
-Expected: `PASS=56 WARN=0 ERROR=0` — 13 models (3 staging views, 3 intermediate
-tables, 7 marts) + 43 data tests. Call out a few translations: SAS IF/THEN →
-`CASE`, PROC FORMAT → Jinja macros, WOE scorecard → nested `CASE` + `exp()`,
-multi-source `MERGE BY` → multi-`ref()` `JOIN`.
+You'll get `PASS=56 WARN=0 ERROR=0` — 13 models (3 staging views, 3 intermediate
+tables, 7 marts) + 43 data tests. A few of the translations on display: SAS
+IF/THEN → `CASE`, PROC FORMAT → Jinja macros, WOE scorecard → nested `CASE` +
+`exp()`, multi-source `MERGE BY` → multi-`ref()` `JOIN`.
 
 <a id="step-3"></a>
 ### Step 3 — Query Before vs After
@@ -159,7 +136,7 @@ SELECT policy_type, agg_loss_ratio, agg_combined_ratio FROM banking_analytics.de
 <a id="step-4"></a>
 ### Step 4 — PySpark Alternative
 
-The procedural, multi-output `claims_processing.sas` is shown as a custom PySpark
+The procedural, multi-output `claims_processing.sas` becomes a custom PySpark
 job (`src/pyspark/claims_processing.py`) — the alternative to dbt:
 
 ```sql
@@ -188,8 +165,8 @@ the same workflow deploys automatically.
 make run-job TARGET=dev
 ```
 
-Watch the DAG `dbt_staging → dbt_intermediate → dbt_marts → dbt_test` with
-`pyspark_claims_processing` in parallel. Expect `TERMINATED SUCCESS`.
+The DAG runs `dbt_staging → dbt_intermediate → dbt_marts → dbt_test` with
+`pyspark_claims_processing` in parallel, ending `TERMINATED SUCCESS`.
 
 <a id="step-7"></a>
 ### Step 7 — Revert / Reset
@@ -236,7 +213,7 @@ wall-clock (~3–4 min) is mostly serverless cold-start.
 ## Key Takeaways
 
 - A SAS estate can be migrated to a **working, tested** dbt project on Databricks — not just a paper mapping. The before→after is queryable side by side in Unity Catalog.
-- dbt covers the set-based transforms; a custom **PySpark** job is the right tool for procedural, multi-output SAS programs. Showing both frames the migration choice honestly.
+- dbt covers the set-based transforms; a custom **PySpark** job is the right tool for procedural, multi-output SAS programs. Both paths side by side frame the migration choice honestly.
 - **IaC + CI/CD** (Databricks Asset Bundles + GitHub Actions) replace hand-promoted SAS packages with version-controlled, reviewable, automated deployment.
 - Namespaced outputs + a one-command revert make the whole story **safe to repeat** and **safe to run concurrently** without touching the durable source data.
 

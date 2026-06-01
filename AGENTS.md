@@ -6,6 +6,7 @@ This repo is the **attendee-facing** content hub for Devin hands-on workshops. I
 
 - `modules/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
 - `workshops/` — Structured lab sequences bundling modules into tracks
+- `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
 - `shared/` — General Devin themes and runtime resource docs
 - `catalog/` — Repository inventory and upstream provenance
@@ -19,8 +20,10 @@ All content is Markdown. There is no application code in this repo.
 ### Audience
 This repo is written for the **hands-on lab attendee** — the person sitting at the keyboard, pasting prompts into Devin, and reviewing PRs. Content should be action-oriented and help them succeed in the lab.
 
+**Exception — `demos/`:** demo docs are a single linear thread a presenter runs live while others follow along, not a participant-driven lab. They differ from `modules/` and `workshops/` (which can offer separate choose-your-own-adventure tracks) by walking one path start to finish. Write them to read as though a user is reading and following along: lead straight into the guide with prompts and user instructions, keep preamble minimal, and avoid hands-on "try this"-style framing (the reader is following, not branching). Summary sections still use **"Key Takeaways"**.
+
 ### Language
-- Never say "demo" — use "try", "hands-on", or "walkthrough"
+- Never say "demo" in `modules/`, `workshops/`, or `events/` content — use "try", "hands-on", or "walkthrough". **Exception:** content under the `demos/` directory is facilitator-led showcase material and may use "demo" verbiage (file names, titles, headers, and body). "demo" verbiage is permitted **only** under `demos/`.
 - Use "Key Takeaways" not "Key Talking Points"
 - Name events as "workshops" not "arcs"
 - No overstatement language ("every", "all", "always", "guaranteed") for probabilistic capabilities like DeepWiki or AI analysis. Use "typically", "in most cases", "coverage depends on repo structure"
