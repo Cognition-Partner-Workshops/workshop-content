@@ -9,14 +9,14 @@
 | **Host Organization** | *(customer)* |
 | **Duration** | 2 hours |
 | **Audience** | Development teams experiencing Devin hands-on for the first time |
-| **Tracks** | Single progressive track: Migrate → Harden → Upgrade → Build |
+| **Tracks** | Single progressive track: Migrate → Harden → Decompose → Build |
 | **Event Site** | TBD |
 
 ## Workshop Overview
 
-This is a hands-on workshop for teams getting their first experience with Devin. The labs are structured as a progressive ramp — starting with a framework migration, building to security remediation and a major version upgrade, and finishing with greenfield feature development. By the end, participants will have used Devin to rewrite an Angular frontend in React, remediate critical CVEs, upgrade a Java/Spring Boot application, and take a feature idea from requirements through implementation.
+This is a hands-on workshop for teams getting their first experience with Devin. The labs are structured as a progressive ramp — starting with a test-enabled frontend migration, building to security remediation and a monolith decomposition, and finishing with greenfield feature development. By the end, participants will have used Devin to map a backend API and migrate an Angular frontend to React with a test safety net, remediate critical CVEs, extract a microservice from a monolith, and take a feature idea from requirements through implementation.
 
-The workshop uses a mix of frontend, backend, and full-stack repositories. Each lab builds on a different Devin capability — codebase analysis, code generation, dependency management, and end-to-end feature development — so participants see the breadth of what Devin can do in a real engineering workflow.
+The workshop uses a mix of frontend, backend, and full-stack repositories. Each lab builds on a different Devin capability — API analysis and test generation, security scanning, architectural decomposition, and end-to-end feature development — so participants see the breadth of what Devin can do in a real engineering workflow.
 
 > **Note:** This workshop runs against an external GitHub organization. The repos listed below will be available in your organization's GitHub workspace.
 
@@ -36,7 +36,7 @@ A few tips to maximize your hands-on time:
 
 Already comfortable with Devin basics? Jump straight to the labs:
 
-1. Pick a lab: [Lab 1 (Angular → React)](#lab-1--angular-to-react-ui-migration-30-min), [Lab 2 (Security)](#lab-2--security-vulnerabilities-remediation-25-min), [Lab 3 (Java Upgrade)](#lab-3--java-upgradesmodernization-25-min), or [Lab 4 (New Product Dev)](#lab-4--new-product-development-ideas-to-deployment-15-min)
+1. Pick a lab: [Lab 1 (Angular → React)](#lab-1--angular-to-react-ui-migration-30-min), [Lab 2 (Security)](#lab-2--security-vulnerabilities-remediation-25-min), [Lab 3 (Monolith Extraction)](#lab-3--monolith-to-microservices-extraction-25-min), or [Lab 4 (New Product Dev)](#lab-4--new-product-development-ideas-to-deployment-15-min)
 2. Copy the prompt from the lab and paste it into a new Devin session
 3. While Devin works, try the Ask Devin prompts to explore the codebase
 4. Review the PR when Devin finishes, leave comments, and iterate
@@ -48,7 +48,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 - [Agenda](#agenda)
 - [Lab 1 — Angular to React UI Migration](#lab-1--angular-to-react-ui-migration-30-min)
 - [Lab 2 — Security Vulnerabilities Remediation](#lab-2--security-vulnerabilities-remediation-25-min)
-- [Lab 3 — Java Upgrades/Modernization](#lab-3--java-upgradesmodernization-25-min)
+- [Lab 3 — Monolith-to-Microservices Extraction](#lab-3--monolith-to-microservices-extraction-25-min)
 - [Lab 4 — New Product Development (Ideas to Deployment)](#lab-4--new-product-development-ideas-to-deployment-15-min)
 - [Post-Session Exercises](#post-session-exercises)
 - [Known Limitations](#known-limitations)
@@ -64,7 +64,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 | 0:00 | Welcome, Devin overview, platform walkthrough | — |
 | 0:15 | **Lab 1:** Angular to React UI Migration | [Lab 1](#lab-1--angular-to-react-ui-migration-30-min) |
 | 0:45 | **Lab 2:** Security Vulnerabilities Remediation | [Lab 2](#lab-2--security-vulnerabilities-remediation-25-min) |
-| 1:10 | **Lab 3:** Java Upgrades/Modernization | [Lab 3](#lab-3--java-upgradesmodernization-25-min) |
+| 1:10 | **Lab 3:** Monolith-to-Microservices Extraction | [Lab 3](#lab-3--monolith-to-microservices-extraction-25-min) |
 | 1:35 | **Lab 4:** New Product Development (Ideas to Deployment) | [Lab 4](#lab-4--new-product-development-ideas-to-deployment-15-min) |
 | 1:50 | Wrap-up, showcase results, Q&A | — |
 
@@ -75,77 +75,76 @@ Already comfortable with Devin basics? Jump straight to the labs:
 <a id="lab-1"></a>
 ## Lab 1 — Angular to React UI Migration (30 min)
 
-**Value driver:** *Devin reads an Angular frontend, maps its component hierarchy and routing, and typically rewrites it as a modern React application — the kind of migration that normally takes a team weeks.*
+**Value driver:** *Devin maps a backend API contract, writes a migration test suite as a safety net, and then rewrites an Angular frontend in React — the kind of methodical, test-enabled migration that normally takes a team weeks.*
 
 - **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
 - **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 
-The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. Participants will ask Devin to migrate this to a React + TypeScript application, preserving the existing functionality.
+The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. The app consumes a REST API at `localhost:9966/petclinic/api/` with 6 service files defining the full endpoint surface. Participants will ask Devin to map that API, build a test safety net, and then migrate to React — the same approach a real team would use.
 
 ### Paste into Devin
 
 ```
-Migrate the petclinic-angular frontend from Angular to React
-with TypeScript. This is an Angular 16 app with modules for
-owners, pets, visits, vets, and specialties management.
+Map the backend API that petclinic-angular consumes, create
+a migration test suite, then migrate the frontend to React.
 
-1. **Analyze the Angular app:** Map all components, routes,
-   services, and forms. Produce a brief migration plan in
-   `docs/MIGRATION_PLAN.md` listing each Angular component
-   and its React equivalent.
+1. **Map the API contract:** Read every Angular service file
+   and TypeScript interface. Produce docs/API_CONTRACT.md
+   documenting each REST endpoint: HTTP method, URL pattern,
+   request body shape, response shape, and error handling.
+   The API base URL is http://localhost:9966/petclinic/api/.
 
-2. **Create the React app:** Set up a new React 18+ project
-   in a `react-frontend/` directory using Vite + TypeScript.
-   Use React Router v6 for routing, TanStack Query for data
-   fetching, and Material UI (MUI) for the component library
-   (matching the existing Angular Material look).
-
-3. **Migrate components:** Rewrite each Angular component as
-   a React functional component with hooks. Preserve the
-   existing page layout, navigation, and form behavior.
-   Key pages to migrate:
-   - Owner search, list, detail, and edit forms
-   - Pet add/edit forms with type selection
-   - Visit add form and history display
+2. **Write migration tests:** Create a React Testing Library
+   + MSW (Mock Service Worker) test suite in
+   react-frontend/src/__tests__/ that defines expected
+   behavior for each major user flow:
+   - Owner search, create, edit, and delete
+   - Pet add/edit with type selection
+   - Visit creation and history display
    - Vet list with specialty filtering
-   - Specialty and pet-type management (CRUD)
-   - Welcome/home page and 404 page
+   MSW handlers should mock the API contract from step 1.
+   These tests must pass against the completed React app.
 
-4. **API integration:** Use the same REST API endpoints the
-   Angular app calls (base URL configurable via env var).
-   Implement the same error handling and loading states.
+3. **Migrate the frontend:** Create a React 18+ / TypeScript
+   app in react-frontend/ using Vite. Rewrite all Angular
+   components as React functional components with hooks.
+   Preserve routing, form validation, and error handling.
 
-5. **Verify:** Ensure `npm run build` passes with zero
-   TypeScript errors. Document any Angular features that
-   could not be directly translated in `docs/MIGRATION_NOTES.md`.
+4. **Verify:** All migration tests pass. npm run build
+   completes with zero TypeScript errors. Document any
+   Angular features that could not be directly translated
+   in docs/MIGRATION_NOTES.md.
 ```
 
 ### While Devin works: try Ask Devin
 
 Open **Ask Devin** and explore the Angular codebase:
-- *"What Angular components and routes does petclinic-angular have? How are they organized into modules?"*
+- *"What REST API endpoints does petclinic-angular consume? Map every service file and the HTTP methods it uses."*
 - *"What Angular-specific patterns does petclinic-angular use that don't have direct React equivalents (e.g., NgModules, resolvers, template-driven forms)?"*
 - *"What would be the riskiest parts of migrating this app from Angular to React? Where would functional parity be hardest to achieve?"*
 
 ### Review the PR
 
 When Devin opens a PR:
+- Does `API_CONTRACT.md` accurately reflect the endpoints in the Angular service files?
+- Do the migration tests cover the key user flows (owner CRUD, pet management, visit logging)?
 - Does the React app preserve the same routes and page structure as the Angular original?
-- Are forms handling validation the same way (required fields, error messages)?
-- **Leave a comment** asking Devin to add unit tests for the migrated components — watch Devin respond and push follow-up commits
+- **Leave a comment** asking Devin to add accessibility attributes (aria-labels) to the migrated forms — watch Devin respond and push follow-up commits
 
 ### Key Takeaways
 
+- **"Map before you migrate"** — Devin's `API_CONTRACT.md` documents the backend surface before any code is rewritten, making the migration auditable and reviewable
+- **"Tests as a safety net"** — the MSW-backed test suite defines expected behavior before migration begins, so the React app is verified against the same contract the Angular app consumed
 - **"Full-app rewrite in one session"** — Devin reads the Angular codebase, maps component relationships, and typically produces an equivalent React app with routing, state management, and API integration
-- **"Migration plan before migration code"** — the `MIGRATION_PLAN.md` documents component mappings, making the rewrite auditable and reviewable before any code is written
-- **"Same API, different framework"** — by targeting the same REST endpoints, the React app is a drop-in replacement for the Angular frontend
 - **"Iterative refinement via PR comments"** — the first pass captures the structure; PR feedback tightens the details (styling, edge cases, accessibility)
 
 ### Target Outcomes (any of these count)
 
-- `docs/MIGRATION_PLAN.md` mapping Angular components to React equivalents
+- `docs/API_CONTRACT.md` documenting every REST endpoint the Angular app consumes
+- Migration test suite in `react-frontend/src/__tests__/` with MSW handlers
 - React 18+ app in `react-frontend/` with Vite + TypeScript
 - All major pages migrated (owners, pets, visits, vets, specialties)
+- Migration tests passing against the React app
 - `npm run build` passing with zero TypeScript errors
 - `docs/MIGRATION_NOTES.md` documenting translation decisions
 - PR with migration artifacts and Devin's responses to review comments
@@ -222,63 +221,78 @@ When Devin opens a PR:
 ---
 
 <a id="lab-3"></a>
-## Lab 3 — Java Upgrades/Modernization (25 min)
+## Lab 3 — Monolith-to-Microservices Extraction (25 min)
 
-**Value driver:** *Devin handles the javax→jakarta namespace migration, Gradle configuration changes, deprecated API replacements, and test verification — the tedious but critical work of a major framework upgrade.*
+**Value driver:** *Devin analyzes a monolith's domain boundaries, extracts a bounded context into a standalone service, wires up cross-service communication, and containerizes both — the architectural decomposition work that typically takes a team sprints to plan and execute.*
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
-- **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
+- **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 
-This is a Spring Boot 2.6.3 / Java 11 monolith with three domains (Articles, Users/Profiles, Comments), MyBatis persistence, GraphQL (DGS), Flyway migrations, and Selenium E2E tests. The upgrade to Java 17 / Spring Boot 3.x touches nearly every file due to the `javax` → `jakarta` namespace change.
+This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, 27 test files with an 80% Jacoco coverage gate, and a Next.js frontend. Participants will ask Devin to identify a bounded context, extract it into a standalone service, and prove the system still works.
 
 ### Paste into Devin
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
+Analyze uc-spring-boot-upgrade-microservice-extraction — a
+Spring Boot 2.6.3 monolith implementing the RealWorld
+blogging platform with REST and GraphQL APIs, MyBatis
+persistence, and a Next.js frontend.
 
-Handle the full upgrade checklist:
-1. Update `build.gradle` — Spring Boot plugin, Java target
-   compatibility, and dependency versions
-2. Migrate `javax.*` imports to `jakarta.*` across all source
-   files
-3. Update Spring Security configuration to the new lambda DSL
-   (Spring Security 6.x)
-4. Fix any deprecated MyBatis or DGS (GraphQL) APIs
-5. Update Flyway configuration for Spring Boot 3 compatibility
-6. Run `./gradlew build` and `./gradlew test` — fix any
-   compilation errors or test failures
-7. Document every breaking change encountered and how it was
-   resolved in the PR description
+1. **Analyze domain boundaries:** Map the bounded contexts
+   in the codebase (articles/tags, comments, favorites,
+   users/profiles). Document your analysis in
+   docs/EXTRACTION_DECISIONS.md — what moves to the new
+   service, what stays, and why.
+
+2. **Extract the Article context:** Create a standalone
+   Spring Boot service in article-service/ containing
+   articles, tags, comments, and favorites. Include its own
+   build.gradle, Flyway migrations, MyBatis mappers, and
+   REST controllers.
+
+3. **Cross-service communication:** Replace direct method
+   calls between Article and User domains with a REST
+   client. Create DTOs for the service-to-service contract.
+
+4. **Docker Compose:** Add a docker-compose.yml that runs
+   both the main app and the extracted article-service with
+   container networking.
+
+5. **Verify:** ./gradlew build passes for both services.
+   The existing unit and integration tests in the main app
+   still pass after extraction.
 ```
 
 ### While Devin works: try Ask Devin
 
-- *"What are the biggest risks when upgrading from Spring Boot 2 to 3? Which javax→jakarta changes are most likely to break this codebase?"*
-- *"How does this repo use Spring Security? Will the security configuration need to change for Spring Security 6.x?"*
-- *"What GraphQL framework does this repo use and what changes are needed for the Spring Boot 3 upgrade?"*
+- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which packages would form a natural microservice?"*
+- *"What coupling exists between the Article domain and the User domain? How would you handle cross-service queries after extraction?"*
+- *"What are the risks of extracting the Article bounded context? What shared infrastructure (security, database, Flyway) needs to be duplicated?"*
 
 ### Review the PR
 
 When Devin opens a PR:
-- Is the `javax` → `jakarta` migration complete? Search the diff for any remaining `javax.` imports
-- Does the build pass with all tests green on Java 17?
-- **Leave a comment:** *"Can you also migrate from the deprecated WebSecurityConfigurerAdapter to the new SecurityFilterChain bean approach?"*
+- Does `EXTRACTION_DECISIONS.md` clearly justify which domain objects moved and which stayed?
+- Does the article-service have its own independent build that compiles?
+- Is cross-service communication implemented via REST client (not shared database queries)?
+- **Leave a comment:** *"Add a circuit breaker pattern to the REST client calls between services — what happens if article-service is down?"*
 
 ### Key Takeaways
 
-- **"Namespace migration at scale"** — the javax→jakarta change touches dozens of files. Devin handles it systematically, typically catching imports throughout the codebase
-- **"Build-test-fix loop"** — Devin iterates through compilation errors and test failures until the build is green, documenting each fix
-- **"Upgrade documentation as a deliverable"** — the PR description serves as a migration guide that other teams can follow for their own services
-- **"Repeatable across a portfolio"** — the same prompt (with minor variations) can typically be applied to other Spring Boot 2.x services in an organization. Consider saving it as a Playbook for reuse
+- **"Domain analysis before decomposition"** — Devin reads the monolith, identifies bounded contexts, and documents extraction decisions before cutting any code
+- **"Existing tests as a safety net"** — the monolith's 27 test files and 80% Jacoco coverage gate verify that extraction didn't break functionality
+- **"Service contracts, not shared databases"** — the extracted service communicates via REST DTOs, not direct database access — the right pattern for real microservices
+- **"Containerized from day one"** — Docker Compose runs both services immediately, ready for the team to deploy
 
 ### Target Outcomes (any of these count)
 
-- Application building and tests passing on Java 17 / Spring Boot 3.2
-- All `javax.*` imports migrated to `jakarta.*`
-- Spring Security 6.x lambda DSL configuration
-- PR with upgrade documentation listing all breaking changes and resolutions
-- Build passing with `./gradlew build && ./gradlew test`
+- `docs/EXTRACTION_DECISIONS.md` documenting domain boundary analysis and trade-offs
+- Standalone `article-service/` with its own build.gradle, Flyway migrations, and tests
+- REST client + DTOs for cross-service communication
+- `docker-compose.yml` running both services
+- `./gradlew build` passing for both the main app and article-service
+- Existing test suite still passing after extraction
+- PR with extraction artifacts and Devin's responses to review comments
 
 ---
 
@@ -416,34 +430,32 @@ the test files.
 
 ---
 
-### Exercise B: Monolith-to-Microservices Extraction
+### Exercise B: Java Upgrades/Modernization
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
-- **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
-- **Shows:** Devin extracting a bounded context from a monolith into a standalone microservice with Docker Compose — pairs naturally with Lab 3's upgrade
+- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
+- **Shows:** Devin handling a major framework upgrade — javax→jakarta namespace migration, Spring Security 6 lambda DSL changes, and dependency compatibility fixes across a monolith with 80% test coverage
 
 #### Paste into Devin
 
 ```
-Analyze uc-spring-boot-upgrade-microservice-extraction
-— this is a Spring Boot monolith implementing the
-RealWorld blogging platform (articles, users, comments,
-tags, favorites).
+Upgrade uc-spring-boot-upgrade-microservice-extraction from
+Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
 
-Perform a microservice extraction:
-1. Identify the "Article" bounded context (articles,
-   tags, favorites, comments)
-2. Extract it as a standalone Spring Boot 3 microservice
-   in a new `article-service/` directory
-3. Create proper DTOs and a REST client for cross-service
-   communication (article-service ↔ user-service)
-4. Add a Docker Compose configuration that runs both the
-   main app and the extracted article-service
-5. Add health check endpoints and document the API
-   contracts between services
-
-Create `docs/EXTRACTION_DECISIONS.md` explaining the
-domain boundary choices and trade-offs.
+Handle the full upgrade checklist:
+1. Update build.gradle — Spring Boot plugin, Java target
+   compatibility, and dependency versions
+2. Migrate javax.* imports to jakarta.* across all source
+   files
+3. Update Spring Security configuration to the new lambda
+   DSL (Spring Security 6.x)
+4. Fix any deprecated MyBatis or DGS (GraphQL) APIs
+5. Update Flyway configuration for Spring Boot 3
+   compatibility
+6. Run ./gradlew build and ./gradlew test — fix any
+   compilation errors or test failures
+7. Document every breaking change encountered and how it
+   was resolved in the PR description
 ```
 
 ---
@@ -488,7 +500,8 @@ PIC X → StringType).
 
 A few things to be aware of as you work through the labs:
 
-- **Lab 1 (Angular → React):** There is no pre-built React target to compare against — Devin creates the React app from scratch. This means your PR review is the primary quality check. Consider running the generated app locally to verify it works.
+- **Lab 1 (Angular → React):** The migration tests use MSW (Mock Service Worker) to simulate the backend API. They verify the React app makes the correct API calls with the right data shapes — but they do not test against a running backend. To verify end-to-end, you can optionally start the PetClinic backend (petclinic-rest-api) locally and point the React app at it.
+- **Lab 3 (Monolith Extraction):** The extraction starts from the monolith's current state (Spring Boot 2.6.3 / Java 11). The extracted article-service will also be on Spring Boot 2.6.3. For a Java 17 / Spring Boot 3.2 upgrade, see Exercise B in the post-session exercises.
 - **Lab 4 (Ideas to Deployment):** The deployment artifacts (Dockerfile, CI workflow) are code-only — there is no live deployment environment to push to during the workshop. The lab focuses on producing deployment-ready artifacts rather than a running deployment.
 - **Each lab uses a different repository.** You'll work across four separate codebases rather than a single unified application.
 
@@ -500,7 +513,7 @@ A few things to be aware of as you work through the labs:
 |-----|-----------|---------|
 | Lab 1 | [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) | Angular 16 frontend — migration source |
 | Lab 2 | [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) | Spring Boot 2.6.3 with known CVEs |
-| Lab 3 | [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) | Spring Boot 2.6.3 / Java 11 upgrade target |
+| Lab 3 | [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) | Spring Boot 2.6.3 monolith — microservice extraction source |
 | Lab 4 | [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) | React + Node.js full-stack app |
 
 **Post-session exercises (optional):**
@@ -509,7 +522,6 @@ A few things to be aware of as you work through the labs:
 **Reference repos:**
 - [petclinic-rest-api](https://github.com/Cognition-Partner-Workshops/petclinic-rest-api) — REST API backend for the PetClinic Angular frontend (Lab 1 reference)
 - [petclinic-backend](https://github.com/Cognition-Partner-Workshops/petclinic-backend) — Spring Boot backend for PetClinic (Lab 1 reference)
-- [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Alternative Angular source for Lab 1 (smaller app, faster migration)
 
 ## Devin Features Checklist
 
@@ -518,26 +530,30 @@ Track your progress on the [Devin Features Appendix](../../../modules/devin-feat
 | Feature | Lab(s) Where You'll See It |
 |---------|---------------------------|
 | Codebase analysis & planning | Labs 1, 3, 4 |
+| API contract mapping | Lab 1 |
+| Test generation (migration safety net) | Lab 1 |
 | Code generation (full-stack) | Labs 1, 4 |
-| Dependency management | Labs 2, 3 |
+| Dependency management | Lab 2 |
 | SAST/SCA tool execution | Lab 2 |
+| Domain boundary analysis | Lab 3 |
+| Microservice extraction + Docker Compose | Lab 3 |
 | Build & test verification | All labs |
 | PR creation with documentation | All labs |
 | PR feedback loop (comment → iterate) | All labs |
 | Ask Devin research | All labs |
 | DeepWiki exploration | All labs |
 | Parallel sessions | Labs 1+2 overlap, Lab 4 dual sessions |
-| Knowledge items | Lab 3 (upgrade runbook), Lab 4 (feature patterns) |
+| Knowledge items | Lab 3 (extraction patterns), Lab 4 (feature patterns) |
 | GitHub Issue creation | Lab 4 |
 | CI/CD workflow generation | Labs 2, 4 |
-| Dockerfile generation | Lab 4 |
+| Dockerfile generation | Labs 3, 4 |
 | Migration documentation | Labs 1, 3 |
 | Multi-session TDD workflow | Exercise A |
-| Microservice extraction + Docker Compose | Exercise B |
+| Java framework upgrade (javax→jakarta) | Exercise B |
 | Cross-language translation (COBOL → PySpark) | Exercise C |
 
 ## Context
 
-This workshop is a customized variant of the [General Workshop](../../../workshops/general/README.md), drawing from Tracks A (Security), B (Modernization), and C (Feature Development) and adding the Angular → React migration use case.
+This workshop is a customized variant of the [General Workshop](../../../workshops/general/README.md), drawing from Tracks A (Security), B (Modernization), and C (Feature Development) and adding the Angular → React migration and monolith-to-microservices extraction use cases.
 
 For a full-day experience with more labs and deeper dives, see the [General Workshop](../../../workshops/general/README.md).
