@@ -1,10 +1,10 @@
-# Windsurf + Devin Cloud: Plan Locally, Execute at Scale
+# Devin Local + Devin Cloud: Plan Locally, Execute at Scale
 
-A linear demo showing how **Windsurf** (local IDE agent) and **Devin Cloud**
-(remote autonomous sessions) work together under one pane of glass. Use
-Windsurf's Cascade to explore and plan work across a polyglot microservices
-system, then fan out parallel Devin Cloud sessions to execute — each producing
-its own PR independently.
+A linear demo showing how **Devin Local** (the Devin agent running in
+Windsurf) and **Devin Cloud** (remote autonomous sessions) work together under
+one pane of glass. Use Devin Local to explore and plan work across a polyglot
+microservices system, then fan out parallel Devin Cloud sessions to execute —
+each producing its own PR independently.
 
 **Application:** [OtterWorks](https://github.com/Cognition-Partner-Workshops/otterworks)
 — 11 microservices in 8 languages (Go, Java, Rust, Python, Node.js, Kotlin,
@@ -13,7 +13,7 @@ Scala, Ruby, C#) with React and Angular frontends.
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
-- [Part 1 — Local Scoping in Windsurf](#part-1)
+- [Part 1 — Local Scoping with Devin Local](#part-1)
 - [Part 2 — Create the Execution Plan](#part-2)
 - [Part 3 — Fan Out to Devin Cloud](#part-3)
 - [Part 4 — Watch PRs Arrive in Parallel](#part-4)
@@ -34,12 +34,12 @@ Scala, Ruby, C#) with React and Angular frontends.
 ---
 
 <a id="part-1"></a>
-## Part 1 — Local Scoping in Windsurf
+## Part 1 — Local Scoping with Devin Local
 
-Open the `otterworks` repo in Windsurf. Use Cascade to explore the codebase
-and understand the current state of error handling across all services.
+Open the `otterworks` repo in Windsurf. Use Devin Local to explore the
+codebase and understand the current state of error handling across all services.
 
-Paste into Windsurf's Cascade chat:
+Paste into the Devin Local chat in Windsurf:
 
 ```
 Look at the otterworks microservices under services/. There are 11
@@ -51,7 +51,7 @@ Give me a summary table: service name, language, current error format,
 and what framework mechanism they use for error responses.
 ```
 
-Cascade explores the codebase locally (fast — no network round-trips) and
+Devin Local explores the codebase locally (fast — no network round-trips) and
 returns a summary like:
 
 | Service | Language | Current Error Format | Mechanism |
@@ -76,7 +76,7 @@ uses the RFC 7807 standard. The rest use ad-hoc formats.
 <a id="part-2"></a>
 ## Part 2 — Create the Execution Plan
 
-Still in Windsurf, ask Cascade to generate the implementation plan and
+Still in Windsurf, ask Devin Local to generate the implementation plan and
 per-service prompts:
 
 ```
@@ -101,8 +101,8 @@ For each service, generate a self-contained Devin prompt that:
 Output the prompts as a numbered list I can paste into Devin sessions.
 ```
 
-Cascade produces 11 targeted prompts, each tailored to the service's language
-and framework. This is the planning step — Windsurf understands the full
+Devin Local produces 11 targeted prompts, each tailored to the service's
+language and framework. This is the planning step — Devin Local has full
 codebase context and generates precise, service-specific instructions.
 
 Example output for the Go API Gateway:
@@ -127,7 +127,7 @@ Problem Details for all error responses:
 <a id="part-3"></a>
 ## Part 3 — Fan Out to Devin Cloud
 
-Now take the 11 prompts Windsurf generated and launch parallel Devin Cloud
+Now take the 11 prompts Devin Local generated and launch parallel Devin Cloud
 sessions. Each session works independently on one service.
 
 **Option A — Via the Devin UI:**
@@ -153,10 +153,11 @@ curl -X POST "https://api.devin.ai/v3/organizations/$DEVIN_ORG_ID/sessions" \
 
 Repeat for each service — or script it to launch all 11 in a loop.
 
-**Option C — Via Windsurf's Devin integration (if available):**
+**Option C — Via Devin Local in Windsurf:**
 
-From Windsurf's command palette, use the "Create Devin Session" action to
-launch each session directly from the IDE — keeping everything in one pane.
+Ask Devin Local to launch cloud sessions directly from the IDE chat — keeping
+everything in one pane. Devin Local can hand off tasks to Devin Cloud sessions
+without leaving Windsurf.
 
 ---
 
@@ -236,22 +237,22 @@ which need migration. Generate per-service Devin prompts.
 <a id="key-takeaways"></a>
 ## Key Takeaways
 
-1. **Local scoping is fast and interactive** — Windsurf's Cascade explores the
-   full codebase in seconds, no waiting for remote sessions to boot. Use it for
+1. **Local scoping is fast and interactive** — Devin Local explores the full
+   codebase in seconds, no waiting for remote sessions to boot. Use it for
    discovery, architecture understanding, and plan generation.
 
 2. **Cloud execution scales horizontally** — Devin Cloud sessions run on
    independent machines. 11 services × 1 session each = 11× throughput vs.
    sequential work.
 
-3. **Planning quality drives execution quality** — the prompts Windsurf
+3. **Planning quality drives execution quality** — the prompts Devin Local
    generates are specific because it has full codebase context. Each Devin
-   session receives a precise, self-contained task — no ambiguity, no
+   Cloud session receives a precise, self-contained task — no ambiguity, no
    cross-service coupling.
 
-4. **One pane of glass** — the developer stays in Windsurf for planning, kicks
-   off cloud sessions, and reviews the resulting PRs. No context-switching
-   between tools.
+4. **One pane of glass** — the developer stays in Windsurf for planning with
+   Devin Local, kicks off cloud sessions, and reviews the resulting PRs. No
+   context-switching between tools.
 
 5. **Polyglot is the point** — OtterWorks uses 8 languages deliberately. A
    human would context-switch between Go, Rust, Python, Java, Kotlin, Scala,
