@@ -286,6 +286,7 @@ When Devin opens a PR:
 - Does `EXTRACTION_DECISIONS.md` clearly justify which domain objects moved and which stayed?
 - Does the article-service have its own independent build that compiles?
 - Is cross-service communication implemented via REST client (not shared database queries)?
+- **Leave a comment:** *"Also extract the comments and favorites domains into article-service — add the database migrations, update the REST client, and ensure both services still build"* — watch Devin expand the extraction scope iteratively
 - **Leave a comment:** *"Add a docker-compose.yml that runs both the main app and article-service with container networking"* — watch Devin containerize the decomposed system
 - **Leave a comment:** *"Add a circuit breaker pattern to the REST client calls between services — what happens if article-service is down?"*
 
