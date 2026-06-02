@@ -535,7 +535,7 @@ Track your progress on the [Devin Features Appendix](../../../modules/devin-feat
 | PR feedback loop (comment → iterate) | All labs |
 | Ask Devin research | All labs |
 | DeepWiki exploration | All labs |
-| Test-driven development workflow | Lab 1 (tests first, then migration) |
+| AGENTS.md coding standards | Labs 1, 3 (repo-level conventions guide Devin) |
 | Parallel sessions | Labs 1+2 overlap, Lab 4 optional dual sessions |
 | Knowledge items | Lab 3 (extraction patterns), Lab 4 (feature patterns) |
 | GitHub Issue creation | Lab 4 |
