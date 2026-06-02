@@ -221,7 +221,7 @@ When Devin opens a PR:
 <a id="lab-3"></a>
 ## Lab 3 — Monolith-to-Microservices Extraction (25 min)
 
-**Value driver:** *Devin analyzes a monolith's domain boundaries, extracts a bounded context into a standalone service, wires up cross-service communication, and containerizes both — the architectural decomposition work that typically takes a team sprints to plan and execute.*
+**Value driver:** *Devin analyzes a monolith's domain boundaries, extracts a bounded context into a standalone service, and wires up cross-service communication — the architectural decomposition work that typically takes a team sprints to plan and execute.*
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
