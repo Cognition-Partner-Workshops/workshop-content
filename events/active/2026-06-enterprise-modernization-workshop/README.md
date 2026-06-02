@@ -36,7 +36,7 @@ A few tips to maximize your hands-on time:
 
 Already comfortable with Devin basics? Jump straight to the labs:
 
-1. Pick a lab: [Lab 1 (Angular → React)](#lab-1--angular-to-react-ui-migration-30-min), [Lab 2 (Security)](#lab-2--security-vulnerabilities-remediation-25-min), [Lab 3 (Monolith Extraction)](#lab-3--monolith-to-microservices-extraction-25-min), or [Lab 4 (New Product Dev)](#lab-4--new-product-development-ideas-to-deployment-15-min)
+1. Pick a lab: [Lab 1 (Angular → React)](#lab-1--angular-to-react-ui-migration-15-min), [Lab 2 (Security)](#lab-2--security-vulnerabilities-remediation-15-min), [Lab 3 (Monolith Extraction)](#lab-3--monolith-to-microservices-extraction-15-min), or [Lab 4 (New Product Dev)](#lab-4--new-product-development-ideas-to-deployment-10-min)
 2. Copy the prompt from the lab and paste it into a new Devin session
 3. While Devin works, try the Ask Devin prompts to explore the codebase
 4. Review the PR when Devin finishes, leave comments, and iterate
@@ -46,10 +46,10 @@ Already comfortable with Devin basics? Jump straight to the labs:
 ## Table of Contents
 
 - [Agenda](#agenda)
-- [Lab 1 — Angular to React UI Migration](#lab-1--angular-to-react-ui-migration-30-min)
-- [Lab 2 — Security Vulnerabilities Remediation](#lab-2--security-vulnerabilities-remediation-25-min)
-- [Lab 3 — Monolith-to-Microservices Extraction](#lab-3--monolith-to-microservices-extraction-25-min)
-- [Lab 4 — New Product Development (Ideas to Deployment)](#lab-4--new-product-development-ideas-to-deployment-15-min)
+- [Lab 1 — Angular to React UI Migration](#lab-1--angular-to-react-ui-migration-15-min)
+- [Lab 2 — Security Vulnerabilities Remediation](#lab-2--security-vulnerabilities-remediation-15-min)
+- [Lab 3 — Monolith-to-Microservices Extraction](#lab-3--monolith-to-microservices-extraction-15-min)
+- [Lab 4 — New Product Development (Ideas to Deployment)](#lab-4--new-product-development-ideas-to-deployment-10-min)
 - [Post-Session Exercises](#post-session-exercises)
 - [Known Limitations](#known-limitations)
 - [Repos Required](#repos-required)
@@ -62,36 +62,40 @@ Already comfortable with Devin basics? Jump straight to the labs:
 | Time | Activity | Lab |
 |------|----------|-----|
 | 0:00 | Welcome, Devin overview, platform walkthrough | — |
-| 0:15 | **Lab 1:** Angular to React UI Migration | [Lab 1](#lab-1--angular-to-react-ui-migration-30-min) |
-| 0:45 | **Lab 2:** Security Vulnerabilities Remediation | [Lab 2](#lab-2--security-vulnerabilities-remediation-25-min) |
-| 1:10 | **Lab 3:** Monolith-to-Microservices Extraction | [Lab 3](#lab-3--monolith-to-microservices-extraction-25-min) |
-| 1:35 | **Lab 4:** New Product Development (Ideas to Deployment) | [Lab 4](#lab-4--new-product-development-ideas-to-deployment-15-min) |
-| 1:50 | Wrap-up, showcase results, Q&A | — |
+| 0:15 | **Lab 1:** Angular to React UI Migration | [Lab 1](#lab-1--angular-to-react-ui-migration-15-min) |
+| 0:30 | **Lab 2:** Security Vulnerabilities Remediation | [Lab 2](#lab-2--security-vulnerabilities-remediation-15-min) |
+| 0:45 | **Lab 3:** Monolith-to-Microservices Extraction | [Lab 3](#lab-3--monolith-to-microservices-extraction-15-min) |
+| 1:00 | **Lab 4:** New Product Development (Ideas to Deployment) | [Lab 4](#lab-4--new-product-development-ideas-to-deployment-10-min) |
+| 1:10 | Review PRs, leave comments, iterate with Devin | — |
+| 1:40 | Wrap-up, showcase results, Q&A | — |
 
-> **Timing note:** Labs 2–4 overlap with Devin session execution from prior labs. Participants should kick off each lab's Devin session as soon as the timeslot starts, then review earlier PRs while waiting. By wrap-up, most participants will have 3–4 PRs to showcase.
+> **Timing note:** Each lab has a "Paste into Devin" step (~2 min) and a "While Devin works" section with Ask Devin prompts. Kick off all four labs back-to-back, then use the dedicated review block (1:10–1:40) to review PRs, leave comments, and watch Devin iterate. By wrap-up, most participants will have 3–4 PRs to showcase.
 
 ---
 
 <a id="lab-1"></a>
-## Lab 1 — Angular to React UI Migration (30 min)
+## Lab 1 — Angular to React UI Migration (15 min)
 
-**Value driver:** *Devin maps a backend API contract, writes a migration test suite as a safety net, then rewrites an Angular frontend in React — using parent-child session orchestration to parallelize the work and iterate until the migration passes its own test gate.*
+**Value driver:** *Devin maps a backend API contract, writes a migration test suite as a safety net, then rewrites an Angular frontend in React — using parent-child session orchestration to parallelize the work. Attendees then drive the iterative verification through PR feedback.*
 
 - **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
 - **Modules:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
 
-The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. The app consumes a REST API at `localhost:9966/petclinic/api/` with 6 service files defining the full endpoint surface. Participants will ask Devin to map that API, spin up parallel child sessions for test creation and migration, then verify the migration passes its test gate.
+The PetClinic Angular frontend is a full-featured veterinary clinic management UI with owners, pets, visits, vets, and specialties modules. It uses Angular 16, Angular Material, Bootstrap, RxJS, and template-driven forms. The app consumes a REST API at `localhost:9966/petclinic/api/` with 6 service files defining the full endpoint surface. Participants will ask Devin to map that API, spin up parallel child sessions for test creation and migration (scoped to the three interconnected modules: owners, pets, and visits), then verify the results through PR feedback.
 
 ### Paste into Devin
 
 ```
 Migrate the petclinic-angular frontend from Angular to React
 using a test-driven approach with parallel child sessions.
+Scope to the three interconnected modules: owners, pets,
+and visits.
 
 1. **Map the API contract:** Read the Angular service files
-   and TypeScript interfaces. Produce docs/API_CONTRACT.md
-   documenting each REST endpoint: HTTP method, URL pattern,
-   request/response shapes, and error handling. Base URL is
+   and TypeScript interfaces for owners, pets, and visits.
+   Produce docs/API_CONTRACT.md documenting each REST
+   endpoint: HTTP method, URL pattern, request/response
+   shapes, and error handling. Base URL is
    http://localhost:9966/petclinic/api/. Commit this to a
    new branch.
 
@@ -99,20 +103,18 @@ using a test-driven approach with parallel child sessions.
 
    Child A — "In petclinic-angular, create React Testing
    Library + MSW tests in react-frontend/src/__tests__/
-   validating owner CRUD, pet management, visit creation,
-   and vet listing against docs/API_CONTRACT.md."
+   validating owner CRUD, pet management, and visit
+   creation against docs/API_CONTRACT.md."
 
-   Child B — "In petclinic-angular, migrate the Angular
-   frontend to React 18+/TypeScript/Vite in react-frontend/.
-   Preserve routing, form validation, error handling.
-   npm run build must pass. Document gaps in
-   docs/MIGRATION_NOTES.md."
+   Child B — "In petclinic-angular, migrate the owners,
+   pets, and visits modules to React 18+/TypeScript/Vite
+   in react-frontend/. Preserve routing, form validation,
+   error handling. npm run build must pass."
 
 3. **When both children finish:** Merge both PRs into a
    combined branch. Run the tests from Child A against
-   the React app from Child B. Iterate until all tests
-   pass — fix the React components to satisfy each failing
-   test.
+   the React app from Child B. Report which tests pass
+   and which fail.
 ```
 
 ### While Devin works: try Ask Devin
@@ -127,32 +129,32 @@ Open **Ask Devin** and explore the Angular codebase:
 When Devin opens PRs (you may see up to 3 — API contract, tests, migration):
 - Does `API_CONTRACT.md` accurately reflect the endpoints in the Angular service files?
 - Were the tests written independently from the migration code (Child A and Child B are separate sessions)?
-- Do the migration tests pass against the final React app?
 - Does the React app preserve the same routes and page structure as the Angular original?
-- **Leave a comment** asking Devin to add accessibility attributes (aria-labels) to the migrated forms — watch Devin respond and push follow-up commits
+- **If any tests are failing**, leave a comment: *"Fix the failing migration tests — adjust the React components until all tests from Child A pass"* — this is the iterative verification loop driven by your feedback
+- **Leave a comment** asking Devin to migrate the vets and specialties modules to complete the full app
+- **Leave a comment** asking Devin to add accessibility attributes (aria-labels) to the migrated forms
 
 ### Key Takeaways
 
 - **"Map before you migrate"** — Devin's `API_CONTRACT.md` documents the backend surface before any code is rewritten, making the migration auditable and reviewable
 - **"Tests as a migration gate"** — the MSW-backed test suite is written independently from the migration code, then used to verify the React app exercises the same API contract the Angular app consumed
 - **"Parallel child sessions"** — Devin orchestrates two agents working simultaneously: one writing tests, one migrating. This is the same divide-and-conquer pattern teams use for large migrations
-- **"Iterative verification"** — the parent session merges both outputs and iterates until the migration passes its test gate, not just until it compiles
+- **"Iterative verification via PR feedback"** — attendees drive the fix cycle by leaving PR comments when tests fail, showing how the PR feedback loop works in production
 
 ### Target Outcomes (any of these count)
 
 - `docs/API_CONTRACT.md` documenting the REST endpoints the Angular app consumes
 - Migration test suite in `react-frontend/src/__tests__/` with MSW handlers (from Child A)
 - React 18+ app in `react-frontend/` with Vite + TypeScript (from Child B)
-- All major pages migrated (owners, pets, visits, vets, specialties)
-- Migration tests passing against the React app after iterative verification
+- Owners, pets, and visits modules migrated (vets and specialties added via PR comment)
+- Migration tests passing against the React app (after PR feedback iteration)
 - `npm run build` passing with zero TypeScript errors
-- `docs/MIGRATION_NOTES.md` documenting translation decisions
 - PR with migration artifacts and Devin's responses to review comments
 
 ---
 
 <a id="lab-2"></a>
-## Lab 2 — Security Vulnerabilities Remediation (25 min)
+## Lab 2 — Security Vulnerabilities Remediation (15 min)
 
 **Value driver:** *Devin runs SAST scans, interprets CVE reports, remediates critical findings, and re-verifies — the scan-fix-rescan loop that normally takes a security engineer days.*
 
@@ -172,20 +174,17 @@ most critical findings.
    identify dependency CVEs. Categorize findings by CVSS
    severity.
 
-2. **Remediate:** Fix the top 5 most critical vulnerabilities
-   (CVSS >= 7.0). Start with Spring Boot 2.6.3
-   (Spring4Shell), SnakeYAML 1.29, and sqlite-jdbc
-   3.36.0.3. Upgrade dependencies to safe versions, fix any
-   breaking API changes, and ensure `./gradlew build` still
-   passes.
+2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18
+   (resolves Spring4Shell CVE-2022-22965), SnakeYAML from
+   1.29 to 2.0+ (resolves CVE-2022-1471), and sqlite-jdbc
+   from 3.36.0.3 to 3.42+. Fix any breaking API changes
+   from the upgrades and ensure `./gradlew build` passes.
 
-3. **Re-scan:** Run `./gradlew dependencyCheckAnalyze` again
-   to verify the remediations resolved the findings.
-
-4. **Document:** Create `SECURITY_REMEDIATION.md` with an
-   executive summary, before/after findings table (CVE ID,
-   severity, old version, new version, status), and any
-   findings that could not be remediated and why.
+3. **Re-scan and document:** Run
+   `./gradlew dependencyCheckAnalyze` again to verify
+   remediations. Create `SECURITY_REMEDIATION.md` with a
+   before/after findings table (CVE ID, severity, old
+   version, new version, status).
 ```
 
 ### While Devin works: try Ask Devin
@@ -219,41 +218,52 @@ When Devin opens a PR:
 ---
 
 <a id="lab-3"></a>
-## Lab 3 — Monolith-to-Microservices Extraction (25 min)
+## Lab 3 — Monolith-to-Microservices Extraction (15 min)
 
-**Value driver:** *Devin analyzes a monolith's domain boundaries, extracts a bounded context into a standalone service, and wires up cross-service communication — the architectural decomposition work that typically takes a team sprints to plan and execute.*
+**Value driver:** *Devin analyzes a monolith's domain boundaries, extracts a bounded context into a standalone service, and wires up cross-service communication — using parallel child sessions to document the analysis and build the service simultaneously.*
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 
-This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, 27 test files with an 80% Jacoco coverage gate, and a Next.js frontend. Participants will ask Devin to identify a bounded context, extract it into a standalone service, and prove the system still works.
+This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, 27 test files with an 80% JaCoCo coverage gate, and a Next.js frontend. Participants will ask Devin to analyze domain boundaries and extract a bounded context using parallel child sessions — one for the architecture decision document and one for the extraction itself.
 
 ### Paste into Devin
 
 ```
-Analyze uc-spring-boot-upgrade-microservice-extraction — a
-Spring Boot 2.6.3 monolith implementing the RealWorld
-blogging platform with REST and GraphQL APIs, MyBatis
-persistence, and a Next.js frontend.
+Extract the Article bounded context from
+uc-spring-boot-upgrade-microservice-extraction — a Spring
+Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis
+persistence, and a Next.js frontend. Use parallel child
+sessions to document and extract simultaneously.
 
-1. **Analyze domain boundaries:** Map the bounded contexts
-   (articles/tags, comments, favorites, users/profiles).
-   Document your analysis in docs/EXTRACTION_DECISIONS.md —
-   what moves to the new service, what stays, and why.
+1. **Read the codebase:** Identify the 4 bounded contexts
+   (articles/tags, comments, favorites, users/profiles)
+   and their coupling points. Commit your analysis to a
+   new branch.
 
-2. **Extract the Article context:** Create a standalone
-   Spring Boot service in article-service/ with its own
-   build configuration, database migrations, and persistence
-   layer. Include articles, tags, comments, and favorites.
+2. **Spin up two child sessions in parallel:**
 
-3. **Cross-service communication:** Replace direct method
-   calls between Article and User domains with a REST
-   client. Create DTOs for the service-to-service contract.
+   Child A — "In uc-spring-boot-upgrade-microservice-
+   extraction, create docs/EXTRACTION_DECISIONS.md
+   documenting: which domain objects move to the Article
+   service (articles, tags, comments, favorites), what
+   stays (users/profiles), coupling points between
+   domains, and the cross-service communication strategy."
 
-4. **Verify:** ./gradlew build passes for both services.
-   Existing tests in the main app still pass after
-   extraction. Do not attempt to fix pre-existing CI
-   thresholds (e.g., JaCoCo coverage gates).
+   Child B — "In uc-spring-boot-upgrade-microservice-
+   extraction, extract the Article bounded context into
+   article-service/ — a standalone Spring Boot service
+   with its own build configuration, database migrations,
+   and MyBatis persistence. Include articles, tags,
+   comments, and favorites. Replace direct User domain
+   calls with a REST client and DTOs. ./gradlew build
+   must pass for both services. Do not attempt to fix
+   pre-existing CI thresholds (e.g., JaCoCo coverage
+   gates)."
+
+3. **When both children finish:** Verify existing tests in
+   the main app still pass after extraction. Report
+   results.
 ```
 
 ### While Devin works: try Ask Devin
@@ -264,7 +274,7 @@ persistence, and a Next.js frontend.
 
 ### Review the PR
 
-When Devin opens a PR:
+When Devin opens PRs (you may see up to 3 — analysis doc, extraction, combined):
 - Does `EXTRACTION_DECISIONS.md` clearly justify which domain objects moved and which stayed?
 - Does the article-service have its own independent build that compiles?
 - Is cross-service communication implemented via REST client (not shared database queries)?
@@ -274,6 +284,7 @@ When Devin opens a PR:
 ### Key Takeaways
 
 - **"Domain analysis before decomposition"** — Devin reads the monolith, identifies bounded contexts, and documents extraction decisions before cutting any code
+- **"Parallel child sessions"** — one child documents the architecture while another builds the service, mirroring how teams split analysis and implementation work
 - **"Existing tests as a safety net"** — the monolith's test suite verifies that extraction didn't break functionality
 - **"Service contracts, not shared databases"** — the extracted service communicates via REST DTOs, not direct database access — the right pattern for real microservices
 - **"Containerization via PR feedback"** — attendees ask Devin to add Docker Compose as a follow-up, showing iterative architecture work through PR comments
@@ -291,14 +302,14 @@ When Devin opens a PR:
 ---
 
 <a id="lab-4"></a>
-## Lab 4 — New Product Development: Ideas to Deployment (15 min)
+## Lab 4 — New Product Development: Ideas to Deployment (10 min)
 
-**Value driver:** *Devin takes a feature idea from requirements gathering through full-stack implementation, testing, and deployment pipeline generation — demonstrating much of the product development lifecycle in a single session.*
+**Value driver:** *Devin takes a feature specification and builds a full-stack feature end-to-end — backend API, database migration, frontend UI, and tests — following existing codebase conventions.*
 
 - **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 - **Modules:** [Gather Requirements](../../../modules/application-development/gather-requirements.md), [New Feature Development](../../../modules/application-development/new-feature-development.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
 
-The timesheet app is a React 19 + Node.js/Express + SQLite application for tracking billable hours. It has existing CRUD features for clients and work entries. Participants will take a new feature idea through the full lifecycle — from requirements to deployed artifact.
+The timesheet app is a React 19 + Node.js/Express + SQLite application for tracking billable hours. It has existing CRUD features for clients and work entries. Participants will ask Devin to build a new feature following existing patterns.
 
 This lab runs in **two parallel sessions** to cover more ground:
 
@@ -310,18 +321,12 @@ Add a "Projects" management feature to timesheet-app. This
 is a React 19 + Node.js/Express + SQLite app for tracking
 billable hours.
 
-1. **Requirements:** Create a GitHub Issue titled "Feature:
-   Project Management" with user stories, acceptance
-   criteria, data model (Projects table: id, name,
-   description, client_id FK, start_date, end_date,
-   status [active/completed/on-hold], budget_hours),
-   and API endpoint specifications.
-
-2. **Implement:** Build the full feature following existing
-   patterns — backend Express routes, SQLite migration,
-   frontend React components with MUI styling. Link
-   projects to existing clients and work entries. Include
-   backend API tests.
+Build the full feature following existing patterns — backend
+Express routes, SQLite migration (Projects table: id, name,
+description, client_id FK, start_date, end_date, status
+[active/completed/on-hold], budget_hours), frontend React
+components with MUI styling. Link projects to existing
+clients and work entries. Include backend API tests.
 ```
 
 **Session B — Requirements for a Second Feature (optional, kick off in parallel):**
@@ -353,23 +358,23 @@ and requirements gathering.
 
 When Devin opens a PR:
 - Does the Projects feature follow the same patterns as existing features (clients, work entries)?
-- Is the GitHub Issue well-structured with clear acceptance criteria?
 - **Leave a comment:** *"Add input validation for budget_hours — it should be a positive number. Also add a project status filter to the list view."*
 - **Leave a comment:** *"Add a Dockerfile (multi-stage build) and a GitHub Actions CI/CD workflow that builds, tests, and produces a container image"* — watch Devin add deployment artifacts iteratively
+- **Leave a comment:** *"Create a GitHub Issue titled 'Feature: Project Management' documenting the user stories, acceptance criteria, and API specifications for this feature"* — shows Devin generating requirements docs from implemented code
 
 ### Key Takeaways
 
-- **"Ideas to implementation in one session"** — Devin typically handles requirements → issue → implementation → tests in a single pass
+- **"Specification to implementation"** — Devin takes a feature spec with a data model and builds the full stack in a single session
 - **"Pattern matching across features"** — Devin analyzes existing CRUD features and replicates the conventions for the new feature, typically maintaining consistency
-- **"Requirements as a deliverable"** — the GitHub Issue serves as documentation and can be refined before implementation begins. Session B shows Devin doing pure discovery without writing code
+- **"Requirements as a deliverable"** — Session B shows Devin doing pure technical discovery and requirements gathering without writing code
 - **"Deployment via PR feedback"** — attendees ask Devin to add a Dockerfile and CI workflow as a follow-up comment, showing how deployment artifacts are added iteratively
 
 ### Target Outcomes (any of these count)
 
-- GitHub Issue with user stories and acceptance criteria
 - New "Projects" feature with backend API + frontend UI
 - Database migration script for the Projects table
 - Backend API tests (Jest + Supertest)
+- GitHub Issue with requirements (Session B or via PR comment)
 - Dockerfile and CI/CD workflow added via PR comment follow-up
 - PR with feature implementation and Devin's responses to review comments
 
