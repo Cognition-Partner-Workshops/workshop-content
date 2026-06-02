@@ -36,6 +36,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **C11** | OrderManager Monolith-to-Microservices | *original* | `platform-engineering-shared-services`, `ordermanager-monolith`, `ordermanager-iac`, `ordermanager-microservices` | Platform standard + .NET/Angular monolith + service IaC + microservices landing repo for decomposition demos. Platform repo provides the shared EKS/ArgoCD/monitoring infrastructure; monolith is the source; microservices repo receives all decomposed services and service-level IaC. |
 | **C12** | Oracle Forms HRMS Modernization | *original* | `ts-plsql-oracle-forms-hrms`, `uc-legacy-modernization-oracle-forms-to-java` | Legacy Oracle Forms/PL/SQL HRMS application paired with Java/Spring Boot migration artifacts, test harness, and architecture documentation. Legacy repo is the static analysis target; use-case repo holds migration planning, target code, and equivalence tests. |
 | **C13** | Sybase ASE → SQL Server Migration | *original* | `ts-tsql-sybase-legacy-db`, `uc-db-migration-sybase-to-sqlserver` | Sybase ASE 16 loan servicing database (stored procedures, views, triggers, functions, schema DDL) paired with SQL Server migration target, reconciliation harness, conversion playbook, synthetic data seeder, and CI/CD pipeline. |
+| **C14** | MuleSoft API → Spring Boot Migration | *original* | `ts-java-mulesoft-employee-api`, `uc-api-migration-mulesoft-to-spring-boot` | MuleSoft Mule 4 Employee Service API (OAuth2, RAML, PostgreSQL) paired with Spring Boot 3.5 migration target, OpenAPI contract verification harness, conversion playbook, and repo Skill. |
 
 ---
 
@@ -191,6 +192,18 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | None (scaffolded from scratch) |
 | **Challenges** | [Document Review Automation](../modules/technical-documentation/document-review-automation.md) |
 
+### uc-api-migration-mulesoft-to-spring-boot
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-spring-boot |
+| **Description** | Spring Boot 3.5 migration landing zone for the MuleSoft Mule 4 Employee Service API. Contains project scaffold (`spring-boot-app/`), OpenAPI contract extracted from RAML (`contracts/openapi.yaml`), REST Assured contract verification harness (`verify/`), Docker Compose for PostgreSQL (`docker/`), conversion playbook (`.workshop/playbooks/`), and repo Skill (`.agents/skills/`). |
+| **Tech Stack** | Java 21, Spring Boot 3.5, Spring Data JPA, Flyway, REST Assured, PostgreSQL, Docker, Maven |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | C14 (companion to `ts-java-mulesoft-employee-api`) |
+| **Key Contents** | OpenAPI 3.0 contract (7 endpoints), Spring Boot scaffold with Flyway migrations, REST Assured contract tests (8 test classes), Docker Compose for PostgreSQL 16, Devin Playbook (`!convert-mulesoft-to-spring-boot`), repo Skill with MuleSoft→Spring Boot mapping table |
+| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
+
 ### uc-bdd-test-generation-cucumber
 | | |
 |---|---|
@@ -275,6 +288,18 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Angular, Spring Boot, JHipster, Java |
 | **License** | Apache 2.0 |
 | **Challenges** | General full-stack modernization demos |
+
+### ts-java-mulesoft-employee-api
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-java-mulesoft-employee-api |
+| **Description** | MuleSoft Mule 4 Employee Service API — secure REST API with OAuth2 client-credentials authentication, five employee endpoints (goals, learning status, pay date, PTO balance, PTO scheduling), PostgreSQL database integration, RAML 1.0 spec, and CloudHub 2.0 deployment config. |
+| **Tech Stack** | MuleSoft Mule 4.9.6, Java 17, Maven, PostgreSQL, RAML 1.0 |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | C14 (companion to `uc-api-migration-mulesoft-to-spring-boot`) |
+| **Key Contents** | Mule XML flows (`src/main/mule/employee-services-api.xml` — 1457 lines), RAML spec (`src/main/resources/api/employee-services-api.raml`), OAuth2 token management, DataWeave transforms, database setup SQL |
+| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
 
 ### ts-sas-legacy-analytics
 | | |
