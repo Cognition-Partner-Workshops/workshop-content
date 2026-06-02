@@ -128,15 +128,20 @@ Problem Details for all error responses:
 ## Part 3 — Fan Out to Devin Cloud
 
 Now take the 11 prompts Devin Local generated and launch parallel Devin Cloud
-sessions. Each session works independently on one service.
+sessions. Still in Windsurf, paste this into the Devin Local chat:
 
-**Option A — Via the Devin UI:**
+```
+Using the Devin API, launch 11 parallel Devin Cloud sessions — one
+for each service prompt you generated above. Use the otterworks repo
+for each session. Each session should work independently on its
+assigned service only.
+```
 
-Open the Devin web app. For each prompt, click "New Session", select the
-`otterworks` repo, paste the prompt, and start. Repeat for all 11 services.
-Each runs on its own machine with full context.
+Devin Local launches the cloud sessions directly from the IDE. Each session
+runs on its own machine with full repo context, implementing RFC 7807 for its
+assigned service.
 
-**Option B — Via the Devin API (faster for demos):**
+Alternatively, launch sessions manually via the Devin API:
 
 ```bash
 export DEVIN_ORG_ID="<your-org-id>"
@@ -152,12 +157,6 @@ curl -X POST "https://api.devin.ai/v3/organizations/$DEVIN_ORG_ID/sessions" \
 ```
 
 Repeat for each service — or script it to launch all 11 in a loop.
-
-**Option C — Via Devin Local in Windsurf:**
-
-Ask Devin Local to launch cloud sessions directly from the IDE chat — keeping
-everything in one pane. Devin Local can hand off tasks to Devin Cloud sessions
-without leaving Windsurf.
 
 ---
 
@@ -195,8 +194,7 @@ this sequentially would take 11× longer.
 <a id="alternatives"></a>
 ## Alternative Cross-Cutting Tasks
 
-These tasks follow the same "plan locally → execute in parallel" pattern.
-Try any of these instead of (or in addition to) the RFC 7807 task above.
+Other cross-cutting tasks that follow the same plan-locally, execute-in-parallel pattern:
 
 ### Add Request Correlation IDs
 
