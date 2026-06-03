@@ -228,7 +228,7 @@ passwords need environment variable references, that `seed.py` needs stronger
 bcrypt rounds, and that Dockerfiles need `.dockerignore` or targeted COPY
 statements.
 
-Watch for in the Devin session:
+In the Devin session, watch for:
 - Devin reading the SonarCloud issue list
 - Devin checking out a branch
 - Devin editing the correct file in the correct service
