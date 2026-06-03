@@ -193,6 +193,29 @@ clusters:
       - quickapp-microfrontends
       - quickapp-iac
 
+  C13:
+    label: "Sybase ASE to SQL Server Migration"
+    upstream: null
+    shared_initial_commit: null
+    reason: >
+      Sybase ASE 16 loan servicing database paired with SQL Server migration
+      target, reconciliation harness, conversion playbook, and CI/CD pipeline.
+    repos:
+      - ts-tsql-sybase-legacy-db
+      - uc-db-migration-sybase-to-sqlserver
+
+  C14:
+    label: "MuleSoft API to Spring Boot Migration"
+    upstream: null
+    shared_initial_commit: null
+    reason: >
+      MuleSoft Mule 4 Employee Service API estate paired with Spring Boot 3.5
+      migration target, OpenAPI contract verification harness, conversion
+      playbook, and repo Skill.
+    repos:
+      - ts-java-mulesoft-employee-api
+      - uc-api-migration-mulesoft-to-spring-boot
+
 # ============================================================
 # Per-repo upstream mapping (alphabetical)
 # ============================================================
@@ -442,6 +465,12 @@ repos:
     import_method: original
     cluster: null
 
+  ts-java-mulesoft-employee-api:
+    upstream: null
+    import_method: original
+    cluster: C14
+    note: "MuleSoft Mule 4 Employee Service API — OAuth2, employee goals/learning/pay/PTO endpoints, PostgreSQL, RAML spec. Source estate for MuleSoft-to-Spring-Boot migration demos."
+
   ts-informatica-powercenter:
     upstream: HHS/Informatica
     upstream_url: https://github.com/HHS/Informatica
@@ -487,6 +516,12 @@ repos:
     upstream_url: https://github.com/swagger-api/swagger-petstore
     import_method: github-fork
     cluster: null
+
+  uc-api-migration-mulesoft-to-spring-boot:
+    upstream: null
+    import_method: original
+    cluster: C14
+    note: "Spring Boot 3.5 migration target for MuleSoft Employee Service API — OpenAPI contract, REST Assured verification harness, conversion playbook, repo Skill."
 
   uc-bdd-test-generation-cucumber:
     upstream: RedFroggy/spring-cucumber-rest-api
