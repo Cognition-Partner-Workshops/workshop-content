@@ -1,9 +1,8 @@
 # Event-Driven SAST Remediation — Demo Script
 
-A step-by-step presenter script for demonstrating autonomous security
-remediation on the OtterWorks polyglot monorepo. Two acts: burn down an
-existing vulnerability backlog with Devin, then show the CI gate that
-prevents new vulnerabilities from shipping.
+A step-by-step walkthrough of autonomous security remediation on the OtterWorks
+polyglot monorepo. Two phases: burn down an existing vulnerability backlog with
+Devin, then show the CI gate that prevents new vulnerabilities from shipping.
 
 <a id="toc"></a>
 ## Table of Contents
@@ -39,20 +38,13 @@ Before starting, confirm:
 <a id="act-1"></a>
 ## Act 1 — The Problem: A Real Vulnerability Backlog
 
-**Goal:** Show the audience a real polyglot monorepo with real security
-findings — not a contrived example.
-
-**Duration:** ~2 minutes
-
-### What to show
-
-Open the SonarCloud dashboard in a browser:
+Open the SonarCloud dashboard:
 
 ```
 https://sonarcloud.io/project/overview?id=Cognition-Partner-Workshops_otterworks
 ```
 
-**Visual cue — project overview page.** Point to the headline numbers:
+The project overview page shows the headline numbers:
 
 | Metric | Count | What it means |
 |--------|-------|---------------|
@@ -62,17 +54,14 @@ https://sonarcloud.io/project/overview?id=Cognition-Partner-Workshops_otterworks
 | Code Smells | 434 | Maintainability issues |
 | Lines of Code | 33,857 | Across 11 backend services + 2 frontends |
 
-### What to say
+OtterWorks is a polyglot monorepo with 11 backend services written in Go, Rust,
+Python, Java, Kotlin, Scala, Ruby, C#, and Node.js, plus two TypeScript
+frontends. SonarCloud has already analyzed it — 29 vulnerabilities, 51 security
+hotspots, and 24 bugs across 9 languages.
 
-> "This is OtterWorks — a polyglot monorepo with 11 backend services written in
-> Go, Rust, Python, Java, Kotlin, Scala, Ruby, C#, and Node.js, plus two
-> TypeScript frontends. SonarCloud has already analyzed it. We have 29
-> vulnerabilities, 51 security hotspots, and 24 bugs. This is our starting
-> state."
+### Drill down — specific findings
 
-### Drill down — show specific findings
-
-Click into the **Vulnerabilities** tab. Point to a few:
+Click into the **Vulnerabilities** tab:
 
 | Severity | Finding | File |
 |----------|---------|------|
@@ -81,7 +70,7 @@ Click into the **Vulnerabilities** tab. Point to a few:
 | BLOCKER | Bcrypt hash in migration seed | `services/auth-service/src/main/resources/db/migration/V1__create_users_table.sql:30` |
 | CRITICAL | Weak bcrypt parameters | `scripts/seed.py:53` |
 
-Click into the **Security Hotspots** tab. Point to:
+Click into the **Security Hotspots** tab:
 
 | Risk | Finding | File |
 |------|---------|------|
@@ -89,21 +78,16 @@ Click into the **Security Hotspots** tab. Point to:
 | MEDIUM | ReDoS-prone regex | `frontend/web-app/src/components/documents/document-card.tsx:113` |
 | MEDIUM | Recursive COPY in Dockerfile (×7) | Multiple service Dockerfiles |
 
-> "These span 9 languages and touch services from the API gateway to the search
-> service. Manually triaging and fixing all of these is a multi-day effort for
-> an engineering team. Let's have Devin do it."
+These span 9 languages and touch services from the API gateway to the search
+service. Manually triaging and fixing all of these is a multi-day effort for an
+engineering team.
 
 ---
 
 <a id="act-2"></a>
 ## Act 2 — The Burn-Down: Devin Triages and Fixes
 
-**Goal:** Show Devin autonomously reading the SonarCloud dashboard and fixing
-vulnerabilities across the polyglot repo.
-
-**Duration:** ~3 minutes (kick off the session; results arrive async)
-
-### Open Devin and paste
+Open Devin and paste this prompt to start remediating the backlog:
 
 ```
 Review the SonarCloud dashboard for otterworks at
@@ -117,7 +101,7 @@ CRITICAL, then MAJOR). For each one:
 2. Check out a branch from main.
 3. Fix the vulnerability in the correct file.
 4. Run the affected service's tests.
-5. Push and open a PR.
+5. Push the fix.
 
 Group related fixes per service into single PRs when
 possible (e.g., all docker-compose.yml password issues
@@ -126,43 +110,39 @@ in one PR, all Dockerfile COPY issues in another).
 Skip findings in test files — those are acceptable.
 ```
 
-### What to show while Devin works
+### While Devin works
 
-Switch back to the SonarCloud dashboard. Keep it visible. As Devin opens PRs,
-the audience can see the vulnerability count start to drop on the next analysis
-cycle.
+Switch back to the SonarCloud dashboard. As Devin opens PRs, the vulnerability
+count drops on the next analysis cycle.
 
-> "Devin is now reading the SonarCloud API, understanding each vulnerability,
-> and fixing them in the correct language and manifest. It knows that
-> `docker-compose.yml` passwords need environment variable references, that
-> `seed.py` needs stronger bcrypt rounds, and that Dockerfiles need
-> `.dockerignore` or targeted COPY statements."
+Devin reads the SonarCloud API, understands each vulnerability, and fixes them
+in the correct language and manifest. It knows that `docker-compose.yml`
+passwords need environment variable references, that `seed.py` needs stronger
+bcrypt rounds, and that Dockerfiles need `.dockerignore` or targeted COPY
+statements.
 
-### Show the Devin session
+### In the Devin session
 
-Point to:
+Watch for:
 - Devin reading the SonarCloud issue list
 - Devin checking out a branch
 - Devin editing the correct file in the correct service
 - Devin running the service tests
 - Devin opening a PR
 
-> "One agent. Nine languages. No human triaging which file goes to which team."
+One agent, 9 languages — no human triaging which file goes to which team.
 
 ---
 
 <a id="act-3"></a>
 ## Act 3 — The CI Gate: Shift-Left on New Code
 
-**Goal:** Show that the same pipeline prevents *new* vulnerabilities from
-shipping. A human opens a PR; scanners fire automatically; Devin remediates
-without being asked.
-
-**Duration:** ~3 minutes
+The same pipeline prevents *new* vulnerabilities from shipping. Open a PR and
+watch both scanners fire automatically.
 
 ### Open a PR to trigger the pipeline
 
-In a terminal (or have one pre-staged):
+In a terminal:
 
 ```bash
 cd otterworks
@@ -181,7 +161,7 @@ gh pr create --title "docs: trigger SAST pipeline" \
   --base main
 ```
 
-### What to show — the GitHub Actions tab
+### The GitHub Actions tab
 
 Open the PR in GitHub. Navigate to the **Checks** tab. Two things happen
 in parallel:
@@ -196,9 +176,9 @@ in parallel:
 2. If the quality gate fails, a `check_run` event fires
 3. `sonarcloud-trigger-devin` job validates the PR and calls Devin v3 API
 
-### Visual cue — PR timeline
+### PR timeline
 
-The PR comment timeline will show (in order):
+The PR comment timeline shows (in order):
 
 ```
 [Bot] Trivy SAST Findings — 31 HIGH/CRITICAL vulnerabilities
@@ -215,12 +195,12 @@ The PR comment timeline will show (in order):
       This is fix attempt 1 of 2.
 ```
 
-> "Nobody asked Devin to do this. The PR event triggered a Trivy scan,
-> the scan found vulnerabilities, and the workflow called the Devin API.
-> Devin is now checking out this branch and upgrading dependencies across
-> Python, Node.js, Ruby, Rust, and Go — all from a single pipeline."
+Nobody asked Devin to do this. The PR event triggered a Trivy scan, the scan
+found vulnerabilities, and the workflow called the Devin API. Devin checks out
+the branch and upgrades dependencies across Python, Node.js, Ruby, Rust, and
+Go — all from a single pipeline.
 
-### Show the workflow file (briefly)
+### The workflow file
 
 Open `.github/workflows/sast-auto-remediate.yml` and scroll through:
 
@@ -230,39 +210,32 @@ Open `.github/workflows/sast-auto-remediate.yml` and scroll through:
 - **Lines 156–210:** Devin v3 API call with `jq`-escaped prompt
 - **Lines 293–302:** SonarCloud `check_run` filter conditions
 
-> "Two scanner paths, one workflow. Trivy catches dependency CVEs instantly.
-> SonarCloud catches code-level issues after analysis. Both route to Devin
-> through the same v3 API."
+Two scanner paths, one workflow. Trivy catches dependency CVEs instantly.
+SonarCloud catches code-level issues after analysis. Both route to Devin
+through the same v3 API.
 
 ---
 
 <a id="act-4"></a>
 ## Act 4 — The Closed Loop: Verify and Escalate
 
-**Goal:** Show that the system is self-healing — Devin's fix triggers a re-scan,
-and if the fix doesn't work, the pipeline escalates.
+When Devin pushes a fix commit, three things happen:
 
-**Duration:** ~1 minute
+1. The `synchronize` event re-triggers Trivy. If findings are gone, CI goes
+   green. The PR is ready to merge.
 
-### What happens next (narrate)
+2. SonarCloud re-analyzes the PR. If the quality gate now passes, no new
+   Devin session is created — the one-time guard prevents it.
 
-> "When Devin pushes a fix commit, three things happen:
->
-> 1. The `synchronize` event re-triggers Trivy. If findings are gone, CI goes
->    green. The PR is ready to merge.
->
-> 2. SonarCloud re-analyzes the PR. If the quality gate now passes, no new
->    Devin session is created — the one-time guard prevents it.
->
-> 3. If Devin's fix doesn't resolve everything, the pipeline runs again. After
->    two failed attempts, it stops calling Devin and opens a GitHub Issue labeled
->    `security` and `needs-human-review`. The right humans get notified; Devin
->    doesn't loop forever."
+3. If Devin's fix doesn't resolve everything, the pipeline runs again. After
+   two failed attempts, it stops calling Devin and opens a GitHub Issue labeled
+   `security` and `needs-human-review`. The right humans get notified; Devin
+   doesn't loop forever.
 
-### Visual cue — show the escalation path
+### The escalation path
 
-If available, show an existing GitHub Issue created by the escalation job, or
-describe the format:
+If available, show an existing GitHub Issue created by the escalation job. The
+format:
 
 ```
 Title: SAST findings require manual review — PR #999
@@ -274,17 +247,14 @@ Body:
   [Full findings summary attached]
 ```
 
-> "This is the safety net. Automated remediation handles the 80% case —
-> straightforward dependency upgrades and well-documented fixes. The 20%
-> that requires architectural decisions or breaking changes gets escalated
-> to humans. The system knows its limits."
+Automated remediation handles the 80% case — straightforward dependency upgrades
+and well-documented fixes. The 20% that requires architectural decisions or
+breaking changes gets escalated to humans. The system knows its limits.
 
 ---
 
 <a id="key-takeaways"></a>
 ## Key Takeaways
-
-Recap these points at the end:
 
 1. **Devin as a background security agent** — not a tool you open, but a service
    that responds to CI events. Developers commit code; Devin handles security

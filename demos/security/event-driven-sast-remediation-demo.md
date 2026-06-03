@@ -67,7 +67,7 @@ escalation policy.
 ## Repositories
 
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) —
-  polyglot monorepo with 10 backend services, 2 frontends, and pre-existing
+  polyglot monorepo with 11 backend services, 2 frontends, and pre-existing
   Trivy/Semgrep/Gitleaks CI. Has planted CVEs across Node.js (`lodash`),
   Python (`urllib3`), and Ruby (`activestorage`) services. Onboarded to
   [SonarCloud](https://sonarcloud.io/organizations/cognition-partner-workshops/projects)
