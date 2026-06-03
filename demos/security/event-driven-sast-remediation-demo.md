@@ -379,8 +379,8 @@ When Devin pushes a fix commit, three things happen:
 
 ### The escalation path
 
-If available, show an existing GitHub Issue created by the escalation job. The
-format:
+Navigate to the **Issues** tab in the otterworks repo and look for an issue
+created by the escalation job. The format:
 
 ```
 Title: SAST findings require manual review — PR #999
