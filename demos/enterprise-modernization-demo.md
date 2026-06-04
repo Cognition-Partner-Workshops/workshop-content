@@ -566,6 +566,9 @@ echo "# Security pipeline test" >> README.md
 git add README.md
 git commit -m "docs: trigger SAST pipeline"
 git push origin workshop-test-sast
+gh pr create --title "docs: trigger SAST pipeline" \
+  --body "Testing event-driven security remediation" \
+  --base main
 ```
 
 The PR timeline shows Trivy findings posted as a comment, followed by a Devin
