@@ -25,32 +25,43 @@ capabilities (DeepWiki, playbooks, child sessions, event-driven automation).
 
 A developer joins a team that owns a Spring Boot backend with an Angular
 frontend and a microservices variant. Before writing a single line of code,
-Devin maps the estate.
+they use DeepWiki and Ask Devin to map the estate.
 
-### Orient with DeepWiki
+### Browse DeepWiki
 
-Open the PetClinic ecosystem and ask Devin to explain it:
+Open DeepWiki for the PetClinic repos:
 
 ```
-Using the petclinic-rest-api repo, give me an architecture map:
-the OpenAPI spec at src/main/resources/openapi.yml (35
-operations, 15 schemas, 8 domain areas), the Spring Data JPA
-entities, the controller → service → repository layers, the
-database configuration (HSQLDB/PostgreSQL/MySQL), and how
-the API domains (owner, pet, vet, visit, pettypes, specialty)
-relate to each other through entity relationships.
+https://partner-workshops.devinenterprise.com/org/internal/wiki
 ```
 
-Expected: Devin walks through the OpenAPI spec — 35 operations across 8
-domains — maps the entity relationships (Owner → Pet → Visit, Vet →
-Specialty), identifies the bean validation rules (minLength, maxLength,
-pattern constraints), and describes the layered architecture. With DeepWiki
-over the repo, Devin typically maps an unfamiliar estate in minutes (coverage
-depends on repo structure).
+Navigate to the `petclinic-rest-api` wiki. DeepWiki has already generated
+architectural documentation — the entity relationships, controller layers,
+OpenAPI spec summary, and database configuration — without any prompt. This
+is the starting point: a pre-generated architectural reference available
+for connected repos.
+
+### Investigate with Ask Devin
+
+For deeper questions that DeepWiki doesn't answer out of the box, use
+**Ask Devin** (no VM — investigation against static code only):
+
+```
+Using the petclinic-rest-api repo, map the OpenAPI spec at
+src/main/resources/openapi.yml: how many operations, schemas,
+and domain areas? How do the API domains (owner, pet, vet,
+visit, pettypes, specialty) relate to each other through
+the Spring Data JPA entity relationships? What bean validation
+rules constrain the inputs?
+```
+
+Ask Devin reads the static code and returns a structured answer — no VM
+spun up, no session cost. This is requirements gathering and investigation
+before assigning real work.
 
 ### Cross-repo discovery
 
-Now ask Devin to compare the monolith with the microservices variant:
+Still in Ask Devin, compare the monolith with the microservices variant:
 
 ```
 Compare the architecture of petclinic-backend (monolith) with
@@ -61,13 +72,14 @@ API gateway), and what cross-cutting concerns (auth, tracing,
 circuit breaking) the microservices variant handles differently.
 ```
 
-Expected: Devin identifies the bounded contexts (customers, vets, visits)
+Expected: Ask Devin identifies the bounded contexts (customers, vets, visits)
 extracted into separate Spring Boot services, the Spring Cloud Netflix/Gateway
 infrastructure, and the trade-offs introduced by the distributed architecture.
 
-The point: before the first feature or migration prompt, the team has a
-machine-generated architectural map. This is how Devin onboards to a new
-codebase — the same way a new engineer would, but in minutes instead of weeks.
+The point: before assigning a Devin Session to do real work, the team has an
+architectural map from DeepWiki + Ask Devin. This is how you scope work
+before committing compute — the same way a lead engineer would investigate
+before writing a ticket, but in minutes instead of days.
 
 ---
 
