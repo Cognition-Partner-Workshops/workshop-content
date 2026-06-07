@@ -44,7 +44,7 @@ The workflow across each lab follows the platform continuum:
 A few tips to maximize your hands-on time:
 
 - **Set up a Space first.** Create a Space for the workshop in Desktop. New sessions started from the Space automatically inherit the project context.
-- **Explore locally, implement in Cloud.** Use Cascade or Devin Local for the research and exploration steps (Step 2 in each lab), then delegate the implementation to Cloud (Step 1). This mirrors real-world usage: think locally, execute in the cloud.
+- **Explore locally, implement in Cloud.** Use Cascade or Devin Local for the research and exploration steps (Step 1 in each lab), then delegate the implementation to Cloud (Step 2). This mirrors real-world usage: think locally, execute in the cloud.
 - **Monitor sessions in the Agent Command Center.** The Kanban board shows sessions by status — In Progress, Ready for Review, Completed. When running parallel labs, this is your control panel.
 - **Review PRs with one-click checkout.** When a cloud session opens a PR, click to check it out in the editor. Read the diff, run tests locally, and leave review comments — all without leaving Desktop.
 - **Try parallel sessions.** Several labs suggest running multiple Devin sessions at once. Delegate them from Desktop, then watch them progress in the Agent Command Center.
