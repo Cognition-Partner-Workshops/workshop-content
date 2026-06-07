@@ -1,6 +1,6 @@
-# Workshop: General
+# Workshop: General (Desktop + Cloud)
 
-**Other variants:** [Desktop + Cloud](README.platform.md) | [CLI variant](README.local.md)
+**Other variants:** [Cloud only](README.md) | [CLI variant](README.local.md)
 
 ## Overview
 
@@ -13,9 +13,9 @@
 
 ## Platform Context
 
-This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will interact with Devin by pasting prompts into the browser, reviewing PRs on GitHub, and leaving comments for Devin to address — all through the cloud agent's autonomous workflow.
+This workshop uses **Devin Desktop + Devin Cloud**. You will use Desktop as your primary interface — exploring code locally, delegating tasks to Cloud, and reviewing results without leaving the editor. The Agent Command Center gives you a Kanban view of running sessions, and one-click checkout lets you review cloud PRs directly in the editor.
 
-> **Tip:** Prefer a local-first experience? This workshop is also available as a [Desktop + Cloud variant](README.platform.md) (using Devin Desktop as your primary interface) or a [CLI variant](README.local.md) (terminal-native with Devin CLI). The same labs, tracks, and content apply across surfaces.
+> **Tip:** Prefer a browser-only experience? See the [Cloud-only variant](README.md). Prefer the terminal? See the [CLI variant](README.local.md). The same labs and tracks apply across surfaces.
 
 ## Workshop Narrative
 
@@ -26,27 +26,39 @@ The tracks are designed to show Devin working across different problem types:
 - **Track B** shows Devin handling large-scale structural changes — rearchitecting, upgrading, and translating entire codebases
 - **Track C** shows Devin as a day-to-day development partner — building features, catching bugs through PR Review, adding test coverage, and fixing E2E failures
 
+## Desktop Workflow
+
+The Desktop + Cloud workflow replaces the browser-based "paste into Devin" model with a tighter local→cloud→review loop:
+
+1. **Create a Space** in Devin Desktop for this workshop. All sessions, PRs, and files will be grouped here automatically.
+2. **Explore with Cascade or Devin Local** — use the local agent for code exploration, requirement scoping, and rapid iteration (replaces "Ask Devin" research steps).
+3. **Delegate to Devin Cloud** — when you are ready to implement, send the task to Cloud from Desktop with one click. Continue working locally while Cloud operates autonomously on its own VM.
+4. **Monitor in the Agent Command Center** — the Kanban board shows session status (running, waiting for review, completed) across all active sessions.
+5. **Review with one-click checkout** — when Cloud opens a PR, check it out directly in the editor. No browser switching, no manual `git fetch`.
+
+> **ACP note:** Devin Desktop supports multiple agents via the Agent Client Protocol. Alongside Devin Local, you can run third-party agents (Codex CLI, Claude Agent, Gemini CLI, etc.) — they all appear in the Agent Command Center.
+
 ## Getting the Most from This Workshop
 
-> **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+> **Desktop advantage:** Because you review PRs in-editor and monitor sessions on the Kanban board, you spend less time context-switching between browser tabs. Focus on code, not tab management.
 
 A few tips to maximize your hands-on time:
 
-- **Start sessions early, review later.** Each lab has a "Paste into Devin" step and a separate "Review & Give Feedback" step. Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin will keep working in the background.
-- **Try parallel sessions.** Several labs suggest running multiple Devin sessions at once. This mirrors real enterprise usage where Devin handles repetitive work across many services.
-- **Use Ask Devin to refine requirements before creating a session.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem first so Devin can execute with less back-and-forth.
-- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer that makes Devin smarter over time. You can also create Knowledge manually for project conventions and standards.
-- **Leave PR comments to steer Devin.** After Devin opens a PR, the PR Review agent and CI checks provide automatic feedback loops. You can also leave comments directly on the PR and Devin will wake up and address them — this is the core workflow for iterating with Devin in production.
-- **Use the Agent Command Center to track parallel sessions.** If you are running multiple Devin sessions simultaneously (several labs encourage this), the Agent Command Center in Devin Desktop provides a Kanban board view of session status — useful for monitoring progress across labs without switching browser tabs.
+- **Create a Space per track.** Spaces group all sessions, PRs, and context for a task. Create one Space per track (or one per lab) so results stay organized.
+- **Start Cloud sessions early, explore locally while waiting.** Delegate the implementation prompt to Cloud, then use Cascade or Devin Local for code exploration while Cloud works in the background.
+- **Use the Agent Command Center to track parallel sessions.** Several labs suggest running multiple sessions at once. The Kanban board shows which sessions are running, which are waiting for review, and which are complete.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this context layer is shared between local and cloud agents.
+- **Review PRs without leaving Desktop.** When Cloud opens a PR, one-click checkout brings the branch into your editor. Leave inline comments and watch Devin iterate.
 
 ### Quick Start (experienced attendees)
 
-Already comfortable with Devin basics? Jump straight to the labs:
+Already comfortable with Devin Desktop basics? Jump straight to the labs:
 
-1. Pick a track that matches your interest: [A (Security)](#track-a-security--issue-triage), [B (Modernization)](#track-b-modernization), or [C (Feature Dev)](#track-c-feature-development--testing)
-2. Copy the prompt from Step 1 of any lab and paste it into a new Devin session
-3. While Devin works, try the Ask Devin prompts in Step 2 to explore the codebase
-4. Review the PR when Devin finishes, leave comments, and iterate
+1. Create a Space for this workshop in Desktop
+2. Pick a track: [A (Security)](#track-a-security--issue-triage), [B (Modernization)](#track-b-modernization), or [C (Feature Dev)](#track-c-feature-development--testing)
+3. Delegate the lab prompt to Devin Cloud from Desktop
+4. While Cloud works, use Cascade or Devin Local to explore the codebase
+5. Review the PR with one-click checkout when Cloud finishes
 
 ---
 
@@ -86,9 +98,9 @@ Track A demonstrates Devin as a security and reliability agent. Participants wil
 
 This lab has two parts: (1) find and fix existing vulnerabilities, and (2) shift left by adding security scanning to CI so new vulnerabilities are caught automatically.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
-Run these as **parallel sessions** — one to fix existing vulnerabilities, one to add CI scanning:
+From your workshop Space, delegate these as **parallel Cloud sessions** — one to fix existing vulnerabilities, one to add CI scanning:
 
 **Session A — Scan & Remediate:**
 ```
@@ -100,15 +112,15 @@ Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-complian
 Create a GitHub Actions CI pipeline for uc-cve-remediation-regulatory-compliance that: builds with Gradle, runs `./gradlew dependencyCheckAnalyze`, fails the PR if any dependency has CVSS >= 7.0, generates an SBOM in CycloneDX format, and uploads the dependency check report as a build artifact.
 ```
 
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor both parallel sessions on a single Kanban board — see at a glance which session finishes first.
+Monitor both sessions in the Agent Command Center — see at a glance which session finishes first.
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the implementation, use Cascade or Devin Local in your editor to explore the codebase:
 - *"What are the known CVEs in uc-cve-remediation-regulatory-compliance's dependencies? Which ones are CRITICAL severity?"*
 - *"What's the safest upgrade path for Spring Boot 2.6.3 — should we go to 2.7.x first or jump straight to 3.x?"*
 - *"What SAST tools are available for Spring Boot applications? Compare Trivy, Snyk, and OWASP Dependency-Check."*
-- Use the analysis to start a **second session** — try adding SonarQube scanning (the repo has a pre-configured `docker-compose.sonarqube.yml`) or pre-commit hooks for secrets detection
+- Use the analysis to delegate a **second Cloud session** — try adding SonarQube scanning (the repo has a pre-configured `docker-compose.sonarqube.yml`) or pre-commit hooks for secrets detection
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -118,14 +130,14 @@ Open the repo's **DeepWiki** page to understand the codebase architecture and de
 - Try adding **SonarQube scanning** — the repo has a pre-configured `docker-compose.sonarqube.yml`
 - Ask Devin to implement an **event-driven SAST pipeline** where CI scans trigger Devin to auto-remediate findings on the branch
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on the **remediation completeness**:
+Once Cloud opens a PR, use **one-click checkout** in Desktop to bring the branch into your editor. Focus your review on the **remediation completeness**:
 - **Scan results:** Did Devin address both CRITICAL and HIGH findings? Are there any it missed?
 - **CI workflow:** Does the pipeline correctly fail on high-severity CVEs? Is the SBOM generated?
 - **Verification:** Did Devin re-run the scan to prove the fixes work?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** directly in the editor and watch Devin respond:
 - *"The SnakeYAML version still has CVE-2022-1471 — please upgrade to 2.x"*
 - *"Add a CI workflow that fails the build on CRITICAL CVEs"*
 - *"Generate a pre-commit hook configuration for gitleaks secrets detection"*
@@ -142,7 +154,7 @@ See the full challenge details for [Remediate Vulnerabilities](../../modules/sec
   - `SECURITY_REMEDIATION.md` with before/after evidence
   - GitHub Actions CI workflow that fails on high-severity CVEs
   - SBOM generated in CycloneDX format
-  - PR(s) with review comments and Devin's responses
+  - PR(s) reviewed in-editor with inline comments and Devin's responses
 
 ---
 
@@ -156,9 +168,9 @@ See the full challenge details for [Remediate Vulnerabilities](../../modules/sec
 
 This lab shows two dimensions of bug investigation: (1) exploratory testing where Devin discovers and fixes bugs in a running app, and (2) cross-service debugging where a symptom in one service has its root cause in another.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
-Choose one or both:
+Choose one or both and delegate from your workshop Space:
 
 **Option A — Exploratory Bug Hunting (timesheet-app):**
 ```
@@ -167,16 +179,16 @@ Start timesheet-app locally (backend: `cd backend && npm run dev`, frontend: `cd
 
 **Option B — Cross-Service Bug Investigation (.NET microservices):**
 ```
-Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate and fix this bug in quickapp-microservices. To reproduce: run the notification-service locally, POST to `http://localhost:5005/api/notification/events/order-placed` with `{"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}`, then open the preview URL — the total shows $1.50 instead of $149.99. Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
+Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate and fix this bug in quickapp-microservices. To reproduce: run the notification-service locally, POST to `http://localhost:5005/api/notification/events/order-placed` with {"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}, then open the preview URL — the total shows $1.50 instead of $149.99. Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the bug fix, use Cascade or Devin Local in your editor to investigate:
 - *"What are the most common types of bugs in Express + React applications? What should I look for?"*
 - *"Trace the data flow from when an OrderPlacedEvent is received to when the notification email is rendered. Where does the monetary amount get transformed?"*
 - *"What does the OrderPlacedEvent.TotalAmount field represent — dollars or cents? Check the shared contract definition."*
-- Use the analysis to refine your bug report or start a **second session** targeting a different area of the application
+- Use the analysis to refine your bug report or delegate a **second Cloud session** targeting a different area of the application
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -189,14 +201,14 @@ Try different approaches:
 - Ask Devin to check for **similar bugs** elsewhere in the codebase
 - Try having Devin produce a **debugging narrative** that traces the issue from symptom to root cause
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on the **root cause analysis**:
+Once Cloud opens a PR, use **one-click checkout** to review in your editor. Focus on the **root cause analysis**:
 - **Root cause:** Does the analysis explain *why* the bug happened, not just *what* was changed?
 - **Fix quality:** Does the fix address the root cause or just the symptom?
 - **Regression prevention:** Is there a test that will catch this bug if it's reintroduced?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"Add a regression test for this bug"*
 - *"Are there any other places in the codebase that make the same assumption?"*
 - *"Add a unit test for FormatCurrency that verifies $149.99 renders as '$149.99' and not '$1.50'"*
@@ -214,7 +226,7 @@ See the full challenge details for [Fix Runtime Bug](../../modules/application-d
   - Root cause analysis documented
   - Fix implemented with before/after evidence (screenshots or screen recording)
   - Regression test added
-  - PR with fix explanation and Devin's responses to review comments
+  - PR reviewed in-editor with inline comments and Devin's responses
 
 ---
 
@@ -228,31 +240,29 @@ See the full challenge details for [Fix Runtime Bug](../../modules/application-d
 
 This lab introduces **Devin Scheduled Sessions** — recurring automated tasks that run without human intervention. Dependency version bumps are a perfect use case: low-risk, high-volume, and easy to verify via CI.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
 ```
 Check all dependencies in uc-cve-remediation-regulatory-compliance for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the upgrades, use Cascade or Devin Local to research:
 - *"What dependencies in uc-cve-remediation-regulatory-compliance are the most out of date? Which ones have the most available minor/patch updates?"*
 - *"What's the difference between minor and patch version upgrades in terms of risk? When is it safe to auto-upgrade vs. requiring human review?"*
 - *"How should a team handle dependency upgrades that break the build — auto-revert and flag, or block and notify?"*
-- Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy (e.g., "always upgrade patch versions, upgrade minor versions if tests pass, never auto-upgrade major versions")
+- Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy (e.g., "upgrade patch versions, upgrade minor versions if tests pass, never auto-upgrade major versions")
 
 #### Step 3 (Optional): Set Up a Scheduled Session
 
-Once you're happy with the output from step 1, turn it into a recurring task. Open a new Devin session and ask it to create a schedule:
-
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor scheduled sessions alongside your active work — the Kanban board shows recurring sessions by status so you can review their PRs as they complete.
+Once you're happy with the output from step 1, turn it into a recurring task. Delegate a new Cloud session:
 
 ```
 Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it.md."
 ```
 
-This way Devin will automatically open a dependency bump PR every week without human intervention.
+Monitor scheduled sessions in the Agent Command Center — they appear alongside your active sessions on the Kanban board, so you can review their PRs as they complete.
 
 #### Step 4 (Optional): Extend to Multiple Repos
 
@@ -290,7 +300,7 @@ Track B demonstrates Devin handling large-scale structural changes to codebases.
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Reference microservices architecture for comparison (optional)
 - **Objective:** Analyze domain boundaries in a monolith, extract a bounded context as a standalone microservice with its own API, Dockerfile, and database, and wire the services together with Docker Compose
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
 ```
 Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction. This Spring Boot monolith has three bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles).
@@ -298,13 +308,13 @@ Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction.
 Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the extraction, use Cascade or Devin Local to analyze the architecture:
 - *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which bounded context would be easiest to extract and which would be hardest?"*
 - *"If I extract the Articles domain from this monolith, what shared code and database tables will need to be handled? What communication pattern should I use?"*
 - *"What integration tests are needed when extracting a microservice from a monolith? How do we test the HTTP communication between the two services?"*
-- Use the refined analysis to start a **second session** — try extracting a different bounded context (Articles is harder than Comments) and compare Devin's approaches
+- Use the refined analysis to delegate a **second Cloud session** — try extracting a different bounded context (Articles is harder than Comments) and compare Devin's approaches
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -314,18 +324,18 @@ Open the repo's **DeepWiki** page to understand the module structure, domain mod
 3. Compare with **petclinic-microservices** to see what a fully decomposed architecture looks like
 
 Try different approaches:
-- Extract **two bounded contexts in parallel** using separate Devin sessions
+- Extract **two bounded contexts in parallel** using separate Cloud sessions (monitor both in the Agent Command Center)
 - Ask Devin to produce a **domain decomposition document** before doing any code changes
 - Have Devin add **Kubernetes manifests** on top of the Docker setup
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on the **extraction quality**:
+Once Cloud opens a PR, use **one-click checkout** to review the extraction in your editor:
 - **Clean boundaries:** Are there leftover dependencies on the monolith? Is the microservice truly standalone?
 - **Communication:** Does the HTTP communication between services work correctly? Are there proper error handling and retry patterns?
 - **Containerization:** Does the Dockerfile use a multi-stage build? Does docker-compose handle startup order?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"The Dockerfile should use a multi-stage build to reduce image size"*
 - *"Add health check endpoints to both services"*
 - *"The integration test should verify the full request-response cycle, not just connectivity"*
@@ -343,7 +353,7 @@ See the full challenge details for [Containerization & Microservice Extraction](
   - Dockerfile with multi-stage build for the extracted service
   - Docker Compose configuration running both services
   - Integration tests verifying inter-service communication
-  - PR with extraction documentation and Devin's responses to review comments
+  - PR reviewed in-editor with inline comments and Devin's responses
 
 ---
 
@@ -356,11 +366,9 @@ See the full challenge details for [Containerization & Microservice Extraction](
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular version upgrade (second repo for parallel comparison)
 - **Objective:** Run parallel Devin sessions upgrading frameworks and language versions across multiple repos — demonstrating how Devin handles repetitive upgrade tasks at enterprise scale
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
-Run these as **parallel sessions** to see how the same upgrade pattern scales across repos:
-
-> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required. Compare upgrade PRs side-by-side in the editor.
+Delegate these as **parallel Cloud sessions** to see how the same upgrade pattern scales across repos. Monitor them in the Agent Command Center:
 
 **Session A — Spring Boot + Java Upgrade:**
 ```
@@ -377,9 +385,11 @@ Upgrade petclinic-angular to the latest Angular version. Handle any breaking cha
 Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
 ```
 
-#### Step 2: Research with Ask Devin
+> **Desktop advantage:** With multiple parallel sessions, the Agent Command Center becomes essential. Watch all three upgrade sessions progress on the Kanban board without opening separate browser tabs.
 
-While Devin works on the upgrades, open **AskDevin** and explore:
+#### Step 2: Explore Locally with Cascade or Devin Local
+
+While Cloud works on the upgrades, use Cascade or Devin Local to research:
 - *"What are the biggest risks when upgrading from Spring Boot 2 to 3? Which javax to jakarta changes are most likely to break?"*
 - *"What Angular version is petclinic-angular currently on? What are the breaking changes between that version and the latest?"*
 - *"Compare the Angular upgrade paths for petclinic-angular and ts-angular-realworld — are the same breaking changes expected?"*
@@ -394,19 +404,19 @@ Open each repo's **DeepWiki** page to understand the codebase before the upgrade
 3. **ts-angular-realworld** — Compare with the PetClinic Angular app. Different codebases may hit different breaking changes for the same upgrade.
 
 Try different approaches:
-- Run both Angular upgrades in **parallel** and compare the upgrade PRs side-by-side
+- Run both Angular upgrades in **parallel** and compare the upgrade PRs side-by-side using one-click checkout
 - Ask Devin to generate a **shared upgrade checklist** from both Angular upgrade experiences
 - Have Devin create a **repeatable upgrade runbook** — then save it as a **Playbook** so any team member can reuse it
 - Think about scheduling: framework upgrades are a great candidate for **Devin Scheduled Sessions** — e.g., run dependency version bumps weekly to catch issues early
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens PRs from the parallel sessions, compare the upgrade approaches:
+Once Cloud opens PRs from the parallel sessions, use **one-click checkout** to compare the upgrade approaches in your editor:
 - **Spring Boot PR:** Is the javax to jakarta migration complete? Does the build pass with all tests green?
 - **Angular PRs:** Did both upgrades follow the Angular update guide? Are deprecated patterns fully removed?
 - **Cross-PR comparison:** Did Devin encounter the same issues in both Angular repos? Were they resolved consistently?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"This still uses javax.servlet — please update to jakarta.servlet"*
 - *"Can you also migrate from NgModules to standalone components?"*
 - *"Generate an upgrade report documenting all breaking changes encountered and how they were resolved"*
@@ -423,9 +433,9 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
   - Spring Boot app builds and tests on Java 17+ / Spring Boot 3.x
   - Angular app(s) upgraded to latest version with build passing
   - Upgrade documentation listing all breaking changes and resolutions
-  - Side-by-side comparison of upgrade PRs across repos
+  - Side-by-side comparison of upgrade PRs (reviewed in-editor)
   - Playbook capturing the repeatable upgrade runbook
-  - PR(s) with review comments and Devin's responses
+  - PR(s) with inline comments and Devin's responses
 
 ---
 
@@ -437,21 +447,21 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular (TypeScript) RealWorld app — reference for alternative target
 - **Objective:** Translate a Java Spring Boot service layer into an equivalent Python (Flask/FastAPI) application, preserving API contracts and proving functional equivalence with parity tests. Both source and target compile and run on Ubuntu.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
 ```
 Translate the Articles API from uc-spring-boot-upgrade-microservice-extraction (Java/Spring Boot) into a Python FastAPI application. The Python version should expose the same REST endpoints: GET /api/articles, GET /api/articles/:slug, POST /api/articles, PUT /api/articles/:slug, DELETE /api/articles/:slug, and GET /api/articles/feed. Use SQLAlchemy for persistence and Pydantic for request/response models. Preserve the same JSON response shape so the API is a drop-in replacement. Write pytest tests that verify the Python endpoints return identical responses to the Java version for the same inputs. Document the translation decisions in a `MIGRATION_NOTES.md`.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the translation, use Cascade or Devin Local to analyze the source:
 - *"What are the main API endpoints in uc-spring-boot-upgrade-microservice-extraction? What does each one do and what are the request/response shapes?"*
 - *"What's the best Python web framework for translating a Spring Boot REST API — Flask, FastAPI, or Django REST Framework? Compare trade-offs."*
 - *"What are the riskiest Java-to-Python translation patterns — type safety, null handling, dependency injection, ORM differences?"*
-- Use the analysis to start a **second session** — try translating the same service to **TypeScript (Express/NestJS)** in parallel and compare the results
+- Use the analysis to delegate a **second Cloud session** — try translating the same service to **TypeScript (Express/NestJS)** in parallel and compare the results
 
-> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration — ask the CLI to analyze the Java source and propose a translation mapping before committing to a cloud session.
+> **Desktop advantage:** Use Cascade to open the Java source alongside the Python output for real-time comparison as Cloud delivers the translation.
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -470,19 +480,19 @@ Open the repo's **DeepWiki** page to understand the Java application architectur
 | MyBatis XML mappers | SQLAlchemy Core queries | Complex queries |
 
 Try different approaches:
-- Translate **multiple API domains in parallel** (Articles, Users, Comments) using separate Devin sessions
+- Translate **multiple API domains in parallel** (Articles, Users, Comments) using separate Cloud sessions
 - Ask Devin to produce a **translation mapping document** before writing any code
 - Try targeting **two different Python frameworks** (FastAPI vs. Flask) and compare the output
 - Have Devin create a **contract test suite** that hits both the Java and Python servers and asserts identical responses
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on the **translation fidelity**:
+Once Cloud opens a PR, use **one-click checkout** to review the translation in your editor. Focus on **translation fidelity**:
 - **API contract:** Does the Python version return the exact same JSON shape as the Java version?
 - **Business logic:** Are edge cases handled the same way (e.g., slug generation, pagination, authentication)?
 - **Parity tests:** Do the pytest tests verify identical behavior for the same inputs?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"The slug generation logic doesn't match — Java uses `String.toLowerCase().replaceAll()` but Python is using a different regex"*
 - *"Add a contract test that starts both servers and compares responses for the same request"*
 - *"The error responses don't match — Java returns `{errors: {body: [...]}}` but Python returns a flat string"*
@@ -500,7 +510,7 @@ See the full challenge details for [Language Translation](../../modules/migratio
   - pytest parity tests proving functional equivalence
   - `MIGRATION_NOTES.md` documenting translation decisions and pattern mappings
   - Both source and target building and running successfully on Ubuntu
-  - PR with Python code, tests, and Devin's responses to review comments
+  - PR reviewed in-editor with inline comments and Devin's responses
 
 ---
 
@@ -516,15 +526,13 @@ Track C demonstrates Devin as a day-to-day development partner. Participants wil
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative)
 - **Objective:** Build a new feature on an existing application, then observe how PR Review automatically flags potential bugs and issues in the implementation — and have Devin address the feedback
 
-#### Step 1: Start with Ask Devin (recommended)
+#### Step 1: Scope with Cascade or Devin Local, Then Delegate
 
-Before creating a session, try using **Ask Devin** to scope the feature. The more specific your requirements, the better Devin's output — and Ask Devin helps you think through the details before Devin starts writing code.
+Before delegating to Cloud, use **Cascade or Devin Local** in your editor to scope the feature — the more specific your requirements, the better Cloud's output:
 
-> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration — ask the CLI to analyze the codebase patterns and scope your feature requirements interactively.
+- *"What existing patterns does timesheet-app use for CRUD features? What data model, API structure, and React component conventions should a new 'Projects' feature follow?"*
 
-For example, ask: *"What existing patterns does timesheet-app use for CRUD features? What data model, API structure, and React component conventions should a new 'Projects' feature follow?"*
-
-Then use what you learn to refine one of these prompts before pasting it into a Devin session:
+Then use what you learn to refine one of these prompts before delegating to Cloud:
 
 **Option A — Full-Stack CRUD Feature (timesheet-app):**
 ```
@@ -544,19 +552,17 @@ Open the repo's **DeepWiki** page to understand the existing feature patterns. U
 - Try having Devin add **audit logging** for all CRUD operations on the new feature
 - Ask Devin to generate **API documentation** (Swagger/OpenAPI) for the new endpoints
 
-#### Step 3: Review PR & Observe PR Review Agent
+#### Step 3: Review PR with One-Click Checkout & Observe PR Review Agent
 
-Once Devin opens a PR from step 1, this is where the **PR Review feedback loop** comes in:
+Once Cloud opens a PR, use **one-click checkout** to bring it into your editor. This is where the **PR Review feedback loop** comes in:
 - **PR Review will automatically analyze the PR** and flag potential issues — missing validation, error handling gaps, security concerns, or logic bugs
 - **Read the PR Review comments carefully** — they often catch real issues that would otherwise make it to production
-- **Leave your own feedback** alongside the PR Review comments and watch Devin address both:
+- **Leave your own inline comments** alongside the PR Review comments and watch Devin address both:
   - *"PR Review flagged that the project name field has no length validation — please add max length checking"*
   - *"Add error handling for the case where a client is deleted while it has active projects"*
   - *"The React component doesn't handle loading states — add a spinner while the API call is in flight"*
 
-This demonstrates the production workflow: Devin writes code, PR Review catches issues, Devin fixes them, you approve.
-
-> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
+This demonstrates the production workflow: Devin writes code, PR Review catches issues, Devin fixes them, you approve — all without leaving Desktop.
 
 See the full challenge details for [New Feature Development](../../modules/application-development/new-feature-development.md) for more ideas.
 
@@ -564,7 +570,7 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
   - **"PR Review catches what humans miss"** — the automated review agent flags validation gaps, error handling issues, and potential bugs before you even look at the PR
   - **"The feedback loop is the workflow"** — Devin writes, PR Review flags, you comment, Devin fixes. This is how teams use Devin in production every day
-  - **"Knowledge compounds over time"** — if Devin discovers project conventions during this session, save them as Knowledge items. Future sessions will automatically benefit
+  - **"Knowledge compounds over time"** — if Devin discovers project conventions during this session, save them as Knowledge items. Future sessions (local and cloud) will automatically benefit
 
 - **Target Outcomes (any of these count):**
   - New feature implemented following existing code conventions
@@ -573,7 +579,7 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - Frontend UI components for the new feature
   - PR Review comments identifying potential issues
   - Devin's responses to both PR Review and human feedback
-  - PR with review iterations showing the feedback loop in action
+  - PR reviewed in-editor showing the feedback loop in action
 
 ---
 
@@ -586,9 +592,9 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Analyze existing test coverage, generate meaningful tests for under-tested modules, and optionally create BDD test scenarios for REST APIs
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
-Choose one or run multiple in parallel:
+Choose one or delegate multiple in parallel:
 
 **Option A — Unit Test Coverage (Spring Boot):**
 ```
@@ -605,13 +611,13 @@ Analyze the current test coverage of timesheet-app. Add missing Jest unit tests 
 Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: creating a user with missing required fields (expect 400), creating a user with duplicate ID (expect 409 or appropriate error), pagination and sorting, and input validation. Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on test generation, use Cascade or Devin Local to analyze coverage:
 - *"What is the current test coverage breakdown by package? Which domain (articles, users, comments) has the weakest coverage?"*
 - *"What testing patterns does the codebase use? JUnit with Mockito? TestContainers? What conventions should new tests follow?"*
 - *"What Cucumber best practices should be followed for REST API testing — should scenarios be independent or can they share state?"*
-- Use the analysis to start a **second session** — try generating property-based tests, mutation tests, or data-driven Cucumber Scenario Outlines
+- Use the analysis to delegate a **second Cloud session** — try generating property-based tests, mutation tests, or data-driven Cucumber Scenario Outlines
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -621,15 +627,15 @@ Open the repo's **DeepWiki** page to understand which service methods handle the
 - Try having Devin add **mutation tests** to verify that the existing tests actually catch bugs
 - Ask Devin to produce a **test coverage matrix** mapping tests to business requirements
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on **test quality**:
+Once Cloud opens a PR, use **one-click checkout** to review the tests in your editor. Focus on **test quality**:
 - **Meaningful assertions:** Are the tests checking behavior, or just padding coverage with trivial assertions?
 - **Edge cases:** Do the tests cover error cases, boundary conditions, and null/empty inputs?
 - **Independence:** Are tests isolated, or do they depend on each other or on database state?
 - **Readability:** Are the Gherkin scenarios readable by non-developers? Do they describe business behavior rather than implementation details?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"Add edge case tests for invalid date ranges and duplicate entries"*
 - *"The step definitions should use more descriptive method names"*
 - *"Add data-driven scenarios using Cucumber Scenario Outlines with Examples tables"*
@@ -661,7 +667,7 @@ See the full challenge details for [Unit Testing](../../modules/testing-qa/unit-
 
 This lab completes the testing story: after adding unit tests (Lab C2), now run the application end-to-end, write Playwright tests that exercise the full user workflow, discover issues through testing, and fix what you find.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Delegate to Devin Cloud from Desktop
 
 **Option A — Playwright E2E Tests (timesheet-app):**
 ```
@@ -673,9 +679,9 @@ Set up and run timesheet-app locally (backend on port 3001, frontend on port 517
 Review the uc-bdd-test-generation-cucumber codebase. Run `mvn test` to verify the existing 16 scenarios pass. Then write new end-to-end Gherkin scenarios that test the full user lifecycle: create a user, verify they appear in the list, update their details, verify the update, then delete them and verify they're gone. Also test cross-resource relationships — create a user, create orders for that user, verify the orders appear when querying by user. Run all tests and fix any failures.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore Locally with Cascade or Devin Local
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Cloud works on the E2E tests, use Cascade or Devin Local to analyze the app:
 - *"What are the main user workflows in timesheet-app that would benefit from E2E tests?"*
 - *"What Playwright best practices should be followed — proper selectors, waiting strategies, test isolation?"*
 - *"What are the most common causes of flaky E2E tests and how can they be prevented?"*
@@ -689,14 +695,14 @@ Open the repo's **DeepWiki** page to understand the frontend routes, components,
 - Try having Devin add **performance assertions** (page load time < 2 seconds)
 - Ask Devin to generate a **test report** with screenshots and timings for each test
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review with One-Click Checkout
 
-Once Devin opens a PR from step 1, focus your review on **test robustness and bug fixes**:
+Once Cloud opens a PR, use **one-click checkout** to review in your editor. Focus on **test robustness and bug fixes**:
 - **Test quality:** Are the tests robust or will they be flaky? Do they use proper selectors and waiting strategies?
 - **Bug fixes:** If Devin found and fixed bugs during testing, does the fix address the root cause?
 - **Coverage completeness:** Do the E2E tests cover the critical user paths? Are there workflows missing?
 
-**Leave a feedback comment** and watch Devin respond:
+**Leave inline comments** and watch Devin respond:
 - *"Add a test for submitting the form with missing required fields — it should show validation errors"*
 - *"The test uses sleep() instead of waiting for an element — please fix to avoid flakiness"*
 - *"Add an E2E test for the CSV export feature on the reports page"*

@@ -1,6 +1,6 @@
-# Workshop: General
+# Workshop: General (CLI / Devin Local)
 
-**Other variants:** [Desktop + Cloud](README.platform.md) | [CLI variant](README.local.md)
+**Other variants:** [Cloud only](README.md) | [Desktop + Cloud](README.platform.md)
 
 ## Overview
 
@@ -13,9 +13,11 @@
 
 ## Platform Context
 
-This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will interact with Devin by pasting prompts into the browser, reviewing PRs on GitHub, and leaving comments for Devin to address — all through the cloud agent's autonomous workflow.
+This workshop uses **Devin CLI / Devin Local** — the terminal-native coding agent installed from [cli.devin.ai](https://cli.devin.ai). You will run `devin` in your terminal, provide prompts interactively, and leverage subagents for parallel subtasks. Work happens locally on your machine with access to your files, git repos, and development environment.
 
-> **Tip:** Prefer a local-first experience? This workshop is also available as a [Desktop + Cloud variant](README.platform.md) (using Devin Desktop as your primary interface) or a [CLI variant](README.local.md) (terminal-native with Devin CLI). The same labs, tracks, and content apply across surfaces.
+> **Tip:** Some labs in this workshop require autonomous cloud execution (scheduled sessions, child agents at scale). Those labs include a "Cloud handoff" callout linking to the [cloud variant](README.md). For everything else, the CLI delivers the same results with faster feedback loops.
+
+> **Desktop integration:** Devin CLI runs as "Devin Local" inside Devin Desktop via ACP (Agent Client Protocol). Use Desktop for a visual agent management experience alongside terminal work — see the [Desktop + Cloud variant](README.platform.md).
 
 ## Workshop Narrative
 
@@ -26,27 +28,37 @@ The tracks are designed to show Devin working across different problem types:
 - **Track B** shows Devin handling large-scale structural changes — rearchitecting, upgrading, and translating entire codebases
 - **Track C** shows Devin as a day-to-day development partner — building features, catching bugs through PR Review, adding test coverage, and fixing E2E failures
 
+## CLI Workflow
+
+The CLI workflow replaces the browser-based "paste into Devin" model with a terminal-native interaction loop:
+
+1. **Run `devin` in your terminal** — launch the agent in the context of the repo you are working on.
+2. **Provide prompts interactively** — paste or type the lab prompt directly. The CLI works with your local files and git context.
+3. **Use subagents for parallel subtasks** — the CLI can spawn independent subagents to handle work concurrently (e.g., scan + fix in parallel).
+4. **Leverage shell integration** — Devin CLI understands your shell context, recent commands, and terminal state for context-aware assistance.
+5. **Hand off to Cloud when needed** — for long-running autonomous tasks, start locally and send to Devin Cloud. The cloud agent picks up where the CLI left off.
+
 ## Getting the Most from This Workshop
 
-> **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+> **CLI advantage:** Terminal-native means faster iteration loops. Explore code, run commands, and get answers without leaving your terminal. The CLI's shell integration gives Devin immediate context about your working state.
 
 A few tips to maximize your hands-on time:
 
-- **Start sessions early, review later.** Each lab has a "Paste into Devin" step and a separate "Review & Give Feedback" step. Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin will keep working in the background.
-- **Try parallel sessions.** Several labs suggest running multiple Devin sessions at once. This mirrors real enterprise usage where Devin handles repetitive work across many services.
-- **Use Ask Devin to refine requirements before creating a session.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem first so Devin can execute with less back-and-forth.
-- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer that makes Devin smarter over time. You can also create Knowledge manually for project conventions and standards.
-- **Leave PR comments to steer Devin.** After Devin opens a PR, the PR Review agent and CI checks provide automatic feedback loops. You can also leave comments directly on the PR and Devin will wake up and address them — this is the core workflow for iterating with Devin in production.
-- **Use the Agent Command Center to track parallel sessions.** If you are running multiple Devin sessions simultaneously (several labs encourage this), the Agent Command Center in Devin Desktop provides a Kanban board view of session status — useful for monitoring progress across labs without switching browser tabs.
+- **Start with exploration, then implement.** Use `devin` for quick code exploration questions first, then provide the implementation prompt. The CLI's interactive mode makes it easy to refine requirements before committing to a full task.
+- **Use subagents for parallel work.** When a lab suggests running parallel sessions, use the CLI's subagent capability to handle multiple subtasks concurrently within a single terminal session.
+- **Build up Devin's knowledge as you go.** Knowledge items and MCP integrations work the same way across CLI and Cloud — context you add benefits both surfaces.
+- **Hand off long-running tasks to Cloud.** If a task needs hours of autonomous execution (large migrations, E2E test suites), start locally to scope and refine, then hand off to Cloud.
+- **Take advantage of local file access.** Unlike Cloud sessions, the CLI has direct access to your local file system — useful for exploring code, running local builds, and verifying results immediately.
 
 ### Quick Start (experienced attendees)
 
-Already comfortable with Devin basics? Jump straight to the labs:
+Already comfortable with Devin CLI basics? Jump straight to the labs:
 
-1. Pick a track that matches your interest: [A (Security)](#track-a-security--issue-triage), [B (Modernization)](#track-b-modernization), or [C (Feature Dev)](#track-c-feature-development--testing)
-2. Copy the prompt from Step 1 of any lab and paste it into a new Devin session
-3. While Devin works, try the Ask Devin prompts in Step 2 to explore the codebase
-4. Review the PR when Devin finishes, leave comments, and iterate
+1. Clone the relevant repo locally and `cd` into it
+2. Pick a track: [A (Security)](#track-a-security--issue-triage), [B (Modernization)](#track-b-modernization), or [C (Feature Dev)](#track-c-feature-development--testing)
+3. Run `devin` and provide the lab prompt
+4. While Devin works, use the CLI for exploration questions
+5. Review the PR when Devin finishes, leave comments, and iterate
 
 ---
 
@@ -86,29 +98,27 @@ Track A demonstrates Devin as a security and reliability agent. Participants wil
 
 This lab has two parts: (1) find and fix existing vulnerabilities, and (2) shift left by adding security scanning to CI so new vulnerabilities are caught automatically.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
 
-Run these as **parallel sessions** — one to fix existing vulnerabilities, one to add CI scanning:
+Clone `uc-cve-remediation-regulatory-compliance` locally, `cd` into it, and run `devin`. Use subagents to handle both tasks in parallel:
 
-**Session A — Scan & Remediate:**
+**Subtask A — Scan & Remediate:**
 ```
-Run `./gradlew dependencyCheckAnalyze` on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results.
-```
-
-**Session B — Shift Left (CI Pipeline):**
-```
-Create a GitHub Actions CI pipeline for uc-cve-remediation-regulatory-compliance that: builds with Gradle, runs `./gradlew dependencyCheckAnalyze`, fails the PR if any dependency has CVSS >= 7.0, generates an SBOM in CycloneDX format, and uploads the dependency check report as a build artifact.
+Run `./gradlew dependencyCheckAnalyze` to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a `SECURITY_REMEDIATION.md` documenting the before/after results.
 ```
 
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor both parallel sessions on a single Kanban board — see at a glance which session finishes first.
+**Subtask B — Shift Left (CI Pipeline):**
+```
+Create a GitHub Actions CI pipeline that: builds with Gradle, runs `./gradlew dependencyCheckAnalyze`, fails the PR if any dependency has CVSS >= 7.0, generates an SBOM in CycloneDX format, and uploads the dependency check report as a build artifact.
+```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore with the CLI
 
-While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the known CVEs in uc-cve-remediation-regulatory-compliance's dependencies? Which ones are CRITICAL severity?"*
+While subagents work, use the CLI interactively for exploration:
+- *"What are the known CVEs in this repo's dependencies? Which ones are CRITICAL severity?"*
 - *"What's the safest upgrade path for Spring Boot 2.6.3 — should we go to 2.7.x first or jump straight to 3.x?"*
 - *"What SAST tools are available for Spring Boot applications? Compare Trivy, Snyk, and OWASP Dependency-Check."*
-- Use the analysis to start a **second session** — try adding SonarQube scanning (the repo has a pre-configured `docker-compose.sonarqube.yml`) or pre-commit hooks for secrets detection
+- Use the analysis to spawn another subagent — try adding SonarQube scanning (the repo has a pre-configured `docker-compose.sonarqube.yml`) or pre-commit hooks for secrets detection
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -120,7 +130,7 @@ Open the repo's **DeepWiki** page to understand the codebase architecture and de
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on the **remediation completeness**:
+Once Devin opens a PR, review it and leave feedback:
 - **Scan results:** Did Devin address both CRITICAL and HIGH findings? Are there any it missed?
 - **CI workflow:** Does the pipeline correctly fail on high-severity CVEs? Is the SBOM generated?
 - **Verification:** Did Devin re-run the scan to prove the fixes work?
@@ -156,9 +166,9 @@ See the full challenge details for [Remediate Vulnerabilities](../../modules/sec
 
 This lab shows two dimensions of bug investigation: (1) exploratory testing where Devin discovers and fixes bugs in a running app, and (2) cross-service debugging where a symptom in one service has its root cause in another.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
 
-Choose one or both:
+Clone the target repo locally, `cd` into it, and run `devin` with one of these prompts:
 
 **Option A — Exploratory Bug Hunting (timesheet-app):**
 ```
@@ -167,16 +177,16 @@ Start timesheet-app locally (backend: `cd backend && npm run dev`, frontend: `cd
 
 **Option B — Cross-Service Bug Investigation (.NET microservices):**
 ```
-Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate and fix this bug in quickapp-microservices. To reproduce: run the notification-service locally, POST to `http://localhost:5005/api/notification/events/order-placed` with `{"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}`, then open the preview URL — the total shows $1.50 instead of $149.99. Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
+Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate and fix this bug in quickapp-microservices. To reproduce: run the notification-service locally, POST to `http://localhost:5005/api/notification/events/order-placed` with {"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}, then open the preview URL — the total shows $1.50 instead of $149.99. Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore with the CLI
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Devin works on the fix, use the CLI interactively to investigate:
 - *"What are the most common types of bugs in Express + React applications? What should I look for?"*
 - *"Trace the data flow from when an OrderPlacedEvent is received to when the notification email is rendered. Where does the monetary amount get transformed?"*
 - *"What does the OrderPlacedEvent.TotalAmount field represent — dollars or cents? Check the shared contract definition."*
-- Use the analysis to refine your bug report or start a **second session** targeting a different area of the application
+- Use the analysis to refine your bug report or spawn a subagent targeting a different area of the application
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -191,7 +201,7 @@ Try different approaches:
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on the **root cause analysis**:
+Once Devin opens a PR, focus your review on the **root cause analysis**:
 - **Root cause:** Does the analysis explain *why* the bug happened, not just *what* was changed?
 - **Fix quality:** Does the fix address the root cause or just the symptom?
 - **Regression prevention:** Is there a test that will catch this bug if it's reintroduced?
@@ -228,31 +238,29 @@ See the full challenge details for [Fix Runtime Bug](../../modules/application-d
 
 This lab introduces **Devin Scheduled Sessions** — recurring automated tasks that run without human intervention. Dependency version bumps are a perfect use case: low-risk, high-volume, and easy to verify via CI.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+> **Cloud handoff:** Scheduled sessions require autonomous cloud execution — they run on a cron cadence without human initiation. Use the CLI to perform the initial dependency upgrade (Step 1), then see the [cloud variant](README.md) for setting up the recurring schedule (Step 3).
+
+#### Step 1: Run Devin CLI
+
+Clone `uc-cve-remediation-regulatory-compliance` locally, `cd` into it, and run `devin`:
 
 ```
-Check all dependencies in uc-cve-remediation-regulatory-compliance for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
+Check all dependencies for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore with the CLI
 
-While Devin works on step 1, open **AskDevin** and explore:
-- *"What dependencies in uc-cve-remediation-regulatory-compliance are the most out of date? Which ones have the most available minor/patch updates?"*
+While Devin works on the upgrades, use the CLI interactively to research:
+- *"What dependencies are the most out of date? Which ones have the most available minor/patch updates?"*
 - *"What's the difference between minor and patch version upgrades in terms of risk? When is it safe to auto-upgrade vs. requiring human review?"*
 - *"How should a team handle dependency upgrades that break the build — auto-revert and flag, or block and notify?"*
-- Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy (e.g., "always upgrade patch versions, upgrade minor versions if tests pass, never auto-upgrade major versions")
+- Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy (e.g., "upgrade patch versions, upgrade minor versions if tests pass, never auto-upgrade major versions")
 
 #### Step 3 (Optional): Set Up a Scheduled Session
 
-Once you're happy with the output from step 1, turn it into a recurring task. Open a new Devin session and ask it to create a schedule:
+> **Cloud handoff:** This step requires autonomous cloud execution. See the [cloud variant](README.md) for setting up Devin Scheduled Sessions that run weekly without human intervention.
 
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor scheduled sessions alongside your active work — the Kanban board shows recurring sessions by status so you can review their PRs as they complete.
-
-```
-Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it.md."
-```
-
-This way Devin will automatically open a dependency bump PR every week without human intervention.
+Once you're happy with the upgrade output, you can hand off to Cloud to create a recurring schedule. Start locally to prove the pattern works, then let Cloud automate it going forward.
 
 #### Step 4 (Optional): Extend to Multiple Repos
 
@@ -262,19 +270,19 @@ Try running the same pattern for **timesheet-app** with an npm-flavored prompt:
 Check all npm dependencies in timesheet-app for available minor and patch version updates. Run `npm update` to upgrade to latest minor versions. Run `npm test` and `npm run build` to verify everything still works.md`.
 ```
 
-This demonstrates how the same maintenance pattern scales across different tech stacks and repositories — each scheduled session runs independently on its own VM.
+This demonstrates how the same maintenance pattern scales across different tech stacks and repositories.
 
 - **Key Takeaways:**
-  - **"Automate the boring stuff"** — dependency upgrades are repetitive, low-risk, and high-volume. Devin handles them weekly without human intervention
+  - **"Automate the boring stuff"** — dependency upgrades are repetitive, low-risk, and high-volume. Start locally with the CLI, then hand off to Cloud for recurring execution
   - **"Scheduled sessions = always-on maintenance"** — teams set the policy once, and Devin executes it on a cadence. No more "we'll get to it next sprint"
   - **"Safe by default"** — the prompt instructs Devin to verify builds, revert breaking upgrades, and document everything. The PR still requires human approval to merge
-  - **"Scales across repos and tech stacks"** — the same pattern works for Gradle, npm, pip, cargo, etc. Set it up once per repo and forget about it
+  - **"Scales across repos and tech stacks"** — the same pattern works for Gradle, npm, pip, cargo, etc.
 
 - **Target Outcomes (any of these count):**
-  - Devin scheduled session configured for weekly dependency upgrades
   - PR with dependency upgrades and `DEPENDENCY_UPDATES.md`
   - Knowledge item capturing the team's dependency upgrade policy
-  - Same schedule replicated across multiple repos/tech stacks
+  - Same pattern replicated across multiple repos/tech stacks
+  - Cloud handoff configured for recurring scheduled execution
 
 ---
 
@@ -290,21 +298,25 @@ Track B demonstrates Devin handling large-scale structural changes to codebases.
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Reference microservices architecture for comparison (optional)
 - **Objective:** Analyze domain boundaries in a monolith, extract a bounded context as a standalone microservice with its own API, Dockerfile, and database, and wire the services together with Docker Compose
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
+
+Clone `uc-spring-boot-upgrade-microservice-extraction` locally, `cd` into it, and run `devin`:
 
 ```
-Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction. This Spring Boot monolith has three bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles).
+Analyze the domain boundaries in this repo. This Spring Boot monolith has three bounded contexts: Articles (CRUD, feed, favorites, tags), Users/Profiles (registration, authentication, following), and Comments (CRUD linked to articles).
 
 Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services. Add integration tests that verify the monolith and microservice communicate correctly.
 ```
 
-#### Step 2: Research with Ask Devin
+> **Cloud handoff:** If the extraction requires long-running compilation and testing cycles, consider handing off to Devin Cloud for autonomous execution. Start locally to analyze the boundaries, then delegate the implementation.
 
-While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which bounded context would be easiest to extract and which would be hardest?"*
-- *"If I extract the Articles domain from this monolith, what shared code and database tables will need to be handled? What communication pattern should I use?"*
-- *"What integration tests are needed when extracting a microservice from a monolith? How do we test the HTTP communication between the two services?"*
-- Use the refined analysis to start a **second session** — try extracting a different bounded context (Articles is harder than Comments) and compare Devin's approaches
+#### Step 2: Explore with the CLI
+
+While Devin works on the extraction, use the CLI interactively to analyze:
+- *"What are the domain boundaries in this monolith? Which bounded context would be easiest to extract and which would be hardest?"*
+- *"If I extract the Articles domain, what shared code and database tables will need to be handled? What communication pattern should I use?"*
+- *"What integration tests are needed when extracting a microservice from a monolith?"*
+- Use the refined analysis to spawn a subagent extracting a different bounded context in parallel
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -314,13 +326,13 @@ Open the repo's **DeepWiki** page to understand the module structure, domain mod
 3. Compare with **petclinic-microservices** to see what a fully decomposed architecture looks like
 
 Try different approaches:
-- Extract **two bounded contexts in parallel** using separate Devin sessions
+- Extract **two bounded contexts in parallel** using subagents
 - Ask Devin to produce a **domain decomposition document** before doing any code changes
 - Have Devin add **Kubernetes manifests** on top of the Docker setup
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on the **extraction quality**:
+Once Devin opens a PR, focus your review on the **extraction quality**:
 - **Clean boundaries:** Are there leftover dependencies on the monolith? Is the microservice truly standalone?
 - **Communication:** Does the HTTP communication between services work correctly? Are there proper error handling and retry patterns?
 - **Containerization:** Does the Dockerfile use a multi-stage build? Does docker-compose handle startup order?
@@ -336,7 +348,7 @@ See the full challenge details for [Containerization & Microservice Extraction](
   - **"Devin analyzes domain boundaries"** — it reads the codebase to identify bounded contexts, shared code, and coupling points before extracting
   - **"Extraction is more than copy-paste"** — the microservice needs its own database, API contract, Dockerfile, and inter-service communication
   - **"Docker Compose proves it works"** — running both services together with integration tests validates the decomposition end-to-end
-  - **"Parallel extraction scales"** — multiple bounded contexts can be extracted simultaneously in separate Devin sessions
+  - **"Parallel extraction scales"** — multiple bounded contexts can be extracted simultaneously using subagents
 
 - **Target Outcomes (any of these count):**
   - One bounded context extracted as a standalone Spring Boot service
@@ -356,52 +368,51 @@ See the full challenge details for [Containerization & Microservice Extraction](
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular version upgrade (second repo for parallel comparison)
 - **Objective:** Run parallel Devin sessions upgrading frameworks and language versions across multiple repos — demonstrating how Devin handles repetitive upgrade tasks at enterprise scale
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
 
-Run these as **parallel sessions** to see how the same upgrade pattern scales across repos:
+Use subagents to run these as **parallel upgrade tasks** across repos:
 
-> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required. Compare upgrade PRs side-by-side in the editor.
-
-**Session A — Spring Boot + Java Upgrade:**
+**Subagent A — Spring Boot + Java Upgrade:**
 ```
 Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass. Document every breaking change and how you resolved it in the PR description.
 ```
 
-**Session B — Angular Upgrade (PetClinic):**
+**Subagent B — Angular Upgrade (PetClinic):**
 ```
 Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully. Document every breaking change encountered.
 ```
 
-**Session C — Angular Upgrade (RealWorld, optional for comparison):**
+**Subagent C — Angular Upgrade (RealWorld, optional for comparison):**
 ```
 Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
 ```
 
-#### Step 2: Research with Ask Devin
+> **Cloud handoff:** For large codebases where compilation and testing cycles take significant time, consider handing off to Devin Cloud for autonomous execution while you continue other work locally.
 
-While Devin works on the upgrades, open **AskDevin** and explore:
+#### Step 2: Explore with the CLI
+
+While subagents work on the upgrades, use the CLI interactively to research:
 - *"What are the biggest risks when upgrading from Spring Boot 2 to 3? Which javax to jakarta changes are most likely to break?"*
 - *"What Angular version is petclinic-angular currently on? What are the breaking changes between that version and the latest?"*
 - *"Compare the Angular upgrade paths for petclinic-angular and ts-angular-realworld — are the same breaking changes expected?"*
 - Use the analysis to plan a **repeatable upgrade runbook** that could be applied across dozens of similar services
-- Once you have a runbook you like, consider turning it into a **Devin Playbook** — a reusable set of instructions that any team member can trigger for future upgrades without re-engineering the prompt
+- Once you have a runbook you like, consider turning it into a **Devin Playbook** — a reusable set of instructions that any team member can trigger for future upgrades
 
 #### Step 3 (Optional): Read the DeepWiki
 
 Open each repo's **DeepWiki** page to understand the codebase before the upgrade:
-1. **uc-spring-boot-upgrade-microservice-extraction** — Understand the build configuration, Spring Security setup, and dependency graph. These are the areas most affected by the Spring Boot 2 to 3 migration.
-2. **petclinic-angular** — Understand the component hierarchy and module structure. Identify deprecated Angular patterns (NgModules vs. standalone components).
+1. **uc-spring-boot-upgrade-microservice-extraction** — Understand the build configuration, Spring Security setup, and dependency graph.
+2. **petclinic-angular** — Understand the component hierarchy and module structure. Identify deprecated Angular patterns.
 3. **ts-angular-realworld** — Compare with the PetClinic Angular app. Different codebases may hit different breaking changes for the same upgrade.
 
 Try different approaches:
-- Run both Angular upgrades in **parallel** and compare the upgrade PRs side-by-side
+- Run both Angular upgrades in **parallel** using subagents and compare the PRs side-by-side
 - Ask Devin to generate a **shared upgrade checklist** from both Angular upgrade experiences
 - Have Devin create a **repeatable upgrade runbook** — then save it as a **Playbook** so any team member can reuse it
-- Think about scheduling: framework upgrades are a great candidate for **Devin Scheduled Sessions** — e.g., run dependency version bumps weekly to catch issues early
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens PRs from the parallel sessions, compare the upgrade approaches:
+Once Devin opens PRs from the parallel subagents, compare the upgrade approaches:
 - **Spring Boot PR:** Is the javax to jakarta migration complete? Does the build pass with all tests green?
 - **Angular PRs:** Did both upgrades follow the Angular update guide? Are deprecated patterns fully removed?
 - **Cross-PR comparison:** Did Devin encounter the same issues in both Angular repos? Were they resolved consistently?
@@ -415,7 +426,7 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
 
 - **Key Takeaways:**
   - **"Same prompt, multiple repos"** — the same upgrade task applied consistently across different services demonstrates enterprise scale
-  - **"Parallel sessions save calendar time"** — upgrades that would take weeks sequentially can run simultaneously, each on its own VM with no interference
+  - **"Subagents save time"** — upgrades that would take weeks sequentially can run concurrently via CLI subagents
   - **"Consistency across upgrades"** — Devin applies the same patterns and catches the same breaking changes across repos
   - **"Playbooks turn one-off work into repeatable processes"** — capture the upgrade runbook as a Playbook so the next round of upgrades is a one-click operation for any team member
 
@@ -437,21 +448,23 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular (TypeScript) RealWorld app — reference for alternative target
 - **Objective:** Translate a Java Spring Boot service layer into an equivalent Python (Flask/FastAPI) application, preserving API contracts and proving functional equivalence with parity tests. Both source and target compile and run on Ubuntu.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
+
+Clone `uc-spring-boot-upgrade-microservice-extraction` locally, `cd` into it, and run `devin`:
 
 ```
-Translate the Articles API from uc-spring-boot-upgrade-microservice-extraction (Java/Spring Boot) into a Python FastAPI application. The Python version should expose the same REST endpoints: GET /api/articles, GET /api/articles/:slug, POST /api/articles, PUT /api/articles/:slug, DELETE /api/articles/:slug, and GET /api/articles/feed. Use SQLAlchemy for persistence and Pydantic for request/response models. Preserve the same JSON response shape so the API is a drop-in replacement. Write pytest tests that verify the Python endpoints return identical responses to the Java version for the same inputs. Document the translation decisions in a `MIGRATION_NOTES.md`.
+Translate the Articles API from this repo (Java/Spring Boot) into a Python FastAPI application. The Python version should expose the same REST endpoints: GET /api/articles, GET /api/articles/:slug, POST /api/articles, PUT /api/articles/:slug, DELETE /api/articles/:slug, and GET /api/articles/feed. Use SQLAlchemy for persistence and Pydantic for request/response models. Preserve the same JSON response shape so the API is a drop-in replacement. Write pytest tests that verify the Python endpoints return identical responses to the Java version for the same inputs. Document the translation decisions in a `MIGRATION_NOTES.md`.
 ```
 
-#### Step 2: Research with Ask Devin
+> **CLI advantage:** With local file access, you can run both the Java source and Python target simultaneously to verify parity in real-time during development.
 
-While Devin works on step 1, open **AskDevin** and explore:
-- *"What are the main API endpoints in uc-spring-boot-upgrade-microservice-extraction? What does each one do and what are the request/response shapes?"*
+#### Step 2: Explore with the CLI
+
+While Devin works on the translation, use the CLI interactively to analyze:
+- *"What are the main API endpoints? What does each one do and what are the request/response shapes?"*
 - *"What's the best Python web framework for translating a Spring Boot REST API — Flask, FastAPI, or Django REST Framework? Compare trade-offs."*
 - *"What are the riskiest Java-to-Python translation patterns — type safety, null handling, dependency injection, ORM differences?"*
-- Use the analysis to start a **second session** — try translating the same service to **TypeScript (Express/NestJS)** in parallel and compare the results
-
-> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration — ask the CLI to analyze the Java source and propose a translation mapping before committing to a cloud session.
+- Use the analysis to spawn a subagent translating the same service to **TypeScript (Express/NestJS)** in parallel and compare the results
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -470,14 +483,14 @@ Open the repo's **DeepWiki** page to understand the Java application architectur
 | MyBatis XML mappers | SQLAlchemy Core queries | Complex queries |
 
 Try different approaches:
-- Translate **multiple API domains in parallel** (Articles, Users, Comments) using separate Devin sessions
+- Translate **multiple API domains in parallel** (Articles, Users, Comments) using subagents
 - Ask Devin to produce a **translation mapping document** before writing any code
 - Try targeting **two different Python frameworks** (FastAPI vs. Flask) and compare the output
 - Have Devin create a **contract test suite** that hits both the Java and Python servers and asserts identical responses
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on the **translation fidelity**:
+Once Devin opens a PR, focus your review on the **translation fidelity**:
 - **API contract:** Does the Python version return the exact same JSON shape as the Java version?
 - **Business logic:** Are edge cases handled the same way (e.g., slug generation, pagination, authentication)?
 - **Parity tests:** Do the pytest tests verify identical behavior for the same inputs?
@@ -516,15 +529,13 @@ Track C demonstrates Devin as a day-to-day development partner. Participants wil
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative)
 - **Objective:** Build a new feature on an existing application, then observe how PR Review automatically flags potential bugs and issues in the implementation — and have Devin address the feedback
 
-#### Step 1: Start with Ask Devin (recommended)
+#### Step 1: Scope with the CLI, Then Implement
 
-Before creating a session, try using **Ask Devin** to scope the feature. The more specific your requirements, the better Devin's output — and Ask Devin helps you think through the details before Devin starts writing code.
+Use `devin` interactively to scope the feature first — the more specific your requirements, the better the output:
 
-> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration — ask the CLI to analyze the codebase patterns and scope your feature requirements interactively.
+- *"What existing patterns does timesheet-app use for CRUD features? What data model, API structure, and React component conventions should a new 'Projects' feature follow?"*
 
-For example, ask: *"What existing patterns does timesheet-app use for CRUD features? What data model, API structure, and React component conventions should a new 'Projects' feature follow?"*
-
-Then use what you learn to refine one of these prompts before pasting it into a Devin session:
+Then provide the implementation prompt:
 
 **Option A — Full-Stack CRUD Feature (timesheet-app):**
 ```
@@ -546,7 +557,7 @@ Open the repo's **DeepWiki** page to understand the existing feature patterns. U
 
 #### Step 3: Review PR & Observe PR Review Agent
 
-Once Devin opens a PR from step 1, this is where the **PR Review feedback loop** comes in:
+Once Devin opens a PR, this is where the **PR Review feedback loop** comes in:
 - **PR Review will automatically analyze the PR** and flag potential issues — missing validation, error handling gaps, security concerns, or logic bugs
 - **Read the PR Review comments carefully** — they often catch real issues that would otherwise make it to production
 - **Leave your own feedback** alongside the PR Review comments and watch Devin address both:
@@ -556,15 +567,13 @@ Once Devin opens a PR from step 1, this is where the **PR Review feedback loop**
 
 This demonstrates the production workflow: Devin writes code, PR Review catches issues, Devin fixes them, you approve.
 
-> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
-
 See the full challenge details for [New Feature Development](../../modules/application-development/new-feature-development.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
   - **"PR Review catches what humans miss"** — the automated review agent flags validation gaps, error handling issues, and potential bugs before you even look at the PR
   - **"The feedback loop is the workflow"** — Devin writes, PR Review flags, you comment, Devin fixes. This is how teams use Devin in production every day
-  - **"Knowledge compounds over time"** — if Devin discovers project conventions during this session, save them as Knowledge items. Future sessions will automatically benefit
+  - **"Knowledge compounds over time"** — if Devin discovers project conventions during this session, save them as Knowledge items. Future sessions (local and cloud) will automatically benefit
 
 - **Target Outcomes (any of these count):**
   - New feature implemented following existing code conventions
@@ -586,9 +595,9 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Analyze existing test coverage, generate meaningful tests for under-tested modules, and optionally create BDD test scenarios for REST APIs
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
 
-Choose one or run multiple in parallel:
+Choose one or use subagents to run multiple in parallel:
 
 **Option A — Unit Test Coverage (Spring Boot):**
 ```
@@ -605,13 +614,13 @@ Analyze the current test coverage of timesheet-app. Add missing Jest unit tests 
 Review the uc-bdd-test-generation-cucumber codebase. This is a Spring Boot + Cucumber BDD framework with pre-built step definitions for REST API testing. Run `mvn test` to see the existing scenarios pass. Then add new Gherkin feature files that test edge cases for the existing Users API: creating a user with missing required fields (expect 400), creating a user with duplicate ID (expect 409 or appropriate error), pagination and sorting, and input validation. Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore with the CLI
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Devin works on test generation, use the CLI interactively to analyze:
 - *"What is the current test coverage breakdown by package? Which domain (articles, users, comments) has the weakest coverage?"*
 - *"What testing patterns does the codebase use? JUnit with Mockito? TestContainers? What conventions should new tests follow?"*
 - *"What Cucumber best practices should be followed for REST API testing — should scenarios be independent or can they share state?"*
-- Use the analysis to start a **second session** — try generating property-based tests, mutation tests, or data-driven Cucumber Scenario Outlines
+- Use the analysis to spawn a subagent generating property-based tests, mutation tests, or data-driven Cucumber Scenario Outlines
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -623,7 +632,7 @@ Open the repo's **DeepWiki** page to understand which service methods handle the
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on **test quality**:
+Once Devin opens a PR, focus your review on **test quality**:
 - **Meaningful assertions:** Are the tests checking behavior, or just padding coverage with trivial assertions?
 - **Edge cases:** Do the tests cover error cases, boundary conditions, and null/empty inputs?
 - **Independence:** Are tests isolated, or do they depend on each other or on database state?
@@ -661,7 +670,9 @@ See the full challenge details for [Unit Testing](../../modules/testing-qa/unit-
 
 This lab completes the testing story: after adding unit tests (Lab C2), now run the application end-to-end, write Playwright tests that exercise the full user workflow, discover issues through testing, and fix what you find.
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run Devin CLI
+
+Clone `timesheet-app` locally, `cd` into it, and run `devin`:
 
 **Option A — Playwright E2E Tests (timesheet-app):**
 ```
@@ -673,9 +684,11 @@ Set up and run timesheet-app locally (backend on port 3001, frontend on port 517
 Review the uc-bdd-test-generation-cucumber codebase. Run `mvn test` to verify the existing 16 scenarios pass. Then write new end-to-end Gherkin scenarios that test the full user lifecycle: create a user, verify they appear in the list, update their details, verify the update, then delete them and verify they're gone. Also test cross-resource relationships — create a user, create orders for that user, verify the orders appear when querying by user. Run all tests and fix any failures.
 ```
 
-#### Step 2: Research with Ask Devin
+> **CLI advantage:** With local file and process access, you can run the app locally and watch the Playwright tests execute in real-time alongside the CLI's output.
 
-While Devin works on step 1, open **AskDevin** and explore:
+#### Step 2: Explore with the CLI
+
+While Devin works on the E2E tests, use the CLI interactively:
 - *"What are the main user workflows in timesheet-app that would benefit from E2E tests?"*
 - *"What Playwright best practices should be followed — proper selectors, waiting strategies, test isolation?"*
 - *"What are the most common causes of flaky E2E tests and how can they be prevented?"*
@@ -691,7 +704,7 @@ Open the repo's **DeepWiki** page to understand the frontend routes, components,
 
 #### Step 4 (Optional): Review & Give Feedback
 
-Once Devin opens a PR from step 1, focus your review on **test robustness and bug fixes**:
+Once Devin opens a PR, focus your review on **test robustness and bug fixes**:
 - **Test quality:** Are the tests robust or will they be flaky? Do they use proper selectors and waiting strategies?
 - **Bug fixes:** If Devin found and fixed bugs during testing, does the fix address the root cause?
 - **Coverage completeness:** Do the E2E tests cover the critical user paths? Are there workflows missing?
