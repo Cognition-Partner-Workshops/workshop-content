@@ -1,5 +1,7 @@
 # Workshop: Framework Upgrades
 
+**Other variants:** [Desktop + Cloud](README.platform.md)
+
 ## Overview
 
 | | |
@@ -8,6 +10,12 @@
 | **Duration** | 1-2 hours |
 | **Audience** | Development teams, tech leads, enterprise platform teams |
 | **Key Modules** | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md) |
+
+## Platform Context
+
+This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will paste prompts into the Devin web interface, Devin works autonomously on a cloud VM, and you review the resulting pull requests on GitHub. The core loop is: prompt → session → PR → review → iterate.
+
+> **Tip:** Prefer an IDE-native workflow? The same labs can be run from **Devin Desktop**, where you delegate tasks to Cloud and review PRs with one-click checkout — no browser switching. You can also use **Devin CLI** (`cli.devin.ai`) for terminal-based exploration. See the [Desktop + Cloud variant](README.platform.md) for the full Desktop workflow.
 
 ## Workshop Narrative
 
@@ -24,6 +32,7 @@ A few tips to maximize your hands-on time:
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
 - **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+- **Track sessions from one place.** If you're using Devin Desktop, the Agent Command Center gives you a Kanban-style board of all running sessions — see what's in flight, what's blocked, and what's ready for review at a glance.
 
 ## Table of Contents
 
@@ -59,11 +68,15 @@ Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boo
 Upgrade petclinic-angular to the latest Angular version. Handle breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds. Document every breaking change.
 ```
 
+> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board. Both upgrade sessions appear side-by-side so you can track progress without switching tabs.
+
 #### Step 2: Research with Ask Devin
 
 - *"What are the biggest risks when upgrading from Spring Boot 2 to 3?"*
 - *"What Angular version is petclinic-angular currently on? What breaking changes are expected?"*
 - *"Compare the upgrade paths for both Angular repos — are the same breaking changes expected?"*
+
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration. Ask the same questions from your command line and get answers grounded in your local checkout.
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -73,6 +86,8 @@ Open each repo's DeepWiki page to understand the codebase before the upgrade. Fo
 
 - Compare upgrade PRs side-by-side across repos
 - Ask Devin to generate a shared upgrade checklist or repeatable runbook
+
+> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required. Compare the Spring Boot and Angular upgrade PRs side-by-side in your editor.
 
 **Target Outcomes:** Upgraded builds with passing tests, upgrade documentation, repeatable runbook
 
