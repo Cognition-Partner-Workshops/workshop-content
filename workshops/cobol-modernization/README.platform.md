@@ -1,13 +1,14 @@
-# Workshop: COBOL Modernization
+# Workshop: COBOL Modernization (Desktop + Cloud)
 
-**Other variants:** [Desktop + Cloud](README.platform.md)
+**Other variants:** [Cloud only](README.md)
 
 ## Overview
 
 | | |
 |---|---|
 | **Focus** | End-to-end COBOL mainframe modernization — from system understanding through migration execution |
-| **Duration** | ~4 hours (4 labs × 60 min + breaks) |
+| **Duration** | ~4 hours (4 labs x 60 min + breaks) |
+| **Delivery Surface** | **Devin Desktop + Devin Cloud** — Desktop is the primary interface; Cloud handles autonomous execution |
 | **Audience** | Enterprise architects, mainframe modernization teams, application portfolio managers, migration program leads |
 | **Key Modules** | [COBOL System Understanding](../../modules/migration-modernization/cobol-system-understanding.md), [COBOL to Java](../../modules/migration-modernization/cobol-to-java.md) |
 
@@ -27,22 +28,32 @@
 
 ## Platform Context
 
-This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will interact with Devin through the browser — pasting prompts, monitoring sessions, and reviewing the PRs Devin opens on GitHub. Each lab kicks off one or more cloud sessions that run autonomously on Devin's VM while you move on to other work.
+This workshop uses **Devin Desktop + Devin Cloud**. You will use Desktop as your primary interface — exploring code locally, delegating tasks to Cloud, and reviewing results without leaving the editor. Cloud sessions run autonomously on Devin's VM, and you monitor their progress from the Agent Command Center's Kanban board right inside Desktop.
 
-> **Tip:** Prefer an IDE-integrated workflow? The [Desktop + Cloud variant](README.platform.md) of this workshop uses Devin Desktop as the primary interface — delegating tasks to Cloud, monitoring agents on a Kanban board, and reviewing PRs with one-click checkout, without leaving the editor. You can also use `devin` in your terminal (install from [cli.devin.ai](https://cli.devin.ai)) for quick local exploration alongside cloud sessions.
+> **Tip:** If you prefer a browser-only workflow, see the [Cloud only variant](README.md) which uses the Devin web app ([app.devin.ai](https://app.devin.ai)) directly. You can also use `devin` in your terminal (install from [cli.devin.ai](https://cli.devin.ai)) for additional local exploration — the CLI speaks ACP and appears as "Devin Local" in Desktop.
+
+## Desktop + Cloud Workflow
+
+In this variant, the interaction model shifts from the web app's paste-and-review cycle to a Desktop-native loop:
+
+1. **Create a Space** — Open Devin Desktop and create a Space for this workshop. A Space groups sessions, PRs, files, and context for a single initiative. New sessions you launch from this Space inherit the project context automatically.
+2. **Explore locally with Cascade or Devin Local** — Use Cascade (Desktop's built-in local agent) or Devin Local (CLI running over ACP) for code exploration and research. This replaces the Ask Devin research steps — you get fast, interactive, local-first answers without spinning up a cloud VM.
+3. **Delegate to Devin Cloud** — When you are ready for autonomous implementation, send the task to Devin Cloud from Desktop with one click. Devin Cloud spins up a VM and works independently while you continue coding or exploring locally.
+4. **Monitor in the Agent Command Center** — The Kanban board in Desktop shows all your agents (local and cloud) organized by status. See at a glance what is in flight, what is blocked, and what is ready for review — no browser tab juggling.
+5. **Review PRs with one-click checkout** — When Devin Cloud opens a PR, review it directly in the editor. Desktop checks out the branch automatically — no manual `git fetch` or branch switching required.
 
 ## Getting the Most from This Workshop
 
-> **Devin works asynchronously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+> **Devin works asynchronously on its own machine.** Once you delegate a task to Cloud, Devin runs independently — you don't need to watch it. Move on to local exploration, start the next lab's research in Cascade, or review a previous PR while Cloud works in the background.
 
 A few tips to maximize your hands-on time:
 
-- **Start sessions early, review later.** Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin keeps working in the background.
-- **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
-- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
-- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
-- **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
-- **Track sessions from one place.** If you have Devin Desktop, open the Agent Command Center to see all your running sessions on a single Kanban board — no need to juggle browser tabs.
+- **Delegate early, review later.** Send the implementation task to Cloud first, then use Cascade or Devin Local for research and exploration while Cloud works.
+- **Use Cascade to refine requirements.** The better-defined a task is, the better Devin's output. Explore the codebase locally with Cascade before delegating to Cloud.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time. Knowledge persists across local and cloud sessions.
+- **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments directly in Desktop and Devin will wake up and address them — this is the core feedback loop.
+- **Try parallel sessions.** Run multiple Cloud sessions simultaneously and monitor them from the Agent Command Center. This mirrors real enterprise usage and shows team-based operation at scale.
+- **Mix local and cloud agents.** Use Devin Local for quick exploration and Cloud for heavy implementation — the Agent Command Center tracks both. Any ACP-compatible agent (Codex CLI, Claude Agent, Gemini CLI, and others) can plug into Desktop alongside Devin.
 
 ## Table of Contents
 
@@ -87,13 +98,28 @@ Four labs that build on each other in a progressive sequence:
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Produce a complete system inventory, data dictionary, dependency map, and hotspot report for a COBOL mainframe application
 
-#### What to Try
+#### Desktop Workflow
 
-1. **Start with DeepWiki:** Open the repo's DeepWiki page and explore how Devin auto-generates architecture documentation for COBOL — a language most modern developers cannot read
-2. **Run the inventory:** Have Devin catalog all 30+ programs, copybooks, JCL jobs, and sub-applications with classifications
-3. **Extract the data dictionary:** Try Devin parsing copybook PIC clauses into a business-friendly data dictionary
-4. **Map dependencies:** Explore the call graph and data lineage — which programs call which, which jobs read/write which files
-5. **Identify hotspots:** Review the prioritized list of modules by complexity, risk, and business impact
+1. **Create a Space:** In Devin Desktop, create a Space called "COBOL Modernization" — this will group all sessions, PRs, and files for the workshop
+2. **Explore with Cascade:** Open the repo in Desktop and use Cascade to ask questions about the COBOL codebase — explore program structure, copybook layouts, and JCL job flows interactively. This gives you fast, local-first answers without waiting for a cloud session
+3. **Delegate the inventory to Cloud:** Once you have a feel for the codebase, delegate the full inventory task to Devin Cloud from Desktop:
+
+```
+Analyze the COBOL codebase in
+Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java
+and produce:
+1. APPLICATION_INVENTORY.md — catalog of all programs, copybooks,
+   JCL jobs, and BMS maps with classifications
+2. DATA_DICTIONARY.md — business entities extracted from copybook
+   PIC clauses
+3. DEPENDENCY_MAP.md — call graph and data lineage (which programs
+   call which, which jobs read/write which files)
+4. HOTSPOT_REPORT.md — top 10 modules prioritized by complexity,
+   risk, and business impact
+```
+
+4. **Monitor in Agent Command Center:** Watch the cloud session progress on the Kanban board. Continue exploring the codebase locally with Cascade while Cloud works
+5. **Review the PR in Desktop:** When Devin Cloud opens a PR, use one-click checkout to review the artifacts directly in the editor — no browser switching needed
 
 #### Key Takeaways
 
@@ -108,11 +134,7 @@ Four labs that build on each other in a progressive sequence:
 - `DATA_DICTIONARY.md` with business entities extracted from copybooks
 - `DEPENDENCY_MAP.md` with call graph and data lineage
 - `HOTSPOT_REPORT.md` with top 10 modernization priority modules
-- PR with all artifacts
-
-> **Desktop tip:** The PR Devin opens for this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
-
-> **CLI alternative:** The DeepWiki exploration and Ask Devin research steps in this lab can also be done locally with `devin` in your terminal for faster iteration.
+- PR with all artifacts (reviewed in Desktop via one-click checkout)
 
 ---
 
@@ -122,13 +144,29 @@ Four labs that build on each other in a progressive sequence:
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Produce a modernization blueprint with strategy options, domain decomposition, phased cutover plan, and risk register
 
-#### What to Try
+#### Desktop Workflow
 
-1. **Set the context:** Reference the inventory and dependency map from Lab 1 (or have Devin build context from the codebase directly)
-2. **Strategy analysis:** Have Devin evaluate strangler, replatform, refactor, and rewrite options for each functional area — with trade-off reasoning, not just a blanket recommendation
-3. **Domain decomposition:** Have Devin identify bounded contexts (account management, transaction processing, customer management, reporting, security) and map them to candidate services
-4. **Cutover plan:** Review the phased sequence with dependencies, rollback strategies, and acceptance criteria
-5. **Risk register:** Walk through the top risks — tribal knowledge gaps, environment limitations, data coupling
+1. **Explore with Cascade:** Use Cascade in Desktop to review the Lab 1 artifacts (inventory, dependency map, hotspot report). Ask questions like "which subsystems have the most cross-cutting dependencies?" to refine your understanding before planning
+2. **Delegate planning to Cloud:** Send the planning task to Devin Cloud from Desktop:
+
+```
+Using the COBOL codebase in
+Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java,
+produce a modernization plan:
+1. MODERNIZATION_BLUEPRINT.md — evaluate strangler, replatform,
+   refactor, and rewrite strategies for each functional area with
+   trade-off reasoning
+2. DOMAIN_DECOMPOSITION.md — identify bounded contexts (account
+   management, transaction processing, customer management,
+   reporting, security) and map to candidate services
+3. CUTOVER_PLAN.md — phased migration sequence with dependencies,
+   rollback strategies, and acceptance criteria
+4. RISK_REGISTER.md — top risks with mitigations (tribal knowledge
+   gaps, environment limitations, data coupling)
+```
+
+3. **Monitor and continue:** Track the cloud session in the Agent Command Center. Use Cascade locally to start exploring the codebase for Lab 3 topics while Cloud works on the blueprint
+4. **Review in Desktop:** One-click checkout the PR when it arrives. Review the blueprint and decomposition side-by-side with the COBOL source in your editor
 
 #### Key Takeaways
 
@@ -143,9 +181,7 @@ Four labs that build on each other in a progressive sequence:
 - `DOMAIN_DECOMPOSITION.md` with bounded context map and extraction seam analysis
 - `CUTOVER_PLAN.md` with phased migration sequence
 - `RISK_REGISTER.md` with top risks and mitigations
-- PR with all planning artifacts
-
-> **Desktop tip:** Use Devin Desktop's one-click checkout to pull down the planning artifacts PR and review the blueprint side-by-side with the codebase in your editor.
+- PR with all planning artifacts (reviewed in Desktop)
 
 ---
 
@@ -155,13 +191,26 @@ Four labs that build on each other in a progressive sequence:
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Design and implement a test harness that validates migration correctness — golden files, differential testing, batch reconciliation, and contract tests
 
-#### What to Try
+#### Desktop Workflow
 
-1. **Test strategy:** Have Devin produce a comprehensive test plan covering four testing dimensions (golden-file, differential, reconciliation, contract)
-2. **Golden-file capture:** Have Devin parse the ASCII data files using copybook layouts and produce structured JSON golden references
-3. **Test framework:** Inspect the generated parser utilities, comparison functions, and reconciliation checks — real, runnable code
-4. **Reconciliation checks:** Walk through specific checks per batch job: record counts, field totals, cross-reference integrity
-5. **Connect to Lab 4:** Explain how this harness will validate the Java migration in the next lab
+1. **Research locally with Cascade:** Use Cascade to explore the ASCII data files and copybook layouts in the repo. Ask questions about data formats and record structures — this is fast, interactive research that informs the test strategy
+2. **Delegate the test harness to Cloud:** Send the implementation task to Devin Cloud:
+
+```
+In Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java,
+build a migration test harness:
+1. TEST_STRATEGY.md — comprehensive test plan covering golden-file,
+   differential, reconciliation, and contract testing dimensions
+2. golden-files/ — parse ASCII data files using copybook layouts and
+   produce structured JSON golden references
+3. test-harness/ — parser utilities, comparison functions, and
+   reconciliation checks (runnable code)
+4. RECONCILIATION_CHECKS.md — per-job validation specifications
+   (record counts, field totals, cross-reference integrity)
+```
+
+3. **Iterate locally:** While Cloud builds the harness, use Devin Local to prototype test utilities or explore edge cases in the data files. When the PR arrives, review the test code in Desktop
+4. **Refine with PR comments:** If the harness needs adjustments, leave comments on the PR directly in Desktop — Devin Cloud will wake up and iterate
 
 #### Key Takeaways
 
@@ -178,8 +227,6 @@ Four labs that build on each other in a progressive sequence:
 - `RECONCILIATION_CHECKS.md` with per-job validation specifications
 - PR with test strategy, golden files, and test framework code
 
-> **CLI alternative:** Iterating on test harness code is a great fit for `devin` in your terminal — run tests locally, refine, and hand off to Cloud when the harness is ready for full validation.
-
 ---
 
 ### Lab 4 — COBOL to Java Code Migration (60 min)
@@ -188,13 +235,24 @@ Four labs that build on each other in a progressive sequence:
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Translate selected COBOL programs to Java 17+ with parity tests that validate against the golden files and reconciliation checks from Lab 3
 
-#### What to Try
+#### Desktop Workflow
 
-1. **Select a target:** Use the hotspot report from Lab 1 and the blueprint from Lab 2 to choose which program to migrate first
-2. **Translate:** Have Devin rewrite the COBOL program as Java 17+ with modern idioms
-3. **Validate:** Run the parity tests from Lab 3's test harness against the Java output
-4. **Document:** Have Devin produce migration notes covering translation decisions
-5. **Trace the full loop:** Inventory (Lab 1) → Blueprint (Lab 2) → Test Harness (Lab 3) → Migration (Lab 4) → Validation (Lab 3 harness)
+1. **Select a target with Cascade:** Use Cascade to review the hotspot report (Lab 1), blueprint (Lab 2), and test harness (Lab 3). Ask Cascade to help you decide which program to migrate first based on complexity and risk
+2. **Delegate the migration to Cloud:** Send the translation task to Devin Cloud:
+
+```
+In Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java,
+translate the selected COBOL program(s) to Java 17+:
+- Use modern Java idioms (records, pattern matching, text blocks)
+- Produce JUnit tests that validate against the golden files from
+  the test harness
+- Document translation decisions in MIGRATION_NOTES.md covering
+  data type mappings, control flow transformations, and edge cases
+```
+
+3. **Try parallel migrations:** For extra depth, delegate multiple COBOL programs to separate Cloud sessions — one per program. Monitor them simultaneously in the Agent Command Center's Kanban view
+4. **Review and validate in Desktop:** One-click checkout each PR. Run the parity tests from Lab 3's harness against the Java output. Leave PR comments for Devin to iterate on any mismatches
+5. **Trace the full loop:** Inventory (Lab 1) -> Blueprint (Lab 2) -> Test Harness (Lab 3) -> Migration (Lab 4) -> Validation (Lab 3 harness)
 
 #### Key Takeaways
 
@@ -210,8 +268,6 @@ Four labs that build on each other in a progressive sequence:
 - Migration documentation covering translation decisions
 - PR with Java code, tests, and migration notes
 
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board — especially useful when translating multiple programs in parallel.
-
 ---
 
 ## Accelerated Variant
@@ -220,8 +276,8 @@ For shorter workshops (2 hours), use [Legacy Modernization Combined](../../modul
 
 | Duration | Recommended Format |
 |----------|-------------------|
-| 4+ hours | Full workshop: Lab 1 → Lab 2 → Lab 3 → Lab 4 |
-| 3 hours | Labs 1, 3, 4 (skip planning, focus on understand → test → migrate) |
+| 4+ hours | Full workshop: Lab 1 -> Lab 2 -> Lab 3 -> Lab 4 |
+| 3 hours | Labs 1, 3, 4 (skip planning, focus on understand -> test -> migrate) |
 | 2 hours | Abbreviated Lab 1 (30 min) + MM10 combined hands-on (60 min) + discussion |
 | 1 hour | Walkthrough only: show pre-built artifacts from each lab phase |
 
@@ -234,7 +290,7 @@ Participants who finish early or want to go deeper may attempt:
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
 | Combined Modernization (COBOL + Framework + Data) | [Legacy Modernization Combined](../../modules/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
-| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
+| Framework Upgrade (Java 11 -> 17) | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
 | Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
 | One-Shot Tech Debt Remediation | [One-Shot Tech Debt Remediation](../../modules/migration-modernization/one-shot-tech-debt-remediation.md) | uc-spring-boot-upgrade-microservice-extraction | Advanced | 75 min |
 
@@ -258,13 +314,19 @@ Participants who finish early or want to go deeper may attempt:
 ## Context
 
 - **Audience:** Enterprise modernization teams with COBOL estates
-- **Narrative progression:** Understand (Lab 1) → Plan (Lab 2) → Safeguard (Lab 3) → Execute (Lab 4)
+- **Narrative progression:** Understand (Lab 1) -> Plan (Lab 2) -> Safeguard (Lab 3) -> Execute (Lab 4)
 - **Enterprise value props shown hands-on:**
   - Lab 1: Devin compresses months of discovery into hours — dependency maps, data dictionaries, and hotspot analysis without SME interviews
   - Lab 2: Devin produces decision-ready modernization blueprints with multiple strategy options, not just "rewrite everything"
   - Lab 3: Devin builds the migration safety net (tests, reconciliation) before any code changes — reducing migration risk
   - Lab 4: Devin bridges the COBOL-to-Java language barrier that blocks most development teams
-- **Suitability:** Medium → High depending on toolchain access (see notes below)
+- **Desktop + Cloud value props:**
+  - Cascade enables fast, interactive research before delegating heavy tasks to Cloud
+  - Agent Command Center provides a single view of all sessions — local and cloud — especially useful when running parallel migrations
+  - One-click checkout keeps the review loop inside the editor, eliminating context switches
+  - Spaces group all workshop sessions, PRs, and files into a single organizational unit
+  - ACP extensibility means teams can bring additional agents (Codex CLI, Claude Agent, Gemini CLI, and others) into Desktop alongside Devin
+- **Suitability:** Medium -> High depending on toolchain access (see notes below)
 
 ### Suitability Notes
 
@@ -282,15 +344,18 @@ Participants who finish early or want to go deeper may attempt:
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session. Key activities for this track:
+Track your progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session. Key activities for this track:
 
+- [ ] Create a Space in Devin Desktop for the workshop
+- [ ] Use Cascade or Devin Local for codebase exploration (Labs 1, 2)
+- [ ] Delegate a task to Devin Cloud from Desktop (any lab)
+- [ ] Monitor sessions in the Agent Command Center (any lab)
+- [ ] One-click checkout a cloud PR in Desktop (after any lab)
 - [ ] Use DeepWiki to explore a COBOL codebase (Lab 1)
-- [ ] Use AskDevin to ask targeted questions about legacy code (Labs 1, 2)
 - [ ] Have Devin produce structured analysis artifacts (Labs 1, 2)
 - [ ] Have Devin generate test code from data specifications (Lab 3)
-- [ ] Run parallel Devin sessions (translate multiple programs in Lab 4)
-- [ ] Review a Devin PR via GitHub (after any lab)
-- [ ] Leave PR comments and watch Devin iterate (Labs 3, 4)
+- [ ] Run parallel Cloud sessions from Desktop (translate multiple programs in Lab 4)
+- [ ] Leave PR comments in Desktop and watch Devin iterate (Labs 3, 4)
 - [ ] Create Knowledge from a session (after Lab 1 analysis)
 - [ ] Compare results across participants (all labs)
 
