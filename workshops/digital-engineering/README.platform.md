@@ -171,7 +171,7 @@ The CI pipeline for timesheet-app is failing on the test step. Investigate the C
 
 **Option B — Fix Security Scan Failures (Gradle):**
 ```
-The CI pipeline for uc-cve-remediation-regulatory-compliance is failing because the OWASP Dependency-Check found CRITICAL vulnerabilities. Investigate which dependencies are flagged, upgrade them to versions without known CVEs, verify the build still passes, and re-run the security scan to confirm the issues are resolved. documenting which CVEs were resolved.
+The CI pipeline for uc-cve-remediation-regulatory-compliance is failing because the OWASP Dependency-Check found CRITICAL vulnerabilities. Investigate which dependencies are flagged, upgrade them to versions without known CVEs, verify the build still passes, and re-run the security scan to confirm the issues are resolved, documenting which CVEs were resolved.
 ```
 
 #### Step 3: Research While Cloud Works
@@ -422,7 +422,7 @@ Use Cascade or Devin Local in Desktop to understand both the platform standards 
 From your Space, delegate the deployment preparation:
 
 ```
-Prepare the Orders module from ordermanager-monolith for deployment on the platform defined in platform-engineering-shared-services. Create all required platform-conformant artifacts: (1) Multi-stage Dockerfile optimized for .NET 8, (2) Helm chart following the platform's chart conventions (check existing charts in ordermanager-iac), (3) ArgoCD Application manifest pointing to the Helm chart, (4) GitHub Actions CI/CD pipeline that builds the Docker image, pushes to ECR, and updates the Helm values with the new image tag, (5) Namespace request following the platform's provisioning pattern (resource quotas, limit ranges, network policies). Reference the platform conventions in platform-engineering-shared-services for all standards. to ordermanager-iac.
+Prepare the Orders module from ordermanager-monolith for deployment on the platform defined in platform-engineering-shared-services. Create all required platform-conformant artifacts: (1) Multi-stage Dockerfile optimized for .NET 8, (2) Helm chart following the platform's chart conventions (check existing charts in ordermanager-iac), (3) ArgoCD Application manifest pointing to the Helm chart, (4) GitHub Actions CI/CD pipeline that builds the Docker image, pushes to ECR, and updates the Helm values with the new image tag, (5) Namespace request following the platform's provisioning pattern (resource quotas, limit ranges, network policies). Reference the platform conventions in platform-engineering-shared-services for all standards. Add all artifacts to ordermanager-iac.
 ```
 
 > This lab benefits from **parallel cloud sessions** — try deploying multiple modules simultaneously. Monitor them in the Agent Command Center's Kanban view.
