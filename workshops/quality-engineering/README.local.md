@@ -580,16 +580,16 @@ Track C demonstrates Devin as a quality advocate. Participants will set up linti
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Java/Gradle (Spotless, Checkstyle) (alternative)
 - **Objective:** Set up and enforce code quality standards through automated linting, formatting, and static analysis — catch issues before they reach code review
 
-#### Step 1: Run Devin CLI with subagents
+#### Step 1: Run parallel Devin CLI sessions
 
-Use subagents to set up linting for multiple repos in parallel:
+Use parallel sessions to set up linting for multiple repos simultaneously:
 
 ```bash
 cd timesheet-app
 devin
 ```
 
-**Subagent A — JavaScript/TypeScript Linting:**
+**Session A — JavaScript/TypeScript Linting:**
 
 ```
 Set up comprehensive linting: (1) Configure ESLint with TypeScript rules for
@@ -600,7 +600,7 @@ and lints on every commit, (4) Fix existing lint errors and warnings,
 configuration choices in a `CODING_STANDARDS.md`.
 ```
 
-**Subagent B — Terraform Linting (in a separate terminal):**
+**Session B — Terraform Linting (in a separate terminal):**
 
 ```bash
 cd timesheet-infra
