@@ -1,6 +1,6 @@
 # Workshop: Application Development and Maintenance
 
-**Other variants:** [Desktop + Cloud](README.platform.md) | [CLI variant](README.local.md)
+**Other variants:** [Cloud only](README.md) | [Desktop + Cloud](README.platform.md)
 
 ## Overview
 
@@ -13,31 +13,40 @@
 
 ## Platform Context
 
-This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will paste prompts into the Devin web interface, and Devin will work autonomously on a cloud VM — producing pull requests that you review, comment on, and merge. The entire interaction happens through your browser.
+This workshop uses **Devin CLI / Devin Local** for a terminal-native workflow. You will run `devin` in your terminal, provide prompts interactively, and work with your local files and dev environment. For tasks that need autonomous long-running execution, you can hand off to Devin Cloud.
 
-> **Tip:** This same workshop is available for [Devin Desktop + Cloud](README.platform.md) (IDE-based agent management with one-click PR checkout) and [Devin CLI](README.local.md) (terminal-native workflow). The playbooks, knowledge, and MCP integrations you configure here work across surfaces.
+> **Tip:** Devin CLI is consumable over ACP (Agent Client Protocol) inside Devin Desktop, where it appears as "Devin Local." If you prefer a visual agent management experience alongside terminal work, see the [Desktop + Cloud variant](README.platform.md).
 
 ## Workshop Narrative
 
 This workshop covers the three pillars of application development and maintenance: building new capabilities, fixing production issues, and evolving the codebase over time. Each track is self-contained — participants can follow all three in sequence for a full-day experience, or focus on one or two tracks in a shorter session.
 
 The tracks are designed to show Devin working across the application lifecycle:
-- **Track A** shows Devin as a feature developer — gathering requirements, implementing full-stack changes, and iterating on PR Review feedback
-- **Track B** shows Devin as a debugger and investigator — reproducing bugs, tracing root causes, and fixing issues across service boundaries
-- **Track C** shows Devin as a maintenance engineer — upgrading dependencies, evolving schemas, refactoring tech debt, and automating ongoing hygiene
+- **Track A** shows Devin as a feature developer — gathering requirements, implementing full-stack changes, and iterating on feedback — directly in your terminal
+- **Track B** shows Devin as a debugger and investigator — reproducing bugs, tracing root causes, and fixing issues with local file access and shell integration
+- **Track C** shows Devin as a maintenance engineer — upgrading dependencies, evolving schemas, and refactoring tech debt with rapid local iteration
 
 ## Getting the Most from This Workshop
 
-> **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
+> **Devin CLI works in your terminal.** Run `devin` (install from [cli.devin.ai](https://cli.devin.ai)) and provide prompts interactively. Devin has access to your local files, git repos, and dev environment — making it fast and interactive for exploration and quick fixes.
 
 A few tips to maximize your hands-on time:
 
-- **Start sessions early, review later.** Each lab has a "Paste into Devin" step and a separate "Review & Give Feedback" step. Kick off the session first, then use the wait time for Ask Devin research or reading DeepWiki — Devin will keep working in the background.
-- **Try parallel sessions.** Several labs suggest running multiple Devin sessions at once. This mirrors real enterprise usage where Devin handles repetitive work across many services.
-- **Use Ask Devin to refine requirements before creating a session.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem first so Devin can execute with less back-and-forth.
-- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer that makes Devin smarter over time. You can also create Knowledge manually for project conventions and standards.
-- **Track sessions visually.** If you have Devin Desktop, open the Agent Command Center to see a Kanban board of your running sessions — especially useful when running parallel labs.
-- **Leave PR comments to steer Devin.** After Devin opens a PR, the PR Review agent and CI checks provide automatic feedback loops. You can also leave comments directly on the PR and Devin will wake up and address them — this is the core workflow for iterating with Devin in production.
+- **Use Devin CLI for exploration.** Instead of Ask Devin in the browser, run `devin` in your terminal and ask questions directly. It has access to your local files and can read code, run commands, and suggest changes interactively.
+- **Spawn subagents for parallel work.** Devin CLI can spawn independent subagents to handle subtasks in the foreground or background — useful when you want to explore one area while Devin works on another.
+- **Leverage shell integration.** Devin CLI understands your shell context, recent commands, and terminal state. It can pick up context from your current working directory and recent git history.
+- **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer that makes Devin smarter over time. The same knowledge works across CLI, Desktop, and Cloud.
+- **Hand off to Cloud when needed.** Some tasks (scheduled sessions, child agents at scale, long-running autonomous execution) require Devin Cloud. You can start locally and hand off to Cloud when the task outgrows local execution.
+
+### CLI Workflow (replaces the web-app workflow)
+
+Each lab in this workshop follows a terminal-native workflow:
+
+1. **Run `devin` in your terminal** — Navigate to the repo directory and run `devin`
+2. **Provide the prompt interactively** — Type or paste the task description
+3. **Iterate in conversation** — Devin works with your local files. Ask follow-up questions, refine the approach, review changes in real time
+4. **Use subagents for parallel work** — Spawn background subagents for independent subtasks
+5. **Hand off to Cloud if needed** — For long-running or autonomous tasks, hand off to Devin Cloud
 
 ---
 
@@ -65,7 +74,7 @@ A few tips to maximize your hands-on time:
 
 ## Track A: Feature Development
 
-Track A demonstrates Devin as a feature developer. Participants will build full-stack CRUD features, implement API endpoints with test-driven development, and turn vague requirements into working implementations.
+Track A demonstrates Devin as a feature developer. Participants will build full-stack CRUD features, implement API endpoints with test-driven development, and turn vague requirements into working implementations — working directly in the terminal.
 
 ### Lab A1 — Full-Stack CRUD Feature
 
@@ -75,15 +84,17 @@ Track A demonstrates Devin as a feature developer. Participants will build full-
   - [ts-java-angular-jhipster](https://github.com/Cognition-Partner-Workshops/ts-java-angular-jhipster) — Angular + Spring Boot JHipster monolith (alternative)
 - **Objective:** Build a complete new feature — backend API, database schema, frontend UI, and tests — following existing codebase conventions
 
-#### Step 1: Start with Ask Devin (recommended)
+#### Step 1: Explore with Devin CLI
 
-Before creating a session, try using **Ask Devin** to scope the feature:
+Open your terminal, navigate to the repo, and run `devin` to scope the feature:
 - *"What existing patterns does timesheet-app use for CRUD features? What data model, API structure, and React component conventions should a new feature follow?"*
 - *"What database migration approach does the app use? How are new tables created?"*
 
-Then use what you learn to refine the prompt before pasting it into a Devin session:
+Devin CLI has direct access to your local files, so exploration is fast and interactive.
 
-#### Step 2: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 2: Implement with Devin CLI
+
+Provide the implementation prompt to `devin` in your terminal:
 
 **Option A — React + Node.js (timesheet-app):**
 ```
@@ -95,6 +106,8 @@ Add a "Projects" management feature to timesheet-app. Users should be able to cr
 Add an "Invoice" management feature to ts-java-angular-jhipster. Users should be able to create, view, edit, and delete invoices. Each invoice has a number, date, due date, amount, status (draft/sent/paid/overdue), and is linked to a bank account. Add both the Spring Boot backend (JPA entity, REST controller, service layer) and the Angular frontend (list view, create/edit form, detail view). Follow JHipster conventions for entity generation patterns. Write JUnit tests for the backend.
 ```
 
+Devin will work with your local files — you can watch changes appear in real time and iterate interactively.
+
 #### Step 3 (Optional): Read the DeepWiki
 
 Open the repo's **DeepWiki** page to understand the existing feature patterns. Use what you learn to try different approaches:
@@ -103,24 +116,26 @@ Open the repo's **DeepWiki** page to understand the existing feature patterns. U
 - Try having Devin add **audit logging** for all CRUD operations
 - Ask Devin to generate **API documentation** (Swagger/OpenAPI) for the new endpoints
 
-#### Step 4 (Optional): Review PR & Observe PR Review Agent
+#### Step 4 (Optional): Review & iterate
 
-Once Devin opens a PR from step 2, this is where the **PR Review feedback loop** comes in:
-- **PR Review will automatically analyze the PR** and flag potential issues — missing validation, error handling gaps, security concerns, or logic bugs
-- **Read the PR Review comments carefully** — they often catch real issues
-- **Leave your own feedback** alongside the PR Review comments:
-  - *"PR Review flagged that the project name field has no length validation — please add max length checking"*
-  - *"Add error handling for the case where a client is deleted while it has active projects"*
-  - *"The React component doesn't handle loading states — add a spinner while the API call is in flight"*
+Review the changes Devin made directly in your editor or terminal:
+- Check the git diff: `git diff`
+- Run tests locally: `npm test` or `./gradlew test`
+- Ask Devin follow-up questions to refine the implementation
+
+**Iterate interactively:**
+- *"PR Review flagged that the project name field has no length validation — please add max length checking"*
+- *"Add error handling for the case where a client is deleted while it has active projects"*
+- *"The React component doesn't handle loading states — add a spinner while the API call is in flight"*
 
 See the full challenge details for [New Feature Development](../../modules/application-development/new-feature-development.md) for more ideas.
 
-> **Desktop tip:** The PR Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
+> **Desktop integration:** Devin CLI runs as "Devin Local" inside Devin Desktop via ACP. Use Desktop for a visual agent management experience alongside terminal work.
 
 - **Key Takeaways:**
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
-  - **"PR Review catches what humans miss"** — the automated review agent flags validation gaps, error handling issues, and potential bugs before you even look at the PR
-  - **"The feedback loop is the workflow"** — Devin writes, PR Review flags, you comment, Devin fixes. This is how teams use Devin in production every day
+  - **"Local iteration is fast"** — see changes immediately, run tests locally, iterate in conversation without waiting for a cloud VM
+  - **"The feedback loop is interactive"** — ask follow-up questions, refine the approach, review changes in real time
   - **"Knowledge compounds over time"** — if Devin discovers project conventions during this session, save them as Knowledge items. Future sessions will automatically benefit
 
 - **Target Outcomes (any of these count):**
@@ -128,8 +143,7 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - Unit tests and/or integration tests for the new feature
   - Database schema changes with migration scripts
   - Frontend UI components for the new feature
-  - PR Review comments identifying potential issues
-  - Devin's responses to both PR Review and human feedback
+  - Iterative refinement through interactive CLI conversation
 
 ---
 
@@ -141,7 +155,9 @@ See the full challenge details for [New Feature Development](../../modules/appli
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
 - **Objective:** Implement a new API feature using test-driven development — write failing tests first, then implement until they pass
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Implement with Devin CLI
+
+Run `devin` in your terminal and provide the TDD prompt:
 
 **Option A — TDD with JUnit (Spring Boot RealWorld):**
 ```
@@ -153,12 +169,16 @@ Using test-driven development, add an "article statistics" feature to uc-spring-
 Using behavior-driven development, add an order management feature to uc-bdd-test-generation-cucumber. First, write Gherkin feature files describing the behavior: create an order, list orders, get order by ID, update order status, delete order. Then implement an OrderController, OrderService, and Order entity to make all scenarios pass. Follow existing project patterns for step definitions and entity structure.
 ```
 
-#### Step 2: Research with Ask Devin
+Watch the TDD cycle happen locally — tests fail, implementation gets added, tests pass.
 
-While Devin works on step 1, open **AskDevin** and explore:
+#### Step 2: Explore test patterns with Devin CLI
+
+While Devin works, ask follow-up questions interactively:
 - *"What are the existing test patterns in uc-spring-boot-upgrade-microservice-extraction? How are controller tests structured?"*
 - *"What's the difference between MockMvc tests and integration tests in this codebase? Which is more appropriate for API endpoint testing?"*
 - *"How does the Cucumber framework in uc-bdd-test-generation-cucumber handle test data setup and teardown?"*
+
+Use subagents to explore in parallel: spawn a background subagent to research test patterns while the main agent continues TDD implementation.
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -167,32 +187,30 @@ Open the repo's **DeepWiki** page to understand the test infrastructure. Try:
 - Ask Devin to add **data-driven tests** using parameterized JUnit or Cucumber Scenario Outlines
 - Try having Devin add **contract tests** that verify the API response shape
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Once Devin opens a PR, focus your review on **TDD discipline**:
-- **Test-first evidence:** Can you see from the commit history that tests were written before implementation?
+Review the TDD progression locally:
+- **Test-first evidence:** Check the git log to verify tests were written before implementation
 - **Test quality:** Are the tests checking real behavior or just trivially asserting?
 - **Edge cases:** Does the implementation handle boundary conditions discovered during TDD?
 
-**Leave a feedback comment** and watch Devin respond:
+**Iterate interactively with Devin:**
 - *"Add a test for when the article slug doesn't exist — should return 404"*
 - *"The trending endpoint should handle the case where there are fewer than 10 articles"*
 - *"Add an integration test that verifies the database query performance"*
 
-> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board.
-
 - **Key Takeaways:**
   - **"Tests-first produces better APIs"** — writing tests before code forces you to think about the API contract from the consumer's perspective
-  - **"Devin demonstrates TDD discipline"** — the commit history shows tests written first, then implementation, making the process visible to reviewers
+  - **"Local TDD is interactive"** — watch the red-green-refactor cycle happen in real time in your terminal
   - **"BDD bridges dev and business"** — Gherkin scenarios are readable by non-developers, making test suites a communication tool
-  - **"Refactoring safety net"** — the tests written during TDD serve as a safety net for future refactoring
+  - **"Subagents parallelize exploration"** — research test patterns in a background subagent while TDD continues
 
 - **Target Outcomes (any of these count):**
   - Failing tests written before implementation
   - All tests passing after implementation
-  - Clear TDD commit progression visible in PR history
+  - Clear TDD commit progression visible in git history
   - Edge case and negative test coverage
-  - PR with TDD evidence and review iterations
+  - Interactive iteration through CLI conversation
 
 ---
 
@@ -202,24 +220,26 @@ Once Devin opens a PR, focus your review on **TDD discipline**:
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan management service (alternative)
-- **Objective:** Start from vague business requirements, use Ask Devin to refine them into technical specifications, then have Devin implement the feature — demonstrating the full requirements-to-code pipeline
+- **Objective:** Start from vague business requirements, use Devin CLI to refine them into technical specifications, then have Devin implement the feature — the full requirements-to-code pipeline
 
-#### Step 1: Start with Ask Devin (required for this lab)
+#### Step 1: Gather requirements with Devin CLI
 
-This lab starts with requirements gathering. Open **Ask Devin** and work through these prompts to build up a specification:
+This lab starts with requirements gathering. Run `devin` in your terminal and work through these prompts interactively:
 
 1. *"A manager wants to see which team members are overloaded this week. What data does timesheet-app already have that could power a 'team workload' dashboard? What's missing?"*
 2. *"Based on the existing data model, design a 'Team Workload Dashboard' feature. What API endpoints are needed? What calculations should the backend perform? What should the UI show?"*
 3. *"Write a detailed technical specification for the workload dashboard — include the data model, API contract (request/response shapes), and UI wireframe description."*
 
-#### Step 2: Paste into Devin (using the refined spec from step 1)
+Devin CLI explores your local files directly, making requirements gathering fast and grounded in the actual codebase.
 
-Take the technical specification from Ask Devin and paste it into a new Devin session:
+#### Step 2: Implement with Devin CLI (using the refined spec)
+
+Continue the conversation with Devin CLI, providing the implementation prompt:
 
 ```
 Implement the following feature for timesheet-app based on this specification:
 
-[Paste the technical spec from Ask Devin here]
+[Reference the technical spec from the conversation above]
 
 Follow existing code patterns. Add backend API endpoints, frontend React components, and tests.
 ```
@@ -232,38 +252,38 @@ A manager wants a "Team Workload Dashboard" in timesheet-app. They should be abl
 
 #### Step 3 (Optional): Read the DeepWiki
 
-Open the repo's **DeepWiki** page to understand the data model. Compare what Ask Devin suggested with what's actually available in the database.
+Open the repo's **DeepWiki** page to understand the data model. Compare what Devin CLI suggested with what's actually available in the database.
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Focus your review on whether the implementation matches the requirements:
+Review the implementation locally and iterate:
 - **Requirements fit:** Does the feature solve the manager's original problem?
 - **Data accuracy:** Are the workload calculations correct?
 - **UX quality:** Is the dashboard useful and intuitive?
 
-**Leave a feedback comment:**
+**Iterate interactively:**
 - *"Add a date range picker so managers can look at workload for different weeks"*
 - *"The overload threshold should be configurable, not hard-coded at 40 hours"*
 - *"Add a CSV export for the workload summary"*
 
 - **Key Takeaways:**
-  - **"Ask Devin for requirements → Session for implementation"** — the two-step workflow produces better results than jumping straight into code
+  - **"CLI exploration → CLI implementation"** — the same conversational session flows from requirements to implementation without switching tools
   - **"Vague requirements still work"** — Devin can infer reasonable implementations from business-level descriptions, but refined specs produce better output
-  - **"The spec is a living document"** — PR review feedback refines the feature iteratively, just like real product development
+  - **"Local files make exploration grounded"** — Devin CLI reads the actual codebase, so feasibility checks happen against real data models
   - **"DeepWiki validates feasibility"** — checking the data model before implementation catches impossible requirements early
 
 - **Target Outcomes (any of these count):**
-  - Technical specification produced via Ask Devin
+  - Technical specification produced via Devin CLI exploration
   - Feature implemented matching the specification
   - Backend API with calculations and frontend dashboard
   - Tests verifying the feature logic
-  - PR with implementation and review iterations
+  - Iterative refinement through CLI conversation
 
 ---
 
 ## Track B: Bug Fixing & Root Cause Analysis
 
-Track B demonstrates Devin as a debugger and investigator. Participants will hunt for bugs in running applications, trace issues across service boundaries, and fix data-related bugs with proper root cause analysis.
+Track B demonstrates Devin as a debugger and investigator. Participants will hunt for bugs in running applications, trace issues across service boundaries, and fix data-related bugs with proper root cause analysis — working directly in the terminal.
 
 ### Lab B1 — Exploratory Bug Hunting
 
@@ -273,21 +293,24 @@ Track B demonstrates Devin as a debugger and investigator. Participants will hun
   - [calcom](https://github.com/Cognition-Partner-Workshops/calcom) — Open-source scheduling platform (alternative, more complex)
 - **Objective:** Start a running application, explore it to find bugs or unexpected behavior, then have Devin fix what it finds — demonstrating exploratory testing and debugging
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Run the bug hunt with Devin CLI
+
+> **Cloud handoff:** This lab requires starting the application and using a browser for exploratory testing. For full browser-based bug hunting with screenshots, see the [cloud variant](README.md) for this lab. Devin CLI can still analyze the code and fix bugs it identifies through code analysis.
+
+Run `devin` in your terminal and provide the prompt:
 
 ```
-Start timesheet-app locally (backend: `cd backend && npm run dev`, frontend: `cd frontend && npm run dev`). Explore the application — create work entries, manage clients, try the reporting features, test edge cases (empty inputs, special characters, date boundaries, concurrent operations). Find and document any bugs or unexpected behavior. Fix the most impactful bug you find. Take before/after screenshots. Write a `ROOT_CAUSE_ANALYSIS.md` explaining the bug, why it happened, and how you fixed it.
+Analyze timesheet-app for potential bugs. Start by reading the codebase — check error handling patterns, edge cases in date handling, input validation, and API response handling. Focus on the backend API routes and the React frontend state management. Identify the most impactful issues and fix them. Write a `ROOT_CAUSE_ANALYSIS.md` explaining each bug, why it happened, and how you fixed it. Add regression tests.
 ```
 
-> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
+#### Step 2: Explore interactively
 
-#### Step 2: Research with Ask Devin
-
-While Devin works on step 1, open **AskDevin** and explore:
+While Devin works, ask follow-up questions:
 - *"What are the most common types of bugs in Express + React applications? What should I look for?"*
 - *"What error handling patterns does timesheet-app use? Are there any gaps?"*
 - *"What edge cases are most likely to have bugs — date handling, number formatting, empty states, concurrent access?"*
-- Use the analysis to start a **second session** targeting a different area of the application
+
+Use a subagent to investigate a second area in parallel.
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -301,30 +324,30 @@ Try different approaches:
 - Ask Devin to check for **similar bugs** elsewhere in the codebase
 - Try having Devin produce a **debugging narrative** that traces the issue from symptom to root cause
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Once Devin opens a PR, focus your review on the **root cause analysis**:
+Review the fixes locally:
 - **Root cause:** Does the analysis explain *why* the bug happened, not just *what* was changed?
 - **Fix quality:** Does the fix address the root cause or just the symptom?
 - **Regression prevention:** Is there a test that will catch this bug if it's reintroduced?
 
-**Leave a feedback comment** and watch Devin respond:
+**Iterate interactively:**
 - *"Add a regression test for this bug"*
 - *"Are there any other places in the codebase that make the same assumption?"*
 - *"The fix handles the immediate case but what happens if the input is null?"*
 
 - **Key Takeaways:**
-  - **"Devin debugs like a developer"** — it reproduces bugs via the browser, traces data flows, reads logs, and identifies root causes
-  - **"Exploratory testing finds real bugs"** — Devin tests edge cases and workflows that unit tests miss
-  - **"Screen recordings as evidence"** — Devin's before/after screenshots provide visual proof that the fix works
+  - **"CLI analyzes code directly"** — Devin CLI reads local files and identifies bugs through code analysis, static checking, and test execution
+  - **"Subagents parallelize investigation"** — investigate multiple areas simultaneously with background subagents
   - **"Root cause analysis prevents recurrence"** — understanding *why* a bug happened is more valuable than just fixing it
+  - **"Local iteration is fast"** — fix, test, iterate — without waiting for a cloud VM
 
 - **Target Outcomes (any of these count):**
-  - Bug identified with reproduction steps
+  - Bug identified with root cause analysis
   - Root cause analysis documented in `ROOT_CAUSE_ANALYSIS.md`
-  - Fix implemented with before/after evidence (screenshots or screen recording)
-  - Regression test added
-  - PR with fix explanation and Devin's responses to review comments
+  - Fix implemented with regression tests
+  - Interactive iteration through CLI conversation
+  - Subagent used for parallel investigation
 
 ---
 
@@ -336,11 +359,15 @@ Once Devin opens a PR, focus your review on the **root cause analysis**:
   - [eventflow-order-service](https://github.com/Cognition-Partner-Workshops/eventflow-order-service) + [eventflow-payment-service](https://github.com/Cognition-Partner-Workshops/eventflow-payment-service) — EventFlow multi-service application (alternative)
 - **Objective:** Investigate a bug that manifests in one service but has its root cause in another — demonstrating Devin's ability to trace issues across service boundaries
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Investigate with Devin CLI
+
+> **Cloud handoff:** This lab benefits from running services locally and testing with HTTP requests. For full service orchestration with browser-based verification and screenshots, see the [cloud variant](README.md) for this lab.
+
+Run `devin` in your terminal and provide the prompt:
 
 **Option A — .NET Microservices (notification amount bug):**
 ```
-Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate and fix this bug in quickapp-microservices. To reproduce: run the notification-service locally, POST to `http://localhost:5005/api/notification/events/order-placed` with `{"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}`, then open the preview URL — the total shows $1.50 instead of $149.99. Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
+Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview. Investigate this bug in quickapp-microservices by tracing the data flow from the order-service through the shared contracts to the notification-service. Find where the monetary amount gets transformed incorrectly. Check the OrderPlacedEvent.TotalAmount field — is it dollars or cents? Look at the shared contract definition and the notification-service's FormatCurrency logic. Fix the root cause, add unit tests, and document the fix in a root cause analysis.
 ```
 
 **Option B — EventFlow (currency precision bug):**
@@ -348,9 +375,9 @@ Order confirmation notification emails are showing wrong amounts after the micro
 The EventFlow payment service is incorrectly processing JPY (Japanese Yen) orders. JPY is a zero-decimal currency but the payment service is dividing by 100 like other currencies, resulting in incorrect amounts. Investigate the payment processing logic in eventflow-payment-service, identify where zero-decimal currency handling should be added, fix the bug, and add unit tests covering JPY, USD, and EUR.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Trace data contracts interactively
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Devin works, ask follow-up questions to trace the data flow:
 - *"Trace the data flow from when an OrderPlacedEvent is received to when the notification email is rendered. Where does the monetary amount get transformed?"*
 - *"What does the OrderPlacedEvent.TotalAmount field represent — dollars or cents? Check the shared contract definition."*
 - *"What are zero-decimal currencies and which payment APIs handle them differently? How should JPY amounts be processed?"*
@@ -362,14 +389,14 @@ Open the repo's **DeepWiki** page to understand the event flow between services:
 - Identify shared libraries and their assumptions about data formats
 - Look for misleading comments that might be hiding the bug
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Focus your review on whether the fix is complete:
+Review the fix locally and focus on completeness:
 - **Root cause identified:** Is it a data format mismatch, unit conversion error, or shared contract issue?
 - **Fix scope:** Does the fix only change the symptom service, or does it address the source of truth?
 - **All affected paths:** Are there other services that might have the same bug?
 
-**Leave a feedback comment:**
+**Iterate interactively:**
 - *"Are there any other notification types that format monetary amounts? Check those too."*
 - *"Add a contract test that verifies both services agree on the amount format"*
 - *"Add a unit test for FormatCurrency that verifies $149.99 renders as '$149.99' and not '$1.50'"*
@@ -383,9 +410,9 @@ Focus your review on whether the fix is complete:
 - **Target Outcomes (any of these count):**
   - Root cause identified across service boundaries
   - Fix applied to the correct service (source of the bug, not just the symptom)
-  - Before/after screenshots or screen recording
   - Contract test or regression test added
-  - PR with root cause analysis documenting the data flow
+  - Interactive trace of the data flow through CLI conversation
+  - Root cause analysis documenting the data flow
 
 ---
 
@@ -397,7 +424,9 @@ Focus your review on whether the fix is complete:
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with SQLite (alternative)
 - **Objective:** Investigate and fix a data-related bug — incorrect query results, type conversion errors, or schema inconsistencies — and evolve the schema to prevent recurrence
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Investigate with Devin CLI
+
+Run `devin` in your terminal and provide the prompt:
 
 **Option A — Legacy Data Types (loan service):**
 ```
@@ -409,9 +438,9 @@ The loan service in uc-data-source-migration-jdbc-normalization is reading from 
 Investigate the date handling in timesheet-app's backend. SQLite stores dates as text, which can cause issues with date range queries, sorting, and timezone handling. Find any bugs related to date storage or retrieval (e.g., work entries on boundary dates not appearing in reports, timezone-related off-by-one errors). Fix the issues and add tests that verify correct behavior across date boundaries.
 ```
 
-#### Step 2: Research with Ask Devin
+#### Step 2: Explore the data layer interactively
 
-While Devin works on step 1, open **AskDevin** and explore:
+While Devin works, ask follow-up questions:
 - *"What are the most common bugs when reading from all-VARCHAR legacy tables? How do type coercion issues manifest?"*
 - *"What's the correct way to handle numeric comparison in JPA/JPQL when the underlying column is VARCHAR?"*
 - *"What SQLite-specific date handling gotchas should I be aware of?"*
@@ -423,14 +452,14 @@ Open the repo's **DeepWiki** page to understand the data layer. Try:
 - Ask Devin to create a **data validation migration** that checks existing data for type issues
 - Try having Devin add **query-level assertions** that verify return types match expectations
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Focus your review on **data correctness**:
+Review the fixes locally and focus on **data correctness**:
 - **Query fix:** Are all numeric comparisons now using proper casting?
 - **Migration safety:** Will the schema change work with existing data?
 - **Test coverage:** Do tests cover the boundary conditions that triggered the original bug?
 
-**Leave a feedback comment:**
+**Iterate interactively:**
 - *"What happens if a VARCHAR field contains non-numeric data like 'N/A'? Add error handling."*
 - *"Add a test with the specific values that triggered the original bug"*
 - *"Create a database migration that adds CHECK constraints to prevent future invalid data"*
@@ -446,13 +475,13 @@ Focus your review on **data correctness**:
   - Query or schema fix applied with proper type handling
   - `DATA_BUG_ANALYSIS.md` documenting the issue and fix
   - Tests with boundary-condition data proving the fix
-  - PR with analysis and evidence
+  - Interactive investigation through CLI conversation
 
 ---
 
 ## Track C: Maintenance & Evolution
 
-Track C demonstrates Devin as a maintenance engineer. Participants will set up automated dependency upgrades, evolve database schemas safely, and refactor tech debt — the ongoing work that keeps applications healthy over time.
+Track C demonstrates Devin as a maintenance engineer. Participants will set up automated dependency upgrades, evolve database schemas safely, and refactor tech debt — with fast local iteration in the terminal.
 
 ### Lab C1 — Dependency Upgrades & Scheduled Maintenance
 
@@ -462,25 +491,29 @@ Track C demonstrates Devin as a maintenance engineer. Participants will set up a
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with npm (alternative)
 - **Objective:** Upgrade dependencies to latest minor/patch versions, verify the build passes, and set up a recurring Devin scheduled session for automated weekly maintenance
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Upgrade with Devin CLI
+
+Run `devin` in your terminal and provide the prompt:
 
 ```
 Check all dependencies in uc-cve-remediation-regulatory-compliance for available minor and patch version updates. Upgrade each dependency to the latest minor version (do not jump major versions). Run `./gradlew build` and `./gradlew test` to verify the build still passes after each upgrade. If any upgrade breaks the build, revert that specific upgrade and document it.md` listing what was upgraded, from which version to which version, and any upgrades that were skipped (with reasons). Title the PR "chore: weekly dependency version bump".
 ```
 
-#### Step 2: Research with Ask Devin
+Devin CLI runs the build and tests locally, giving you immediate feedback on each upgrade.
 
-While Devin works on step 1, open **AskDevin** and explore:
+#### Step 2: Research interactively
+
+While Devin works, ask follow-up questions:
 - *"What dependencies in uc-cve-remediation-regulatory-compliance are the most out of date? Which ones have the most available minor/patch updates?"*
 - *"What's the difference between minor and patch version upgrades in terms of risk? When is it safe to auto-upgrade vs. requiring human review?"*
 - *"How should a team handle dependency upgrades that break the build — auto-revert and flag, or block and notify?"*
 - Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy
 
-> **Desktop tip:** When running dependency upgrades across multiple repos, use the Agent Command Center in Devin Desktop to track all sessions on a single Kanban board — see which repos have completed, which are in progress, and which need review.
-
 #### Step 3 (Optional): Set Up a Scheduled Session
 
-Once you're happy with the output from step 1, turn it into a recurring task:
+> **Cloud handoff:** Scheduled sessions require Devin Cloud. See the [cloud variant](README.md) for this lab to set up recurring automated maintenance.
+
+Once you're happy with the output from step 1, you can hand off the recurring task to Devin Cloud:
 
 ```
 Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it.md."
@@ -488,23 +521,23 @@ Create a Devin scheduled session that runs weekly on Monday mornings against uc-
 
 #### Step 4 (Optional): Extend to Multiple Repos
 
-Try running the same pattern for **timesheet-app** with an npm-flavored prompt:
+Try running the same pattern for **timesheet-app** with an npm-flavored prompt — use a subagent to run both upgrades in parallel:
 
 ```
 Check all npm dependencies in timesheet-app for available minor and patch version updates. Run `npm update` to upgrade to latest minor versions. Run `npm test` and `npm run build` to verify everything still works.md`.
 ```
 
 - **Key Takeaways:**
-  - **"Automate the boring stuff"** — dependency upgrades are repetitive, low-risk, and high-volume. Devin handles them weekly without human intervention
-  - **"Scheduled sessions = always-on maintenance"** — teams set the policy once, and Devin executes it on a cadence
-  - **"Safe by default"** — the prompt instructs Devin to verify builds, revert breaking upgrades, and document everything. The PR still requires human approval
-  - **"Scales across repos and tech stacks"** — the same pattern works for Gradle, npm, pip, cargo, etc.
+  - **"Automate the boring stuff"** — dependency upgrades are repetitive, low-risk, and high-volume. Devin handles them without manual intervention
+  - **"Local iteration is fast"** — run builds and tests locally for immediate feedback on each upgrade
+  - **"Subagents scale locally"** — run upgrades across multiple repos in parallel with background subagents
+  - **"Cloud for recurring tasks"** — hand off the schedule to Devin Cloud for automated weekly maintenance
 
 - **Target Outcomes (any of these count):**
-  - Devin scheduled session configured for weekly dependency upgrades
+  - Dependencies upgraded with local build verification
   - PR with dependency upgrades and `DEPENDENCY_UPDATES.md`
   - Knowledge item capturing the team's dependency upgrade policy
-  - Same schedule replicated across multiple repos/tech stacks
+  - Subagent used for parallel upgrades across repos
 
 ---
 
@@ -516,7 +549,9 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
   - [ts-java-angular-jhipster](https://github.com/Cognition-Partner-Workshops/ts-java-angular-jhipster) — JHipster app with Liquibase (alternative)
 - **Objective:** Evolve a database schema safely — add new tables, modify existing columns, migrate data, and ensure backward compatibility with the application layer
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Implement with Devin CLI
+
+Run `devin` in your terminal and provide the prompt:
 
 **Option A — Flyway Migrations (Spring Boot):**
 ```
@@ -528,9 +563,11 @@ Evolve the database schema of uc-spring-boot-upgrade-microservice-extraction to 
 Add a "transaction categories" feature to ts-java-angular-jhipster. Create Liquibase changesets that: (1) Add a `category` table with id, name, color, icon, and user_id, (2) Add a category_id foreign key to the operation table, (3) Create seed data with default categories (Income, Groceries, Transport, Entertainment). Update the JPA entities, Spring Data repositories, and REST controllers to support CRUD on categories and category assignment to operations.
 ```
 
-#### Step 2: Research with Ask Devin
+Run tests locally to verify the migration: `./gradlew test` or `./mvnw test`.
 
-While Devin works on step 1, open **AskDevin** and explore:
+#### Step 2: Explore the schema interactively
+
+While Devin works, ask follow-up questions:
 - *"What's the current database schema? What tables and relationships exist?"*
 - *"What's the safest way to add a foreign key to an existing table with data — should we use a nullable FK first?"*
 - *"What are the best practices for data migration scripts — how do we handle failures and rollbacks?"*
@@ -542,14 +579,14 @@ Open the repo's **DeepWiki** page. Try:
 - Ask Devin to add **database-level constraints** (CHECK, UNIQUE, NOT NULL) with appropriate handling
 - Try having Devin create a **schema documentation** file showing the current ERD
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Focus on **migration safety**:
+Focus on **migration safety** and iterate interactively:
 - **Ordering:** Are migrations numbered correctly and idempotent?
 - **Data preservation:** Does the data migration handle edge cases (null tags, duplicate tags)?
 - **Backward compatibility:** Would the old application code still work during the migration window?
 
-**Leave a feedback comment:**
+**Iterate interactively:**
 - *"What happens if the migration fails halfway through? Add transaction boundaries."*
 - *"The data migration should handle articles with no tags — verify with a test"*
 - *"Add an index on the junction table for query performance"*
@@ -565,7 +602,7 @@ Focus on **migration safety**:
   - Data migration handling existing records
   - Updated domain model and repository layer
   - Tests verifying both migration and application behavior
-  - PR with migration scripts and updated application code
+  - Local build and test verification
 
 ---
 
@@ -577,7 +614,9 @@ Focus on **migration safety**:
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (alternative)
 - **Objective:** Identify and refactor tech debt in an existing codebase — extract methods, improve naming, reduce duplication, and improve testability — while preserving behavior
 
-#### Step 1: Paste into Devin (copy-paste this prompt into Devin)
+#### Step 1: Refactor with Devin CLI
+
+Run `devin` in your terminal and provide the prompt:
 
 **Option A — Spring Boot Refactoring:**
 ```
@@ -589,9 +628,11 @@ Analyze uc-spring-boot-upgrade-microservice-extraction for code quality issues. 
 Analyze timesheet-app for code quality issues. Focus on: duplicated API call patterns that could use a shared utility, React components that are too large (> 200 lines) that should be split, inconsistent error handling across API routes, and any remaining TODO comments in the code. Refactor the top 5 most impactful issues while keeping all existing behavior intact. Run tests to verify nothing broke. Document changes in a `REFACTORING_LOG.md`.
 ```
 
-#### Step 2: Research with Ask Devin
+Watch refactorings happen locally — run tests after each change to verify behavior preservation.
 
-While Devin works on step 1, open **AskDevin** and explore:
+#### Step 2: Explore code quality interactively
+
+While Devin works, ask follow-up questions:
 - *"What are the most common code smells in this codebase? Which files have the highest complexity?"*
 - *"What refactoring patterns are most applicable — Extract Method, Replace Conditional with Polymorphism, Introduce Parameter Object?"*
 - *"Which refactorings are safest to do without comprehensive test coverage?"*
@@ -603,32 +644,30 @@ Open the repo's **DeepWiki** page. Try:
 - Ask Devin to measure **cyclomatic complexity** before and after refactoring
 - Try having Devin produce a **dependency graph** showing coupling between modules
 
-#### Step 4 (Optional): Review & Give Feedback
+#### Step 4 (Optional): Review & iterate
 
-Focus on **behavior preservation**:
-- **Same behavior:** Do all existing tests still pass?
+Focus on **behavior preservation** and iterate:
+- **Same behavior:** Do all existing tests still pass? Run them locally
 - **Meaningful improvement:** Does the refactoring make the code genuinely more maintainable?
 - **Right scope:** Was each refactoring small enough to be easily reviewed?
 
-**Leave a feedback comment:**
+**Iterate interactively:**
 - *"Can you split this into separate commits — one refactoring per commit?"*
 - *"This extracted method should be tested independently"*
 - *"The naming improvement is good but let's also add a brief doc comment explaining the business logic"*
-
-> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
 
 - **Key Takeaways:**
   - **"Refactoring preserves behavior"** — every change must pass existing tests. No new functionality, just improved structure
   - **"Small, atomic changes"** — each refactoring should be reviewable in isolation. Devin commits them separately
   - **"Tech debt compounds"** — small improvements over time prevent the codebase from becoming unmaintainable
-  - **"Documentation captures intent"** — the `REFACTORING_LOG.md` explains *why* each change was made, helping future developers
+  - **"Local testing is immediate"** — run tests after each refactoring without waiting for CI
 
 - **Target Outcomes (any of these count):**
   - 5+ refactorings applied with tests still passing
   - `REFACTORING_LOG.md` documenting each change and rationale
   - Measurable improvement (reduced complexity, fewer duplications)
   - Separate commits for each refactoring (reviewable individually)
-  - PR with refactoring evidence and review iterations
+  - Interactive refinement through CLI conversation
 
 ---
 
@@ -678,15 +717,16 @@ Participants who finish early or want to explore further can attempt any challen
 ## Context
 
 - **Audience:** Development teams responsible for shipping features and maintaining production applications
-- **Focus:** The full application lifecycle — building, fixing, and maintaining — demonstrating Devin as a day-to-day development partner
+- **Focus:** The full application lifecycle — building, fixing, and maintaining — using Devin CLI for fast, interactive, terminal-native workflows
+- **Delivery surface:** Devin CLI / Devin Local — participants work directly in their terminal with local file access, shell integration, and subagents for parallel work
 - **Devin value themes woven throughout:**
-  - Autonomous, off-machine execution — kick off sessions and move on
-  - PR Review agent as automatic quality gate
-  - Ask Devin for requirements gathering and problem analysis
+  - Terminal-native workflow — fast, interactive, local-first
+  - Subagents for parallel subtask execution
+  - Shell integration for context-aware assistance
+  - Cloud handoff for long-running autonomous tasks
   - Knowledge and Playbooks for capturing team conventions
-  - Scheduled sessions for ongoing maintenance automation
-  - Screen recordings as test evidence and debugging artifacts
-  - Long-running task handling — Devin works while you're in meetings
+  - ACP compatibility — CLI plugs into Desktop as "Devin Local"
+  - Same skills and MCP integrations work across CLI, Desktop, and Cloud
 
 ## Devin Features Checklist
 
