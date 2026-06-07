@@ -1,5 +1,7 @@
 # Workshop: Agentic AI
 
+**Other variants:** [Desktop + Cloud](README.platform.md)
+
 ## Overview
 
 | | |
@@ -8,6 +10,12 @@
 | **Duration** | 2-4 hours |
 | **Audience** | Platform engineering, QA, observability, and operations teams |
 | **Key Modules** | [Pod Remediation After Credential Rotation](../../modules/observability-sre/pod-remediation-credential-rotation.md), [Volume Anomaly Detection](../../modules/observability-sre/volume-anomaly-detection.md), [Document Review Automation](../../modules/technical-documentation/document-review-automation.md), [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md) |
+
+## Platform Context
+
+This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will paste prompts into the Devin interface, kick off autonomous cloud sessions, and review the PRs Devin opens — all from your browser.
+
+> **Tip:** Prefer an IDE-based workflow? Devin Desktop lets you delegate these same tasks to Cloud from the editor and review PRs with one-click checkout. A terminal-native flow is also available via Devin CLI (`cli.devin.ai`).
 
 ## Workshop Narrative
 
@@ -24,6 +32,7 @@ A few tips to maximize your hands-on time:
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
 - **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+- **Track sessions in the Agent Command Center.** If you're using Devin Desktop, the Agent Command Center gives you a Kanban board of all running sessions — useful when you have multiple labs in flight.
 
 ## Table of Contents
 
@@ -64,6 +73,8 @@ Open the repo's DeepWiki page. Try adding retry logic, Prometheus metrics, dry-r
 
 Review the emergency rotation detection. Ask Devin to add integration tests or edge case handling.
 
+> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
+
 **Target Outcomes:** Emergency rotation detection, improved failure patterns, retry logic or dry-run mode
 
 ---
@@ -82,6 +93,8 @@ Review the uc-document-review-automation codebase. The fuzzy_comparator currentl
 ```
 
 #### Step 2: Research with Ask Devin
+
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
 
 - *"What document types are most likely to have extraction errors?"*
 - *"Should the audit agent support structured query capabilities?"*
@@ -124,6 +137,8 @@ Open the repo's DeepWiki page. Try generating data-driven scenarios, negative te
 
 Review the Gherkin scenarios for readability. Ask Devin to add Scenario Outlines or test report generation.
 
+> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board.
+
 **Target Outcomes:** Gherkin feature files, executable step definitions, data-driven scenarios
 
 ---
@@ -142,6 +157,8 @@ Review the uc-volume-anomaly-detection codebase. The seasonal detector currently
 ```
 
 #### Step 2: Research with Ask Devin
+
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
 
 - *"What additional detection strategies beyond z-score and seasonal would improve accuracy?"*
 - *"How should the recommendation engine prioritize multiple simultaneous anomalies?"*
