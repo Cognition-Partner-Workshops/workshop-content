@@ -1,5 +1,7 @@
 # Workshop: Legacy Modernization
 
+**Other variants:** [Desktop + Cloud](README.platform.md)
+
 ## Overview
 
 | | |
@@ -8,6 +10,12 @@
 | **Duration** | 2-4 hours per track (configurable — see Duration Variants below) |
 | **Audience** | Enterprise architects, modernization teams, application portfolio managers |
 | **Tracks** | **COBOL Track** (mainframe → Java) · **Oracle Forms Track** (Forms/PL/SQL → Spring Boot) |
+
+## Platform Context
+
+This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). Participants paste prompts into the Devin web interface, and Devin works autonomously on a remote VM — producing PRs that you review, comment on, and iterate. The entire workflow happens in the browser.
+
+> **Tip:** Prefer an IDE-based workflow? The same labs can be run from **Devin Desktop**, where you can delegate tasks to Cloud, review PRs with one-click checkout, and monitor sessions in the Agent Command Center. See the [Desktop + Cloud variant](README.platform.md) for that delivery.
 
 ## Workshop Narrative
 
@@ -31,6 +39,7 @@ A few tips to maximize your hands-on time:
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
 - **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
+- **Track sessions in one place.** If you're using Devin Desktop, the Agent Command Center provides a Kanban board showing all your running sessions — local and cloud — organized by status.
 
 ## Table of Contents
 
@@ -84,6 +93,8 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 - Ask Devin to add Mermaid diagrams or expand hotspot analysis for specific programs
 
 **Target Outcomes:** Application inventory, data dictionary, dependency map, hotspot report
+
+> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
 
 ---
 
@@ -143,6 +154,8 @@ Open the repo's DeepWiki page to understand data file layouts and batch processi
 
 **Target Outcomes:** Test strategy, golden files, test harness code, reconciliation checks
 
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
+
 ---
 
 ### Lab A4 — Code Migration: COBOL → Java (60 min)
@@ -171,6 +184,8 @@ Open the repo's DeepWiki page. Try migrating different programs, targeting diffe
 - Ask Devin to fix decimal handling or add data dictionary generation
 
 **Target Outcomes:** Java source code, JUnit parity tests, migration notes
+
+> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board.
 
 ---
 
@@ -210,6 +225,8 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 - Ask Devin to add a section on PII fields or identify which batch jobs run daily vs. monthly
 
 **Target Outcomes:** Application inventory, data dictionary, dependency map, technical debt report
+
+> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
 
 ---
 
@@ -270,6 +287,8 @@ Open the repo's DeepWiki page to understand the test harness structure and scena
 
 **Target Outcomes:** Extended business scenarios, enhanced comparators, reconciliation specifications
 
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
+
 ---
 
 ### Lab B4 — Code Migration: Oracle Forms → Java (60 min)
@@ -298,6 +317,8 @@ Open both repos' DeepWiki pages to understand the legacy architecture and target
 - Ask Devin to handle a specific technical debt item differently
 
 **Target Outcomes:** Java Spring Boot service, JPA entities, REST API, unified validation, parity tests, migration notes
+
+> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board.
 
 ---
 
