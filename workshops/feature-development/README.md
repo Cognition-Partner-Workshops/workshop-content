@@ -1,5 +1,7 @@
 # Workshop: Feature Development
 
+**Other variants:** [Desktop + Cloud](README.platform.md) | [CLI variant](README.local.md)
+
 ## Overview
 
 | | |
@@ -8,6 +10,12 @@
 | **Duration** | 1-2 hours |
 | **Audience** | Full-stack developers, product engineers, development teams |
 | **Key Modules** | [Gather Requirements](../../modules/application-development/gather-requirements.md), [Test-Driven Development](../../modules/application-development/test-driven-development.md), [New Feature Development](../../modules/application-development/new-feature-development.md), [API Documentation](../../modules/technical-documentation/api-documentation.md), [Database Schema Evolution](../../modules/application-development/database-schema-evolution.md) |
+
+## Platform Context
+
+This workshop uses **Devin Cloud** via the web app ([app.devin.ai](https://app.devin.ai)). You will paste prompts into the Devin web interface, and Devin works autonomously on a cloud VM — opening PRs for you to review on GitHub.
+
+> **Tip:** These same labs can also be run from **Devin Desktop** (IDE + agent manager) or **Devin CLI** (terminal agent). See the [Desktop + Cloud variant](README.platform.md) or the [CLI variant](README.local.md) to explore those workflows.
 
 ## Workshop Narrative
 
@@ -23,6 +31,7 @@ A few tips to maximize your hands-on time:
 - **Use Ask Devin to refine requirements.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem before Devin executes.
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this is how teams build a shared context layer that compounds over time.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
+- **Track parallel sessions from Desktop.** If you have Devin Desktop, use the Agent Command Center to monitor multiple running sessions on a single Kanban board.
 
 ## Table of Contents
 
@@ -63,10 +72,14 @@ Add a loan payment history API to uc-data-source-migration-jdbc-normalization. C
 Add an "article statistics" feature to uc-spring-boot-upgrade-microservice-extraction. Create GET /api/articles/:slug/stats (view count, favorite count, comment count, days since published) and GET /api/stats/trending (top 10 most-favorited in last 7 days). Write tests.
 ```
 
+> **Desktop tip:** The PRs Devin opens in this lab can be reviewed directly in Devin Desktop with one-click checkout — no manual `git fetch` required.
+
 #### Step 2: Research with Ask Devin
 
 - *"What patterns do the existing features follow? What conventions should a new feature match?"*
 - *"What database migration approach does the app use?"*
+
+> **CLI alternative:** This exploration step can also be done locally with `devin` in your terminal for faster iteration.
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -76,6 +89,8 @@ Open the repo's DeepWiki page. Try adding validation rules, frontend tests, audi
 
 - Review for code style consistency with existing patterns
 - Ask Devin to add validation, error handling, or additional test cases
+
+> **Desktop tip:** Use the Agent Command Center in Devin Desktop to monitor all your running sessions on a single Kanban board.
 
 **Target Outcomes:** New feature following existing conventions, tests, database schema changes, PR with review
 
