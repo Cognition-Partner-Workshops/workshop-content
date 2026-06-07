@@ -153,7 +153,7 @@ Three labs that build on each other in a progressive sequence:
 
 #### Desktop Workflow
 
-1. **The prompt IS the engineering:** Spend 10 minutes showing participants the structured prompt with its 5 elements (scope, execution order, proof requirements, testing gap acknowledgement, exit criteria)
+1. **The prompt IS the engineering:** Review the structured prompt with its 5 elements (scope, execution order, proof requirements, testing gap acknowledgement, exit criteria)
 2. **Explore locally first:** Use Cascade or Devin Local to explore the codebase before submitting the prompt. Understand the current state — framework versions, dependency graph, test coverage — so you can predict what the cloud agent will encounter
 3. **Delegate to Cloud:** Send the full structured prompt to Devin Cloud from Desktop. The cloud agent will work autonomously for 60+ minutes on its own VM
 4. **Monitor progress:** Track the long-running session on the Agent Command Center. Continue other work locally while Cloud executes — this is the platform continuum in action
