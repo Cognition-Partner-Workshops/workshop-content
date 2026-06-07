@@ -18,8 +18,6 @@ This workshop uses **Devin CLI** (install from [cli.devin.ai](https://cli.devin.
 
 > **Tip:** Devin CLI speaks the Agent Client Protocol (ACP) and can run as "Devin Local" inside Devin Desktop for a visual agent management experience alongside terminal work. The same Knowledge items and MCP integrations you configure for Cloud are available locally.
 
-> **Desktop integration:** Devin CLI runs as "Devin Local" inside Devin Desktop via ACP. Use Desktop for a visual agent management experience alongside terminal work.
-
 ---
 
 ## Workshop Narrative
@@ -98,7 +96,13 @@ Once you understand the coverage gaps, ask Devin to generate tests. Choose one a
 
 **Option A — JUnit Tests (Spring Boot):**
 
-*"Write JUnit tests for the 5 lowest-coverage modules, following the existing test patterns: use MockMvc for controller tests, Mockito for service tests, and integration tests for repository layer. Aim for at least 80% line coverage on each module. Include negative test cases (invalid inputs, not-found scenarios, unauthorized access)."*
+```
+Write JUnit tests for the 5 lowest-coverage modules, following the existing
+test patterns: use MockMvc for controller tests, Mockito for service tests,
+and integration tests for repository layer. Aim for at least 80% line coverage
+on each module. Include negative test cases (invalid inputs, not-found
+scenarios, unauthorized access).
+```
 
 **Option B — Jest Tests (Node.js):**
 
@@ -107,7 +111,13 @@ cd timesheet-app
 devin
 ```
 
-*"Run `npm test -- --coverage` to see current coverage. Identify the 5 least-tested API routes and service modules. Write Jest tests for each: (1) Unit tests for service functions with mocked dependencies, (2) Integration tests for API routes using supertest, (3) Edge case tests for error handling, empty inputs, and boundary conditions."*
+```
+Run `npm test -- --coverage` to see current coverage. Identify the 5
+least-tested API routes and service modules. Write Jest tests for each:
+(1) Unit tests for service functions with mocked dependencies,
+(2) Integration tests for API routes using supertest, (3) Edge case tests
+for error handling, empty inputs, and boundary conditions.
+```
 
 #### Step 3: Use subagents for parallel generation
 
@@ -167,7 +177,15 @@ Start with exploration:
 
 **Option A — Extend Existing BDD Suite:**
 
-*"Add new Gherkin feature files that test edge cases for the existing Users API: (1) Creating a user with missing required fields (expect 400), (2) Creating a user with duplicate ID (expect 409 or appropriate error), (3) Pagination and sorting, (4) Input validation (invalid email, too-long names). Also create a new `OrderController` with endpoints for managing orders and write corresponding Gherkin feature files. Use Scenario Outlines with Examples tables for data-driven testing."*
+```
+Add new Gherkin feature files that test edge cases for the existing Users
+API: (1) Creating a user with missing required fields (expect 400),
+(2) Creating a user with duplicate ID (expect 409 or appropriate error),
+(3) Pagination and sorting, (4) Input validation (invalid email, too-long
+names). Also create a new `OrderController` with endpoints for managing
+orders and write corresponding Gherkin feature files. Use Scenario Outlines
+with Examples tables for data-driven testing.
+```
 
 **Option B — Add BDD to Existing App:**
 
@@ -176,7 +194,16 @@ cd uc-spring-boot-upgrade-microservice-extraction
 devin
 ```
 
-*"Add Cucumber BDD testing. Set up the Cucumber test infrastructure (dependencies, test runner, feature file directory). Write Gherkin feature files for the Articles API: (1) Feature: Create Article — scenarios for valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed — scenarios for global feed, user feed, tag filtering, pagination, (3) Feature: Favorite Article — scenarios for favoriting, unfavoriting, favorite count. Implement step definitions that call the API. Run all scenarios and verify they pass."*
+```
+Add Cucumber BDD testing. Set up the Cucumber test infrastructure
+(dependencies, test runner, feature file directory). Write Gherkin feature
+files for the Articles API: (1) Feature: Create Article — scenarios for
+valid creation, missing fields, duplicate slugs, (2) Feature: Article Feed
+— scenarios for global feed, user feed, tag filtering, pagination,
+(3) Feature: Favorite Article — scenarios for favoriting, unfavoriting,
+favorite count. Implement step definitions that call the API. Run all
+scenarios and verify they pass.
+```
 
 #### Step 3: Iterate on quality
 
@@ -230,7 +257,15 @@ Start with understanding:
 
 **Option A — PIT Mutation Testing (Java):**
 
-*"Set up PIT mutation testing. Add the PIT Gradle plugin and configure it to run on the Articles domain (io.spring.core.article and io.spring.application.article packages). Run mutation testing and analyze the report — identify which mutants survived. For the top 10 surviving mutants, improve the existing tests or write new ones that kill the mutant. Document the before/after mutation scores in a `MUTATION_TESTING_REPORT.md`."*
+```
+Set up PIT mutation testing. Add the PIT Gradle plugin and configure it to
+run on the Articles domain (io.spring.core.article and
+io.spring.application.article packages). Run mutation testing and analyze
+the report — identify which mutants survived. For the top 10 surviving
+mutants, improve the existing tests or write new ones that kill the mutant.
+Document the before/after mutation scores in a
+`MUTATION_TESTING_REPORT.md`.
+```
 
 **Option B — Stryker Mutation Testing (JavaScript):**
 
@@ -239,7 +274,14 @@ cd timesheet-app
 devin
 ```
 
-*"Set up Stryker mutation testing for the backend. Configure Stryker to run on the service layer modules. Run mutation testing and analyze which mutants survive. For surviving mutants, add or improve test assertions to kill them. Focus on: (1) Conditional mutations, (2) Return value mutations, (3) Arithmetic mutations. Document findings in a `MUTATION_TESTING_REPORT.md`."*
+```
+Set up Stryker mutation testing for the backend. Configure Stryker to run on
+the service layer modules. Run mutation testing and analyze which mutants
+survive. For surviving mutants, add or improve test assertions to kill them.
+Focus on: (1) Conditional mutations, (2) Return value mutations,
+(3) Arithmetic mutations. Document findings in a
+`MUTATION_TESTING_REPORT.md`.
+```
 
 > **Cloud handoff:** Mutation testing can be resource-intensive. If PIT/Stryker runs are slow on your machine, hand off to Devin Cloud: *"Hand this off to cloud — run the full mutation testing suite and report back."* See the [cloud variant](README.md) for this lab.
 
@@ -295,7 +337,16 @@ Start by running the application locally:
 
 **Option A — Full E2E Suite (timesheet-app):**
 
-*"Write Playwright E2E tests for the core user workflows: (1) Login flow — valid credentials succeed, invalid credentials show error, (2) Client management — create, edit, delete a client, (3) Work entry lifecycle — create entry for a client, verify it appears in list, edit hours, delete, (4) Reporting — verify reports show correct totals after creating entries, (5) Edge cases — submit empty forms, special characters in names, very long text. Run the tests. If any tests fail because of application bugs, fix the bugs too."*
+```
+Write Playwright E2E tests for the core user workflows: (1) Login flow —
+valid credentials succeed, invalid credentials show error, (2) Client
+management — create, edit, delete a client, (3) Work entry lifecycle —
+create entry for a client, verify it appears in list, edit hours, delete,
+(4) Reporting — verify reports show correct totals after creating entries,
+(5) Edge cases — submit empty forms, special characters in names, very long
+text. Run the tests. If any tests fail because of application bugs, fix the
+bugs too.
+```
 
 **Option B — Extend Existing E2E Tests (Angular):**
 
@@ -304,7 +355,14 @@ cd ts-angular-realworld
 devin
 ```
 
-*"Review the existing Playwright tests in the e2e/ directory. Run them to verify they pass. Then extend the test suite with: (1) Article lifecycle — create, read, update, delete an article, (2) Social features — follow a user, favorite an article, comment on an article, (3) Tag filtering — create articles with tags and verify tag-based filtering works, (4) Error scenarios — verify graceful handling of 401, 404, 500 responses."*
+```
+Review the existing Playwright tests in the e2e/ directory. Run them to
+verify they pass. Then extend the test suite with: (1) Article lifecycle —
+create, read, update, delete an article, (2) Social features — follow a
+user, favorite an article, comment on an article, (3) Tag filtering —
+create articles with tags and verify tag-based filtering works, (4) Error
+scenarios — verify graceful handling of 401, 404, 500 responses.
+```
 
 > **Cloud handoff:** E2E tests require a running browser and application. If your local machine lacks the resources, hand off to Devin Cloud which has a built-in browser and desktop. See the [cloud variant](README.md) for this lab.
 
@@ -359,7 +417,15 @@ Explore the service architecture:
 
 **Option A — .NET Microservices Integration:**
 
-*"Write cross-service integration tests. Focus on the Order → Product → Notification flow: (1) Create a product via the Product service, (2) Place an order via the Order service referencing that product, (3) Verify the Notification service receives the order-placed event, (4) Verify the Order service validates product existence before accepting orders, (5) Test error scenarios — order for non-existent product, order with invalid customer. Use Docker Compose to run all services together."*
+```
+Write cross-service integration tests. Focus on the Order → Product →
+Notification flow: (1) Create a product via the Product service, (2) Place
+an order via the Order service referencing that product, (3) Verify the
+Notification service receives the order-placed event, (4) Verify the Order
+service validates product existence before accepting orders, (5) Test error
+scenarios — order for non-existent product, order with invalid customer.
+Use Docker Compose to run all services together.
+```
 
 **Option B — Spring Boot Microservices Integration:**
 
@@ -368,7 +434,14 @@ cd petclinic-microservices
 devin
 ```
 
-*"Write cross-service integration tests. Test the full workflow: (1) Register a new pet owner via the customers-service, (2) Add a pet, (3) Schedule a visit via the visits-service, (4) Verify the API gateway correctly routes and aggregates data, (5) Test circuit breaker behavior — what happens when the visits-service is down? Use Docker Compose and write tests using RestAssured."*
+```
+Write cross-service integration tests. Test the full workflow: (1) Register
+a new pet owner via the customers-service, (2) Add a pet, (3) Schedule a
+visit via the visits-service, (4) Verify the API gateway correctly routes
+and aggregates data, (5) Test circuit breaker behavior — what happens when
+the visits-service is down? Use Docker Compose and write tests using
+RestAssured.
+```
 
 > **Cloud handoff:** Running multiple Docker services requires significant local resources. If Docker Compose struggles on your machine, hand off to Devin Cloud which has a full VM with Docker. See the [cloud variant](README.md) for this lab.
 
@@ -422,7 +495,14 @@ Research performance patterns:
 
 **Option A — k6 Load Testing (Node.js):**
 
-*"Set up k6 load testing. Create load test scripts that: (1) Simulate 50 concurrent users performing typical workflows, (2) Run a ramp-up test from 1 to 100 users over 5 minutes, (3) Establish performance baselines (p95 latency, error rate, throughput), (4) Identify the breaking point. Document findings in a `PERFORMANCE_REPORT.md`. If you identify a bottleneck (e.g., missing database index, N+1 query), fix it and re-run."*
+```
+Set up k6 load testing. Create load test scripts that: (1) Simulate 50
+concurrent users performing typical workflows, (2) Run a ramp-up test from
+1 to 100 users over 5 minutes, (3) Establish performance baselines (p95
+latency, error rate, throughput), (4) Identify the breaking point. Document
+findings in a `PERFORMANCE_REPORT.md`. If you identify a bottleneck (e.g.,
+missing database index, N+1 query), fix it and re-run.
+```
 
 **Option B — Gatling Load Testing (Java):**
 
@@ -431,7 +511,13 @@ cd uc-spring-boot-upgrade-microservice-extraction
 devin
 ```
 
-*"Set up Gatling load testing. Create simulation scripts that: (1) Test the articles API under load, (2) Simulate realistic traffic patterns (80% reads, 15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5 minutes, (4) Measure p50, p95, and p99 response times. Document findings in `PERFORMANCE_REPORT.md`."*
+```
+Set up Gatling load testing. Create simulation scripts that: (1) Test the
+articles API under load, (2) Simulate realistic traffic patterns (80% reads,
+15% writes, 5% deletes), (3) Run a sustained load test at 30 req/sec for 5
+minutes, (4) Measure p50, p95, and p99 response times. Document findings in
+`PERFORMANCE_REPORT.md`.
+```
 
 > **Cloud handoff:** Long-running load tests (soak tests, high-concurrency stress tests) benefit from Cloud's dedicated VM resources. Hand off with: *"Hand this off to cloud — run a 30-minute soak test and report the results."* See the [cloud variant](README.md) for this lab.
 
@@ -484,7 +570,14 @@ devin
 
 **Subagent A — JavaScript/TypeScript Linting:**
 
-*"Set up comprehensive linting: (1) Configure ESLint with TypeScript rules for both frontend and backend, (2) Add Prettier for consistent formatting, (3) Create a pre-commit hook (using Husky + lint-staged) that auto-formats and lints on every commit, (4) Fix existing lint errors and warnings, (5) Add a CI step that fails the build on lint violations. Document the lint configuration choices in a `CODING_STANDARDS.md`."*
+```
+Set up comprehensive linting: (1) Configure ESLint with TypeScript rules for
+both frontend and backend, (2) Add Prettier for consistent formatting,
+(3) Create a pre-commit hook (using Husky + lint-staged) that auto-formats
+and lints on every commit, (4) Fix existing lint errors and warnings,
+(5) Add a CI step that fails the build on lint violations. Document the lint
+configuration choices in a `CODING_STANDARDS.md`.
+```
 
 **Subagent B — Terraform Linting (in a separate terminal):**
 
@@ -493,7 +586,13 @@ cd timesheet-infra
 devin
 ```
 
-*"Set up Terraform quality enforcement: (1) Run `terraform fmt -check` and fix formatting issues, (2) Add tflint with the AWS ruleset, (3) Add checkov or tfsec for security scanning, (4) Create a CI pipeline that runs fmt check + tflint + security scan on PRs, (5) Fix any security findings. Document IaC standards in an `IAC_STANDARDS.md`."*
+```
+Set up Terraform quality enforcement: (1) Run `terraform fmt -check` and fix
+formatting issues, (2) Add tflint with the AWS ruleset, (3) Add checkov or
+tfsec for security scanning, (4) Create a CI pipeline that runs fmt check +
+tflint + security scan on PRs, (5) Fix any security findings. Document IaC
+standards in an `IAC_STANDARDS.md`.
+```
 
 #### Step 2: Review and iterate locally
 
@@ -549,7 +648,14 @@ Start with analysis:
 
 **Option A — Javadoc Generation (Spring Boot):**
 
-*"Add Javadoc documentation to all public interfaces, classes, and methods that are currently undocumented. Focus on: (1) REST controller methods (describe endpoint, parameters, response, error cases), (2) Service layer public methods (describe business logic), (3) Repository interfaces (describe the query). Follow existing documentation style. Also create a `CODE_REVIEW.md` identifying the top 10 code quality concerns."*
+```
+Add Javadoc documentation to all public interfaces, classes, and methods
+that are currently undocumented. Focus on: (1) REST controller methods
+(describe endpoint, parameters, response, error cases), (2) Service layer
+public methods (describe business logic), (3) Repository interfaces
+(describe the query). Follow existing documentation style. Also create a
+`CODE_REVIEW.md` identifying the top 10 code quality concerns.
+```
 
 **Option B — JSDoc/TSDoc Generation (Node.js/React):**
 
@@ -558,7 +664,13 @@ cd timesheet-app
 devin
 ```
 
-*"Add JSDoc/TSDoc documentation to all exported functions, React components, and API route handlers that are undocumented. For React components, document the props interface. For API routes, document request/response shapes and error codes. Also create a `CODE_REVIEW.md` listing architectural concerns and tech debt items."*
+```
+Add JSDoc/TSDoc documentation to all exported functions, React components,
+and API route handlers that are undocumented. For React components, document
+the props interface. For API routes, document request/response shapes and
+error codes. Also create a `CODE_REVIEW.md` listing architectural concerns
+and tech debt items.
+```
 
 #### Step 3: Review locally
 
@@ -608,7 +720,16 @@ Research quality pipeline patterns:
 
 #### Step 2: Build the pipeline
 
-*"Build a comprehensive continuous quality pipeline using GitHub Actions. The pipeline should enforce these quality gates on every PR: (1) Linting passes (ESLint + Prettier), (2) All unit tests pass, (3) Code coverage does not drop below the current baseline (fail if new code has < 80% coverage), (4) No new security vulnerabilities (npm audit), (5) No TypeScript type errors (tsc --noEmit), (6) Bundle size does not increase by more than 10%. Add a quality dashboard comment on each PR showing results. Create a `QUALITY_GATES.md` documenting each gate."*
+```
+Build a comprehensive continuous quality pipeline using GitHub Actions. The
+pipeline should enforce these quality gates on every PR: (1) Linting passes
+(ESLint + Prettier), (2) All unit tests pass, (3) Code coverage does not
+drop below the current baseline (fail if new code has < 80% coverage),
+(4) No new security vulnerabilities (npm audit), (5) No TypeScript type
+errors (tsc --noEmit), (6) Bundle size does not increase by more than 10%.
+Add a quality dashboard comment on each PR showing results. Create a
+`QUALITY_GATES.md` documenting each gate.
+```
 
 > **Cloud handoff:** This lab requires autonomous cloud execution for the scheduled quality report. See the [cloud variant](README.md) for setting up Devin Scheduled Sessions that generate weekly quality reports.
 
