@@ -359,3 +359,4 @@ Focus: Finding and fixing security vulnerabilities, contract drift, and test cov
 - **"One view for everything"** — the Agent Command Center gives you a Kanban view of local and cloud agents, so you see the full picture without switching tabs.
 - **"Parallel sessions for parallel problems"** — security sprints, test coverage blitzes, and multi-service changes benefit from running multiple Devin sessions simultaneously.
 - **"Guides and specs are force multipliers"** — pointing Devin at an upgrade guide, OpenAPI spec, or runbook template dramatically improves output quality.
+- **"Verification is non-negotiable"** — every lab has concrete success criteria. Tests pass, scans are clean, specs match implementations.
