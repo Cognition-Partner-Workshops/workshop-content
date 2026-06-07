@@ -43,6 +43,7 @@ A few tips to maximize your hands-on time:
 - **Delegate early, review later.** Cloud agents work autonomously while you move on. Use the Agent Command Center to see at a glance what is in flight, blocked, or ready for review.
 - **Leave PR comments to steer Devin.** After Devin Cloud opens a PR, leave comments directly in Desktop. Devin wakes up and iterates on your feedback.
 - **Try multiple agents.** Desktop supports multiple agents via ACP (Agent Client Protocol). You can use Devin Local, Cascade, or third-party agents (Codex CLI, Claude Agent, Gemini CLI) side by side.
+- **Browse DeepWiki while Cloud works.** Open the repo's DeepWiki page for architectural context while the cloud agent runs — it complements Cascade's code-level exploration with higher-level documentation.
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item, accept it — this shared context layer benefits both local and cloud sessions.
 
 ## Table of Contents
@@ -90,6 +91,8 @@ before the next window. Add unit tests.
 
 Switch to the Agent Command Center while Cloud works. You'll see your session move through statuses: Running → PR Opened → Awaiting Review.
 
+> **While you wait:** Open the repo's DeepWiki page for architectural context. Consider adding retry logic, Prometheus metrics, dry-run mode, or integration test scaffolding as follow-up tasks.
+
 #### Step 4: Review PR in Desktop
 
 When Devin Cloud opens a PR, it appears in your Space. Use one-click checkout to load the branch in your editor and review the emergency rotation detection. Leave inline comments if you want Devin to iterate.
@@ -129,6 +132,8 @@ comparing accuracy of both strategies on sample name pairs.
 
 Track this session alongside any others you have running. The Kanban board shows status at a glance.
 
+> **While you wait:** Open the repo's DeepWiki page. Consider batch processing CLI, phonetic matching, or configurable confidence thresholds as follow-up tasks.
+
 #### Step 4: Review PR in Desktop
 
 Review the Levenshtein implementation with one-click checkout. Ask Devin to add batch processing or additional comparison strategies by leaving PR comments.
@@ -166,6 +171,8 @@ cases, and pagination. Implement step definitions.
 #### Step 3: Monitor in Agent Command Center
 
 Use the Agent Command Center to monitor this session. If you have multiple labs running in parallel, the Kanban view shows each session's progress independently.
+
+> **While you wait:** Open the repo's DeepWiki page. Consider generating data-driven scenarios, negative tests, or auto-generating feature files from the Petstore spec as follow-up tasks.
 
 > **ACP note:** Multiple agents can work simultaneously in Desktop. You can have Cascade running locally for research while Cloud agents execute implementation tasks — each is tracked independently in the Agent Command Center.
 
@@ -207,6 +214,8 @@ both modes.
 #### Step 3: Monitor in Agent Command Center
 
 Track progress in the Agent Command Center. By this point you may have multiple sessions running — the Kanban board shows the status of each.
+
+> **While you wait:** Open the repo's DeepWiki page. Consider adding CLI entrypoints, EWMA detectors, visualization output, or configurable alerting thresholds as follow-up tasks.
 
 #### Step 4: Review PR in Desktop
 
