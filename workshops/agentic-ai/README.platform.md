@@ -26,13 +26,14 @@ Unlike the cloud-only variant, this delivery uses Devin Desktop as the primary i
 
 ## Desktop Workflow
 
-Every lab in this workshop follows a five-step Desktop workflow:
+Before starting, create a Space in Devin Desktop for this workshop. Spaces group sessions, PRs, and files for a single task — all labs will live here.
 
-1. **Create a Space** — Open Devin Desktop and create a Space for this workshop. Spaces group sessions, PRs, and files for a single task.
-2. **Explore with Cascade or Devin Local** — Use the local agent in Desktop (or Devin CLI in your terminal) to explore the codebase. This replaces the "Ask Devin" research steps from the cloud-only variant.
-3. **Delegate to Devin Cloud** — Once you've refined the requirements, delegate the implementation task to Cloud. The cloud agent works autonomously on its own VM.
-4. **Monitor in the Agent Command Center** — Switch to the Agent Command Center (Kanban view) to track progress across sessions. You can run multiple labs in parallel.
-5. **Review PRs with one-click checkout** — When Cloud opens a PR, review it directly in Desktop. One-click checkout loads the branch in the editor — no manual `git fetch` or browser switching required.
+Every lab then follows a four-step Desktop workflow:
+
+1. **Explore with Cascade or Devin Local** — Use the local agent in Desktop (or Devin CLI in your terminal) to explore the codebase. This replaces the "Ask Devin" research steps from the cloud-only variant.
+2. **Delegate to Devin Cloud** — Once you've refined the requirements, delegate the implementation task to Cloud. The cloud agent works autonomously on its own VM.
+3. **Monitor in the Agent Command Center** — Switch to the Agent Command Center (Kanban view) to track progress across sessions. You can run multiple labs in parallel.
+4. **Review PRs with one-click checkout** — When Cloud opens a PR, review it directly in Desktop. One-click checkout loads the branch in the editor — no manual `git fetch` or browser switching required.
 
 ## Getting the Most from This Workshop
 
