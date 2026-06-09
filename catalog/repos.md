@@ -141,7 +141,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | T-SQL, Python, pyodbc, sqlfluff, GitHub Actions |
 | **License** | Unlicense |
 | **Cluster** | C13 |
-| **Challenges** | [Sybase to SQL Server Demo](../demos/data-engineering/sybase-to-sqlserver-demo.md) |
+| **Challenges** | [Sybase to SQL Server Demo](../demos/data-engineering/use-cases/sybase-to-sqlserver-demo.md) |
 
 ### uc-data-migration-airflow
 | | |
@@ -319,7 +319,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Sybase ASE T-SQL |
 | **License** | Unlicense |
 | **Cluster** | C13 |
-| **Challenges** | [Sybase to SQL Server Demo](../demos/data-engineering/sybase-to-sqlserver-demo.md) |
+| **Challenges** | [Sybase to SQL Server Demo](../demos/data-engineering/use-cases/sybase-to-sqlserver-demo.md) |
 
 ### ts-java-selenium-testng
 | | |

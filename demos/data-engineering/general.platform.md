@@ -118,8 +118,8 @@ Once the first conversion is verified, scale to the full estate from Desktop:
 Using the <target-repo> repo and the conversion playbook, convert
 the remaining <source-platform> objects to <target-platform>.
 Use child sessions to parallelize — one object per session. Each
-session should follow the playbook, run reconciliation, and open
-a PR with passing verification.
+session should follow the playbook, run reconciliation, and
+verify parity before completing.
 ```
 
 The Agent Command Center Kanban board shows every child session's status.
