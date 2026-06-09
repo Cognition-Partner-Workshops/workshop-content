@@ -4,8 +4,8 @@
 
 Devin operates as a background security agent — scanning, triaging, fixing,
 and re-scanning in a closed loop. This variant starts from the terminal:
-run local scans with the `devin` CLI, triage one-off fixes interactively,
-and hand off to Cloud for full automated remediation pipelines.
+run scans locally, triage and fix interactively with the `devin` CLI, and
+use `/handoff` to transfer long-running remediation pipelines to Cloud.
 
 <a id="toc"></a>
 ## Table of Contents
@@ -66,34 +66,46 @@ Escalation: after N attempts, open an issue for human review
 
 ### Quick triage with the CLI
 
-Run a local scan and pipe findings directly to Devin for interactive
-triage:
+Start a Devin session with your scan results. Run your scanner first, then
+pass the output to Devin:
 
 ```bash
-trivy fs --severity HIGH,CRITICAL --format json . \
-  | devin "Triage these Trivy findings. For each one,
-    tell me the affected file, the CVE, and the
-    recommended fix. Group by service directory."
+trivy fs --severity HIGH,CRITICAL --format json . > scan.json
 ```
 
-Devin responds in your terminal with a structured triage summary. For
-straightforward fixes, ask Devin to apply them:
+Then start Devin with the triage prompt:
 
-```bash
-devin "Fix the HIGH and CRITICAL Trivy findings in
+```
+devin -- Triage the Trivy findings in scan.json. For
+  each one, tell me the affected file, the CVE, and the
+  recommended fix. Group by service directory.
+```
+
+Devin reads the scan output and responds with a structured triage summary.
+For straightforward fixes, ask Devin to apply them directly:
+
+```
+devin -- Fix the HIGH and CRITICAL Trivy findings in
   services/collab-service/package.json and
   services/search-service/requirements.txt.
   Upgrade the vulnerable dependencies to the
-  recommended versions and run each service's tests."
+  recommended versions and run each service's tests.
 ```
 
 ### Hand off to Cloud for the full pipeline
 
 The CLI handles one-off triage and quick fixes. For the full event-driven
-pipeline — CI triggers, re-scans, escalation — hand off to Cloud:
+pipeline — CI triggers, re-scans, escalation — hand off to Cloud using
+the `/handoff` command inside a Devin session:
 
-```bash
-devin --cloud "Create a GitHub Actions workflow called
+```
+devin
+```
+
+Then within the session:
+
+```
+/handoff Create a GitHub Actions workflow called
   sast-auto-remediate.yml on the <repo-name> repo that:
 
   1. Triggers on pull_request events (opened, synchronize)
@@ -111,32 +123,35 @@ devin --cloud "Create a GitHub Actions workflow called
      remediation session on the same branch.
 
   5. If findings persist after 2 attempts, opens a
-     GitHub Issue labeled 'security' and
-     'needs-human-review'.
+     GitHub Issue labeled "security" and
+     "needs-human-review".
 
   Include bot-loop prevention (author check + attempt
-  counter) and concurrency groups."
+  counter) and concurrency groups.
 ```
 
-The `--cloud` flag hands the session off to a Cloud VM. The CLI prints
-the session URL; the pipeline runs autonomously from there.
+The `/handoff` command packages the conversation context and creates a
+Cloud session. The CLI prints the session URL; the pipeline runs
+autonomously from there.
 
 ### Burn down an existing backlog
 
 For repos with an existing vulnerability backlog, combine CLI triage with
 Cloud remediation:
 
-```bash
-# Step 1: Local triage (interactive, in your terminal)
-devin "Review the Trivy scan results for <repo-name>.
+```
+devin -- Review the Trivy scan results for <repo-name>.
   Create a SECURITY_BACKLOG.md listing all CRITICAL and
-  HIGH findings organized by service directory."
+  HIGH findings organized by service directory.
+```
 
-# Step 2: Hand off bulk fixes to Cloud
-devin --cloud "Using the SECURITY_BACKLOG.md in <repo-name>,
+Once the triage is complete, hand off bulk remediation to Cloud:
+
+```
+/handoff Using the SECURITY_BACKLOG.md in <repo-name>,
   fix all HIGH and CRITICAL findings. Group related
   fixes per service into single PRs. Run each service's
-  tests before pushing. Skip findings in test files."
+  tests before pushing. Skip findings in test files.
 ```
 
 ---
@@ -145,11 +160,11 @@ devin --cloud "Using the SECURITY_BACKLOG.md in <repo-name>,
 ## Scaling with Child Sessions
 
 For enterprise-scale remediation, hand off to Cloud and let the parent
-session spawn children:
+session spawn children. Start a session and hand off:
 
-```bash
-devin --cloud "You are coordinating a security
-  remediation across the <repo-name> repository.
+```
+/handoff You are coordinating a security remediation
+  across the <repo-name> repository.
 
   Run the security scan and capture the output. Create a
   SECURITY_BACKLOG.md listing all CRITICAL and HIGH
@@ -162,21 +177,11 @@ devin --cloud "You are coordinating a security
   - Each child upgrades the vulnerable dependency, runs
     the service tests, and pushes to the same branch
   - After all children complete, summarize results in
-    REMEDIATION_SUMMARY.md"
+    REMEDIATION_SUMMARY.md
 ```
 
 Child sessions run on their own Cloud VMs. The parent monitors progress
 and handles failures or escalations.
-
-For multi-repo remediation, iterate over a list of repos:
-
-```bash
-for repo in repo-a repo-b repo-c; do
-  devin --cloud "Run a Trivy scan on $repo, triage
-    HIGH and CRITICAL findings, and fix them. Group
-    fixes per service into single PRs."
-done
-```
 
 ---
 
@@ -195,9 +200,10 @@ done
 4. **CLI for spot checks** — after Cloud remediation completes, use the CLI
    to verify locally:
 
-   ```bash
-   trivy fs --severity HIGH,CRITICAL . | devin "Any
-     remaining HIGH or CRITICAL findings? Summarize."
+   ```
+   devin -- Check if there are any remaining HIGH or
+     CRITICAL Trivy findings in this repo. Summarize
+     what was fixed and what remains.
    ```
 
 5. **Audit trail** — every scan result, Devin session link, and escalation
@@ -209,14 +215,15 @@ done
 ## Key Takeaways
 
 1. **CLI for triage, Cloud for pipelines** — use `devin` in your terminal
-   for interactive scan triage and quick fixes. Hand off to Cloud with
-   `--cloud` for event-driven remediation pipelines that run autonomously.
+   for interactive scan triage and quick fixes. Use `/handoff` to transfer
+   event-driven remediation pipelines to Cloud.
 
 2. **Scanner-agnostic architecture** — the pattern works with any scanner.
-   Pipe scan output to Devin or let CI trigger via the v3 API.
+   Run the scan locally, pass findings to Devin, or let CI trigger via
+   the v3 API.
 
-3. **Terminal-native workflow** — no browser required for triage. Scan
-   results flow through standard Unix pipes into Devin.
+3. **Terminal-native workflow** — no browser required for triage. Start
+   Devin in your project directory and work interactively.
 
 4. **Closed-loop verification** — CI re-scans after every fix. Verify
    locally with the CLI for spot checks.
@@ -225,7 +232,8 @@ done
    attempt counters, and human escalation.
 
 6. **Cloud handoff for scale** — event-driven pipelines, scheduled scans,
-   and child session fan-out all run in Cloud. The CLI is your on-ramp.
+   and child session fan-out all run in Cloud. The CLI is your on-ramp
+   via `/handoff`.
 
 ---
 
