@@ -296,7 +296,7 @@ service, fixes applied, and recommended follow-up actions.
 <a id="key-takeaways"></a>
 ## Key Takeaways
 
-1. **Devin augments every support tier** — not a replacement for humans,
+1. **Devin augments each support tier** — not a replacement for humans,
    but a force multiplier. L1 gets better runbooks. L2 gets instant
    investigation. L3 gets autonomous remediation.
 
@@ -318,4 +318,4 @@ service, fixes applied, and recommended follow-up actions.
 
 6. **Team-based, not individual** — the automation, playbooks, and
    Knowledge notes are shared across the organization. One engineer sets
-   up the pipeline; the entire operations team benefits on every incident.
+   up the pipeline; the entire operations team benefits across incidents.
