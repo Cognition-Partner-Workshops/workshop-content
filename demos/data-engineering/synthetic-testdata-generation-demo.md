@@ -278,8 +278,8 @@ make testdata-clean NS=bob
 
 ### Scheduled Devins — nightly data refresh
 
-Configure a scheduled Devin session to regenerate test data nightly, ensuring
-lower environments always have fresh, validated datasets:
+Configure a scheduled Devin session to regenerate test data nightly, keeping
+lower environments stocked with fresh, validated datasets:
 
 ```
 Every night at 2 AM UTC, run !generate-testdata against Issues labeled
@@ -288,7 +288,7 @@ namespace nightly.
 ```
 
 The same playbook and harness run unattended on a cadence — if validation fails,
-Devin self-heals the generator before opening the PR.
+Devin attempts to fix the generator before opening the PR.
 
 ### Devin Automations — on new issue
 
