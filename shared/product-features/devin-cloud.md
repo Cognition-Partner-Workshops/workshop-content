@@ -132,7 +132,7 @@ Each session has:
 
 ### Devin Review
 - Proactive code review on new PRs (org- or repo-configurable)
-- Detects bugs, security issues, logic errors, race conditions
+- Looks for bugs, security issues, logic errors, and race conditions in new diffs
 - Summarizes large PRs into readable overviews
 - Can auto-open fix PRs for critical findings
 - Findings appear as standard PR comments — team responds naturally
