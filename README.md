@@ -14,7 +14,7 @@ Welcome to the Devin hands-on workshop. This repo contains everything you need t
 ## How to Navigate
 
 ```
-workshop-metadata/
+workshop-instructions/
 ├── modules/           ← individual lab instructions organized by discipline
 │   └── README.md      ← full index of all labs
 ├── workshops/         ← structured lab sequences (your facilitator will point you here)

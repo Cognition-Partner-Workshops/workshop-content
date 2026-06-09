@@ -22,11 +22,15 @@ A guided tour of Devin's three product surfaces — what each one does, when to 
 │  agent on     │  cloud delegation     │  cloud delegation   │
 │  its own VM   │                       │                     │
 └───────┬───────┴───────────┬───────────┴──────────┬──────────┘
-        │                   │                      │
+        │                   │                      ╎ *
         └───────────────────┼──────────────────────┘
                             │
               Shared: Knowledge, Playbooks, Secrets,
               Git Connections, MCP, Automations, DeepWiki
+
+* CLI currently shares Git connections and MCP directly.
+  Knowledge, Playbooks, and Secrets are accessed via Cloud
+  delegation (coming natively to CLI soon).
 ```
 
 - **Devin Cloud** is for autonomous, fire-and-forget tasks — kick off a session and move on

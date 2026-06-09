@@ -8,7 +8,7 @@ This repo is the **attendee-facing** content hub for Devin hands-on workshops. I
 - `workshops/` — Structured lab sequences bundling modules into tracks
 - `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
-- `shared/` — General Devin themes and runtime resource docs
+- `shared/` — General Devin themes, product feature tours, and runtime resource docs
 - `catalog/` — Repository inventory and upstream provenance
 
 All content is Markdown. There is no application code in this repo.
