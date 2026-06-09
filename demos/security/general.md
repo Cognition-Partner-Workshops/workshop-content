@@ -4,7 +4,7 @@
 
 Devin operates as a background security agent — scanning, triaging, fixing,
 and re-scanning in a closed loop. The pattern is scanner-agnostic: Trivy,
-SonarCloud, Semgrep, Snyk, or any tool that produces parseable output. It
+SonarCloud, Semgrep, Snyk, or most tools that produce parseable output. It
 works across most languages and repository layouts.
 
 <a id="toc"></a>
