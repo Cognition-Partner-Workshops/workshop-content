@@ -37,6 +37,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **C12** | Oracle Forms HRMS Modernization | *original* | `ts-plsql-oracle-forms-hrms`, `uc-legacy-modernization-oracle-forms-to-java` | Legacy Oracle Forms/PL/SQL HRMS application paired with Java/Spring Boot migration artifacts, test harness, and architecture documentation. Legacy repo is the static analysis target; use-case repo holds migration planning, target code, and equivalence tests. |
 | **C13** | Sybase ASE → SQL Server Migration | *original* | `ts-tsql-sybase-legacy-db`, `uc-db-migration-sybase-to-sqlserver` | Sybase ASE 16 loan servicing database (stored procedures, views, triggers, functions, schema DDL) paired with SQL Server migration target, reconciliation harness, conversion playbook, synthetic data seeder, and CI/CD pipeline. |
 | **C14** | MuleSoft API → Spring Boot Migration | *original* | `ts-java-mulesoft-employee-api`, `uc-api-migration-mulesoft-to-spring-boot` | MuleSoft Mule 4 Employee Service API (OAuth2, RAML, PostgreSQL) paired with Spring Boot 3.5 migration target, OpenAPI contract verification harness, conversion playbook, and repo Skill. |
+| **C15** | Flutter Mobile App Development | *different upstreams* | `ts-dart-flutter-grocery`, `ts-dart-flutter-ecommerce` | Two Flutter mobile apps for mobile development process workshops: Figma→code generation, unit test generation, build/deploy. Grocery app (GetX/MVC, 44+ screens) and e-commerce template (38 screens, multi-platform). |
 
 ---
 
@@ -566,6 +567,30 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | Apache 2.0 |
 | **Cluster** | C2 (upstream for Lab 1) |
 | **Challenges** | [COBOL Copybook to PySpark/JSON](../modules/data-engineering/cobol-copybook-to-pyspark-json.md), General COBOL demos (prefer using the `uc-` copy for migration labs) |
+
+### ts-dart-flutter-grocery
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-dart-flutter-grocery |
+| **Description** | Flutter Grocery Shopping App — Figma-generated mobile UI with 44+ screens (home, categories, product details, cart, checkout, delivery tracking, customer support, profile, wishlists, orders). GetX state management with MVC architecture (controllers, models, bindings per screen). Includes localization (en_US), API client structure, and validation utilities. No existing unit tests — ideal for test generation workshops. |
+| **Tech Stack** | Dart, Flutter, GetX |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | C15 (Flutter Mobile App Development) |
+| **Key Contents** | `lib/presentation/` (44+ screen directories with controller/model/binding per screen), `lib/core/` (utils, constants, network), `lib/data/` (API client, models), `lib/widgets/` (reusable custom widgets), `lib/theme/` (app styles), `lib/routes/` (app routing), `assets/` (images, fonts) |
+| **Challenges** | Figma→code generation, unit test generation, mobile build/deploy |
+
+### ts-dart-flutter-ecommerce
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-dart-flutter-ecommerce |
+| **Description** | Shope — Flutter e-Commerce UI Kit with 38 screens (splash, auth, product catalog, product details, cart, payment, tracking, profile, settings, notifications, FAQ). Multi-platform support (Android, iOS, Web, Desktop). JSON-serialized models with generated `.g.dart` files. Modular screen architecture with component-level decomposition. Published on Google Play. No existing unit tests — ideal for test generation workshops. |
+| **Tech Stack** | Dart, Flutter |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | C15 (Flutter Mobile App Development) |
+| **Key Contents** | `lib/screens/` (38 screens organized by domain: auth, product, payment, settings, etc.), `lib/models/` (JSON-serialized data models with `.g.dart` codegen), `lib/api_service.dart` (API integration), `assets/` (product images, promotional mockups, fonts) |
+| **Challenges** | Unit test generation, multi-platform build/deploy, feature development from UI mockups |
 
 ### jpetstore-6
 | | |

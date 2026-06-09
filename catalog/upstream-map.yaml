@@ -216,6 +216,19 @@ clusters:
       - ts-java-mulesoft-employee-api
       - uc-api-migration-mulesoft-to-spring-boot
 
+  C15:
+    label: "Flutter Mobile App Development"
+    upstream: null  # different upstreams
+    shared_initial_commit: null
+    reason: >
+      Two Flutter mobile apps for mobile development process workshops:
+      Figma-to-code generation, unit test generation, build/deploy.
+      Grocery app (GetX/MVC, 44+ screens) and e-commerce template
+      (38 screens, multi-platform).
+    repos:
+      - ts-dart-flutter-grocery
+      - ts-dart-flutter-ecommerce
+
 # ============================================================
 # Per-repo upstream mapping (alphabetical)
 # ============================================================
@@ -606,6 +619,20 @@ repos:
     import_method: original
     cluster: null
     note: "Scaffolded for agentic AI anomaly detection use case (dc-2 workshop)"
+
+  ts-dart-flutter-grocery:
+    upstream: Widle-Studio/Grocery-App
+    upstream_url: https://github.com/Widle-Studio/Grocery-App
+    import_method: clone-and-push
+    cluster: C15
+    note: "Figma-generated Flutter grocery shopping app — 44+ screens, GetX state management, MVC architecture"
+
+  ts-dart-flutter-ecommerce:
+    upstream: robertodevs/flutter_ecommerce_template
+    upstream_url: https://github.com/robertodevs/flutter_ecommerce_template
+    import_method: clone-and-push
+    cluster: C15
+    note: "Shope e-commerce UI kit — 38 screens, multi-platform (Android/iOS/Web/Desktop), JSON-serialized models"
 
   workshop-metadata:
     upstream: null
