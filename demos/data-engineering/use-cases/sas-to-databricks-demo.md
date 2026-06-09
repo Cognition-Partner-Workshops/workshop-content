@@ -394,7 +394,7 @@ harness, the Asset Bundle, and the CD workflow, and validated the whole pipeline
 by deploying and running it live in a Databricks workspace. The same Context Loop
 (source analysis → target mapping → produce PR → programmatic verification → human
 review → refine) described in
-[`modules/data-engineering/sas-migration-analysis.md`](../../modules/data-engineering/sas-migration-analysis.md)
+[`modules/data-engineering/sas-migration-analysis.md`](../../../modules/data-engineering/sas-migration-analysis.md)
 applies here, with the conversion procedure codified as the
 `!convert-sas-to-databricks` Devin Playbook (source in the code repo at
 `.workshop/playbooks/sas-to-databricks-conversion.devin.md`).
