@@ -110,7 +110,7 @@ green report.
 ```
 !generate-testdata
 
-Read GitHub Issue #1 on the otterworks repo. It describes a user story
+Read GitHub Issue #376 on the otterworks repo. It describes a user story
 for load-testing the file-sharing feature — 500 users with storage quotas,
 2000+ audit-log entries showing file operations, and realistic activity
 distribution.
@@ -118,7 +118,7 @@ distribution.
 Generate the synthetic data scripts, load them into namespace "dev", and
 validate everything passes.
 
-- Issue: #1
+- Issue: #376
 - Namespace: dev
 - Repo: Cognition-Partner-Workshops/otterworks
 ```
@@ -157,9 +157,9 @@ quality bar applied many times in parallel instead of once in series.
 
 | Session | Issue | Data produced |
 |---|---|---|
-| 1 | #1 — Load-test file sharing | 500 users, 2000+ audit logs, storage quotas (the Act 2 worked example) |
-| 2 | #2 — QA incident management | 50 incidents across severities, linked audit trails, resolution timestamps |
-| 3 | #3 — Staging announcements & feature flags | 20 announcements with scheduling, 15 feature flags with rollout configs |
+| 1 | #376 — Load-test file sharing | 500 users, 2000+ audit logs, storage quotas (the Act 2 worked example) |
+| 2 | #377 — QA incident management | 50 incidents across severities, linked audit trails, resolution timestamps |
+| 3 | #378 — Staging announcements & feature flags | 20 announcements with scheduling, 15 feature flags with rollout configs |
 
 Each session uses its own namespace (`NS=child1`, `NS=child2`, …) so the
 parallel loads never collide.
@@ -181,9 +181,9 @@ issue's acceptance criteria, generate scripts, load data, and validate until
 green.
 
 Issues:
-1. Issue #1 -> namespace child1 (500 users + file-sharing audit logs)
-2. Issue #2 -> namespace child2 (50 incidents + audit trails)
-3. Issue #3 -> namespace child3 (announcements + feature flags)
+1. Issue #376 -> namespace child1 (500 users + file-sharing audit logs)
+2. Issue #377 -> namespace child2 (50 incidents + audit trails)
+3. Issue #378 -> namespace child3 (announcements + feature flags)
 
 After launching, monitor the child sessions until each is validated green.
 Summarize results and call out any validation failures the children caught
