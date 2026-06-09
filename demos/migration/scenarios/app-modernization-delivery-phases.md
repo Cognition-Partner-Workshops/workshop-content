@@ -329,8 +329,7 @@ is thorough, not sampled.
 > **Continuous validation:** Configure a Devin Automation to run the
 > validation suite on every PR merge to `main`. The validation report
 > updates automatically as conversions land. The client has real-time
-> visibility into migration progress and quality — a differentiator for the
-> SI engagement.
+> visibility into migration progress and quality.
 
 ---
 
@@ -432,7 +431,7 @@ For the SI firm, this means:
   with child agents for parallelism. Validation uses automation-triggered
   test campaigns. Cutover uses event-driven incident response.
 
-- **The verification loop is the quality guarantee.** Every conversion runs
+- **The verification loop is the quality backbone.** Every conversion runs
   through the same contract test suite and CI pipeline. The client sees
   evidence — not promises — that each component works correctly in the
   target architecture.
