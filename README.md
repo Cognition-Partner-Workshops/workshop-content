@@ -18,6 +18,7 @@ workshop-instructions/
 ├── modules/           ← individual lab instructions organized by discipline
 │   └── README.md      ← full index of all labs
 ├── workshops/         ← structured lab sequences (your facilitator will point you here)
+├── demos/             ← facilitator-led showcases (follow along, single linear thread)
 ├── events/            ← event-specific agendas and customizations
 ├── catalog/           ← reference inventory of all available repositories
 └── shared/
