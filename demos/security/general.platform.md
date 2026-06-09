@@ -236,12 +236,10 @@ as separate cards. Use Spaces to group them into a single view for tracking.
 5. **Safeguards built in** — automation invocation limits, ACU caps,
    trigger conditions, and human escalation after max attempts.
 
-6. **Team-based operation** — pipelines, knowledge, and playbooks are
-   shared across the organization. Desktop gives every team member
-   visibility into the remediation pipeline.
+6. **Cloud for project workflows, Local Agent for individual tasks** —
+   project-based configurations and automations run on Cloud agents.
+   Individual developer workflows — tight human-in-the-loop triage,
+   subagents, agent skills — are accelerated with the Devin Local Agent
+   in Desktop.
 
----
 
-For a complete worked example using Trivy + SonarCloud on a polyglot
-monorepo, see
-[Event-Driven SAST Remediation](use-cases/event-driven-sast-remediation-demo.md).
