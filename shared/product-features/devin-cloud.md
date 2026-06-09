@@ -43,7 +43,7 @@ Each session has:
 |--------|-----|
 | Web app | Paste a prompt at app.devin.ai |
 | Slack / Teams | Tag Devin in a thread or DM |
-| IDE (Desktop) | Delegate from Cascade to Devin Cloud |
+| IDE (Desktop) | Delegate from Devin Local to Devin Cloud |
 | CLI | `devin` with cloud handoff |
 | API | `POST /sessions` with prompt and repo |
 | Automation | Trigger on GitHub events, webhooks, or schedules |

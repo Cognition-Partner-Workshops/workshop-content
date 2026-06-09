@@ -27,7 +27,7 @@ Devin CLI is a local coding agent that runs directly in your terminal. It reads 
 | Install | `curl -fsSL https://cli.devin.ai/install.sh \| bash` |
 | Also bundled with | Devin Desktop (Windsurf) 1.9577.24+ |
 
-Devin CLI is for developers who live in the terminal. Same agent capabilities as Devin Desktop's Cascade — code generation, debugging, refactoring, shell execution — but in a keyboard-driven terminal interface.
+Devin CLI is for developers who live in the terminal. Same agent capabilities as Devin Desktop's Devin Local — code generation, debugging, refactoring, shell execution — but in a keyboard-driven terminal interface.
 
 ---
 
@@ -154,7 +154,7 @@ devin -r brisk-otter  # Resume a specific session by ID
 - Create custom skills for project-specific patterns
 - Skills directory: `.devin/skills/` in your project
 
-### Rules and AGENTS.md
+### AGENTS.md
 - Always-on instructions loaded from project root or config
 - Same `AGENTS.md` convention as Devin Cloud — portable across surfaces
 
