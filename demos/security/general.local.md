@@ -84,20 +84,14 @@ trivy fs --severity HIGH,CRITICAL --format json . > scan.json
 Then start Devin with the triage prompt:
 
 ```
-devin -- Triage the Trivy findings in scan.json. For
-  each one, tell me the affected file, the CVE, and the
-  recommended fix. Group by service directory.
+devin -- Triage the Trivy findings in scan.json. For each one, tell me the affected file, the CVE, and the recommended fix. Group by service directory.
 ```
 
 Devin reads the scan output and responds with a structured triage summary.
 For straightforward fixes, ask Devin to apply them directly:
 
 ```
-devin -- Fix the HIGH and CRITICAL Trivy findings in
-  services/collab-service/package.json and
-  services/search-service/requirements.txt.
-  Upgrade the vulnerable dependencies to the
-  recommended versions and run each service's tests.
+devin -- Fix the HIGH and CRITICAL Trivy findings in services/collab-service/package.json and services/search-service/requirements.txt. Upgrade the vulnerable dependencies to the recommended versions and run each service's tests.
 ```
 
 ### Hand off to Cloud for the full pipeline
@@ -113,13 +107,7 @@ devin
 Then within the session:
 
 ```
-/handoff Remediate all HIGH and CRITICAL Trivy findings
-  on the Cognition-Partner-Workshops/otterworks repo.
-  Triage findings by service directory. For each finding,
-  apply the fix (dependency upgrade or code change) in the
-  correct manifest or source file. Run each affected
-  service's tests before pushing. Group related fixes per
-  service into single PRs.
+/handoff Remediate all HIGH and CRITICAL Trivy findings on the Cognition-Partner-Workshops/otterworks repo. Triage findings by service directory. For each finding, apply the fix (dependency upgrade or code change) in the correct manifest or source file. Run each affected service's tests before pushing. Group related fixes per service into single PRs.
 ```
 
 The `/handoff` command packages the conversation context and creates a
@@ -139,18 +127,13 @@ For repos with an existing vulnerability backlog, combine CLI triage with
 Cloud remediation:
 
 ```
-devin -- Review the Trivy scan results for otterworks.
-  Create a SECURITY_BACKLOG.md listing all CRITICAL and
-  HIGH findings organized by service directory.
+devin -- Review the Trivy scan results for otterworks. Create a SECURITY_BACKLOG.md listing all CRITICAL and HIGH findings organized by service directory.
 ```
 
 Once the triage is complete, hand off bulk remediation to Cloud:
 
 ```
-/handoff Using the SECURITY_BACKLOG.md in otterworks,
-  fix all HIGH and CRITICAL findings. Group related
-  fixes per service into single PRs. Run each service's
-  tests before pushing. Skip findings in test files.
+/handoff Using the SECURITY_BACKLOG.md in otterworks, fix all HIGH and CRITICAL findings. Group related fixes per service into single PRs. Run each service's tests before pushing. Skip findings in test files.
 ```
 
 ---
@@ -162,22 +145,7 @@ For enterprise-scale remediation, hand off to Cloud and let the parent
 session spawn children. Start a session and hand off:
 
 ```
-/handoff You are coordinating a security remediation
-  across the Cognition-Partner-Workshops/otterworks
-  repository.
-
-  Run the security scan and capture the output. Create a
-  SECURITY_BACKLOG.md listing all CRITICAL and HIGH
-  findings organized by service or directory.
-
-  Then launch parallel child sessions — one per affected
-  service — with scoped instructions:
-  - Each child works only on its assigned service
-    directory
-  - Each child upgrades the vulnerable dependency, runs
-    the service tests, and pushes to the same branch
-  - After all children complete, summarize results in
-    REMEDIATION_SUMMARY.md
+/handoff You are coordinating a security remediation across the Cognition-Partner-Workshops/otterworks repository. Run the security scan and capture the output. Create a SECURITY_BACKLOG.md listing all CRITICAL and HIGH findings organized by service or directory. Then launch parallel child sessions — one per affected service — with scoped instructions: each child works only on its assigned service directory, upgrades the vulnerable dependency, runs the service tests, and pushes to the same branch. After all children complete, summarize results in REMEDIATION_SUMMARY.md.
 ```
 
 Child sessions run on their own Cloud VMs. The parent monitors progress
@@ -201,9 +169,7 @@ and handles failures or escalations.
    to verify locally:
 
    ```
-   devin -- Check if there are any remaining HIGH or
-     CRITICAL Trivy findings in this repo. Summarize
-     what was fixed and what remains.
+   devin -- Check if there are any remaining HIGH or CRITICAL Trivy findings in this repo. Summarize what was fixed and what remains.
    ```
 
 5. **Audit trail** — every scan result, Devin session link, and escalation
