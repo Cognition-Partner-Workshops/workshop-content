@@ -197,8 +197,8 @@ The closed loop is the core value of event-driven security remediation:
 1. **Same CI that found the problem re-scans after Devin's fix** — no manual
    verification step for dependency upgrades or well-documented fixes.
 
-2. **Converging loop** — each iteration reduces the finding count. When
-   findings reach zero, CI goes green automatically.
+2. **Converging loop** — each successful iteration reduces the finding count.
+   When findings reach zero, CI goes green automatically.
 
 3. **Bounded iterations** — the attempt counter ensures the loop terminates.
    After the configured maximum, the workflow escalates to humans.

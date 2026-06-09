@@ -201,8 +201,8 @@ as separate cards. Use Spaces to group them into a single view for tracking.
 1. **Same CI that found the problem re-scans after Devin's fix** — no manual
    verification step for dependency upgrades or well-documented fixes.
 
-2. **Converging loop** — each iteration reduces the finding count. When
-   findings reach zero, CI goes green.
+2. **Converging loop** — each successful iteration reduces the finding count.
+   When findings reach zero, CI goes green.
 
 3. **Bounded iterations** — the attempt counter ensures the loop terminates.
    After the configured maximum, the workflow escalates to humans.
