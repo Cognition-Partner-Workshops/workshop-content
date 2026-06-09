@@ -218,9 +218,9 @@ and handles failures or escalations.
    for interactive scan triage and quick fixes. Use `/handoff` to transfer
    event-driven remediation pipelines to Cloud.
 
-2. **Scanner-agnostic architecture** — the pattern works with any scanner.
-   Run the scan locally, pass findings to Devin, or let CI trigger via
-   the v3 API.
+2. **Scanner-agnostic architecture** — the pattern works with most scanners
+   that produce parseable output. Run the scan locally, pass findings to
+   Devin, or let CI trigger via the v3 API.
 
 3. **Terminal-native workflow** — no browser required for triage. Start
    Devin in your project directory and work interactively.

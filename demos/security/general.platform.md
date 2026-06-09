@@ -204,8 +204,9 @@ as separate cards. Use Spaces to group them into a single view for tracking.
    Cloud, monitor progress in the Agent Command Center, and review fix PRs
    with one-click checkout in your editor.
 
-2. **Scanner-agnostic architecture** — the pattern works with any scanner.
-   Swap the scan step; the Devin API integration stays the same.
+2. **Scanner-agnostic architecture** — the pattern works with most scanners
+   that produce parseable output. Swap the scan step; the Devin API
+   integration stays the same.
 
 3. **Spaces for organization** — group related remediation sessions into
    Spaces for a unified view of your security sprint.

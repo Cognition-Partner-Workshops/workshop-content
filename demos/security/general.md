@@ -5,7 +5,7 @@
 Devin operates as a background security agent — scanning, triaging, fixing,
 and re-scanning in a closed loop. The pattern is scanner-agnostic: Trivy,
 SonarCloud, Semgrep, Snyk, or any tool that produces parseable output. It
-works across any language and any repository layout.
+works across most languages and repository layouts.
 
 <a id="toc"></a>
 ## Table of Contents
@@ -208,8 +208,8 @@ The closed loop is the core value of event-driven security remediation:
    service that responds to CI events. Developers commit code; Devin handles
    security remediation.
 
-2. **Scanner-agnostic architecture** — the pattern works with any scanner
-   that produces parseable output or GitHub `check_run` events. Swap the
+2. **Scanner-agnostic architecture** — the pattern works with most scanners
+   that produce parseable output or GitHub `check_run` events. Swap the
    scan step; the Devin API integration and escalation logic stay the same.
 
 3. **Polyglot at scale** — one pipeline handles multiple languages. Devin
