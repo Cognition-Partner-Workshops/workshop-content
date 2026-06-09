@@ -115,7 +115,7 @@ API spec at <spec-path>. Fix any failures before finishing.
 Using the playbook at <playbook-path>, convert all remaining
 endpoints from <source-framework> to <target-framework>. Spawn a
 child session for each endpoint. Each child should follow the same
-convert-then-verify pattern and open its own PR.
+convert-then-verify pattern.
 ```
 
 ---

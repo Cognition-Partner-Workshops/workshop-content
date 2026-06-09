@@ -123,7 +123,7 @@ parallel Cloud sessions:
 Using the playbook at <playbook-path>, convert all remaining
 endpoints from <source-framework> to <target-framework>. Spawn
 a child session for each endpoint. Each child should follow the
-same convert-then-verify pattern and open its own PR.
+same convert-then-verify pattern.
 ```
 
 Each child appears as a separate card in the Agent Command Center Kanban board.
@@ -170,7 +170,7 @@ escalate. No need to open multiple browser tabs or track session URLs manually.
   vs. new framework code side-by-side
 - **Spaces for organization** — group the entire migration workstream in one
   workspace
-- **Same verification guarantees** — contract tests run in Cloud, results
+- **Same verification approach** — contract tests run in Cloud, results
   surface in Desktop
 
 ---

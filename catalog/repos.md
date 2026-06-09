@@ -202,7 +202,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | C14 (companion to `ts-java-mulesoft-employee-api`) |
 | **Key Contents** | OpenAPI 3.0 contract (7 endpoints), Spring Boot scaffold with Flyway migrations, REST Assured contract tests (8 test classes), Docker Compose for PostgreSQL 16, Devin Playbook (`!convert-mulesoft-to-spring-boot`), repo Skill with MuleSoft→Spring Boot mapping table |
-| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
+| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/use-cases/mulesoft-to-spring-boot-demo.md) |
 
 ### uc-bdd-test-generation-cucumber
 | | |
@@ -299,7 +299,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | C14 (companion to `uc-api-migration-mulesoft-to-spring-boot`) |
 | **Key Contents** | Mule XML flows (`src/main/mule/employee-services-api.xml` — 1457 lines), RAML spec (`src/main/resources/api/employee-services-api.raml`), OAuth2 token management, DataWeave transforms, database setup SQL |
-| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
+| **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/use-cases/mulesoft-to-spring-boot-demo.md) |
 
 ### ts-sas-legacy-analytics
 | | |
