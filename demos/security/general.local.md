@@ -107,7 +107,13 @@ devin
 Then within the session:
 
 ```
-/handoff Remediate all HIGH and CRITICAL Trivy findings on the Cognition-Partner-Workshops/otterworks repo. Triage findings by service directory. For each finding, apply the fix (dependency upgrade or code change) in the correct manifest or source file. Run each affected service's tests before pushing. Group related fixes per service into single PRs.
+/handoff Remediate all HIGH and CRITICAL Trivy
+findings on the Cognition-Partner-Workshops/otterworks
+repo. Triage findings by service directory. For each
+finding, apply the fix (dependency upgrade or code
+change) in the correct manifest or source file. Run
+each affected service's tests before pushing. Group
+related fixes per service into single PRs.
 ```
 
 The `/handoff` command packages the conversation context and creates a
@@ -133,7 +139,10 @@ devin -- Review the Trivy scan results for otterworks. Create a SECURITY_BACKLOG
 Once the triage is complete, hand off bulk remediation to Cloud:
 
 ```
-/handoff Using the SECURITY_BACKLOG.md in otterworks, fix all HIGH and CRITICAL findings. Group related fixes per service into single PRs. Run each service's tests before pushing. Skip findings in test files.
+/handoff Using the SECURITY_BACKLOG.md in otterworks,
+fix all HIGH and CRITICAL findings. Group related fixes
+per service into single PRs. Run each service's tests
+before pushing. Skip findings in test files.
 ```
 
 ---
@@ -145,7 +154,18 @@ For enterprise-scale remediation, hand off to Cloud and let the parent
 session spawn children. Start a session and hand off:
 
 ```
-/handoff You are coordinating a security remediation across the Cognition-Partner-Workshops/otterworks repository. Run the security scan and capture the output. Create a SECURITY_BACKLOG.md listing all CRITICAL and HIGH findings organized by service or directory. Then launch parallel child sessions — one per affected service — with scoped instructions: each child works only on its assigned service directory, upgrades the vulnerable dependency, runs the service tests, and pushes to the same branch. After all children complete, summarize results in REMEDIATION_SUMMARY.md.
+/handoff You are coordinating a security remediation
+across the Cognition-Partner-Workshops/otterworks
+repository. Run the security scan and capture the
+output. Create a SECURITY_BACKLOG.md listing all
+CRITICAL and HIGH findings organized by service or
+directory. Then launch parallel child sessions — one
+per affected service — with scoped instructions: each
+child works only on its assigned service directory,
+upgrades the vulnerable dependency, runs the service
+tests, and pushes to the same branch. After all
+children complete, summarize results in
+REMEDIATION_SUMMARY.md.
 ```
 
 Child sessions run on their own Cloud VMs. The parent monitors progress
