@@ -7,11 +7,18 @@ verification loop. The narrative: a single engineer amplifies their scope,
 velocity, and quality by treating Devin as a team-based resource across many
 classes of engineering work.
 
-The prompts below invoke the `!java-engineering-excellence` Devin Playbook —
-the reusable procedure — whose source lives in the code repo at
-[`ts-java-spring-boot-realworld/.workshop/playbooks/java-engineering-excellence.devin.md`](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-realworld/blob/main/.workshop/playbooks/java-engineering-excellence.devin.md).
-The repo-specific build commands and dependency coordinates come from that repo's
-Skill (`.agents/skills/java-engineering-excellence/SKILL.md`).
+**How the pieces fit together:**
+
+| Layer | What it does | How it's loaded |
+|-------|--------------|-----------------|
+| **Skill** (`.agents/skills/`) | General guidance — how to approach upgrades, build commands, test patterns, project layout | Auto-loaded when Devin works in this repo |
+| **Playbook** (`.workshop/playbooks/`) | Tactical, task-specific procedure invoked for a concrete unit of work | User explicitly adds `!java-engineering-excellence` to their prompt |
+| **Automation** | Event-driven trigger — SAST scan creates a GitHub issue, Automation starts a Devin session | Fires automatically on matching events |
+
+The Skill gives Devin the repo context it needs (where things are, how to build,
+how to approach a Java 11→21 upgrade). The Playbook is the specific procedure
+for a tactical task. Automations close the loop for event-driven work like
+security remediation — no human trigger needed.
 
 ## Table of Contents
 
@@ -36,7 +43,7 @@ Pick any act and paste its prompt into a Devin session with access to
 `Cognition-Partner-Workshops/ts-java-spring-boot-realworld`:
 
 - **[Act 1 — Feature Dev](#act-1)**: add a bookmark article feature
-- **[Act 2 — Security](#act-2)**: remediate a CVE in jackson-databind
+- **[Act 2 — Security](#act-2)**: SAST scan → Automation → remediate CVE (event-driven)
 - **[Act 3 — Modernization](#act-3)**: upgrade Java 11 → 21, Boot 2.6 → 3.5
 - **[Act 4 — Testing](#act-4)**: generate tests to meet 80% JaCoCo coverage
 
@@ -122,34 +129,53 @@ tests and formatting that passes CI on first push.
 <a id="act-2"></a>
 ## Act 2 — Issue Triage and Security Remediation (Automations)
 
-A security scanner (or Devin Automation triggered by a Dependabot alert)
-identifies critical CVEs in the dependency tree. Devin triages, remediates, and
-proves the fix — automatically.
+This act shows the full event-driven pipeline: a SAST scan finds a vulnerability,
+creates a GitHub issue, a Devin Automation triggers, and Devin remediates and
+verifies the fix — with no human initiating the session.
+
+### The Pipeline
+
+```
+OWASP Dependency-Check (weekly GitHub Action)
+  → Finds CVE with CVSS ≥ 7.0
+  → Creates GitHub issue labeled "security"
+  → Devin Automation fires on issue creation
+  → Devin session starts, runs the playbook
+  → Remediation PR opened with before/after evidence
+  → Team reviews verified fix in the morning
+```
 
 ### Setting up the Automation
 
-Before running this act, configure a Devin Automation that triggers on
-security-related GitHub events:
+Navigate to Settings → Automations and create a new automation:
 
-**Trigger**: GitHub webhook — Dependabot alert created (or `issues` labeled
-`security`)
-
-**Action**: Start a Devin session with the following prompt:
+- **Name**: Security Remediation — Java RealWorld
+- **Trigger**: GitHub issue opened with label `security` on
+  `Cognition-Partner-Workshops/ts-java-spring-boot-realworld`
+- **Prompt template**:
 
 ```
 !java-engineering-excellence
 
 Task: issue-triage
 Repository: Cognition-Partner-Workshops/ts-java-spring-boot-realworld
-Issue: {event.alert.summary}
-CVE: {event.alert.cve_id}
+Issue: {{issue.title}}
+Details: {{issue.body}}
 
-Remediate this CVE by upgrading the affected dependency. Verify the
-fix by confirming the vulnerable version is no longer in the
-dependency tree and that all tests pass.
+Remediate this vulnerability by upgrading the affected dependency.
+Verify the fix by confirming the vulnerable version is no longer in
+the dependency tree and that all tests pass. Include before/after
+dependency tree output in the PR description.
 ```
 
-### Running the remediation manually
+### Triggering it manually (for the demo)
+
+The repo's SAST workflow (`.github/workflows/dependency-check.yml`) runs weekly,
+but you can trigger it immediately via Actions → OWASP Dependency Check → Run
+workflow. It will create `security`-labeled issues for critical findings, which
+fire the Automation.
+
+Alternatively, paste this prompt to run the remediation directly:
 
 ```
 !java-engineering-excellence
@@ -173,14 +199,10 @@ the PR description.
 3. Runs verification gate — tests still green.
 4. PR includes the before/after dependency tree as evidence.
 
-**The Automation angle**: in production, this entire flow fires automatically
-when Dependabot opens an alert. No human triage step. The PR lands in the
-team's review queue already verified and ready to merge. Navigate to Settings →
-Automations to see the event-driven trigger configuration.
-
-**The value**: security remediation at machine speed. CVE disclosed at 2 AM →
-Devin has a verified fix PR waiting in the morning. The team reviews and merges
-instead of triaging, researching, patching, and testing.
+**The value**: security remediation at machine speed with zero human initiation.
+CVE disclosed at 2 AM → SAST scan finds it → Automation fires → verified fix PR
+waiting in the morning. The team reviews and merges instead of triaging,
+researching, patching, and testing.
 
 ---
 
@@ -191,6 +213,11 @@ The centerpiece. A major framework upgrade that touches nearly every file —
 `javax` → `jakarta`, deprecated security APIs removed, third-party libraries
 with breaking changes. Devin upgrades layer by layer, gating each step on the
 test suite. The tests catch a real silent regression.
+
+The repo's Skill (auto-loaded) provides general guidance on how to approach
+Java 11→21 upgrades — the recommended layer order, known pitfalls (dual
+validation providers), and the namespace migration checklist. The prompt below
+is the tactical task: *do this specific upgrade on this repo*.
 
 ```
 !java-engineering-excellence
