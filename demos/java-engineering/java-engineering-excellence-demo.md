@@ -366,8 +366,7 @@ its layer, and reports green:
    Branch: devin/<ts>-upgrade-core
 
 After all children report green, merge the four branches into a single
-upgrade branch, run the full gate (./gradlew clean test spotlessCheck),
-and open the consolidated PR.
+upgrade branch and run the full gate (./gradlew clean test spotlessCheck).
 ```
 
 **What to observe:**
