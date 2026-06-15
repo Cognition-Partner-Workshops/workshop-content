@@ -4,9 +4,8 @@
 
 | | |
 |---|---|
-| **Date** | 2026-06 (TBD) |
+| **Date** | 2026-06-16 |
 | **Location** | TBD |
-| **Host Organization** | *(customer)* |
 | **Duration** | ~3.5 hours |
 | **Audience** | Technical engineers experiencing Devin hands-on |
 | **Tracks** | Single progressive track: Secure → Modernize → Migrate → Decompose |
