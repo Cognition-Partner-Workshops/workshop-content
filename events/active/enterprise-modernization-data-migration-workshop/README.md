@@ -501,20 +501,27 @@ and visits.
 
 **Security sprint:**
 ```
-Run a security audit on the otterworks repository. Scan all
-services for dependency vulnerabilities, identify hardcoded
-secrets or credentials, check for insecure API endpoints,
-and produce a SECURITY_AUDIT.md with findings prioritized by
-severity.
+Run a security audit on the otterworks repository. Start
+with the dependency manifests in each service directory:
+services/collab-service/package.json (Node.js),
+services/search-service/requirements.txt (Python),
+services/admin-service/Gemfile (Ruby), and the Java/Kotlin
+services' build.gradle files. Check .trivyignore for
+suppressed CVEs. Scan for hardcoded secrets or credentials,
+check for insecure API endpoints, and produce a
+SECURITY_AUDIT.md with findings prioritized by severity.
 ```
 
 **Incident investigation:**
 ```
 Investigate the recent performance degradation in otterworks.
-Analyze the service logs, trace cross-service request flows,
-identify bottlenecks in the API gateway and file-service,
-and produce an INCIDENT_REPORT.md with root cause analysis
-and recommended fixes.
+Start with the service architecture in docker-compose.yml
+and the observability config in observability/. Analyze the
+API gateway in services/gateway-service/ and the file
+service in services/file-service/. Trace cross-service
+request flows using the OpenTelemetry instrumentation, and
+produce an INCIDENT_REPORT.md with root cause analysis and
+recommended fixes.
 ```
 
 ---
