@@ -35,7 +35,7 @@ A few tips to maximize your hands-on time:
 
 Already comfortable with Devin basics? Jump straight to the labs:
 
-1. Pick a lab: [Lab 1 (Security)](#lab-1--security-remediation-cve-scan--fix--rescan-15-min), [Lab 2 (COBOL→Java)](#lab-2--cobol-to-java-modernization-15-min), [Lab 3 (SAS→Snowflake)](#lab-3--sas-to-snowflake-data-migration-15-min), or [Lab 4 (Microservice Extraction)](#lab-4--monolith-to-microservices-extraction-15-min)
+1. Pick a lab: [Lab 1 (Security)](#lab-1), [Lab 2 (COBOL→Java)](#lab-2), [Lab 3 (SAS→Snowflake)](#lab-3), or [Lab 4 (Microservice Extraction)](#lab-4)
 2. Copy the prompt from the lab and paste it into a new Devin session
 3. While Devin works, try the Ask Devin prompts to explore the codebase
 4. Review the PR when Devin finishes, leave comments, and iterate
@@ -45,10 +45,10 @@ Already comfortable with Devin basics? Jump straight to the labs:
 ## Table of Contents
 
 - [Agenda](#agenda)
-- [Lab 1 — Security Remediation (CVE Scan → Fix → Rescan)](#lab-1--security-remediation-cve-scan--fix--rescan-15-min)
-- [Lab 2 — COBOL to Java Modernization](#lab-2--cobol-to-java-modernization-15-min)
-- [Lab 3 — SAS to Snowflake Data Migration](#lab-3--sas-to-snowflake-data-migration-15-min)
-- [Lab 4 — Monolith-to-Microservices Extraction](#lab-4--monolith-to-microservices-extraction-15-min)
+- [Lab 1 — Security Remediation: Dependency CVE Fix](#lab-1)
+- [Lab 2 — COBOL to Java Modernization](#lab-2)
+- [Lab 3 — SAS to Snowflake Data Migration](#lab-3)
+- [Lab 4 — Monolith-to-Microservices Extraction](#lab-4)
 - [Follow-On Activities](#follow-on-activities)
 - [Known Limitations](#known-limitations)
 - [Repos Required](#repos-required)
@@ -61,7 +61,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 | Time | Activity | Lab |
 |------|----------|-----|
 | 0:00 | Welcome, Devin overview, platform walkthrough | — |
-| 0:15 | **Kick off Labs 1–4** — paste all prompts back-to-back (~10 min) | [Labs 1](#lab-1--security-remediation-cve-scan--fix--rescan-15-min)–[4](#lab-4--monolith-to-microservices-extraction-15-min) |
+| 0:15 | **Kick off Labs 1–4** — paste all prompts back-to-back (~10 min) | [Labs 1](#lab-1)–[4](#lab-4) |
 | 0:25 | **While Devin works:** Ask Devin prompts + DeepWiki exploration | — |
 | 0:45 | **Review first PRs arriving**, leave comments, iterate with Devin | — |
 | 1:15 | Break | — |
