@@ -39,13 +39,14 @@ security remediation — no human trigger needed.
 <a id="quick-start"></a>
 ## Quick Start
 
-Pick any act and paste its prompt into a Devin session with access to
-`Cognition-Partner-Workshops/ts-java-spring-boot-realworld`:
+Run the four acts in sequence in a Devin session with access to
+`Cognition-Partner-Workshops/ts-java-spring-boot-realworld`. Start with Act 1
+and progress through to Act 4 — each builds on the previous narrative:
 
-- **[Act 1 — Feature Dev](#act-1)**: add a bookmark article feature
-- **[Act 2 — Security](#act-2)**: SAST scan → Automation → remediate CVE (event-driven)
-- **[Act 3 — Modernization](#act-3)**: upgrade Java 11 → 21, Boot 2.6 → 3.5
-- **[Act 4 — Testing](#act-4)**: generate tests to meet 80% JaCoCo coverage
+1. [Act 1](#act-1) — Feature Dev (bookmark article)
+2. [Act 2](#act-2) — Security (SAST → Automation → CVE remediation)
+3. [Act 3](#act-3) — Modernization (Java 11 → 21, Boot 2.6 → 3.5)
+4. [Act 4](#act-4) — Testing (generate tests to reach 80% JaCoCo coverage)
 
 The verification gate for all tasks: `./gradlew clean test spotlessCheck`
 
