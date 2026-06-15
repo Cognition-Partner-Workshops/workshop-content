@@ -142,7 +142,7 @@ What Devin produces:
 - **`snowflake_sql/JOB04_MONTHLY_REGULATORY.sql`** — four Snowflake SQL
   statements creating `REPORTS.MONTHLY_RWA`, `REPORTS.DELINQUENCY_AGING`,
   `REPORTS.LLP_COVERAGE`, `REPORTS.CAPITAL_ADEQUACY`. The risk-weight CASE
-  faithfully maps every `ACCOUNT_TYPE` × LTV combination from the SAS source:
+  faithfully maps the `ACCOUNT_TYPE` × LTV combinations from the SAS source:
 
   ```sql
   -- LOC risk weight = 1.00, matching SAS source exactly.
@@ -156,7 +156,7 @@ What Devin produces:
   that replaces the Control-M monthly schedule.
 
 The point: Devin read a 199-line SAS program with Basel III logic, converted
-every CASE branch and aggregation faithfully to Snowflake SQL, and wired the
+the CASE branches and aggregations to Snowflake SQL, and wired the
 result into the Task DAG — with a parity check gating correctness.
 
 <a id="act-3"></a>
