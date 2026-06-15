@@ -13,9 +13,9 @@
 
 ## Workshop Overview
 
-This is a hands-on workshop covering four high-impact enterprise engineering use cases with Devin. The labs are structured as a progressive ramp — starting with security remediation, moving through legacy COBOL modernization and SAS-to-Snowflake data migration, and finishing with monolith-to-microservices extraction. By the end, participants will have used Devin to scan and remediate CVEs, translate COBOL to Java, migrate SAS analytics to Python/Snowflake, and decompose a monolith into independently deployable services.
+This is a hands-on workshop covering four high-impact enterprise engineering use cases with Devin. The labs are structured as a progressive ramp — starting with security remediation, moving through legacy COBOL modernization and SAS-to-Snowflake data migration, and finishing with monolith-to-microservices extraction. By the end, participants will have used Devin to remediate known CVEs, translate COBOL to Java, migrate SAS analytics to Python/Snowflake, and decompose a monolith into independently deployable services.
 
-Each lab targets a different repository and a different Devin capability — security scanning and dependency management, cross-language legacy code comprehension, data-layer translation, and architectural decomposition — so participants see the breadth of what Devin can do across an enterprise engineering portfolio.
+Each lab targets a different repository and a different Devin capability — dependency vulnerability remediation, cross-language legacy code comprehension, data-layer translation, and architectural decomposition — so participants see the breadth of what Devin can do across an enterprise engineering portfolio.
 
 > **Note:** This workshop runs against an external GitHub organization. The repos listed below will be available in your organization's GitHub workspace.
 
@@ -544,8 +544,8 @@ A few things to be aware of as you work through the labs:
 **Follow-on activities (optional):**
 - [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo) — COBOL CardDemo (fork for COBOL-specific labs)
 - [uc-data-migration-sas-to-databricks](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks) — dbt/Databricks target for SAS migration
-- [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular 16 frontend (Activity 4)
-- [petclinic-rest-api](https://github.com/Cognition-Partner-Workshops/petclinic-rest-api) — REST API backend (Activity 4 reference)
+- [app_petclinic-angular](https://github.com/Cognition-Partner-Workshops/app_petclinic-angular) — Angular 16 frontend (Activity 4)
+- [ts-java-spring-petclinic-rest-api](https://github.com/Cognition-Partner-Workshops/ts-java-spring-petclinic-rest-api) — REST API backend (Activity 4 reference)
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — Polyglot microservices platform (Activity 5)
 - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack app
 
@@ -555,7 +555,7 @@ Track your progress throughout the session — try to discover as many Devin cap
 
 | Feature | Lab(s) Where You'll See It |
 |---------|---------------------------|
-| SAST/SCA tool execution | Lab 1 |
+| Dependency vulnerability remediation | Lab 1 |
 | Dependency management | Lab 1 |
 | Cross-language code comprehension (COBOL) | Lab 2 |
 | Code generation (Java from COBOL) | Lab 2 |
