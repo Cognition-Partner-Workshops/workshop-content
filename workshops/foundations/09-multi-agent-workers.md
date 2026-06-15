@@ -184,7 +184,7 @@ Step 5: Run full test suite
 Step 6: If tests fail, read errors and fix
 Step 7: Run again — iterate up to 3 times
 Step 8: If still failing, escalate to parent with error details
-Step 9: Open PR with summary of changes
+Step 9: If all checks pass, mark task as complete
 ```
 
 Every child follows the same procedure. The output is predictable, reviewable, and consistent — regardless of which specific service the child is working on.

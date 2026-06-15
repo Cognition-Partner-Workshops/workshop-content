@@ -203,7 +203,7 @@ Before activating any automation:
 ### Recipe 4: New Ticket Implementation
 
 **Type:** Event-driven (Jira/Linear ticket assigned to Devin)
-**Prompt:** "Implement the work described in ticket {{ticket_id}}: {{ticket_title}}. Read the full description and acceptance criteria. Work in {{repo}} on a new branch. Open a PR when done and link it back to the ticket."
+**Prompt:** "Implement the work described in ticket {{ticket_id}}: {{ticket_title}}. Read the full description and acceptance criteria. Work in {{repo}} on a new branch. Link the resulting PR back to the ticket."
 
 ---
 
