@@ -1,34 +1,33 @@
-# SAS → Snowflake — Data Migration Validation Demo
+# SAS → Snowflake — Full Migration Demo
 
-A single linear demo that shows Devin validating a SAS-to-Snowflake data
-migration with **verifiable confidence**: orient over the legacy SAS estate,
-run a programmatic reconciliation against the Snowflake target, catch a real
-divergence (the `is_active` filter that silently drops inactive accounts), fix
-it, then fan the work out across many tables in parallel. The second half runs
-the produced validation harness end to end and confirms completion in
-Snowflake's worksheet UI.
+Devin **migrates** a legacy SAS estate to Snowflake end to end: reads SAS
+programs, converts them to Snowflake SQL and Snowpark Python, replaces Control-M
+batch orchestration with Snowflake Tasks, validates parity against the SAS
+source with a programmatic reconciliation harness (catching a real divergence),
+and confirms the results live in Snowsight.
 
-The prompts below invoke the `!validate-sas-to-snowflake` Devin Playbook — the
-reusable validation procedure — whose source lives in the code repo at
+The prompts below invoke the `!convert-sas-to-snowflake` Devin Playbook — the
+reusable conversion-and-validation procedure — whose source lives in the code
+repo at
 [`uc-data-migration-sas-to-snowflake/.workshop/playbooks/sas-to-snowflake-migration.devin.md`](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake/blob/main/.workshop/playbooks/sas-to-snowflake-migration.devin.md).
-The repo-specific `make validate` / lineage-tracing mechanics come from the
-repo's Skill (`.agents/skills/sas-to-snowflake-migration/SKILL.md`).
+The repo-specific mechanics come from the repo's Skill
+(`.agents/skills/sas-to-snowflake-migration/SKILL.md`).
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
 - [Repositories](#repositories)
 - [Before, After, and the Verification Loop](#before-after)
-- [Part 1 — Devin Validates the Migration](#part-1)
+- [Part 1 — Devin Converts and Validates](#part-1)
   - [Act 1 — Orient over the SAS estate](#act-1)
-  - [Act 2 — Validate one table live, with verification](#act-2)
-  - [Act 3 — Fan out in parallel](#act-3)
-  - [Act 4 — Confidence = programmatic verification](#act-4)
-- [Part 2 — Run the Produced Artifact](#part-2)
-- [Confirming Completion in Snowflake](#confirm-snowflake)
+  - [Act 2 — Convert SAS to Snowflake SQL](#act-2)
+  - [Act 3 — Convert procedural SAS to Snowpark Python](#act-3)
+  - [Act 4 — Replace Control-M with Snowflake Tasks](#act-4)
+  - [Act 5 — Validate with the reconciliation harness](#act-5)
+- [Part 2 — Run the Produced Artifacts](#part-2)
+- [Confirming Completion in Snowsight](#confirm-snowsight)
 - [Concurrent Runs](#concurrent)
 - [Key Takeaways](#key-takeaways)
-- [How Devin Produced This](#how-devin)
 
 ---
 
@@ -60,7 +59,7 @@ also set `SNOWFLAKE_ACCOUNT`, `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`,
 ## Repositories
 
 - [ts-sas-legacy-analytics](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics) — the legacy SAS estate (banking/insurance programs, macros, formats, batch orchestration). Read-only reference for the "before".
-- [uc-data-migration-sas-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake) — the Snowflake migration target: validation harness, sample datasets (SAS `.sas7bdat` + Snowflake CSV exports), Collibra-style lineage metadata, the Streamlit validation dashboard, the playbook source (`.workshop/playbooks/`), and the repo Skill (`.agents/skills/`).
+- [uc-data-migration-sas-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake) — the Snowflake migration target: converted SQL/Snowpark code, validation harness, sample datasets, lineage metadata, the playbook source (`.workshop/playbooks/`), and the repo Skill (`.agents/skills/`).
 
 ---
 
@@ -69,73 +68,210 @@ also set `SNOWFLAKE_ACCOUNT`, `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`,
 
 | | Code | Data |
 |---|---|---|
-| **Before** | `main`: the validation harness (`verify/reconcile.py`), lineage metadata, Streamlit dashboard, the playbook source, and the repo Skill. The SAS estate lives in `ts-sas-legacy-analytics`. | SAS `.sas7bdat` source files (durable, immutable) + per-scenario Snowflake CSV exports |
-| **After** | a PR branch with any migration fixes, updated validation rules, and a green reconciliation report | corrected Snowflake CSV exports or SQL migration scripts in the scenario directory |
+| **Before** | `main`: the validation harness (`verify/reconcile.py`), lineage metadata, Streamlit dashboard, playbook source, and Skill. The SAS estate lives in `ts-sas-legacy-analytics`. | SAS `.sas7bdat` source files (durable, immutable) + per-scenario Snowflake CSV exports |
+| **After** | a PR branch with converted Snowflake SQL (`snowflake_sql/`), Snowpark Python (`snowpark/`), Snowflake Task DDL (`snowflake_sql/orchestration/`), and a green reconciliation report | Snowflake tables matching SAS source row counts and control totals |
 
-The **before** state includes the validation harness and SAS baseline on `main`.
-Snowflake CSV exports live in scenario directories (`Scenario1`, `Scenario2`)
-representing different migration states. What Devin validates **live** is the
-parity between the SAS source (the immutable baseline) and the Snowflake target
-(the migration output).
-
-The verification loop sits between them: every migrated table is checked by
-the reconciliation harness (Row Count, Sum Amount, Distinct Count, Not Null,
-Uniqueness) before it is trusted. The before state is immutable; the after
-state is scenario-scoped and disposable — which is what makes this safe to
-repeat and safe to run concurrently.
+The verification loop sits between them: every converted program's output is
+checked by the reconciliation harness (Row Count, Sum Amount, Distinct Count,
+Not Null, Uniqueness) before it is trusted. The before state is immutable; the
+after state is scenario-scoped and disposable — safe to repeat, safe to run
+concurrently.
 
 > **On "parity":** there is no live SAS runtime in this environment, so parity
 > means source → target reconciliation against the SAS `.sas7bdat` files as the
 > source of truth (row counts, control totals, cardinality, null checks) — a
-> deterministic contract, not a byte-for-byte SAS-vs-Snowflake output diff.
+> deterministic contract, not a byte-for-byte output diff.
 
 ---
 
 <a id="part-1"></a>
-## Part 1 — Devin Validates the Migration
+## Part 1 — Devin Converts and Validates
 
 <a id="act-1"></a>
 ### Act 1 — Orient over the SAS estate
 
-Open the SAS estate and ask Devin to explain it. With DeepWiki over the repo,
+Open the SAS estate and ask Devin to map it. With DeepWiki over the repo,
 Devin typically maps an unfamiliar estate in minutes (coverage depends on repo
 structure).
 
 ```
-Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate:
-the banking and insurance programs, what each one reads and writes, the
-LIBNAMEs, the macros and PROC FORMATs they depend on, and the data flow
-from raw sources through staging to curated/reporting layers.
+Using the ts-sas-legacy-analytics repo, give me a map of the SAS
+estate: the banking and insurance programs, what each one reads and
+writes, the LIBNAMEs, the macros and PROC FORMATs they depend on,
+and the data flow from raw sources through staging to
+curated/reporting layers. Also map the Control-M batch orchestration
+in BatchJobs/ — which jobs depend on which, and what schedule each
+runs on.
 ```
 
 Expected: a tour of `Programs/Banking/*` (load_customer_accounts,
-daily_transaction_processing, credit_risk_scoring, monthly_regulatory_reporting),
-`Programs/Insurance/*` (claims_processing, policy_valuation), the `Macro/` and
-`Formats/` dependencies, and the Control-M-style `BatchJobs/` wrappers — with a
-lineage map from `RAW` → `STAGING` → `CURATED` → `REPORTS`.
+daily_transaction_processing, credit_risk_scoring,
+monthly_regulatory_reporting), `Programs/Insurance/*` (claims_processing,
+policy_valuation), the `Macro/` and `Formats/` dependencies, and the Control-M
+`BatchJobs/` wrappers — with a lineage map from `RAW` → `STAGING` → `CURATED` →
+`REPORTS` and the scheduling DAG (BANK_DAILY_01 → BANK_DAILY_02 →
+BANK_WEEKLY_01 → BANK_MONTHLY_01).
 
 <a id="act-2"></a>
-### Act 2 — Validate one table live, with verification
+### Act 2 — Convert SAS to Snowflake SQL
 
-The core beat. Paste the playbook prompt for one table. Devin loads the SAS
-source and Snowflake target, runs the validation suite, catches a divergence,
-traces its root cause through the lineage, fixes it, and produces a PR with
-the reconciliation report.
+The first conversion beat. Devin reads a set-based SAS program (PROC SQL with
+CASE expressions, aggregations, joins) and converts it to native Snowflake SQL.
 
 ```
-!validate-sas-to-snowflake
+!convert-sas-to-snowflake
 
-Validate the MONTHLY_AMB table migration from SAS to Snowflake.
+Convert monthly_regulatory_reporting.sas to Snowflake SQL.
+
+- SAS program: Programs/Banking/monthly_regulatory_reporting.sas
+  (in ts-sas-legacy-analytics)
+- Target: Snowflake SQL under snowflake_sql/ in
+  uc-data-migration-sas-to-snowflake
+- Scenario: Scenario1
+
+The SAS program computes Basel III risk-weighted assets, delinquency
+aging, loan loss provisions, and capital adequacy ratios. It uses
+PROC SQL with CASE-based risk-weight mapping. Convert it faithfully
+to Snowflake SQL — every risk weight, every threshold, every filter
+must match the SAS source exactly. Also write a Snowflake Task
+definition to replace the Control-M BANK_MONTHLY_01 schedule.
+```
+
+What Devin produces:
+
+- **`snowflake_sql/JOB04_MONTHLY_REGULATORY.sql`** — four Snowflake SQL
+  statements creating `REPORTS.MONTHLY_RWA`, `REPORTS.DELINQUENCY_AGING`,
+  `REPORTS.LLP_COVERAGE`, `REPORTS.CAPITAL_ADEQUACY`. The risk-weight CASE
+  faithfully maps every `ACCOUNT_TYPE` × LTV combination from the SAS source:
+
+  ```sql
+  -- LOC risk weight = 1.00, matching SAS source exactly.
+  -- A prior conversion attempt used 0.75 here; the parity
+  -- check flagged the RWA divergence.
+  WHEN a.ACCOUNT_TYPE = 'LOC' THEN 1.00
+  ```
+
+- **`snowflake_sql/orchestration/tasks.sql`** — a `TASK_JOB04_MONTHLY_REGULATORY`
+  with `AFTER TASK_JOB03_CALC_AMB` dependency and a conditional `WHEN` clause
+  that replaces the Control-M monthly schedule.
+
+The point: Devin read a 199-line SAS program with Basel III logic, converted
+every CASE branch and aggregation faithfully to Snowflake SQL, and wired the
+result into the Task DAG — with a parity check gating correctness.
+
+<a id="act-3"></a>
+### Act 3 — Convert procedural SAS to Snowpark Python
+
+Not all SAS programs are set-based SQL. The claims processing program uses DATA
+step procedural logic — hash-table policy lookups, multi-output datasets
+(CLAIMS_VALID / CLAIMS_INVALID, AUTO_ADJUDICATED / MANUAL_REVIEW), and
+conditional routing. Devin converts this to Snowpark Python.
+
+```
+!convert-sas-to-snowflake
+
+Convert claims_processing.sas to Snowpark Python.
+
+- SAS program: Programs/Insurance/claims_processing.sas
+  (in ts-sas-legacy-analytics)
+- Target: Snowpark Python under snowpark/ in
+  uc-data-migration-sas-to-snowflake
+- Target construct: snowpark
+- Scenario: Scenario1
+
+The SAS program uses:
+  - Hash-table lookup (h_pol) against POLICIES to validate claims
+  - Multi-output DATA step: CLAIMS_VALID vs CLAIMS_INVALID
+  - Fraud screening with risk-score thresholds
+  - Auto-adjudication rules with multiple OUTPUT datasets
+    (AUTO_ADJUDICATED, MANUAL_REVIEW)
+
+Convert to a Snowpark stored procedure that preserves the procedural
+semantics: DataFrame joins replace hash lookups, filtered DataFrames
+replace multi-output OUTPUT statements. Reproduce every threshold
+and routing rule from the SAS source.
+```
+
+What Devin produces:
+
+- **`snowpark/claims_processing.py`** — a Snowpark stored procedure with:
+  - **Step 1 (Validate):** DataFrame join replaces `declare hash h_pol` — claims
+    matched against active policies, split into valid/invalid
+  - **Step 2 (Fraud screening):** join to `FRAUD_INDICATORS`, CASE-style
+    `FRAUD_RISK` classification (`HIGH` ≥ 80, `MEDIUM` ≥ 50, `LOW`)
+  - **Step 3 (Auto-adjudicate):** reproduces the SAS `output` routing:
+    - `DENY` for high fraud risk
+    - `APPR` for low-risk small claims (≤ $5K) and standard claims
+      (≤ 25% of sum insured, ≤ $50K)
+    - `PEND` for everything else → manual review queue
+  - **Step 4 (Persist):** `write.mode("append")` to three target tables
+
+The point: Devin chose the right Snowflake construct for a procedural program —
+Snowpark Python instead of SQL — and preserved the multi-output, conditional-
+routing semantics that would be awkward in pure SQL.
+
+<a id="act-4"></a>
+### Act 4 — Replace Control-M with Snowflake Tasks
+
+The SAS batch orchestration runs via Control-M: `BANK_MASTER` triggers a chain
+of jobs in dependency order. Devin replaces this with native Snowflake Tasks.
+
+```
+Look at the BatchJobs/run_daily_banking.sas orchestrator in
+ts-sas-legacy-analytics. It runs four SAS programs in sequence via
+Control-M. Convert this to a Snowflake Task DAG that preserves the
+same dependency chain. Write the DDL in
+snowflake_sql/orchestration/tasks.sql in the
+uc-data-migration-sas-to-snowflake repo.
+
+Map the Control-M jobs:
+  BANK_DAILY_01  → load_customer_accounts    (Daily 06:00)
+  BANK_DAILY_02  → daily_transactions        (Daily 07:30, after 01)
+  BANK_WEEKLY_01 → credit_risk_scoring       (Weekly Sun, after 02)
+  BANK_MONTHLY_01→ monthly_regulatory        (Monthly 3rd BD, after 03)
+  INS_DAILY_01   → claims_processing         (Daily 08:00, independent)
+```
+
+What Devin produces:
+
+- **`snowflake_sql/orchestration/tasks.sql`** — a Task DAG:
+
+  ```
+  TASK_DAILY_BANKING_ROOT (CRON 0 6 * * *)
+      └→ TASK_JOB01_LOAD_CUST_ACCOUNTS (AFTER ROOT)
+          └→ TASK_JOB02_DAILY_TRANSACTIONS (AFTER JOB01)
+              └→ TASK_JOB03_CALC_AMB (AFTER JOB02)
+                  └→ TASK_JOB04_MONTHLY_REGULATORY (AFTER JOB03, conditional)
+  TASK_INS_CLAIMS_PROCESSING (CRON 0 8 * * *, Snowpark SP)
+  TASK_WEEKLY_CREDIT_RISK (CRON 0 2 * * SUN)
+  ```
+
+  Each task uses `EXECUTE IMMEDIATE FROM @SQL_STAGE/...` (SQL jobs) or
+  `CALL SP_CLAIMS_PROCESSING(...)` (Snowpark job), and the DAG chains via
+  `AFTER` dependencies — the same execution order as Control-M, native in
+  Snowflake.
+
+<a id="act-5"></a>
+### Act 5 — Validate with the reconciliation harness
+
+The confidence beat. Every conversion is gated by the same parity check.
+
+```
+!convert-sas-to-snowflake
+
+Validate the MONTHLY_AMB table migration. The SAS source computes
+Monthly Average Balance for all accounts (active and inactive). Run
+the reconciliation harness against Scenario1 and confirm the
+Snowflake output ties out.
 
 - SAS table: MONTHLY_AMB (source: sample_data/MONTHLY_AMB.sas7bdat)
 - Snowflake table: MONTHLY_AMB (target: sample_data/Scenario1/)
 - Repo: Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake
 ```
 
-**The verification beat (the real bug).** The SAS source computes Monthly
-Average Balance for **all** accounts — active and inactive. The Snowflake
-migration's `JOB03_CALC_AMB.sql` added a `WHERE c.is_active = 'ACTIVE'` clause
-that excludes inactive accounts. The reconciliation harness catches it:
+**The verification beat (the real bug).** The Snowflake migration's
+`JOB03_CALC_AMB.sql` added a `WHERE c.is_active = 'ACTIVE'` clause that the SAS
+source does not have. The reconciliation harness catches it:
 
 ```
 make validate TABLE=MONTHLY_AMB SCENARIO=Scenario1
@@ -150,9 +286,9 @@ make validate TABLE=MONTHLY_AMB SCENARIO=Scenario1
 271 rows missing (inactive accounts excluded), 58 customers lost entirely,
 $773,673 gap in the control total. The lineage trace pinpoints the divergence
 at the `JOB03_CALC_AMB` transformation node — the SF lineage metadata shows the
-extra `WHERE c.is_active = 'ACTIVE'` filter that the SAS version does not have.
+extra `WHERE c.is_active = 'ACTIVE'` filter.
 
-The fix: remove the extra filter from the Snowflake SQL, re-export, and re-run:
+The fix: remove the extra filter, matching the SAS logic faithfully. Re-run:
 
 ```
 make validate TABLE=MONTHLY_AMB SCENARIO=Scenario1
@@ -162,31 +298,12 @@ make validate TABLE=MONTHLY_AMB SCENARIO=Scenario1
 ```
 
 The point: "looks reasonable" review would have shipped the filtered data;
-the parity check against the SAS source did not. The full write-up is in the
-playbook at `.workshop/playbooks/sas-to-snowflake-migration.devin.md` →
-*Worked example: the `is_active` filter divergence*.
+the parity check against the SAS source did not.
 
-<a id="act-3"></a>
-### Act 3 — Fan out in parallel
+#### Fan out in parallel
 
-Table validations are independent, so launch a Devin session per table. Each
-follows the same playbook and produces its own verified PR — the same review
-bar applied many times in parallel instead of once in series.
-
-| Session | Table | Key validations |
-|---|---|---|
-| 1 | `MONTHLY_AMB` | Row Count, Sum Amount, Distinct Count (the Act 2 worked example) |
-| 2 | `CUST_ACCOUNTS` | Row Count, Not Null (is_active, start_date), Uniqueness (account_id) |
-| 3 | `DAILY_BALANCE` | Row Count, Sum Amount (end_of_day_balance), date-format parity |
-
-Each session uses its own scenario directory so the validation runs never
-collide.
-
-#### Parallelize from a single session (parent → child)
-
-Instead of launching each session by hand, run one **orchestrator** session that
-spawns a child Devin session per table and monitors them — one agent fanning
-itself out across the wave. Paste:
+Table validations are independent. Run one **orchestrator** session that spawns
+a child per table:
 
 ```
 Act as the orchestrator for a SAS-to-Snowflake migration validation
@@ -194,54 +311,28 @@ across multiple tables, using child Devin sessions to parallelize.
 
 Repo: Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake
 
-Spawn one child Devin session per table below. Give each child the repo,
-its own scenario directory, and tell it to follow the
-!validate-sas-to-snowflake playbook (the repo's Skill supplies the
-make validate mechanics): treat the SAS .sas7bdat as the source of truth;
-flag (do not silently fix) anything that diverges; run the full validation
-suite; and include the reconciliation report in the PR.
+Spawn one child session per table below. Each child follows the
+!convert-sas-to-snowflake playbook: treat the SAS .sas7bdat as the
+source of truth; flag (do not silently fix) anything that diverges;
+run the full validation suite; include the reconciliation report in
+the PR.
 
 Tables:
 1. MONTHLY_AMB (Scenario1) — Row Count, Distinct Count, Sum Amount
 2. CUST_ACCOUNTS (Scenario1) — Row Count, Not Null, Uniqueness
 3. DAILY_BALANCE (Scenario1) — Row Count, Sum Amount
-4. DAILY_BALANCE (Scenario2) — Row Count, Sum Amount, date-format check
-
-After all children finish, summarize which tables passed and which had
-divergences, and call out the root cause for each failure.
+4. DAILY_BALANCE (Scenario2) — Row Count, Sum Amount, date-format
 ```
 
-The children inherit the organization's Snowflake secrets, and each writes to
-its own scenario directory so the parallel validations never collide. This is
-the same verified reconciliation loop as a single session — run many times at
-once, from one parent.
-
-<a id="act-4"></a>
-### Act 4 — Confidence = programmatic verification
-
-The gates that make every PR trustworthy:
-
-- **CLI harness** (`verify/reconcile.py`): loads SAS source and Snowflake
-  target, runs all configured validation rules (Row Count, Sum Amount, Distinct
-  Count, Not Null, Uniqueness), exits non-zero on any FAIL — a programmatic
-  gate, not a visual inspection.
-- **Lineage tracing** (`lineage/SAS_lineage.json` + `lineage/SF_lineage.json`):
-  Collibra-style metadata that maps every transformation from SAS to Snowflake,
-  enabling automated root-cause analysis when a validation fails.
-- **Streamlit dashboard** (`app4.py`): interactive visual interface for
-  exploring validation results, upstream lineage graphs, and LLM-generated
-  recommendations — the human-friendly layer on top of the programmatic checks.
-- **Devin Review**: an automated reviewer on every PR.
-
-A migration is "done" when the reconciliation harness is green for every table
-in scope — not when the data merely loads.
+Each child inherits the org's Snowflake secrets and writes to its own scenario
+directory — parallel validations never collide.
 
 ---
 
 <a id="part-2"></a>
-## Part 2 — Run the Produced Artifact
+## Part 2 — Run the Produced Artifacts
 
-Show the validation harness running end to end, with a repeatable before/after.
+Show the validation harness running end to end:
 
 ```bash
 # Full validation suite against Scenario1 (baseline):
@@ -253,28 +344,7 @@ make validate SCENARIO=Scenario2
 
 Scenario1 (after fix) ends with all checks PASS. Scenario2 shows the delta
 migration's additional issues — `DAILY_BALANCE` has 122,760 SAS rows vs only
-16,802 in Snowflake (massive row loss) plus date-format mismatches
-(`YYYY-MM-DD` in SAS vs `DD-MM-YYYY` in Snowflake).
-
-Query the before and after side by side (or in Snowsight):
-
-```sql
--- Before: SAS source row counts (from .sas7bdat baseline)
--- CUST_ACCOUNTS: 1,980 rows
--- DAILY_BALANCE: 122,760 rows
--- MONTHLY_AMB: 1,980 rows (including inactive accounts)
-
--- After (Scenario1, corrected): Snowflake target matches
-SELECT COUNT(*) FROM FINANCE_DB.STAGING.MONTHLY_AMB;          -- 1,980
-SELECT SUM(average_monthly_balance) FROM FINANCE_DB.STAGING.MONTHLY_AMB;
--- 5,702,329 (matches SAS)
-
--- The is_active divergence, visible as data:
-SELECT is_active, COUNT(*) AS n_accounts
-FROM FINANCE_DB.RAW.CUST_ACCOUNTS
-GROUP BY is_active;
--- ACTIVE: 1,709  INACTIVE: 271  (the 271 rows the filter dropped)
-```
+16,802 in Snowflake (massive row loss) plus date-format mismatches.
 
 Launch the Streamlit dashboard for interactive exploration:
 
@@ -282,105 +352,105 @@ Launch the Streamlit dashboard for interactive exploration:
 make dashboard
 ```
 
-The dashboard lets you select tables, run validation rules interactively, view
-SAS and Snowflake lineage graphs side by side, trace upstream dependencies for
-failures, and generate LLM-powered root-cause analysis reports.
-
 ---
 
-<a id="confirm-snowflake"></a>
-## Confirming Completion in Snowflake
+<a id="confirm-snowsight"></a>
+## Confirming Completion in Snowsight
 
-The migration milestone is complete when four things are true and visible:
-the migrated tables are **loaded** in Snowflake, the **reconciliation checks
-are green** (parity proven against the SAS source), the **lineage is traced**
-for every table, and you can **prove it ran live**. Walk the evidence in that
-order.
+The migration is complete when five things are visible: the **converted code**
+exists (SQL + Snowpark), the **Task DAG** is defined, the migrated tables are
+**loaded**, the **reconciliation is green**, and you can **prove it live** in
+Snowsight.
 
-**1. Snowsight — the tables exist with correct row counts.** Open Snowsight →
-`FINANCE_DB` → `STAGING` schema. Show the migrated tables (`CUST_ACCOUNTS`,
-`DAILY_BALANCE`, `MONTHLY_AMB`) with row counts matching the SAS source:
+**1. Snowsight — the tables exist with correct row counts.**
 
 ```sql
-SELECT 'CUST_ACCOUNTS' AS tbl, COUNT(*) AS rows FROM FINANCE_DB.STAGING.CUST_ACCOUNTS
+SELECT 'CUST_ACCOUNTS' AS tbl, COUNT(*) AS rows
+    FROM FINANCE_DB.STAGING.CUST_ACCOUNTS
 UNION ALL
-SELECT 'DAILY_BALANCE',       COUNT(*)          FROM FINANCE_DB.STAGING.DAILY_BALANCE
+SELECT 'DAILY_BALANCE', COUNT(*)
+    FROM FINANCE_DB.STAGING.DAILY_BALANCE
 UNION ALL
-SELECT 'MONTHLY_AMB',         COUNT(*)          FROM FINANCE_DB.RAW.MONTHLY_AMB;
+SELECT 'MONTHLY_AMB', COUNT(*)
+    FROM FINANCE_DB.STAGING.MONTHLY_AMB;
+-- Expected: 1980, 122760, 1980 (matching SAS source)
 ```
 
-**2. The source-parity beat — the numbers tie out to SAS.** Run the MONTHLY_AMB
-grouped by account status and show that inactive accounts are present (not
-filtered out), matching the SAS source:
+**2. The parity beat — control totals tie out to SAS.**
 
 ```sql
-SELECT c.is_active, COUNT(*) AS n_accounts,
-       SUM(m.average_monthly_balance) AS total_amb
-FROM FINANCE_DB.STAGING.MONTHLY_AMB m
-JOIN FINANCE_DB.RAW.CUST_ACCOUNTS c
-  ON m.customer_id = c.customer_id AND m.account_id = c.account_id
-GROUP BY c.is_active;
+SELECT SUM(average_monthly_balance) FROM FINANCE_DB.STAGING.MONTHLY_AMB;
+-- Expected: 5,702,329 (matches SAS)
+
+-- The is_active divergence, visible as data:
+SELECT is_active, COUNT(*) AS n_accounts
+FROM FINANCE_DB.RAW.CUST_ACCOUNTS
+GROUP BY is_active;
+-- ACTIVE: 1,709  INACTIVE: 271
 ```
 
-Both ACTIVE and INACTIVE rows are present — the `is_active` filter divergence
-has been corrected.
+**3. Risk-weighted assets — the Basel III conversion is correct.**
 
-**3. The reconciliation report — every control PASS.** Show the report produced
-by `make validate SCENARIO=Scenario1`: every control — Row Count, Sum Amount,
-Distinct Count, Not Null — reports PASS. A green report is the definition of
-"done"; the data merely loading is not.
+```sql
+SELECT ACCOUNT_TYPE, RISK_WEIGHT, N_ACCOUNTS, TOTAL_EXPOSURE, RWA
+FROM FINANCE_DB.REPORTS.MONTHLY_RWA
+ORDER BY ACCOUNT_TYPE;
+-- Verify: LOC risk weight = 1.00 (not 0.75)
+```
 
-**4. The Streamlit dashboard — lineage traced.** Open the dashboard
-(`make dashboard`) and show the SAS and Snowflake lineage graphs side by side
-for MONTHLY_AMB. The lineage confirms the complete data flow from
-`RAW.CUST_ACCOUNTS` and `RAW.DAILY_BALANCE` through `JOB03_CALC_AMB` to
-`MONTHLY_AMB`, with no extra filters or missing transformations.
+**4. Task DAG — Snowflake Tasks replaced Control-M.**
+
+```sql
+SELECT NAME, STATE, SCHEDULE, PREDECESSORS
+FROM TABLE(INFORMATION_SCHEMA.TASK_DEPENDENTS(
+    TASK_NAME => 'FINANCE_DB.PUBLIC.TASK_DAILY_BANKING_ROOT',
+    RECURSIVE => TRUE
+));
+```
+
+**5. Claims processing — Snowpark procedure works.**
+
+```sql
+CALL FINANCE_DB.PUBLIC.SP_CLAIMS_PROCESSING(CURRENT_DATE()::VARCHAR);
+-- Returns: summary with new/auto/review/fraud counts
+```
 
 ---
 
 <a id="concurrent"></a>
 ## Concurrent Runs
 
-Each scenario directory is isolated, so multiple runs — and the parallel
-fan-out in Act 3 — coexist with no collisions:
+Each session's work is isolated by scenario directory (`Scenario1`, `Scenario2`,
+or `Scenario_<session_id>`) and by branch. Parallel runs never collide because:
 
-```bash
-make validate SCENARIO=Scenario1      # baseline
-make validate SCENARIO=Scenario2      # delta
-make validate SCENARIO=Scenario_alice # custom per-user scenario
-```
-
-For live Snowflake validation, namespace by schema:
-
-```sql
-CREATE SCHEMA FINANCE_DB.VALIDATION_ALICE;
--- Load and validate against the alice schema
-```
+- The SAS `.sas7bdat` source files are immutable — read-only baseline.
+- Each child writes to its own scenario directory under `sample_data/`.
+- Each session opens its own PR branch.
+- Snowflake schemas can be namespaced per session (`STAGING_<session_id>`).
 
 ---
 
 <a id="key-takeaways"></a>
 ## Key Takeaways
 
-- The value on display is **Devin doing the validation**: loading SAS and Snowflake datasets, running programmatic reconciliation off a reusable playbook, and proving parity against the source — not just a finished migration to review.
-- **Confidence comes from programmatic verification.** The reconciliation harness (Row Count, Sum Amount, Distinct Count, Not Null, Uniqueness) gates every migration, and the demo shows a real divergence (the `is_active` filter that silently drops 271 inactive accounts and creates a $773K control-total gap) being caught and fixed. "Looks reasonable" review would have missed it.
-- The **SAS source is the source of truth**: migrations reproduce legacy data faithfully (quirks flagged, not silently "fixed"); remediation is a separate, deliberate decision.
-- Validations are **independent and parallelizable** — multiple Devin sessions validate multiple tables at once, each producing its own verified PR. The playbook keeps every run consistent.
-- **Lineage tracing** pinpoints the exact transformation job where a divergence originated, turning a failed Row Count from a mystery into a root-cause diagnosis in seconds. The Streamlit dashboard provides the human-friendly exploration layer on top.
+1. **Devin reads SAS, writes Snowflake.** Set-based programs become Snowflake
+   SQL; procedural programs become Snowpark Python. The choice of target
+   construct is deliberate, not one-size-fits-all.
 
----
+2. **Orchestration migrates too.** Control-M batch scheduling → Snowflake Tasks
+   with `AFTER` dependencies and CRON expressions. The execution order is
+   preserved; the scheduling is native.
 
-<a id="how-devin"></a>
-## How Devin Produced This
+3. **Verification is programmatic, not visual.** Every conversion is gated by
+   the reconciliation harness — Row Count, Sum Amount, Distinct Count, Not Null,
+   Uniqueness — against the SAS source as the immutable baseline. A real bug
+   (the `is_active` filter) was caught this way, not by code review.
 
-This validation framework was built by Devin working from the SAS source estate
-and the existing Snowflake migration target: it analyzed the SAS programs and
-their lineage, built the CLI reconciliation harness (`verify/reconcile.py`),
-authored the Makefile for repeatable validation, and ran the full suite to
-discover and document the `is_active` filter divergence. The same Context Loop
-(source analysis → validation → catch divergence → root-cause → fix → verify)
-described in
-[`modules/data-engineering/sas-migration-analysis.md`](../../modules/data-engineering/sas-migration-analysis.md)
-applies here, with the validation procedure codified as the
-`!validate-sas-to-snowflake` Devin Playbook (source in the code repo at
-`.workshop/playbooks/sas-to-snowflake-migration.devin.md`).
+4. **Parallel fan-out.** One orchestrator session spawns a child per table (or
+   per program). Each child follows the same playbook, writes to its own
+   namespace, and opens its own verified PR. The same review bar applied many
+   times in parallel.
+
+5. **Snowsight confirms it live.** Row counts, control totals, risk-weighted
+   assets, Task DAG status, Snowpark procedure output — all visible and
+   queryable in Snowflake's native UI.
