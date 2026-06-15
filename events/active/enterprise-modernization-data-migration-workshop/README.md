@@ -275,7 +275,7 @@ When Devin opens PRs (you may see 2 — one per repo):
 
 - **"Non-invasive analysis"** — Devin reads SAS macro source files and SAS7BDAT datasets to understand transformation logic — no SAS license, no running SAS environment needed
 - **"Construct-level mapping"** — targeted SAS patterns (PROC TRANSPOSE, BY-group processing, macro variable resolution) map to documented Python equivalents
-- **"SAS date handling"** — SAS stores dates as days since January 1, 1960 — Devin handles this conversion to standard date types automatically
+- **"SAS date handling"** — SAS stores dates as days since January 1, 1960 — Devin typically handles this conversion to standard date types during translation
 - **"Parallel conversion potential"** — with 90+ macros, a child-session pattern can convert groups of related macros in parallel
 
 ### Target Outcomes (any of these count)
