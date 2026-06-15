@@ -187,7 +187,7 @@ Step 8: If still failing, escalate to parent with error details
 Step 9: If all checks pass, mark task as complete
 ```
 
-Every child follows the same procedure. The output is predictable, reviewable, and consistent — regardless of which specific service the child is working on.
+Each child receives the same procedure. The output is typically predictable, reviewable, and consistent — regardless of which specific service the child is working on.
 
 ### Playbook Creation
 
@@ -257,7 +257,7 @@ Consider: If each target takes 1 hour of agent time and you have 50 targets, tha
 - Multi-agent orchestration decomposes large campaigns into independent units executed in parallel
 - The parent-child model: parent plans and coordinates, children execute independently
 - Each child has its own VM, branch, and PR — failures are isolated and don't cascade
-- Playbooks ensure consistency: every child follows the same validated procedure
+- Playbooks ensure consistency: each child receives the same validated procedure
 - Multi-agent is for campaigns with many independent targets and a repeatable pattern — not for interdependent work
 - Concurrency caps, ACU budgets, and failure thresholds are essential at scale
 - Review strategies (spot-check, automated gates, batch merge) manage the human review load

@@ -107,7 +107,7 @@ Both patterns reduce human toil, but event-driven reactions are uniquely valuabl
 | Dimension | Human-Paged Response | Event-Driven Agent |
 |-----------|---------------------|-------------------|
 | **Response time** | Minutes to hours (depends on availability) | Seconds (webhook → session start) |
-| **Consistency** | Varies by engineer, time of day, workload | Same process every time |
+| **Consistency** | Varies by engineer, time of day, workload | Follows the same configured process consistently |
 | **Context-switch cost** | 15-25 min of disrupted focus per page | Zero — human reviews asynchronously |
 | **After-hours coverage** | On-call rotation, burnout risk | 24/7 without staffing concerns |
 | **Scale** | Degrades as event volume grows | Handles N events in parallel |
