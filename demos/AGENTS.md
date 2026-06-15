@@ -20,8 +20,11 @@ read as though a user is reading and following along.
   permitted **only** under `demos/`; everywhere else in the repo still uses
   "try" / "hands-on" / "walkthrough".
 - **Read as a user following along.** Lead straight into the guide with prompts
-  and user instructions. Keep preamble minimal — no long orientation before the
-  first step.
+  and user instructions. Avoid internally-focused preamble (presales framing,
+  facilitator logistics). However, architecture context that the reader needs to
+  understand the prompts (e.g., how Playbooks/Skills/Automations relate) is
+  acceptable before the first executable step — especially when paired with the
+  required TOC and Quick Start sections.
 - **No participant "try this" framing** and no choose-your-own-adventure
   branching. The reader is following one thread, not selecting a track.
 - **Summaries use "Key Takeaways"** (not "Key Talking Points").
