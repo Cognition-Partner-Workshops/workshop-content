@@ -68,9 +68,9 @@ merged to `main` — so the demo is safe to repeat.
 <a id="act-1"></a>
 ## Act 1 — Feature Development
 
-**Narrative**: an engineer asks Devin to implement a new feature — a data model
-change with API endpoints and tests. Devin follows existing patterns, writes
-tests, and gates on the verification loop.
+An engineer asks Devin to implement a new feature — a data model change with
+API endpoints and tests. Devin follows existing patterns, writes tests, and
+gates on the verification loop.
 
 ```
 !java-engineering-excellence
@@ -106,31 +106,32 @@ tests and formatting that passes CI on first push.
 <a id="act-2"></a>
 ## Act 2 — Issue Triage and Security Remediation (Automations)
 
-**Narrative**: a security scanner (or Devin Automation triggered by a
-Dependabot alert) identifies critical CVEs in the dependency tree. Devin
-triages, remediates, and proves the fix — automatically.
+A security scanner (or Devin Automation triggered by a Dependabot alert)
+identifies critical CVEs in the dependency tree. Devin triages, remediates, and
+proves the fix — automatically.
 
 ### Setting up the Automation
 
 Before running this act, configure a Devin Automation that triggers on
 security-related GitHub events:
 
-> **Trigger**: GitHub webhook — Dependabot alert created (or `issues` labeled
-> `security`)
->
-> **Action**: Start a Devin session with prompt:
-> ```
-> !java-engineering-excellence
->
-> Task: issue-triage
-> Repository: Cognition-Partner-Workshops/ts-java-spring-boot-realworld
-> Issue: {event.alert.summary}
-> CVE: {event.alert.cve_id}
->
-> Remediate this CVE by upgrading the affected dependency. Verify the
-> fix by confirming the vulnerable version is no longer in the
-> dependency tree and that all tests pass.
-> ```
+**Trigger**: GitHub webhook — Dependabot alert created (or `issues` labeled
+`security`)
+
+**Action**: Start a Devin session with the following prompt:
+
+```
+!java-engineering-excellence
+
+Task: issue-triage
+Repository: Cognition-Partner-Workshops/ts-java-spring-boot-realworld
+Issue: {event.alert.summary}
+CVE: {event.alert.cve_id}
+
+Remediate this CVE by upgrading the affected dependency. Verify the
+fix by confirming the vulnerable version is no longer in the
+dependency tree and that all tests pass.
+```
 
 ### Running the remediation manually
 
@@ -158,8 +159,8 @@ the PR description.
 
 **The Automation angle**: in production, this entire flow fires automatically
 when Dependabot opens an alert. No human triage step. The PR lands in the
-team's review queue already verified and ready to merge. Show the Automation
-configuration in Settings → Automations to illustrate the event-driven trigger.
+team's review queue already verified and ready to merge. Navigate to Settings →
+Automations to see the event-driven trigger configuration.
 
 **The value**: security remediation at machine speed. CVE disclosed at 2 AM →
 Devin has a verified fix PR waiting in the morning. The team reviews and merges
@@ -170,10 +171,10 @@ instead of triaging, researching, patching, and testing.
 <a id="act-3"></a>
 ## Act 3 — App Modernization (Java 11 → 21, Spring Boot 2.6 → 3.5)
 
-**Narrative**: the centerpiece. A major framework upgrade that touches nearly
-every file — `javax` → `jakarta`, deprecated security APIs removed, third-party
-libraries with breaking changes. Devin upgrades layer by layer, gating each
-step on the test suite. The tests catch a real silent regression.
+The centerpiece. A major framework upgrade that touches nearly every file —
+`javax` → `jakarta`, deprecated security APIs removed, third-party libraries
+with breaking changes. Devin upgrades layer by layer, gating each step on the
+test suite. The tests catch a real silent regression.
 
 ```
 !java-engineering-excellence
@@ -244,9 +245,9 @@ review.
 <a id="act-4"></a>
 ## Act 4 — Test Generation and Coverage
 
-**Narrative**: after the upgrade lands, Devin fills coverage gaps — generating
-tests for classes that dropped below the 80% JaCoCo threshold. No production
-code changes; pure quality improvement.
+After the upgrade lands, Devin fills coverage gaps — generating tests for
+classes that dropped below the 80% JaCoCo threshold. No production code
+changes; pure quality improvement.
 
 ```
 !java-engineering-excellence
@@ -296,7 +297,7 @@ Repository: Cognition-Partner-Workshops/ts-java-spring-boot-realworld
 Spawn one child Devin session per layer below. Each child follows the
 !java-engineering-excellence playbook (task: app-modernization) for
 its assigned packages only, creates its own branch, runs the gate for
-its layer, and opens a PR:
+its layer, and reports green:
 
 1. API + Security layer (io.spring.api.*)
    - WebSecurityConfigurerAdapter → SecurityFilterChain
