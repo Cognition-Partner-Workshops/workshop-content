@@ -227,6 +227,7 @@ uc-data-migration-sas-to-snowflake repo.
 Map the Control-M jobs:
   BANK_DAILY_01  → load_customer_accounts    (Daily 06:00)
   BANK_DAILY_02  → daily_transactions        (Daily 07:30, after 01)
+  (inline step)  → calc_amb                  (Daily, after 02)
   BANK_WEEKLY_01 → credit_risk_scoring       (Weekly Sun, after 02)
   BANK_MONTHLY_01→ monthly_regulatory        (Monthly 3rd BD, after 03)
   INS_DAILY_01   → claims_processing         (Daily 08:00, independent)
