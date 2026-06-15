@@ -549,6 +549,7 @@ A few things to be aware of as you work through the labs:
 | Lab 4 | [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) | Spring Boot 2.6.3 monolith — extraction source (pre-cached) |
 
 **Follow-on activities (optional):**
+- [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 monolith (Activity 1)
 - [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo) — COBOL CardDemo (fork for COBOL-specific labs)
 - [uc-data-migration-sas-to-databricks](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks) — dbt/Databricks target for SAS migration
 - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular 16 frontend (Activity 4)
