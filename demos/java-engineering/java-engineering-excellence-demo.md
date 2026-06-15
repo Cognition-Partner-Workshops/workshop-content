@@ -4,8 +4,8 @@ A single linear demo showing Devin executing **four distinct engineering tasks**
 against a Java/Spring Boot codebase — feature development, security remediation,
 major version upgrade, and test generation — each gated by a programmatic
 verification loop. The narrative: a single engineer amplifies their scope,
-velocity, and quality by treating Devin as a team-based resource across every
-class of engineering work.
+velocity, and quality by treating Devin as a team-based resource across many
+classes of engineering work.
 
 The prompts below invoke the `!java-engineering-excellence` Devin Playbook —
 the reusable procedure — whose source lives in the code repo at
@@ -15,6 +15,7 @@ Skill (`.agents/skills/java-engineering-excellence/SKILL.md`).
 
 ## Table of Contents
 
+- [Quick Start](#quick-start)
 - [Repository](#repository)
 - [Before, After, and the Verification Loop](#before-after)
 - [Act 1 — Feature Development](#act-1)
@@ -25,6 +26,21 @@ Skill (`.agents/skills/java-engineering-excellence/SKILL.md`).
 - [Scheduled Devins — Continuous Engineering Excellence](#scheduled)
 - [Confirming Completion](#confirm)
 - [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="quick-start"></a>
+## Quick Start
+
+Pick any act and paste its prompt into a Devin session with access to
+`Cognition-Partner-Workshops/ts-java-spring-boot-realworld`:
+
+- **[Act 1 — Feature Dev](#act-1)**: add a bookmark article feature
+- **[Act 2 — Security](#act-2)**: remediate a CVE in jackson-databind
+- **[Act 3 — Modernization](#act-3)**: upgrade Java 11 → 21, Boot 2.6 → 3.5
+- **[Act 4 — Testing](#act-4)**: generate tests to meet 80% JaCoCo coverage
+
+The verification gate for all tasks: `./gradlew clean test spotlessCheck`
 
 ---
 
