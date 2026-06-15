@@ -77,9 +77,9 @@ Already comfortable with Devin basics? Jump straight to the labs:
 
 <a id="lab-1"></a>
 
-## Lab 1 — Security Remediation: CVE Scan → Fix → Rescan (15 min)
+## Lab 1 — Security Remediation: Dependency CVE Fix (15 min)
 
-**Value driver:** *Devin runs SAST scans, interprets CVE reports, remediates critical findings, and re-verifies — the scan-fix-rescan loop that normally takes a security engineer days.*
+**Value driver:** *Devin identifies known CVEs in project dependencies, upgrades to patched versions, fixes breaking API changes, and documents remediation — compressing a manual security review into a single session.*
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Modules:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md)
@@ -89,25 +89,22 @@ This Spring Boot 2.6.3 application ships with known CVEs including Spring4Shell 
 ### Paste into Devin
 
 ```
-Perform a security assessment of
-uc-cve-remediation-regulatory-compliance and remediate the
-most critical findings.
+Remediate the critical dependency CVEs in
+uc-cve-remediation-regulatory-compliance.
 
-1. **Scan:** Run `./gradlew dependencyCheckAnalyze` to
-   identify dependency CVEs. Categorize findings by CVSS
-   severity.
+1. **Identify known CVEs:** This Spring Boot 2.6.3 app has
+   Spring4Shell (CVE-2022-22965, CVSS 9.8), SnakeYAML
+   unsafe deserialization (CVE-2022-1471, CVSS 9.8), and
+   sqlite-jdbc vulnerabilities.
 
-2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18
-   (resolves Spring4Shell CVE-2022-22965), SnakeYAML from
-   1.29 to 2.0+ (resolves CVE-2022-1471), and sqlite-jdbc
-   from 3.36.0.3 to 3.42+. Fix any breaking API changes
-   from the upgrades and ensure `./gradlew build` passes.
+2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18,
+   SnakeYAML from 1.29 to 2.0+, and sqlite-jdbc from
+   3.36.0.3 to 3.42+. Fix any breaking API changes from
+   the upgrades and ensure `./gradlew build` passes.
 
-3. **Re-scan and document:** Run
-   `./gradlew dependencyCheckAnalyze` again to verify
-   remediations. Create `SECURITY_REMEDIATION.md` with a
-   before/after findings table (CVE ID, severity, old
-   version, new version, status).
+3. **Document:** Create `SECURITY_REMEDIATION.md` with a
+   findings table (CVE ID, severity, old version, new
+   version, status) and a summary of what was fixed.
 ```
 
 ### While Devin works: try Ask Devin
@@ -126,14 +123,14 @@ When Devin opens a PR:
 
 ### Key Takeaways
 
-- **"Scan → fix → re-scan"** — Devin runs local SAST tools, interprets CVE reports, remediates findings, and verifies the fix in a closed loop
+- **"Known CVE → targeted fix"** — Devin identifies which dependencies have published CVEs, upgrades them, and fixes breaking API changes in a single pass
 - **"Shift left via PR feedback"** — attendees ask Devin to add CI scanning as a PR comment, showing how security automation can be added iteratively
 - **"Evidence-based compliance"** — the `SECURITY_REMEDIATION.md` provides auditable proof that remediation was effective
 
 ### Target Outcomes (any of these count)
 
-- OWASP Dependency-Check report with critical CVEs remediated
-- `SECURITY_REMEDIATION.md` with before/after evidence
+- Critical CVEs remediated (Spring4Shell, SnakeYAML, sqlite-jdbc)
+- `SECURITY_REMEDIATION.md` with findings table
 - Build passing after dependency upgrades
 - GitHub Actions CI workflow added via PR comment follow-up
 - PR with remediations and Devin's responses to review comments
@@ -299,16 +296,16 @@ When Devin opens PRs (you may see 2 — one per repo):
 
 **Value driver:** *Devin analyzes a monolith's domain boundaries, documents extraction decisions, extracts a bounded context into a standalone service, and wires up cross-service communication — typically in a single session.*
 
-- **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
+- **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
 - **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
 
-This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, 27 test files with an 80% JaCoCo coverage gate, and a Next.js frontend. Participants will ask Devin to analyze domain boundaries, document extraction decisions, and extract a bounded context into a standalone service.
+This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, and a Next.js frontend. The repo has pre-cached Gradle dependencies for fast builds. Participants will ask Devin to analyze domain boundaries, document extraction decisions, and extract a bounded context into a standalone service.
 
 ### Paste into Devin
 
 ```
 Extract the Article bounded context from
-uc-spring-boot-upgrade-microservice-extraction — a Spring
+uc-framework-upgrade-monolith-to-microservices — a Spring
 Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis
 persistence, and a Next.js frontend.
 
@@ -318,24 +315,23 @@ persistence, and a Next.js frontend.
 
 2. **Document extraction decisions:** Create
    docs/EXTRACTION_DECISIONS.md documenting: which domain
-   objects move to the Article service (articles, tags,
-   comments, favorites), what stays (users/profiles),
+   objects move to the Article service (articles, tags),
+   what stays (comments, favorites, users/profiles),
    coupling points between domains, and the cross-service
    communication strategy.
 
 3. **Extract:** Create article-service/ — a standalone
    Spring Boot service with its own build configuration,
    database migrations, and MyBatis persistence. Include
-   articles, tags, comments, and favorites. Replace direct
-   User domain calls with a REST client and DTOs.
-   ./gradlew build must pass for both services. Do not
-   attempt to fix pre-existing CI thresholds (e.g., JaCoCo
-   coverage gates).
+   articles and tags. Replace direct User domain calls
+   with a REST client and DTOs. ./gradlew build
+   -x jacocoTestCoverageVerification must pass for both
+   services.
 ```
 
 ### While Devin works: try Ask Devin
 
-- *"What are the domain boundaries in uc-spring-boot-upgrade-microservice-extraction? Which packages would form a natural microservice?"*
+- *"What are the domain boundaries in uc-framework-upgrade-monolith-to-microservices? Which packages would form a natural microservice?"*
 - *"What coupling exists between the Article domain and the User domain? How would you handle cross-service queries after extraction?"*
 - *"What are the risks of extracting the Article bounded context? What shared infrastructure (security, database, Flyway) needs to be duplicated?"*
 
@@ -360,8 +356,7 @@ When Devin opens a PR:
 - `docs/EXTRACTION_DECISIONS.md` documenting domain boundary analysis and trade-offs
 - Standalone `article-service/` with its own build configuration, migrations, and persistence
 - REST client + DTOs for cross-service communication
-- `./gradlew build` passing for both the main app and article-service
-- Existing test suite still passing after extraction
+- `./gradlew build -x jacocoTestCoverageVerification` passing for both services
 - `docker-compose.yml` added via PR comment follow-up
 - PR with extraction artifacts and Devin's responses to review comments
 
@@ -528,10 +523,10 @@ and recommended fixes.
 
 A few things to be aware of as you work through the labs:
 
-- **Lab 1 (Security):** The OWASP Dependency-Check scan takes 2–5 minutes to download the NVD database on first run. Subsequent scans are faster. The repo uses Gradle 8.10 and OWASP plugin 11.1.1.
+- **Lab 1 (Security):** The repo uses Gradle and Spring Boot 2.6.3. The `./gradlew build` step downloads dependencies on first run (~1-2 min).
 - **Lab 2 (COBOL→Java):** The repo has no build system (COBOL is compiled on mainframes) — Devin will create a Java project structure from scratch. There is no single "right answer" — different participants will produce different migrations.
 - **Lab 3 (SAS→Snowflake):** This is a non-invasive analysis — no SAS license or Snowflake account is needed. Devin reads source files and sample datasets statically. Two separate sessions (A and B) target different repos.
-- **Lab 4 (Microservice Extraction):** The monolith has an 80% JaCoCo coverage gate that may fail after extraction. The prompt instructs Devin not to attempt fixing pre-existing CI thresholds (e.g., JaCoCo coverage gates).
+- **Lab 4 (Microservice Extraction):** The monolith has a JaCoCo coverage gate. The prompt uses `-x jacocoTestCoverageVerification` to skip coverage checks after extraction. This repo has pre-cached Gradle dependencies for faster builds.
 - **Each lab uses a different repository.** You'll work across five separate codebases (Lab 3 uses two repos) rather than a single unified application.
 
 ---
@@ -544,7 +539,7 @@ A few things to be aware of as you work through the labs:
 | Lab 2 | [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java) | COBOL CardDemo application — migration source |
 | Lab 3 | [ts-sas-legacy-analytics](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics) | Legacy SAS analytics codebase |
 | Lab 3 | [uc-data-migration-sas-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake) | SAS-to-Snowflake migration toolkit |
-| Lab 4 | [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) | Spring Boot 2.6.3 monolith — extraction source |
+| Lab 4 | [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices) | Spring Boot 2.6.3 monolith — extraction source (pre-cached) |
 
 **Follow-on activities (optional):**
 - [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo) — COBOL CardDemo (fork for COBOL-specific labs)
