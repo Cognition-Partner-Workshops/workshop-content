@@ -544,7 +544,7 @@ A few things to be aware of as you work through the labs:
 **Follow-on activities (optional):**
 - [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo) — COBOL CardDemo (fork for COBOL-specific labs)
 - [uc-data-migration-sas-to-databricks](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks) — dbt/Databricks target for SAS migration
-- [app_petclinic-angular](https://github.com/Cognition-Partner-Workshops/app_petclinic-angular) — Angular 16 frontend (Activity 4)
+- [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular 16 frontend (Activity 4)
 - [ts-java-spring-petclinic-rest-api](https://github.com/Cognition-Partner-Workshops/ts-java-spring-petclinic-rest-api) — REST API backend (Activity 4 reference)
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — Polyglot microservices platform (Activity 5)
 - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack app
