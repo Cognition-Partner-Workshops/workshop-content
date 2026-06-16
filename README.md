@@ -18,6 +18,10 @@ workshop-instructions/
 ├── modules/           ← individual lab instructions organized by discipline
 │   └── README.md      ← full index of all labs
 ├── workshops/         ← structured lab sequences (your facilitator will point you here)
+│   ├── foundations/   ← theory, product features, platform mental model
+│   ├── general/       ← broad multi-repo hands-on tour (start here)
+│   ├── otterworks/    ← advanced monorepo deep-dive (300-level)
+│   └── specialties/   ← deep dives by technical domain or job family
 ├── demos/             ← facilitator-led showcases (follow along, single linear thread)
 ├── events/            ← event-specific agendas and customizations
 ├── catalog/           ← reference inventory of all available repositories
@@ -48,27 +52,43 @@ Browse all labs: [modules/README.md](modules/README.md)
 
 ### Find Labs by Workshop
 
-Your facilitator may have directed you to a specific workshop. Each workshop bundles labs into a structured sequence:
+Your facilitator may have directed you to a specific workshop. Each workshop bundles labs into a structured sequence.
+
+#### Start Here
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
 | [Foundations](workshops/foundations/) | Cloud agent theory, product features, platform mental model | 2-3 hours |
-| [General](workshops/general/) | Security, modernization, feature dev — broad tour | 4-6 hours |
-| [Legacy Modernization](workshops/legacy-modernization/) | COBOL/legacy → modern tech stack | 2-4 hours |
-| [Framework Upgrades](workshops/framework-upgrades/) | Angular + Spring Boot version upgrades | 1-2 hours |
-| [Data Source Migration](workshops/data-source-migration/) | Legacy DW → modern schema | 1-2 hours |
-| [Security & Compliance](workshops/security-compliance/) | CVE remediation, SAST, shift-left | 1-2 hours |
-| [COBOL Modernization](workshops/cobol-modernization/) | End-to-end mainframe modernization | ~4 hours |
-| [Enterprise Security Automation](workshops/enterprise-security-automation/) | Event-driven SAST, mass remediation | ~4 hours |
-| [Application Development & Maintenance](workshops/application-development-maintenance/) | Feature dev, bug fixing, code maintenance | 4-6 hours |
-| [Digital Engineering](workshops/digital-engineering/) | CI/CD, cloud infrastructure, observability | 4-6 hours |
-| [Quality Engineering & Assurance](workshops/quality-engineering/) | Test automation, E2E, continuous quality | 4-6 hours |
-| [Quality Engineering & Security](workshops/quality-engineering-security/) | QE + security remediation combined | ~3 hours |
-| [.NET Cloud-Native Modernization](workshops/dotnet-cloud-native-modernization/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours |
-| [Platform Microservice Decomposition](workshops/platform-microservice-decomposition/) | Monolith → platform-conformant microservices | 1.5-2 hours |
-| [Agentic AI](workshops/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
-| [Feature Development](workshops/feature-development/) | New features on existing apps | 1-2 hours |
-| [OtterWorks](workshops/otterworks/) | Polyglot microservices — 300-level | 4-6 hours |
+| [General](workshops/general/) | Security, modernization, feature dev — broad multi-repo tour | 4-6 hours |
+| [OtterWorks](workshops/otterworks/) | Polyglot microservices — 300-level monorepo deep-dive | 4-6 hours |
+
+#### Specialties — Technical Domains
+
+Collections of modules targeting specific tech stacks and engineering challenges.
+
+| Workshop | Focus | Duration |
+|----------|-------|----------|
+| [COBOL Modernization](workshops/specialties/technical-domains/modernization/cobol/) | End-to-end mainframe modernization | ~4 hours |
+| [Legacy Modernization](workshops/specialties/technical-domains/modernization/legacy/) | COBOL/legacy → modern tech stack | 2-4 hours |
+| [.NET Cloud-Native Modernization](workshops/specialties/technical-domains/modernization/dotnet-cloud-native/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours |
+| [Framework Upgrades](workshops/specialties/technical-domains/modernization/framework-upgrades/) | Angular + Spring Boot version upgrades | 1-2 hours |
+| [Data Source Migration](workshops/specialties/technical-domains/modernization/data-source-migration/) | Legacy DW → modern schema | 1-2 hours |
+| [Platform Microservice Decomposition](workshops/specialties/technical-domains/modernization/platform-decomposition/) | Monolith → platform-conformant microservices | 1.5-2 hours |
+| [Security & Compliance](workshops/specialties/technical-domains/security/compliance/) | CVE remediation, SAST, shift-left | 1-2 hours |
+| [Enterprise Security Automation](workshops/specialties/technical-domains/security/enterprise-automation/) | Event-driven SAST, mass remediation | ~4 hours |
+| [Agentic AI](workshops/specialties/technical-domains/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
+
+#### Specialties — Job Families
+
+One workshop per job family — broad coverage of the role's engineering concerns.
+
+| Workshop | Focus | Duration |
+|----------|-------|----------|
+| [Application Development & Maintenance](workshops/specialties/job-families/development/app-maintenance/) | Feature dev, bug fixing, code maintenance | 4-6 hours |
+| [Feature Development](workshops/specialties/job-families/development/feature-development/) | New features on existing apps | 1-2 hours |
+| [Digital Engineering](workshops/specialties/job-families/digital-engineering/) | CI/CD, cloud infrastructure, observability | 4-6 hours |
+| [Quality Engineering & Assurance](workshops/specialties/job-families/quality-assurance-and-engineering/engineering/) | Test automation, E2E, continuous quality | 4-6 hours |
+| [Quality Engineering & Security](workshops/specialties/job-families/quality-assurance-and-engineering/engineering-security/) | QE + security remediation combined | ~3 hours |
 
 ## Tips for Getting the Most from Your Workshop
 
