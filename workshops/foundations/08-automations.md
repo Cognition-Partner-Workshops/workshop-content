@@ -189,10 +189,10 @@ Before activating any automation:
 **Prompt:**
 ```
 Check all dependencies in [repo] for available updates.
-Bump patch and minor versions where tests pass. Combine
-all compatible updates in a single commit. Skip major
-version bumps — flag those in the PR description for
-manual review.
+Bump patch and minor versions where tests pass. Bundle
+all compatible updates together. Skip major version
+bumps — flag those in the PR description for manual
+review.
 ```
 
 ### Recipe 2: CI Failure Auto-Fix
