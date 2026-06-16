@@ -124,7 +124,7 @@ From Devin Desktop, delegate to cloud with a single click — the local agent's 
 Devin Local (in Devin Desktop) and Devin CLI share the same underlying agent harness. This means:
 
 - **Consistent behavior** — The same reasoning, tool use, and code generation logic whether running locally or in the cloud
-- **Portable skills** — Patterns you teach the agent (rules, AGENTS.md, skills) apply in both contexts
+- **Portable skills** — Patterns you teach the agent (AGENTS.md, skills) apply in both contexts
 - **Unified identity** — Both local and cloud agents authenticate through the same Devin platform account
 
 The key architectural difference is the **execution environment**:
@@ -133,7 +133,7 @@ The key architectural difference is the **execution environment**:
 |---|---|---|
 | **Environment** | Cognition-managed VM (Linux, from blueprint snapshot) | Your machine (macOS, Linux, Windows) |
 | **File access** | Clones repos fresh into the VM | Reads/writes your local working tree directly |
-| **Org context** | Full shared context layer (Knowledge, Playbooks, Secrets, MCP) | Rules, AGENTS.md, skills; Knowledge/Playbooks coming soon |
+| **Org context** | Full shared context layer (Knowledge, Playbooks, Secrets, MCP) | AGENTS.md, skills; Knowledge/Playbooks coming soon |
 | **Network** | Configurable network policies, VPN, PrivateLink | Your machine's network (VPN, local services, etc.) |
 | **Persistence** | Hibernates VM state; resumes across days/weeks | Session ends when you close the terminal/IDE |
 | **Isolation** | Each session is a clean sandbox | Operates directly on your dev environment |
