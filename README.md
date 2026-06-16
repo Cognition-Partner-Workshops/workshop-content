@@ -52,6 +52,7 @@ Your facilitator may have directed you to a specific workshop. Each workshop bun
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
+| [Foundations](workshops/foundations/) | Cloud agent theory, product features, platform mental model | 2-3 hours |
 | [General](workshops/general/) | Security, modernization, feature dev — broad tour | 4-6 hours |
 | [Legacy Modernization](workshops/legacy-modernization/) | COBOL/legacy → modern tech stack | 2-4 hours |
 | [Framework Upgrades](workshops/framework-upgrades/) | Angular + Spring Boot version upgrades | 1-2 hours |
