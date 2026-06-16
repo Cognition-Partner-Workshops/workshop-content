@@ -14,7 +14,7 @@ Devin is a unified AI engineering platform with two complementary execution tier
 | **Parallelism** | Unlimited — spin up child agents across repos | Single session (your machine) |
 | **Output** | PRs, deployed artifacts, reports, linked tickets | Direct file edits in your working tree |
 | **Feedback model** | PR comments, Slack/Teams threads, web UI | Inline in your terminal or IDE |
-| **Compute cost** | ACU-based (pay for active time) | Your machine's resources (credits for model calls) |
+| **Compute cost** | ACU-based (pay for active time) | ACU-based (pay for active time) |
 
 ## Cloud Devin (The Autonomous Tier)
 
@@ -133,7 +133,7 @@ The key architectural difference is the **execution environment**:
 |---|---|---|
 | **Environment** | Cognition-managed VM (Linux, from blueprint snapshot) | Your machine (macOS, Linux, Windows) |
 | **File access** | Clones repos fresh into the VM | Reads/writes your local working tree directly |
-| **Org context** | Full shared context layer (Knowledge, Playbooks, Secrets, MCP) | AGENTS.md, skills; Knowledge/Playbooks coming soon |
+| **Org context** | Full shared context layer (Knowledge, Playbooks, Secrets, MCP) | AGENTS.md, skills |
 | **Network** | Configurable network policies, VPN, PrivateLink | Your machine's network (VPN, local services, etc.) |
 | **Persistence** | Hibernates VM state; resumes across days/weeks | Session ends when you close the terminal/IDE |
 | **Isolation** | Each session is a clean sandbox | Operates directly on your dev environment |
