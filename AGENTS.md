@@ -66,7 +66,7 @@ Every module and workshop should incorporate applicable principles from `shared/
 
 ## Reference Files
 
-- General themes: `shared/general-themes/` (7 files)
+- General themes: `shared/general-themes/` (8 files)
 - Runtime resources: `shared/runtime-resources.md`
 - Exemplar module: `modules/data-engineering/sas-migration-analysis.md`
 - Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)

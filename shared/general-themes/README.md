@@ -10,3 +10,4 @@ Background on Devin's architecture, capabilities, and collaboration model. These
 | [Platform Capabilities](platform-capabilities.md) | Scheduled sessions, playbooks, child agents, team-based operation, and Devin Review |
 | [Collaboration Model](collaboration-model.md) | The PR feedback loop, multi-user interaction, CI monitoring, and hibernation/resume behavior |
 | [Value Narratives](value-narratives.md) | Capacity unlocking, velocity, quality, risk reduction, and cost optimization |
+| [Cloud vs. Local Agents](cloud-vs-local-agents.md) | The two execution tiers (cloud VM and local machine), when to use each, how they complement each other, and the handoff mechanism |
