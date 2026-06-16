@@ -186,24 +186,47 @@ Before activating any automation:
 ### Recipe 1: Weekly Dependency Hygiene
 
 **Type:** Scheduled (weekly, Monday morning)
-**Prompt:** "Check all dependencies in [repo] for available updates. Bump patch and minor versions where tests pass. Open a single PR with all compatible updates. Skip major version bumps — flag those in the PR description for manual review."
+**Prompt:**
+```
+Check all dependencies in [repo] for available updates.
+Bump patch and minor versions where tests pass. Open a
+single PR with all compatible updates. Skip major version
+bumps — flag those in the PR description for manual review.
+```
 
 ### Recipe 2: CI Failure Auto-Fix
 
 **Type:** Event-driven (GitHub Actions check_run failure)
 **Condition:** Only for repos in the `backend/` namespace, only for branches with open PRs
-**Prompt:** "Build failed on branch {{branch}} in {{repo}}. Read the CI logs, identify the failure, and push a fix commit to the same branch."
+**Prompt:**
+```
+Build failed on branch {{branch}} in {{repo}}. Read the
+CI logs, identify the failure, and push a fix commit to
+the same branch.
+```
 
 ### Recipe 3: Security Finding Remediation
 
 **Type:** Event-driven (SAST scan webhook)
 **Condition:** Severity >= HIGH
-**Prompt:** "Remediate {{finding_title}} ({{severity}}) in {{repo}} at {{file_path}}:{{line}}. Apply the recommended fix from {{advisory_url}}. Run the scan again to verify the finding is resolved."
+**Prompt:**
+```
+Remediate {{finding_title}} ({{severity}}) in {{repo}}
+at {{file_path}}:{{line}}. Apply the recommended fix from
+{{advisory_url}}. Run the scan again to verify the finding
+is resolved.
+```
 
 ### Recipe 4: New Ticket Implementation
 
 **Type:** Event-driven (Jira/Linear ticket assigned to Devin)
-**Prompt:** "Implement the work described in ticket {{ticket_id}}: {{ticket_title}}. Read the full description and acceptance criteria. Work in {{repo}} on a new branch. Link the resulting PR back to the ticket."
+**Prompt:**
+```
+Implement the work described in ticket {{ticket_id}}:
+{{ticket_title}}. Read the full description and acceptance
+criteria. Work in {{repo}} on a new branch. Link the
+resulting PR back to the ticket.
+```
 
 ---
 
