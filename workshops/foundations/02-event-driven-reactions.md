@@ -122,11 +122,11 @@ Event-driven automation requires guardrails to prevent runaway behavior:
 
 **Loop prevention:** Filter out events caused by the agent itself. If Devin opens a PR that triggers CI, and CI failure triggers another Devin session, you get an infinite loop. The fix: check the PR author and skip events from `devin-ai-integration[bot]`.
 
-**Concurrency limits:** Cap the maximum number of simultaneous sessions per trigger type. If a security scan surfaces 200 findings at once, you probably want 10 parallel sessions, not 200.
+**Batching:** Control how many sessions run at once per trigger type. If a security scan surfaces 200 findings at once, batch them — run 10-20 in parallel, queue the rest, and start new sessions as earlier ones complete. This provides steady throughput without overwhelming CI systems, API rate limits, or review capacity.
 
-**Idempotency:** Use event IDs or deduplication keys to prevent the same event from spawning multiple sessions if the webhook fires more than once.
+**Idempotency:** The same underlying issue often generates multiple events — a flaky test fires three CI failures, or a single vulnerability appears in multiple scan reports. Use deduplication logic to recognize when multiple events point to the same root issue so it is triaged once, not once per event.
 
-**Escalation thresholds:** If the agent fails to resolve an event after N attempts, escalate to a human rather than retrying indefinitely.
+**Escalation thresholds:** If the agent cannot complete a task, it stops and surfaces what it found. The human reviews the session output and decides how to proceed — no infinite retry loops.
 
 **Scope boundaries:** Restrict which repos, branches, and finding severities trigger automated responses. Start narrow, expand as confidence grows.
 
@@ -143,7 +143,7 @@ For each one, ask:
 3. Could the initial diagnosis and fix attempt have been automated?
 4. What would you have been doing instead if the agent handled it?
 
-If you have access to the Devin web app, navigate to **Settings → Automations** and browse the available trigger types. Notice how each one maps to the patterns described above.
+If you have access to the Devin web app, navigate to **Automations** in the left sidebar of the organization page and browse the available trigger types. Notice how each one maps to the patterns described above.
 
 ---
 

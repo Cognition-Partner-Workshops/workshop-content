@@ -21,26 +21,24 @@ Not every task belongs to an AI agent. The most effective teams develop intuitio
 The core question: **Can success be verified without human judgment?**
 
 ```
-                     Can success be objectively verified?
-                          (tests pass, scan is clean,
-                           build succeeds, output matches spec)
-                                    │
-                        ┌───────────┴───────────┐
-                        │                       │
-                       YES                      NO
-                        │                       │
-              ┌─────────┴─────────┐      Task requires human
-              │                   │      judgment throughout
-         Is the task           Does it require
-         well-defined?         novel creativity?
-              │                      │
-         ┌────┴────┐           ┌────┴────┐
-         │         │           │         │
-        YES        NO         YES        NO
-         │         │           │         │
-    ✅ Give to    Refine the   ❌ Keep   Probably ✅
-    the agent    requirements   for      with clear
-                 first         humans    constraints
+                     Can success be verified?
+                          │
+          ┌───────────────┼───────────────────┐
+          │               │                   │
+    Objectively      Human can judge      Requires deep
+    (tests pass,     the output           human judgment
+    scan clean,      (visual UAT,         throughout
+    build succeeds,  prototype review,         │
+    output matches   tolerable if          ❌ Keep
+    spec)            imperfect)            for humans
+          │               │
+     ┌────┴────┐     ┌────┴────┐
+     │         │     │         │
+    YES        NO   Low-risk   High-risk
+     │         │     │         │
+✅ Give to   Refine  ✅ Give   Scope it
+ the agent   reqs    to agent  carefully
+             first
 ```
 
 <a id="tasks-that-belong-to-ai"></a>
@@ -74,7 +72,7 @@ These task categories share common traits: clear success criteria, verifiable ou
 
 ### Code Migrations and Translations
 
-**Why it works:** Input language/framework → output language/framework is a well-defined transformation. Golden-file testing or output parity verification confirms correctness.
+**Why it works:** Input language/framework → output language/framework is a well-defined transformation. Golden-file testing, output parity verification, or parallel testing (do the same inputs yield the same outputs across the original and migrated systems?) confirms correctness.
 
 **Example:** "Translate the SAS ETL jobs in `etl/legacy/` to Python/Pandas equivalents. Validate that output DataFrames match the expected CSVs in `test_data/expected/`."
 

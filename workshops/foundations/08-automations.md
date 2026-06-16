@@ -176,8 +176,8 @@ Begin with one automation:
 Before activating any automation:
 - [ ] Loop prevention: events from `devin-ai-integration[bot]` are excluded
 - [ ] Concurrency limit: maximum simultaneous sessions is capped
-- [ ] Deduplication: same event cannot spawn multiple sessions
-- [ ] Escalation: agent fails gracefully after N retries
+- [ ] Idempotency: multiple events from the same underlying issue are recognized and not re-triaged (consider an intermediary queue or deduplication key to prevent duplicate signals from reaching Devin)
+- [ ] Escalation: agent stops and surfaces findings if it cannot resolve the issue
 - [ ] Scope: only specific repos/branches/severities trigger responses
 
 <a id="common-automation-recipes"></a>
@@ -210,7 +210,7 @@ Before activating any automation:
 <a id="exploration-activity"></a>
 ## Exploration Activity
 
-**Try this:** If you have access to the Devin web app, navigate to **Settings → Automations**:
+**Try this:** If you have access to the Devin web app, navigate to **Automations** in the left sidebar of the organization page:
 
 1. Browse the available trigger types — notice how they map to the patterns above
 2. Look at any existing automations configured for your organization

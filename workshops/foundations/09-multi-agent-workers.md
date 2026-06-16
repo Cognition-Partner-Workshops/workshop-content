@@ -201,21 +201,11 @@ The best playbooks are living documents — they improve each time the team runs
 <a id="scaling-considerations"></a>
 ## Scaling Considerations
 
-### Concurrency
-
-Spawning 200 children simultaneously may overwhelm:
-- CI systems (200 branches triggering builds at once)
-- API rate limits (GitHub, Jira, SonarQube)
-- Code review capacity (200 PRs arriving at once is not reviewable)
-
-**Best practice:** Set a concurrency cap. Run 10-20 children at a time, queue the rest. As children complete, new ones start. This provides steady throughput without overwhelming downstream systems.
+> **Start small:** Get a handle on a low volume of concurrent children before scaling up. Running 5-10 children first helps you calibrate prompt quality, review load, and downstream system tolerance (CI, API rate limits) before expanding to larger campaigns.
 
 ### ACU Budget
 
-Multi-agent campaigns consume ACUs proportionally:
-- 50 children × 1 ACU-hour each = 50 ACU-hours
-- Set an ACU budget for the campaign before starting
-- The parent can be instructed to pause spawning if the budget is near its limit
+Multi-agent campaigns consume ACUs proportionally. For example, if a typical Devin session costs ~5 ACUs and you have 50 targets, expect ~250 ACUs for the full campaign. Factor this into planning before kicking off.
 
 ### Failure Handling
 
@@ -228,9 +218,11 @@ Not every child will succeed. The parent agent's monitoring role includes:
 ### Review Strategy
 
 50 PRs reviewed serially is still a lot of human time. Strategies to manage review load:
+
+- **Devin Review with AutoFix** — enable Devin Review on each child's PR branch. It catches bugs, security issues, and style violations automatically, and can push fixes before a human ever looks at the PR. This is your first line of defense at scale.
 - **Spot-check** — review a sample (first 5, last 5, random 5) in detail, merge the rest if patterns match
-- **Automated gates** — rely on CI, Devin Review, and linting to validate. If all checks pass, the PR is likely sound
-- **Batch merge** — merge all green PRs at once after spot-checking a sample
+- **Automated gates** — rely on CI, Devin Review, and linting to validate. If checks pass, the PR is likely sound
+- **Batch merge** — merge green PRs at once after spot-checking a sample
 - **Staggered delivery** — have the parent release PRs in batches of 10 so review doesn't pile up
 
 ---
@@ -247,7 +239,7 @@ Not every child will succeed. The parent agent's monitoring role includes:
 
 If you have access to Ask Devin, try: *"What would a playbook look like for upgrading [framework] across multiple services?"* — this helps you see how Devin thinks about methodology creation.
 
-Consider: If each target takes 1 hour of agent time and you have 50 targets, that's 50 ACU-hours with parallel execution completing in ~1-2 days — vs. 50 engineer-hours spread across weeks of competing priorities.
+Consider: If each target costs ~5 ACUs and you have 50 targets, that's ~250 ACUs with parallel execution completing in ~1-2 days — vs. 50 engineer-hours spread across weeks of competing priorities.
 
 ---
 
@@ -259,6 +251,6 @@ Consider: If each target takes 1 hour of agent time and you have 50 targets, tha
 - Each child has its own VM, branch, and PR — failures are isolated and don't cascade
 - Playbooks ensure consistency: each child receives the same validated procedure
 - Multi-agent is for campaigns with many independent targets and a repeatable pattern — not for interdependent work
-- Concurrency caps, ACU budgets, and failure thresholds are essential at scale
+- Start small with concurrency, plan ACU budgets, and set failure thresholds before scaling up
 - Review strategies (spot-check, automated gates, batch merge) manage the human review load
 - Elapsed time drops from weeks/months to days because N agents work simultaneously

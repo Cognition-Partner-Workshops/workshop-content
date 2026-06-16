@@ -36,6 +36,8 @@ Each session is isolated from every other session — separate filesystem, separ
 <a id="session-lifecycle"></a>
 ## Session Lifecycle
 
+<!-- TODO: revise this section -->
+
 ```
 ┌──────────┐     ┌──────────┐     ┌──────────────────┐     ┌──────────┐
 │  Created  │────▶│  Active  │────▶│  Waiting/Hibernated │────▶│  Resumed │
@@ -61,9 +63,9 @@ Each session is isolated from every other session — separate filesystem, separ
 Hibernation is what makes the economics work. The agent doesn't sit idle burning compute while you review a PR or think about feedback. It snapshots its state and releases resources. When you're ready to interact, it resumes in seconds with zero context loss.
 
 This means:
-- Long-running tasks (multi-day code reviews) are natural and cost-efficient
-- You never feel pressured to respond quickly — the agent waits patiently
-- Multiple sessions can be in flight simultaneously, each at different lifecycle stages
+- Long-running tasks (multi-day code reviews) are natural and cost-efficient — cycles of back-and-forth review are how real engineering works, and hibernation makes each cycle free while the human side thinks
+- The asynchronous nature means you respond to the agent when you want and context is not lost
+- Multiple sessions can be in flight simultaneously, each with different context scopes and independent working dev environments
 
 <a id="starting-a-session"></a>
 ## Starting a Session
@@ -75,7 +77,7 @@ Sessions can be started from multiple surfaces:
 | **Web app** (app.devin.ai) | Full-featured prompt composition with repo selection |
 | **Slack / Teams** | Quick tasks from a conversation thread |
 | **IDE delegation** | Handing off from local work to cloud execution |
-| **CLI** (`devin` command) | Terminal-native workflows with cloud handoff |
+| **CLI** (`devin` command) | Terminal-native workflows that eventually need a cloud handoff for long-cycle execution |
 | **API** (`POST /sessions`) | Programmatic triggering from CI, scripts, or orchestration |
 | **Automations** | Event-driven (webhooks, schedules, issue assignment) |
 | **Linear / Jira** | Assign a ticket directly to Devin |
@@ -122,7 +124,7 @@ Every session automatically receives context from the organization's shared laye
 
 | Context Source | What It Provides |
 |---------------|-----------------|
-| **Environment Blueprint** | Pre-built VM with dependencies and tools installed — sessions boot ready to build |
+| **Environment Blueprint** | Pre-built VM with dependencies and tools installed, plus knowledge and context scoped at the repo, org, or enterprise level — sessions boot ready to build |
 | **Knowledge Notes** | Team conventions, coding standards, architecture decisions — retrieved based on task relevance |
 | **Secrets** | API keys, tokens, credentials — injected into the environment securely |
 | **Git Connections** | Repository access — agent can clone and push immediately |

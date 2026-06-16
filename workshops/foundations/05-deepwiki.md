@@ -54,7 +54,7 @@ Source Code Repository
 └─────────────────────────────────┘
 ```
 
-DeepWiki updates as code evolves. When new commits land on the main branch, the wiki reflects the current state of the codebase — not a stale snapshot from months ago.
+DeepWiki updates as code evolves. When new commits land on the main branch, the next wiki refresh reflects the current state of the codebase — not a stale snapshot from months ago.
 
 <a id="what-a-deepwiki-page-contains"></a>
 ## What a DeepWiki Page Contains

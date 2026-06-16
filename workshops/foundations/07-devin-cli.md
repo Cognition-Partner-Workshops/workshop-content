@@ -52,7 +52,6 @@ The interactive REPL is the primary interface. You type natural language instruc
 Point the agent at specific files for context:
 - Type `@` to autocomplete local file/directory paths
 - Selected files are added as context for the conversation
-- Paste images with `Ctrl+V` — useful for visual bugs or UI specs
 
 ### Session Continuity
 
