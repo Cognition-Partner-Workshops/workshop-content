@@ -7,7 +7,7 @@
 | **Focus** | Progressive modernization of a monolithic .NET system to Kubernetes-hosted cloud-native APIs on EKS |
 | **Duration** | 2.5-3 hours (configurable — see Duration Variants below) |
 | **Audience** | .NET developers, solution architects, platform engineers, modernization teams |
-| **Key Modules** | [.NET Monolith Decomposition](../../../../../../../modules/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../../../../../../../modules/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../../../../../../../modules/migration-modernization/cross-service-bug-investigation.md) |
+| **Key Modules** | [.NET Monolith Decomposition](../../../../../modules/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../../../../../modules/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../../../../../modules/migration-modernization/cross-service-bug-investigation.md) |
 
 ## Workshop Narrative
 
@@ -68,7 +68,7 @@ Replace `<attendee_id>` with a unique identifier (e.g., name, employee ID). All 
 
 ### Lab 1 — Monolith Decomposition & Containerization (75 min)
 
-- **Module:** [.NET Monolith Decomposition with Local Hosting](../../../../../../../modules/migration-modernization/dotnet-monolith-decomposition.md)
+- **Module:** [.NET Monolith Decomposition with Local Hosting](../../../../../modules/migration-modernization/dotnet-monolith-decomposition.md)
 - **Repositories:**
   - [quickapp-monolith](https://github.com/Cognition-Partner-Workshops/quickapp-monolith) — .NET + Angular monolith (source)
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — target scaffold (reference)
@@ -105,7 +105,7 @@ Review both PRs. Ask Devin to add circuit breaker logic, health checks, or impro
 
 ### Lab 2 — Integration Testing Between Monolith & Microservice (45 min)
 
-- **Module:** [Cross-Service Integration Testing](../../../../../../../modules/testing-qa/cross-service-integration-testing.md)
+- **Module:** [Cross-Service Integration Testing](../../../../../modules/testing-qa/cross-service-integration-testing.md)
 - **Repositories:** Same as Lab 1
 - **Objective:** Write integration tests that validate the HTTP contract between the monolith and extracted Order service
 - **Duration:** 45 min
@@ -138,7 +138,7 @@ Ask Devin to add concurrent order creation tests, contract backwards-compatibili
 
 ### Lab 3 — Cross-Service Bug Hunt (45 min)
 
-- **Module:** [Cross-Service Bug Investigation](../../../../../../../modules/migration-modernization/cross-service-bug-investigation.md)
+- **Module:** [Cross-Service Bug Investigation](../../../../../modules/migration-modernization/cross-service-bug-investigation.md)
 - **Repository:**
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices)
 - **Objective:** Find and fix a visual bug in the Notification service where order confirmation emails show amounts 100x smaller than the actual order total
@@ -183,7 +183,7 @@ Check that Devin removed the erroneous division and fixed the misleading comment
 
 This workshop uses the C12 (.NET/Angular Containerized Decomposition) repo cluster. The monolith is imported from QuickApp, a real open-source .NET + Angular application with 5 bounded contexts. The microservices scaffold and IaC were generated to represent the target cloud-native architecture on EKS.
 
-The workshop also references the existing [Platform-Conformant Microservice Decomposition](../platform-microservice-decomposition/) workshop (DA8), which uses a different .NET monolith family (OrderManager / C11 cluster). That workshop focuses on IaC conformance and multi-repo coordination; this workshop focuses on the progressive modernization journey with local hosting, integration testing, and cross-service debugging.
+The workshop also references the existing [Platform-Conformant Microservice Decomposition](../platform-decomposition/) workshop (DA8), which uses a different .NET monolith family (OrderManager / C11 cluster). That workshop focuses on IaC conformance and multi-repo coordination; this workshop focuses on the progressive modernization journey with local hosting, integration testing, and cross-service debugging.
 
 ## Devin Features Checklist
 

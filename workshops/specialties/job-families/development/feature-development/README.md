@@ -7,7 +7,7 @@
 | **Focus** | Building new features on existing applications — requirements through implementation and testing |
 | **Duration** | 1-2 hours |
 | **Audience** | Full-stack developers, product engineers, development teams |
-| **Key Modules** | [Gather Requirements](../../../../../../../modules/application-development/gather-requirements.md), [Test-Driven Development](../../../../../../../modules/application-development/test-driven-development.md), [New Feature Development](../../../../../../../modules/application-development/new-feature-development.md), [API Documentation](../../../../../../../modules/technical-documentation/api-documentation.md), [Database Schema Evolution](../../../../../../../modules/application-development/database-schema-evolution.md) |
+| **Key Modules** | [Gather Requirements](../../../../../modules/application-development/gather-requirements.md), [Test-Driven Development](../../../../../modules/application-development/test-driven-development.md), [New Feature Development](../../../../../modules/application-development/new-feature-development.md), [API Documentation](../../../../../modules/technical-documentation/api-documentation.md), [Database Schema Evolution](../../../../../modules/application-development/database-schema-evolution.md) |
 
 ## Workshop Narrative
 
@@ -36,7 +36,7 @@ A few tips to maximize your hands-on time:
 
 ### Lab 1 — Full-Stack CRUD Feature
 
-- **Module:** [New Feature Development](../../../../../../../modules/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../../../../modules/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service (alternative)

@@ -7,7 +7,7 @@
 | **Focus** | Quality engineering (first half) + security vulnerability remediation (second half) |
 | **Duration** | ~3 hours (flexible: 90 min per half + breaks) |
 | **Audience** | QA/QE engineers, AppSec/DevSecOps practitioners, engineering leads responsible for test coverage or security compliance |
-| **Key Modules** | [Linting & Static Analysis](../../../../../../../modules/testing-qa/linting-static-analysis.md), [Unit Testing](../../../../../../../modules/testing-qa/unit-testing.md), [Upgrade Dependencies](../../../../../../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../../../../../modules/security/remediate-vulnerabilities.md) |
+| **Key Modules** | [Linting & Static Analysis](../../../../../modules/testing-qa/linting-static-analysis.md), [Unit Testing](../../../../../modules/testing-qa/unit-testing.md), [Upgrade Dependencies](../../../../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../../../modules/security/remediate-vulnerabilities.md) |
 
 ## Abstract
 
@@ -56,7 +56,7 @@ Two halves, each with 2 structured labs:
 ## Featured Labs
 
 ### Lab 1 — Linting & Unit Testing (45 min)
-- **Modules:** [Linting & Static Analysis](../../../../../../../modules/testing-qa/linting-static-analysis.md) + [Unit Testing](../../../../../../../modules/testing-qa/unit-testing.md)
+- **Modules:** [Linting & Static Analysis](../../../../../modules/testing-qa/linting-static-analysis.md) + [Unit Testing](../../../../../modules/testing-qa/unit-testing.md)
 - **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 - **Objective:** Start by resolving linting issues (GitHub Issue #3), then improve unit test coverage and generate a coverage report
 - **Target Outcomes:**
@@ -66,7 +66,7 @@ Two halves, each with 2 structured labs:
   - PR with linting fixes and new tests
 
 ### Lab 2 — E2E Testing & Documentation (45 min)
-- **Modules:** [End-to-End Testing](../../../../../../../modules/testing-qa/end-to-end-testing.md) + [Inline Documentation](../../../../../../../modules/technical-documentation/inline-documentation.md)
+- **Modules:** [End-to-End Testing](../../../../../modules/testing-qa/end-to-end-testing.md) + [Inline Documentation](../../../../../modules/technical-documentation/inline-documentation.md)
 - **Repository:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 - **Alternative E2E repo:** [calcom](https://github.com/Cognition-Partner-Workshops/calcom) (for participants wanting a more complex target)
 - **Objective:** Write and run E2E tests against the locally running application, then improve inline documentation across the codebase
@@ -77,7 +77,7 @@ Two halves, each with 2 structured labs:
   - PR with tests and documentation
 
 ### Lab 3 — CVE Remediation with Local SAST Tools (60 min)
-- **Modules:** [Upgrade Dependencies](../../../../../../../modules/security/upgrade-dependencies.md) + [Remediate Vulnerabilities](../../../../../../../modules/security/remediate-vulnerabilities.md)
+- **Modules:** [Upgrade Dependencies](../../../../../modules/security/upgrade-dependencies.md) + [Remediate Vulnerabilities](../../../../../modules/security/remediate-vulnerabilities.md)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Use pre-configured local SAST tools to scan for vulnerabilities, remediate the most critical findings, and upgrade outdated dependencies
 - **Target Outcomes:**
@@ -95,7 +95,7 @@ Two halves, each with 2 structured labs:
 | [SonarQube Community Edition](https://www.sonarsource.com/open-source-editions/sonarqube-community-edition/) | Source code for vulnerabilities, code smells, bugs | `docker compose -f docker-compose.sonarqube.yml up -d` then `./gradlew sonar` |
 
 ### Lab 4 — Shift Left & Security Antipatterns (45 min)
-- **Modules:** [Shift Left Security](../../../../../../../modules/security/shift-left-security.md) + [Security Antipatterns](../../../../../../../modules/security/security-antipatterns.md)
+- **Modules:** [Shift Left Security](../../../../../modules/security/shift-left-security.md) + [Security Antipatterns](../../../../../modules/security/security-antipatterns.md)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) or [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app)
 - **Objective:** Add CI workflows that gate on security policy violations, then identify and fix security antipatterns in application code
 - **Target Outcomes:**
@@ -109,13 +109,13 @@ Two halves, each with 2 structured labs:
 
 ## Additional Challenges
 
-Participants who finish early may attempt any challenge from the full [module catalog](../../../../../../../modules/). Recommended extras:
+Participants who finish early may attempt any challenge from the full [module catalog](../../../../../modules/). Recommended extras:
 
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
-| New Feature Development | [New Feature Development](../../../../../../../modules/application-development/new-feature-development.md) | timesheet-app | Intermediate | 60 min |
-| Fix UI Bug | [Fix UI Bug](../../../../../../../modules/application-development/fix-ui-bug.md) | timesheet-app | Intermediate | 45 min |
-| CI/CD Pipeline | [CI/CD Pipeline](../../../../../../../modules/devops-cicd/cicd-pipeline.md) | timesheet-app | Intermediate | 60 min |
+| New Feature Development | [New Feature Development](../../../../../modules/application-development/new-feature-development.md) | timesheet-app | Intermediate | 60 min |
+| Fix UI Bug | [Fix UI Bug](../../../../../modules/application-development/fix-ui-bug.md) | timesheet-app | Intermediate | 45 min |
+| CI/CD Pipeline | [CI/CD Pipeline](../../../../../modules/devops-cicd/cicd-pipeline.md) | timesheet-app | Intermediate | 60 min |
 
 ---
 
@@ -130,11 +130,11 @@ Participants who finish early may attempt any challenge from the full [module ca
 - **timesheet-app:** Backend on port 3001, frontend on port 5173 (needed for Lab 2 E2E testing)
 - **SonarQube:** `docker compose -f docker-compose.sonarqube.yml up -d` on port 9000 (needed for Lab 3)
 
-If hosted instances are available, refer to [runtime-resources.md](../../../../../../../shared/runtime-resources.md) for URLs and credentials.
+If hosted instances are available, refer to [runtime-resources.md](../../../../../shared/runtime-resources.md) for URLs and credentials.
 
 ## Repo Duplication Notes
 
-- `uc-cve-remediation-regulatory-compliance` originates from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../../../../../catalog/repos.md)). It is an isolated copy for security exercises — participants can safely modify it without affecting other labs.
+- `uc-cve-remediation-regulatory-compliance` originates from `spring-boot-realworld-example-app` (Cluster C1 in [catalog](../../../../../catalog/repos.md)). It is an isolated copy for security exercises — participants can safely modify it without affecting other labs.
 - `timesheet-app` (renamed from `client-timesheet-app`) is a standalone repo used across QE and security challenges.
 
 ## Context
@@ -146,7 +146,7 @@ If hosted instances are available, refer to [runtime-resources.md](../../../../.
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../../../../modules/devin-features/README.md) throughout the session. Key activities for this variant:
+Encourage participants to track their progress on the [Devin Features Appendix](../../../../../modules/devin-features/README.md) throughout the session. Key activities for this variant:
 
 - [ ] Resolve a GitHub Issue (Lab 1 — linting)
 - [ ] Generate unit tests and review coverage reports (Lab 1)

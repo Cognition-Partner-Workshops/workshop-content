@@ -7,7 +7,7 @@
 | **Focus** | Rewriting a legacy data source to a modern schema and reconnecting the application with comprehensive testing |
 | **Duration** | 1-2 hours |
 | **Audience** | Database engineers, backend developers, data migration teams |
-| **Key Modules** | [Data Source Migration](../../../../../../../modules/data-engineering/data-source-migration.md) |
+| **Key Modules** | [Data Source Migration](../../../../../modules/data-engineering/data-source-migration.md) |
 
 ## Workshop Narrative
 
@@ -36,7 +36,7 @@ A few tips to maximize your hands-on time:
 
 ### Lab 1 — Data Source Rewrite + App Reconnection + Testing
 
-- **Module:** [Data Source Migration](../../../../../../../modules/data-engineering/data-source-migration.md)
+- **Module:** [Data Source Migration](../../../../../modules/data-engineering/data-source-migration.md)
 - **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Objective:** Transform a legacy data warehouse (all-VARCHAR, denormalized) to a modern normalized schema, rewire the app, and validate with comprehensive tests
 - **Duration:** 60 min
