@@ -1,0 +1,161 @@
+site_name: Devin Workshop Hub
+site_description: Self-paced labs, training, and demos for Devin hands-on workshops
+site_url: https://cognition-partner-workshops.github.io/workshop-metadata/
+
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+
+repo_url: https://github.com/Cognition-Partner-Workshops/workshop-metadata
+repo_name: workshop-metadata
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Cognition-Partner-Workshops
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+exclude_docs: |
+  .git/
+  .github/
+  node_modules/
+  __pycache__/
+  site/
+
+validation:
+  links:
+    not_found: info
+    absolute_links: ignore
+    unrecognized_links: ignore
+
+# Navigation uses CURRENT paths (pre-restructure).
+# Target structure after restructure:
+#   foundations/ (theory + product) at root
+#   labs/ (replaces modules/)
+#   workshops/by-role/ and workshops/by-domain/ (replaces workshops/specialties/)
+nav:
+  - Home: index.md
+  - Foundations:
+    # Target: foundations/README.md
+    - Overview: workshops/foundations/README.md
+    - Theory:
+      # Target: foundations/theory/01-cloud-agent-vs-local-agent.md
+      - Cloud Agent vs. Local Agent: workshops/foundations/01-cloud-agent-vs-local-agent.md
+      # Target: foundations/theory/02-event-driven-reactions.md
+      - Event-Driven Reactions: workshops/foundations/02-event-driven-reactions.md
+      # Target: foundations/theory/03-agent-orchestration.md
+      - Agent Orchestration: workshops/foundations/03-agent-orchestration.md
+      # Target: foundations/theory/04-what-to-give-ai.md
+      - What to Give AI: workshops/foundations/04-what-to-give-ai.md
+    - Product Features:
+      # Target: foundations/product/05-deepwiki.md
+      - DeepWiki: workshops/foundations/05-deepwiki.md
+      # Target: foundations/product/06-devin-sessions.md
+      - Devin Sessions: workshops/foundations/06-devin-sessions.md
+      # Target: foundations/product/07-devin-cli.md
+      - Devin CLI: workshops/foundations/07-devin-cli.md
+      # Target: foundations/product/08-automations.md
+      - Automations: workshops/foundations/08-automations.md
+      # Target: foundations/product/09-multi-agent-workers.md
+      - Multi-Agent Workers: workshops/foundations/09-multi-agent-workers.md
+      # Target: foundations/product/devin-cloud.md
+      - Devin Cloud Tour: shared/product-features/devin-cloud.md
+      # Target: foundations/product/devin-desktop.md
+      - Devin Desktop Tour: shared/product-features/devin-desktop.md
+      # Target: foundations/product/devin-cli-tour.md
+      - Devin CLI Tour: shared/product-features/devin-cli.md
+  - Labs:
+    # Target: labs/README.md
+    - Overview: modules/README.md
+    # Target: labs/security/
+    - Security: modules/security/README.md
+    # Target: labs/data-engineering/
+    - Data Engineering: modules/data-engineering/README.md
+    # Target: labs/migration-modernization/
+    - Migration & Modernization: modules/migration-modernization/README.md
+    # Target: labs/application-development/
+    - Application Development: modules/application-development/README.md
+    # Target: labs/testing-qa/
+    - Testing & QA: modules/testing-qa/README.md
+    # Target: labs/devops-cicd/
+    - DevOps & CI/CD: modules/devops-cicd/README.md
+    # Target: labs/cloud-infrastructure/
+    - Cloud & Infrastructure: modules/cloud-infrastructure/README.md
+    # Target: labs/observability-sre/
+    - Observability & SRE: modules/observability-sre/README.md
+    # Target: labs/architecture-design/
+    - Architecture & Design: modules/architecture-design/README.md
+    # Target: labs/ai-ml-engineering/
+    - AI & ML Engineering: modules/ai-ml-engineering/README.md
+    # Target: labs/compliance-governance/
+    - Compliance & Governance: modules/compliance-governance/README.md
+    # Target: labs/technical-documentation/
+    - Technical Documentation: modules/technical-documentation/README.md
+    # Target: labs/devin-features/README.md
+    - Devin Features Checklist: modules/devin-features/README.md
+  - Workshops:
+    - Overview: workshops/README.md
+    - General: workshops/general/README.md
+    - OtterWorks: workshops/otterworks/README.md
+    # Target: workshops/by-role/
+    - By Role:
+      - Development: workshops/specialties/job-families/development/feature-development/README.md
+      - Digital Engineering: workshops/specialties/job-families/digital-engineering/README.md
+      - Quality Engineering: workshops/specialties/job-families/quality-assurance-and-engineering/engineering/README.md
+    # Target: workshops/by-domain/
+    - By Domain:
+      - Modernization: workshops/specialties/technical-domains/modernization/dotnet-cloud-native/README.md
+      - Security: workshops/specialties/technical-domains/security/enterprise-automation/README.md
+      - AI & Automation: workshops/specialties/technical-domains/ai-and-automation/agentic-ai/README.md
+  - Demos:
+    - Data Engineering: demos/data-engineering/sas-to-databricks-demo.md
+    - Migration: demos/migration/mulesoft-to-spring-boot-demo.md
+    - Security: demos/security/general.md
