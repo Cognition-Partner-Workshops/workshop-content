@@ -7,7 +7,7 @@
 | **Focus** | Event-driven security automation, agent orchestration, and long-term reasoning for tech debt remediation |
 | **Duration** | ~4 hours (3 labs × 90 min + breaks) |
 | **Audience** | Engineering leadership, AppSec/DevSecOps, platform engineering, enterprise architecture |
-| **Key Modules** | [Event-Driven SAST Remediation](../../../../../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../../../../../modules/security/mass-security-backlog-remediation.md) |
+| **Key Modules** | [Event-Driven SAST Remediation](../../../../labs/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../../../../labs/security/mass-security-backlog-remediation.md) |
 
 ## Abstract
 
@@ -65,7 +65,7 @@ Three labs that build on each other in a progressive sequence:
 
 ### Lab 1 — Event-Driven SAST Remediation (90 min)
 
-- **Module:** [Event-Driven SAST Remediation](../../../../../modules/security/event-driven-sast-remediation.md)
+- **Module:** [Event-Driven SAST Remediation](../../../../labs/security/event-driven-sast-remediation.md)
 - **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) and [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Build a GitHub Actions workflow where SAST tools scan PRs from non-Devin authors and automatically trigger a Devin session to remediate findings
 
@@ -93,7 +93,7 @@ Three labs that build on each other in a progressive sequence:
 
 ### Lab 2 — Mass Security Backlog Remediation with Agent Orchestration (90 min)
 
-- **Module:** [Mass Security Backlog Remediation](../../../../../modules/security/mass-security-backlog-remediation.md)
+- **Module:** [Mass Security Backlog Remediation](../../../../labs/security/mass-security-backlog-remediation.md)
 - **Repositories:** [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) and [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Demonstrate enterprise-scale remediation: one parent Devin session triages a consolidated SAST report and launches parallel child sessions to remediate 2 repos simultaneously
 
@@ -124,7 +124,7 @@ Three labs that build on each other in a progressive sequence:
 
 ### Lab 3 — One-Shot Tech Debt Remediation via Long-Term Reasoning (75 min)
 
-- **Module:** [One-Shot Tech Debt Remediation](../../../../../modules/migration-modernization/one-shot-tech-debt-remediation.md)
+- **Module:** [One-Shot Tech Debt Remediation](../../../../labs/migration-modernization/one-shot-tech-debt-remediation.md)
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) or [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Demonstrate that a single, well-engineered prompt can achieve 80-90% completion of a major tech debt remediation — with provable results and honest acknowledgement of testing gaps
 
@@ -156,13 +156,13 @@ Three labs that build on each other in a progressive sequence:
 
 ## Additional Challenges
 
-Participants who finish early may attempt any challenge from the full [module catalog](../../../../../modules/). Recommended extensions:
+Participants who finish early may attempt any challenge from the full [module catalog](../../../../labs/). Recommended extensions:
 
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
-| Shift Left Security (build on Lab 1) | [Shift Left Security](../../../../../modules/security/shift-left-security.md) | uc-cve-remediation-regulatory-compliance | Intermediate | 60 min |
-| Repetitive Framework Upgrades (scale Lab 3) | [Repetitive Framework Upgrades](../../../../../modules/migration-modernization/repetitive-framework-upgrades.md) | Multiple repos | Intermediate | 60 min |
-| CI/CD Pipeline | [CI/CD Pipeline](../../../../../modules/devops-cicd/cicd-pipeline.md) | timesheet-app | Intermediate | 45 min |
+| Shift Left Security (build on Lab 1) | [Shift Left Security](../../../../labs/security/shift-left-security.md) | uc-cve-remediation-regulatory-compliance | Intermediate | 60 min |
+| Repetitive Framework Upgrades (scale Lab 3) | [Repetitive Framework Upgrades](../../../../labs/migration-modernization/repetitive-framework-upgrades.md) | Multiple repos | Intermediate | 60 min |
+| CI/CD Pipeline | [CI/CD Pipeline](../../../../labs/devops-cicd/cicd-pipeline.md) | timesheet-app | Intermediate | 45 min |
 
 ---
 
@@ -188,7 +188,7 @@ Participants who finish early may attempt any challenge from the full [module ca
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../../modules/devin-features/README.md) throughout the session. Key activities for this track:
+Encourage participants to track their progress on the [Devin Features Appendix](../../../../labs/devin-features/README.md) throughout the session. Key activities for this track:
 
 - [ ] Use the Devin API to trigger a session programmatically (Lab 1)
 - [ ] Run parallel Devin sessions (Lab 2)

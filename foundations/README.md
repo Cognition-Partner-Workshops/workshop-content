@@ -35,20 +35,20 @@ Tips:
 
 | # | Topic | What You'll Learn |
 |---|-------|-------------------|
-| 1 | [Cloud Agent vs. Local Agent](01-cloud-agent-vs-local-agent.md) | Why delegating entire tasks to an autonomous cloud agent is fundamentally different from local AI assistance |
-| 2 | [Event-Driven Reactions](02-event-driven-reactions.md) | Why automated triggers produce better outcomes than humans getting paged |
-| 3 | [Agent Orchestration](03-agent-orchestration.md) | How agents fit into your team as a workforce — distributing work intelligently |
-| 4 | [What to Give AI vs. Not](04-what-to-give-ai.md) | A framework for identifying tasks that belong to an AI agent vs. those that don't |
+| 1 | [Cloud Agent vs. Local Agent](theory/01-cloud-agent-vs-local-agent.md) | Why delegating entire tasks to an autonomous cloud agent is fundamentally different from local AI assistance |
+| 2 | [Event-Driven Reactions](theory/02-event-driven-reactions.md) | Why automated triggers produce better outcomes than humans getting paged |
+| 3 | [Agent Orchestration](theory/03-agent-orchestration.md) | How agents fit into your team as a workforce — distributing work intelligently |
+| 4 | [What to Give AI vs. Not](theory/04-what-to-give-ai.md) | A framework for identifying tasks that belong to an AI agent vs. those that don't |
 
 ### Part 2: Product Features
 
 | # | Topic | What You'll Learn |
 |---|-------|-------------------|
-| 5 | [DeepWiki](05-deepwiki.md) | How source code is distilled into consumable wiki pages that give the agent codebase understanding |
-| 6 | [Devin Sessions](06-devin-sessions.md) | The worker model — how tasks are received, executed, and delivered |
-| 7 | [Devin CLI](07-devin-cli.md) | The terminal interface that bridges local development with cloud delegation |
-| 8 | [Automations](08-automations.md) | Triggers, scheduled routines, and event-driven workflows |
-| 9 | [Multi-Agent Workers](09-multi-agent-workers.md) | Breaking large tasks into subunits distributed across parallel workers |
+| 5 | [DeepWiki](product/05-deepwiki.md) | How source code is distilled into consumable wiki pages that give the agent codebase understanding |
+| 6 | [Devin Sessions](product/06-devin-sessions.md) | The worker model — how tasks are received, executed, and delivered |
+| 7 | [Devin CLI](product/07-devin-cli.md) | The terminal interface that bridges local development with cloud delegation |
+| 8 | [Automations](product/08-automations.md) | Triggers, scheduled routines, and event-driven workflows |
+| 9 | [Multi-Agent Workers](product/09-multi-agent-workers.md) | Breaking large tasks into subunits distributed across parallel workers |
 
 ---
 
@@ -58,9 +58,9 @@ Once you've built this foundation, you're ready for any of the hands-on technica
 
 | Next Step | What You'll Do |
 |-----------|---------------|
-| [General Workshop](../general/) | Security, modernization, and feature development labs |
-| [Application Development & Maintenance](../application-development-maintenance/) | Build features, fix bugs, iterate on PRs |
-| [Enterprise Security Automation](../enterprise-security-automation/) | Event-driven SAST and mass remediation |
-| [Digital Engineering](../digital-engineering/) | CI/CD, cloud infrastructure, observability |
+| [General Workshop](../workshops/general/) | Security, modernization, and feature development labs |
+| [Application Development & Maintenance](../workshops/by-role/development/app-maintenance/) | Build features, fix bugs, iterate on PRs |
+| [Enterprise Security Automation](../workshops/by-domain/security/enterprise-automation/) | Event-driven SAST and mass remediation |
+| [Digital Engineering](../workshops/by-role/digital-engineering/) | CI/CD, cloud infrastructure, observability |
 
 These workshops assume you understand the concepts covered here — cloud delegation, event-driven patterns, the PR feedback loop, and how Devin's context layer works.

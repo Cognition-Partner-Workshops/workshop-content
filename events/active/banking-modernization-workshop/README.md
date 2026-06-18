@@ -71,7 +71,7 @@ A few tips to maximize your hands-on time:
 **Value driver:** *Devin reads COBOL copybook record layouts and 3270 screen definitions from a mainframe credit card application and generates modern TypeScript interfaces — showing how PIC clauses, COMP-3 packed decimals, and FILLER fields map to clean typed models.*
 
 - **Repository:** [ts-cobol-carddemo](https://github.com/Cognition-Partner-Workshops/ts-cobol-carddemo)
-- **Module:** [COBOL System Understanding](../../../modules/migration-modernization/cobol-system-understanding.md)
+- **Module:** [COBOL System Understanding](../../../labs/migration-modernization/cobol-system-understanding.md)
 
 The CardDemo application is a real mainframe credit card management system with 29 COBOL programs, 30 copybooks defining record layouts (accounts, customers, cards, transactions), and 17 BMS screen maps for 3270 terminal interactions.
 
@@ -153,7 +153,7 @@ When Devin opens a PR:
 **Value driver:** *Devin analyzes an existing banking microservices codebase, understands the architecture and conventions, then builds a new API endpoint that fits seamlessly into the existing system — following the same patterns, annotations, and package structure.*
 
 - **Repository:** [ts-java-spring-boot-internet-banking](https://github.com/Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking)
-- **Module:** [New Feature Development](../../../modules/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../../labs/application-development/new-feature-development.md)
 
 This is a Java 21 / Spring Boot 3.2.4 banking application with 6 microservices: core-banking, fund-transfer, user-service, utility-payment, API gateway, and service registry. It uses Keycloak for authentication, RabbitMQ for messaging, and Zipkin for distributed tracing.
 
@@ -231,7 +231,7 @@ When Devin opens a PR:
 **Value driver:** *Devin connects to SonarQube via MCP to fetch real findings, remediates the critical vulnerabilities, fixes breaking API changes from the upgrades, and verifies the quality gate — showing the tool-augmented remediation loop.*
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
-- **Module:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../../../modules/security/shift-left-security.md)
+- **Module:** [Remediate Vulnerabilities](../../../labs/security/remediate-vulnerabilities.md), [Shift Left Security](../../../labs/security/shift-left-security.md)
 - **MCP Integration (optional):** [SonarQube MCP](https://docs.devin.ai/work-with-devin/mcp#sonarqube) — if installed on the workshop org, Devin reads findings directly from SonarCloud
 
 This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies. If the SonarQube MCP is installed on the org, Devin reads findings directly from SonarCloud for a richer triage experience. Without it, Devin analyzes `build.gradle` directly — the lab works either way.

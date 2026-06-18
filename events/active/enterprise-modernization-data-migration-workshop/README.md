@@ -82,7 +82,7 @@ Already comfortable with Devin basics? Jump straight to the labs:
 **Value driver:** *Devin identifies known CVEs in project dependencies, upgrades to patched versions, fixes breaking API changes, and documents remediation — compressing a manual security review into a single session.*
 
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
-- **Modules:** [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md)
+- **Modules:** [Remediate Vulnerabilities](../../../labs/security/remediate-vulnerabilities.md), [Upgrade Dependencies](../../../labs/security/upgrade-dependencies.md)
 
 This Spring Boot 2.6.3 application ships with known CVEs including Spring4Shell (CVSS 9.8), SnakeYAML unsafe deserialization (CVSS 9.8), and multiple Spring Security bypasses. OWASP Dependency-Check and SonarQube are pre-configured as Gradle plugins.
 
@@ -144,7 +144,7 @@ When Devin opens a PR:
 **Value driver:** *Devin reads a real mainframe COBOL application that most modern engineers can't understand, reverse-engineers the data model and business logic, and translates a selected program to Java 17+ with JUnit parity tests — compressing weeks of SME interviews into a single session.*
 
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
-- **Modules:** [COBOL to Java](../../../modules/migration-modernization/cobol-to-java.md), [COBOL System Understanding](../../../modules/migration-modernization/cobol-system-understanding.md)
+- **Modules:** [COBOL to Java](../../../labs/migration-modernization/cobol-to-java.md), [COBOL System Understanding](../../../labs/migration-modernization/cobol-system-understanding.md)
 
 The CardDemo application is a real mainframe credit card management system with 29 COBOL programs, 30 copybooks defining record layouts (accounts, customers, cards, transactions), and 17 BMS screen maps for 3270 terminal interactions. Participants will ask Devin to analyze the COBOL estate and translate a batch processing program to Java.
 
@@ -216,7 +216,7 @@ When Devin opens a PR:
 **Value driver:** *Devin reads legacy SAS analytics code and sample datasets without requiring a SAS license, translates macro logic to Python/pandas, and generates Snowflake-compatible DDL and loading scripts — a non-invasive migration approach that works from static analysis alone.*
 
 - **Repositories:** [ts-sas-legacy-analytics](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics) + [uc-data-migration-sas-to-snowflake](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-snowflake)
-- **Module:** [SAS to Python/Snowflake](../../../modules/data-engineering/sas-to-python-snowflake.md)
+- **Module:** [SAS to Python/Snowflake](../../../labs/data-engineering/sas-to-python-snowflake.md)
 
 The SAS codebase contains 90+ macros covering data export, transformation, deduplication, and formatting operations. The Snowflake migration repo includes sample banking datasets (CUST_ACCOUNTS, DAILY_BALANCE, MONTHLY_AMB) in both SAS7BDAT and CSV formats, lineage metadata, and two migration scenarios with before/after data snapshots.
 
@@ -297,7 +297,7 @@ When Devin opens PRs (you may see 2 — one per repo):
 **Value driver:** *Devin analyzes a monolith's domain boundaries, documents extraction decisions, extracts a bounded context into a standalone service, and wires up cross-service communication — typically in a single session.*
 
 - **Repository:** [uc-framework-upgrade-monolith-to-microservices](https://github.com/Cognition-Partner-Workshops/uc-framework-upgrade-monolith-to-microservices)
-- **Modules:** [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md)
+- **Modules:** [Containerization & Microservice Extraction](../../../labs/migration-modernization/containerization-microservice-extraction.md)
 
 This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld blogging platform (Conduit) with 4 domain contexts: articles/tags, comments, favorites, and users/profiles. It has REST and GraphQL (DGS) APIs, MyBatis persistence with SQLite, Flyway migrations, and a Next.js frontend. The repo has pre-cached Gradle dependencies for fast builds. Participants will ask Devin to analyze domain boundaries, document extraction decisions, and extract a bounded context into a standalone service.
 
@@ -369,7 +369,7 @@ Participants who want to keep exploring after the main labs can try these additi
 ### Activity 1: Java Framework Upgrade (Spring Boot 2.x → 3.x)
 
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
-- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
+- **Module:** [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md)
 - **Shows:** Devin handling a major framework upgrade — javax→jakarta namespace migration, Spring Security 6 lambda DSL changes, and dependency compatibility fixes across a monolith with 80% test coverage
 
 #### Paste into Devin
@@ -399,7 +399,7 @@ Handle the full upgrade checklist:
 ### Activity 2: COBOL Estate Discovery (Full Reverse Engineering)
 
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
-- **Module:** [COBOL System Understanding](../../../modules/migration-modernization/cobol-system-understanding.md)
+- **Module:** [COBOL System Understanding](../../../labs/migration-modernization/cobol-system-understanding.md)
 - **Shows:** Devin reverse-engineering a complete COBOL estate — application inventory, data dictionary, dependency map, and hotspot report — the discovery phase that normally takes weeks of SME interviews
 
 #### Paste into Devin
@@ -428,7 +428,7 @@ artifacts:
 ### Activity 3: SAS → dbt/Databricks Assessment
 
 - **Repositories:** [ts-sas-legacy-analytics](https://github.com/Cognition-Partner-Workshops/ts-sas-legacy-analytics) + [uc-data-migration-sas-to-databricks](https://github.com/Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks)
-- **Module:** [SAS Migration Analysis](../../../modules/data-engineering/sas-migration-analysis.md)
+- **Module:** [SAS Migration Analysis](../../../labs/data-engineering/sas-migration-analysis.md)
 - **Shows:** Devin performing broad estate discovery on a SAS codebase and mapping constructs to dbt/Databricks equivalents
 
 #### Paste into Devin
@@ -453,7 +453,7 @@ dbt on Databricks.
 ### Activity 4: Angular to React UI Migration
 
 - **Repository:** [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular)
-- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
+- **Module:** [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md)
 - **Shows:** Devin mapping a backend API contract, writing a migration test suite as a safety net, then rewriting an Angular frontend in React — using parent-child session orchestration to parallelize the work
 
 #### Paste into Devin
@@ -586,6 +586,6 @@ Track your progress throughout the session — try to discover as many Devin cap
 
 ## Context
 
-This workshop combines modules from the [Security & Compliance](../../../workshops/specialties/technical-domains/security/compliance/README.md), [COBOL Modernization](../../../workshops/specialties/technical-domains/modernization/cobol/README.md), [Data Source Migration](../../../workshops/specialties/technical-domains/modernization/data-source-migration/README.md), and [Legacy Modernization](../../../workshops/specialties/technical-domains/modernization/legacy/README.md) workshops into a single half-day event covering four enterprise engineering domains: security, mainframe modernization, data migration, and architecture decomposition.
+This workshop combines modules from the [Security & Compliance](../../../workshops/by-domain/security/compliance/README.md), [COBOL Modernization](../../../workshops/by-domain/modernization/cobol/README.md), [Data Source Migration](../../../workshops/by-domain/modernization/data-source-migration/README.md), and [Legacy Modernization](../../../workshops/by-domain/modernization/legacy/README.md) workshops into a single half-day event covering four enterprise engineering domains: security, mainframe modernization, data migration, and architecture decomposition.
 
 For deeper dives into individual domains, see the linked workshops above.

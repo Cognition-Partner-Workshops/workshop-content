@@ -21,4 +21,4 @@ events/
 Event READMEs contain your agenda and any event-specific customizations. The actual lab instructions live in:
 
 - [`workshops/`](../workshops/) — structured lab sequences
-- [`modules/`](../modules/) — individual lab instructions
+- [`labs/`](../labs/) — individual lab instructions

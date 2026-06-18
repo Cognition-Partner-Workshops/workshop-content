@@ -60,7 +60,7 @@ Track A demonstrates Devin building and managing delivery pipelines. Participant
 
 ### Lab A1 — Build a CI/CD Pipeline
 
-- **Module:** [CI/CD Pipeline](../../../../modules/devops-cicd/cicd-pipeline.md)
+- **Module:** [CI/CD Pipeline](../../../labs/devops-cicd/cicd-pipeline.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack app (no existing CI)
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with Gradle (alternative)
@@ -125,7 +125,7 @@ Once Devin opens a PR, focus your review on **pipeline quality**:
 
 ### Lab A2 — CI Failure Resolution
 
-- **Module:** [CI Failure Resolution](../../../../modules/devops-cicd/ci-failure-resolution.md)
+- **Module:** [CI Failure Resolution](../../../labs/devops-cicd/ci-failure-resolution.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app
   - [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Spring Boot app (alternative)
@@ -186,7 +186,7 @@ Focus on **root cause accuracy**:
 
 ### Lab A3 — Release Management & Feature Flags
 
-- **Modules:** [Release Management](../../../../modules/devops-cicd/release-management.md) + [Configuration Management & Feature Flags](../../../../modules/devops-cicd/configuration-management-feature-flags.md)
+- **Modules:** [Release Management](../../../labs/devops-cicd/release-management.md) + [Configuration Management & Feature Flags](../../../labs/devops-cicd/configuration-management-feature-flags.md)
 - **Repositories:**
   - [ordermanager-monolith](https://github.com/Cognition-Partner-Workshops/ordermanager-monolith) — .NET 8 + Angular 17 OrderManager with IaC support
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (alternative)
@@ -251,7 +251,7 @@ Track B demonstrates Devin managing infrastructure as code. Participants will tr
 
 ### Lab B1 — Infrastructure as Code Translation
 
-- **Module:** [IaC Translation](../../../../modules/cloud-infrastructure/iac-translation.md)
+- **Module:** [IaC Translation](../../../labs/cloud-infrastructure/iac-translation.md)
 - **Repositories:**
   - [timesheet-infra](https://github.com/Cognition-Partner-Workshops/timesheet-infra) — Terraform-based hosting infrastructure
   - [platform-engineering-shared-services](https://github.com/Cognition-Partner-Workshops/platform-engineering-shared-services) — AWS CDK (TypeScript) platform infrastructure (alternative)
@@ -312,7 +312,7 @@ Focus on **translation fidelity**:
 
 ### Lab B2 — Kubernetes Manifests & GitOps
 
-- **Modules:** [Kubernetes Manifest Generation](../../../../modules/cloud-infrastructure/kubernetes-manifest-generation.md) + [GitOps & ArgoCD Setup](../../../../modules/cloud-infrastructure/gitops-argocd-setup.md)
+- **Modules:** [Kubernetes Manifest Generation](../../../labs/cloud-infrastructure/kubernetes-manifest-generation.md) + [GitOps & ArgoCD Setup](../../../labs/cloud-infrastructure/gitops-argocd-setup.md)
 - **Repositories:**
   - [ordermanager-iac](https://github.com/Cognition-Partner-Workshops/ordermanager-iac) — Helm charts, ArgoCD manifests, and CI/CD for the OrderManager application
   - [platform-engineering-shared-services](https://github.com/Cognition-Partner-Workshops/platform-engineering-shared-services) — EKS platform with ArgoCD and monitoring (context)
@@ -374,7 +374,7 @@ Focus on **production readiness**:
 
 ### Lab B3 — Platform-Conformant Service Deployment
 
-- **Module:** [Platform-Conformant Microservice Decomposition](../../../../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md)
+- **Module:** [Platform-Conformant Microservice Decomposition](../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md)
 - **Repositories:**
   - [ordermanager-monolith](https://github.com/Cognition-Partner-Workshops/ordermanager-monolith) — .NET 8 + Angular 17 OrderManager monolith
   - [ordermanager-iac](https://github.com/Cognition-Partner-Workshops/ordermanager-iac) — Service IaC (Helm, Dockerfile, ArgoCD, CI/CD)
@@ -439,7 +439,7 @@ Track C demonstrates Devin as an SRE partner. Participants will set up observabi
 
 ### Lab C1 — Observability Setup & Monitoring
 
-- **Module:** [Observability & Monitoring](../../../../modules/observability-sre/observability-monitoring.md)
+- **Module:** [Observability & Monitoring](../../../labs/observability-sre/observability-monitoring.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (add observability)
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Spring Boot microservices with existing observability support (alternative)
@@ -500,7 +500,7 @@ Focus on **observability quality**:
 
 ### Lab C2 — Incident Investigation & Automated Remediation
 
-- **Modules:** [Incident Response & Triage](../../../../modules/observability-sre/incident-response-triage.md) + [Pod Remediation After Credential Rotation](../../../../modules/observability-sre/pod-remediation-credential-rotation.md)
+- **Modules:** [Incident Response & Triage](../../../labs/observability-sre/incident-response-triage.md) + [Pod Remediation After Credential Rotation](../../../labs/observability-sre/pod-remediation-credential-rotation.md)
 - **Repositories:**
   - [eventflow-devin-integration](https://github.com/Cognition-Partner-Workshops/eventflow-devin-integration) — Azure Monitor alert → Devin investigation pipeline
   - [uc-pod-remediation-credential-rotation](https://github.com/Cognition-Partner-Workshops/uc-pod-remediation-credential-rotation) — Automated Kubernetes pod remediation system (alternative)
@@ -561,7 +561,7 @@ Focus on **operational safety**:
 
 ### Lab C3 — Anomaly Detection & Proactive Alerting
 
-- **Module:** [Volume Anomaly Detection](../../../../modules/observability-sre/volume-anomaly-detection.md)
+- **Module:** [Volume Anomaly Detection](../../../labs/observability-sre/volume-anomaly-detection.md)
 - **Repositories:**
   - [uc-volume-anomaly-detection](https://github.com/Cognition-Partner-Workshops/uc-volume-anomaly-detection) — Python-based anomaly detection with z-score and seasonal decomposition
 - **Objective:** Set up proactive anomaly detection that identifies issues before they cause outages — demonstrating Devin building and extending a monitoring system that catches problems early
@@ -615,15 +615,15 @@ Focus on **detection quality**:
 
 ## Additional Challenges
 
-Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../../modules/). Recommended extras:
+Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../labs/). Recommended extras:
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Cost Optimization Analysis | [Cost Optimization](../../../../modules/cloud-infrastructure/cost-optimization-analysis.md) | platform-engineering-shared-services | B | Intermediate |
-| Terraform Module Extraction | [Terraform Module Extraction](../../../../modules/cloud-infrastructure/terraform-module-extraction.md) | timesheet-infra | B | Intermediate |
-| PR Review Automation | [PR Review](../../../../modules/devops-cicd/pr-review-automation.md) | Any | A | Beginner |
-| Incident Response & Triage | [Incident Response](../../../../modules/observability-sre/incident-response-triage.md) | ordermanager-monolith | C | Advanced |
-| CI/CD Pipeline | [CI/CD Pipeline](../../../../modules/devops-cicd/cicd-pipeline.md) | Any app repo | A | Intermediate |
+| Cost Optimization Analysis | [Cost Optimization](../../../labs/cloud-infrastructure/cost-optimization-analysis.md) | platform-engineering-shared-services | B | Intermediate |
+| Terraform Module Extraction | [Terraform Module Extraction](../../../labs/cloud-infrastructure/terraform-module-extraction.md) | timesheet-infra | B | Intermediate |
+| PR Review Automation | [PR Review](../../../labs/devops-cicd/pr-review-automation.md) | Any | A | Beginner |
+| Incident Response & Triage | [Incident Response](../../../labs/observability-sre/incident-response-triage.md) | ordermanager-monolith | C | Advanced |
+| CI/CD Pipeline | [CI/CD Pipeline](../../../labs/devops-cicd/cicd-pipeline.md) | Any app repo | A | Intermediate |
 
 ## Suggested Formats
 
@@ -671,4 +671,4 @@ Participants who finish early or want to explore further can attempt any challen
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../labs/devin-features/README.md) throughout the session.
