@@ -4,11 +4,12 @@
 
 This repo is the **attendee-facing** content hub for Devin hands-on workshops. It contains the lab instructions, prompts, and reference material that participants use during a workshop session.
 
+- `foundations/` — Theory (cloud agent concepts, event-driven patterns) and product feature tours (theory/ and product/ subdirs)
 - `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
-- `workshops/` — Structured lab sequences bundling modules into tracks
+- `workshops/` — Structured lab sequences bundling labs into tracks (by-domain/, by-role/, general/, otterworks/)
 - `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
-- `shared/` — General Devin themes, product feature tours, and runtime resource docs
+- `shared/` — General Devin themes and runtime resource docs
 - `catalog/` — Repository inventory and upstream provenance
 
 All content is Markdown. There is no application code in this repo.
@@ -68,7 +69,8 @@ Every module and workshop should incorporate applicable principles from `shared/
 
 - General themes: `shared/general-themes/` (8 files)
 - Runtime resources: `shared/runtime-resources.md`
-- Exemplar module: `labs/data-engineering/sas-migration-analysis.md`
+- Product feature tours: `foundations/product/` (Devin Cloud, Desktop, CLI)
+- Exemplar lab: `labs/data-engineering/sas-migration-analysis.md`
 - Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
 
 ## Playbooks

@@ -14,20 +14,22 @@ Welcome to the Devin hands-on workshop. This repo contains everything you need t
 ## How to Navigate
 
 ```
-workshop-instructions/
-├── labs/           ← individual lab instructions organized by discipline
+workshop-metadata/
+├── foundations/        ← theory, product features, platform mental model
+│   ├── theory/        ← cloud agent concepts, event-driven patterns, task selection
+│   └── product/       ← DeepWiki, Sessions, CLI, Automations, Multi-Agent Workers
+├── labs/              ← individual lab instructions organized by discipline
 │   └── README.md      ← full index of all labs
 ├── workshops/         ← structured lab sequences (your facilitator will point you here)
-│   ├── foundations/   ← theory, product features, platform mental model
+│   ├── by-domain/     ← deep dives by technical domain (modernization, security, AI)
+│   ├── by-role/       ← deep dives by job family (development, QE, digital engineering)
 │   ├── general/       ← broad multi-repo hands-on tour (start here)
-│   ├── otterworks/    ← advanced monorepo deep-dive (300-level)
-│   └── specialties/   ← deep dives by technical domain or job family
+│   └── otterworks/    ← advanced monorepo deep-dive (300-level)
 ├── demos/             ← facilitator-led showcases (follow along, single linear thread)
 ├── events/            ← event-specific agendas and customizations
 ├── catalog/           ← reference inventory of all available repositories
 └── shared/
     ├── general-themes/       ← how Devin works: architecture, patterns, collaboration
-    ├── product-features/     ← feature tours for Cloud, Desktop, and CLI
     └── runtime-resources.md  ← how to run apps locally if needed
 ```
 
@@ -62,9 +64,9 @@ Your facilitator may have directed you to a specific workshop. Each workshop bun
 | [General](workshops/general/) | Security, modernization, feature dev — broad multi-repo tour | 4-6 hours |
 | [OtterWorks](workshops/otterworks/) | Polyglot microservices — 300-level monorepo deep-dive | 4-6 hours |
 
-#### Specialties — Technical Domains
+#### By Domain
 
-Collections of modules targeting specific tech stacks and engineering challenges.
+Collections of labs targeting specific tech stacks and engineering challenges.
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
@@ -78,7 +80,7 @@ Collections of modules targeting specific tech stacks and engineering challenges
 | [Enterprise Security Automation](workshops/by-domain/security/enterprise-automation/) | Event-driven SAST, mass remediation | ~4 hours |
 | [Agentic AI](workshops/by-domain/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
 
-#### Specialties — Job Families
+#### By Role
 
 One workshop per job family — broad coverage of the role's engineering concerns.
 
