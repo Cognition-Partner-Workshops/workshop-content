@@ -11,10 +11,9 @@
 
 ---
 
-<a id="lab-1-extract-a-microservice-from-a-monolith"></a>
-
 These labs require you to write your own prompts from scratch. No copy-paste is provided. For each scenario, read the description, apply the prompt engineering principles from [Section 2](02-prompt-engineering.md), and write a complete prompt.
 
+<a id="lab-1-extract-a-microservice-from-a-monolith"></a>
 ## Lab 1: Extract a Microservice from a Monolith
 
 **Scenario:** Your team has a Java Spring Boot monolith with three bounded contexts tightly coupled in a single application: Users, Products, and Orders. The Orders module has been identified for extraction into a standalone microservice. The Orders module accesses the `orders`, `order_items`, and `order_status_history` tables. It currently calls User and Product methods directly via in-process method calls.

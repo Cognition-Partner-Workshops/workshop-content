@@ -9,10 +9,9 @@
 
 ---
 
-<a id="debug-exercise-1-the-infinite-loop"></a>
-
 For each scenario, identify: (1) what happened, (2) what went wrong, and (3) what the practitioner should have done differently.
 
+<a id="debug-exercise-1-the-infinite-loop"></a>
 ## Debug Exercise 1: The Infinite Loop
 
 **What happened:** A team configured an event-driven automation that triggers a Devin session whenever CI fails on `main`. On Monday morning, a failing test was merged. Devin created a session, pushed a fix, which triggered CI, which failed on a *different* test, which triggered another Devin session, which pushed another fix, which triggered CI again. By the time the team noticed, 15 sessions had been created in 2 hours.

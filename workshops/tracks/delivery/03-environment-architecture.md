@@ -13,10 +13,9 @@
 
 ---
 
-<a id="ubuntu-vs-windows-host"></a>
-
 This section covers the tactical platform operations that determine whether Devin can build, test, and deliver in your project's environment.
 
+<a id="ubuntu-vs-windows-host"></a>
 ## Ubuntu vs. Windows Host
 
 Every Devin session runs on a virtual machine. The host OS determines what runtimes, build tools, and frameworks are available natively.

@@ -12,10 +12,9 @@
 
 ---
 
-<a id="pattern-1-single-agent"></a>
-
 This section covers when and how to use each orchestration pattern. For the theoretical foundations, see [Agent Orchestration](../../foundations/03-agent-orchestration.md) and [Platform Capabilities](../../../shared/general-themes/platform-capabilities.md).
 
+<a id="pattern-1-single-agent"></a>
 ## Pattern 1: Single Agent
 
 **When to use:** The default for most tasks. One prompt, one agent, one PR.

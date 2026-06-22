@@ -11,10 +11,9 @@
 
 ---
 
-<a id="common-failure-modes"></a>
-
 This section covers common failure modes and how to resolve them, plus the organizational practices (Knowledge notes, Playbooks) that improve Devin's success rate over time.
 
+<a id="common-failure-modes"></a>
 ## Common Failure Modes
 
 ### Agent Loops on the Same Error

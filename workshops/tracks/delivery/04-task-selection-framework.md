@@ -11,10 +11,9 @@
 
 ---
 
-<a id="the-three-tests"></a>
-
 Knowing *what* to give Devin is as important as knowing *how* to prompt it. This section turns the [Foundations framework](../../foundations/04-what-to-give-ai.md) into a daily practice.
 
+<a id="the-three-tests"></a>
 ## The Three Tests
 
 Before creating a Devin session, run the task through three quick mental tests:

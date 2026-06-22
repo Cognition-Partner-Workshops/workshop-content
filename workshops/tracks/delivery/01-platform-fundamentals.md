@@ -12,10 +12,9 @@
 
 ---
 
-<a id="session-lifecycle"></a>
-
 This section establishes the operational model you will use every day. If you have completed the [Foundations workshop](../../foundations/), this is a condensed refresher focused on the practitioner's perspective.
 
+<a id="session-lifecycle"></a>
 ## Session Lifecycle
 
 Every Devin session moves through four states:

@@ -12,10 +12,9 @@
 
 ---
 
-<a id="what-to-look-for"></a>
-
 Reviewing AI-generated code is a skill that differs from reviewing human-written code. This section covers what to look for, how to write effective feedback, and when to iterate vs. start over.
 
+<a id="what-to-look-for"></a>
 ## What to Look For
 
 When reviewing a Devin PR, evaluate across four dimensions:

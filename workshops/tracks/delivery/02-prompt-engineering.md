@@ -12,10 +12,9 @@
 
 ---
 
-<a id="components-of-a-good-prompt"></a>
-
 The quality of Devin's output correlates directly with the quality of your prompt. This section teaches you to write prompts that produce high-quality results on the first attempt.
 
+<a id="components-of-a-good-prompt"></a>
 ## Components of a Good Prompt
 
 Every effective prompt contains these elements:
