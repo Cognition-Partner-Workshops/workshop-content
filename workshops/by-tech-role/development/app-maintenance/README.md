@@ -60,7 +60,7 @@ Track A demonstrates Devin as a feature developer. Participants will build full-
 
 ### Lab A1 — Full-Stack CRUD Feature
 
-- **Module:** [New Feature Development](../../../../../labs/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../../../labs/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React 19 + Node.js/Express + SQLite full-stack application
   - [ts-java-angular-jhipster](https://github.com/Cognition-Partner-Workshops/ts-java-angular-jhipster) — Angular + Spring Boot JHipster monolith (alternative)
@@ -104,7 +104,7 @@ Once Devin opens a PR from step 2, this is where the **PR Review feedback loop**
   - *"Add error handling for the case where a client is deleted while it has active projects"*
   - *"The React component doesn't handle loading states — add a spinner while the API call is in flight"*
 
-See the full challenge details for [New Feature Development](../../../../../labs/application-development/new-feature-development.md) for more ideas.
+See the full challenge details for [New Feature Development](../../../../labs/application-development/new-feature-development.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
@@ -124,7 +124,7 @@ See the full challenge details for [New Feature Development](../../../../../labs
 
 ### Lab A2 — API Feature with TDD
 
-- **Module:** [Test-Driven Development](../../../../../labs/application-development/test-driven-development.md)
+- **Module:** [Test-Driven Development](../../../../labs/application-development/test-driven-development.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 RealWorld app with JUnit infrastructure
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
@@ -185,7 +185,7 @@ Once Devin opens a PR, focus your review on **TDD discipline**:
 
 ### Lab A3 — Requirements to Implementation
 
-- **Modules:** [Gather Requirements](../../../../../labs/application-development/gather-requirements.md) + [New Feature Development](../../../../../labs/application-development/new-feature-development.md)
+- **Modules:** [Gather Requirements](../../../../labs/application-development/gather-requirements.md) + [New Feature Development](../../../../labs/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan management service (alternative)
@@ -254,7 +254,7 @@ Track B demonstrates Devin as a debugger and investigator. Participants will hun
 
 ### Lab B1 — Exploratory Bug Hunting
 
-- **Module:** [Fix Runtime Bug](../../../../../labs/application-development/fix-runtime-bug.md)
+- **Module:** [Fix Runtime Bug](../../../../labs/application-development/fix-runtime-bug.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [calcom](https://github.com/Cognition-Partner-Workshops/calcom) — Open-source scheduling platform (alternative, more complex)
@@ -315,7 +315,7 @@ Once Devin opens a PR, focus your review on the **root cause analysis**:
 
 ### Lab B2 — Cross-Service Bug Investigation
 
-- **Module:** [Fix Runtime Bug](../../../../../labs/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../../../../labs/migration-modernization/cross-service-bug-investigation.md)
+- **Module:** [Fix Runtime Bug](../../../../labs/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../../../labs/migration-modernization/cross-service-bug-investigation.md)
 - **Repositories:**
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — decomposed .NET microservices with a planted cross-service bug
   - [eventflow-order-service](https://github.com/Cognition-Partner-Workshops/eventflow-order-service) + [eventflow-payment-service](https://github.com/Cognition-Partner-Workshops/eventflow-payment-service) — EventFlow multi-service application (alternative)
@@ -376,7 +376,7 @@ Focus your review on whether the fix is complete:
 
 ### Lab B3 — Data Bug & Schema Fix
 
-- **Modules:** [Fix Data Bug](../../../../../labs/application-development/fix-data-bug.md) + [Database Schema Evolution](../../../../../labs/application-development/database-schema-evolution.md)
+- **Modules:** [Fix Data Bug](../../../../labs/application-development/fix-data-bug.md) + [Database Schema Evolution](../../../../labs/application-development/database-schema-evolution.md)
 - **Repositories:**
   - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service with legacy CDW-style tables
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with SQLite (alternative)
@@ -441,7 +441,7 @@ Track C demonstrates Devin as a maintenance engineer. Participants will set up a
 
 ### Lab C1 — Dependency Upgrades & Scheduled Maintenance
 
-- **Modules:** [Upgrade Dependencies](../../../../../labs/security/upgrade-dependencies.md)
+- **Modules:** [Upgrade Dependencies](../../../../labs/security/upgrade-dependencies.md)
 - **Repositories:**
   - [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Spring Boot app with Gradle
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with npm (alternative)
@@ -493,7 +493,7 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
 
 ### Lab C2 — Database Schema Evolution
 
-- **Module:** [Database Schema Evolution](../../../../../labs/application-development/database-schema-evolution.md)
+- **Module:** [Database Schema Evolution](../../../../labs/application-development/database-schema-evolution.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot with Flyway migrations and SQLite
   - [ts-java-angular-jhipster](https://github.com/Cognition-Partner-Workshops/ts-java-angular-jhipster) — JHipster app with Liquibase (alternative)
@@ -554,7 +554,7 @@ Focus on **migration safety**:
 
 ### Lab C3 — Code Refactoring & Tech Debt
 
-- **Module:** [Code Refactoring & Tech Debt](../../../../../labs/architecture-design/code-refactoring-tech-debt.md)
+- **Module:** [Code Refactoring & Tech Debt](../../../../labs/architecture-design/code-refactoring-tech-debt.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot monolith with identifiable tech debt
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (alternative)
@@ -615,15 +615,15 @@ Focus on **behavior preservation**:
 
 ## Additional Challenges
 
-Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../../../labs/). Recommended extras:
+Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../../labs/). Recommended extras:
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Fix UI Bug | [Fix UI Bug](../../../../../labs/application-development/fix-ui-bug.md) | timesheet-app | B | Beginner |
-| Test-Driven Development | [TDD](../../../../../labs/application-development/test-driven-development.md) | uc-spring-boot-upgrade-microservice-extraction | A | Intermediate |
-| CI/CD Pipeline | [CI/CD Pipeline](../../../../../labs/devops-cicd/cicd-pipeline.md) | timesheet-app | C | Intermediate |
-| PR Review Automation | [PR Review](../../../../../labs/devops-cicd/pr-review-automation.md) | Any | A | Beginner |
-| API Documentation | [API Documentation](../../../../../labs/technical-documentation/api-documentation.md) | Any | C | Beginner |
+| Fix UI Bug | [Fix UI Bug](../../../../labs/application-development/fix-ui-bug.md) | timesheet-app | B | Beginner |
+| Test-Driven Development | [TDD](../../../../labs/application-development/test-driven-development.md) | uc-spring-boot-upgrade-microservice-extraction | A | Intermediate |
+| CI/CD Pipeline | [CI/CD Pipeline](../../../../labs/devops-cicd/cicd-pipeline.md) | timesheet-app | C | Intermediate |
+| PR Review Automation | [PR Review](../../../../labs/devops-cicd/pr-review-automation.md) | Any | A | Beginner |
+| API Documentation | [API Documentation](../../../../labs/technical-documentation/api-documentation.md) | Any | C | Beginner |
 
 ## Suggested Formats
 
@@ -671,4 +671,4 @@ Participants who finish early or want to explore further can attempt any challen
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../../labs/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../../labs/devin-features/README.md) throughout the session.

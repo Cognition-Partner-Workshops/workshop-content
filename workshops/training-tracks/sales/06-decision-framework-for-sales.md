@@ -8,7 +8,7 @@ Applying "what to give AI vs. not" to proposal scoping — separating agent-exec
 
 When scoping a proposed engagement, Sales must determine which portions are agent-executable and which remain human-delivered. This directly affects the cost model, the staffing plan, and the timeline.
 
-The core question from the [Foundations decision framework](../../foundations/04-what-to-give-ai.md) applies directly:
+The core question from the [Foundations decision framework](../../foundations/concepts/04-what-to-give-ai.md) applies directly:
 
 **Can success be verified without human judgment?**
 

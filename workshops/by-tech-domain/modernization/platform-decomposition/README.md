@@ -7,7 +7,7 @@
 | **Focus** | Monolith-to-microservices decomposition with IaC conformance on Kubernetes |
 | **Duration** | 1.5–2 hours (75 min lab + 15 min review/discussion) |
 | **Audience** | DevOps, platform engineering, solution architects |
-| **Key Modules** | [Platform-Conformant Microservice Decomposition](../../../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
+| **Key Modules** | [Platform-Conformant Microservice Decomposition](../../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
 
 ## Workshop Narrative
 
@@ -254,7 +254,7 @@ The platform team owns the platform-level infrastructure. Each service team owns
 
 | Module | Relationship |
 |--------|-------------|
-| [Platform-Conformant Microservice Decomposition](../../../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) | Core module for this lab |
-| [Containerization & Microservice Extraction](../../../../../labs/migration-modernization/containerization-microservice-extraction.md) | Similar pattern with Java/Spring Boot (simpler — no platform conformance) |
-| [CI/CD Pipeline](../../../../../labs/devops-cicd/cicd-pipeline.md) | Complementary — build pipelines for the extracted service |
-| [Observability & Monitoring](../../../../../labs/observability-sre/observability-monitoring.md) | Complementary — add dashboards and alerting for the new service |
+| [Platform-Conformant Microservice Decomposition](../../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) | Core module for this lab |
+| [Containerization & Microservice Extraction](../../../../labs/migration-modernization/containerization-microservice-extraction.md) | Similar pattern with Java/Spring Boot (simpler — no platform conformance) |
+| [CI/CD Pipeline](../../../../labs/devops-cicd/cicd-pipeline.md) | Complementary — build pipelines for the extracted service |
+| [Observability & Monitoring](../../../../labs/observability-sre/observability-monitoring.md) | Complementary — add dashboards and alerting for the new service |

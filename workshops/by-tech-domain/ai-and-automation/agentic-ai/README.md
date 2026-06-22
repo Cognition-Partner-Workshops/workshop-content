@@ -7,7 +7,7 @@
 | **Focus** | Multi-agent systems, document processing, BDD test automation, anomaly detection |
 | **Duration** | 2-4 hours |
 | **Audience** | Platform engineering, QA, observability, and operations teams |
-| **Key Modules** | [Pod Remediation After Credential Rotation](../../../../../labs/observability-sre/pod-remediation-credential-rotation.md), [Volume Anomaly Detection](../../../../../labs/observability-sre/volume-anomaly-detection.md), [Document Review Automation](../../../../../labs/technical-documentation/document-review-automation.md), [BDD Test Generation](../../../../../labs/testing-qa/bdd-test-generation.md) |
+| **Key Modules** | [Pod Remediation After Credential Rotation](../../../../labs/observability-sre/pod-remediation-credential-rotation.md), [Volume Anomaly Detection](../../../../labs/observability-sre/volume-anomaly-detection.md), [Document Review Automation](../../../../labs/technical-documentation/document-review-automation.md), [BDD Test Generation](../../../../labs/testing-qa/bdd-test-generation.md) |
 
 ## Workshop Narrative
 
@@ -40,7 +40,7 @@ A few tips to maximize your hands-on time:
 
 ### Lab 1 — Automated Pod Remediation After Credential Rotations
 
-- **Module:** [Pod Remediation After Credential Rotation](../../../../../labs/observability-sre/pod-remediation-credential-rotation.md)
+- **Module:** [Pod Remediation After Credential Rotation](../../../../labs/observability-sre/pod-remediation-credential-rotation.md)
 - **Repository:** [uc-pod-remediation-credential-rotation](https://github.com/Cognition-Partner-Workshops/uc-pod-remediation-credential-rotation)
 - **Objective:** Enhance a multi-agent Python system that automates detection, approval, and remediation of pod failures
 - **Duration:** 60 min
@@ -70,7 +70,7 @@ Review the emergency rotation detection. Ask Devin to add integration tests or e
 
 ### Lab 2 — Document Review Automation
 
-- **Module:** [Document Review Automation](../../../../../labs/technical-documentation/document-review-automation.md)
+- **Module:** [Document Review Automation](../../../../labs/technical-documentation/document-review-automation.md)
 - **Repository:** [uc-document-review-automation](https://github.com/Cognition-Partner-Workshops/uc-document-review-automation)
 - **Objective:** Enhance a multi-agent document review system with alternative string similarity strategies
 - **Duration:** 45 min
@@ -100,7 +100,7 @@ Review the Levenshtein implementation. Ask Devin to add batch processing or addi
 
 ### Lab 3 — BDD Test Case Generation
 
-- **Module:** [BDD Test Generation](../../../../../labs/testing-qa/bdd-test-generation.md)
+- **Module:** [BDD Test Generation](../../../../labs/testing-qa/bdd-test-generation.md)
 - **Repositories:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber), [ts-java-swagger-petstore](https://github.com/Cognition-Partner-Workshops/ts-java-swagger-petstore)
 - **Objective:** Generate BDD test cases from OpenAPI specs and produce executable Cucumber tests
 - **Duration:** 60 min
@@ -130,7 +130,7 @@ Review the Gherkin scenarios for readability. Ask Devin to add Scenario Outlines
 
 ### Lab 4 — Volume-Based Anomaly Detection
 
-- **Module:** [Volume Anomaly Detection](../../../../../labs/observability-sre/volume-anomaly-detection.md)
+- **Module:** [Volume Anomaly Detection](../../../../labs/observability-sre/volume-anomaly-detection.md)
 - **Repository:** [uc-volume-anomaly-detection](https://github.com/Cognition-Partner-Workshops/uc-volume-anomaly-detection)
 - **Objective:** Enhance a multi-agent anomaly detection framework with time-of-day-only seasonal detection
 - **Duration:** 60 min

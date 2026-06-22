@@ -7,7 +7,7 @@
 | **Focus** | Progressive modernization of a monolithic .NET system to Kubernetes-hosted cloud-native APIs on EKS |
 | **Duration** | 2.5-3 hours (configurable — see Duration Variants below) |
 | **Audience** | .NET developers, solution architects, platform engineers, modernization teams |
-| **Key Modules** | [.NET Monolith Decomposition](../../../../../labs/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../../../../../labs/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../../../../../labs/migration-modernization/cross-service-bug-investigation.md) |
+| **Key Modules** | [.NET Monolith Decomposition](../../../../labs/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../../../../labs/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../../../../labs/migration-modernization/cross-service-bug-investigation.md) |
 
 ## Workshop Narrative
 
@@ -68,7 +68,7 @@ Replace `<attendee_id>` with a unique identifier (e.g., name, employee ID). All 
 
 ### Lab 1 — Monolith Decomposition & Containerization (75 min)
 
-- **Module:** [.NET Monolith Decomposition with Local Hosting](../../../../../labs/migration-modernization/dotnet-monolith-decomposition.md)
+- **Module:** [.NET Monolith Decomposition with Local Hosting](../../../../labs/migration-modernization/dotnet-monolith-decomposition.md)
 - **Repositories:**
   - [quickapp-monolith](https://github.com/Cognition-Partner-Workshops/quickapp-monolith) — .NET + Angular monolith (source)
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — target scaffold (reference)
@@ -105,7 +105,7 @@ Review both PRs. Ask Devin to add circuit breaker logic, health checks, or impro
 
 ### Lab 2 — Integration Testing Between Monolith & Microservice (45 min)
 
-- **Module:** [Cross-Service Integration Testing](../../../../../labs/testing-qa/cross-service-integration-testing.md)
+- **Module:** [Cross-Service Integration Testing](../../../../labs/testing-qa/cross-service-integration-testing.md)
 - **Repositories:** Same as Lab 1
 - **Objective:** Write integration tests that validate the HTTP contract between the monolith and extracted Order service
 - **Duration:** 45 min
@@ -138,7 +138,7 @@ Ask Devin to add concurrent order creation tests, contract backwards-compatibili
 
 ### Lab 3 — Cross-Service Bug Hunt (45 min)
 
-- **Module:** [Cross-Service Bug Investigation](../../../../../labs/migration-modernization/cross-service-bug-investigation.md)
+- **Module:** [Cross-Service Bug Investigation](../../../../labs/migration-modernization/cross-service-bug-investigation.md)
 - **Repository:**
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices)
 - **Objective:** Find and fix a visual bug in the Notification service where order confirmation emails show amounts 100x smaller than the actual order total

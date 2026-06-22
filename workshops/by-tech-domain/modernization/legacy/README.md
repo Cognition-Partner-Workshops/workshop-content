@@ -52,15 +52,15 @@ A few tips to maximize your hands-on time:
 
 ## Track A: COBOL Modernization (Mainframe → Java)
 
-**Key Modules:** [COBOL System Understanding](../../../../../labs/migration-modernization/cobol-system-understanding.md), [COBOL Migration Planning](../../../../../labs/migration-modernization/cobol-migration-planning.md), [Migration Test Harness](../../../../../labs/migration-modernization/migration-test-harness.md), [COBOL to Java](../../../../../labs/migration-modernization/cobol-to-java.md)
+**Key Modules:** [COBOL System Understanding](../../../../labs/migration-modernization/cobol-system-understanding.md), [COBOL Migration Planning](../../../../labs/migration-modernization/cobol-migration-planning.md), [Migration Test Harness](../../../../labs/migration-modernization/migration-test-harness.md), [COBOL to Java](../../../../labs/migration-modernization/cobol-to-java.md)
 
 **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java) — AWS CardDemo COBOL mainframe credit card management application
 
-**Full event guide:** [COBOL Modernization Workshop](../../../../../events/cobol-modernization-workshop/README.md)
+**Full event guide:** [COBOL Modernization Workshop](../../../../events/cobol-modernization-workshop/README.md)
 
 ### Lab A1 — System Understanding & Reverse Engineering (60 min)
 
-- **Module:** [COBOL System Understanding](../../../../../labs/migration-modernization/cobol-system-understanding.md)
+- **Module:** [COBOL System Understanding](../../../../labs/migration-modernization/cobol-system-understanding.md)
 - **Objective:** Produce a complete system inventory, data dictionary, dependency map, and hotspot report
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -89,7 +89,7 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 
 ### Lab A2 — Migration Planning & Domain Decomposition (60 min)
 
-- **Module:** [COBOL Migration Planning](../../../../../labs/migration-modernization/cobol-migration-planning.md)
+- **Module:** [COBOL Migration Planning](../../../../labs/migration-modernization/cobol-migration-planning.md)
 - **Objective:** Produce a modernization blueprint with strategy options, domain decomposition, phased cutover plan, and risk register
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -118,7 +118,7 @@ Open the repo's DeepWiki page to understand domain structure and coupling patter
 
 ### Lab A3 — Migration Test Harness & Validation Strategy (60 min)
 
-- **Module:** [Migration Test Harness](../../../../../labs/migration-modernization/migration-test-harness.md)
+- **Module:** [Migration Test Harness](../../../../labs/migration-modernization/migration-test-harness.md)
 - **Objective:** Design and implement a test harness — golden files, differential testing, batch reconciliation, and contract tests
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -147,7 +147,7 @@ Open the repo's DeepWiki page to understand data file layouts and batch processi
 
 ### Lab A4 — Code Migration: COBOL → Java (60 min)
 
-- **Module:** [COBOL to Java](../../../../../labs/migration-modernization/cobol-to-java.md)
+- **Module:** [COBOL to Java](../../../../labs/migration-modernization/cobol-to-java.md)
 - **Objective:** Translate selected COBOL programs to Java 17+ with parity tests validating against golden files
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -176,17 +176,17 @@ Open the repo's DeepWiki page. Try migrating different programs, targeting diffe
 
 ## Track B: Oracle Forms Modernization (Forms/PL/SQL → Spring Boot)
 
-**Key Modules:** [Oracle Forms System Understanding](../../../../../labs/migration-modernization/oracle-forms-system-understanding.md), [Oracle Forms Migration Planning](../../../../../labs/migration-modernization/oracle-forms-migration-planning.md), [Migration Test Harness](../../../../../labs/migration-modernization/migration-test-harness.md), [Oracle Forms to Java](../../../../../labs/migration-modernization/oracle-forms-to-java.md)
+**Key Modules:** [Oracle Forms System Understanding](../../../../labs/migration-modernization/oracle-forms-system-understanding.md), [Oracle Forms Migration Planning](../../../../labs/migration-modernization/oracle-forms-migration-planning.md), [Migration Test Harness](../../../../labs/migration-modernization/migration-test-harness.md), [Oracle Forms to Java](../../../../labs/migration-modernization/oracle-forms-to-java.md)
 
 **Repositories:**
 - [ts-plsql-oracle-forms-hrms](https://github.com/Cognition-Partner-Workshops/ts-plsql-oracle-forms-hrms) — Oracle Forms 11g/12c HRMS legacy application (source system)
 - [uc-legacy-modernization-oracle-forms-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-oracle-forms-to-java) — Migration artifacts, target Spring Boot structure, test harness
 
-**Full event guide:** [Oracle Forms Modernization Workshop](../../../../../events/oracle-forms-modernization-workshop/README.md)
+**Full event guide:** [Oracle Forms Modernization Workshop](../../../../events/oracle-forms-modernization-workshop/README.md)
 
 ### Lab B1 — System Understanding & Reverse Engineering (60 min)
 
-- **Module:** [Oracle Forms System Understanding](../../../../../labs/migration-modernization/oracle-forms-system-understanding.md)
+- **Module:** [Oracle Forms System Understanding](../../../../labs/migration-modernization/oracle-forms-system-understanding.md)
 - **Objective:** Produce a complete application inventory, data dictionary, multi-layer dependency map, and technical debt report for an Oracle Forms/PL/SQL application
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -215,7 +215,7 @@ Open the repo's DeepWiki page to see how Devin auto-generates architecture docum
 
 ### Lab B2 — Migration Planning & Strategy (60 min)
 
-- **Module:** [Oracle Forms Migration Planning](../../../../../labs/migration-modernization/oracle-forms-migration-planning.md)
+- **Module:** [Oracle Forms Migration Planning](../../../../labs/migration-modernization/oracle-forms-migration-planning.md)
 - **Objective:** Produce a modernization blueprint with strategy evaluation, component mapping, migration ordering, and risk register
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -244,7 +244,7 @@ Open both repos' DeepWiki pages. Compare the legacy architecture with the target
 
 ### Lab B3 — Migration Test Harness & Validation (60 min)
 
-- **Module:** [Migration Test Harness](../../../../../labs/migration-modernization/migration-test-harness.md)
+- **Module:** [Migration Test Harness](../../../../labs/migration-modernization/migration-test-harness.md)
 - **Repository:** [uc-legacy-modernization-oracle-forms-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-oracle-forms-to-java)
 - **Objective:** Extend the test harness with additional business scenarios, comparison utilities, and reconciliation checks
 
@@ -274,7 +274,7 @@ Open the repo's DeepWiki page to understand the test harness structure and scena
 
 ### Lab B4 — Code Migration: Oracle Forms → Java (60 min)
 
-- **Module:** [Oracle Forms to Java](../../../../../labs/migration-modernization/oracle-forms-to-java.md)
+- **Module:** [Oracle Forms to Java](../../../../labs/migration-modernization/oracle-forms-to-java.md)
 - **Objective:** Translate selected PL/SQL packages to Java Spring Boot with REST APIs, JPA entities, unified validation, and parity tests
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
@@ -305,8 +305,8 @@ Open both repos' DeepWiki pages to understand the legacy architecture and target
 
 | Audience Legacy Platform | Recommended Track | Event Guide |
 |---|---|---|
-| COBOL / Mainframe (CICS, JCL, VSAM, DB2) | Track A: COBOL Modernization | [COBOL Modernization Workshop](../../../../../events/cobol-modernization-workshop/README.md) |
-| Oracle Forms / PL/SQL (Forms Builder, Oracle DB) | Track B: Oracle Forms Modernization | [Oracle Forms Modernization Workshop](../../../../../events/oracle-forms-modernization-workshop/README.md) |
+| COBOL / Mainframe (CICS, JCL, VSAM, DB2) | Track A: COBOL Modernization | [COBOL Modernization Workshop](../../../../events/cobol-modernization-workshop/README.md) |
+| Oracle Forms / PL/SQL (Forms Builder, Oracle DB) | Track B: Oracle Forms Modernization | [Oracle Forms Modernization Workshop](../../../../events/oracle-forms-modernization-workshop/README.md) |
 | Mixed audience (both platforms represented) | Run both tracks in parallel — Labs 1 & 2 can share a room, split for Labs 3 & 4 | — |
 | General modernization (not platform-specific) | Start with Track A (COBOL) — more dramatic "language barrier" story | — |
 

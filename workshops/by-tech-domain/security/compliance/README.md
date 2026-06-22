@@ -7,7 +7,7 @@
 | **Focus** | CVE remediation, vulnerability scanning, SAST, shift-left security practices |
 | **Duration** | 1-2 hours |
 | **Audience** | Security engineers, DevSecOps teams, compliance-focused developers |
-| **Key Modules** | [Upgrade Dependencies](../../../../../labs/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../../../labs/security/remediate-vulnerabilities.md), [Shift Left Security](../../../../../labs/security/shift-left-security.md), [Security Antipatterns](../../../../../labs/security/security-antipatterns.md), [Secrets Management & Detection](../../../../../labs/security/secrets-management-detection.md), [Event-Driven SAST Remediation](../../../../../labs/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../../../../../labs/security/mass-security-backlog-remediation.md) |
+| **Key Modules** | [Upgrade Dependencies](../../../../labs/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../../labs/security/remediate-vulnerabilities.md), [Shift Left Security](../../../../labs/security/shift-left-security.md), [Security Antipatterns](../../../../labs/security/security-antipatterns.md), [Secrets Management & Detection](../../../../labs/security/secrets-management-detection.md), [Event-Driven SAST Remediation](../../../../labs/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../../../../labs/security/mass-security-backlog-remediation.md) |
 
 ## Workshop Narrative
 
@@ -37,7 +37,7 @@ A few tips to maximize your hands-on time:
 
 ### Lab 1 — CVE Remediation & Dependency Upgrades
 
-- **Modules:** [Upgrade Dependencies](../../../../../labs/security/upgrade-dependencies.md) + [Remediate Vulnerabilities](../../../../../labs/security/remediate-vulnerabilities.md)
+- **Modules:** [Upgrade Dependencies](../../../../labs/security/upgrade-dependencies.md) + [Remediate Vulnerabilities](../../../../labs/security/remediate-vulnerabilities.md)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Scan a Spring Boot app for dependency CVEs, remediate the critical findings, and verify the fixes
 - **Duration:** 60 min
@@ -68,7 +68,7 @@ Open the repo's DeepWiki page. Try adding SBOM generation, GitHub Actions securi
 
 ### Lab 2 — Shift-Left Security & SAST
 
-- **Modules:** [Shift Left Security](../../../../../labs/security/shift-left-security.md) + [Event-Driven SAST Remediation](../../../../../labs/security/event-driven-sast-remediation.md)
+- **Modules:** [Shift Left Security](../../../../labs/security/shift-left-security.md) + [Event-Driven SAST Remediation](../../../../labs/security/event-driven-sast-remediation.md)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** Add automated security scanning to the CI pipeline and remediate SAST findings
 - **Duration:** 45 min
