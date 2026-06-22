@@ -215,4 +215,4 @@ These will be built out once Level 2 tracks are established and validated.
 | `workshops/general/` | Practice labs for Delivery track |
 | `demos/` | Walkthrough scripts for Solutions track |
 | `workshops/specialties/` | Future Level 3 deep-dives |
-| `modules/` | Building blocks composed into walkthroughs and challenges |
+| `labs/` | Building blocks composed into walkthroughs and challenges |

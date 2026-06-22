@@ -69,7 +69,7 @@ Track A demonstrates Devin as a security and reliability agent. Participants wil
 
 ### Lab A1 — SAST Scans & Vulnerability Remediation
 
-- **Modules:** [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md) + [Shift Left Security](../../modules/security/shift-left-security.md)
+- **Modules:** [Remediate Vulnerabilities](../../labs/security/remediate-vulnerabilities.md) + [Shift Left Security](../../labs/security/shift-left-security.md)
 - **Repositories:**
   - [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Spring Boot 2.6.3 with known CVEs and pre-configured OWASP Dependency-Check
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with npm audit and Trivy scanning (alternative)
@@ -119,7 +119,7 @@ Once Devin opens a PR from step 1, focus your review on the **remediation comple
 - *"Add a CI workflow that fails the build on CRITICAL CVEs"*
 - *"Generate a pre-commit hook configuration for gitleaks secrets detection"*
 
-See the full challenge details for [Remediate Vulnerabilities](../../modules/security/remediate-vulnerabilities.md) and [Shift Left Security](../../modules/security/shift-left-security.md) for more ideas.
+See the full challenge details for [Remediate Vulnerabilities](../../labs/security/remediate-vulnerabilities.md) and [Shift Left Security](../../labs/security/shift-left-security.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Scan → fix → re-scan"** — Devin runs local SAST tools, interprets CVE reports, remediates findings, and verifies the fix in a closed loop
@@ -137,7 +137,7 @@ See the full challenge details for [Remediate Vulnerabilities](../../modules/sec
 
 ### Lab A2 — Bug Fixes & Root Cause Analysis
 
-- **Modules:** [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../modules/migration-modernization/cross-service-bug-investigation.md)
+- **Modules:** [Fix Runtime Bug](../../labs/application-development/fix-runtime-bug.md) + [Cross-Service Bug Investigation](../../labs/migration-modernization/cross-service-bug-investigation.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — decomposed .NET microservices with a planted cross-service bug (alternative)
@@ -190,7 +190,7 @@ Once Devin opens a PR from step 1, focus your review on the **root cause analysi
 - *"Are there any other places in the codebase that make the same assumption?"*
 - *"Add a unit test for FormatCurrency that verifies $149.99 renders as '$149.99' and not '$1.50'"*
 
-See the full challenge details for [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md) and [Cross-Service Bug Investigation](../../modules/migration-modernization/cross-service-bug-investigation.md) for more ideas.
+See the full challenge details for [Fix Runtime Bug](../../labs/application-development/fix-runtime-bug.md) and [Cross-Service Bug Investigation](../../labs/migration-modernization/cross-service-bug-investigation.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin debugs like a developer"** — it reproduces bugs via the browser, traces data flows, reads logs, and identifies root causes
@@ -209,7 +209,7 @@ See the full challenge details for [Fix Runtime Bug](../../modules/application-d
 
 ### Lab A3 — Scheduled Dependency Hygiene
 
-- **Modules:** [Upgrade Dependencies](../../modules/security/upgrade-dependencies.md)
+- **Modules:** [Upgrade Dependencies](../../labs/security/upgrade-dependencies.md)
 - **Repositories:**
   - [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Spring Boot app with Gradle
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with npm (alternative)
@@ -271,7 +271,7 @@ Track B demonstrates Devin handling large-scale structural changes to codebases.
 
 ### Lab B1 — Rearchitecting Monolith to Microservice
 
-- **Module:** [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md)
+- **Module:** [Containerization & Microservice Extraction](../../labs/migration-modernization/containerization-microservice-extraction.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 monolith with three clear bounded contexts (Articles, Users/Profiles, Comments)
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Reference microservices architecture for comparison (optional)
@@ -317,7 +317,7 @@ Once Devin opens a PR from step 1, focus your review on the **extraction quality
 - *"Add health check endpoints to both services"*
 - *"The integration test should verify the full request-response cycle, not just connectivity"*
 
-See the full challenge details for [Containerization & Microservice Extraction](../../modules/migration-modernization/containerization-microservice-extraction.md) for more ideas.
+See the full challenge details for [Containerization & Microservice Extraction](../../labs/migration-modernization/containerization-microservice-extraction.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin analyzes domain boundaries"** — it reads the codebase to identify bounded contexts, shared code, and coupling points before extracting
@@ -336,7 +336,7 @@ See the full challenge details for [Containerization & Microservice Extraction](
 
 ### Lab B2 — Upgrading EOL Systems to LTS Versions
 
-- **Modules:** [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md)
+- **Modules:** [Framework Upgrade](../../labs/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../labs/migration-modernization/repetitive-framework-upgrades.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 / Java 11 (EOL) → Spring Boot 3.x / Java 17+ (LTS)
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade
@@ -396,7 +396,7 @@ Once Devin opens PRs from the parallel sessions, compare the upgrade approaches:
 - *"Can you also migrate from NgModules to standalone components?"*
 - *"Generate an upgrade report documenting all breaking changes encountered and how they were resolved"*
 
-See the full challenge details for [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) and [Repetitive Framework Upgrades](../../modules/migration-modernization/repetitive-framework-upgrades.md) for more ideas.
+See the full challenge details for [Framework Upgrade](../../labs/migration-modernization/framework-upgrade.md) and [Repetitive Framework Upgrades](../../labs/migration-modernization/repetitive-framework-upgrades.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Same prompt, multiple repos"** — the same upgrade task applied consistently across different services demonstrates enterprise scale
@@ -416,7 +416,7 @@ See the full challenge details for [Framework Upgrade](../../modules/migration-m
 
 ### Lab B3 — Language Translation
 
-- **Module:** [Language Translation](../../modules/migration-modernization/legacy-modernization-combined.md)
+- **Module:** [Language Translation](../../labs/migration-modernization/legacy-modernization-combined.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot (Java) RealWorld app — source language
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular (TypeScript) RealWorld app — reference for alternative target
@@ -470,7 +470,7 @@ Once Devin opens a PR from step 1, focus your review on the **translation fideli
 - *"Add a contract test that starts both servers and compares responses for the same request"*
 - *"The error responses don't match — Java returns `{errors: {body: [...]}}` but Python returns a flat string"*
 
-See the full challenge details for [Language Translation](../../modules/migration-modernization/legacy-modernization-combined.md) for more ideas.
+See the full challenge details for [Language Translation](../../labs/migration-modernization/legacy-modernization-combined.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Same API, different language"** — Devin translates the business logic while preserving the API contract, so the new service is a drop-in replacement
@@ -493,7 +493,7 @@ Track C demonstrates Devin as a day-to-day development partner. Participants wil
 
 ### Lab C1 — Add a Feature + PR Review Feedback
 
-- **Module:** [New Feature Development](../../modules/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../labs/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative)
@@ -537,7 +537,7 @@ Once Devin opens a PR from step 1, this is where the **PR Review feedback loop**
 
 This demonstrates the production workflow: Devin writes code, PR Review catches issues, Devin fixes them, you approve.
 
-See the full challenge details for [New Feature Development](../../modules/application-development/new-feature-development.md) for more ideas.
+See the full challenge details for [New Feature Development](../../labs/application-development/new-feature-development.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
@@ -558,7 +558,7 @@ See the full challenge details for [New Feature Development](../../modules/appli
 
 ### Lab C2 — Add Test Coverage
 
-- **Modules:** [Unit Testing](../../modules/testing-qa/unit-testing.md) + [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md)
+- **Modules:** [Unit Testing](../../labs/testing-qa/unit-testing.md) + [BDD Test Generation](../../labs/testing-qa/bdd-test-generation.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit infrastructure
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with Jest tests (alternative)
@@ -613,7 +613,7 @@ Once Devin opens a PR from step 1, focus your review on **test quality**:
 - *"The step definitions should use more descriptive method names"*
 - *"Add data-driven scenarios using Cucumber Scenario Outlines with Examples tables"*
 
-See the full challenge details for [Unit Testing](../../modules/testing-qa/unit-testing.md) and [BDD Test Generation](../../modules/testing-qa/bdd-test-generation.md) for more ideas.
+See the full challenge details for [Unit Testing](../../labs/testing-qa/unit-testing.md) and [BDD Test Generation](../../labs/testing-qa/bdd-test-generation.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin writes meaningful tests"** — not just coverage padding. It analyzes the codebase to understand what needs testing and generates tests that check real behavior
@@ -632,7 +632,7 @@ See the full challenge details for [Unit Testing](../../modules/testing-qa/unit-
 
 ### Lab C3 — Perform E2E Tests & Fix Issues
 
-- **Module:** [End-to-End Testing](../../modules/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md)
+- **Module:** [End-to-End Testing](../../labs/testing-qa/end-to-end-testing.md) + [Fix Runtime Bug](../../labs/application-development/fix-runtime-bug.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework (alternative)
@@ -680,7 +680,7 @@ Once Devin opens a PR from step 1, focus your review on **test robustness and bu
 - *"The test uses sleep() instead of waiting for an element — please fix to avoid flakiness"*
 - *"Add an E2E test for the CSV export feature on the reports page"*
 
-See the full challenge details for [End-to-End Testing](../../modules/testing-qa/end-to-end-testing.md) and [Fix Runtime Bug](../../modules/application-development/fix-runtime-bug.md) for more ideas.
+See the full challenge details for [End-to-End Testing](../../labs/testing-qa/end-to-end-testing.md) and [Fix Runtime Bug](../../labs/application-development/fix-runtime-bug.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Test-discover-fix"** — E2E tests don't just validate existing behavior, they discover bugs. Devin fixes what it finds in the same session
@@ -699,15 +699,15 @@ See the full challenge details for [End-to-End Testing](../../modules/testing-qa
 
 ## Additional Challenges
 
-Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../modules/). Recommended extras:
+Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../labs/). Recommended extras:
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | B | Intermediate |
-| Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../modules/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
-| Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../modules/migration-modernization/dotnet-monolith-decomposition.md) | modular-monolith-ddd | B | Advanced |
-| Code Refactoring & Tech Debt | [Code Refactoring](../../modules/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
-| API Documentation | [API Documentation](../../modules/technical-documentation/api-documentation.md) | Any | C | Beginner |
+| Data Source Migration | [Data Source Migration](../../labs/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | B | Intermediate |
+| Event-Driven SAST Pipeline | [Event-Driven SAST Remediation](../../labs/security/event-driven-sast-remediation.md) | uc-cve-remediation-regulatory-compliance | A | Advanced |
+| Monolith Decomposition (.NET) | [.NET Monolith Decomposition](../../labs/migration-modernization/dotnet-monolith-decomposition.md) | modular-monolith-ddd | B | Advanced |
+| Code Refactoring & Tech Debt | [Code Refactoring](../../labs/architecture-design/code-refactoring-tech-debt.md) | Any | C | Intermediate |
+| API Documentation | [API Documentation](../../labs/technical-documentation/api-documentation.md) | Any | C | Beginner |
 
 ## Suggested Formats
 
@@ -738,4 +738,4 @@ Participants who finish early or want to explore further can attempt any challen
 
 ## Devin Features Checklist
 
-Track your progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session — try to discover as many Devin capabilities as you can.
+Track your progress on the [Devin Features Appendix](../../labs/devin-features/README.md) throughout the session — try to discover as many Devin capabilities as you can.

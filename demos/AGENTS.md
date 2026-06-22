@@ -7,7 +7,7 @@ root `AGENTS.md` for files under `demos/` only. (See also the root `REVIEW.md`
 ## What `demos/` is
 
 `demos/` holds **facilitator-led demo showcases**: a presenter runs the demo
-live while others follow along. This is different from `modules/` and
+live while others follow along. This is different from `labs/` and
 `workshops/`, which are participant-driven and may branch into separate
 choose-your-own-adventure tracks.
 

@@ -83,7 +83,7 @@ Parent Agent (orchestrator)
 ```
 
 **When to use parent-child:**
-- Migrating N modules/services/programs (each is independent)
+- Migrating N labs/services/programs (each is independent)
 - Remediating N security findings across M repos
 - Generating tests for N uncovered files
 - Applying the same refactoring pattern across many codebases

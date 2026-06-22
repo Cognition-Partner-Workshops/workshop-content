@@ -15,7 +15,7 @@ Welcome to the Devin hands-on workshop. This repo contains everything you need t
 
 ```
 workshop-instructions/
-├── modules/           ← individual lab instructions organized by discipline
+├── labs/           ← individual lab instructions organized by discipline
 │   └── README.md      ← full index of all labs
 ├── workshops/         ← structured lab sequences (your facilitator will point you here)
 │   ├── foundations/   ← theory, product features, platform mental model
@@ -35,20 +35,20 @@ workshop-instructions/
 
 | Category | What You'll Try | Labs |
 |----------|----------------|------|
-| [Application Development](modules/application-development/) | Build features, fix bugs, evolve schemas | 7 |
-| [Testing & QA](modules/testing-qa/) | Linting, unit tests, E2E tests, performance, accessibility | 13 |
-| [Security](modules/security/) | Dependency upgrades, vulnerability remediation, SAST | 7 |
-| [Compliance & Governance](modules/compliance-governance/) | License audits, PII detection, regulatory reporting | 3 |
-| [DevOps & CI/CD](modules/devops-cicd/) | Pipelines, PR automation, CI failure resolution | 5 |
-| [Cloud & Infrastructure](modules/cloud-infrastructure/) | IaC translation, Kubernetes, Terraform, GitOps | 6 |
-| [Observability & SRE](modules/observability-sre/) | Monitoring, incident response, anomaly detection | 4 |
-| [Data Engineering](modules/data-engineering/) | DW migration, ETL modernization, data quality | 10 |
-| [Architecture & Design](modules/architecture-design/) | ADRs, API review, dependency analysis, refactoring | 5 |
-| [AI & ML Engineering](modules/ai-ml-engineering/) | ML pipelines, model evaluation, LLM patterns | 3 |
-| [Technical Documentation](modules/technical-documentation/) | Inline docs, API docs, runbooks, changelogs | 6 |
-| [Migration & Modernization](modules/migration-modernization/) | COBOL-to-Java, framework upgrades, containerization | 15 |
+| [Application Development](labs/application-development/) | Build features, fix bugs, evolve schemas | 7 |
+| [Testing & QA](labs/testing-qa/) | Linting, unit tests, E2E tests, performance, accessibility | 13 |
+| [Security](labs/security/) | Dependency upgrades, vulnerability remediation, SAST | 7 |
+| [Compliance & Governance](labs/compliance-governance/) | License audits, PII detection, regulatory reporting | 3 |
+| [DevOps & CI/CD](labs/devops-cicd/) | Pipelines, PR automation, CI failure resolution | 5 |
+| [Cloud & Infrastructure](labs/cloud-infrastructure/) | IaC translation, Kubernetes, Terraform, GitOps | 6 |
+| [Observability & SRE](labs/observability-sre/) | Monitoring, incident response, anomaly detection | 4 |
+| [Data Engineering](labs/data-engineering/) | DW migration, ETL modernization, data quality | 10 |
+| [Architecture & Design](labs/architecture-design/) | ADRs, API review, dependency analysis, refactoring | 5 |
+| [AI & ML Engineering](labs/ai-ml-engineering/) | ML pipelines, model evaluation, LLM patterns | 3 |
+| [Technical Documentation](labs/technical-documentation/) | Inline docs, API docs, runbooks, changelogs | 6 |
+| [Migration & Modernization](labs/migration-modernization/) | COBOL-to-Java, framework upgrades, containerization | 15 |
 
-Browse all labs: [modules/README.md](modules/README.md)
+Browse all labs: [labs/README.md](labs/README.md)
 
 ### Find Labs by Workshop
 
@@ -108,4 +108,4 @@ Looking for a specific repo? The [catalog](catalog/repos.md) lists all repositor
 
 ## Devin Features Checklist
 
-Track your progress on the [Devin Features Appendix](modules/devin-features/README.md) — try to discover as many Devin capabilities as you can during the session.
+Track your progress on the [Devin Features Appendix](labs/devin-features/README.md) — try to discover as many Devin capabilities as you can during the session.

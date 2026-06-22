@@ -53,7 +53,7 @@ Four labs that build on each other in a progressive arc:
 
 ### Lab 1 — System Understanding & Reverse Engineering (60 min)
 
-- **Module:** [Oracle Forms System Understanding & Reverse Engineering](../../modules/migration-modernization/oracle-forms-system-understanding.md)
+- **Module:** [Oracle Forms System Understanding & Reverse Engineering](../../labs/migration-modernization/oracle-forms-system-understanding.md)
 - **Repository:** [ts-plsql-oracle-forms-hrms](https://github.com/Cognition-Partner-Workshops/ts-plsql-oracle-forms-hrms)
 - **Objective:** Produce a complete application inventory, data dictionary, multi-layer dependency map, and technical debt report for an Oracle Forms/PL/SQL application
 
@@ -84,7 +84,7 @@ Four labs that build on each other in a progressive arc:
 
 ### Lab 2 — Migration Planning & Strategy (60 min)
 
-- **Module:** [Oracle Forms Migration Planning & Strategy](../../modules/migration-modernization/oracle-forms-migration-planning.md)
+- **Module:** [Oracle Forms Migration Planning & Strategy](../../labs/migration-modernization/oracle-forms-migration-planning.md)
 - **Repositories:** [ts-plsql-oracle-forms-hrms](https://github.com/Cognition-Partner-Workshops/ts-plsql-oracle-forms-hrms), [uc-legacy-modernization-oracle-forms-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-oracle-forms-to-java)
 - **Objective:** Produce a modernization blueprint with strategy evaluation, component mapping, migration ordering, and risk register
 
@@ -115,7 +115,7 @@ Four labs that build on each other in a progressive arc:
 
 ### Lab 3 — Migration Test Harness & Validation (60 min)
 
-- **Module:** [Migration Test Harness & Validation Strategy](../../modules/migration-modernization/migration-test-harness.md)
+- **Module:** [Migration Test Harness & Validation Strategy](../../labs/migration-modernization/migration-test-harness.md)
 - **Repository:** [uc-legacy-modernization-oracle-forms-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-oracle-forms-to-java)
 - **Objective:** Design and implement a test harness that validates migration correctness — business scenarios, differential testing, result comparison, and reconciliation checks
 
@@ -146,7 +146,7 @@ Four labs that build on each other in a progressive arc:
 
 ### Lab 4 — Oracle Forms to Java Code Migration (60 min)
 
-- **Module:** [Oracle Forms to Java](../../modules/migration-modernization/oracle-forms-to-java.md)
+- **Module:** [Oracle Forms to Java](../../labs/migration-modernization/oracle-forms-to-java.md)
 - **Repositories:** [ts-plsql-oracle-forms-hrms](https://github.com/Cognition-Partner-Workshops/ts-plsql-oracle-forms-hrms), [uc-legacy-modernization-oracle-forms-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-oracle-forms-to-java)
 - **Objective:** Translate selected PL/SQL packages to Java Spring Boot with REST APIs, JPA entities, unified validation, and parity tests
 
@@ -196,10 +196,10 @@ Participants who finish early or want to go deeper may attempt:
 
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
-| COBOL Modernization (parallel track) | [COBOL to Java](../../modules/migration-modernization/cobol-to-java.md) | uc-legacy-modernization-cobol-to-java | Intermediate–Advanced | 60 min |
-| Combined Modernization | [Legacy Modernization Combined](../../modules/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
-| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../modules/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
-| Data Source Migration | [Data Source Migration](../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
+| COBOL Modernization (parallel track) | [COBOL to Java](../../labs/migration-modernization/cobol-to-java.md) | uc-legacy-modernization-cobol-to-java | Intermediate–Advanced | 60 min |
+| Combined Modernization | [Legacy Modernization Combined](../../labs/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
+| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../labs/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
+| Data Source Migration | [Data Source Migration](../../labs/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
 
 ---
 
@@ -248,7 +248,7 @@ Participants who finish early or want to go deeper may attempt:
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../modules/devin-features/README.md) throughout the session. Key activities for this track:
+Encourage participants to track their progress on the [Devin Features Appendix](../../labs/devin-features/README.md) throughout the session. Key activities for this track:
 
 - [ ] Use DeepWiki to explore an Oracle Forms/PL/SQL codebase (Lab 1)
 - [ ] Use AskDevin to ask targeted questions about PL/SQL packages and Forms triggers (Labs 1, 2)
