@@ -21,7 +21,7 @@ The first half covers **knowledge** — platform architecture internals, SDLC ph
 > **This is a design-and-delivery workshop.** Unlike hands-on labs where you paste prompts and review PRs, this workshop builds the knowledge and judgment you need to architect Devin solutions and present them convincingly. Each section ends with knowledge checks and design exercises — take them seriously, as they mirror the questions clients will ask.
 
 Tips:
-- **Read the source material first.** Each section references files in `shared/general-themes/` and `demos/`. Read those before attempting the knowledge checks.
+- **Read the source material first.** Each section is self-contained comprehensive training. Quick-reference cheat sheets in `shared/general-themes/` and walkthrough scripts in `demos/` supplement the material. Read those before attempting the knowledge checks.
 - **Practice walkthrough delivery out loud.** Section 3 includes delivery scripts. Practice explaining what is happening while Devin runs — this is the core skill clients evaluate you on.
 - **Build the simulated environment.** Section 5 walks you through configuring a complete Devin org. Do this hands-on — the muscle memory matters when you are configuring a client's environment live.
 - **Use the design challenges as preparation.** The capstone design challenge mirrors the kind of architecture proposal you will deliver in real engagements.

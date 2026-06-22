@@ -1,13 +1,15 @@
-# How Devin Works
+# Quick Reference — How Devin Works
 
-Background on Devin's architecture, capabilities, and collaboration model. These docs explain **when**, **why**, and **how** to use Devin effectively — useful context as you work through the labs.
+Concise reference cards for Devin's architecture, capabilities, and collaboration model. Use these as quick lookups during labs and workshops.
 
-| Document | What You'll Learn |
-|----------|-------------------|
-| [When to Use Devin](when-to-use-devin.md) | Trigger types (event-driven, large-scale, capacity-constrained) and the sweet spot for AI-assisted engineering |
-| [Architecture Strengths](architecture-strengths.md) | Clean-room execution, shared context layer, context retrieval, shell access, and verification model |
-| [Design Patterns](design-patterns-for-devin.md) | Proven patterns for structuring work so Devin succeeds: locally testable code, event-driven triggers, divide-and-conquer |
-| [Platform Capabilities](platform-capabilities.md) | Scheduled sessions, playbooks, child agents, team-based operation, and Devin Review |
-| [Collaboration Model](collaboration-model.md) | The PR feedback loop, multi-user interaction, CI monitoring, and hibernation/resume behavior |
-| [Value Narratives](value-narratives.md) | Capacity unlocking, velocity, quality, risk reduction, and cost optimization |
-| [Cloud vs. Local Agents](cloud-vs-local-agents.md) | The two execution tiers (cloud VM and local machine), when to use each, how they complement each other, and the handoff mechanism |
+For comprehensive training, see [Foundations](../../workshops/foundations/) and [Training Tracks](../../workshops/training-tracks/).
+
+| Reference Card | Quick Answer To |
+|----------------|----------------|
+| [When to Use Devin](when-to-use-devin.md) | Which tasks belong to Devin? Event-driven, large-scale, or capacity-constrained triggers |
+| [Architecture Strengths](architecture-strengths.md) | How does Devin's VM isolation, shared context, and verification model work? |
+| [Design Patterns](design-patterns-for-devin.md) | What patterns help Devin succeed? Locally testable code, event-driven triggers, divide-and-conquer |
+| [Platform Capabilities](platform-capabilities.md) | What can the platform do? Scheduled sessions, playbooks, child agents, Devin Review |
+| [Collaboration Model](collaboration-model.md) | How does Devin work with your team? PR feedback loop, multi-user comments, CI monitoring |
+| [Value Narratives](value-narratives.md) | How to articulate Devin's impact? Capacity unlocking, velocity, quality, risk, cost |
+| [Cloud vs. Local Agents](cloud-vs-local-agents.md) | Cloud VM or local machine? Comparison table, decision tree, handoff model |

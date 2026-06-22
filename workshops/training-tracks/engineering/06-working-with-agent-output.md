@@ -89,7 +89,7 @@ In production, the typical flow is:
 
 Devin Review catches many issues automatically (missing validation, null pointer risks, style violations), reducing the number of issues you need to find yourself. Think of it as a first-pass reviewer that handles the mechanical checks.
 
-For the full collaboration model, see [Collaboration Model](../../../shared/general-themes/collaboration-model.md).
+For the full collaboration model, see [Foundations — Cloud Agent vs. Local Agent](../../foundations/01-cloud-agent-vs-local-agent.md) and [Foundations — Sessions](../../foundations/06-devin-sessions.md). Quick reference: [Collaboration Model](../../../shared/general-themes/collaboration-model.md).
 
 ---
 
