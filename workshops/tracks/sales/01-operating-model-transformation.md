@@ -1,12 +1,12 @@
 # Operating Model Transformation
 
-How hybrid human + AI agent delivery changes staffing models, bench economics, and margin.
+How the human + agent delivery model changes staffing models, bench economics, and margin.
 
 ---
 
 ## The Three-Tier Work Distribution Model
 
-In a hybrid delivery organization, work distributes across three tiers — each optimized for what it does best:
+In a human + agent delivery organization, work distributes across three tiers — each optimized for what it does best:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -58,7 +58,7 @@ The **Acceleration Tier** is where local AI assistants speed up individual engin
 - Reactive work (incidents, CI failures) interrupts deep work
 - Bench cost accumulates during ramp-up and between engagements
 
-**After (hybrid model):**
+**After (human + agent model):**
 - Sprint planning separates "human-judgment work" from "well-defined implementable work"
 - Agent capacity handles the execution portion — no bench cost, no ramp-up delay
 - Campaigns parallelize across child agents (weeks instead of months)
@@ -69,9 +69,9 @@ The **Acceleration Tier** is where local AI assistants speed up individual engin
 
 ## Bench Economics and Attrition Risk
 
-The hybrid model fundamentally changes the bench cost equation:
+The human + agent model fundamentally changes the bench cost equation:
 
-| Factor | Headcount-Only | Hybrid Model |
+| Factor | Headcount-Only | Human + Agent Model |
 |--------|---------------|--------------|
 | **Ramp-up cost** | Weeks to onboard new engineers to client systems | Agents onboard via blueprints and knowledge notes in minutes |
 | **Bench cost during gaps** | Full salary continues between engagements | Agent capacity scales to zero when not in use — no idle cost |
@@ -85,7 +85,7 @@ The margin improvement path: as playbooks mature and knowledge notes accumulate,
 
 ## The Efficiency-Quality-Outcomes Cycle
 
-The hybrid operating model creates a virtuous cycle:
+The human + agent operating model creates a virtuous cycle:
 
 1. **Efficiency first** — Agents handle high-volume, well-defined execution at consistent throughput. No idle time, no ramp cost, no context-switching loss.
 2. **Quality rises** — Consistency and standardization (playbooks, automated review, automated testing) raise baseline quality without adding cost.
@@ -106,7 +106,7 @@ D) All three tiers equally
 *Answer: B — Cloud agents parallelize well-defined, repetitive work across many targets. Humans review the PRs; they don't implement each one.*
 
 **Knowledge Check 1.2**
-Q: What happens to bench cost in the hybrid model when there is no active engagement work?
+Q: What happens to bench cost in the human + agent model when there is no active engagement work?
 A) It increases because you need both humans and agent licenses
 B) It stays the same — you still pay for the engineering team
 C) Agent capacity scales to zero with no idle cost; only human bench remains
@@ -114,26 +114,26 @@ D) Agents are reassigned to internal R&D
 *Answer: C — Agent capacity is consumption-based. When no work is running, agent cost is zero. Human bench cost still exists but is smaller because fewer engineers are needed for execution work.*
 
 **Knowledge Check 1.3**
-Q: Why does the hybrid model reduce attrition risk for an SI?
+Q: Attrition risk is the risk that institutional knowledge walks out the door when engineers leave. Why does the human + agent delivery model reduce this risk for an SI?
 A) Engineers are happier because they get paid more
 B) Institutional knowledge is encoded in playbooks and knowledge notes rather than residing only in engineers' heads
 C) Agents never leave the company
 D) Engineers have less work to do
-*Answer: B — When knowledge is codified in playbooks and knowledge notes, it survives staff turnover. A departing engineer's domain expertise persists in the system.*
+*Answer: B — When knowledge is codified in playbooks and knowledge notes, it survives staff turnover. A departing engineer's domain expertise persists in the system. While happier engineers may stay longer (A), the structural mitigation is that knowledge lives in the system, not in individual heads.*
 
 **Knowledge Check 1.4**
 Q: In the efficiency-quality-outcomes cycle, what drives quality improvement?
 A) Hiring more QA engineers
-B) Consistency and standardization from playbooks, automated review, and automated testing
+B) Consistency and standardization from playbooks, automated review, automated testing, and expert feedback from code owners
 C) Manual code review of every line
 D) Reducing the number of deployments
-*Answer: B — Automated and standardized processes (playbooks, Devin Review, automated testing) apply the same rigor to every change, raising baseline quality without adding headcount.*
+*Answer: B — Standardized processes (playbooks, Devin Review, automated testing) combined with expert human review from code owners apply consistent rigor, raising baseline quality without adding headcount.*
 
 ---
 
 ## Key Takeaways
 
 - Work distributes across three tiers: humans for judgment, cloud agents for execution, local agents for acceleration
-- Sprint planning in the hybrid model separates judgment work (human-delivered) from execution work (agent-delivered)
+- Sprint planning in the human + agent model separates judgment work (human-delivered) from execution work (agent-delivered)
 - Bench cost, attrition risk, and ramp-up time are structurally reduced because agent capacity is elastic and knowledge is codified
 - The efficiency-quality-outcomes cycle compounds over time as playbooks and knowledge mature

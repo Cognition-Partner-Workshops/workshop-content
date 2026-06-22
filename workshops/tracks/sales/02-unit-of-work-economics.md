@@ -1,6 +1,6 @@
 # Unit-of-Work Economics
 
-The formula for predictable, defensible pricing in hybrid delivery engagements.
+The formula for predictable, defensible pricing in human + agent delivery engagements.
 
 ---
 
@@ -15,7 +15,7 @@ Total bid = Σ(Unit cost × Quantity) + Orchestration overhead + Margin
 ```
 
 Where:
-- **ACUs per unit** = Agent Compute Units consumed to execute one standard unit of work
+- **ACUs per unit** = Agent Compute Units consumed to execute one standard unit of work (e.g., one microservice upgrade, one SAST finding remediation, one COBOL copybook translation, one test suite for a module)
 - **$/ACU** = Cost per Agent Compute Unit (consumption-based pricing)
 - **Review hours per unit** = Human time spent reviewing, approving, and handling exceptions
 - **Blended rate** = Weighted average billing rate for the humans involved (architects, senior engineers, reviewers)
@@ -35,7 +35,7 @@ Total cost = Number of engineers × Hourly rate × Estimated hours
 
 The traditional model has high variance because human productivity varies by individual, day, and context. Estimation accuracy depends on the estimator's experience and optimism.
 
-Hybrid estimation:
+Human + agent estimation:
 ```
 Total cost = (Known agent cost per unit × Unit count)
            + (Known review cost per unit × Unit count)
@@ -43,7 +43,7 @@ Total cost = (Known agent cost per unit × Unit count)
            + Margin
 ```
 
-The hybrid model has lower variance because the agent-executed portion has predictable throughput. When every task follows the same playbook and produces the same artifact structure, variance in execution time and cost narrows dramatically.
+The human + agent model has lower variance because the agent-executed portion has predictable throughput. When every task follows the same playbook and produces the same artifact structure, variance in execution time and cost narrows dramatically.
 
 ---
 
@@ -61,9 +61,9 @@ The hybrid model has lower variance because the agent-executed portion has predi
 
 **Timeline comparison:**
 - Headcount-only: 50 services × 4 engineer-hours each = 200 hours = ~5 weeks (1 engineer) or ~1 week (5 engineers)
-- Hybrid: 50 parallel agent sessions (complete in days) + review queue (1 week) = ~1.5 weeks total with 1-2 reviewers
+- Human + agent: 50 parallel agent sessions (complete in days) + review queue (1 week) = ~1.5 weeks total with 1-2 reviewers
 
-**Key insight:** The hybrid model compresses the timeline by parallelizing execution while requiring fewer senior engineers (reviewers only, not implementers).
+**Key insight:** The human + agent delivery model compresses the timeline by parallelizing execution while elevating the engineer's role — engineers work more like architects and product owners (reviewing, deciding, approving) rather than implementers.
 
 ---
 
@@ -108,7 +108,7 @@ The hybrid model has lower variance because the agent-executed portion has predi
 | **Story level** | "Upgrade order-service to Spring Boot 3.2" | Medium-high (±15%) | High — well-defined scope |
 | **Task level** | "Update Jakarta imports in OrderController.java" | Very high (±5%) | Very high — mechanical transformation |
 
-The sweet spot for hybrid estimation is **story level** — each unit is a single service, module, or component. This gives high estimation confidence while keeping orchestration overhead manageable.
+The sweet spot for human + agent estimation is **story level** — each unit is a single service, module, or component. This gives high estimation confidence while keeping orchestration overhead manageable.
 
 ---
 
@@ -123,7 +123,7 @@ D) The margin added to the engagement
 *Answer: B — Orchestration overhead is the fixed cost of setting up the campaign: creating playbooks, configuring environments, planning the decomposition, and coordinating the work.*
 
 **Knowledge Check 2.2**
-Q: Why does the hybrid estimation model have lower variance than traditional estimation?
+Q: Why does the human + agent estimation model have lower variance than traditional estimation?
 A) AI agents are cheaper than human engineers
 B) The agent-executed portion has predictable throughput because every task follows the same playbook
 C) There are fewer total tasks to estimate
@@ -151,6 +151,6 @@ D) Task level — maximum precision
 ## Key Takeaways
 
 - The unit-of-work formula gives predictable, defensible pricing: `(ACUs × rate) + (Review hours × rate) + Overhead + Margin`
-- Hybrid estimation has lower variance than traditional headcount estimation because agent-executed work is standardized
+- Human + agent estimation has lower variance than traditional headcount estimation because agent-executed work is standardized
 - Granularity matters: story-level decomposition (one service, one module) is the sweet spot for balancing confidence and overhead
 - Exception rates vary by campaign type (10% for upgrades, 15% for security, 20% for legacy migrations) — build them into the estimate

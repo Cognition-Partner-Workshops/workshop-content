@@ -6,7 +6,7 @@ Mapping buyer personas to the right value narratives for effective positioning.
 
 ## Mapping Buyer Personas to Narratives
 
-Different stakeholders care about different outcomes. The same hybrid delivery capability should be positioned differently depending on who you're talking to:
+Different stakeholders care about different outcomes. The same human + agent delivery capability should be positioned differently depending on who you're talking to:
 
 | Buyer Persona | Primary Narrative | Secondary Narrative | What They Need to Hear |
 |---------------|------------------|--------------------|-----------------------|
@@ -22,7 +22,7 @@ Different stakeholders care about different outcomes. The same hybrid delivery c
 
 ### For CTO / VP Engineering: Capacity Unlocking + Engineering Focus Elevation
 
-**Lead with:** "Your engineers are spending 60%+ of their time on implementation work that could be delegated. The hybrid model shifts that distribution — engineers focus on architecture, design, and the decisions that require human judgment."
+**Lead with:** "Your engineers are spending 60%+ of their time on implementation work that could be delegated. The human + agent model shifts that distribution — engineers focus on architecture, design, and the decisions that require human judgment."
 
 **Supporting points:**
 - Show the backlog of deferred "should-do" work (dependency updates, test coverage, documentation debt)
@@ -121,10 +121,10 @@ A) Engineering Focus Elevation
 B) Operating Model Efficiency
 C) Quality Improvement
 D) Capacity Unlocking
-*Answer: B — Operating Model Efficiency addresses cost structure competitiveness directly. The hybrid model produces a lower cost-per-unit that translates to more competitive bids.*
+*Answer: B — Operating Model Efficiency addresses cost structure competitiveness directly. The human + agent model produces a lower cost-per-unit that translates to more competitive bids.*
 
 **Knowledge Check 3.3**
-Q: Why should you prepare different evidence for a CTO vs. a CFO, even though both benefit from the hybrid model?
+Q: Why should you prepare different evidence for a CTO vs. a CFO, even though both benefit from the human + agent model?
 A) They have different budget authority
 B) They evaluate success using different metrics — the CTO cares about engineering effectiveness, the CFO cares about cost predictability and ROI
 C) The CTO is more technical

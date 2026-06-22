@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Focus** | How the hybrid operating model (human engineers + AI agents) changes staffing, bidding, cost structures, and resource allocation — enabling SIs to capture work and price engagements competitively |
+| **Focus** | How the human + agent operating model changes staffing, bidding, cost structures, and resource allocation — enabling SIs to capture work and price engagements competitively |
 | **Duration** | 4-5 hours (self-paced reading + exercises + case study) |
 | **Audience** | Sales Engineers, Account Executives, Practice Leads, and P&L Owners at SI partner firms |
 | **Format** | Guided reading with knowledge checks, worked examples, and a capstone case study exercise |
@@ -12,12 +12,12 @@
 
 ## Workshop Narrative
 
-The consulting and systems integration industry is entering a structural shift. Organizations that adopt a hybrid workforce model — combining human engineers for judgment work with AI agents for execution work — can bid more competitively, deliver faster, and produce higher-quality outcomes than headcount-only approaches.
+The consulting and systems integration industry is entering a structural shift. Organizations that adopt a human + agent workforce model — combining human engineers for judgment work with AI agents for execution work — can bid more competitively, deliver faster, and produce higher-quality outcomes than headcount-only approaches.
 
 This workshop equips sales-facing roles with the frameworks, economics, and narratives they need to:
-- **Understand** how hybrid delivery changes the cost structure of engagements
+- **Understand** how human + agent delivery changes the cost structure of engagements
 - **Estimate** engagement costs using the unit-of-work model
-- **Position** the hybrid model to different buyer personas
+- **Position** the human + agent model to different buyer personas
 - **Scope** proposals that separate agent-executable work from human-delivered work
 - **Compete** against headcount-only bids with confidence in cost, timeline, and quality advantages
 
@@ -40,11 +40,11 @@ Tips:
 
 | # | Topic | What You'll Learn |
 |---|-------|-------------------|
-| 1 | [Operating Model Transformation](01-operating-model-transformation.md) | How hybrid human + AI agent delivery changes staffing models, bench economics, and margin |
-| 2 | [Unit-of-Work Economics](02-unit-of-work-economics.md) | The formula for predictable, defensible pricing in hybrid delivery engagements |
+| 1 | [Operating Model Transformation](01-operating-model-transformation.md) | How the human + agent delivery model changes staffing models, bench economics, and margin |
+| 2 | [Unit-of-Work Economics](02-unit-of-work-economics.md) | The formula for predictable, defensible pricing in human + agent delivery engagements |
 | 3 | [Value Narrative Selection](03-value-narrative-selection.md) | Mapping buyer personas to the right value narratives for effective positioning |
 | 4 | [Engagement Scoping & Estimation](04-engagement-scoping-and-estimation.md) | How to decompose a large client engagement into standard units of work |
-| 5 | [Competitive Positioning](05-competitive-positioning.md) | How the hybrid model creates structural advantages in RFP scenarios |
+| 5 | [Competitive Positioning](05-competitive-positioning.md) | How the human + agent model creates structural advantages in RFP scenarios |
 | 6 | [The Decision Framework for Sales](06-decision-framework-for-sales.md) | Applying "what to give AI vs. not" to proposal scoping |
 
 ### Capstone
@@ -67,7 +67,7 @@ Once you've completed this track, you'll be able to:
 
 | Capability | What It Means in Practice |
 |-----------|--------------------------|
-| Scope hybrid engagements | Decompose any client request into agent-executable and human-delivered work with defensible cost estimates |
+| Scope human + agent engagements | Decompose any client request into agent-executable and human-delivered work with defensible cost estimates |
 | Select value narratives | Match your pitch to the buyer persona — CTO, CISO, CFO, or Delivery Director — with relevant metrics and evidence |
 | Price competitively | Use unit-of-work economics to produce bids that beat headcount-only proposals on cost, timeline, and quality |
 | Handle objections | Address "will AI produce good code?" and "cost of not adopting" confidently with the human review gate and compounding advantage arguments |

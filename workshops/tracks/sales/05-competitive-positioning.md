@@ -1,20 +1,20 @@
 # Competitive Positioning
 
-How the hybrid model creates structural advantages in RFP scenarios — and how to frame them.
+How the human + agent model creates structural advantages in RFP scenarios — and how to frame them.
 
 ---
 
 ## The Displacement Risk
 
-In an RFP scenario, the SI with the most efficient operating model wins. If a competitor bids with a hybrid workforce and you bid headcount-only, you lose on three dimensions simultaneously:
+In an RFP scenario, the SI with the most efficient operating model wins. If a competitor bids with a human + agent workforce and you bid headcount-only, you lose on three dimensions simultaneously:
 
-| Dimension | Headcount-Only Bid | Hybrid Model Bid |
+| Dimension | Headcount-Only Bid | Human + Agent Model Bid |
 |-----------|-------------------|-----------------|
 | **Cost** | Higher — paying senior rates for mechanical work | Lower — agents handle execution at a fraction of human cost |
 | **Timeline** | Longer — sequential execution limited by team size | Shorter — parallel agent execution compresses timelines dramatically |
 | **Quality** | Variable — depends on individual engineer consistency | Consistent — standardized playbooks and automated review across units |
 
-This is not a marginal advantage. It is a structural one. The hybrid model produces fundamentally different economics that headcount-only bids cannot match without sacrificing margin.
+This is not a marginal advantage. It is a structural one. The human + agent model produces fundamentally different economics that headcount-only bids cannot match without sacrificing margin.
 
 ---
 
@@ -25,7 +25,7 @@ The goal is not to attack other SIs. The goal is to demonstrate that your operat
 **Do say:**
 - "Our delivery model combines senior human judgment with AI-powered execution to deliver faster at lower cost"
 - "We decompose work into standard units with predictable costs, giving you tighter confidence intervals on timeline and budget"
-- "Our hybrid workforce model means we can scale capacity to your timeline without the lead time of hiring"
+- "Our human + agent workforce model means we can scale capacity to your timeline without the lead time of hiring"
 
 **Do not say:**
 - "Other SIs are outdated / behind the times"
@@ -41,13 +41,13 @@ The goal is not to attack other SIs. The goal is to demonstrate that your operat
 
 ## The "Cost of Not Adopting" Argument
 
-When a prospect is hesitant about the hybrid model, the framing shifts from "why adopt" to "what happens if you don't":
+When a prospect is hesitant about the human + agent model, the framing shifts from "why adopt" to "what happens if you don't":
 
-1. **Competitive pressure is real** — If your competitors are already bidding with hybrid models, your headcount-only bids will be structurally more expensive. You're not competing against their technology; you're competing against their cost structure.
+1. **Competitive pressure is real** — If your competitors are already bidding with human + agent models, your headcount-only bids will be structurally more expensive. You're not competing against their technology; you're competing against their cost structure.
 
 2. **Talent market pressure** — Senior engineers increasingly expect to work on interesting problems, not mechanical migration tasks. Organizations that can't offer focus-elevated work will lose talent to those that can.
 
-3. **Client expectations are shifting** — Clients who have seen hybrid delivery results will expect it from future engagements. The timeline compression and cost predictability become the new baseline expectation.
+3. **Client expectations are shifting** — Clients who have seen human + agent delivery results will expect it from future engagements. The timeline compression and cost predictability become the new baseline expectation.
 
 4. **Compounding disadvantage** — Early adopters build playbooks, knowledge bases, and operational muscle that make each subsequent engagement cheaper and faster. Late adopters start from zero while competitors are on their third or fourth iteration.
 
@@ -58,7 +58,7 @@ When a prospect is hesitant about the hybrid model, the framing shifts from "why
 **Scenario:** A client has issued an RFP for migrating 200 legacy COBOL programs to Java. Two SIs are bidding:
 
 - **SI-A (headcount-only):** 15 engineers for 9 months. Linear execution. Quality depends on individual engineer consistency.
-- **SI-B (hybrid model):** 4 senior engineers + AI agent fleet. Parallel execution. Standardized playbooks with automated verification.
+- **SI-B (human + agent model):** 4 senior engineers + AI agent fleet. Parallel execution. Standardized playbooks with automated verification.
 
 **Questions to consider:**
 1. How would SI-B's timeline compare to SI-A's? (Hint: parallel execution of 200 units vs. sequential)
@@ -75,15 +75,15 @@ SI-B's pitch: "We deliver in 3 months, not 9. Our senior architects design the m
 ## Knowledge Checks
 
 **Knowledge Check 5.1**
-Q: In the displacement risk framework, on which three dimensions does the hybrid model simultaneously outperform headcount-only bids?
+Q: In the displacement risk framework, on which three dimensions does the human + agent model simultaneously outperform headcount-only bids?
 A) Speed, margin, and flexibility
 B) Cost, timeline, and quality
 C) Scale, reliability, and innovation
 D) Pricing, staffing, and reputation
-*Answer: B — The hybrid model produces lower cost (agents cheaper than engineers for execution work), shorter timeline (parallel execution), and more consistent quality (standardized playbooks + automated review).*
+*Answer: B — The human + agent model produces lower cost (agents cheaper than engineers for execution work), shorter timeline (parallel execution), and more consistent quality (standardized playbooks + automated review).*
 
 **Knowledge Check 5.2**
-Q: How should you position the hybrid model's advantage without disparaging competitors?
+Q: How should you position the human + agent model's advantage without disparaging competitors?
 A) Point out that competitors are outdated
 B) Frame it as client benefit — faster delivery, lower cost, tighter confidence intervals
 C) Show a cost comparison naming specific competitor pricing
@@ -104,13 +104,13 @@ A) "AI produces better code than humans"
 B) "Every PR is reviewed by a senior engineer and validated by automated tests — humans maintain approval authority over every change"
 C) "Trust us, it works"
 D) "We'll fix anything that goes wrong for free"
-*Answer: B — The strongest response emphasizes the human review gate and automated verification. The hybrid model does not eliminate human judgment — it concentrates it at the review/approval points.*
+*Answer: B — The strongest response emphasizes the human review gate and automated verification. The human + agent model does not eliminate human judgment — it concentrates it at the review/approval points.*
 
 ---
 
 ## Key Takeaways
 
-- The hybrid model creates structural advantages on cost, timeline, and quality simultaneously — headcount-only bids cannot match this without sacrificing margin
+- The human + agent model creates structural advantages on cost, timeline, and quality simultaneously — headcount-only bids cannot match this without sacrificing margin
 - Frame competitive advantages as client benefits, not competitor attacks
 - The "cost of not adopting" argument works for hesitant prospects: competitive pressure, talent market pressure, shifting client expectations, and compounding disadvantage
 - Handle "will AI produce good code?" with the human review gate — every change is reviewed by senior engineers and validated by automated tests
