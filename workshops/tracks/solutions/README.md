@@ -1081,15 +1081,14 @@ Is the failure in Devin's code?
 | Question Type | Defer Pattern |
 |--------------|---------------|
 | **Detailed technical architecture** (e.g., "What encryption is used for secrets at rest?") | "That is a platform-level security detail I want to answer precisely. Let me get you the exact specification from our engineering team and follow up within 24 hours." |
-| **Pricing / cost modeling** | "Pricing depends on your specific usage pattern. Let me connect you with our team who can model this based on your requirements." |
 | **Capability you are unsure about** | "I want to verify that before committing to an answer. Let me confirm with the platform team and get back to you with a definitive response." |
-| **Comparison to competitors** | "I prefer to focus on what we do rather than characterize other products. Let me show you how Devin handles [their specific use case] and you can evaluate directly." |
-| **Future roadmap** | "I cannot commit to specific timelines on unreleased features. What I can tell you is what is available today and how it addresses your requirements." |
+| **Scope or limitations** | "I want to give you an accurate answer on what the platform handles today. Let me verify the specifics and follow up within 24 hours." |
+| **Internal implementation details** | "That touches internal platform details I do not have visibility into. Let me connect you with the engineering team who can answer precisely." |
 
 **General principles:**
 - Never guess or speculate on technical details. Wrong answers erode trust faster than "I do not know, but I will find out"
 - Always pair the defer with a follow-up commitment and timeline
-- Redirect to what you CAN show: "I am not sure about that specific detail, but let me show you something directly relevant to your use case"
+- Redirect to what you CAN show: "I am not sure about that specific detail, but let me show you something directly relevant to your question"
 
 ### 7.5 Scenario Exercises
 
@@ -1313,7 +1312,7 @@ Use this rubric to evaluate your own walkthrough delivery quality. Score each cr
 | Criterion | Strong | Adequate | Needs Work |
 |-----------|--------|----------|------------|
 | **Takeaway reinforcement** | Summarized the 2-3 key points that connected to the client's specific use case | Gave generic takeaways | No summary or wrap-up |
-| **Next steps** | Proposed concrete next steps for the client (e.g., "we could configure this for your repos in a pilot") | Mentioned vague follow-ups | No clear call to action |
+| **Next steps** | Proposed concrete next steps (e.g., "next we could walk through configuring Knowledge notes for your coding standards") | Mentioned vague follow-ups | No clear call to action |
 | **Follow-up on deferred questions** | Tracked unanswered questions and followed up within committed timeline | Followed up late | Forgot to follow up |
 
 ---
@@ -1328,8 +1327,8 @@ Additional materials needed to complete this track:
 - [ ] Integration design templates (editable topology diagrams for common automation patterns)
 - [ ] "Handling the hard questions" expanded guide (top 50 client questions with researched, precise answers)
 - [ ] Platform configuration lab environment (pre-configured sandbox where attendees practice org setup from scratch)
-- [ ] Walkthrough timing guides (suggested pacing for 30-minute, 60-minute, and 90-minute walkthrough slots)
-- [ ] Competitive positioning reference (how to redirect conversations about alternative approaches to direct platform capability)
+- [ ] Walkthrough timing guides — *operator repo* (suggested pacing for 30-minute, 60-minute, and 90-minute walkthrough slots)
+- [ ] Objection handling reference — *operator repo* (how to respond to questions about alternative approaches)
 - [ ] Multi-walkthrough sequencing guide (how to chain walkthroughs in a half-day or full-day session for maximum narrative impact)
 - [ ] Assessment exercises with automated grading (knowledge checks that report scores and identify weak areas)
 - [ ] Client-specific customization templates (how to adapt walkthrough prompts to a specific client's repos and technology stack)
