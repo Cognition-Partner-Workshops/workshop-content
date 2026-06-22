@@ -23,7 +23,7 @@ Human reviews diff
 
 ## Multi-User Communication
 
-Multiple team members comment on the same Devin PR. Devin reads all comments, addresses all requests in subsequent commits. When any comment arrives, Devin resumes from its hibernated state with full context — no re-reading from scratch.
+Multiple team members comment on the same Devin PR. Devin reads the comments and addresses requests in subsequent commits. When any comment arrives, Devin resumes from its hibernated state with full context — no re-reading from scratch.
 
 <a id="ci-check-monitoring"></a>
 

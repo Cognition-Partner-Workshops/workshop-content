@@ -112,7 +112,7 @@ Devin verifies its own work through three mechanisms:
 
 The tighter your verification loop (fast builds, comprehensive tests, clear CI output), the better Devin performs. This is why Pattern 1: Locally Buildable and Testable Code is the single most impactful design pattern (see [Solutions Track — SDLC Integration Design](../solutions/02-sdlc-integration-design.md); quick reference: [Design Patterns](../../../shared/general-themes/design-patterns-for-devin.md)).
 
-For the full collaboration model, see [Foundations — Cloud Agent vs. Local Agent](../../foundations/01-cloud-agent-vs-local-agent.md) and [Foundations — Sessions](../../foundations/06-devin-sessions.md). Quick reference: [Collaboration Model](../../../shared/general-themes/collaboration-model.md).
+For more on the collaboration model (PR feedback loop, multi-user comments, CI monitoring, hibernation/resume), see the [Collaboration Model quick reference](../../../shared/general-themes/collaboration-model.md). Related foundations: [Cloud Agent vs. Local Agent](../../foundations/01-cloud-agent-vs-local-agent.md), [Sessions](../../foundations/06-devin-sessions.md).
 
 ---
 
