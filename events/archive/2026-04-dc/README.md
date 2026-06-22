@@ -35,7 +35,7 @@ This event features 5 labs that follow a progressive modernization narrative:
 
 ### Lab 1 — End-to-End Legacy Modernization: New Tech Stack + Microservices + Data Source (75 min)
 
-- **Module:** [Legacy Modernization Combined](../../../modules/migration-modernization/legacy-modernization-combined.md)
+- **Module:** [Legacy Modernization Combined](../../../labs/migration-modernization/legacy-modernization-combined.md)
 - **Repositories:**
   - [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java) — COBOL mainframe application (source)
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Java monolith to decompose (microservice extraction)
@@ -90,7 +90,7 @@ Once Devin opens a PR from step 1, focus your review on the **testing story**:
 - *"The integration test between the monolith and microservice should verify the full request-response cycle, not just connectivity"*
 - *"Add a data reconciliation report that shows row counts and checksum comparisons between legacy and modern tables"*
 
-See the full challenge details for [Legacy Modernization Combined](../../../modules/migration-modernization/legacy-modernization-combined.md) for more ideas — each phase can also be explored individually via [COBOL to Java](../../../modules/migration-modernization/cobol-to-java.md), [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)/[Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md), and [Data Source Migration](../../../modules/data-engineering/data-source-migration.md).
+See the full challenge details for [Legacy Modernization Combined](../../../labs/migration-modernization/legacy-modernization-combined.md) for more ideas — each phase can also be explored individually via [COBOL to Java](../../../labs/migration-modernization/cobol-to-java.md), [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md)/[Containerization & Microservice Extraction](../../../labs/migration-modernization/containerization-microservice-extraction.md), and [Data Source Migration](../../../labs/data-engineering/data-source-migration.md).
 
 - **Key Takeaways:**
   - **"Modernization is a pipeline, not a single step"** — legacy code → new stack → microservices → modern data source, each phase validated with tests
@@ -108,7 +108,7 @@ See the full challenge details for [Legacy Modernization Combined](../../../modu
 
 ### Lab 2 — Framework Upgrades: Angular + Spring Boot (60 min)
 
-- **Module:** [Repetitive Framework Upgrades](../../../modules/migration-modernization/repetitive-framework-upgrades.md) + [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md)
+- **Module:** [Repetitive Framework Upgrades](../../../labs/migration-modernization/repetitive-framework-upgrades.md) + [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 → 3.x upgrade
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade
@@ -162,7 +162,7 @@ Once Devin opens PRs from the parallel sessions, compare the upgrade approaches:
 - *"Can you also migrate from NgModules to standalone components?"*
 - *"Generate an upgrade report documenting all breaking changes encountered and how they were resolved"*
 
-See the full challenge details for [Repetitive Framework Upgrades](../../../modules/migration-modernization/repetitive-framework-upgrades.md) and [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md) for more ideas.
+See the full challenge details for [Repetitive Framework Upgrades](../../../labs/migration-modernization/repetitive-framework-upgrades.md) and [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Same prompt, multiple repos"** — the same upgrade task applied consistently across different services demonstrates enterprise scale
@@ -181,7 +181,7 @@ See the full challenge details for [Repetitive Framework Upgrades](../../../modu
 
 ### Lab 3 — Data Source Migration: Rewrite + Reconnect + Test (60 min)
 
-- **Module:** [Data Source Migration](../../../modules/data-engineering/data-source-migration.md)
+- **Module:** [Data Source Migration](../../../labs/data-engineering/data-source-migration.md)
 - **Repository:** [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization)
 - **Objective:** Take an existing loan management app connected to a legacy data warehouse (all-VARCHAR, denormalized, cryptic column names), rewrite it to a modern normalized schema, rewire the app to point to the new data source, and prove correctness with comprehensive testing
 
@@ -232,7 +232,7 @@ Once Devin opens a PR from step 1, focus your review on the **testing and valida
 - *"The date parsing doesn't handle two-digit years — please fix and add a test case"*
 - *"Add a data reconciliation report that shows row counts, field checksums, and any mismatches between legacy and modern tables"*
 
-See the full challenge details for [Data Source Migration](../../../modules/data-engineering/data-source-migration.md) for more ideas.
+See the full challenge details for [Data Source Migration](../../../labs/data-engineering/data-source-migration.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Rewrite + reconnect + test"** — data source migration is not just schema work; the application must be rewired and the entire pipeline must be validated
@@ -253,7 +253,7 @@ See the full challenge details for [Data Source Migration](../../../modules/data
 
 ### Lab 4 — New Feature Development (45 min, as time permits)
 
-- **Module:** [New Feature Development](../../../modules/application-development/new-feature-development.md)
+- **Module:** [New Feature Development](../../../labs/application-development/new-feature-development.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [uc-data-source-migration-jdbc-normalization](https://github.com/Cognition-Partner-Workshops/uc-data-source-migration-jdbc-normalization) — Spring Boot loan service (alternative)
@@ -297,7 +297,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Leave a comment on the PR** asking Devin to add validation, error handling, or additional test cases
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 
-See the full challenge details for [New Feature Development](../../../modules/application-development/new-feature-development.md) for more ideas.
+See the full challenge details for [New Feature Development](../../../labs/application-development/new-feature-development.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Devin follows existing patterns"** — it analyzes the codebase's conventions before implementing, producing code that fits the existing architecture
@@ -315,7 +315,7 @@ See the full challenge details for [New Feature Development](../../../modules/ap
 ---
 
 ### Lab 5 — BDD Test Case Generation for REST APIs (60 min)
-- **Module:** [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md)
+- **Module:** [BDD Test Generation](../../../labs/testing-qa/bdd-test-generation.md)
 - **Repository:** [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber)
 - **Objective:** Give Devin a Spring Boot + Cucumber BDD framework and prompt it to generate new test scenarios, build a new API resource, and produce executable Cucumber tests
 
@@ -355,7 +355,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Leave a comment on the PR** asking Devin to fix something (e.g., *"Add data-driven scenarios using Cucumber Scenario Outlines with Examples tables"* or *"The step definitions should use more descriptive method names"*)
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 
-See the full challenge details for [BDD Test Generation](../../../modules/testing-qa/bdd-test-generation.md) for more ideas.
+See the full challenge details for [BDD Test Generation](../../../labs/testing-qa/bdd-test-generation.md) for more ideas.
 
 - **Key Takeaways:**
   - **"Test generation from patterns, not templates"** — Devin reads the existing test framework and API patterns to generate meaningful BDD scenarios, not boilerplate
@@ -372,14 +372,14 @@ See the full challenge details for [BDD Test Generation](../../../modules/testin
 
 ## Additional Challenges
 
-Participants may also attempt any challenge from the full [module catalog](../../../modules/) as creative inspiration. Recommended extras:
+Participants may also attempt any challenge from the full [module catalog](../../../labs/) as creative inspiration. Recommended extras:
 
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
-| CVE Remediation | [SEC1-SEC4](../../../modules/security/README.md) | uc-cve-remediation-regulatory-compliance | Intermediate | 60 min |
-| DW Migration: Teradata → Snowflake | [DW Migration: Teradata to Snowflake](../../../modules/data-engineering/dw-migration-teradata-to-snowflake.md) | uc-dw-migration-teradata-to-snowflake | Intermediate | 60 min |
-| Unit Testing | [Unit Testing](../../../modules/testing-qa/unit-testing.md) | Any | Beginner | 30 min |
-| COBOL System Understanding | [COBOL System Understanding](../../../modules/migration-modernization/cobol-system-understanding.md) | uc-legacy-modernization-cobol-to-java | Advanced | 60 min |
+| CVE Remediation | [SEC1-SEC4](../../../labs/security/README.md) | uc-cve-remediation-regulatory-compliance | Intermediate | 60 min |
+| DW Migration: Teradata → Snowflake | [DW Migration: Teradata to Snowflake](../../../labs/data-engineering/dw-migration-teradata-to-snowflake.md) | uc-dw-migration-teradata-to-snowflake | Intermediate | 60 min |
+| Unit Testing | [Unit Testing](../../../labs/testing-qa/unit-testing.md) | Any | Beginner | 30 min |
+| COBOL System Understanding | [COBOL System Understanding](../../../labs/migration-modernization/cobol-system-understanding.md) | uc-legacy-modernization-cobol-to-java | Advanced | 60 min |
 
 ## Repos Required on Devin's Machine
 
@@ -418,4 +418,4 @@ Participants may also attempt any challenge from the full [module catalog](../..
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../labs/devin-features/README.md) throughout the session.

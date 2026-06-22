@@ -60,7 +60,7 @@ Track A demonstrates Devin as a test automation engineer. Participants will gene
 
 ### Lab A1 — Unit Test Generation
 
-- **Module:** [Unit Testing](../../../../../modules/testing-qa/unit-testing.md)
+- **Module:** [Unit Testing](../../../../../labs/testing-qa/unit-testing.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit infrastructure
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app with Jest (alternative)
@@ -126,7 +126,7 @@ Once Devin opens a PR, focus your review on **test quality**:
 
 ### Lab A2 — BDD Test Generation
 
-- **Module:** [BDD Test Generation](../../../../../modules/testing-qa/bdd-test-generation.md)
+- **Module:** [BDD Test Generation](../../../../../labs/testing-qa/bdd-test-generation.md)
 - **Repositories:**
   - [uc-bdd-test-generation-cucumber](https://github.com/Cognition-Partner-Workshops/uc-bdd-test-generation-cucumber) — Spring Boot + Cucumber BDD framework with pre-built step definitions
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot RealWorld app (alternative — add Cucumber to an existing app)
@@ -189,7 +189,7 @@ Once Devin opens a PR, focus your review on **BDD quality**:
 
 ### Lab A3 — Mutation Testing & Test Quality
 
-- **Module:** [Mutation Testing](../../../../../modules/testing-qa/mutation-testing.md)
+- **Module:** [Mutation Testing](../../../../../labs/testing-qa/mutation-testing.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app with existing JUnit tests
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with Jest tests (alternative)
@@ -254,7 +254,7 @@ Track B demonstrates Devin as a system tester. Participants will write and run E
 
 ### Lab B1 — Playwright E2E Tests
 
-- **Module:** [End-to-End Testing](../../../../../modules/testing-qa/end-to-end-testing.md)
+- **Module:** [End-to-End Testing](../../../../../labs/testing-qa/end-to-end-testing.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js full-stack application
   - [ts-angular-realworld](https://github.com/Cognition-Partner-Workshops/ts-angular-realworld) — Angular RealWorld app with existing Playwright tests (alternative)
@@ -318,7 +318,7 @@ Once Devin opens a PR, focus your review on **test robustness**:
 
 ### Lab B2 — Cross-Service Integration Testing
 
-- **Module:** [Cross-Service Integration Testing](../../../../../modules/testing-qa/cross-service-integration-testing.md)
+- **Module:** [Cross-Service Integration Testing](../../../../../labs/testing-qa/cross-service-integration-testing.md)
 - **Repositories:**
   - [quickapp-microservices](https://github.com/Cognition-Partner-Workshops/quickapp-microservices) — .NET microservices (Identity, Customer, Order, Product, Notification)
   - [petclinic-microservices](https://github.com/Cognition-Partner-Workshops/petclinic-microservices) — Spring Boot microservices (alternative)
@@ -379,7 +379,7 @@ Focus on **integration quality**:
 
 ### Lab B3 — Performance & Load Testing
 
-- **Modules:** [Performance Testing](../../../../../modules/testing-qa/performance-testing.md) + [Load Testing & Benchmarking](../../../../../modules/testing-qa/load-testing-benchmarking.md)
+- **Modules:** [Performance Testing](../../../../../labs/testing-qa/performance-testing.md) + [Load Testing & Benchmarking](../../../../../labs/testing-qa/load-testing-benchmarking.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app (establish baseline and identify bottlenecks)
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot app (alternative)
@@ -444,7 +444,7 @@ Track C demonstrates Devin as a quality advocate. Participants will set up linti
 
 ### Lab C1 — Linting & Static Analysis
 
-- **Module:** [Linting & Static Analysis](../../../../../modules/testing-qa/linting-static-analysis.md)
+- **Module:** [Linting & Static Analysis](../../../../../labs/testing-qa/linting-static-analysis.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js (ESLint, Prettier)
   - [timesheet-infra](https://github.com/Cognition-Partner-Workshops/timesheet-infra) — Terraform (terraform fmt, tflint)
@@ -509,7 +509,7 @@ Focus on **enforcement value**:
 
 ### Lab C2 — Code Review & Documentation
 
-- **Modules:** [PR Review Automation](../../../../../modules/devops-cicd/pr-review-automation.md) + [Inline Documentation](../../../../../modules/technical-documentation/inline-documentation.md)
+- **Modules:** [PR Review Automation](../../../../../labs/devops-cicd/pr-review-automation.md) + [Inline Documentation](../../../../../labs/technical-documentation/inline-documentation.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot (Javadoc)
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js (JSDoc/TSDoc) (alternative)
@@ -568,7 +568,7 @@ Once Devin opens a PR, observe how **PR Review** handles documentation changes:
 
 ### Lab C3 — Continuous Quality Pipeline
 
-- **Module:** [Continuous Quality Engineering](../../../../../modules/testing-qa/continuous-quality-engineering.md)
+- **Module:** [Continuous Quality Engineering](../../../../../labs/testing-qa/continuous-quality-engineering.md)
 - **Repositories:**
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — React + Node.js app
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular frontend (alternative)
@@ -625,15 +625,15 @@ Focus on **pipeline effectiveness**:
 
 ## Additional Challenges
 
-Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../../../modules/). Recommended extras:
+Participants who finish early or want to explore further can attempt any challenge from the full [module catalog](../../../../../labs/). Recommended extras:
 
 | Challenge | Module | Repo | Track | Difficulty |
 |-----------|--------|------|-------|------------|
-| Visual Regression Testing | [Visual Regression](../../../../../modules/testing-qa/visual-regression-testing.md) | timesheet-app | B | Intermediate |
-| Accessibility Compliance | [Accessibility](../../../../../modules/testing-qa/accessibility-compliance.md) | timesheet-app | B | Intermediate |
-| Contract Testing | [Contract Testing](../../../../../modules/testing-qa/contract-testing.md) | quickapp-microservices | B | Advanced |
-| Test Framework Migration | [Test Framework Migration](../../../../../modules/testing-qa/test-framework-migration.md) | ts-java-selenium-testng | A | Intermediate |
-| API Documentation | [API Documentation](../../../../../modules/technical-documentation/api-documentation.md) | Any | C | Beginner |
+| Visual Regression Testing | [Visual Regression](../../../../../labs/testing-qa/visual-regression-testing.md) | timesheet-app | B | Intermediate |
+| Accessibility Compliance | [Accessibility](../../../../../labs/testing-qa/accessibility-compliance.md) | timesheet-app | B | Intermediate |
+| Contract Testing | [Contract Testing](../../../../../labs/testing-qa/contract-testing.md) | quickapp-microservices | B | Advanced |
+| Test Framework Migration | [Test Framework Migration](../../../../../labs/testing-qa/test-framework-migration.md) | ts-java-selenium-testng | A | Intermediate |
+| API Documentation | [API Documentation](../../../../../labs/technical-documentation/api-documentation.md) | Any | C | Beginner |
 
 ## Suggested Formats
 
@@ -679,4 +679,4 @@ Participants who finish early or want to explore further can attempt any challen
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../../modules/devin-features/README.md) throughout the session.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../../../labs/devin-features/README.md) throughout the session.

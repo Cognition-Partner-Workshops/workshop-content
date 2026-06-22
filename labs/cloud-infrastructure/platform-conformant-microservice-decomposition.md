@@ -209,10 +209,10 @@ Each participant pushes to their own `workshop-<participant>` branch.
 This is a **context repository** — it is not modified during the challenge. It defines the platform standard that the extracted microservice must conform to.
 
 **Key patterns to reference:**
-- `terraform/modules/namespaces/` — Namespace provisioning with resource quotas, limit ranges, and RBAC
+- `terraform/labs/namespaces/` — Namespace provisioning with resource quotas, limit ranges, and RBAC
 - `k8s/network-policies/` — Default-deny network policies that new services must work within
 - `helm-releases/` — Shared Helm values for ArgoCD, Prometheus/Grafana, ingress-nginx, cert-manager
-- `terraform/modules/ecr/` — ECR repository provisioning for container images
+- `terraform/labs/ecr/` — ECR repository provisioning for container images
 
 ---
 

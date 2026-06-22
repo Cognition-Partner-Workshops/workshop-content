@@ -52,7 +52,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | Apache 2.0 |
 | **Default Branch** | `main` |
 | **Cluster** | C2 (from `ts-cobol-carddemo`) |
-| **Challenges** | [COBOL to Java](../modules/migration-modernization/cobol-to-java.md), [Legacy Modernization Combined](../modules/migration-modernization/legacy-modernization-combined.md), [COBOL System Understanding](../modules/migration-modernization/cobol-system-understanding.md), [COBOL Migration Planning](../modules/migration-modernization/cobol-migration-planning.md), [Migration Test Harness](../modules/migration-modernization/migration-test-harness.md) |
+| **Challenges** | [COBOL to Java](../labs/migration-modernization/cobol-to-java.md), [Legacy Modernization Combined](../labs/migration-modernization/legacy-modernization-combined.md), [COBOL System Understanding](../labs/migration-modernization/cobol-system-understanding.md), [COBOL Migration Planning](../labs/migration-modernization/cobol-migration-planning.md), [Migration Test Harness](../labs/migration-modernization/migration-test-harness.md) |
 
 ### uc-legacy-modernization-oracle-forms-to-java
 | | |
@@ -64,7 +64,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | C12 (companion to `ts-plsql-oracle-forms-hrms`) |
 | **Key Contents** | Migration plan (assessment, strategy, component mapping, risk register, timeline, ADRs), Java target (Spring Boot project with Employee module), test harness (YAML business scenarios, Python result comparator), architecture docs |
-| **Challenges** | [Oracle Forms to Java](../modules/migration-modernization/oracle-forms-to-java.md), [Oracle Forms Migration Planning](../modules/migration-modernization/oracle-forms-migration-planning.md), [Migration Test Harness](../modules/migration-modernization/migration-test-harness.md) |
+| **Challenges** | [Oracle Forms to Java](../labs/migration-modernization/oracle-forms-to-java.md), [Oracle Forms Migration Planning](../labs/migration-modernization/oracle-forms-migration-planning.md), [Migration Test Harness](../labs/migration-modernization/migration-test-harness.md) |
 
 ### uc-spring-boot-upgrade-microservice-extraction
 | | |
@@ -76,7 +76,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `initial-code` |
 | **Cluster** | C1 (from `spring-boot-realworld-example-app`) |
 | **Workflows Removed** | `gradle.yml` (PAT lacked `workflow` scope) |
-| **Challenges** | [Framework Upgrade](../modules/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md), [API Consolidation](../modules/architecture-design/api-consolidation.md), [One-Shot Tech Debt Remediation](../modules/migration-modernization/one-shot-tech-debt-remediation.md) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md), [API Consolidation](../labs/architecture-design/api-consolidation.md), [One-Shot Tech Debt Remediation](../labs/migration-modernization/one-shot-tech-debt-remediation.md) |
 
 ### uc-cve-remediation-regulatory-compliance
 | | |
@@ -88,7 +88,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `initial-code` |
 | **Cluster** | C1 (from `spring-boot-realworld-example-app`) |
 | **Workflows Removed** | `gradle.yml` (PAT lacked `workflow` scope) |
-| **Challenges** | [Upgrade Dependencies](../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../modules/security/remediate-vulnerabilities.md), [Shift Left Security](../modules/security/shift-left-security.md), [Security Antipatterns](../modules/security/security-antipatterns.md), [Event-Driven SAST Remediation](../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../modules/security/mass-security-backlog-remediation.md), [One-Shot Tech Debt Remediation](../modules/migration-modernization/one-shot-tech-debt-remediation.md) |
+| **Challenges** | [Upgrade Dependencies](../labs/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../labs/security/remediate-vulnerabilities.md), [Shift Left Security](../labs/security/shift-left-security.md), [Security Antipatterns](../labs/security/security-antipatterns.md), [Event-Driven SAST Remediation](../labs/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../labs/security/mass-security-backlog-remediation.md), [One-Shot Tech Debt Remediation](../labs/migration-modernization/one-shot-tech-debt-remediation.md) |
 
 ### uc-data-source-migration-jdbc-normalization
 | | |
@@ -100,7 +100,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `initial-code` |
 | **Cluster** | None (scaffolded from scratch) |
 | **Key Legacy Characteristics** | All-VARCHAR typing, cryptic column names (BORR_FST_NM, LN_CURR_BAL), denormalized, no FKs, code abbreviations (ACT/CLO/DFT) |
-| **Challenges** | [Data Source Migration](../modules/data-engineering/data-source-migration.md), [Legacy Modernization Combined](../modules/migration-modernization/legacy-modernization-combined.md) |
+| **Challenges** | [Data Source Migration](../labs/data-engineering/data-source-migration.md), [Legacy Modernization Combined](../labs/migration-modernization/legacy-modernization-combined.md) |
 
 ### uc-dw-migration-teradata-to-snowflake
 | | |
@@ -112,7 +112,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `initial-code` |
 | **Cluster** | None (scaffolded from scratch) |
 | **Key Teradata Features** | SET/MULTISET, PI/PPI, COMPRESS, CASESPECIFIC, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW, VOLATILE TABLE, MACRO |
-| **Challenges** | [DW Migration: Teradata to Snowflake](../modules/data-engineering/dw-migration-teradata-to-snowflake.md), [Informatica PowerCenter to Snowflake Migration](../modules/data-engineering/informatica-to-snowflake-migration.md) (reference) |
+| **Challenges** | [DW Migration: Teradata to Snowflake](../labs/data-engineering/dw-migration-teradata-to-snowflake.md), [Informatica PowerCenter to Snowflake Migration](../labs/data-engineering/informatica-to-snowflake-migration.md) (reference) |
 
 ### uc-data-migration-sas-to-snowflake
 | | |
@@ -122,7 +122,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Python, Streamlit, SAS data files |
 | **License** | — |
 | **Cluster** | C10 |
-| **Challenges** | [SAS to Python/Snowflake](../modules/data-engineering/sas-to-python-snowflake.md) |
+| **Challenges** | [SAS to Python/Snowflake](../labs/data-engineering/sas-to-python-snowflake.md) |
 
 ### uc-data-migration-sas-to-databricks
 | | |
@@ -132,7 +132,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | dbt, SQL, Jinja, Databricks |
 | **License** | — |
 | **Cluster** | C10 |
-| **Challenges** | [SAS Migration Analysis](../modules/data-engineering/sas-migration-analysis.md) |
+| **Challenges** | [SAS Migration Analysis](../labs/data-engineering/sas-migration-analysis.md) |
 
 ### uc-db-migration-sybase-to-sqlserver
 | | |
@@ -180,7 +180,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | None (scaffolded from scratch) |
-| **Challenges** | [Pod Remediation After Credential Rotation](../modules/observability-sre/pod-remediation-credential-rotation.md) |
+| **Challenges** | [Pod Remediation After Credential Rotation](../labs/observability-sre/pod-remediation-credential-rotation.md) |
 
 ### uc-document-review-automation
 | | |
@@ -191,7 +191,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | None (scaffolded from scratch) |
-| **Challenges** | [Document Review Automation](../modules/technical-documentation/document-review-automation.md) |
+| **Challenges** | [Document Review Automation](../labs/technical-documentation/document-review-automation.md) |
 
 ### uc-api-migration-mulesoft-to-spring-boot
 | | |
@@ -214,7 +214,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | None (imported from RedFroggy/spring-cucumber-rest-api) |
-| **Challenges** | [BDD Test Generation](../modules/testing-qa/bdd-test-generation.md), [Continuous Quality Engineering](../modules/testing-qa/continuous-quality-engineering.md) |
+| **Challenges** | [BDD Test Generation](../labs/testing-qa/bdd-test-generation.md), [Continuous Quality Engineering](../labs/testing-qa/continuous-quality-engineering.md) |
 
 ### uc-volume-anomaly-detection
 | | |
@@ -225,7 +225,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | None (scaffolded from scratch) |
-| **Challenges** | [Volume Anomaly Detection](../modules/observability-sre/volume-anomaly-detection.md) |
+| **Challenges** | [Volume Anomaly Detection](../labs/observability-sre/volume-anomaly-detection.md) |
 
 ---
 
@@ -241,7 +241,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `init` (to be renamed `main`) |
 | **Branches** | `init` (clean), `buggy` (8 planted bugs) |
 | **Cluster** | None (standalone import) |
-| **Challenges** | [Bug Hunt — MERN Ecommerce](../modules/application-development/bug-hunt-mern-ecommerce.md) |
+| **Challenges** | [Bug Hunt — MERN Ecommerce](../labs/application-development/bug-hunt-mern-ecommerce.md) |
 
 ---
 
@@ -258,7 +258,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | None (imported from HHS/Informatica) |
 | **Key Contents** | PowerCenter XML exports with SOURCE/TARGET/MAPPING/TRANSFORMATION/SESSION/WORKFLOW definitions, Oracle schemas (HISTDBA, NKNIGHT, EHRP), flat-file sources (VSAM/CSV), shell transfer scripts, SQL pre/post-load logic |
 | **Also Known As** | Previously `Informatica-Demo` (legacy name) |
-| **Challenges** | [Informatica PowerCenter Analysis](../modules/data-engineering/informatica-powercenter-analysis.md), [Informatica PowerCenter to Snowflake Migration](../modules/data-engineering/informatica-to-snowflake-migration.md) |
+| **Challenges** | [Informatica PowerCenter Analysis](../labs/data-engineering/informatica-powercenter-analysis.md), [Informatica PowerCenter to Snowflake Migration](../labs/data-engineering/informatica-to-snowflake-migration.md) |
 
 ### ts-plsql-oracle-forms-hrms
 | | |
@@ -270,7 +270,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | C12 (companion to `uc-legacy-modernization-oracle-forms-to-java`) |
 | **Key Legacy Characteristics** | Multi-layer architecture (Forms triggers + PLL libraries + PL/SQL packages + DB triggers), validation drift between client/server, circular package dependencies, cursor-loop batch processing, CONNECT BY performance anti-pattern, hard-coded encryption keys |
-| **Challenges** | [Oracle Forms System Understanding](../modules/migration-modernization/oracle-forms-system-understanding.md), [Oracle Forms to Java](../modules/migration-modernization/oracle-forms-to-java.md), [Oracle Forms Migration Planning](../modules/migration-modernization/oracle-forms-migration-planning.md) |
+| **Challenges** | [Oracle Forms System Understanding](../labs/migration-modernization/oracle-forms-system-understanding.md), [Oracle Forms to Java](../labs/migration-modernization/oracle-forms-to-java.md), [Oracle Forms Migration Planning](../labs/migration-modernization/oracle-forms-migration-planning.md) |
 
 ### ts-angular-realworld
 | | |
@@ -279,7 +279,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Real-world application built with Angular. |
 | **Tech Stack** | Angular, TypeScript |
 | **License** | — |
-| **Challenges** | [Framework Upgrade](../modules/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../modules/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../modules/testing-qa/test-framework-migration.md) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md) |
 
 ### ts-java-angular-jhipster
 | | |
@@ -310,7 +310,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | SAS |
 | **License** | Unlicense |
 | **Cluster** | C10 |
-| **Challenges** | [SAS to Python/Snowflake](../modules/data-engineering/sas-to-python-snowflake.md), [SAS Migration Analysis](../modules/data-engineering/sas-migration-analysis.md) |
+| **Challenges** | [SAS to Python/Snowflake](../labs/data-engineering/sas-to-python-snowflake.md), [SAS Migration Analysis](../labs/data-engineering/sas-migration-analysis.md) |
 
 ### ts-tsql-sybase-legacy-db
 | | |
@@ -329,7 +329,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Sample framework based on Page Object Model, Selenium, TestNG using Java. |
 | **Tech Stack** | Java, Selenium, TestNG |
 | **License** | — |
-| **Challenges** | [End-to-End Testing](../modules/testing-qa/end-to-end-testing.md) (alternative repo) |
+| **Challenges** | [End-to-End Testing](../labs/testing-qa/end-to-end-testing.md) (alternative repo) |
 
 ### ts-java-swagger-petstore
 | | |
@@ -362,7 +362,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Renamed From** | `spring-boot-realworld-example-app` (applied `ts-java-` prefix to clarify tech stack) |
 | **Cluster** | C1 (upstream for Labs 2 and 3) |
-| **Challenges** | [Unit Testing](../modules/testing-qa/unit-testing.md), [Inline Documentation](../modules/technical-documentation/inline-documentation.md), [PR Review Automation](../modules/devops-cicd/pr-review-automation.md) (prefer using the `uc-` copies for labs) |
+| **Challenges** | [Unit Testing](../labs/testing-qa/unit-testing.md), [Inline Documentation](../labs/technical-documentation/inline-documentation.md), [PR Review Automation](../labs/devops-cicd/pr-review-automation.md) (prefer using the `uc-` copies for labs) |
 
 ### petclinic-rest-api
 | | |
@@ -389,7 +389,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Angular, TypeScript |
 | **License** | — |
 | **Cluster** | C3 (PetClinic ecosystem) |
-| **Challenges** | [Framework Upgrade](../modules/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../modules/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../modules/testing-qa/test-framework-migration.md), [Continuous Quality Engineering](../modules/testing-qa/continuous-quality-engineering.md) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md), [Continuous Quality Engineering](../labs/testing-qa/continuous-quality-engineering.md) |
 
 ### petclinic-backend
 | | |
@@ -409,7 +409,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Java, Spring Boot, Spring Cloud |
 | **License** | Apache 2.0 |
 | **Cluster** | C3 (PetClinic ecosystem) |
-| **Challenges** | [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md) |
+| **Challenges** | [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md) |
 
 ### ordermanager-monolith
 | | |
@@ -420,7 +420,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | C11 (OrderManager monolith-to-microservices) |
-| **Challenges** | [Release Management](../modules/devops-cicd/release-management.md), [Incident Response & Triage](../modules/observability-sre/incident-response-triage.md), [Platform-Conformant Microservice Decomposition](../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md), [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md) |
+| **Challenges** | [Release Management](../labs/devops-cicd/release-management.md), [Incident Response & Triage](../labs/observability-sre/incident-response-triage.md), [Platform-Conformant Microservice Decomposition](../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md), [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md) |
 
 ### ordermanager-iac
 | | |
@@ -431,7 +431,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | C11 (OrderManager monolith-to-microservices) |
-| **Challenges** | [Release Management](../modules/devops-cicd/release-management.md), [Incident Response & Triage](../modules/observability-sre/incident-response-triage.md), [Platform-Conformant Microservice Decomposition](../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (context), [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md) |
+| **Challenges** | [Release Management](../labs/devops-cicd/release-management.md), [Incident Response & Triage](../labs/observability-sre/incident-response-triage.md), [Platform-Conformant Microservice Decomposition](../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (context), [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md) |
 
 ### ordermanager-microservices
 | | |
@@ -442,7 +442,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | C11 (OrderManager monolith-to-microservices) |
-| **Challenges** | [Platform-Conformant Microservice Decomposition](../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (landing repo) |
+| **Challenges** | [Platform-Conformant Microservice Decomposition](../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (landing repo) |
 
 ### eventflow-storefront
 | | |
@@ -453,7 +453,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Default Branch** | `devin/1772995107-storefront-ui` |
 | **Cluster** | C6 (EventFlow multi-service demo) |
-| **Challenges** | [Incident Response & Triage](../modules/observability-sre/incident-response-triage.md), [Fix Runtime Bug](../modules/application-development/fix-runtime-bug.md) |
+| **Challenges** | [Incident Response & Triage](../labs/observability-sre/incident-response-triage.md), [Fix Runtime Bug](../labs/application-development/fix-runtime-bug.md) |
 
 ### quickapp-monolith
 | | |
@@ -464,7 +464,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `import/initial` |
 | **Cluster** | C12 (.NET/Angular Containerized Decomposition) |
-| **Challenges** | [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md), [Legacy Modernization Combined](../modules/migration-modernization/legacy-modernization-combined.md), [.NET Monolith Decomposition](../modules/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../modules/testing-qa/cross-service-integration-testing.md) |
+| **Challenges** | [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md), [Legacy Modernization Combined](../labs/migration-modernization/legacy-modernization-combined.md), [.NET Monolith Decomposition](../labs/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../labs/testing-qa/cross-service-integration-testing.md) |
 
 ### quickapp-microservices
 | | |
@@ -475,7 +475,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Default Branch** | `scaffold/initial` |
 | **Cluster** | C12 (.NET/Angular Containerized Decomposition) |
-| **Challenges** | [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md), [.NET Monolith Decomposition](../modules/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../modules/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../modules/migration-modernization/cross-service-bug-investigation.md) |
+| **Challenges** | [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md), [.NET Monolith Decomposition](../labs/migration-modernization/dotnet-monolith-decomposition.md), [Cross-Service Integration Testing](../labs/testing-qa/cross-service-integration-testing.md), [Cross-Service Bug Investigation](../labs/migration-modernization/cross-service-bug-investigation.md) |
 
 ### quickapp-microfrontends
 | | |
@@ -486,7 +486,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Default Branch** | `scaffold/initial` |
 | **Cluster** | C12 (.NET/Angular Containerized Decomposition) |
-| **Challenges** | [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md) |
+| **Challenges** | [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md) |
 
 ### quickapp-iac
 | | |
@@ -497,7 +497,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Default Branch** | `scaffold/initial` |
 | **Cluster** | C12 (.NET/Angular Containerized Decomposition) |
-| **Challenges** | [Containerization & Microservice Extraction](../modules/migration-modernization/containerization-microservice-extraction.md), [.NET Monolith Decomposition](../modules/migration-modernization/dotnet-monolith-decomposition.md), [Release Management](../modules/devops-cicd/release-management.md) |
+| **Challenges** | [Containerization & Microservice Extraction](../labs/migration-modernization/containerization-microservice-extraction.md), [.NET Monolith Decomposition](../labs/migration-modernization/dotnet-monolith-decomposition.md), [Release Management](../labs/devops-cicd/release-management.md) |
 
 ### timesheet-app
 | | |
@@ -507,7 +507,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | React 19, TypeScript, Node.js, Express, SQLite, Material-UI, Vite |
 | **License** | — |
 | **Renamed From** | `client-timesheet-app` → `app_timesheet` → `timesheet-app` (identity-first naming) |
-| **Challenges** | [Linting & Static Analysis](../modules/testing-qa/linting-static-analysis.md), [Upgrade Dependencies](../modules/security/upgrade-dependencies.md), [Event-Driven SAST Remediation](../modules/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../modules/security/mass-security-backlog-remediation.md), [Fix UI Bug](../modules/application-development/fix-ui-bug.md), [Fix Data Bug](../modules/application-development/fix-data-bug.md), [New Feature Development](../modules/application-development/new-feature-development.md), [CI/CD Pipeline](../modules/devops-cicd/cicd-pipeline.md), [Continuous Quality Engineering](../modules/testing-qa/continuous-quality-engineering.md) |
+| **Challenges** | [Linting & Static Analysis](../labs/testing-qa/linting-static-analysis.md), [Upgrade Dependencies](../labs/security/upgrade-dependencies.md), [Event-Driven SAST Remediation](../labs/security/event-driven-sast-remediation.md), [Mass Security Backlog Remediation](../labs/security/mass-security-backlog-remediation.md), [Fix UI Bug](../labs/application-development/fix-ui-bug.md), [Fix Data Bug](../labs/application-development/fix-data-bug.md), [New Feature Development](../labs/application-development/new-feature-development.md), [CI/CD Pipeline](../labs/devops-cicd/cicd-pipeline.md), [Continuous Quality Engineering](../labs/testing-qa/continuous-quality-engineering.md) |
 
 ---
 
@@ -520,7 +520,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Infrastructure/hosting configuration for the client-timesheet-app. Terraform-based. |
 | **Tech Stack** | Terraform, AWS |
 | **License** | — |
-| **Challenges** | [Linting & Static Analysis](../modules/testing-qa/linting-static-analysis.md) (terraform fmt), [IaC Translation](../modules/cloud-infrastructure/iac-translation.md) |
+| **Challenges** | [Linting & Static Analysis](../labs/testing-qa/linting-static-analysis.md) (terraform fmt), [IaC Translation](../labs/cloud-infrastructure/iac-translation.md) |
 
 ### calcom
 | | |
@@ -529,7 +529,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Open-source scheduling infrastructure. Monorepo with Next.js web app, NestJS API v2, Prisma, PostgreSQL. |
 | **Tech Stack** | TypeScript, Next.js, NestJS, Prisma, PostgreSQL, Turborepo |
 | **License** | AGPLv3 (open core) |
-| **Challenges** | [End-to-End Testing](../modules/testing-qa/end-to-end-testing.md), [Fix Runtime Bug](../modules/application-development/fix-runtime-bug.md), [CI/CD Pipeline](../modules/devops-cicd/cicd-pipeline.md) |
+| **Challenges** | [End-to-End Testing](../labs/testing-qa/end-to-end-testing.md), [Fix Runtime Bug](../labs/application-development/fix-runtime-bug.md), [CI/CD Pipeline](../labs/devops-cicd/cicd-pipeline.md) |
 
 ### calcom-infra
 | | |
@@ -538,7 +538,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Infrastructure as code for Cal.com deployment. |
 | **Tech Stack** | IaC |
 | **License** | — |
-| **Challenges** | [IaC Translation](../modules/cloud-infrastructure/iac-translation.md) |
+| **Challenges** | [IaC Translation](../labs/cloud-infrastructure/iac-translation.md) |
 
 ### calcom-dataeng
 | | |
@@ -556,7 +556,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Open source admin template based on Bootstrap 5 and React.js. |
 | **Tech Stack** | React, Bootstrap 5, JavaScript |
 | **License** | MIT |
-| **Challenges** | [Framework Upgrade](../modules/migration-modernization/framework-upgrade.md) (Bootstrap → Material UI) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md) (Bootstrap → Material UI) |
 
 ### ts-cobol-carddemo
 | | |
@@ -566,7 +566,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | COBOL, JCL, DB2 |
 | **License** | Apache 2.0 |
 | **Cluster** | C2 (upstream for Lab 1) |
-| **Challenges** | [COBOL Copybook to PySpark/JSON](../modules/data-engineering/cobol-copybook-to-pyspark-json.md), General COBOL demos (prefer using the `uc-` copy for migration labs) |
+| **Challenges** | [COBOL Copybook to PySpark/JSON](../labs/data-engineering/cobol-copybook-to-pyspark-json.md), General COBOL demos (prefer using the `uc-` copy for migration labs) |
 
 ### ts-dart-flutter-grocery
 | | |
@@ -608,7 +608,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Apache Fineract — open banking platform. |
 | **Tech Stack** | Java, Spring Boot |
 | **License** | Apache 2.0 |
-| **Challenges** | Banking domain demos, [Cloud-Native Refactor](../modules/migration-modernization/cloud-native-refactor.md) |
+| **Challenges** | Banking domain demos, [Cloud-Native Refactor](../labs/migration-modernization/cloud-native-refactor.md) |
 
 ### modular-monolith-ddd / modular-monolith-ddd-react
 | | |
@@ -628,7 +628,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | C11 (OrderManager monolith-to-microservices) |
-| **Challenges** | [Release Management](../modules/devops-cicd/release-management.md), [Incident Response & Triage](../modules/observability-sre/incident-response-triage.md), [Configuration Management & Feature Flags](../modules/devops-cicd/configuration-management-feature-flags.md), [Platform-Conformant Microservice Decomposition](../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (context) |
+| **Challenges** | [Release Management](../labs/devops-cicd/release-management.md), [Incident Response & Triage](../labs/observability-sre/incident-response-triage.md), [Configuration Management & Feature Flags](../labs/devops-cicd/configuration-management-feature-flags.md), [Platform-Conformant Microservice Decomposition](../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) (context) |
 
 ### otterworks
 | | |

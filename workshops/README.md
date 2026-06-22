@@ -11,7 +11,7 @@ Every lab follows a 4-step format:
 3. **Explore with DeepWiki** *(optional)* — read the repo's auto-generated architecture docs
 4. **Review & Give Feedback** — review the PR, leave comments, iterate with Devin
 
-Labs reference individual modules from [`modules/`](../modules/) — the detailed challenge definitions.
+Labs reference individual modules from [`labs/`](../labs/) — the detailed challenge definitions.
 
 ## Available Workshops
 

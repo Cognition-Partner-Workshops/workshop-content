@@ -7,7 +7,7 @@
 | **Focus** | Angular and Spring Boot version upgrades across multiple repositories at scale |
 | **Duration** | 1-2 hours |
 | **Audience** | Development teams, tech leads, enterprise platform teams |
-| **Key Modules** | [Framework Upgrade](../../../../../modules/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../../../../../modules/migration-modernization/repetitive-framework-upgrades.md) |
+| **Key Modules** | [Framework Upgrade](../../../../../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../../../../../labs/migration-modernization/repetitive-framework-upgrades.md) |
 
 ## Workshop Narrative
 
@@ -37,7 +37,7 @@ A few tips to maximize your hands-on time:
 
 ### Lab 1 — Spring Boot + Angular Parallel Upgrades
 
-- **Modules:** [Framework Upgrade](../../../../../modules/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../../../../modules/migration-modernization/repetitive-framework-upgrades.md)
+- **Modules:** [Framework Upgrade](../../../../../labs/migration-modernization/framework-upgrade.md) + [Repetitive Framework Upgrades](../../../../../labs/migration-modernization/repetitive-framework-upgrades.md)
 - **Repositories:**
   - [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction) — Spring Boot 2.6.3 → 3.x
   - [petclinic-angular](https://github.com/Cognition-Partner-Workshops/petclinic-angular) — Angular version upgrade

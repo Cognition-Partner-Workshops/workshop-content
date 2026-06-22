@@ -13,7 +13,7 @@
 This event features 2 structured labs using purpose-built repositories:
 
 ### Lab 1 — Framework Upgrade & Refactor: Monolith → Microservices (60 min)
-- **Module:** [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md#uc-spring-boot-upgrade-microservice-extraction) + [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md#uc-spring-boot-upgrade-microservice-extraction)
+- **Module:** [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md#uc-spring-boot-upgrade-microservice-extraction) + [Containerization & Microservice Extraction](../../../labs/migration-modernization/containerization-microservice-extraction.md#uc-spring-boot-upgrade-microservice-extraction)
 - **Repository:** [uc-spring-boot-upgrade-microservice-extraction](https://github.com/Cognition-Partner-Workshops/uc-spring-boot-upgrade-microservice-extraction)
 - **Objective:** Take an older Java monolith (Java 11 + Spring Boot 2.6.3) and modernize it — you choose whether to focus on the upgrade, the microservice extraction, or both
 
@@ -44,7 +44,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving both general comments and inline code comments to see how Devin handles each
 
-See the full challenge details for [Framework Upgrade](../../../modules/migration-modernization/framework-upgrade.md) and [Containerization & Microservice Extraction](../../../modules/migration-modernization/containerization-microservice-extraction.md) for more ideas.
+See the full challenge details for [Framework Upgrade](../../../labs/migration-modernization/framework-upgrade.md) and [Containerization & Microservice Extraction](../../../labs/migration-modernization/containerization-microservice-extraction.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - Application builds and tests on Java 17+ / Spring Boot 3.x
@@ -54,10 +54,10 @@ See the full challenge details for [Framework Upgrade](../../../modules/migratio
   - PR with review comments and Devin's responses
 
 ### Lab 2 — CVE Remediations & Regulatory Code Standards (60 min)
-- **Module:** [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../../modules/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
+- **Module:** [Upgrade Dependencies](../../../labs/security/upgrade-dependencies.md#uc-cve-remediation-regulatory-compliance) + [Remediate Vulnerabilities](../../../labs/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) + [Shift Left Security](../../../labs/security/shift-left-security.md#uc-cve-remediation-regulatory-compliance)
 - **Repository:** [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance)
 - **Objective:** A Spring Boot 2.6.3 service has accumulated vulnerable dependencies (Spring4Shell, SnakeYAML RCE, SQLite JDBC RCE, and more). Scan, remediate, and add automated compliance checks
-- **Known CVEs:** See the [full CVE findings report](../../../modules/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
+- **Known CVEs:** See the [full CVE findings report](../../../labs/security/remediate-vulnerabilities.md#uc-cve-remediation-regulatory-compliance) for a breakdown of all 18+ known vulnerabilities by severity (5 Critical, 8 High, 5 Medium)
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
@@ -86,7 +86,7 @@ Once Devin opens a PR from step 1, practice the feedback loop:
 - **Watch Devin respond** to your PR comment and push a fix — this is how real teams work with Devin
 - Try leaving both general comments and inline code comments to see how Devin handles each
 
-See the full challenge details for [Upgrade Dependencies](../../../modules/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../modules/security/remediate-vulnerabilities.md), and [Shift Left Security](../../../modules/security/shift-left-security.md) for more ideas.
+See the full challenge details for [Upgrade Dependencies](../../../labs/security/upgrade-dependencies.md), [Remediate Vulnerabilities](../../../labs/security/remediate-vulnerabilities.md), and [Shift Left Security](../../../labs/security/shift-left-security.md) for more ideas.
 
 - **Target Outcomes (any of these count):**
   - OWASP Dependency-Check report with high/critical CVEs remediated
@@ -98,7 +98,7 @@ See the full challenge details for [Upgrade Dependencies](../../../modules/secur
 
 ## Additional Challenges
 
-Participants may also attempt any challenge from the full [module catalog](../../../modules/) as creative inspiration. The labs above are the primary structured activities.
+Participants may also attempt any challenge from the full [module catalog](../../../labs/) as creative inspiration. The labs above are the primary structured activities.
 
 ## Repos Required on Devin's Machine
 
@@ -116,4 +116,4 @@ Labs 1 and 2 both originate from `spring-boot-realworld-example-app` (Cluster C1
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../modules/devin-features/README.md) throughout the day.
+Encourage participants to track their progress on the [Devin Features Appendix](../../../labs/devin-features/README.md) throughout the day.

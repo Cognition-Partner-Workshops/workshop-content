@@ -4,13 +4,13 @@
 
 This repo contains **attendee-facing** workshop content (modules, workshops, events) and shared reference materials for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
 
-**Exception — `demos/`:** the `demos/` directory holds facilitator-led demo showcases: a single linear thread a presenter runs live while others follow along. Unlike `modules/`/`workshops/` (participant-driven, can branch into choose-your-own-adventure tracks), demo docs walk one path start to finish and read as though a user is reading and following along. They are permitted to live in this repo and to use "demo" verbiage. Apply the demo-specific guidance below to anything under `demos/`.
+**Exception — `demos/`:** the `demos/` directory holds facilitator-led demo showcases: a single linear thread a presenter runs live while others follow along. Unlike `labs/`/`workshops/` (participant-driven, can branch into choose-your-own-adventure tracks), demo docs walk one path start to finish and read as though a user is reading and following along. They are permitted to live in this repo and to use "demo" verbiage. Apply the demo-specific guidance below to anything under `demos/`.
 
 ## Priority Review Areas
 
 ### Language and Tone (High Priority)
 
-- **"demo" only under `demos/`** — Flag any use of "demo" in `modules/`, `workshops/`, or `events/` content; the correct terms there are "try", "hands-on", or "walkthrough" (headers say "What to Try" not "What to Demo"). **Do not flag "demo" verbiage in files under the `demos/` directory** — it is expected there.
+- **"demo" only under `demos/`** — Flag any use of "demo" in `labs/`, `workshops/`, or `events/` content; the correct terms there are "try", "hands-on", or "walkthrough" (headers say "What to Try" not "What to Demo"). **Do not flag "demo" verbiage in files under the `demos/` directory** — it is expected there.
 - **"Key Takeaways" not "Key Talking Points"** — Summary bullets under each lab/activity must use "Key Takeaways" as the header.
 - **"Workshops" not "arcs"** — User-facing names must say "workshop" not "arc". Internal structural references to arcs are fine.
 - **No overstatements** — Flag guarantee language ("every", "all", "always", "guaranteed", "comprehensive coverage") when describing probabilistic tools like DeepWiki or AI analysis. Prefer "typically", "in most cases", "coverage depends on repo structure".

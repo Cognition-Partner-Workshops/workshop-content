@@ -4,7 +4,7 @@
 
 This repo is the **attendee-facing** content hub for Devin hands-on workshops. It contains the lab instructions, prompts, and reference material that participants use during a workshop session.
 
-- `modules/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
+- `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
 - `workshops/` — Structured lab sequences bundling modules into tracks
 - `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
@@ -20,10 +20,10 @@ All content is Markdown. There is no application code in this repo.
 ### Audience
 This repo is written for the **hands-on lab attendee** — the person sitting at the keyboard, pasting prompts into Devin, and reviewing PRs. Content should be action-oriented and help them succeed in the lab.
 
-**Exception — `demos/`:** demo docs are a single linear thread a presenter runs live while others follow along, not a participant-driven lab. They differ from `modules/` and `workshops/` (which can offer separate choose-your-own-adventure tracks) by walking one path start to finish. Write them to read as though a user is reading and following along: lead straight into the guide with prompts and user instructions, keep preamble minimal, and avoid hands-on "try this"-style framing (the reader is following, not branching). Summary sections still use **"Key Takeaways"**.
+**Exception — `demos/`:** demo docs are a single linear thread a presenter runs live while others follow along, not a participant-driven lab. They differ from `labs/` and `workshops/` (which can offer separate choose-your-own-adventure tracks) by walking one path start to finish. Write them to read as though a user is reading and following along: lead straight into the guide with prompts and user instructions, keep preamble minimal, and avoid hands-on "try this"-style framing (the reader is following, not branching). Summary sections still use **"Key Takeaways"**.
 
 ### Language
-- Never say "demo" in `modules/`, `workshops/`, or `events/` content — use "try", "hands-on", or "walkthrough". **Exception:** content under the `demos/` directory is facilitator-led showcase material and may use "demo" verbiage (file names, titles, headers, and body). "demo" verbiage is permitted **only** under `demos/`.
+- Never say "demo" in `labs/`, `workshops/`, or `events/` content — use "try", "hands-on", or "walkthrough". **Exception:** content under the `demos/` directory is facilitator-led showcase material and may use "demo" verbiage (file names, titles, headers, and body). "demo" verbiage is permitted **only** under `demos/`.
 - Use "Key Takeaways" not "Key Talking Points"
 - Name events as "workshops" not "arcs"
 - No overstatement language ("every", "all", "always", "guaranteed") for probabilistic capabilities like DeepWiki or AI analysis. Use "typically", "in most cases", "coverage depends on repo structure"
@@ -68,11 +68,11 @@ Every module and workshop should incorporate applicable principles from `shared/
 
 - General themes: `shared/general-themes/` (8 files)
 - Runtime resources: `shared/runtime-resources.md`
-- Exemplar module: `modules/data-engineering/sas-migration-analysis.md`
+- Exemplar module: `labs/data-engineering/sas-migration-analysis.md`
 - Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
 
 ## Playbooks
 
 - `!workshop_event` — Create a new workshop or event
-- `!quality_sweep` — Apply quality checklist across modules/events
+- `!quality_sweep` — Apply quality checklist across labs/events
 - `!find_demo_code` — Discover and import open source repos

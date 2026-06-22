@@ -257,6 +257,6 @@ For the full version with bonus challenges, see [platform-microservice-decomposi
 | Resource | Link |
 |----------|------|
 | Full 90-min event | [platform-microservice-decomposition](../../../workshops/specialties/technical-domains/modernization/platform-decomposition/) |
-| Core module | [Platform-Conformant Microservice Decomposition](../../../modules/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
+| Core module | [Platform-Conformant Microservice Decomposition](../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
 | Workshop template | [workshops/specialties/technical-domains/modernization/platform-decomposition](../../../workshops/specialties/technical-domains/modernization/platform-decomposition/) |
-| Devin Features Appendix | [modules/devin-features](../../../modules/devin-features/README.md) |
+| Devin Features Appendix | [labs/devin-features](../../../labs/devin-features/README.md) |

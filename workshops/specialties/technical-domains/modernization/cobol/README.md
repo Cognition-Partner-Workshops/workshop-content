@@ -7,7 +7,7 @@
 | **Focus** | End-to-end COBOL mainframe modernization — from system understanding through migration execution |
 | **Duration** | ~4 hours (4 labs × 60 min + breaks) |
 | **Audience** | Enterprise architects, mainframe modernization teams, application portfolio managers, migration program leads |
-| **Key Modules** | [COBOL System Understanding](../../../../../modules/migration-modernization/cobol-system-understanding.md), [COBOL to Java](../../../../../modules/migration-modernization/cobol-to-java.md) |
+| **Key Modules** | [COBOL System Understanding](../../../../../labs/migration-modernization/cobol-system-understanding.md), [COBOL to Java](../../../../../labs/migration-modernization/cobol-to-java.md) |
 
 ## Abstract
 
@@ -74,7 +74,7 @@ Four labs that build on each other in a progressive sequence:
 
 ### Lab 1 — System Understanding & Reverse Engineering (60 min)
 
-- **Module:** [COBOL System Understanding & Reverse Engineering](../../../../../modules/migration-modernization/cobol-system-understanding.md)
+- **Module:** [COBOL System Understanding & Reverse Engineering](../../../../../labs/migration-modernization/cobol-system-understanding.md)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Produce a complete system inventory, data dictionary, dependency map, and hotspot report for a COBOL mainframe application
 
@@ -105,7 +105,7 @@ Four labs that build on each other in a progressive sequence:
 
 ### Lab 2 — Migration Planning & Domain Decomposition (60 min)
 
-- **Module:** [COBOL Migration Planning & Domain Decomposition](../../../../../modules/migration-modernization/cobol-migration-planning.md)
+- **Module:** [COBOL Migration Planning & Domain Decomposition](../../../../../labs/migration-modernization/cobol-migration-planning.md)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Produce a modernization blueprint with strategy options, domain decomposition, phased cutover plan, and risk register
 
@@ -136,7 +136,7 @@ Four labs that build on each other in a progressive sequence:
 
 ### Lab 3 — Migration Test Harness & Validation Strategy (60 min)
 
-- **Module:** [Migration Test Harness & Validation Strategy](../../../../../modules/migration-modernization/migration-test-harness.md)
+- **Module:** [Migration Test Harness & Validation Strategy](../../../../../labs/migration-modernization/migration-test-harness.md)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Design and implement a test harness that validates migration correctness — golden files, differential testing, batch reconciliation, and contract tests
 
@@ -167,7 +167,7 @@ Four labs that build on each other in a progressive sequence:
 
 ### Lab 4 — COBOL to Java Code Migration (60 min)
 
-- **Module:** [COBOL to Java](../../../../../modules/migration-modernization/cobol-to-java.md)
+- **Module:** [COBOL to Java](../../../../../labs/migration-modernization/cobol-to-java.md)
 - **Repository:** [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java)
 - **Objective:** Translate selected COBOL programs to Java 17+ with parity tests that validate against the golden files and reconciliation checks from Lab 3
 
@@ -197,7 +197,7 @@ Four labs that build on each other in a progressive sequence:
 
 ## Accelerated Variant
 
-For shorter workshops (2 hours), use [Legacy Modernization Combined](../../../../../modules/migration-modernization/legacy-modernization-combined.md) which compresses the migration execution into a multi-phase hands-on alongside framework upgrade and data source migration. Pair with a 30-minute abbreviated version of Lab 1 (system understanding only) for context.
+For shorter workshops (2 hours), use [Legacy Modernization Combined](../../../../../labs/migration-modernization/legacy-modernization-combined.md) which compresses the migration execution into a multi-phase hands-on alongside framework upgrade and data source migration. Pair with a 30-minute abbreviated version of Lab 1 (system understanding only) for context.
 
 | Duration | Recommended Format |
 |----------|-------------------|
@@ -214,10 +214,10 @@ Participants who finish early or want to go deeper may attempt:
 
 | Challenge | Module | Repo | Difficulty | Time |
 |-----------|--------|------|-----------|------|
-| Combined Modernization (COBOL + Framework + Data) | [Legacy Modernization Combined](../../../../../modules/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
-| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../../../../modules/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
-| Data Source Migration | [Data Source Migration](../../../../../modules/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
-| One-Shot Tech Debt Remediation | [One-Shot Tech Debt Remediation](../../../../../modules/migration-modernization/one-shot-tech-debt-remediation.md) | uc-spring-boot-upgrade-microservice-extraction | Advanced | 75 min |
+| Combined Modernization (COBOL + Framework + Data) | [Legacy Modernization Combined](../../../../../labs/migration-modernization/legacy-modernization-combined.md) | Multiple repos | Advanced | 60 min |
+| Framework Upgrade (Java 11 → 17) | [Framework Upgrade](../../../../../labs/migration-modernization/framework-upgrade.md) | uc-spring-boot-upgrade-microservice-extraction | Intermediate | 60 min |
+| Data Source Migration | [Data Source Migration](../../../../../labs/data-engineering/data-source-migration.md) | uc-data-source-migration-jdbc-normalization | Intermediate | 60 min |
+| One-Shot Tech Debt Remediation | [One-Shot Tech Debt Remediation](../../../../../labs/migration-modernization/one-shot-tech-debt-remediation.md) | uc-spring-boot-upgrade-microservice-extraction | Advanced | 75 min |
 
 ---
 
@@ -263,7 +263,7 @@ Participants who finish early or want to go deeper may attempt:
 
 ## Devin Features Checklist
 
-Encourage participants to track their progress on the [Devin Features Appendix](../../../../../modules/devin-features/README.md) throughout the session. Key activities for this track:
+Encourage participants to track their progress on the [Devin Features Appendix](../../../../../labs/devin-features/README.md) throughout the session. Key activities for this track:
 
 - [ ] Use DeepWiki to explore a COBOL codebase (Lab 1)
 - [ ] Use AskDevin to ask targeted questions about legacy code (Labs 1, 2)
