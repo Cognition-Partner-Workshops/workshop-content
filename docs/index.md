@@ -18,7 +18,7 @@ Welcome to the self-paced learning hub for Devin. Whether you're reading theory,
     Build your mental model of cloud AI agents before going hands-on.
     Theory, product features, and platform concepts.
 
-    [:octicons-arrow-right-24: Start Reading](workshops/foundations/README.md)
+    [:octicons-arrow-right-24: Start Reading](foundations/README.md)
 
 - :material-flask:{ .lg .middle } **Labs**
 
@@ -27,7 +27,7 @@ Welcome to the self-paced learning hub for Devin. Whether you're reading theory,
     Atomic hands-on challenges organized by discipline.
     Paste a prompt, kick off Devin, review the PR.
 
-    [:octicons-arrow-right-24: Browse Labs](modules/README.md)
+    [:octicons-arrow-right-24: Browse Labs](labs/README.md)
 
 - :material-routes:{ .lg .middle } **Workshops**
 

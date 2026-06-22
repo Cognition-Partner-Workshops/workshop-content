@@ -76,85 +76,59 @@ validation:
     absolute_links: ignore
     unrecognized_links: ignore
 
-# Navigation uses CURRENT paths (pre-restructure).
-# Target structure after restructure:
-#   foundations/ (theory + product) at root
-#   labs/ (replaces modules/)
-#   workshops/by-role/ and workshops/by-domain/ (replaces workshops/specialties/)
 nav:
   - Home: index.md
   - Foundations:
-    # Target: foundations/README.md
-    - Overview: workshops/foundations/README.md
+    - Overview: foundations/README.md
     - Theory:
-      # Target: foundations/theory/01-cloud-agent-vs-local-agent.md
-      - Cloud Agent vs. Local Agent: workshops/foundations/01-cloud-agent-vs-local-agent.md
-      # Target: foundations/theory/02-event-driven-reactions.md
-      - Event-Driven Reactions: workshops/foundations/02-event-driven-reactions.md
-      # Target: foundations/theory/03-agent-orchestration.md
-      - Agent Orchestration: workshops/foundations/03-agent-orchestration.md
-      # Target: foundations/theory/04-what-to-give-ai.md
-      - What to Give AI: workshops/foundations/04-what-to-give-ai.md
+      - Cloud Agent vs. Local Agent: foundations/theory/01-cloud-agent-vs-local-agent.md
+      - Event-Driven Reactions: foundations/theory/02-event-driven-reactions.md
+      - Agent Orchestration: foundations/theory/03-agent-orchestration.md
+      - What to Give AI: foundations/theory/04-what-to-give-ai.md
     - Product Features:
-      # Target: foundations/product/05-deepwiki.md
-      - DeepWiki: workshops/foundations/05-deepwiki.md
-      # Target: foundations/product/06-devin-sessions.md
-      - Devin Sessions: workshops/foundations/06-devin-sessions.md
-      # Target: foundations/product/07-devin-cli.md
-      - Devin CLI: workshops/foundations/07-devin-cli.md
-      # Target: foundations/product/08-automations.md
-      - Automations: workshops/foundations/08-automations.md
-      # Target: foundations/product/09-multi-agent-workers.md
-      - Multi-Agent Workers: workshops/foundations/09-multi-agent-workers.md
-      # Target: foundations/product/devin-cloud.md
-      - Devin Cloud Tour: shared/product-features/devin-cloud.md
-      # Target: foundations/product/devin-desktop.md
-      - Devin Desktop Tour: shared/product-features/devin-desktop.md
-      # Target: foundations/product/devin-cli-tour.md
-      - Devin CLI Tour: shared/product-features/devin-cli.md
+      - DeepWiki: foundations/product/05-deepwiki.md
+      - Devin Sessions: foundations/product/06-devin-sessions.md
+      - Devin CLI: foundations/product/07-devin-cli.md
+      - Automations: foundations/product/08-automations.md
+      - Multi-Agent Workers: foundations/product/09-multi-agent-workers.md
+      - Devin Cloud Tour: foundations/product/devin-cloud.md
+      - Devin Desktop Tour: foundations/product/devin-desktop.md
+      - Devin CLI Tour: foundations/product/devin-cli-tour.md
   - Labs:
-    # Target: labs/README.md
-    - Overview: modules/README.md
-    # Target: labs/security/
-    - Security: modules/security/README.md
-    # Target: labs/data-engineering/
-    - Data Engineering: modules/data-engineering/README.md
-    # Target: labs/migration-modernization/
-    - Migration & Modernization: modules/migration-modernization/README.md
-    # Target: labs/application-development/
-    - Application Development: modules/application-development/README.md
-    # Target: labs/testing-qa/
-    - Testing & QA: modules/testing-qa/README.md
-    # Target: labs/devops-cicd/
-    - DevOps & CI/CD: modules/devops-cicd/README.md
-    # Target: labs/cloud-infrastructure/
-    - Cloud & Infrastructure: modules/cloud-infrastructure/README.md
-    # Target: labs/observability-sre/
-    - Observability & SRE: modules/observability-sre/README.md
-    # Target: labs/architecture-design/
-    - Architecture & Design: modules/architecture-design/README.md
-    # Target: labs/ai-ml-engineering/
-    - AI & ML Engineering: modules/ai-ml-engineering/README.md
-    # Target: labs/compliance-governance/
-    - Compliance & Governance: modules/compliance-governance/README.md
-    # Target: labs/technical-documentation/
-    - Technical Documentation: modules/technical-documentation/README.md
-    # Target: labs/devin-features/README.md
-    - Devin Features Checklist: modules/devin-features/README.md
+    - Overview: labs/README.md
+    - Security: labs/security/README.md
+    - Data Engineering: labs/data-engineering/README.md
+    - Migration & Modernization: labs/migration-modernization/README.md
+    - Application Development: labs/application-development/README.md
+    - Testing & QA: labs/testing-qa/README.md
+    - DevOps & CI/CD: labs/devops-cicd/README.md
+    - Cloud & Infrastructure: labs/cloud-infrastructure/README.md
+    - Observability & SRE: labs/observability-sre/README.md
+    - Architecture & Design: labs/architecture-design/README.md
+    - AI & ML Engineering: labs/ai-ml-engineering/README.md
+    - Compliance & Governance: labs/compliance-governance/README.md
+    - Technical Documentation: labs/technical-documentation/README.md
+    - Devin Features Checklist: labs/devin-features/README.md
   - Workshops:
     - Overview: workshops/README.md
     - General: workshops/general/README.md
     - OtterWorks: workshops/otterworks/README.md
-    # Target: workshops/by-role/
     - By Role:
-      - Development: workshops/specialties/job-families/development/feature-development/README.md
-      - Digital Engineering: workshops/specialties/job-families/digital-engineering/README.md
-      - Quality Engineering: workshops/specialties/job-families/quality-assurance-and-engineering/engineering/README.md
-    # Target: workshops/by-domain/
+      - App Maintenance: workshops/by-role/development/app-maintenance/README.md
+      - Feature Development: workshops/by-role/development/feature-development/README.md
+      - Digital Engineering: workshops/by-role/digital-engineering/README.md
+      - Quality Engineering: workshops/by-role/quality-engineering/engineering/README.md
+      - Quality Engineering & Security: workshops/by-role/quality-engineering/engineering-security/README.md
     - By Domain:
-      - Modernization: workshops/specialties/technical-domains/modernization/dotnet-cloud-native/README.md
-      - Security: workshops/specialties/technical-domains/security/enterprise-automation/README.md
-      - AI & Automation: workshops/specialties/technical-domains/ai-and-automation/agentic-ai/README.md
+      - COBOL Modernization: workshops/by-domain/modernization/cobol/README.md
+      - Legacy Modernization: workshops/by-domain/modernization/legacy/README.md
+      - .NET Cloud-Native: workshops/by-domain/modernization/dotnet-cloud-native/README.md
+      - Framework Upgrades: workshops/by-domain/modernization/framework-upgrades/README.md
+      - Data Source Migration: workshops/by-domain/modernization/data-source-migration/README.md
+      - Platform Decomposition: workshops/by-domain/modernization/platform-decomposition/README.md
+      - Security Compliance: workshops/by-domain/security/compliance/README.md
+      - Enterprise Security Automation: workshops/by-domain/security/enterprise-automation/README.md
+      - Agentic AI: workshops/by-domain/ai-and-automation/agentic-ai/README.md
   - Demos:
     - Data Engineering: demos/data-engineering/sas-to-databricks-demo.md
     - Migration: demos/migration/mulesoft-to-spring-boot-demo.md
