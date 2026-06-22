@@ -1,6 +1,6 @@
 site_name: Devin Workshop Hub
 site_description: Self-paced labs, training, and demos for Devin hands-on workshops
-site_url: https://cognition-partner-workshops.github.io/workshop-metadata/
+site_url: https://cognition-partner-workshops.github.io/workshop-instructions/
 
 docs_dir: docs
 
@@ -32,8 +32,8 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-repo_url: https://github.com/Cognition-Partner-Workshops/workshop-metadata
-repo_name: workshop-metadata
+repo_url: https://github.com/Cognition-Partner-Workshops/workshop-instructions
+repo_name: workshop-instructions
 
 markdown_extensions:
   - admonition

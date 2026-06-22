@@ -47,7 +47,7 @@ Review Gate (human approval, CI checks)
 **Principle:** For large-scale work, a parent agent breaks the problem into independent units and spawns a child agent for each one.
 
 **When to use:**
-- Migrating N labs/services/jobs (each is independent)
+- Migrating N modules/services/jobs (each is independent)
 - Remediating N security findings across M repos
 - Generating tests for N uncovered files
 - Applying the same refactoring pattern across many codebases
