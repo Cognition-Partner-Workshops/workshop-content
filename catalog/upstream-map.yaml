@@ -603,6 +603,13 @@ repos:
     cluster: C2
     note: "Lab 1 — COBOL-to-Java migration copy of CardDemo"
 
+  uc-payment-payload-analysis-java-banking-monolith:
+    upstream: cbarkinozer/OnlineBankingRestAPI
+    upstream_url: https://github.com/cbarkinozer/OnlineBankingRestAPI
+    import_method: clone-and-push
+    cluster: null
+    note: "Java Spring Boot banking monolith for payment payload gap analysis, payload testing, and business capability decomposition"
+
   uc-pod-remediation-credential-rotation:
     upstream: null
     import_method: original

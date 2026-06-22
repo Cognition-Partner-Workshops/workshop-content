@@ -162,6 +162,19 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | Apache 2.0 |
 | **Challenges** | General Java upgrade demos |
 
+### uc-payment-payload-analysis-java-banking-monolith
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-payment-payload-analysis-java-banking-monolith |
+| **Description** | Java Spring Boot banking monolith — online banking REST API with payment transfer, credit card, loan, and account management capabilities. Target codebase for payment payload gap analysis vs ISO 20022, payload testing, and business capability decomposition exercises. |
+| **Tech Stack** | Java 17, Spring Boot, Spring Security (JWT), PostgreSQL, H2, Maven, Swagger/OpenAPI, MapStruct, Lombok |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | None (standalone import) |
+| **Source** | [`cbarkinozer/OnlineBankingRestAPI`](https://github.com/cbarkinozer/OnlineBankingRestAPI) |
+| **Key Contents** | 6 business domains (Accounts/Transfers, Credit Cards, Loans, Customers, Security, Logging), REST API with Swagger, unit + integration tests, custom payment DTOs for gap analysis against ISO 20022 |
+| **Challenges** | Payment payload gap analysis, payload testing, business capability decomposition |
+
 ### uc-product-analysis-loan-modernization
 | | |
 |---|---|
