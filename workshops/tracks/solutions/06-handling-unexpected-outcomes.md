@@ -1,5 +1,17 @@
 # 6. Handling Unexpected Outcomes
 
+<a id="toc"></a>
+
+- [6.1 Agent Gets Stuck](#61-agent-gets-stuck)
+- [6.2 CI Fails Unexpectedly](#62-ci-fails-unexpectedly)
+- [6.3 Walkthrough Goes Off-Script](#63-walkthrough-goes-off-script)
+- [6.4 Client Asks a Question You Cannot Answer](#64-client-asks-a-question-you-cannot-answer)
+- [6.5 Scenario Exercises](#65-scenario-exercises)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 Recovery patterns for when things go wrong during a client walkthrough or engagement. This section covers the most common failure modes and how to respond.
 
 ## 6.1 Agent Gets Stuck

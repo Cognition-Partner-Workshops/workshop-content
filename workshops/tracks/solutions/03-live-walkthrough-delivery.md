@@ -2,6 +2,17 @@
 
 *Reference: [`demos/security/general.md`](../../../demos/security/general.md), [`demos/data-engineering/sas-to-databricks-demo.md`](../../../demos/data-engineering/sas-to-databricks-demo.md), [`demos/migration/mulesoft-to-spring-boot-demo.md`](../../../demos/migration/mulesoft-to-spring-boot-demo.md)*
 
+<a id="toc"></a>
+
+- [3.1 Security Remediation — Scan → Fix → Rescan Closed Loop](#31-security-remediation--scan--fix--rescan-closed-loop)
+- [3.2 Migration — Language/Framework Translation with Parity Verification](#32-migration--languageframework-translation-with-parity-verification)
+- [3.3 Data Engineering — ETL Translation with Reconciliation](#33-data-engineering--etl-translation-with-reconciliation)
+- [3.4 Feature Development — Implement → Test → PR → Iterate](#34-feature-development--implement--test--pr--iterate)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 This section teaches you how to run each walkthrough type end-to-end in a simulated environment. For each: the setup steps, the prompts to run, what to explain while it runs, and how to handle if things go off-script.
 
 ## 3.1 Security Remediation — Scan → Fix → Rescan Closed Loop

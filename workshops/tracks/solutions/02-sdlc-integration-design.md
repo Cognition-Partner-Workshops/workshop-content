@@ -2,6 +2,19 @@
 
 *Reference: [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
 
+<a id="toc"></a>
+
+- [2.1 Planning Phase](#21-planning-phase)
+- [2.2 Implementation Phase](#22-implementation-phase)
+- [2.3 Testing Phase](#23-testing-phase)
+- [2.4 Deployment Phase](#24-deployment-phase)
+- [2.5 Operations Phase](#25-operations-phase)
+- [2.6 SDLC Integration Summary](#26-sdlc-integration-summary)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 This section maps Devin's capabilities to each phase of a client's software development lifecycle. For each phase: the trigger that starts Devin, the pattern Devin follows, and where the human touchpoint occurs.
 
 ## 2.1 Planning Phase

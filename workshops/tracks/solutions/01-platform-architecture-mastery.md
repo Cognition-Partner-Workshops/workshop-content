@@ -2,6 +2,18 @@
 
 *Reference: [`shared/general-themes/architecture-strengths.md`](../../../shared/general-themes/architecture-strengths.md)*
 
+<a id="toc"></a>
+
+- [1.1 Clean-Room Execution Model](#11-clean-room-execution-model)
+- [1.2 The Shared Context Layer](#12-the-shared-context-layer)
+- [1.3 Session Lifecycle](#13-session-lifecycle)
+- [1.4 The Verification Model](#14-the-verification-model)
+- [1.5 Team Integration](#15-team-integration)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 This section covers what you must know cold when fielding client questions about how Devin works, where their data goes, and how security is maintained.
 
 ## 1.1 Clean-Room Execution Model

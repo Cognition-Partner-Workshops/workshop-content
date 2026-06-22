@@ -1,5 +1,21 @@
 # 5. Full Platform Configuration
 
+<a id="toc"></a>
+
+- [5.1 Git Connections](#51-git-connections)
+- [5.2 Environment Blueprints](#52-environment-blueprints)
+- [5.3 DeepWiki](#53-deepwiki)
+- [5.4 Knowledge Notes](#54-knowledge-notes)
+- [5.5 Playbooks](#55-playbooks)
+- [5.6 MCP Servers](#56-mcp-servers)
+- [5.7 Secrets Management](#57-secrets-management)
+- [5.8 Automations](#58-automations)
+- [5.9 Configuration Order Summary](#59-configuration-order-summary)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 This section walks through configuring a complete Devin organization from scratch — every component of the shared context layer in the order you should set them up.
 
 ## 5.1 Git Connections

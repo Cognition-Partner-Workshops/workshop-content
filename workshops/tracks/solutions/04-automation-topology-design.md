@@ -2,6 +2,17 @@
 
 *Reference: [`shared/general-themes/platform-capabilities.md`](../../../shared/general-themes/platform-capabilities.md), [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
 
+<a id="toc"></a>
+
+- [4.1 Event-Driven Triggers](#41-event-driven-triggers)
+- [4.2 Scheduled Sessions](#42-scheduled-sessions)
+- [4.3 The Parent-Child Pattern for Campaigns](#43-the-parent-child-pattern-for-campaigns)
+- [4.4 Design Exercises](#44-design-exercises)
+- [Knowledge Checks](#knowledge-checks)
+- [Key Takeaways](#key-takeaways)
+
+---
+
 Given client requirements, design the webhook/schedule/trigger architecture. This section covers the building blocks, design principles, and exercises for constructing automation topologies.
 
 ## 4.1 Event-Driven Triggers
