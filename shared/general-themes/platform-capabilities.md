@@ -4,15 +4,37 @@
 
 ## Feature Summary
 
-<a id="scheduled-sessions"></a>
-
 | Capability | What It Does | Key Detail |
 |-----------|-------------|------------|
 | **Scheduled Sessions** | Recurring tasks on cron (daily, weekly, custom) | Dep bumps, license audits, dead code detection, doc refresh, security scanning, coverage monitoring |
-| <a id="playbooks"></a>**Playbooks** | Reusable step-by-step procedures encoding proven methodology | Repeatable, versionable, shareable, composable across teams |
-| <a id="child-agents-divide-and-conquer"></a>**Child Agents** | Parent breaks large task into N independent units, spawns one child per target | Each child: own VM, own branch, own PR. Failures isolated |
+| **Playbooks** | Reusable step-by-step procedures encoding proven methodology | Repeatable, versionable, shareable, composable across teams |
+| **Child Agents** | Parent breaks large task into N independent units, spawns one child per target | Each child: own VM, own branch, own PR. Failures isolated |
 | **Team-Based Operation** | Org-wide shared context layer configured once, inherited by every session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections, Automations |
-| <a id="devin-review"></a>**Devin Review** | Proactive code review on new PRs — bugs, security, quality | Findings as PR comments; can auto-open fix PRs; configurable rules; can block merge via status checks |
+| **Devin Review** | Proactive code review on new PRs — bugs, security, quality | Findings as PR comments; can auto-open fix PRs; configurable rules; can block merge via status checks |
+
+<a id="scheduled-sessions"></a>
+
+### Scheduled Sessions
+
+See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/08-automations.md).
+
+<a id="playbooks"></a>
+
+### Playbooks
+
+See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/08-automations.md).
+
+<a id="child-agents-divide-and-conquer"></a>
+
+### Child Agents
+
+See table above. Comprehensive training: [Foundations — Multi-Agent Workers](../../workshops/foundations/09-multi-agent-workers.md).
+
+<a id="devin-review"></a>
+
+### Devin Review
+
+See table above. Comprehensive training: [Foundations — Sessions](../../workshops/foundations/06-devin-sessions.md).
 
 ## Session Lifecycle
 

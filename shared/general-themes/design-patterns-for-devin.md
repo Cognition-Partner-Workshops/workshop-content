@@ -7,11 +7,13 @@
 | # | Pattern | Core Principle | When to Use |
 |---|---------|---------------|-------------|
 | 1 | **Locally Buildable Code** | If a dev can `make test` with no external deps, Devin can too | Containerize deps, use in-memory DBs for tests, document build command in README |
-| <a id="pattern-2-event-driven-triggers"></a>2 | **Event-Driven Triggers** | Connect Devin to existing event sources — no human remembers to invoke it | CI failure → fix; SAST finding → remediate; Ticket tagged → implement; Alert → investigate |
-| <a id="pattern-3-divide-and-conquer-with-child-agents"></a>3 | **Divide & Conquer** | Parent agent breaks work into N independent units, spawns one child each | Migrating N services; Remediating N findings; Generating tests for N files; Same refactor across repos |
+| 2 | **Event-Driven Triggers** | Connect Devin to existing event sources — no human remembers to invoke it | CI failure → fix; SAST finding → remediate; Ticket tagged → implement; Alert → investigate |
+| 3 | **Divide & Conquer** | Parent agent breaks work into N independent units, spawns one child each | Migrating N services; Remediating N findings; Generating tests for N files; Same refactor across repos |
 | 4 | **Human-in-the-Loop (PR)** | Devin proposes via PR; humans review, comment, approve; Devin iterates | Every implementation — the PR is the familiar, auditable review gate |
 | 5 | **Toolchain-Agnostic Stubs** | Design integration with replaceable tool slots — pattern stays the same | `[SAST Tool] → webhook → Trigger → Devin → PR` — swap SonarQube/Snyk/Trivy freely |
 | 6 | **Context Layer Config** | Invest in shared config once to benefit every future session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections |
+
+<a id="pattern-2-event-driven-triggers"></a>
 
 ## Event-Driven Architecture
 
@@ -20,6 +22,8 @@ Event Source → webhook/API → Trigger Layer → Devin Session → PR/comment
 ```
 
 **Safeguards:** Filter out Devin's own events (prevent loops), set max retry count, use idempotency keys.
+
+<a id="pattern-3-divide-and-conquer-with-child-agents"></a>
 
 ## Divide & Conquer Architecture
 
