@@ -185,7 +185,9 @@ service — with scoped instructions:
 
 This pattern scales to multi-repo remediation as well: the parent session
 iterates over a list of repositories and spawns a child session per repo,
-each following the same remediation playbook.
+each following the same remediation playbook. For a full walkthrough of
+multi-repo parallel orchestration, see
+[Portfolio-Scale Remediation](use-cases/portfolio-scale-remediation-demo.md).
 
 ---
 
