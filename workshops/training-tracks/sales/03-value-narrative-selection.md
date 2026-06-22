@@ -105,6 +105,39 @@ Step 5: Anticipate objections based on their persona
 
 ---
 
+## Positioning by Your Role
+
+The buyer persona mapping above tells you *what* to say. This section tells you *which narratives to lead with* based on your own role in the conversation.
+
+### Sales Engineering
+- Lead with **Capacity Unlocking** and **Velocity Multiplication** — these resonate with engineering leaders who feel understaffed
+- Show **event-driven patterns** (incident response, security remediation) as "set it and forget it" value
+- Use the **divide-and-conquer** pattern to demonstrate scale that is impossible with manual approaches
+
+### Solution Delivery
+- Lead with **playbooks** and **design patterns** — these map directly to engagement deliverables
+- Emphasize **toolchain-agnostic stubs** — clients do not need to change their tool stack
+- Show **scheduled sessions** as ongoing value that extends beyond the initial engagement
+
+### Systems Integrators and Managed Service Delivery
+- Lead with **Operating Model Efficiency** — the hybrid model (human + digital workers) produces the most competitive cost structure for bidding
+- Show the **unit-of-work estimation** model — standardized agent tasks have low variance, making bids more predictable and margins more defensible
+- Frame **scalability without staffing risk** — agent capacity scales immediately without bench cost, recruitment lag, or attrition risk
+- Name the **competitive displacement risk** — in RFP scenarios, the SI with the most efficient operating model wins
+
+### Training and Enablement
+- Lead with the **collaboration model** — Devin works the way engineers already work (PRs, CI, code review)
+- Use **hands-on labs** to let participants experience capabilities in a safe environment
+- Emphasize the **continuous improvement cycle** — Devin gets more effective as the team invests in configuration
+
+### Executive Leadership
+- Lead with **Risk Reduction** and **Cost Optimization** — these are the decision-making factors
+- Frame Devin as **team augmentation**, not replacement — the engineering team becomes more effective, not smaller
+- Show the **compounding value** model — initial setup investment yields growing returns over time
+- For P&L owners: show the **efficiency → quality → outcomes cycle** — efficiency gains are the entry point, and the financial impact grows over time
+
+---
+
 ## Knowledge Checks
 
 **Knowledge Check 3.1**

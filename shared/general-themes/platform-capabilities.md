@@ -34,7 +34,7 @@ See table above. Comprehensive training: [Foundations — Multi-Agent Workers](.
 
 ### Devin Review
 
-See table above. Comprehensive training: [Foundations — Sessions](../../workshops/foundations/06-devin-sessions.md).
+See table above. Comprehensive training: [Foundations — Sessions § Devin Review](../../workshops/foundations/06-devin-sessions.md#devin-review).
 
 ## Session Lifecycle
 
