@@ -10,7 +10,7 @@ workshops/
 ├── training-tracks/
 │   ├── sales/           ← Operating model, cost structures, engagement capture
 │   ├── solutions/       ← System design, SDLC integration, live walkthroughs
-│   └── delivery/        ← Tactical platform usage, prompt engineering, orchestration
+│   └── engineering/     ← Tactical platform usage, prompt engineering, orchestration
 ├── general/             ← Existing hands-on labs (cross-track reference material)
 ├── specialties/         ← Future: domain-specific deep-dives (Level 3)
 └── otterworks/          ← Existing platform showcase
@@ -23,7 +23,7 @@ workshops/
 | Level | Content | Audience | Status |
 |-------|---------|----------|--------|
 | **Level 1: Foundations** | `workshops/foundations/` | All personas | Exists |
-| **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,delivery}/` | Role-specific | Planned (this document) |
+| **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,engineering}/` | Role-specific | Planned (this document) |
 | **Level 3: Specialties** | `workshops/specialties/` | Domain experts | Future iteration (see [below](#level-3-specialties)) |
 
 ---
@@ -33,7 +33,7 @@ workshops/
 
 - [Track: Sales](#track-sales)
 - [Track: Solutions](#track-solutions)
-- [Track: Delivery](#track-delivery)
+- [Track: Engineering](#track-engineering)
 - [Content Modalities](#content-modalities)
 - [Level 3 Specialties (Future)](#level-3-specialties)
 - [Relationship to Existing Content](#relationship-to-existing-content)
@@ -112,8 +112,8 @@ workshops/
 
 ---
 
-<a id="track-delivery"></a>
-## Track: Delivery
+<a id="track-engineering"></a>
+## Track: Engineering
 
 **Persona:** Engineers and developers at SI partner firms who use Devin to execute their already-defined jobs — by knowing features, tactical best practices, and core architecture decisions (e.g., when to use Ubuntu vs. Windows host, how to configure environments, how to write effective prompts).
 
@@ -155,7 +155,7 @@ workshops/
 
 Each track uses a mix of modalities. The table below shows the target distribution:
 
-| Modality | Sales | Solutions | Delivery | Exists Today? |
+| Modality | Sales | Solutions | Engineering | Exists Today? |
 |----------|-------|-----------|----------|---------------|
 | Reading material | 30% | 20% | 25% | Yes (heavy) |
 | Video (recorded) | 15% | 20% | 10% | No |
@@ -190,9 +190,9 @@ workshops/specialties/
 
 | Specialty | Track Prerequisite | Focus |
 |-----------|-------------------|-------|
-| Security Automation Specialist | Delivery | Event-driven SAST, compliance remediation at scale, scan-fix-verify loops |
-| Modernization Specialist | Delivery | COBOL→Java, .NET cloud-native, framework upgrades, platform decomposition |
-| Data Migration Specialist | Delivery | SAS→Snowflake/Databricks, ETL translation, reconciliation harness design |
+| Security Automation Specialist | Engineering | Event-driven SAST, compliance remediation at scale, scan-fix-verify loops |
+| Modernization Specialist | Engineering | COBOL→Java, .NET cloud-native, framework upgrades, platform decomposition |
+| Data Migration Specialist | Engineering | SAS→Snowflake/Databricks, ETL translation, reconciliation harness design |
 | Enterprise Integration Architect | Solutions | MCP server design, multi-tool orchestration, network connectivity patterns |
 
 These will be built out once Level 2 tracks are established and validated.
@@ -207,12 +207,12 @@ These will be built out once Level 2 tracks are established and validated.
 | `workshops/foundations/` | Level 1 prerequisite for all tracks |
 | `shared/general-themes/value-narratives.md` | Primary source material for Sales track |
 | `shared/general-themes/design-patterns-for-devin.md` | Primary source material for Solutions track |
-| `shared/general-themes/platform-capabilities.md` | Shared reference for Solutions and Delivery |
+| `shared/general-themes/platform-capabilities.md` | Shared reference for Solutions and Engineering |
 | `shared/general-themes/architecture-strengths.md` | Core knowledge for Solutions track |
-| `shared/general-themes/when-to-use-devin.md` | Core knowledge for Delivery track |
-| `shared/general-themes/cloud-vs-local-agents.md` | Core knowledge for Delivery track |
+| `shared/general-themes/when-to-use-devin.md` | Core knowledge for Engineering track |
+| `shared/general-themes/cloud-vs-local-agents.md` | Core knowledge for Engineering track |
 | `shared/general-themes/collaboration-model.md` | Shared reference for all tracks |
-| `workshops/general/` | Practice labs for Delivery track |
+| `workshops/general/` | Practice labs for Engineering track |
 | `demos/` | Walkthrough scripts for Solutions track |
 | `workshops/specialties/` | Future Level 3 deep-dives |
 | `labs/` | Building blocks composed into walkthroughs and challenges |

@@ -67,6 +67,6 @@ Additional materials needed to complete this track:
 - [ ] Platform configuration lab environment (pre-configured sandbox where attendees practice org setup from scratch)
 - [ ] Walkthrough timing guides — *operator repo* (suggested pacing for 30-minute, 60-minute, and 90-minute walkthrough slots)
 - [ ] Objection handling reference — *operator repo* (how to respond to questions about alternative approaches)
-- [ ] Multi-walkthrough sequencing guide (how to chain walkthroughs in a half-day or full-day session for maximum narrative impact)
+- [ ] Multi-walkthrough sequencing guide — *operator repo* (how to chain walkthroughs in a half-day or full-day session for maximum narrative impact)
 - [ ] Assessment exercises with automated grading (knowledge checks that report scores and identify weak areas)
 - [ ] Client-specific customization templates (how to adapt walkthrough prompts to a specific client's repos and technology stack)
