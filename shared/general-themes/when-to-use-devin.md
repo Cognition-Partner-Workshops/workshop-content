@@ -1,6 +1,6 @@
 # When to Use Devin — Quick Reference
 
-> Comprehensive training: [Foundations — What to Give AI vs. Not](../../workshops/foundations/04-what-to-give-ai.md) | [Engineering Track — Task Selection Framework](../../workshops/training-tracks/engineering/04-task-selection-framework.md)
+> Comprehensive training: [Foundations — What to Give AI vs. Not](../../workshops/foundations/concepts/04-what-to-give-ai.md) | [Engineering Track — Task Selection Framework](../../workshops/training-tracks/engineering/04-task-selection-framework.md)
 
 ## Trigger Categories
 

@@ -1,6 +1,6 @@
 # Cloud vs. Local Agents — Quick Reference
 
-> Comprehensive training: [Foundations — Cloud Agent vs. Local Agent](../../workshops/foundations/01-cloud-agent-vs-local-agent.md) | [Engineering Track — Platform Fundamentals](../../workshops/training-tracks/engineering/01-platform-fundamentals.md)
+> Comprehensive training: [Foundations — Cloud Agent vs. Local Agent](../../workshops/foundations/concepts/01-cloud-agent-vs-local-agent.md) | [Engineering Track — Platform Fundamentals](../../workshops/training-tracks/engineering/01-platform-fundamentals.md)
 
 ## Comparison Table
 

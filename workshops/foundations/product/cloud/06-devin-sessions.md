@@ -84,7 +84,7 @@ Sessions can be started from multiple surfaces:
 | **Automations** | Event-driven (webhooks, schedules, issue assignment) |
 | **Linear / Jira** | Assign a ticket directly to Devin |
 
-The prompt you provide at session start is the agent's initial instruction. The quality of this prompt significantly impacts the quality of the output (see [What to Give AI](04-what-to-give-ai.md)).
+The prompt you provide at session start is the agent's initial instruction. The quality of this prompt significantly impacts the quality of the output (see [What to Give AI](../../concepts/04-what-to-give-ai.md)).
 
 <a id="the-session-interface"></a>
 ## The Session Interface

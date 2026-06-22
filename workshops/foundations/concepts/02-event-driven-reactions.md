@@ -97,7 +97,7 @@ The trigger layer is the intelligence between the event and the response. It:
 
 ### The Key Difference from Scheduled Work
 
-Event-driven reactions are **responsive** — they fire in real time when something happens. This is different from scheduled sessions (covered in [Automations](08-automations.md)) which run on a cadence regardless of events.
+Event-driven reactions are **responsive** — they fire in real time when something happens. This is different from scheduled sessions (covered in [Automations](../product/cloud/08-automations.md)) which run on a cadence regardless of events.
 
 Both patterns reduce human toil, but event-driven reactions are uniquely valuable for **time-sensitive** responses: security vulnerabilities, production incidents, and CI failures that block other engineers.
 
