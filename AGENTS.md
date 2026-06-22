@@ -6,7 +6,7 @@ This repo is the **attendee-facing** content hub for Devin hands-on workshops. I
 
 - `foundations/` — Theory (cloud agent concepts, event-driven patterns) and product feature tours (theory/ and product/ subdirs)
 - `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
-- `workshops/` — Structured lab sequences bundling labs into tracks (by-domain/, by-role/, general/, otterworks/)
+- `workshops/` — Structured lab sequences bundling labs into tracks (by-tech-domain/, by-technical-role/, general/, otterworks/)
 - `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
 - `shared/` — General Devin themes and runtime resource docs

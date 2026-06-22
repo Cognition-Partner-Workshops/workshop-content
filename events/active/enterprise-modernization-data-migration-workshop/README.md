@@ -586,6 +586,6 @@ Track your progress throughout the session — try to discover as many Devin cap
 
 ## Context
 
-This workshop combines modules from the [Security & Compliance](../../../workshops/by-domain/security/compliance/README.md), [COBOL Modernization](../../../workshops/by-domain/modernization/cobol/README.md), [Data Source Migration](../../../workshops/by-domain/modernization/data-source-migration/README.md), and [Legacy Modernization](../../../workshops/by-domain/modernization/legacy/README.md) workshops into a single half-day event covering four enterprise engineering domains: security, mainframe modernization, data migration, and architecture decomposition.
+This workshop combines modules from the [Security & Compliance](../../../workshops/by-tech-domain/security/compliance/README.md), [COBOL Modernization](../../../workshops/by-tech-domain/modernization/cobol/README.md), [Data Source Migration](../../../workshops/by-tech-domain/modernization/data-source-migration/README.md), and [Legacy Modernization](../../../workshops/by-tech-domain/modernization/legacy/README.md) workshops into a single half-day event covering four enterprise engineering domains: security, mainframe modernization, data migration, and architecture decomposition.
 
 For deeper dives into individual domains, see the linked workshops above.

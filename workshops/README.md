@@ -22,30 +22,30 @@ Labs reference individual lab definitions from [`labs/`](../labs/) — the detai
 
 > **New to Devin?** Start with the [Foundations](../foundations/) reading path to build your mental model before diving into hands-on labs.
 
-## By Domain
+## By Technical Domain
 
 Collections of labs targeting specific tech stacks and engineering challenges.
 
 | Workshop | Focus | Duration | Labs |
 |----------|-------|----------|------|
-| [COBOL Modernization](by-domain/modernization/cobol/) | End-to-end mainframe modernization — system understanding through execution | ~4 hours | 4 |
-| [Legacy Modernization](by-domain/modernization/legacy/) | COBOL/legacy → modern tech stack with testing | 2-4 hours | 1-4 |
-| [.NET Cloud-Native Modernization](by-domain/modernization/dotnet-cloud-native/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours | 3 |
-| [Framework Upgrades](by-domain/modernization/framework-upgrades/) | Angular + Spring Boot version upgrades at scale | 1-2 hours | 1-2 |
-| [Data Source Migration](by-domain/modernization/data-source-migration/) | Legacy data warehouse → modern schema + app reconnection | 1-2 hours | 1-2 |
-| [Platform Microservice Decomposition](by-domain/modernization/platform-decomposition/) | Monolith → platform-conformant microservices with IaC | 1.5-2 hours | 1 |
-| [Security & Compliance](by-domain/security/compliance/) | CVE remediation, SAST, shift-left security | 1-2 hours | 1-3 |
-| [Enterprise Security Automation](by-domain/security/enterprise-automation/) | Event-driven SAST, mass backlog remediation, one-shot tech debt | ~4 hours | 3 |
-| [Agentic AI](by-domain/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing, anomaly detection | 2-4 hours | 2-4 |
+| [COBOL Modernization](by-tech-domain/modernization/cobol/) | End-to-end mainframe modernization — system understanding through execution | ~4 hours | 4 |
+| [Legacy Modernization](by-tech-domain/modernization/legacy/) | COBOL/legacy → modern tech stack with testing | 2-4 hours | 1-4 |
+| [.NET Cloud-Native Modernization](by-tech-domain/modernization/dotnet-cloud-native/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours | 3 |
+| [Framework Upgrades](by-tech-domain/modernization/framework-upgrades/) | Angular + Spring Boot version upgrades at scale | 1-2 hours | 1-2 |
+| [Data Source Migration](by-tech-domain/modernization/data-source-migration/) | Legacy data warehouse → modern schema + app reconnection | 1-2 hours | 1-2 |
+| [Platform Microservice Decomposition](by-tech-domain/modernization/platform-decomposition/) | Monolith → platform-conformant microservices with IaC | 1.5-2 hours | 1 |
+| [Security & Compliance](by-tech-domain/security/compliance/) | CVE remediation, SAST, shift-left security | 1-2 hours | 1-3 |
+| [Enterprise Security Automation](by-tech-domain/security/enterprise-automation/) | Event-driven SAST, mass backlog remediation, one-shot tech debt | ~4 hours | 3 |
+| [Agentic AI](by-tech-domain/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing, anomaly detection | 2-4 hours | 2-4 |
 
-## By Role
+## By Technical Role
 
 One workshop per job family — broad coverage of the role's engineering concerns.
 
 | Workshop | Focus | Duration | Labs |
 |----------|-------|----------|------|
-| [Application Development & Maintenance](by-role/development/app-maintenance/) | Feature dev, bug fixing, code maintenance — full app lifecycle | 4-6 hours | 9 (3 tracks × 3 labs) |
-| [Feature Development](by-role/development/feature-development/) | New features on existing applications | 1-2 hours | 1-2 |
-| [Digital Engineering](by-role/digital-engineering/) | CI/CD, cloud infrastructure, observability, platform engineering | 4-6 hours | 9 (3 tracks × 3 labs) |
-| [Quality Engineering & Assurance](by-role/quality-engineering/engineering/) | Test automation, E2E testing, continuous quality, code review | 4-6 hours | 9 (3 tracks × 3 labs) |
-| [Quality Engineering & Security](by-role/quality-engineering/engineering-security/) | QE + security vulnerability remediation combined | ~3 hours | 4 |
+| [Application Development & Maintenance](by-technical-role/development/app-maintenance/) | Feature dev, bug fixing, code maintenance — full app lifecycle | 4-6 hours | 9 (3 tracks × 3 labs) |
+| [Feature Development](by-technical-role/development/feature-development/) | New features on existing applications | 1-2 hours | 1-2 |
+| [Digital Engineering](by-technical-role/digital-engineering/) | CI/CD, cloud infrastructure, observability, platform engineering | 4-6 hours | 9 (3 tracks × 3 labs) |
+| [Quality Engineering & Assurance](by-technical-role/quality-engineering/engineering/) | Test automation, E2E testing, continuous quality, code review | 4-6 hours | 9 (3 tracks × 3 labs) |
+| [Quality Engineering & Security](by-technical-role/quality-engineering/engineering-security/) | QE + security vulnerability remediation combined | ~3 hours | 4 |

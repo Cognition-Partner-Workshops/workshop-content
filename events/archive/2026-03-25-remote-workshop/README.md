@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Variant Name** | Platform-Conformant Microservice Decomposition (60 min) |
-| **Based On** | [workshops/by-domain/modernization/platform-decomposition](../../../workshops/by-domain/modernization/platform-decomposition/) |
+| **Based On** | [workshops/by-tech-domain/modernization/platform-decomposition](../../../workshops/by-tech-domain/modernization/platform-decomposition/) |
 | **Focus** | Monolith-to-microservices decomposition with IaC conformance on Kubernetes |
 | **Duration** | 60 minutes |
 | **Audience** | General |
@@ -18,7 +18,7 @@
 >
 > Devin reads four repositories simultaneously: the monolith source, existing IaC patterns, the platform engineering standard, and a landing repo for the new service. From a single prompt, Devin extracts the module, generates production-grade infrastructure-as-code, refactors the monolith, and creates PRs in both repos.
 >
-> **60-minute format:** This is a compressed version of the [full 90-minute lab](../../../workshops/by-domain/modernization/platform-decomposition/). Bonus challenges and extended exploration are omitted. Participants launch the decomposition, explore with AskDevin/DeepWiki while Devin works, then review PRs and leave feedback.
+> **60-minute format:** This is a compressed version of the [full 90-minute lab](../../../workshops/by-tech-domain/modernization/platform-decomposition/). Bonus challenges and extended exploration are omitted. Participants launch the decomposition, explore with AskDevin/DeepWiki while Devin works, then review PRs and leave feedback.
 
 ---
 
@@ -194,7 +194,7 @@ Playbooks turn one-off prompts into reusable organizational workflows. Next time
 1. Ask participants to share their most interesting finding from the PR review
 2. Compare results across participants — did Devin make the same architectural decisions?
 3. Highlight the key takeaway: code extraction + IaC generation + platform conformance in a single session
-4. Point to the [full 90-minute version](../../../workshops/by-domain/modernization/platform-decomposition/) and take-home extensions for continued learning
+4. Point to the [full 90-minute version](../../../workshops/by-tech-domain/modernization/platform-decomposition/) and take-home extensions for continued learning
 5. Collect feedback
 
 ---
@@ -248,7 +248,7 @@ Playbooks turn one-off prompts into reusable organizational workflows. Next time
 | Interact phase | 25 min (in-session steering, Knowledge, prompting exercises) | 25 min (GitHub PR review + feedback comments) |
 | Wrap-up | 10 min | 15 min |
 
-For the full version with bonus challenges, see [platform-microservice-decomposition](../../../workshops/by-domain/modernization/platform-decomposition/).
+For the full version with bonus challenges, see [platform-microservice-decomposition](../../../workshops/by-tech-domain/modernization/platform-decomposition/).
 
 ---
 
@@ -256,7 +256,7 @@ For the full version with bonus challenges, see [platform-microservice-decomposi
 
 | Resource | Link |
 |----------|------|
-| Full 90-min event | [platform-microservice-decomposition](../../../workshops/by-domain/modernization/platform-decomposition/) |
+| Full 90-min event | [platform-microservice-decomposition](../../../workshops/by-tech-domain/modernization/platform-decomposition/) |
 | Core module | [Platform-Conformant Microservice Decomposition](../../../labs/cloud-infrastructure/platform-conformant-microservice-decomposition.md) |
-| Workshop template | [workshops/by-domain/modernization/platform-decomposition](../../../workshops/by-domain/modernization/platform-decomposition/) |
+| Workshop template | [workshops/by-tech-domain/modernization/platform-decomposition](../../../workshops/by-tech-domain/modernization/platform-decomposition/) |
 | Devin Features Appendix | [labs/devin-features](../../../labs/devin-features/README.md) |
