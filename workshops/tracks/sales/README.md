@@ -111,7 +111,7 @@ The hybrid model fundamentally changes the bench cost equation:
 | **Bench cost during gaps** | Full salary continues between engagements | Agent capacity scales to zero when not in use — no idle cost |
 | **Attrition risk** | Key engineers leave, taking institutional knowledge | Knowledge is encoded in playbooks, knowledge notes, and blueprints — survives staff turnover |
 | **Surge capacity** | Requires hiring or subcontracting (weeks/months lead time) | Spin up additional agent sessions immediately (minutes) |
-| **Specialization cost** | Each technology requires specialists on the bench | Agents handle any technology with appropriate prompts and playbooks |
+| **Specialization cost** | Each technology requires specialists on the bench | Agents typically handle a wide range of technologies with appropriate prompts and playbooks |
 
 The margin improvement path: as playbooks mature and knowledge notes accumulate, agents' first-pass success rate improves, human review burden decreases, and margin expands over the life of an engagement.
 
@@ -324,7 +324,7 @@ Different stakeholders care about different outcomes. The same hybrid delivery c
 | Buyer Persona | Primary Narrative | Secondary Narrative | What They Need to Hear |
 |---------------|------------------|--------------------|-----------------------|
 | **CTO / VP Engineering** | Capacity Unlocking | Engineering Focus Elevation | "Your engineers stop doing mechanical work and focus on architecture and design. The backlog of deferred work actually gets done." |
-| **CISO / Security Leadership** | Risk Reduction | Quality Improvement | "Vulnerability exposure windows shrink from 'next sprint' to 'next CI run'. Every PR gets automated security review." |
+| **CISO / Security Leadership** | Risk Reduction | Quality Improvement | "Vulnerability exposure windows shrink from 'next sprint' to 'next CI run'. PRs receive automated security review." |
 | **FinOps / CFO** | Cost Optimization | Operating Model Efficiency | "Consumption-based pricing with measurable ROI. Each session produces attributable output. Licensing cost avoidance accelerates migration payback." |
 | **Delivery Director / Program Manager** | Velocity Multiplication | Operating Model Efficiency | "Migration timelines compress from months to weeks. Parallel execution means campaigns finish before the client loses patience." |
 | **Practice Lead / P&L Owner** | Operating Model Efficiency | Competitive Positioning | "Your cost structure becomes the most competitive in RFP scenarios. Margin expands as playbooks mature." |
@@ -358,12 +358,12 @@ Different stakeholders care about different outcomes. The same hybrid delivery c
 
 **Evidence to provide:**
 - MTTR reduction for critical findings (sprint cycles → hours)
-- Percentage of PRs receiving automated security review (100% with Devin Review)
+- Percentage of PRs receiving automated security review (high coverage with Devin Review)
 - Compliance audit trail (SBOM generation, remediation documentation)
 
 #### For FinOps / CFO: Cost Optimization + Operating Model Efficiency
 
-**Lead with:** "Consumption-based pricing with directly attributable ROI. Every session produces measurable output — PRs merged, findings remediated, tests added. No idle cost."
+**Lead with:** "Consumption-based pricing with directly attributable ROI. Sessions produce measurable output — PRs merged, findings remediated, tests added. No idle cost."
 
 **Supporting points:**
 - ACU budgets provide hard spend controls at org, team, or user level
@@ -994,7 +994,7 @@ Using the frameworks from this workshop, create:
 
 The following materials would make this track more comprehensive. These represent future development priorities:
 
-- [ ] **Video: Recorded client pitch walkthrough** — A facilitator walking through a client conversation using the value narratives and unit-of-work economics
+- [ ] **Video: Recorded client pitch walkthrough** — A walkthrough of a client conversation using the value narratives and unit-of-work economics
 - [ ] **ROI Calculator Tool** — Interactive spreadsheet or web tool where Sales can input engagement parameters and get a cost estimate with hybrid vs. headcount comparison
 - [ ] **Battle Cards** — One-page competitive positioning cards for common RFP scenarios (migration, remediation, modernization, greenfield)
 - [ ] **Sample Proposal Templates** — Redacted engagement proposals showing hybrid staffing models, unit-of-work cost breakdowns, and timeline comparisons
@@ -1003,4 +1003,4 @@ The following materials would make this track more comprehensive. These represen
 - [ ] **Margin Improvement Tracking** — Framework for measuring how margin improves as playbooks mature over the life of an engagement
 - [ ] **Industry-Specific Scenarios** — Worked examples for financial services, healthcare, retail, and government verticals
 - [ ] **Executive Summary Template** — One-page leave-behind for buyer personas summarizing the hybrid model value proposition
-- [ ] **Workshop Walkthrough Recording** — Video of a facilitator delivering each section with commentary on pacing and emphasis
+- [ ] **Workshop Walkthrough Recording** — Video walkthrough of each section with commentary on key concepts and emphasis
