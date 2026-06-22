@@ -643,7 +643,7 @@ In an RFP scenario, the SI with the most efficient operating model wins. If a co
 |-----------|-------------------|-----------------|
 | **Cost** | Higher — paying senior rates for mechanical work | Lower — agents handle execution at a fraction of human cost |
 | **Timeline** | Longer — sequential execution limited by team size | Shorter — parallel agent execution compresses timelines dramatically |
-| **Quality** | Variable — depends on individual engineer consistency | Consistent — standardized playbooks and automated review on every unit |
+| **Quality** | Variable — depends on individual engineer consistency | Consistent — standardized playbooks and automated review across units |
 
 This is not a marginal advantage. It is a structural one. The hybrid model produces fundamentally different economics that headcount-only bids cannot match without sacrificing margin.
 
