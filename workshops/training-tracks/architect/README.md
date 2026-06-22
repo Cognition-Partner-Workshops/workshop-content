@@ -1,4 +1,4 @@
-# Workshop Track: Solutions
+# Workshop Track: Architect
 
 ## Overview
 
