@@ -2,7 +2,7 @@
 
 ## Repository Context
 
-This repo contains **attendee-facing** workshop content (modules, workshops, events) and shared reference materials for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
+This repo contains **attendee-facing** workshop content (labs, workshops, events) and shared reference materials for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
 
 **Exception — `demos/`:** the `demos/` directory holds facilitator-led demo showcases: a single linear thread a presenter runs live while others follow along. Unlike `labs/`/`workshops/` (participant-driven, can branch into choose-your-own-adventure tracks), demo docs walk one path start to finish and read as though a user is reading and following along. They are permitted to live in this repo and to use "demo" verbiage. Apply the demo-specific guidance below to anything under `demos/`.
 

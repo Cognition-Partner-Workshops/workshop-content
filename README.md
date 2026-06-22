@@ -14,7 +14,7 @@ Welcome to the Devin hands-on workshop. This repo contains everything you need t
 ## How to Navigate
 
 ```
-workshop-metadata/
+workshop-instructions/
 ├── foundations/        ← theory, product features, platform mental model
 │   ├── theory/        ← cloud agent concepts, event-driven patterns, task selection
 │   └── product/       ← DeepWiki, Sessions, CLI, Automations, Multi-Agent Workers
