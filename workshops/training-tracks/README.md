@@ -60,7 +60,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `shared/general-themes/value-narratives.md`)
+- Reading material (reference: `workshops/training-tracks/sales/03-value-narrative-selection.md`; quick-reference: `shared/general-themes/value-narratives.md`)
 - Knowledge checks (multiple choice/response after each section)
 - Case study exercises (estimate an engagement, select a narrative, scope a campaign)
 - ROI estimation worksheets
@@ -95,7 +95,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `shared/general-themes/design-patterns-for-devin.md`, `platform-capabilities.md`, `architecture-strengths.md`)
+- Reading material (reference: `workshops/training-tracks/solutions/01-platform-architecture-mastery.md`, `02-sdlc-integration-design.md`, `04-automation-topology-design.md`; quick-reference: `shared/general-themes/`)
 - Knowledge checks (architecture questions, "which pattern for this scenario?")
 - Design challenges (design an automation topology, configure an org)
 - Live walkthrough delivery in a simulated environment (uses `demos/` content as the script)
@@ -133,7 +133,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: Foundations 01-09, `shared/general-themes/when-to-use-devin.md`, `cloud-vs-local-agents.md`)
+- Reading material (reference: Foundations 01-09; quick-reference: `shared/general-themes/when-to-use-devin.md`, `cloud-vs-local-agents.md`)
 - Knowledge checks (the critical missing modality — "Is this task good for an agent?", "What's wrong with this prompt?")
 - Challenge-mode labs (write your OWN prompt for a given scenario — no copy-paste provided)
 - Debug exercises (diagnose what went wrong in a described session failure)
@@ -204,14 +204,11 @@ These will be built out once Level 2 tracks are established and validated.
 
 | Existing Content | Role in Track Structure |
 |-----------------|----------------------|
-| `workshops/foundations/` | Level 1 prerequisite for all tracks |
-| `shared/general-themes/value-narratives.md` | Primary source material for Sales track |
-| `shared/general-themes/design-patterns-for-devin.md` | Primary source material for Solutions track |
-| `shared/general-themes/platform-capabilities.md` | Shared reference for Solutions and Engineering |
-| `shared/general-themes/architecture-strengths.md` | Core knowledge for Solutions track |
-| `shared/general-themes/when-to-use-devin.md` | Core knowledge for Engineering track |
-| `shared/general-themes/cloud-vs-local-agents.md` | Core knowledge for Engineering track |
-| `shared/general-themes/collaboration-model.md` | Shared reference for all tracks |
+| `workshops/foundations/` | Level 1 prerequisite for all tracks — comprehensive training for all core topics |
+| `shared/general-themes/` | Quick-reference cheat sheets for lab use — condensed versions pointing back to foundations and tracks |
+| `workshops/training-tracks/sales/` | Comprehensive value narratives, operating model, unit economics (supersedes GT `value-narratives.md` for depth) |
+| `workshops/training-tracks/solutions/` | Comprehensive architecture, SDLC integration, automation topology (supersedes GT `architecture-strengths.md`, `design-patterns-for-devin.md` for depth) |
+| `workshops/training-tracks/engineering/` | Comprehensive platform fundamentals, task selection, orchestration (supersedes GT `when-to-use-devin.md`, `cloud-vs-local-agents.md` for depth) |
 | `workshops/general/` | Practice labs for Engineering track |
 | `demos/` | Walkthrough scripts for Solutions track |
 | `workshops/specialties/` | Future Level 3 deep-dives |

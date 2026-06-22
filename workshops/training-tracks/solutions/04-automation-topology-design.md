@@ -1,13 +1,14 @@
 # 4. Automation Topology Design
 
-*Reference: [`shared/general-themes/platform-capabilities.md`](../../../shared/general-themes/platform-capabilities.md), [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
+*Quick reference: [`shared/general-themes/platform-capabilities.md`](../../../shared/general-themes/platform-capabilities.md), [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
 
 <a id="toc"></a>
 
 - [4.1 Event-Driven Triggers](#41-event-driven-triggers)
 - [4.2 Scheduled Sessions](#42-scheduled-sessions)
 - [4.3 The Parent-Child Pattern for Campaigns](#43-the-parent-child-pattern-for-campaigns)
-- [4.4 Design Exercises](#44-design-exercises)
+- [4.4 Toolchain-Agnostic Integration Design](#44-toolchain-agnostic-integration-design)
+- [4.5 Design Exercises](#45-design-exercises)
 - [Knowledge Checks](#knowledge-checks)
 - [Key Takeaways](#key-takeaways)
 
@@ -96,7 +97,26 @@ Parent Agent (orchestrator)
 - Have the parent check child results and escalate failures
 - Use namespaced outputs (branches, schemas) so parallel children do not collide
 
-## 4.4 Design Exercises
+## 4.4 Toolchain-Agnostic Integration Design
+
+Design automation architectures with **replaceable tool slots**. The integration pattern stays the same; the specific tool is pluggable.
+
+**Example — Security Scanning Pipeline:**
+
+```
+[SAST Tool] → webhook → [Trigger Layer] → Devin API → [Remediation Session]
+```
+
+The `[SAST Tool]` slot can be filled by SonarQube, Checkmarx, Fortify, Snyk, Trivy, or any tool that produces findings in a parseable format. The trigger layer and Devin response are identical regardless of which scanner is plugged in.
+
+**How to apply:**
+- Document the interface contract (webhook payload shape, findings format) — not the specific tool
+- Provide reference implementations for 2-3 popular tools so clients can see the pattern
+- Include a "bring your own tool" guide showing how to adapt the pattern to any tool that produces structured output
+
+This principle applies across all automation types: observability (Datadog / New Relic / Grafana), issue tracking (Jira / Linear / Azure DevOps), CI pipelines (GitHub Actions / Azure Pipelines / Jenkins). The topology is the same — only the event source changes.
+
+## 4.5 Design Exercises
 
 **Exercise 4A: Security Remediation Topology**
 

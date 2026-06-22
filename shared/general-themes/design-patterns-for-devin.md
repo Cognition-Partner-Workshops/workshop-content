@@ -1,125 +1,46 @@
-# Design Patterns for Devin
+# Design Patterns for Devin — Quick Reference
 
-Proven patterns for structuring work, codebases, and processes so that Devin delivers high-quality results consistently.
+> Comprehensive training: [Solutions Track — SDLC Integration Design](../../workshops/training-tracks/solutions/02-sdlc-integration-design.md) | [Solutions Track — Automation Topology Design](../../workshops/training-tracks/solutions/04-automation-topology-design.md)
 
-## Pattern 1: Locally Buildable and Testable Code
+## Pattern Reference Card
 
-**Principle:** If a human developer can clone the repo and run `make test` (or equivalent) with no external dependencies, Devin can too.
+| # | Pattern | Core Principle | When to Use |
+|---|---------|---------------|-------------|
+| 1 | **Locally Buildable Code** | If a dev can `make test` with no external deps, Devin can too | Containerize deps, use in-memory DBs for tests, document build command in README |
+| 2 | **Event-Driven Triggers** | Connect Devin to existing event sources — no human remembers to invoke it | CI failure → fix; SAST finding → remediate; Ticket tagged → implement; Alert → investigate |
+| 3 | **Divide & Conquer** | Parent agent breaks work into N independent units, spawns one child each | Migrating N services; Remediating N findings; Generating tests for N files; Same refactor across repos |
+| 4 | **Human-in-the-Loop (PR)** | Devin proposes via PR; humans review, comment, approve; Devin iterates | Every implementation — the PR is the familiar, auditable review gate |
+| 5 | **Toolchain-Agnostic Stubs** | Design integration with replaceable tool slots — pattern stays the same | `[SAST Tool] → webhook → Trigger → Devin → PR` — swap SonarQube/Snyk/Trivy freely |
+| 6 | **Context Layer Config** | Invest in shared config once to benefit every future session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections |
 
-**Why it matters:** Devin verifies its own changes by running your build and test suite on its VM. The more self-contained your build is, the tighter Devin's verify-and-iterate cycle becomes. Even when local execution is not fully possible, Devin can delegate verification to off-machine runners — CI pipelines, external test systems, or cloud-hosted build environments — that still close the feedback loop.
+<a id="pattern-2-event-driven-triggers"></a>
 
-**How to apply:**
-- Containerize dependencies (Docker Compose for databases, message brokers, caches)
-- Use in-memory or file-based databases for tests (SQLite, H2, Testcontainers)
-- Provide seed data scripts that create a working test environment from scratch
-- Document the build/test command in the README (`npm test`, `./gradlew check`, `dotnet test`)
-- Use environment variables for configuration — Devin injects these via the platform's secrets management layer (configured once at the org level, available to every session)
+## Event-Driven Architecture
 
-## Pattern 2: Event-Driven Triggers
-
-**Principle:** Connect Devin to your existing event sources so it responds to signals automatically — no human has to remember to invoke it.
-
-**Architecture:**
 ```
-Event Source (CI, alerting, issue tracker)
-    ↓ webhook / API call
-Trigger Layer (GitHub Actions, Azure Function, Lambda)
-    ↓ Devin API: POST /sessions
-Devin Session (autonomous execution)
-    ↓ PR / comment / status update
-Review Gate (human approval, CI checks)
+Event Source → webhook/API → Trigger Layer → Devin Session → PR/comment
 ```
 
-**Common triggers:**
-- CI pipeline failure → Devin reads logs, pushes fix
-- SAST finding above threshold → Devin remediates
-- Work item tagged → Devin implements
-- Alert fires → Devin investigates and triages
-- Schedule (cron) → Devin performs routine maintenance
+**Safeguards:** Filter out Devin's own events (prevent loops), set max retry count, use idempotency keys.
 
-**Key safeguards:**
-- Filter out Devin's own events to prevent infinite loops (check PR author, skip `devin-ai-integration[bot]`)
-- Set a maximum retry count per trigger to avoid runaway sessions
-- Use idempotency keys to prevent duplicate sessions from the same event
+<a id="pattern-3-divide-and-conquer-with-child-agents"></a>
 
-## Pattern 3: Divide and Conquer with Child Agents
+## Divide & Conquer Architecture
 
-**Principle:** For large-scale work, a parent agent breaks the problem into independent units and spawns a child agent for each one.
-
-**When to use:**
-- Migrating N labs/services/jobs (each is independent)
-- Remediating N security findings across M repos
-- Generating tests for N uncovered files
-- Applying the same refactoring pattern across many codebases
-
-**Architecture:**
 ```
 Parent Agent
 ├── Analyzes scope (list of targets)
 ├── Creates playbook (reusable methodology)
-├── Spawns Child Agent 1 → target A → PR
-├── Spawns Child Agent 2 → target B → PR
-├── ...
-├── Spawns Child Agent N → target N → PR
+├── Spawns Child 1 → target A → PR
+├── Spawns Child 2 → target B → PR
+├── Spawns Child N → target N → PR
 └── Monitors progress, handles failures
 ```
 
-**Best practices:**
-- Define a clear, repeatable unit of work for each child
-- Use playbooks to encode the methodology so every child follows the same process
-- Set a maximum concurrency to avoid overwhelming CI or API rate limits
-- Have the parent agent check child results and escalate failures
+**Best practices:** Clear unit of work per child, playbooks for consistency, max concurrency cap, parent monitors and escalates failures.
 
-## Pattern 4: Human-in-the-Loop via PR Feedback
-
-**Principle:** Devin proposes changes via pull requests. Humans review, comment, and approve. Devin iterates based on feedback.
-
-**The loop:**
-1. Devin opens a PR with its implementation
-2. Reviewers (human or Devin Review) inspect the diff
-3. Reviewers leave comments requesting changes
-4. Devin reads the comments, makes changes, pushes new commits
-5. CI re-runs, Devin monitors results
-6. Repeat until approved and merged
-
-**Why this works:**
-- The PR is a familiar, auditable artifact that fits existing workflows
-- Multiple team members can contribute feedback to the same session
-- Devin hibernates between interactions — no wasted compute while waiting for review
-- The merge decision always belongs to a human
-
-## Pattern 5: Toolchain-Agnostic Stubs
-
-**Principle:** Design integration architectures with replaceable tool slots. The pattern stays the same; the specific tool is pluggable.
-
-**Example — Security Scanning Pipeline:**
-```
-[SAST Tool] → webhook → [Trigger Layer] → Devin API → [Remediation Session]
-```
-
-The `[SAST Tool]` slot can be filled by:
-- SonarQube / SonarCloud
-- Checkmarx
-- Fortify
-- Snyk
-- Trivy
-- Any tool that produces findings in a parseable format
-
-**How to apply:**
-- Document the interface contract (webhook payload shape, findings format)
-- Provide reference implementations for 2-3 popular tools
-- Include a "bring your own tool" guide showing how to adapt the pattern
-
-## Pattern 6: Context Layer Configuration
-
-**Principle:** Invest in configuring Devin's shared context layer once to benefit every future session.
-
-**Components:**
-- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, language runtimes, tools, and startup scripts baked in. Sessions boot ready to build, not waiting for installation
-- **Knowledge notes** — Coding standards, architecture decisions, team conventions, domain glossary. Devin retrieves these automatically when relevant to the task
-- **Playbooks** — Step-by-step procedures for recurring tasks (deploy, migrate, audit). Devin follows playbooks precisely, ensuring consistent execution across team members
-- **MCP servers** — External tool connections (Jira, Datadog, Confluence, Azure DevOps) that persist across sessions. Configure once, use everywhere
-- **Secrets** — Scoped credentials (API keys, service account tokens, database passwords) injected at session start. No credentials in prompts or code
-- **Git connections** — Repository access that applies to all sessions in the organization
-
-**ROI:** The upfront investment in context configuration pays dividends across every subsequent session. A well-configured Devin organization starts every task with the right tools, knowledge, credentials, and access — no per-session setup friction. This is the mechanism behind the [clean-room + shared context](architecture-strengths.md#shared-context-layer) design: runtime isolation for security, persistent configuration for productivity.
+## Key Rules
+- The tighter your build/test loop, the better Devin performs — Pattern 1 is the highest-impact investment
+- Every automation topology needs loop prevention, concurrency limits, and escalation policies
+- The merge decision is always human — Pattern 4 is non-negotiable
+- Context layer configuration (Pattern 6) compounds across every session in the org

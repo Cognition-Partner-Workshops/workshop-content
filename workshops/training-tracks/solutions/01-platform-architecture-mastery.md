@@ -1,14 +1,15 @@
 # 1. Platform Architecture Mastery
 
-*Reference: [`shared/general-themes/architecture-strengths.md`](../../../shared/general-themes/architecture-strengths.md)*
+*Quick reference: [`shared/general-themes/architecture-strengths.md`](../../../shared/general-themes/architecture-strengths.md)*
 
 <a id="toc"></a>
 
 - [1.1 Clean-Room Execution Model](#11-clean-room-execution-model)
 - [1.2 The Shared Context Layer](#12-the-shared-context-layer)
-- [1.3 Session Lifecycle](#13-session-lifecycle)
-- [1.4 The Verification Model](#14-the-verification-model)
-- [1.5 Team Integration](#15-team-integration)
+- [1.3 Context Retrieval](#13-context-retrieval)
+- [1.4 Session Lifecycle](#14-session-lifecycle)
+- [1.5 The Verification Model](#15-the-verification-model)
+- [1.6 Team Integration](#16-team-integration)
 - [Knowledge Checks](#knowledge-checks)
 - [Key Takeaways](#key-takeaways)
 
@@ -46,7 +47,22 @@ While each session's runtime is isolated, Devin does not start from scratch. A p
 
 **The design insight:** This gives you both **clean-room isolation for security** and a **shared context layer for productivity**. Each worker VM is sandboxed, but the organization's accumulated knowledge and configuration flow in automatically.
 
-## 1.3 Session Lifecycle
+## 1.3 Context Retrieval
+
+Devin retrieves context programmatically before acting — it pulls from indexed codebases, configured integrations, and remote resources rather than relying on assumptions:
+
+| Source | How Devin Uses It |
+|--------|-------------------|
+| **Git repositories** | Clones repos, reads code, understands project structure, examines history |
+| **DeepWiki** | Auto-generated architectural documentation for any indexed repo — Devin reads this to understand systems it has never seen before |
+| **MCP servers** | Model Context Protocol lets Devin call external tools as if they were local: query Jira tickets, read Datadog logs, search Confluence, browse Azure DevOps boards |
+| **Shell access** | Devin has a full Linux shell — `curl` APIs, query databases, run CLI tools, install packages, execute arbitrary commands |
+| **Browser** | Navigate web pages, interact with UIs, extract information from web-based tools |
+| **Knowledge notes** | Persistent, human-curated context (coding standards, architecture decisions, team conventions) retrieved automatically based on the task |
+
+**Client implication:** Devin does not guess — it reads. For every task, it retrieves relevant context from the configured sources before writing a single line of code. This is why the shared context layer (section 1.2) matters: the richer the configured context, the better the agent's first-pass output.
+
+## 1.4 Session Lifecycle
 
 Sessions move through a deliberate lifecycle optimized for efficiency:
 
@@ -66,7 +82,7 @@ Active → Waiting for Feedback → Hibernated → Resumed
 - Multi-day iterations (back-and-forth PR reviews, blocked dependencies) are natural — context is preserved across the full task lifecycle
 - Cost is proportional to active work time, not wall-clock time
 
-## 1.4 The Verification Model
+## 1.5 The Verification Model
 
 Devin verifies its own work through a layered approach:
 
@@ -77,7 +93,7 @@ Devin verifies its own work through a layered approach:
 
 **Client implication:** The merge decision is always human. Devin proposes; humans approve. This fits existing governance and compliance models without modification.
 
-## 1.5 Team Integration
+## 1.6 Team Integration
 
 Devin operates as a team member within existing workflows:
 
@@ -91,6 +107,14 @@ Devin operates as a team member within existing workflows:
 ## Knowledge Checks
 
 **Knowledge Check 1.1**
+Q: A client asks: "How does Devin understand our codebase if it has never seen it before?" How do you respond?
+A) "Devin reads every file from top to bottom before starting"
+B) "Devin consults DeepWiki for architectural understanding, retrieves Knowledge notes for team conventions, queries MCP integrations for external context, and reads specific code files relevant to the task"
+C) "Devin relies on the prompt to contain all necessary context"
+D) "Devin only works with codebases it has seen before"
+*Answer: B — Devin retrieves context from multiple sources programmatically. DeepWiki provides structural understanding, Knowledge notes provide cultural understanding, MCP integrations provide external tool context, and direct code reading fills in the details. The richer the configured context, the better the output.*
+
+**Knowledge Check 1.2**
 Q: A client asks: "If Devin has access to our production database credentials, could a session accidentally leak those credentials to another project?" How do you respond?
 A) "Credentials are shared across sessions for efficiency"
 B) "Each session runs in an isolated VM with scoped secrets — credentials injected into one session are not accessible to any other session"
@@ -98,7 +122,7 @@ C) "We encrypt credentials at rest, so they cannot be leaked"
 D) "Devin does not support database access"
 *Answer: B — The clean-room execution model ensures each session has its own isolated VM. Secrets are injected per-session through the platform's secrets management layer, scoped to the resources that session needs.*
 
-**Knowledge Check 1.2**
+**Knowledge Check 1.3**
 Q: A client has 20 engineers. They are concerned about configuration overhead — does each engineer need to set up Devin independently?
 A) "Yes, each engineer configures their own Devin environment"
 B) "No — the shared context layer (blueprints, Knowledge, Playbooks, MCP, Secrets, Git connections) is configured once at the org level and flows into every session from any team member"
@@ -106,7 +130,7 @@ C) "Only the first engineer needs to configure it, then they share their credent
 D) "Devin requires no configuration"
 *Answer: B — The shared context layer is the key design insight. One engineer invests in configuration; every subsequent session — from any team member — inherits it automatically.*
 
-**Knowledge Check 1.3**
+**Knowledge Check 1.4**
 Q: What happens when a Devin session opens a PR and waits 3 days for human review?
 A) "The session times out and is lost"
 B) "The session continues consuming compute while waiting"
@@ -114,7 +138,7 @@ C) "The session hibernates (releasing compute), then resumes with full context w
 D) "A new session must be started to address review comments"
 *Answer: C — The hibernation/resume lifecycle means sessions do not waste compute while waiting. When new feedback arrives (PR comment, CI result, user message), the VM is restored from its snapshot with full context preserved.*
 
-**Knowledge Check 1.4**
+**Knowledge Check 1.5**
 Q: In Devin's verification model, who makes the merge decision?
 A) "Devin merges automatically when CI passes"
 B) "The session creator merges"
@@ -127,4 +151,5 @@ D) "Devin Review merges if it finds no issues"
 - **Clean-room isolation + shared context** is the core architectural insight: security through VM isolation, productivity through persistent configuration
 - **Sessions are ephemeral; knowledge is persistent** — the VM is destroyed after use, but the organization's context layer grows over time
 - **The session lifecycle optimizes for cost** — hibernation releases compute while preserving context; cost tracks active work, not wall-clock time
+- **Context retrieval is programmatic** — Devin reads from Git repos, DeepWiki, MCP integrations, shell, browser, and Knowledge notes before acting; the richer the configuration, the better the output
 - **Verification is layered** — local tests → CI monitoring → PR gate → external validation; the merge decision is always human

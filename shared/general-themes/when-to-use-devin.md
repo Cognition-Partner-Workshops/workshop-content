@@ -1,62 +1,36 @@
-# When to Use Devin
+# When to Use Devin — Quick Reference
 
-## Overview
-
-Devin is an autonomous software engineering agent. It excels at well-defined engineering tasks that would otherwise not get done — because of constrained capacity, prohibitive volume, insufficient priority, or sheer difficulty. The key insight is not "replace engineers" but "unlock work that is currently blocked or deferred."
+> Comprehensive training: [Foundations — What to Give AI vs. Not](../../workshops/foundations/04-what-to-give-ai.md) | [Engineering Track — Task Selection Framework](../../workshops/training-tracks/engineering/04-task-selection-framework.md)
 
 ## Trigger Categories
 
-### Event-Driven (Reactive)
+| Category | Trigger | Examples |
+|----------|---------|----------|
+| **Event-Driven** | Signal from your toolchain | Incident alert → triage + fix PR; SAST finding → remediate + re-scan; Ticket tagged → implement + PR; CI failure → diagnose + fix |
+| **Large-Scale Campaign** | N independent targets, same pattern | COBOL → Java (200 copybooks); Spring Boot 2→3 (50 services); Security backlog (500 findings across 80 repos); Test coverage (200 uncovered modules) |
+| **Capacity-Constrained** | Recurring O&M deferred by humans | Weekly dep bumps; Monthly dead code cleanup; Doc refresh on code change; Quarterly license audit; Sprint-boundary accessibility audit |
 
-Devin responds to signals from your existing toolchain. A webhook, alert, or tag transition fires and Devin begins working immediately — no human has to context-switch.
+## Sweet Spot Checklist
 
-| Trigger | Example | Why Devin? |
-|---------|---------|-----------|
-| **Incident alert** | PagerDuty/OpsGenie/Azure Monitor fires on 5xx spike | Devin queries logs via MCP, identifies root cause, opens a fix PR — all before the on-call engineer finishes reading the alert |
-| **Security finding** | SAST scan (SonarQube, Snyk, Checkmarx) detects HIGH/CRITICAL CVEs | Devin reads the scan report, remediates findings, pushes a fix, and the re-scan verifies the fix — closed-loop |
-| **Ticket assignment** | Jira/Linear/ADO work item tagged `Devin:Implementation` | Devin reads the acceptance criteria, implements, opens a PR, and links it back to the ticket |
-| **PR event** | PR opened by a developer triggers Devin Review | Devin reviews the diff for bugs, style issues, and test gaps — proactively opening remediation PRs for discovered issues |
-| **CI failure** | Build or test fails on a branch | Devin reads the failure logs, diagnoses the issue, and pushes a fix commit to the same branch |
+A task is a strong candidate for Devin when it is:
 
-### Large-Scale (Proactive Campaigns)
-
-Devin divides and conquers work that would take a team of engineers weeks. A parent agent plans the campaign, then spawns child agents — each handling one unit of work (one repo, one module, one migration target).
-
-| Campaign | Example | Why Devin? |
-|----------|---------|-----------|
-| **Codebase modernization** | Translate COBOL → Java across 200 copybooks | Each child agent handles one copybook. Humans review the PRs. Volume that would take months becomes weeks. Reduces ongoing mainframe licensing costs |
-| **Framework migration** | Upgrade Spring Boot 2.x → 3.x across 50 microservices | Each service gets its own agent. Jakarta namespace migration, dependency bumps, and test verification — all parallelized |
-| **Language/framework translation** | Migrate SAS → Python/Snowflake for 300 ETL jobs, or Oracle Forms → modern web frameworks | Devin translates each job, generates equivalence tests, and validates output parity. Offers a pathway away from products with burdensome licensing models |
-| **Dependency hygiene** | Bump all transitive dependencies across an org's repos | Scheduled weekly. Devin opens PRs, CI validates, humans merge |
-| **Security backlog** | Remediate 500 open Snyk findings across 80 repos | Each finding gets its own agent session. Devin reads the advisory, applies the fix, runs tests |
-| **Test coverage** | Generate unit tests for 200 uncovered modules | Devin analyzes each module, writes tests following existing conventions, achieves target coverage |
-
-### Capacity-Constrained (Ongoing O&M)
-
-Work that engineers know should be done but deprioritize because higher-value tasks demand their attention. Devin runs on a schedule or is triggered by routine events, handling the hygiene so engineers can focus on architecture, product features, and complex debugging.
-
-| Task | Frequency | Why Devin? |
-|------|-----------|-----------|
-| **Dependency updates** | Weekly | Devin bumps versions, runs tests, opens PRs. Engineers merge if green |
-| **Dead code cleanup** | Monthly | Devin identifies unused imports, unreachable code, and deprecated APIs. Opens cleanup PRs |
-| **Documentation refresh** | On code change | Devin updates inline docs, READMEs, and API docs when code changes land |
-| **License compliance** | Quarterly | Devin audits all dependencies for license compatibility, flags violations |
-| **Accessibility audits** | Sprint boundary | Devin runs axe/Lighthouse, remediates findings, opens PRs |
-
-## The Sweet Spot
-
-Give Devin work that you would otherwise not have done — because of constrained engineering capacity, prohibitive volume, insufficient priority, or because engineers had higher-value tasks to focus on:
-
-1. **Well-defined** — clear acceptance criteria, verifiable outcomes (tests pass, scan is clean, PR is merged)
-2. **Repetitive at scale** — the same pattern applied to many targets (repos, modules, findings)
-3. **Lower priority but valuable** — work humans would do if they had unlimited time
-4. **Automatable end-to-end** — Devin can fetch context, implement, test, and submit for review without manual intervention
-5. **Safe to iterate** — Devin works on branches, never pushes to main, and humans always approve the merge
-6. **Urgency-oriented** — work driven by deadlines: license sunset timelines, compliance mandates, platform end-of-life, or cost pressure from burdensome licensing models (COBOL, SAS, Informatica, Oracle Forms). The business case is already approved — you need the extra engineering capacity to execute
+- [ ] **Well-defined** — clear acceptance criteria, verifiable outcomes (tests pass, scan clean, build succeeds)
+- [ ] **Repetitive at scale** — same pattern applied to many targets (repos, modules, findings)
+- [ ] **Lower priority but valuable** — work humans would do if they had unlimited time
+- [ ] **Automatable end-to-end** — Devin can fetch context, implement, test, and submit for review
+- [ ] **Safe to iterate** — works on branches, never pushes to main, humans approve the merge
+- [ ] **Urgency-oriented** — driven by deadlines, license sunsets, compliance mandates, or cost pressure
 
 ## What Devin Needs to Succeed
 
-- **Indexed codebases** — Devin retrieves context from code repositories it has access to. Connect your repos via Git integrations
-- **Programmatic access to remote resources** — MCP servers, API keys, and service account credentials let Devin interact with your toolchain (Jira, Datadog, Azure DevOps, databases, etc.)
-- **Locally buildable and testable code** — Devin runs builds and tests on its own VM. If your code requires a locally reproducible build, Devin can verify its own work
-- **Clear prompts** — The more specific the instructions, the better the outcome. Include repo names, file paths, acceptance criteria, and examples when possible
+| Prerequisite | Why |
+|-------------|-----|
+| Indexed codebases | Devin retrieves context from connected repos |
+| Programmatic access | MCP servers, API keys, service accounts for your toolchain |
+| Locally buildable code | Devin runs builds and tests on its VM to verify its work |
+| Clear prompts | Repo names, file paths, acceptance criteria, expected output format |
+
+## Key Rules
+- The insight is not "replace engineers" but "unlock work that is currently blocked or deferred"
+- Event-driven tasks respond in seconds — no human context-switching required
+- Large-scale campaigns use parent-child agents — weeks of work compressed to days

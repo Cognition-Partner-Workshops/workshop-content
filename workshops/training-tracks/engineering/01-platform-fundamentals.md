@@ -68,7 +68,7 @@ Is the task quick and iterative (< 5 min)?
 | Quick typo fix | Devin CLI: fix directly, push | No handoff needed — stay local |
 | Scheduled dependency bump | No local involvement | Cloud Devin on cron: weekly bump + PR |
 
-For a deep dive, see [Cloud vs. Local Agents](../../../shared/general-themes/cloud-vs-local-agents.md).
+For a deep dive, see [Foundations — Cloud Agent vs. Local Agent](../../foundations/01-cloud-agent-vs-local-agent.md). Quick reference: [Cloud vs. Local Agents](../../../shared/general-themes/cloud-vs-local-agents.md).
 
 <a id="the-pr-feedback-loop"></a>
 ## The PR Feedback Loop
@@ -110,9 +110,19 @@ Devin verifies its own work through three mechanisms:
 2. **CI pipeline** — After pushing, Devin monitors CI checks. If a check fails, it downloads logs, diagnoses, and pushes a fix commit.
 3. **Escalation** — After multiple failed attempts at the same issue, Devin asks for help rather than looping indefinitely.
 
-The tighter your verification loop (fast builds, comprehensive tests, clear CI output), the better Devin performs. This is why [Pattern 1: Locally Buildable and Testable Code](../../../shared/general-themes/design-patterns-for-devin.md) is the single most impactful design pattern.
+The tighter your verification loop (fast builds, comprehensive tests, clear CI output), the better Devin performs. This is why Pattern 1: Locally Buildable and Testable Code is the single most impactful design pattern (see [Solutions Track — SDLC Integration Design](../solutions/02-sdlc-integration-design.md); quick reference: [Design Patterns](../../../shared/general-themes/design-patterns-for-devin.md)).
 
-For the full collaboration model, see [Collaboration Model](../../../shared/general-themes/collaboration-model.md).
+### Making Your Repo Devin-Friendly
+
+If a developer can clone your repo and run `make test` (or equivalent) with no external dependencies, Devin can too. Practical steps:
+
+- **Containerize dependencies** — Use Docker Compose for databases, message brokers, and caches so the build does not depend on external services
+- **Use in-memory or file-based databases for tests** — SQLite, H2, or Testcontainers let the test suite run without a running database server
+- **Provide seed data scripts** — Scripts that create a working test environment from scratch eliminate manual setup
+- **Document the build/test command in the README** — `npm test`, `./gradlew check`, `dotnet test`, `cargo test` — Devin reads the README and runs what it finds
+- **Use environment variables for configuration** — Devin injects these via the platform's secrets management layer (configured once at the org level, available to every session)
+
+For more on the collaboration model (PR feedback loop, multi-user comments, CI monitoring, hibernation/resume), see the [Collaboration Model quick reference](../../../shared/general-themes/collaboration-model.md). Related foundations: [Cloud Agent vs. Local Agent](../../foundations/01-cloud-agent-vs-local-agent.md), [Sessions](../../foundations/06-devin-sessions.md).
 
 ---
 

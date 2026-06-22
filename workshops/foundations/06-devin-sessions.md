@@ -9,7 +9,9 @@
 - [The Session Interface](#the-session-interface)
 - [Context That Flows In](#context-that-flows-in)
 - [Outputs and Artifacts](#outputs-and-artifacts)
+- [Devin Review](#devin-review)
 - [Session Economics](#session-economics)
+- [The Continuous Improvement Cycle](#the-continuous-improvement-cycle)
 - [Exploration Activity](#exploration-activity)
 - [Key Takeaways](#key-takeaways)
 
@@ -153,6 +155,25 @@ For code changes, the PR is the primary deliverable. It includes:
 - CI results (the agent monitors and fixes failures before requesting review)
 - A link back to the session for full context
 
+<a id="devin-review"></a>
+## Devin Review
+
+Devin Review is a proactive code review capability that analyzes new pull requests for bugs, security issues, and quality problems.
+
+**Capabilities:**
+- **Bug detection** — Finds logic errors, null pointer risks, race conditions, and edge cases in new diffs
+- **PR digestion** — Summarizes large PRs into readable overviews, highlighting the most important changes and potential risks
+- **Proactive remediation** — When Devin Review finds a bug, it can automatically open a fix PR rather than just commenting
+- **Configurable rules** — Teams customize what Devin Review checks for, adjusting sensitivity and focus areas
+
+**Workflow integration:**
+- Devin Review runs automatically on new PRs (configurable per repo or org)
+- Findings appear as PR comments, indistinguishable from human review feedback
+- Developers respond to Devin Review comments just as they would to any reviewer
+- Critical findings can block merge via required status checks
+
+Devin Review complements human review — it catches mechanical issues (logic bugs, security risks, missing edge cases) so human reviewers can focus on design, architecture, and intent.
+
 <a id="session-economics"></a>
 ## Session Economics
 
@@ -169,6 +190,41 @@ This consumption model means:
 - Child sessions (parallel work) multiply throughput but also multiply ACU consumption proportionally
 
 Organizations set ACU budgets at the org, team, or user level. Budgets provide cost governance without limiting what the agent can accomplish within its allocation.
+
+---
+
+<a id="the-continuous-improvement-cycle"></a>
+## The Continuous Improvement Cycle
+
+Devin's effectiveness compounds over time as the team invests in the shared context layer:
+
+```
+Initial Setup
+    ├── Connect repos (Git connections)
+    ├── Configure environment (VM blueprints with runtimes, tools)
+    ├── Add knowledge notes (standards, conventions, domain glossary)
+    ├── Provision secrets (API keys, service account credentials)
+    └── Set up MCP servers (Jira, Datadog, Confluence, etc.)
+        ↓
+First Sessions
+    ├── Devin learns the codebase through context retrieval
+    ├── Team refines prompts based on results
+    └── Playbooks are created for recurring tasks
+        ↓
+Mature Operation
+    ├── Scheduled sessions handle routine maintenance automatically
+    ├── Event-driven triggers respond to incidents and findings
+    ├── Playbooks encode institutional knowledge for consistent execution
+    └── Child agents parallelize large-scale campaigns
+        ↓
+Compounding Value
+    ├── Less manual maintenance overhead → engineers focus on architecture and product
+    ├── Faster incident response → reduced MTTR
+    ├── Consistent quality enforcement → fewer regressions
+    └── Scalable capacity → handle work surges without hiring
+```
+
+Each phase builds on the previous one. The upfront investment in configuration pays dividends across every subsequent session — and the returns grow as playbooks mature and knowledge notes accumulate.
 
 ---
 
@@ -197,3 +253,5 @@ Try starting a lightweight session yourself: use Ask Devin to ask a question abo
 - Multiple sessions can run in parallel safely — each is fully isolated
 - Sessions can be started from many surfaces: web app, Slack, IDE, CLI, API, automations, or issue trackers
 - The PR is the most common output — it includes the implementation, CI verification, and a link back to the session for full context
+- Devin Review provides automated code review on PRs — catching bugs, security issues, and quality problems so human reviewers can focus on design and intent
+- Devin's effectiveness compounds over time: initial setup → first sessions → mature operation → compounding value as playbooks and knowledge accumulate

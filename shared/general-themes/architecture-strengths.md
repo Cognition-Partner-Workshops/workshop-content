@@ -1,63 +1,41 @@
-# Devin's Architecture Strengths
+# Architecture Strengths — Quick Reference
 
-## Clean-Room Execution
+> Comprehensive training: [Solutions Track — Platform Architecture Mastery](../../workshops/training-tracks/solutions/01-platform-architecture-mastery.md)
 
-Each Devin session runs on its own isolated VM — a controlled environment where workers are separated from each other and from systems they have not been granted access to. This isolation model preserves your existing security posture while adding autonomous engineering capacity.
+## Architecture Pillars
 
-- **Security by default** — Devin operates within your existing access control and governance mechanisms. No lateral movement risk between sessions or systems — each worker is scoped to exactly the resources you provision
-- **Service account friendly** — Organizations provision scoped credentials (API keys, PATs, cloud IAM roles) that Devin uses to access exactly the systems it needs. This mirrors how you would onboard any new team member — with least-privilege access
-- **Ephemeral testing environments** — Devin can deploy into throwaway environments (containers, cloud sandboxes) for integration testing, then tear them down. No persistent state leaks between sessions
-- **Reproducible from scratch** — Every session starts from the same base. No "works on my machine" drift. Environment configuration is codified and versioned
+| Pillar | What It Means |
+|--------|--------------|
+| **Clean-Room Execution** | Each session runs on its own isolated VM — no lateral movement, ephemeral by default, reproducible from scratch, service account identity |
+| **Shared Context Layer** | Persistent org-wide configuration flows into every session (see below) |
+| **Context Retrieval** | Devin pulls from indexed repos, DeepWiki, MCP servers, shell, browser, and Knowledge notes — it does not rely on assumptions |
+| **Shell & Tool Access** | Full Linux VM — build locally, run infrastructure tools, connect to remote systems, install what it needs |
+| **Verification Model** | Local testing → CI monitoring → PR as review gate → external system validation |
+| **Team Integration** | Org-wide config, PR-based communication, session continuity, full audit trail |
 
-### Shared Context Layer
+<a id="shared-context-layer"></a>
 
-While each session's runtime is isolated, Devin does not start from scratch. A shared context and configuration layer persists across every session in an organization:
+## Shared Context Layer
 
-- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, language runtimes, tools, and startup scripts baked in. Sessions boot ready to build, not waiting for `npm install`
-- **Knowledge notes** — Persistent, human-curated context (coding standards, architecture decisions, team conventions, domain glossary) that Devin retrieves automatically based on the task at hand
-- **Playbooks** — Repeatable procedures that encode institutional methodology. Every session that invokes a playbook follows the same proven steps — this is what enables you to scale how many workers you kick off, because each one executes the same validated process
-- **MCP servers** — Pre-configured integrations (Jira, Datadog, Confluence, Azure DevOps) available to every session in the org without per-session setup
-- **Secrets** — Scoped credentials tied to a service account identity, not individual user permissions. This separates who the agent is and what it can access from any specific user's identity — credentials flow through the platform's secrets management layer, never embedded in prompts or code
-- **Git connections** — Repository access configured at the org level. All sessions can clone and push to connected repos immediately
+| Component | What It Provides | Configured By |
+|-----------|-----------------|---------------|
+| **Environment blueprints** | Pre-built VM images with dependencies, runtimes, tools | Platform team (once) |
+| **Knowledge notes** | Coding standards, architecture decisions, domain glossary — retrieved automatically | Engineers (iteratively) |
+| **Playbooks** | Repeatable procedures encoding institutional methodology | Senior engineers |
+| **MCP servers** | Pre-configured integrations (Jira, Datadog, Confluence, etc.) | Platform team (once) |
+| **Secrets** | Scoped credentials via platform secrets management — never in prompts or code | Security team |
+| **Git connections** | Org-level repo access — all sessions clone and push immediately | Admin (once) |
 
-This design gives you both: **clean-room isolation for security** and a **shared context layer for productivity**. Each worker VM is sandboxed, but the organization's accumulated knowledge and configuration flow into every session automatically.
-
-## Context Retrieval
-
-Devin retrieves context programmatically before acting — it pulls from indexed codebases, configured integrations, and remote resources rather than relying on assumptions:
-
-| Source | How Devin Uses It |
-|--------|-------------------|
-| **Git repositories** | Clones repos, reads code, understands project structure, examines history |
-| **DeepWiki** | Auto-generated architectural documentation for any indexed repo — Devin reads this to understand systems it has never seen before |
-| **MCP servers** | Model Context Protocol lets Devin call external tools as if they were local: query Jira tickets, read Datadog logs, search Confluence, browse Azure DevOps boards |
-| **Shell access** | Devin has a full Linux shell. It can `curl` APIs, query databases, run CLI tools, install packages, and execute arbitrary commands |
-| **Browser** | Devin can navigate web pages, interact with UIs, and extract information from web-based tools |
-| **Knowledge notes** | Persistent, human-curated context (coding standards, architecture decisions, team conventions) that Devin retrieves automatically based on the task at hand |
-
-## Shell and Tool Access
-
-Devin's VM is a real Linux machine. This means:
-
-- **Build locally** — `npm install && npm test`, `mvn clean verify`, `dotnet build`, `cargo test` — Devin runs your project's build and test suite exactly as a developer would
-- **Run infrastructure tools** — `terraform plan`, `aws cloudformation deploy`, `kubectl apply`, `docker compose up` — Devin provisions and validates infrastructure
-- **Connect to remote systems** — SSH tunnels, VPN connections, database clients, API calls — Devin reaches private resources when given the right credentials
-- **Install what it needs** — Devin installs language runtimes, CLI tools, and dependencies on the fly. No pre-configured toolchain required (though you can configure persistent environments for faster startup)
+**Design insight:** Clean-room isolation for security + shared context layer for productivity. Each VM is sandboxed, but org knowledge flows in automatically.
 
 ## Verification Model
 
-Devin is designed to verify its own work:
+1. **Local testing** — unit tests, integration tests, linting, type checking on the session VM
+2. **CI monitoring** — watches CI checks, reads failure logs, pushes fixes, re-checks (multiple iterations)
+3. **PR as review gate** — Devin never merges its own work; humans inspect the diff
+4. **External validation** — connects to staging environments or external test systems
 
-1. **Local testing** — Devin runs unit tests, integration tests, linting, and type checking on its VM before opening a PR
-2. **CI monitoring** — After pushing, Devin watches CI checks and iterates if they fail. It reads CI logs, diagnoses failures, pushes fixes, and re-checks — up to multiple iterations
-3. **PR as the review gate** — Devin never merges its own work. It opens a PR, and humans (or Devin Review) inspect the diff before merging. The PR is the handoff point
-4. **External system validation** — Devin can connect to runners, staging environments, or external test systems to validate integration-level outcomes
-
-## Team Integration
-
-Devin operates as a team member, not a black box:
-
-- **Organizational configuration** — The shared context layer (environment configs, knowledge, playbooks, MCP servers, secrets, Git connections) applies to every session in the organization. One engineer configures it; every subsequent session benefits. See [Clean-Room Execution → Shared Context Layer](#shared-context-layer) above
-- **PR-based communication** — Multiple team members can comment on the same Devin PR. Devin reads all comments and responds to feedback from any reviewer
-- **Session continuity** — Devin hibernates its VM after inactivity and resumes from the hibernated state when new feedback arrives. Context is preserved across the full lifecycle of a task
-- **Audit trail** — Every session has a full log of actions, decisions, and outputs. Nothing is opaque
+## Key Rules
+- Security by default — no lateral movement between sessions, scoped credentials, ephemeral VMs
+- The shared context layer is a one-time investment — one engineer configures, every session benefits
+- The merge decision is always human — Devin proposes, you approve

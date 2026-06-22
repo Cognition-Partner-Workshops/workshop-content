@@ -1,92 +1,63 @@
-# Platform Capabilities
+# Platform Capabilities — Quick Reference
 
-Devin is more than a single-session code generator. It is a team-based engineering platform with scheduling, orchestration, review, and collaboration features that compound in value over time.
+> Comprehensive training: [Foundations — Sessions](../../workshops/foundations/06-devin-sessions.md) | [Foundations — Automations](../../workshops/foundations/08-automations.md) | [Foundations — Multi-Agent Workers](../../workshops/foundations/09-multi-agent-workers.md)
 
-## Scheduled Sessions
+## Feature Summary
 
-Devin sessions can run on a recurring schedule — daily, weekly, or custom cron expressions — to perform proactive operations and maintenance without human initiation.
+| Capability | What It Does | Key Detail |
+|-----------|-------------|------------|
+| **Scheduled Sessions** | Recurring tasks on cron (daily, weekly, custom) | Dep bumps, license audits, dead code detection, doc refresh, security scanning, coverage monitoring |
+| **Playbooks** | Reusable step-by-step procedures encoding proven methodology | Repeatable, versionable, shareable, composable across teams |
+| **Child Agents** | Parent breaks large task into N independent units, spawns one child per target | Each child: own VM, own branch, own PR. Failures isolated |
+| **Team-Based Operation** | Org-wide shared context layer configured once, inherited by every session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections, Automations |
+| **Devin Review** | Proactive code review on new PRs — bugs, security, quality | Findings as PR comments; can auto-open fix PRs; configurable rules; can block merge via status checks |
 
-**Use cases:**
-- **Dependency version bumps** — Weekly scan for outdated packages, open PRs with bumped versions and passing tests
-- **License compliance audits** — Monthly check that all dependencies meet organizational license policies
-- **Dead code detection** — Periodic analysis to identify unused imports, unreachable functions, and deprecated API usage
-- **Documentation freshness** — After code merges, update READMEs, API docs, and changelogs automatically
-- **Security scanning** — Scheduled SAST/SCA runs that remediate findings before they accumulate
-- **Test coverage monitoring** — Weekly reports on coverage trends, with auto-generated tests for newly uncovered code
+<a id="scheduled-sessions"></a>
 
-**Configuration:** Scheduled sessions are configured in the Devin UI or via the API. Each schedule specifies the prompt, target repository, and recurrence pattern.
+### Scheduled Sessions
 
-## Playbooks
+See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/08-automations.md).
 
-Playbooks are reusable, step-by-step procedures that encode a proven methodology. When Devin follows a playbook, every session applies the same process — regardless of which team member triggers it.
+<a id="playbooks"></a>
 
-**Characteristics:**
-- **Repeatable** — The same playbook produces consistent results across different repos and teams
-- **Versionable** — Playbooks evolve over time as the team refines the methodology
-- **Shareable** — One engineer writes the playbook; the entire team benefits
-- **Composable** — Playbooks can reference other playbooks for multi-phase workflows
+### Playbooks
 
-**Examples:**
-- Framework upgrade playbook: check compatibility → update dependencies → fix breaking changes → run tests → update docs
-- Incident response playbook: query logs → identify root cause → implement fix → verify → update runbook
-- Microservice extraction playbook: identify bounded context → extract interfaces → create new service → migrate data → set up CI/CD
+See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/08-automations.md).
 
-## Child Agents (Divide and Conquer)
+<a id="child-agents-divide-and-conquer"></a>
 
-Devin can create child sessions to parallelize work. A parent agent breaks a large task into independent units and spawns a child agent for each one.
+### Child Agents
 
-**How it works:**
-1. Parent agent analyzes the scope (e.g., "50 microservices need Spring Boot 3 upgrade")
-2. Parent creates a playbook encoding the upgrade procedure
-3. Parent spawns child agents — one per microservice — each following the same playbook
-4. Children work in parallel on their own VMs, each opening a PR
-5. Parent monitors progress and handles failures or escalations
+See table above. Comprehensive training: [Foundations — Multi-Agent Workers](../../workshops/foundations/09-multi-agent-workers.md).
 
-**Scale:** This pattern enables work that would otherwise require a dedicated team. Each child agent is independent — its own VM, its own branch, its own PR. Failures in one child do not affect others.
+<a id="devin-review"></a>
 
-## Team-Based Operation
+### Devin Review
 
-Devin is not an individual user's AI assistant — it is a team-based coworker agent that operates as a shared resource with organizational context. This distinction matters: configuration, knowledge, and integrations belong to the team, not to any single user's session.
-
-**Shared configuration (the context layer):**
-- **Environment configurations (VM blueprints)** — Pre-built machine images with dependencies, runtimes, and tools baked in. Sessions boot ready to build
-- **Knowledge notes** — Persistent, human-curated context (coding standards, architecture decisions, conventions) retrieved automatically based on the task
-- **Playbooks** — Repeatable procedures encoding institutional methodology, shared across the org
-- **MCP servers** — Pre-configured integrations (Jira, Datadog, Confluence, Azure DevOps) available to every session without per-session setup
-- **Secrets** — Scoped credentials injected into the environment at session start via the platform's secrets management layer
-- **Git connections** — Repository access configured at the org level. All sessions can clone and push to connected repos
-- **Automations** — Webhooks, scheduled sessions, and trigger rules are organization-wide. Every team member's events route through the same automation layer
-
-This shared context layer means that configuring Devin is a one-time investment: one engineer sets up the environment, knowledge, and integrations, and every subsequent session — from any team member — inherits that configuration automatically.
-
-**Multi-user collaboration:**
-- Multiple team members can comment on the same Devin-created PR
-- Devin reads and responds to feedback from any reviewer — not just the session creator
-- Teams can share playbooks, knowledge notes, and session templates
-
-## Devin Review
-
-Devin Review is a proactive code review capability that analyzes new pull requests for bugs, security issues, and quality problems.
-
-**Capabilities:**
-- **Bug detection** — Finds logic errors, null pointer risks, race conditions, and edge cases in new diffs
-- **PR digestion** — Summarizes large PRs into readable overviews, highlighting the most important changes and potential risks
-- **Proactive remediation** — When Devin Review finds a bug, it can automatically open a fix PR rather than just commenting
-- **Configurable rules** — Teams can customize what Devin Review checks for, adjusting sensitivity and focus areas
-
-**Workflow integration:**
-- Devin Review runs automatically on new PRs (configurable per repo or org)
-- Findings appear as PR comments, indistinguishable from human review feedback
-- Developers respond to Devin Review comments just as they would to any reviewer
-- Critical findings can block merge via required status checks
+See table above. Comprehensive training: [Foundations — Sessions § Devin Review](../../workshops/foundations/06-devin-sessions.md#devin-review).
 
 ## Session Lifecycle
 
-Devin sessions have a deliberate lifecycle optimized for efficiency:
+```
+Active (executing, costs ACUs)
+  → Waiting for feedback (PR opened or question asked)
+    → Hibernated (VM snapshot stored, compute released, no cost)
+      → Resumed (feedback arrives, full context restored instantly)
+```
 
-1. **Active** — Devin is executing tasks, running builds, writing code
-2. **Waiting for feedback** — Devin has opened a PR or asked a question. It monitors for PR comments and CI check results
-3. **Hibernated** — After a period of inactivity, Devin hibernates its VM. The session state is preserved but compute resources are released
-4. **Resumed** — When new feedback arrives (PR comment, CI result, user message), Devin resumes from the hibernated state with full context. No work is lost
+## Shared Context Layer (Configure Once)
 
-This lifecycle means Devin does not waste compute while waiting for human review. It acts immediately when feedback arrives and sleeps efficiently in between. Long-running tasks — multi-day code reviews, back-and-forth iterations, waiting on a blocked dependency — are natural. The session persists across the entire lifecycle of a task.
+| Component | Purpose |
+|-----------|---------|
+| Environment blueprints | Pre-built VM images — sessions boot ready to build |
+| Knowledge notes | Coding standards, architecture decisions, conventions — retrieved automatically |
+| Playbooks | Institutional methodology — consistent execution across sessions |
+| MCP servers | Pre-configured integrations (Jira, Datadog, Confluence, etc.) |
+| Secrets | Scoped credentials injected at session start |
+| Git connections | Org-level repo access for all sessions |
+
+## Key Rules
+- Devin never merges its own PRs — the merge decision is always human
+- Hibernation means cost tracks active work, not wall-clock time
+- Child agents scale linearly — one becomes N, each producing independent PRs
+- The shared context layer is a one-time investment that compounds across every session
