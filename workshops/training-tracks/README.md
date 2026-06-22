@@ -9,7 +9,7 @@ workshops/
 ├── foundations/          ← Shared base (everyone completes this first)
 ├── training-tracks/
 │   ├── sales/           ← Operating model, cost structures, engagement capture
-│   ├── solutions/       ← System design, SDLC integration, live walkthroughs
+│   ├── architect/       ← System design, SDLC integration, live walkthroughs
 │   └── delivery/        ← Tactical platform usage, prompt engineering, orchestration
 ├── general/             ← Existing hands-on labs (cross-track reference material)
 ├── specialties/         ← Future: domain-specific deep-dives (Level 3)
@@ -23,7 +23,7 @@ workshops/
 | Level | Content | Audience | Status |
 |-------|---------|----------|--------|
 | **Level 1: Foundations** | `workshops/foundations/` | All personas | Exists |
-| **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,delivery}/` | Role-specific | Planned (this document) |
+| **Level 2: Tracks** | `workshops/training-tracks/{sales,architect,delivery}/` | Role-specific | Planned (this document) |
 | **Level 3: Specialties** | `workshops/specialties/` | Domain experts | Future iteration (see [below](#level-3-specialties)) |
 
 ---
@@ -32,7 +32,7 @@ workshops/
 ## Table of Contents
 
 - [Track: Sales](#track-sales)
-- [Track: Solutions](#track-solutions)
+- [Track: Architect](#track-architect)
 - [Track: Delivery](#track-delivery)
 - [Content Modalities](#content-modalities)
 - [Level 3 Specialties (Future)](#level-3-specialties)
@@ -75,8 +75,8 @@ workshops/
 
 ---
 
-<a id="track-solutions"></a>
-## Track: Solutions
+<a id="track-architect"></a>
+## Track: Architect
 
 **Persona:** Solutions engineers and architects at SI partner firms who design systems and operational processes within the SDLC, and who need to demonstrate the full capabilities of Devin in client-facing simulated environments.
 
@@ -155,7 +155,7 @@ workshops/
 
 Each track uses a mix of modalities. The table below shows the target distribution:
 
-| Modality | Sales | Solutions | Delivery | Exists Today? |
+| Modality | Sales | Architect | Delivery | Exists Today? |
 |----------|-------|-----------|----------|---------------|
 | Reading material | 30% | 20% | 25% | Yes (heavy) |
 | Video (recorded) | 15% | 20% | 10% | No |
@@ -193,7 +193,7 @@ workshops/specialties/
 | Security Automation Specialist | Delivery | Event-driven SAST, compliance remediation at scale, scan-fix-verify loops |
 | Modernization Specialist | Delivery | COBOL→Java, .NET cloud-native, framework upgrades, platform decomposition |
 | Data Migration Specialist | Delivery | SAS→Snowflake/Databricks, ETL translation, reconciliation harness design |
-| Enterprise Integration Architect | Solutions | MCP server design, multi-tool orchestration, network connectivity patterns |
+| Enterprise Integration Architect | Architect | MCP server design, multi-tool orchestration, network connectivity patterns |
 
 These will be built out once Level 2 tracks are established and validated.
 
@@ -206,13 +206,13 @@ These will be built out once Level 2 tracks are established and validated.
 |-----------------|----------------------|
 | `workshops/foundations/` | Level 1 prerequisite for all tracks |
 | `shared/general-themes/value-narratives.md` | Primary source material for Sales track |
-| `shared/general-themes/design-patterns-for-devin.md` | Primary source material for Solutions track |
-| `shared/general-themes/platform-capabilities.md` | Shared reference for Solutions and Delivery |
-| `shared/general-themes/architecture-strengths.md` | Core knowledge for Solutions track |
+| `shared/general-themes/design-patterns-for-devin.md` | Primary source material for Architect track |
+| `shared/general-themes/platform-capabilities.md` | Shared reference for Architect and Delivery |
+| `shared/general-themes/architecture-strengths.md` | Core knowledge for Architect track |
 | `shared/general-themes/when-to-use-devin.md` | Core knowledge for Delivery track |
 | `shared/general-themes/cloud-vs-local-agents.md` | Core knowledge for Delivery track |
 | `shared/general-themes/collaboration-model.md` | Shared reference for all tracks |
 | `workshops/general/` | Practice labs for Delivery track |
-| `demos/` | Walkthrough scripts for Solutions track |
+| `demos/` | Walkthrough scripts for Architect track |
 | `workshops/specialties/` | Future Level 3 deep-dives |
 | `labs/` | Building blocks composed into walkthroughs and challenges |
