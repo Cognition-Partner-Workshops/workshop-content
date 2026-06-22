@@ -7,7 +7,7 @@ This repo is the **attendee-facing** content hub for Devin hands-on workshops. I
 - `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
 - `workshops/` — Structured learning paths:
   - `workshops/foundations/` — Level 1: Concepts (`concepts/`) + product features (`product/cloud/`, `product/local/`)
-  - `workshops/tracks/` — Level 2: Role-specific training (sales, solutions, delivery)
+  - `workshops/training-tracks/` — Level 2: Role-specific training (sales, solutions, engineering)
   - `workshops/by-tech-domain/` — Level 3: Deep-dive labs by technology area (modernization, security, AI)
   - `workshops/by-tech-role/` — Level 3: Deep-dive labs by job function (development, digital engineering, QE)
   - `workshops/general/` — Broad hands-on tour

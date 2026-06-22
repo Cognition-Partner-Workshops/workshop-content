@@ -2,7 +2,7 @@
 
 Hands-on workshops organized by job function. Each workshop bundles modules into a structured sequence covering the engineering concerns most relevant to that role.
 
-**Prerequisite:** [Foundations](../foundations/) (Level 1) and the relevant [Training Track](../tracks/) (Level 2)
+**Prerequisite:** [Foundations](../foundations/) (Level 1) and the relevant [Training Track](../training-tracks/) (Level 2)
 
 ## Available Workshops
 

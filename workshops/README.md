@@ -7,7 +7,7 @@ Curated learning paths — reading material, training tracks, and hands-on lab s
 ```
 Level 1: foundations/        ← Everyone starts here (concepts + product features)
     ↓
-Level 2: tracks/             ← Role-specific training (sales / solutions / delivery)
+Level 2: training-tracks/    ← Role-specific training (sales / solutions / engineering)
     ↓
 Level 3: by-tech-domain/    ← Deep-dives by technology area
          by-tech-role/      ← Deep-dives by job function
@@ -25,10 +25,10 @@ workshops/
 │   └── product/             ← Feature tours organized by cloud / local
 │       ├── cloud/           ← Devin Cloud, DeepWiki, Sessions, Automations, Multi-Agent
 │       └── local/           ← Devin Desktop, Devin CLI
-├── tracks/                  ← Level 2: Role-specific training
+├── training-tracks/         ← Level 2: Role-specific training
 │   ├── sales/               ← Operating model, cost structures, engagement capture
 │   ├── solutions/           ← System design, SDLC integration, live walkthroughs
-│   └── delivery/            ← Tactical platform usage, prompt engineering, orchestration
+│   └── engineering/         ← Tactical platform usage, prompt engineering, orchestration
 ├── general/                 ← Hands-on broad tour (security, modernization, feature dev)
 ├── otterworks/              ← Advanced monorepo hands-on (300-level)
 ├── by-tech-domain/          ← Level 3: Deep-dives by technology area
@@ -66,13 +66,13 @@ Everyone starts here. Covers concepts (cloud vs. local, event-driven reactions, 
 
 ## Level 2: Training Tracks
 
-Role-specific training that builds on Foundations. See the [Tracks README](tracks/) for the full progression model.
+Role-specific training that builds on Foundations. See the [Tracks README](training-tracks/) for the full progression model.
 
 | Track | Persona | Duration |
 |-------|---------|----------|
-| [Sales](tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
-| [Solutions](tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
-| [Delivery](tracks/delivery/) | Engineers, Developers | 6-8 hours |
+| [Sales](training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
+| [Solutions](training-tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
+| [Engineering](training-tracks/engineering/) | Engineers, Developers | 6-8 hours |
 
 ---
 

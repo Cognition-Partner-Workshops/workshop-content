@@ -68,9 +68,9 @@ Once you've built this foundation, the next step depends on your role:
 
 | Next Step | Who It's For | What You'll Do |
 |-----------|-------------|---------------|
-| [Sales Track](../tracks/sales/) | Sales Engineers, AEs, Practice Leads | Operating model, economics, engagement scoping |
-| [Solutions Track](../tracks/solutions/) | Solutions Engineers, Architects | Platform architecture, SDLC design, live walkthroughs |
-| [Delivery Track](../tracks/delivery/) | Engineers, Developers | Prompt engineering, orchestration, troubleshooting |
+| [Sales Track](../training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | Operating model, economics, engagement scoping |
+| [Solutions Track](../training-tracks/solutions/) | Solutions Engineers, Architects | Platform architecture, SDLC design, live walkthroughs |
+| [Engineering Track](../training-tracks/engineering/) | Engineers, Developers | Prompt engineering, orchestration, troubleshooting |
 
 After completing your track, dive into hands-on workshops:
 

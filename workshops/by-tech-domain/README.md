@@ -2,7 +2,7 @@
 
 Deep-dive workshops organized by technology area. Each workshop bundles modules into a structured sequence targeting a specific engineering challenge.
 
-**Prerequisite:** [Foundations](../foundations/) (Level 1) and the relevant [Training Track](../tracks/) (Level 2)
+**Prerequisite:** [Foundations](../foundations/) (Level 1) and the relevant [Training Track](../training-tracks/) (Level 2)
 
 ## Available Workshops
 

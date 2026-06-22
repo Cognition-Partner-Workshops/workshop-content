@@ -21,10 +21,10 @@ workshop-metadata/
 │   ├── foundations/           ← Level 1: concepts + product features (start here)
 │   │   ├── concepts/         ← cloud vs. local, event-driven, orchestration, task selection
 │   │   └── product/          ← feature tours by cloud / local
-│   ├── tracks/               ← Level 2: role-specific training
+│   ├── training-tracks/      ← Level 2: role-specific training
 │   │   ├── sales/            ← operating model, cost structures, engagement capture
 │   │   ├── solutions/        ← system design, SDLC integration, live walkthroughs
-│   │   └── delivery/         ← prompt engineering, orchestration, troubleshooting
+│   │   └── engineering/      ← prompt engineering, orchestration, troubleshooting
 │   ├── general/              ← hands-on broad tour (start here for labs)
 │   ├── otterworks/           ← advanced monorepo deep-dive (300-level)
 │   ├── by-tech-domain/       ← Level 3: deep dives by technology area
@@ -41,7 +41,7 @@ workshop-metadata/
 ```
 Level 1: workshops/foundations/        ← Everyone starts here
     ↓
-Level 2: workshops/tracks/             ← Sales / Solutions / Delivery
+Level 2: workshops/training-tracks/    ← Sales / Solutions / Engineering
     ↓
 Level 3: workshops/by-tech-domain/     ← Modernization, Security, AI & Automation
          workshops/by-tech-role/       ← Development, Digital Engineering, QE
@@ -87,9 +87,9 @@ Role-specific training that builds on Foundations.
 
 | Track | Persona | Duration |
 |-------|---------|----------|
-| [Sales](workshops/tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
-| [Solutions](workshops/tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
-| [Delivery](workshops/tracks/delivery/) | Engineers, Developers | 6-8 hours |
+| [Sales](workshops/training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
+| [Solutions](workshops/training-tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
+| [Engineering](workshops/training-tracks/engineering/) | Engineers, Developers | 6-8 hours |
 
 #### By Technical Domain
 
