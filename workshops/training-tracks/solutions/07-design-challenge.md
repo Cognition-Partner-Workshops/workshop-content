@@ -94,7 +94,7 @@ Safeguards: 1 invocation/alert, 30 ACU/session,
 |-----------|--------------|
 | **Git connections** | GitHub org (all 80 service repos + shared libraries) |
 | **Environment** | Java 21, Maven, Node.js 20, Docker, kubectl, Helm, SonarQube CLI, Trivy |
-| **DeepWiki** | Auto-indexed for all 80 service repos — provides architecture context for incident investigation and upgrade compatibility |
+| **DeepWiki** | Indexed for 80 service repos — typically provides architecture context for incident investigation and upgrade compatibility (coverage depends on repo structure) |
 | **Knowledge** | Java coding standards, Spring Boot 3 migration patterns, error handling conventions, microservice boundaries, API versioning policy |
 | **Playbooks** | `!spring-boot-upgrade` (upgrade procedure), `!security-remediate` (scan-fix-verify), `!incident-triage` (investigate-fix-escalate) |
 | **MCP servers** | Jira (tickets), Datadog (logs/traces), Confluence (runbooks), PagerDuty (incident context) |
