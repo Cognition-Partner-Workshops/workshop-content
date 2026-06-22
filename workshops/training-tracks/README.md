@@ -60,7 +60,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `training-tracks/sales/03-value-narrative-selection.md`; quick-reference: `shared/general-themes/value-narratives.md`)
+- Reading material (reference: `workshops/training-tracks/sales/03-value-narrative-selection.md`; quick-reference: `shared/general-themes/value-narratives.md`)
 - Knowledge checks (multiple choice/response after each section)
 - Case study exercises (estimate an engagement, select a narrative, scope a campaign)
 - ROI estimation worksheets
@@ -95,7 +95,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `training-tracks/solutions/01-platform-architecture-mastery.md`, `02-sdlc-integration-design.md`, `04-automation-topology-design.md`; quick-reference: `shared/general-themes/`)
+- Reading material (reference: `workshops/training-tracks/solutions/01-platform-architecture-mastery.md`, `02-sdlc-integration-design.md`, `04-automation-topology-design.md`; quick-reference: `shared/general-themes/`)
 - Knowledge checks (architecture questions, "which pattern for this scenario?")
 - Design challenges (design an automation topology, configure an org)
 - Live walkthrough delivery in a simulated environment (uses `demos/` content as the script)
