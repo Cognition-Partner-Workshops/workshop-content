@@ -1,5 +1,19 @@
 # Working with Agent Output
 
+<a id="toc"></a>
+## Table of Contents
+
+- [What to Look For](#what-to-look-for)
+- [How to Write Effective Feedback Comments](#how-to-write-effective-feedback-comments)
+- [Iteration Patterns](#iteration-patterns)
+- [The Review Feedback Loop in Practice](#the-review-feedback-loop-in-practice)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="what-to-look-for"></a>
+
 Reviewing AI-generated code is a skill that differs from reviewing human-written code. This section covers what to look for, how to write effective feedback, and when to iterate vs. start over.
 
 ## What to Look For
@@ -13,6 +27,7 @@ When reviewing a Devin PR, evaluate across four dimensions:
 | **Completeness** | Are all acceptance criteria met? Are there missing files, migrations, or documentation updates? | Prompt asked for tests but none were written, migration script missing, API docs not updated |
 | **Style** | Does the code follow existing conventions? Are imports organized? Is naming consistent? | Different naming convention than the rest of the codebase, unnecessary new dependencies, patterns that contradict existing architecture |
 
+<a id="how-to-write-effective-feedback-comments"></a>
 ## How to Write Effective Feedback Comments
 
 Devin reads PR comments like a human engineer would. The better your feedback, the better the response.
@@ -34,6 +49,7 @@ Devin reads PR comments like a human engineer would. The better your feedback, t
 
 **Why specificity matters:** Devin responds to what you write. A vague comment like "fix the error handling" forces Devin to guess what you mean. A specific comment with the exact function, expected behavior, and verification steps lets Devin act precisely.
 
+<a id="iteration-patterns"></a>
 ## Iteration Patterns
 
 | Situation | Action |
@@ -58,6 +74,7 @@ Is the approach fundamentally correct?
              because of Y. Instead, use Z approach."
 ```
 
+<a id="the-review-feedback-loop-in-practice"></a>
 ## The Review Feedback Loop in Practice
 
 In production, the typical flow is:
@@ -77,6 +94,7 @@ For the full collaboration model, see [Collaboration Model](../../../shared/gene
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 6.1**
@@ -104,6 +122,7 @@ D) Ask Devin to explain its reasoning
 
 *Answer: B — After 3+ rounds without convergence, the prompt or approach may need fundamental adjustment. Starting fresh with accumulated context is typically more efficient than continuing to iterate.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Review AI-generated PRs across four dimensions: correctness, security, completeness, style

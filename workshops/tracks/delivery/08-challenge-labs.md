@@ -1,5 +1,18 @@
 # Challenge-Mode Labs
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Lab 1: Extract a Microservice from a Monolith](#lab-1-extract-a-microservice-from-a-monolith)
+- [Lab 2: Remediate SAST Findings Across a Repository](#lab-2-remediate-sast-findings-across-a-repository)
+- [Lab 3: Set Up a Scheduled Dependency Upgrade](#lab-3-set-up-a-scheduled-dependency-upgrade)
+- [Lab 4: Translate a Service from Java to Python](#lab-4-translate-a-service-from-java-to-python)
+- [Lab 5: Design an Event-Driven SAST Pipeline](#lab-5-design-an-event-driven-sast-pipeline)
+
+---
+
+<a id="lab-1-extract-a-microservice-from-a-monolith"></a>
+
 These labs require you to write your own prompts from scratch. No copy-paste is provided. For each scenario, read the description, apply the prompt engineering principles from [Section 2](02-prompt-engineering.md), and write a complete prompt.
 
 ## Lab 1: Extract a Microservice from a Monolith
@@ -64,6 +77,7 @@ the integration test suite
 
 ---
 
+<a id="lab-2-remediate-sast-findings-across-a-repository"></a>
 ## Lab 2: Remediate SAST Findings Across a Repository
 
 **Scenario:** Your security team has run a SonarQube scan against your organization's main API gateway repository. The scan identified 47 findings: 3 CRITICAL (SQL injection), 12 HIGH (XSS, path traversal), and 32 MEDIUM (hardcoded secrets, weak crypto). You need to remediate the CRITICAL and HIGH findings and re-scan to verify.
@@ -116,6 +130,7 @@ After remediating:
 
 ---
 
+<a id="lab-3-set-up-a-scheduled-dependency-upgrade"></a>
 ## Lab 3: Set Up a Scheduled Dependency Upgrade
 
 **Scenario:** Your team manages 8 Node.js microservices. Dependencies are currently 6-18 months behind because no one has time for manual bumps. You want to set up a recurring Devin session that automatically bumps dependencies weekly, verifies the build, and opens PRs for human review.
@@ -161,6 +176,7 @@ Title the PR: "chore: weekly dependency bump — [date]"
 
 ---
 
+<a id="lab-4-translate-a-service-from-java-to-python"></a>
 ## Lab 4: Translate a Service from Java to Python
 
 **Scenario:** Your organization is migrating away from a legacy Java codebase to Python. The first service to migrate is the Notification service, which has 4 REST endpoints, uses JPA for database access, and sends emails via SMTP. You need the Python version to be a drop-in replacement with identical API contracts.
@@ -220,6 +236,7 @@ Create MIGRATION_NOTES.md documenting:
 
 ---
 
+<a id="lab-5-design-an-event-driven-sast-pipeline"></a>
 ## Lab 5: Design an Event-Driven SAST Pipeline
 
 **Scenario:** Your security team wants Devin to automatically remediate security findings whenever a SAST scan completes. The scan runs in CI after every merge to `main`. When findings above a threshold are detected, Devin should automatically create a session to remediate them.

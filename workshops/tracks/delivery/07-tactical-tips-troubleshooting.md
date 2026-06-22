@@ -1,5 +1,18 @@
 # Tactical Tips & Troubleshooting
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Common Failure Modes](#common-failure-modes)
+- [Knowledge Notes That Improve Success Rate](#knowledge-notes-that-improve-success-rate)
+- [Playbook Design Principles](#playbook-design-principles)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="common-failure-modes"></a>
+
 This section covers common failure modes and how to resolve them, plus the organizational practices (Knowledge notes, Playbooks) that improve Devin's success rate over time.
 
 ## Common Failure Modes
@@ -48,6 +61,7 @@ This section covers common failure modes and how to resolve them, plus the organ
 2. **Leave a PR comment** explaining the infrastructure issue: "The Docker pull rate limit is an infrastructure issue. Re-run CI to get past it."
 3. If the flaky test is a recurring problem, consider creating a **Knowledge note** documenting it: "The `test_payment_webhook` test is flaky due to external API timeout. Re-run CI if it fails in isolation."
 
+<a id="knowledge-notes-that-improve-success-rate"></a>
 ## Knowledge Notes That Improve Success Rate
 
 Knowledge notes are persistent context items that Devin retrieves automatically when relevant. Investing in the right Knowledge notes compounds over time.
@@ -62,6 +76,7 @@ Knowledge notes are persistent context items that Devin retrieves automatically 
 | **Known issues** | "The `payment-webhook` test is flaky — re-run if it fails in isolation", "Docker builds require `--platform linux/amd64` on M1 Macs" | Devin does not waste time debugging known issues |
 | **Dependency preferences** | "Use `axios` for HTTP, not `fetch`", "Use `date-fns` not `moment`", "Prefer `pnpm` over `npm`" | Devin uses your preferred libraries without being told each time |
 
+<a id="playbook-design-principles"></a>
 ## Playbook Design Principles
 
 Playbooks encode a proven methodology into a repeatable procedure. When Devin follows a Playbook, every session applies the same process.
@@ -88,6 +103,7 @@ Playbooks encode a proven methodology into a repeatable procedure. When Devin fo
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 7.1**
@@ -126,6 +142,7 @@ D) Approve the PR and open a follow-up session for the correct implementation
 
 *Answer: B — When the fundamental task is misunderstood, iterating through PR comments is inefficient. Start a new session with the missing context that caused the misunderstanding. Include negative constraints if needed: "Do NOT change the API contract."*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Intervene early when Devin loops — 3+ attempts at the same fix means a different approach is needed

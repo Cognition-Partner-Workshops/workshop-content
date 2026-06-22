@@ -1,5 +1,19 @@
 # Prompt Engineering for Agents
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Components of a Good Prompt](#components-of-a-good-prompt)
+- [Progressive Examples: Bad to Great](#progressive-examples-bad-to-great)
+- [Common Anti-Patterns](#common-anti-patterns)
+- [How Prompt Quality Correlates with Output Quality](#how-prompt-quality-correlates-with-output-quality)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="components-of-a-good-prompt"></a>
+
 The quality of Devin's output correlates directly with the quality of your prompt. This section teaches you to write prompts that produce high-quality results on the first attempt.
 
 ## Components of a Good Prompt
@@ -17,6 +31,7 @@ Every effective prompt contains these elements:
 
 Not every prompt needs all six — a simple bug fix might only need the repo, the bug description, and the test file. But for complex tasks, including all six dramatically improves first-attempt success rate.
 
+<a id="progressive-examples-bad-to-great"></a>
 ## Progressive Examples: Bad to Great
 
 Here is the same task prompted at four quality levels. Notice how each version adds specificity that reduces ambiguity.
@@ -91,6 +106,7 @@ Verify by running: pytest tests/test_user_validator.py -v
 
 ---
 
+<a id="common-anti-patterns"></a>
 ## Common Anti-Patterns
 
 | Anti-Pattern | Why It Fails | Fix |
@@ -102,6 +118,7 @@ Verify by running: pytest tests/test_user_validator.py -v
 | **No repo specified** — "Fix the login bug" | Devin needs to know which codebase to clone and work in. | Always include the repository name: "Fix the login bug in timesheet-app" |
 | **Including 'Open a PR'** — "Fix the bug and open a PR" | Devin opens PRs by default. Including this wastes prompt space and adds no value. | Remove it. Devin will open a PR automatically. |
 
+<a id="how-prompt-quality-correlates-with-output-quality"></a>
 ## How Prompt Quality Correlates with Output Quality
 
 ```
@@ -119,6 +136,7 @@ For the foundational framework on what makes a good agent task, see the [Prompt 
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 2.1**
@@ -157,6 +175,7 @@ D) Scope too large
 
 *Answer: C — If you already know the exact line change, you might as well make it yourself. Instead, describe the outcome: "The /api/users endpoint returns 500 for validation errors; it should return 400 with a descriptive error message." Let Devin find the right approach.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Good prompts include: repo name, file paths, expected behavior, acceptance criteria, verification mechanism, and constraints

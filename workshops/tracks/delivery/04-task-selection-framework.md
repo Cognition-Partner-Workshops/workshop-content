@@ -1,5 +1,18 @@
 # The Task Selection Framework
 
+<a id="toc"></a>
+## Table of Contents
+
+- [The Three Tests](#the-three-tests)
+- [Gray-Zone Decomposition](#gray-zone-decomposition)
+- [Task Classification Practice](#task-classification-practice)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="the-three-tests"></a>
+
 Knowing *what* to give Devin is as important as knowing *how* to prompt it. This section turns the [Foundations framework](../../foundations/04-what-to-give-ai.md) into a daily practice.
 
 ## The Three Tests
@@ -38,6 +51,7 @@ If you cannot articulate what "done" looks like in writing, the task is not read
 | **Judgment at decision points** | Refactoring, new architecture | Gray-zone decomposition (see below) |
 | **Judgment throughout** | Novel architecture design, UX decisions, politically sensitive changes | Keep for humans; use Devin for research |
 
+<a id="gray-zone-decomposition"></a>
 ## Gray-Zone Decomposition
 
 Most real-world tasks are not purely "give to Devin" or "keep for humans." They live in the gray zone. The pattern for handling them:
@@ -63,6 +77,7 @@ Stage 4: Review (you)
 - Stage 3 (agent): *"Extract methods X, Y, Z from order-service into a new order-service-v2 Spring Boot app. Use HTTP for inter-service communication. Shared tables should be accessed through the monolith's API until data migration is complete. All existing tests must pass."*
 - Stage 4 (you): Review the PR. Leave comments on interface design, error handling, or data consistency concerns.
 
+<a id="task-classification-practice"></a>
 ## Task Classification Practice
 
 Classify each scenario. For gray-zone tasks, identify the decomposition stages.
@@ -84,6 +99,7 @@ For the complete framework, see [What to Give AI vs. Not](../../foundations/04-w
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 4.1**
@@ -113,6 +129,7 @@ D) It involves many files
 
 *Answer: B — The task has clear success criteria (re-scan passes), is repetitive across targets (same patch, different repos), and can be parallelized with child agents — one per microservice.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Run every task through three tests before delegating: verifiability, clarity, judgment

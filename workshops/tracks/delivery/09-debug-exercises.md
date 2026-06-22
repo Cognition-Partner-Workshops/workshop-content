@@ -1,5 +1,16 @@
 # Debug Exercises
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Debug Exercise 1: The Infinite Loop](#debug-exercise-1-the-infinite-loop)
+- [Debug Exercise 2: The Wrong Fix](#debug-exercise-2-the-wrong-fix)
+- [Debug Exercise 3: The Missing Environment](#debug-exercise-3-the-missing-environment)
+
+---
+
+<a id="debug-exercise-1-the-infinite-loop"></a>
+
 For each scenario, identify: (1) what happened, (2) what went wrong, and (3) what the practitioner should have done differently.
 
 ## Debug Exercise 1: The Infinite Loop
@@ -20,6 +31,7 @@ For each scenario, identify: (1) what happened, (2) what went wrong, and (3) wha
 
 ---
 
+<a id="debug-exercise-2-the-wrong-fix"></a>
 ## Debug Exercise 2: The Wrong Fix
 
 **What happened:** A developer created a session with the prompt: "The dashboard is slow. Fix it." Devin analyzed the codebase, identified that the dashboard component was re-rendering on every state change, and added `React.memo()` wrappers around 12 components. The PR passed CI. However, the actual performance issue was a slow SQL query in the backend API that took 4 seconds to return — the frontend rendering was never the problem. The team spent 30 minutes reviewing the wrong fix before realizing it did not address the real issue.
@@ -38,6 +50,7 @@ For each scenario, identify: (1) what happened, (2) what went wrong, and (3) wha
 
 ---
 
+<a id="debug-exercise-3-the-missing-environment"></a>
 ## Debug Exercise 3: The Missing Environment
 
 **What happened:** A developer created a session to fix a bug in a .NET Framework 4.8 application. Devin's session started on the default Ubuntu VM. The build immediately failed with "MSBuild not found." Devin attempted to install MSBuild on Linux, which failed. It then tried using Mono, which partially worked but produced runtime errors due to missing Windows-specific APIs. The session spent 45 minutes trying workarounds before the developer noticed and intervened.

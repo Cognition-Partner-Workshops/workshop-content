@@ -1,5 +1,19 @@
 # Orchestration Patterns in Practice
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Pattern 1: Single Agent](#pattern-1-single-agent)
+- [Pattern 2: Parent-Child (Divide and Conquer)](#pattern-2-parent-child-divide-and-conquer)
+- [Pattern 3: Event-Driven](#pattern-3-event-driven)
+- [Pattern 4: Scheduled](#pattern-4-scheduled)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="pattern-1-single-agent"></a>
+
 This section covers when and how to use each orchestration pattern. For the theoretical foundations, see [Agent Orchestration](../../foundations/03-agent-orchestration.md) and [Platform Capabilities](../../../shared/general-themes/platform-capabilities.md).
 
 ## Pattern 1: Single Agent
@@ -29,6 +43,7 @@ drops below 200ms for 100 articles (currently ~2s).
 
 **When NOT to use:** When the same task needs to be applied to many targets (use parent-child) or when the task should run automatically in response to events (use event-driven) or on a schedule (use scheduled).
 
+<a id="pattern-2-parent-child-divide-and-conquer"></a>
 ## Pattern 2: Parent-Child (Divide and Conquer)
 
 **When to use:** For campaigns across N independent targets where each target follows the same methodology.
@@ -67,6 +82,7 @@ Use the spring-boot-3-upgrade Playbook. Run up to
 
 **Monitoring children:** The parent agent tracks child progress. If a child fails, the parent can retry, adjust the approach, or escalate. You will see individual PRs from each child — review them like any other PR.
 
+<a id="pattern-3-event-driven"></a>
 ## Pattern 3: Event-Driven
 
 **When to use:** When work should happen automatically in response to external signals — no human needs to create a session.
@@ -95,6 +111,7 @@ Event-driven automations are configured in Devin's Automations settings. The bas
 - [ ] Use idempotency keys to prevent duplicate sessions from the same event
 - [ ] Test with a single event before enabling for all events
 
+<a id="pattern-4-scheduled"></a>
 ## Pattern 4: Scheduled
 
 **When to use:** For recurring maintenance that should happen on a cadence without human initiation.
@@ -133,6 +150,7 @@ Title the PR "chore: weekly dependency bump".
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 5.1**
@@ -171,6 +189,7 @@ D) Scheduled — cron-based recurring session
 
 *Answer: D — Scheduled sessions run on a cron expression without human initiation. Set it once and Devin opens a dependency bump PR every Monday morning automatically.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Single agent is the default — use it for most self-contained tasks

@@ -1,5 +1,19 @@
 # Platform Fundamentals
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Session Lifecycle](#session-lifecycle)
+- [Cloud vs. Local: The Decision Tree](#cloud-vs-local-the-decision-tree)
+- [The PR Feedback Loop](#the-pr-feedback-loop)
+- [The Verification Model](#the-verification-model)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="session-lifecycle"></a>
+
 This section establishes the operational model you will use every day. If you have completed the [Foundations workshop](../../foundations/), this is a condensed refresher focused on the practitioner's perspective.
 
 ## Session Lifecycle
@@ -22,6 +36,7 @@ Active → Waiting for feedback → Hibernated → Resumed
 - Long-running tasks (multi-day reviews, back-and-forth iterations) are natural. The session persists across the entire lifecycle with no context loss.
 - Sessions do not waste compute while waiting for you. Cost is proportional to active work time.
 
+<a id="cloud-vs-local-the-decision-tree"></a>
 ## Cloud vs. Local: The Decision Tree
 
 Devin provides two execution tiers. Choosing the right one for each task is a daily decision.
@@ -56,6 +71,7 @@ Is the task quick and iterative (< 5 min)?
 
 For a deep dive, see [Cloud vs. Local Agents](../../../shared/general-themes/cloud-vs-local-agents.md).
 
+<a id="the-pr-feedback-loop"></a>
 ## The PR Feedback Loop
 
 The pull request is Devin's primary interface with human engineers. This is the workflow you will use hundreds of times:
@@ -86,6 +102,7 @@ CI re-runs → Review cycle repeats until approved
 - PR comments are the communication channel. Multiple reviewers can comment on the same PR — Devin reads and addresses feedback from everyone.
 - The PR provides a complete audit trail of what Devin proposed and how it evolved through review.
 
+<a id="the-verification-model"></a>
 ## The Verification Model
 
 Devin verifies its own work through three mechanisms:
@@ -100,6 +117,7 @@ For the full collaboration model, see [Collaboration Model](../../../shared/gene
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 1.1**
@@ -138,6 +156,7 @@ D) The second comment is ignored until the first is resolved
 
 *Answer: B — Devin monitors its PRs for new comments from any reviewer. When comments arrive, Devin resumes from its hibernated state and addresses all pending feedback in subsequent commits.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Sessions cycle through Active → Waiting → Hibernated → Resumed; you only pay for active compute time

@@ -1,5 +1,20 @@
 # Environment & Architecture Decisions
 
+<a id="toc"></a>
+## Table of Contents
+
+- [Ubuntu vs. Windows Host](#ubuntu-vs-windows-host)
+- [Blueprint Configuration](#blueprint-configuration)
+- [Network Connectivity](#network-connectivity)
+- [Secret Management](#secret-management)
+- [MCP Server Configuration](#mcp-server-configuration)
+- [Knowledge Check](#knowledge-check)
+- [Key Takeaways](#key-takeaways)
+
+---
+
+<a id="ubuntu-vs-windows-host"></a>
+
 This section covers the tactical platform operations that determine whether Devin can build, test, and deliver in your project's environment.
 
 ## Ubuntu vs. Windows Host
@@ -34,6 +49,7 @@ Does the project use COM interop or Windows-specific APIs?
 
 When in doubt, use Ubuntu. It covers the vast majority of modern development stacks and is the default for Devin sessions.
 
+<a id="blueprint-configuration"></a>
 ## Blueprint Configuration
 
 Blueprints are YAML configurations that define what is pre-installed on Devin's VM. They have two sections with distinct purposes:
@@ -72,6 +88,7 @@ Org-level blueprints run *before* repo-level blueprints. A common pattern: org-l
 
 **Testing blueprint changes:** Blueprint changes create a new snapshot build. You can verify by checking the build log URL provided when the snapshot is built. If a command fails during snapshot build, the snapshot will not update — the previous working snapshot remains active.
 
+<a id="network-connectivity"></a>
 ## Network Connectivity
 
 Devin's VM needs network access to reach your private resources (databases, APIs, artifact registries). The three common patterns:
@@ -90,6 +107,7 @@ Devin's VM needs network access to reach your private resources (databases, APIs
 
 For detailed configuration guides, see the [network connectivity patterns in automations-and-integrations](https://github.com/Devin-Samples/automations-and-integrations/tree/main/network-connectivity).
 
+<a id="secret-management"></a>
 ## Secret Management
 
 Secrets are credentials (API keys, database passwords, service account tokens) injected into Devin's session environment. They are never stored in prompts or code.
@@ -114,6 +132,7 @@ maintenance:
 
 **Best practice:** Use the narrowest scope possible. Org-scoped secrets are convenient but increase blast radius if compromised. Default to repo-scoped unless multiple repos need the same credential.
 
+<a id="mcp-server-configuration"></a>
 ## MCP Server Configuration
 
 MCP (Model Context Protocol) servers extend Devin's capabilities by connecting it to external tools — issue trackers, observability platforms, documentation systems, and databases.
@@ -136,6 +155,7 @@ MCP (Model Context Protocol) servers extend Devin's capabilities by connecting i
 
 ---
 
+<a id="knowledge-check"></a>
 ## Knowledge Check
 
 **Knowledge Check 3.1**
@@ -174,6 +194,7 @@ D) Only sessions created by the user who configured it can use it
 
 *Answer: C — MCP servers configured at the org level are part of Devin's shared context layer. They are automatically available to every session without additional configuration.*
 
+<a id="key-takeaways"></a>
 ## Key Takeaways
 
 - Use Ubuntu by default; use Windows only for .NET Framework, PowerShell-dependent tooling, or Windows-only APIs
