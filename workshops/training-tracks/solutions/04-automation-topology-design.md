@@ -189,7 +189,7 @@ D) "A human watching every session"
 
 ## Key Takeaways
 
-- **Three trigger types cover most scenarios:** event-driven (reactive), scheduled (proactive), and parent-child campaigns (one-time large-scale)
+- **Two trigger types plus an orchestration pattern cover most scenarios:** event-driven (reactive), scheduled (proactive), and parent-child orchestration (one-time large-scale campaigns layered on top of either trigger type)
 - **Safeguards are mandatory, not optional:** invocation limits, ACU caps, loop prevention, and escalation policies are non-negotiable in production topologies
 - **Parent-child scales linearly:** one agent becomes N agents, each producing independent PRs. Failures in one child do not affect others
 - **Design the escalation path first:** knowing when and how the automation hands off to humans is more important than the happy path

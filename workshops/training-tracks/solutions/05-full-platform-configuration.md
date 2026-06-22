@@ -73,7 +73,7 @@ maintenance:
 
 ## 5.3 DeepWiki
 
-**What it is:** Auto-generated architectural documentation for indexed repositories. When Devin connects to a repo, DeepWiki indexes the codebase and produces navigable documentation covering structure, key components, patterns, and dependencies — giving Devin codebase understanding before it reads a single source file.
+**What it is:** Auto-generated architectural documentation for indexed repositories. When Devin connects to a repo, DeepWiki indexes the codebase and typically produces navigable documentation covering structure, key components, patterns, and dependencies — giving Devin codebase understanding before it reads a single source file. Coverage depends on repo structure and complexity.
 
 **When to configure:** Automatic upon Git connection. Verify indexing has completed for critical repos before relying on context retrieval.
 

@@ -21,7 +21,7 @@ This section maps Devin's capabilities to each phase of a client's software deve
 
 **Trigger:** Engineer needs research, analysis, or design exploration before writing code.
 
-**Devin Pattern:** Ask Devin (conversational research mode) — no session VM spun up, no PR created. Leverages DeepWiki's auto-generated architectural documentation for instant codebase context. Used for:
+**Devin Pattern:** Ask Devin (conversational research mode) — a lightweight session focused on research and analysis, not code changes. Leverages DeepWiki's auto-generated architectural documentation for instant codebase context. Used for:
 - Codebase exploration ("How does the authentication flow work in this service?")
 - Technology evaluation ("Compare migration paths from Spring Boot 2.x to 3.x")
 - Architecture analysis ("Map the dependencies between these 12 microservices")

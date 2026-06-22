@@ -19,9 +19,9 @@
 
 Devin CLI is a local coding agent that runs in your terminal. It reads and modifies your local files, executes shell commands, and works interactively — or headlessly for scripting.
 
-If Devin Cloud is the team member who works in a separate office, Devin CLI is the pair programmer sitting next to you. Same intelligence, different interaction model:
+If Cloud Devin is the team member who works in a separate office, Devin CLI is the pair programmer sitting next to you. Same intelligence, different interaction model:
 
-| | Devin Cloud | Devin CLI |
+| | Cloud Devin | Devin CLI |
 |---|---|---|
 | **Where it runs** | Remote VM (cloud) | Your local machine |
 | **Interaction** | Asynchronous (delegate → review later) | Synchronous (interactive REPL) |
@@ -112,14 +112,14 @@ The agent runs a prompt iteratively — execute, review the diff, improve, repea
 <a id="cloud-handoff"></a>
 ## Cloud Handoff
 
-The most powerful CLI feature is seamless delegation to Devin Cloud:
+The most powerful CLI feature is seamless delegation to Cloud Devin:
 
 ```
 You're working locally in the CLI
     ↓
 Task becomes too large or long-running for local execution
     ↓
-Hand off to Devin Cloud — the task continues on a remote VM
+Hand off to Cloud Devin — the task continues on a remote VM
     ↓
 You continue other work locally
     ↓
@@ -175,7 +175,7 @@ If you don't have CLI installed yet, review the install command:
 curl -fsSL https://cli.devin.ai/install.sh | bash
 ```
 
-Notice how the CLI provides the same intelligence as Devin Cloud but with a faster, tighter feedback loop — ideal for the exploration and prototyping phase before delegating implementation.
+Notice how the CLI provides the same intelligence as Cloud Devin but with a faster, tighter feedback loop — ideal for the exploration and prototyping phase before delegating implementation.
 
 ---
 
