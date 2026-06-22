@@ -1,4 +1,4 @@
-# Workshop: Delivery Track
+# Workshop: Engineer Track
 
 ## Overview
 
@@ -14,7 +14,7 @@
 
 You have completed the Foundations workshop and understand the theory: cloud vs. local agents, event-driven patterns, orchestration models, and the framework for deciding what to give AI. This workshop makes it operational.
 
-The Delivery track is built for the practitioner — the person who opens Devin sessions every day, writes prompts, configures environments, reviews PRs, and troubleshoots when things go sideways. By the end, you will know how to:
+The Engineer track is built for the practitioner — the person who opens Devin sessions every day, writes prompts, configures environments, reviews PRs, and troubleshoots when things go sideways. By the end, you will know how to:
 
 - Write prompts that produce high-quality output on the first attempt
 - Choose the right host OS, blueprint configuration, and network connectivity pattern for any project

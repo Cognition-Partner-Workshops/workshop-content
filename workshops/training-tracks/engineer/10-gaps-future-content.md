@@ -1,6 +1,6 @@
 # Gaps & Future Content
 
-The following materials would strengthen the Delivery track but are not yet available:
+The following materials would strengthen the Engineer track but are not yet available:
 
 - [ ] Video: recorded session walkthrough showing the PR feedback loop from prompt to merge
 - [ ] Video: live example of parent-child orchestration across multiple repos
