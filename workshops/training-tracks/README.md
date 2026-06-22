@@ -1,4 +1,4 @@
-# Workshop Tracks
+# Workshop Training Tracks
 
 ## Overview
 
@@ -7,7 +7,7 @@ Three role-based tracks that build on the shared [Foundations](../foundations/) 
 ```
 workshops/
 ├── foundations/          ← Shared base (everyone completes this first)
-├── tracks/
+├── training-tracks/
 │   ├── sales/           ← Operating model, cost structures, engagement capture
 │   ├── solutions/       ← System design, SDLC integration, live walkthroughs
 │   └── delivery/        ← Tactical platform usage, prompt engineering, orchestration
@@ -23,7 +23,7 @@ workshops/
 | Level | Content | Audience | Status |
 |-------|---------|----------|--------|
 | **Level 1: Foundations** | `workshops/foundations/` | All personas | Exists |
-| **Level 2: Tracks** | `workshops/tracks/{sales,solutions,delivery}/` | Role-specific | Planned (this document) |
+| **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,delivery}/` | Role-specific | Planned (this document) |
 | **Level 3: Specialties** | `workshops/specialties/` | Domain experts | Future iteration (see [below](#level-3-specialties)) |
 
 ---
