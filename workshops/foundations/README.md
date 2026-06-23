@@ -59,8 +59,8 @@ Once you've built this foundation, you're ready for any of the hands-on technica
 | Next Step | What You'll Do |
 |-----------|---------------|
 | [General Workshop](../general/) | Security, modernization, and feature development labs |
-| [Application Development & Maintenance](../application-development-maintenance/) | Build features, fix bugs, iterate on PRs |
-| [Enterprise Security Automation](../enterprise-security-automation/) | Event-driven SAST and mass remediation |
-| [Digital Engineering](../digital-engineering/) | CI/CD, cloud infrastructure, observability |
+| [Application Development & Maintenance](../specialties/job-families/development/app-maintenance/) | Build features, fix bugs, iterate on PRs |
+| [Enterprise Security Automation](../specialties/technical-domains/security/enterprise-automation/) | Event-driven SAST and mass remediation |
+| [Digital Engineering](../specialties/job-families/digital-engineering/) | CI/CD, cloud infrastructure, observability |
 
 These workshops assume you understand the concepts covered here — cloud delegation, event-driven patterns, the PR feedback loop, and how Devin's context layer works.
