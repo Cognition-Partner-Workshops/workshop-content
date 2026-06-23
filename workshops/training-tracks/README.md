@@ -36,7 +36,7 @@ workshops/
 - [Track: Solutions](#track-solutions)
 - [Track: Engineering](#track-engineering)
 - [Content Modalities](#content-modalities)
-- [Level 3 Specialties (Future)](#level-3-specialties)
+- [Level 3 Deep-Dives](#level-3-deep-dives)
 - [Relationship to Existing Content](#relationship-to-existing-content)
 
 ---
@@ -170,8 +170,9 @@ Each track uses a mix of modalities. The table below shows the target distributi
 
 ---
 
+<a id="level-3-deep-dives"></a>
 <a id="level-3-specialties"></a>
-## Level 3: Specialties (Future Iteration)
+## Level 3: Deep-Dives
 
 Level 3 content lives in two directories:
 
@@ -187,7 +188,7 @@ workshops/by-tech-role/
 └── quality-engineering/  ← Engineering, Engineering + Security
 ```
 
-**Future additions for Level 3 (domain-specific deep-dives):**
+**Planned additions for Level 3:**
 
 | Specialty | Track Prerequisite | Focus |
 |-----------|-------------------|-------|
@@ -196,7 +197,7 @@ workshops/by-tech-role/
 | Data Migration Specialist | Engineering | SAS→Snowflake/Databricks, ETL translation, reconciliation harness design |
 | Enterprise Integration Architect | Solutions | MCP server design, multi-tool orchestration, network connectivity patterns |
 
-These will be built out once Level 2 tracks are established and validated.
+These will be built out as Level 2 tracks mature.
 
 ---
 
