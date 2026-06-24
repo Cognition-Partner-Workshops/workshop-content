@@ -1,5 +1,18 @@
 # Lab: Full Automation Pipeline (Capstone)
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [The Pipeline](#the-pipeline)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Wire up a complete Devin automation pipeline for OtterWorks that combines everything from the workshop: event-driven triggers, playbooks, child agents, scheduled sessions, and the shared context layer — demonstrating the full Ask → Session → Playbook → Automation lifecycle.
@@ -15,6 +28,11 @@ This is the capstone lab. The previous labs taught individual patterns:
 - D2: knowledge layer and Devin Review
 
 This lab combines them into a complete automation strategy that a team could actually run in production.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Design and implement one of three automation layers: (1) an issue-to-Devin GitHub Actions workflow, (2) a monthly dependency campaign schedule, or (3) a service scaffolding Playbook. Jump to [Layer 1](#the-pipeline) to start with event-driven automation.
 
 ## The Pipeline
 

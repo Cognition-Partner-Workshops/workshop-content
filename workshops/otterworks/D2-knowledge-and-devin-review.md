@@ -1,5 +1,18 @@
 # Lab: Knowledge Layer & Devin Review
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [The Lab](#the-lab)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Configure the Devin shared context layer for OtterWorks — Knowledge notes, coding standards, and Devin Review rules — then observe how this one-time investment improves every subsequent Devin session and PR review.
@@ -9,6 +22,11 @@ Configure the Devin shared context layer for OtterWorks — Knowledge notes, cod
 Devin's shared context layer is the highest-leverage investment a team can make. Configure it once, and every session — from every team member — benefits automatically. Without it, every session starts from scratch. With it, Devin already knows your coding standards, architecture decisions, and review criteria before anyone types a prompt.
 
 This lab demonstrates the "Context Layer Config" design pattern: invest in shared config once to benefit every future session.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Ask Devin to add a `/health/detailed` endpoint to `services/notification-service/`. Then create 2 Knowledge notes (coding standards + architecture decisions) in Settings → Knowledge, and re-run the same prompt to compare. Jump to [Step 1](#the-lab).
 
 ## The Lab
 

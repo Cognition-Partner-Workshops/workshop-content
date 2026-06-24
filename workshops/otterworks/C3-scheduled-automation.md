@@ -1,5 +1,18 @@
 # Lab: Scheduled Security & Coverage Automation
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [The Setup](#the-setup)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Set up a recurring Devin scheduled session that runs weekly security scans and test coverage checks across the OtterWorks monorepo, automatically opening PRs for any regressions — demonstrating the "capacity-constrained" automation pattern.
@@ -9,6 +22,11 @@ Set up a recurring Devin scheduled session that runs weekly security scans and t
 Security scans and test coverage checks are the classic "we should do this regularly but never do" tasks. Teams run them before releases, find a backlog of issues, and scramble. Devin's scheduled sessions turn this into a recurring automation: every week, Devin runs the scans, triages findings, fixes what it can, and opens PRs for human review.
 
 This is the "capacity-constrained" trigger from the Devin design patterns: recurring O&M work that humans defer because other priorities always win.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Run `make security-scan` and `make test-coverage` to get a baseline. Then create a Devin scheduled session (Settings → Scheduled Sessions) with a weekly prompt that runs those scans and triages findings. Jump to [Step 1](#the-setup).
 
 ## The Setup
 

@@ -1,5 +1,20 @@
 # Lab: Event-Driven SAST Pipeline
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [How the Pipeline Works](#how-the-pipeline-works)
+- [The Lab](#the-lab)
+- [Where to Look](#where-to-look)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Trace, understand, and extend the OtterWorks event-driven security pipeline where SAST findings in pull requests automatically trigger Devin sessions for remediation — creating a closed-loop "find → fix → verify" cycle with zero human intervention.
@@ -7,6 +22,11 @@ Trace, understand, and extend the OtterWorks event-driven security pipeline wher
 ## Why This Matters
 
 This lab showcases the most powerful Devin enterprise pattern: **event-driven automation**. Instead of a human noticing a security finding, creating a ticket, assigning it, and waiting for someone to fix it, the pipeline detects → triggers → fixes → verifies in a continuous loop. This is the difference between "Devin as a tool you invoke" and "Devin as an always-on team member that responds to signals."
+
+<a id="quick-start"></a>
+## Quick Start
+
+Read `docs/EVENT_DRIVEN_SECURITY.md` then trace `.github/workflows/sast-auto-remediate.yml` — document both the Trivy and SonarCloud paths end-to-end. Jump to [Step 1](#the-lab).
 
 ## How the Pipeline Works
 

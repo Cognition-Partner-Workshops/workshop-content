@@ -1,5 +1,18 @@
 # Lab: From Ask to Playbook
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [The Progression](#the-progression)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Experience the Devin workflow progression: start with an ad-hoc ask, refine it into a repeatable session, then codify the methodology as a Devin Playbook that anyone on your team can run with consistent results.
@@ -9,6 +22,11 @@ Experience the Devin workflow progression: start with an ad-hoc ask, refine it i
 Most teams start with Devin by typing one-off requests. That works, but the real value compounds when you codify successful patterns into Playbooks. A Playbook encodes institutional methodology — the same senior-engineer-quality approach runs every time, for every team member, without re-explaining context.
 
 This lab uses the OtterWorks incident investigation flow (from B1) as the worked example, but the pattern applies to any repeatable task.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Paste into Devin: fix the suggest endpoint 500 error in `services/search-service/app/api/search.py`. Then create a Playbook called `otterworks-incident-investigation` encoding that investigation process. Jump to [Step 1](#the-progression).
 
 ## The Progression
 

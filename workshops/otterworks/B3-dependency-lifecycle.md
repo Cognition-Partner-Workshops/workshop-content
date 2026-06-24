@@ -1,14 +1,32 @@
 # Lab: Dependency Lifecycle Campaign
 
+<a id="toc"></a>
+## Contents
+
+- [Objective](#objective)
+- [Why This Matters](#why-this-matters)
+- [Quick Start](#quick-start)
+- [The Campaign](#the-campaign)
+- [What Done Looks Like](#what-done-looks-like)
+- [Hints](#hints)
+- [Key Takeaways](#key-takeaways)
+- [Time Budget](#time-budget)
+
+<a id="objective"></a>
 ## Objective
 
 Use Devin's divide-and-conquer pattern to audit all OtterWorks services for outdated, end-of-life, or vulnerable dependencies in parallel — one child session per service, each producing its own upgrade PR.
 
 ## Why This Matters
 
-OtterWorks has 10 backend services plus an API gateway across 10 different language ecosystems. Manually checking each one for outdated dependencies, EOL runtimes, and license issues would take a developer days. This is the canonical "capacity-constrained" use case: valuable work that teams defer because no individual has time to do it across the entire monorepo.
+OtterWorks has 10 backend services plus an API gateway across 9 different language ecosystems. Manually checking each one for outdated dependencies, EOL runtimes, and license issues would take a developer days. This is the canonical "capacity-constrained" use case: valuable work that teams defer because no individual has time to do it across the entire monorepo.
 
 Devin's child agent pattern turns this from a multi-day slog into a parallel campaign that completes in an hour.
+
+<a id="quick-start"></a>
+## Quick Start
+
+Ask Devin to list all services from `ARCHITECTURE.md`. Create a `dependency-audit-per-service` Playbook, then spawn child sessions to audit services in parallel. Jump to [Step 1](#the-campaign).
 
 ## The Campaign
 
