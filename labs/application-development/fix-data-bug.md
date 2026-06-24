@@ -86,7 +86,7 @@ Runtime helpful but not required — the bug can be found by code analysis alone
 **Bug:** Clients do not persist when you log out and log back in with a different email. Clients are intended to be shared by all users of the application.
 
 - **Symptom:** User A creates clients. User B logs in and doesn't see User A's clients.
-- **Expected:** Clients should be reference/visible to all users (they are org-wide, not per-user).
+- **Expected:** Clients should be shared/visible to all users (they are org-wide, not per-user).
 - **Root Cause Area:** Likely in the database query filtering — clients are probably filtered by `user_email` when they shouldn't be, or the data model needs adjusting.
 
 #### Step 1: Paste into Devin
