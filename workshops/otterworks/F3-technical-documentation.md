@@ -10,7 +10,7 @@ OtterWorks has solid top-level documentation (`README.md`, `ARCHITECTURE.md`, `d
 
 Documentation gaps include:
 
-1. **Service READMEs** — Most of the 11 services do not have their own `README.md`. The collab-service has `DEPENDENCY_NOTES.md` and the report-service has `UPGRADE_GUIDE.md`, but there is no standardized per-service developer guide.
+1. **Service READMEs** — Most of the 10 backend services do not have their own `README.md`. The collab-service has `DEPENDENCY_NOTES.md` and the report-service has `UPGRADE_GUIDE.md`, but there is no standardized per-service developer guide.
 
 2. **Onboarding documentation** — No "new developer onboarding" guide exists. A new team member must piece together information from `README.md`, `ARCHITECTURE.md`, `docs/flows.md`, and `Makefile` to understand how to get productive.
 
