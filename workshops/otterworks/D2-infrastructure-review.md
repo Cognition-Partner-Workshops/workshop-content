@@ -6,7 +6,7 @@ Audit the Terraform modules and Helm charts that define OtterWorks' cloud infras
 
 ## What's Wrong
 
-OtterWorks has two layers of Terraform (platform + application) and 13 Helm charts — one per deployable service (11 backend services + 2 frontends). The infrastructure was built incrementally, and not all modules follow the same conventions. Common issues in real-world IaC include missing resource tagging, overly permissive IAM policies, hardcoded values that should be variables, missing health probes in Helm charts, and inconsistent resource limits.
+OtterWorks has two layers of Terraform (platform + application) and 13 Helm charts — one per deployable service. The infrastructure was built incrementally, and not all modules follow the same conventions. Common issues in real-world IaC include missing resource tagging, overly permissive IAM policies, hardcoded values that should be variables, missing health probes in Helm charts, and inconsistent resource limits.
 
 Areas to investigate:
 
@@ -47,7 +47,7 @@ Start with `infrastructure/terraform/modules/database/` — the RDS module is a 
 
 ### Hint 2 — Specific Direction
 
-Ask Devin to compare the Helm chart values across all 12 services. Are resource limits consistent? Do all charts define `livenessProbe` and `readinessProbe`? Do any charts have `securityContext` with `runAsNonRoot: true`?
+Ask Devin to compare the Helm chart values across all 13 services. Are resource limits consistent? Do all charts define `livenessProbe` and `readinessProbe`? Do any charts have `securityContext` with `runAsNonRoot: true`?
 
 ### Hint 3 — Approach
 

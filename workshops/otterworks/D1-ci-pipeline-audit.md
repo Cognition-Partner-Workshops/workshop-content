@@ -6,7 +6,7 @@ Audit the OtterWorks CI/CD pipeline, understand the monorepo change-detection st
 
 ## What's Wrong
 
-OtterWorks uses four GitHub Actions workflows to build, test, scan, and deploy all services (11 backend + 2 frontends) from a single monorepo. The CI strategy is documented in `docs/CI_STRATEGY.md`, but the documentation may have drifted from the actual workflow files. Additionally, some services have weaker CI steps than others, and the change-detection filters may miss edge cases (e.g., shared dependency changes that should trigger downstream service builds).
+OtterWorks uses four GitHub Actions workflows to build, test, scan, and deploy all its services and frontends from a single monorepo. The CI strategy is documented in `docs/CI_STRATEGY.md`, but the documentation may have drifted from the actual workflow files. Additionally, some services have weaker CI steps than others, and the change-detection filters may miss edge cases (e.g., shared dependency changes that should trigger downstream service builds).
 
 Specific areas to investigate:
 
