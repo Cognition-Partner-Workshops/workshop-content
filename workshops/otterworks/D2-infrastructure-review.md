@@ -6,13 +6,13 @@ Audit the Terraform modules and Helm charts that define OtterWorks' cloud infras
 
 ## What's Wrong
 
-OtterWorks has two layers of Terraform (platform + application) and 12 Helm charts — one per deployable service. The infrastructure was built incrementally, and not all modules follow the same conventions. Common issues in real-world IaC include missing resource tagging, overly permissive IAM policies, hardcoded values that should be variables, missing health probes in Helm charts, and inconsistent resource limits.
+OtterWorks has two layers of Terraform (platform + application) and 13 Helm charts — one per deployable service (11 backend services + 2 frontends). The infrastructure was built incrementally, and not all modules follow the same conventions. Common issues in real-world IaC include missing resource tagging, overly permissive IAM policies, hardcoded values that should be variables, missing health probes in Helm charts, and inconsistent resource limits.
 
 Areas to investigate:
 
 - **Terraform modules** (`infrastructure/terraform/modules/`): 8 modules covering storage, database, cache, messaging, search, auth, monitoring, and IRSA. Are they consistently structured? Do they follow Terraform best practices (variable validation, output documentation, lifecycle rules)?
 - **Platform Terraform** (`platform/terraform/modules/`): 3 modules for VPC, EKS, and ECR. These are the foundation — are they production-ready?
-- **Helm charts** (`infrastructure/helm/`): 12 charts, one per service. Do they all have proper health probes, resource limits, network policies, and service monitors?
+- **Helm charts** (`infrastructure/helm/`): 13 charts, one per deployable service. Do they all have proper health probes, resource limits, network policies, and service monitors?
 - **K8s base manifests** (`infrastructure/k8s/`): Namespace, resource quotas, and limit ranges. Are the quotas appropriate for the services deployed?
 - **Consistency:** Do the Terraform outputs match what the Helm charts expect as input? Are there hardcoded values that should flow through from Terraform outputs?
 
@@ -23,7 +23,7 @@ Areas to investigate:
 - `infrastructure/terraform/variables.tf` — Input variables and defaults
 - `infrastructure/terraform/terraform.tfvars.example` — Example variable values
 - `platform/terraform/` — VPC, EKS cluster, and ECR repository modules
-- `infrastructure/helm/<service>/` — Helm chart for each service (12 charts)
+- `infrastructure/helm/<service>/` — Helm chart for each service (13 charts)
 - `infrastructure/k8s/namespace.yaml` — Namespace definition
 - `infrastructure/k8s/resourcequota.yaml` — Cluster resource quotas
 - `infrastructure/k8s/limitrange.yaml` — Default container resource limits

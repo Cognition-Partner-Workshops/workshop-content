@@ -277,7 +277,7 @@ Focus: Understanding, auditing, and improving the monorepo CI/CD pipeline, infra
 **Key Takeaways:**
 - IaC grows incrementally and accumulates inconsistencies — Devin can audit across modules for patterns
 - Terraform and Helm have distinct best-practice checklists (variable validation, tagging, health probes, security contexts) that Devin checks systematically
-- OtterWorks has two Terraform layers (platform + application) and 12 Helm charts — realistic enterprise scale for IaC review
+- OtterWorks has two Terraform layers (platform + application) and 13 Helm charts — realistic enterprise scale for IaC review
 
 ---
 

@@ -6,7 +6,7 @@ Audit the OtterWorks CI/CD pipeline, understand the monorepo change-detection st
 
 ## What's Wrong
 
-OtterWorks uses four GitHub Actions workflows to build, test, scan, and deploy 13+ services from a single monorepo. The CI strategy is documented in `docs/CI_STRATEGY.md`, but the documentation may have drifted from the actual workflow files. Additionally, some services have weaker CI steps than others, and the change-detection filters may miss edge cases (e.g., shared dependency changes that should trigger downstream service builds).
+OtterWorks uses four GitHub Actions workflows to build, test, scan, and deploy all services (11 backend + 2 frontends) from a single monorepo. The CI strategy is documented in `docs/CI_STRATEGY.md`, but the documentation may have drifted from the actual workflow files. Additionally, some services have weaker CI steps than others, and the change-detection filters may miss edge cases (e.g., shared dependency changes that should trigger downstream service builds).
 
 Specific areas to investigate:
 
@@ -32,7 +32,7 @@ Specific areas to investigate:
 - [ ] Compared `docs/CI_STRATEGY.md` against the actual workflow files — documented any drift
 - [ ] Identified at least 2 change-detection gaps where `shared/` or cross-service changes should trigger downstream builds
 - [ ] Proposed or implemented a fix for the change-detection gaps (e.g., add `shared/**` to multiple service filters)
-- [ ] Verified that all 13 services have consistent CI steps (lint, test, build) — or documented which services are missing steps and why
+- [ ] Verified that all services have consistent CI steps (lint, test, build) — or documented which services are missing steps and why
 - [ ] Optionally: added the `test-api-flows` target to the CI pipeline as a post-build integration test stage
 - [ ] Updated `docs/CI_STRATEGY.md` if any drift was found
 
