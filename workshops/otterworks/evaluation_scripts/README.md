@@ -25,6 +25,15 @@ Each evaluation returns a structured `RESULT: PASS | FAIL` with per-criterion br
 | C1 — Security Sprint | `C1-security-sprint-eval.md` | CVEs remediated, dependency files consistent, trivyignore cleaned, suppressions documented |
 | C2 — Contract Audit | `C2-contract-audit-eval.md` | Notification and audit event schema drift identified and fixed |
 | C3 — Test Coverage | `C3-test-coverage-eval.md` | At least 3 meaningful tests added to the weakest service |
+| D1 — CI Pipeline Audit | `D1-ci-pipeline-audit-eval.md` | CI strategy drift documented, change-detection gaps identified |
+| D2 — IaC Review | `D2-infrastructure-review-eval.md` | Terraform and Helm charts audited, at least 3 findings documented |
+| D3 — Event-Driven SAST | `D3-event-driven-sast-eval.md` | SAST pipeline flow understood, bot-loop prevention explained, improvement proposed |
+| E1 — Bug Hunt | `E1-cross-service-bug-hunt-eval.md` | At least 2 bugs from QA report fixed with cross-service tracing |
+| E2 — Gateway Routes | `E2-api-gateway-routes-eval.md` | At least 2 missing route prefixes added to API gateway |
+| E3 — Synthetic Test Data | `E3-synthetic-test-data-eval.md` | New namespace created, generation scripts functional, validation considered |
+| F1 — ADRs | `F1-architecture-decision-records-eval.md` | At least 3 ADRs written, grounded in codebase evidence |
+| F2 — API Flow Tests | `F2-api-flow-test-expansion-eval.md` | At least 3 new black-box API tests, following existing patterns |
+| F3 — Technical Docs | `F3-technical-documentation-eval.md` | At least 2 service READMEs with comprehensive, codebase-grounded content |
 
 ## Pass Criteria
 

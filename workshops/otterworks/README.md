@@ -5,11 +5,11 @@
 | | |
 |---|---|
 | **Focus** | Directing Devin on messy, interconnected enterprise problems across a polyglot microservices platform |
-| **Duration** | 4-6 hours (participants choose a track and complete 2-3 labs) |
+| **Duration** | 4-8 hours (participants choose a track and complete 2-3 labs) |
 | **Audience** | Engineers who have completed a General Devin workshop |
 | **Prerequisite** | 200-level Devin proficiency — comfortable with prompting, PR review, iterative feedback, and Ask Devin |
 | **Level** | 300 — application-specific, multi-lab composition |
-| **Tracks** | **Modernization & Migration** - **Incident Response & Reliability** - **Security & Quality** |
+| **Tracks** | **A: Modernization & Migration** · **B: Incident Response & Reliability** · **C: Security & Quality** · **D: DevOps & CI/CD** · **E: Application Development** · **F: Architecture & Documentation** |
 
 ## Workshop Narrative
 
@@ -33,6 +33,8 @@ A few tips to maximize your hands-on time:
 - **Leave PR comments to steer Devin.** After Devin opens a PR, you can leave comments and Devin will wake up and address them — this is the core feedback loop.
 - **Try parallel sessions.** Running multiple sessions simultaneously mirrors real enterprise usage and demonstrates team-based operation at scale.
 
+<a id="table-of-contents"></a>
+
 ## Table of Contents
 
 - [Interact with the System](#interact-with-the-system-5-min)
@@ -49,11 +51,25 @@ A few tips to maximize your hands-on time:
   - [Lab C1 — Monorepo Security Sprint](#lab-c1--monorepo-security-sprint-60-90-min)
   - [Lab C2 — API Contract Audit](#lab-c2--api-contract-audit-45-60-min)
   - [Lab C3 — Test Coverage Blitz](#lab-c3--test-coverage-blitz-45-60-min)
+- [Track D: DevOps & CI/CD](#track-d-devops--cicd)
+  - [Lab D1 — Monorepo CI Pipeline Audit](#lab-d1--monorepo-ci-pipeline-audit-45-60-min)
+  - [Lab D2 — Infrastructure as Code Review](#lab-d2--infrastructure-as-code-review-45-60-min)
+  - [Lab D3 — Event-Driven SAST Pipeline](#lab-d3--event-driven-sast-pipeline-45-60-min)
+- [Track E: Application Development](#track-e-application-development)
+  - [Lab E1 — Cross-Service Bug Hunt](#lab-e1--cross-service-bug-hunt-45-60-min)
+  - [Lab E2 — API Gateway Route Completion](#lab-e2--api-gateway-route-completion-45-60-min)
+  - [Lab E3 — Synthetic Test Data Generation](#lab-e3--synthetic-test-data-generation-45-60-min)
+- [Track F: Architecture & Documentation](#track-f-architecture--documentation)
+  - [Lab F1 — Architecture Decision Records](#lab-f1--architecture-decision-records-45-60-min)
+  - [Lab F2 — API Flow Test Expansion](#lab-f2--api-flow-test-expansion-45-60-min)
+  - [Lab F3 — Technical Documentation Generation](#lab-f3--technical-documentation-generation-45-60-min)
+- [Choosing a Track](#choosing-a-track)
 - [Duration Variants](#duration-variants)
+- [Lab Quick Reference](#lab-quick-reference)
 
 ---
 
-OtterWorks is a polyglot microservices platform for real-time collaborative document editing and file management. It has **10 backend services** (Go, Java, Rust, Python x2, Node.js, Kotlin, Scala, Ruby, C#), **2 frontends** (React, Angular), and a full observability stack (Prometheus, Grafana, Jaeger). It is intentionally messy: legacy ETL scripts, outdated dependencies, incomplete runbooks, drifting API contracts, and planted security vulnerabilities.
+OtterWorks is a polyglot microservices platform for real-time collaborative document editing and file management. It has **10 backend services** (Go, Java, Rust, Python x2, Node.js, Kotlin, Scala, Ruby, C#), **2 frontends** (React, Angular), and a full observability stack (Prometheus, Grafana, Jaeger). It is intentionally messy: legacy ETL scripts, outdated dependencies, incomplete runbooks, drifting API contracts, planted security vulnerabilities, missing API gateway routes, documented bugs, and gaps in CI/CD coverage.
 
 Unlike the General workshop where participants paste provided prompts, this workshop requires participants to **craft their own prompts**. Each lab describes what is wrong, where to look, and what done looks like. Participants must decompose the problem and figure out how to direct Devin to fix it.
 
@@ -101,15 +117,15 @@ This gives you the map. You will learn that there is an API gateway (Go) routing
 
 > **"Walk me through what happens when a user creates a document. Which services are involved and what does the request flow look like?"**
 
-This grounds the architecture in a concrete flow. You will see the api-gateway route the request to the document-service (Python/FastAPI), which writes to DynamoDB and publishes an event to SNS. The collab-service (Node.js) picks up the event for real-time sync, and the search-service (Python/Flask) indexes it in MeiliSearch.
+This grounds the architecture in a concrete flow. You will see the api-gateway route the request to the document-service (Python/FastAPI), which writes to PostgreSQL and publishes an event to SNS. The collab-service (Node.js) picks up the event for real-time sync, and the search-service (Python/Flask) indexes it in MeiliSearch.
 
 > **"What observability tools does OtterWorks use? Where are the Grafana dashboards, Prometheus alerts, and Jaeger tracing configured?"**
 
-This is especially useful if you are planning Track B (Incident Response), but helps everyone understand how the system is monitored.
+This is especially useful if you are planning Track B (Incident Response) or Track D (DevOps), but helps everyone understand how the system is monitored.
 
 > **"What parts of this codebase look like they need work? Are there legacy scripts, outdated dependencies, incomplete docs, or known issues?"**
 
-This is the discovery prompt. Devin will surface the ETL legacy scripts, the outdated report-service, the incomplete runbooks, the planted security vulnerabilities, and the drifting API contracts — which are exactly the problems the labs address.
+This is the discovery prompt. Devin will surface the ETL legacy scripts, the outdated report-service, the incomplete runbooks, the planted security vulnerabilities, the drifting API contracts, the missing gateway routes, and the documented bugs — which are exactly the problems the labs address.
 
 Once you have a sense of the codebase, pick your track and start a lab.
 
@@ -167,7 +183,7 @@ Focus: Investigating production incidents, building runbooks, and improving obse
 **Key Takeaways:**
 - Devin can correlate signals across dashboards, logs, and traces to identify root causes
 - Different incident signatures (error spikes vs. latency spikes) require different investigation approaches
-- **Event-driven pattern:** Grafana alerts → webhook → auto-created incidents → Devin API sessions demonstrate "Devin as an always-on on-call engineer"
+- **Event-driven pattern:** Grafana alerts → webhook → auto-created incidents → Devin API sessions show "Devin as an always-on on-call engineer"
 - The Auto-Investigate toggle lets teams experience the escalation from manual → one-click → fully automatic, showing how to adopt Devin incrementally
 
 ---
@@ -236,6 +252,136 @@ Focus: Finding and fixing security vulnerabilities, contract drift, and test cov
 
 ---
 
+## Track D: DevOps & CI/CD
+
+Focus: Understanding, auditing, and improving the monorepo CI/CD pipeline, infrastructure as code, and automated security workflows.
+
+### Lab D1 — Monorepo CI Pipeline Audit (45-60 min)
+
+- **Lab Guide:** [D1-ci-pipeline-audit.md](D1-ci-pipeline-audit.md)
+- **Objective:** Audit the CI/CD pipeline for documentation drift, change-detection gaps, and inconsistent service coverage
+
+**Key Takeaways:**
+- Monorepo CI strategies require careful change-detection to avoid rebuilding everything on every commit
+- Documentation drift between CI strategy docs and actual workflows is a real operational risk
+- Shared artifacts (`shared/openapi/`, `shared/events/schemas/`) create cross-service dependencies that naive path filters miss
+- Devin can compare documentation against implementation and identify discrepancies systematically
+
+---
+
+### Lab D2 — Infrastructure as Code Review (45-60 min)
+
+- **Lab Guide:** [D2-infrastructure-review.md](D2-infrastructure-review.md)
+- **Objective:** Audit Terraform modules and Helm charts for misconfigurations, missing best practices, and inconsistencies
+
+**Key Takeaways:**
+- IaC grows incrementally and accumulates inconsistencies — Devin can audit across modules for patterns
+- Terraform and Helm have distinct best-practice checklists (variable validation, tagging, health probes, security contexts) that Devin checks systematically
+- OtterWorks has two Terraform layers (platform + application) and 12 Helm charts — realistic enterprise scale for IaC review
+
+---
+
+### Lab D3 — Event-Driven SAST Pipeline (45-60 min)
+
+- **Lab Guide:** [D3-event-driven-sast.md](D3-event-driven-sast.md)
+- **Objective:** Understand the automated Trivy + SonarCloud → Devin remediation pipeline and propose improvements
+
+**Key Takeaways:**
+- Event-driven automation is the enterprise pattern — Devin responds to CI signals, not manual prompts
+- Closed-loop verification (fix → re-scan → verify) creates autonomous security remediation
+- Bot-loop prevention and escalation are essential for production safety
+- This pipeline demonstrates Devin as an always-on security engineer that scales to hundreds of PRs
+
+---
+
+## Track E: Application Development
+
+Focus: Fixing real bugs, completing missing features, and building realistic test environments.
+
+### Lab E1 — Cross-Service Bug Hunt (45-60 min)
+
+- **Lab Guide:** [E1-cross-service-bug-hunt.md](E1-cross-service-bug-hunt.md)
+- **Objective:** Use the exploratory QA report as a bug backlog and fix real cross-service bugs
+
+**Key Takeaways:**
+- Real bugs in microservices architectures often span multiple services — the root cause is rarely where the symptom appears
+- Devin can trace request flows across API gateway, backend services, and frontends to pinpoint root causes
+- QA reports and bug backlogs are effective starting points for Devin sessions — they provide clear context and success criteria
+- This lab uses real (not planted) integration issues documented in `docs/exploratory-qa-report.md`
+
+---
+
+### Lab E2 — API Gateway Route Completion (45-60 min)
+
+- **Lab Guide:** [E2-api-gateway-routes.md](E2-api-gateway-routes.md)
+- **Objective:** Wire missing API routes through the Go API gateway so all service endpoints are reachable
+
+**Key Takeaways:**
+- API gateways are a common integration bottleneck — services expose endpoints that the gateway does not route
+- Devin can read an API route matrix, understand the existing routing pattern, and add new routes consistently
+- The `docs/api-route-matrix.md` documents exactly which routes are missing — a realistic internal doc that Devin uses as a task specification
+- Go reverse proxy configuration is a pattern Devin handles well when given a working example to follow
+
+---
+
+### Lab E3 — Synthetic Test Data Generation (45-60 min)
+
+- **Lab Guide:** [E3-synthetic-test-data.md](E3-synthetic-test-data.md)
+- **Objective:** Generate, load, and validate realistic synthetic test data using the testdata framework
+
+**Key Takeaways:**
+- Empty databases make lower environments useless for testing — synthetic data is an enterprise necessity
+- Devin can introspect a database schema and generate data that satisfies both schema invariants and business acceptance criteria
+- The generate → load → validate loop mirrors real data engineering workflows
+- Namespaced schemas prevent test data from polluting production data
+
+---
+
+## Track F: Architecture & Documentation
+
+Focus: Generating architecture artifacts, expanding test suites, and creating documentation grounded in the actual codebase.
+
+### Lab F1 — Architecture Decision Records (45-60 min)
+
+- **Lab Guide:** [F1-architecture-decision-records.md](F1-architecture-decision-records.md)
+- **Objective:** Generate ADRs for key OtterWorks design decisions by reading the implementation
+
+**Key Takeaways:**
+- ADRs capture the "why" behind architecture — the rationale that gets lost when decisions live in Slack threads or meeting notes
+- Devin can reverse-engineer decision rationale by reading the actual codebase, not just architecture diagrams
+- Grounded ADRs (referencing specific files and patterns) are more useful than generic ones
+- This is a high-value low-risk task that Devin can do at scale across any enterprise codebase
+
+---
+
+### Lab F2 — API Flow Test Expansion (45-60 min)
+
+- **Lab Guide:** [F2-api-flow-test-expansion.md](F2-api-flow-test-expansion.md)
+- **Objective:** Write new black-box API flow tests for user flows that lack coverage
+
+**Key Takeaways:**
+- Black-box API tests (through the gateway) catch integration issues that unit tests miss
+- Devin can read an API route matrix, identify uncovered flows, and write tests that follow existing patterns
+- The `tests/api/` suite already covers 10 flows — expanding it is a realistic "more of this, please" task
+- Edge cases (cross-user access control, error paths, side-effect verification) are where integration tests add the most value
+
+---
+
+### Lab F3 — Technical Documentation Generation (45-60 min)
+
+- **Lab Guide:** [F3-technical-documentation.md](F3-technical-documentation.md)
+- **Objective:** Generate service-level READMEs and developer onboarding guides from the actual codebase
+
+**Key Takeaways:**
+- Documentation quality varies wildly across services in real enterprise codebases — Devin can level it up
+- Devin generates documentation grounded in real files, commands, and configuration — not generic templates
+- Per-service READMEs dramatically reduce onboarding friction for developers new to a specific service
+- This is one of the highest-ROI, lowest-risk tasks for Devin — documentation has no production impact but compounds over time
+
+---
+
+<a id="choosing-a-track"></a>
+
 ## Choosing a Track
 
 | Participant Background | Recommended Track |
@@ -243,17 +389,48 @@ Focus: Finding and fixing security vulnerabilities, contract drift, and test cov
 | Backend / full-stack developers, migration experience | Track A: Modernization & Migration |
 | SRE, DevOps, platform engineers, on-call experience | Track B: Incident Response & Reliability |
 | Security engineers, QA leads, test automation | Track C: Security & Quality |
+| Platform engineers, CI/CD specialists, DevOps leads | Track D: DevOps & CI/CD |
+| Application developers, feature work, bug fixing | Track E: Application Development |
+| Tech leads, architects, documentation-focused | Track F: Architecture & Documentation |
 | Mixed audience | Let participants self-select — all tracks use the same repo |
 | Short event (2 hours) | Pick one lab from any track |
+
+<a id="duration-variants"></a>
 
 ## Duration Variants
 
 | Duration | Recommended Format |
 |----------|-------------------|
-| 6 hours (full day) | All three tracks in parallel, participants pick 2 labs from their track + 1 from another |
+| 8 hours (full day) | All six tracks available, participants pick 3-4 labs across 2 tracks |
+| 6 hours | Three tracks in parallel, participants pick 2 labs from their track + 1 from another |
 | 4 hours | Single track: all 3 labs with breaks |
 | 3 hours | Single track: 2 labs (skip the third or abbreviate) |
 | 2 hours | Pick 1 lab from any track + 30 min discussion |
+
+<a id="lab-quick-reference"></a>
+
+## Lab Quick Reference
+
+| Lab | Track | Difficulty | Time | Languages Involved | Key Docs in Repo |
+|-----|-------|-----------|------|-------------------|-----------------|
+| A1 — ETL Modernization | Modernization | Medium | 60-90 min | Python | `etl/ETL_UPGRADE_GUIDE.md` |
+| A2 — Framework Upgrade | Modernization | Medium | 60-90 min | Java | `services/report-service/UPGRADE_GUIDE.md` |
+| A3 — Language Translation | Modernization | Medium | 60-90 min | Python | `services/search-service/TRANSLATION_GUIDE.md` |
+| B1 — Investigate Incident | Reliability | Medium | 45-60 min | Ruby, Python, Rust, Kotlin | `docs/runbooks/`, `observability/grafana/` |
+| B2 — Complete Runbooks | Reliability | Easy | 45-60 min | All (reading) | `docs/runbooks/` |
+| B3 — Add Observability | Reliability | Hard | 45-60 min | Varies | `observability/`, service source |
+| C1 — Security Sprint | Security | Medium | 60-90 min | All | `docs/labs/security-sprint-guide.md` |
+| C2 — Contract Audit | Security | Medium | 45-60 min | Kotlin, C# | `docs/labs/contract-audit-guide.md` |
+| C3 — Test Coverage | Security | Medium | 45-60 min | Varies | `Makefile` (test-coverage target) |
+| D1 — CI Pipeline Audit | DevOps | Medium | 45-60 min | YAML, Go | `docs/CI_STRATEGY.md` |
+| D2 — IaC Review | DevOps | Hard | 45-60 min | HCL, Helm | `infrastructure/`, `platform/` |
+| D3 — Event-Driven SAST | DevOps | Medium | 45-60 min | YAML | `docs/EVENT_DRIVEN_SECURITY.md` |
+| E1 — Bug Hunt | App Dev | Medium | 45-60 min | Go, Kotlin, Python | `docs/exploratory-qa-report.md` |
+| E2 — Gateway Routes | App Dev | Easy | 45-60 min | Go | `docs/api-route-matrix.md` |
+| E3 — Synthetic Test Data | App Dev | Medium | 45-60 min | Python, SQL | `testdata/README.md` |
+| F1 — ADRs | Architecture | Easy | 45-60 min | All (reading) | `ARCHITECTURE.md` |
+| F2 — API Flow Tests | Architecture | Medium | 45-60 min | Python | `tests/api/`, `docs/api-route-matrix.md` |
+| F3 — Technical Docs | Architecture | Easy | 45-60 min | All (reading) | Service source code |
 
 ## Repos Required
 
@@ -266,3 +443,5 @@ Focus: Finding and fixing security vulnerabilities, contract drift, and test cov
 - **"Parallel sessions for parallel problems"** — security sprints, test coverage blitzes, and multi-service changes benefit from running multiple Devin sessions simultaneously.
 - **"Guides and specs are force multipliers"** — pointing Devin at an upgrade guide, OpenAPI spec, or runbook template dramatically improves output quality.
 - **"Verification is non-negotiable"** — every lab has concrete success criteria. Tests pass, scans are clean, specs match implementations.
+- **"Event-driven Devin scales beyond manual sessions"** — CI triggers, incident webhooks, and scheduled sessions show how Devin operates as team-scale infrastructure, not just a personal assistant.
+- **"Documentation compounds"** — ADRs, service READMEs, and onboarding guides are high-ROI, low-risk tasks where Devin generates immediate team value.

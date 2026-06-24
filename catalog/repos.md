@@ -638,7 +638,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Rust (Actix), Python (FastAPI, Flask), Node.js (Socket.IO, Yjs), Java (Spring Boot), Go, Kotlin (Ktor), Scala (Akka), Ruby (Rails), C# (.NET), TypeScript (Next.js, Angular), PostgreSQL, DynamoDB, Redis, MeiliSearch, AWS (S3, SNS, SQS), Terraform, Docker, Prometheus, Grafana, Jaeger |
 | **License** | MIT |
 | **Default Branch** | `main` |
-| **Challenges** | [OtterWorks Workshop](../workshops/otterworks/README.md) — ETL modernization (cron to Airflow), framework upgrades (Java 8 to 17), language translation (Flask to FastAPI), incident response (chaos engineering), security remediation (CVE triage), API contract audit, test coverage |
+| **Challenges** | [OtterWorks Workshop](../workshops/otterworks/README.md) — 18 labs across 6 tracks: ETL modernization (cron to Airflow), framework upgrades (Java 8 to 17), language translation (Flask to FastAPI), incident response (chaos engineering), runbook completion, observability instrumentation, security remediation (CVE triage), API contract audit, test coverage, CI pipeline audit, IaC review, event-driven SAST pipeline, cross-service bug hunt, API gateway route completion, synthetic test data generation, architecture decision records, API flow test expansion, technical documentation generation |
 
 ### Other Repos
 
