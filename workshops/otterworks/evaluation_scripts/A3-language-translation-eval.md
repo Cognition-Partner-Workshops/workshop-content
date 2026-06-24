@@ -25,7 +25,7 @@ Compare the branch against `main` to identify what the participant changed in `s
    - `POST /index/file`
    - `GET /health`
    - `GET /ready`
-   Verify by reading the route definitions. Compare against the OpenAPI spec at `shared/openapi/search-service.yaml`.
+   Verify by reading the route definitions. Compare against the OpenAPI spec at `reference/openapi/search-service.yaml`.
 
 4. **Pydantic models:** Response data uses Pydantic models (not raw `jsonify()` dicts). Check for `from pydantic import BaseModel` or `pydantic.BaseModel` subclasses.
 

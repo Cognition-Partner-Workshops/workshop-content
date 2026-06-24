@@ -123,7 +123,7 @@ Open the DeepWiki page for both ts-informatica-powercenter and uc-dw-migration-t
 
 - **Non-invasive static analysis**: Devin extracts the full ETL logic from PowerCenter XML and Oracle SQL scripts — no Informatica server, no Oracle database, no Snowflake account required for the conversion work
 - **Multi-layer migration**: This exercise covers ETL logic (PowerCenter → Snowflake stored procedures), database platform (Oracle → Snowflake DDL), and orchestration (pmcmd → Snowflake Tasks) — all from static artifacts
-- **Parallel migration workstreams**: Each PowerCenter mapping can be converted independently, making this a strong candidate for [child-session parallelism](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
+- **Parallel migration workstreams**: Each PowerCenter mapping can be converted independently, making this a strong candidate for [child-session parallelism](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
 
 ---
 
@@ -145,20 +145,20 @@ When working on the Informatica-to-Snowflake migration, review the Snowflake DDL
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever new PowerCenter XML exports are added, a Devin session automatically generates the Snowflake equivalent DDL, stored procedures, and orchestration tasks. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever new PowerCenter XML exports are added, a Devin session automatically generates the Snowflake equivalent DDL, stored procedures, and orchestration tasks. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For large Informatica estates, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all mappings and categorizes them by complexity, then spawns a child session per mapping. Each child extracts the transformation logic, generates Snowflake equivalents, and opens its own PR.
+For large Informatica estates, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all mappings and categorizes them by complexity, then spawns a child session per mapping. Each child extracts the transformation logic, generates Snowflake equivalents, and opens its own PR.
 
 ### Scheduled Sessions
 
-Schedule a recurring Devin session to re-validate migrated Snowflake stored procedures against the original PowerCenter XML — catching semantic drift if either side changes during the migration project. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a recurring Devin session to re-validate migrated Snowflake stored procedures against the original PowerCenter XML — catching semantic drift if either side changes during the migration project. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your Informatica-to-Snowflake translation standards (e.g., "Lookup Transformations → LEFT JOIN", "Expression Transformations with Oracle functions → Snowflake UDFs", "pmcmd orchestration → Snowflake Task DAG"). Every Devin session inherits these conventions.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your Informatica-to-Snowflake translation standards (e.g., "Lookup Transformations → LEFT JOIN", "Expression Transformations with Oracle functions → Snowflake UDFs", "pmcmd orchestration → Snowflake Task DAG"). Every Devin session inherits these conventions.
 
 ### Team-Based Operation
 
-ETL developers familiar with PowerCenter, DBAs experienced with Snowflake, and migration architects can all review the PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../shared/general-themes/collaboration-model.md).
+ETL developers familiar with PowerCenter, DBAs experienced with Snowflake, and migration architects can all review the PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../reference/general-themes/collaboration-model.md).

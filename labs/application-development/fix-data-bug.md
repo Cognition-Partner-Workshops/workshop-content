@@ -44,7 +44,7 @@ Fix a known data persistence bug in the application. This challenge requires inv
 - Understanding multi-tenancy boundaries (what's shared vs. user-scoped)
 - Database schema and query analysis
 - The importance of testing data bugs with multiple user scenarios
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -52,7 +52,7 @@ Fix a known data persistence bug in the application. This challenge requires inv
 - Backend code investigation
 - Data model reasoning
 - PR creation with explanation
-- **Devin Review** — can catch data isolation issues in the fix PR (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch data isolation issues in the fix PR (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -73,7 +73,7 @@ Runtime helpful but not required — the bug can be found by code analysis alone
   - Clients = shared (org-wide)
   - Work entries = per-user
 - Participants should verify the fix doesn't break work entry isolation
-- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication))
+- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication))
 
 ---
 
@@ -86,7 +86,7 @@ Runtime helpful but not required — the bug can be found by code analysis alone
 **Bug:** Clients do not persist when you log out and log back in with a different email. Clients are intended to be shared by all users of the application.
 
 - **Symptom:** User A creates clients. User B logs in and doesn't see User A's clients.
-- **Expected:** Clients should be shared/visible to all users (they are org-wide, not per-user).
+- **Expected:** Clients should be reference/visible to all users (they are org-wide, not per-user).
 - **Root Cause Area:** Likely in the database query filtering — clients are probably filtered by `user_email` when they shouldn't be, or the data model needs adjusting.
 
 #### Step 1: Paste into Devin
@@ -122,6 +122,6 @@ Open the repo's DeepWiki page to understand the data model relationships. Map ou
 
 ## Going Further
 
-- **Ticket-driven data bug fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, traces the data flow, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Scheduled data integrity checks** — run Devin on a weekly schedule to analyze database queries for common multi-tenancy issues (missing user scoping, incorrect joins, data leakage risks) and open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Shared context for data models** — add knowledge notes describing which entities are user-scoped vs. shared so Devin applies the correct scoping on every future task (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- **Ticket-driven data bug fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, traces the data flow, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Scheduled data integrity checks** — run Devin on a weekly schedule to analyze database queries for common multi-tenancy issues (missing user scoping, incorrect joins, data leakage risks) and open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Shared context for data models** — add knowledge notes describing which entities are user-scoped vs. shared so Devin applies the correct scoping on every future task (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))

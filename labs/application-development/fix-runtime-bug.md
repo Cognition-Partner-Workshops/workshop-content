@@ -45,7 +45,7 @@ Try running an application and have Devin fix a bug or unexpected behavior you e
 - How Devin uses its browser to reproduce and verify bugs
 - Devin's debugging approach (logs, code analysis, bisect)
 - The value of screen recordings as test evidence
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Try running an application and have Devin fix a bug or unexpected behavior you e
 - Screen recording for test evidence
 - Debugging and root cause analysis
 - PR creation with fix explanation
-- **Devin Review** — can proactively catch related issues in the fix PR (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can proactively catch related issues in the fix PR (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -65,14 +65,14 @@ Intermediate
 
 ## Prerequisites
 
-The application must be running (locally or hosted). See [runtime-resources.md](../../shared/runtime-resources.md) for hosted instance details.
+The application must be running (locally or hosted). See [runtime-resources.md](../../reference/runtime-resources.md) for hosted instance details.
 
 ## Notes
 
 - Encourage participants to use Devin's browser to interact with the running app
 - The bug doesn't have to be a "real" bug — unexpected UX or edge cases count
 - If no hosted instance is available, participants can ask Devin to run the app locally
-- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication))
+- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication))
 
 ---
 
@@ -110,7 +110,7 @@ Open the repo's DeepWiki page to understand the data flow and identify component
 
 **Repository:** [calcom](https://github.com/Cognition-Partner-Workshops/calcom)
 
-Complex scheduling application. `yarn dev` starts on port 3000. See [runtime-resources.md](../../shared/runtime-resources.md) for sample credentials.
+Complex scheduling application. `yarn dev` starts on port 3000. See [runtime-resources.md](../../reference/runtime-resources.md) for sample credentials.
 
 #### Step 1: Paste into Devin
 
@@ -146,6 +146,6 @@ Open the repo's DeepWiki page to understand the booking engine and timezone hand
 
 ## Going Further
 
-- **Ticket-driven bug fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, reproduces the bug, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Scheduled code health analysis** — run Devin on a weekly schedule to scan for common bug patterns (unhandled promise rejections, null reference risks, missing error boundaries) and open remediation PRs proactively (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **CI failure auto-triage** — connect CI failure webhooks to Devin so it reads failure logs and pushes fixes without human intervention (see [Collaboration Model → CI Check Monitoring](../../shared/general-themes/collaboration-model.md#ci-check-monitoring))
+- **Ticket-driven bug fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, reproduces the bug, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Scheduled code health analysis** — run Devin on a weekly schedule to scan for common bug patterns (unhandled promise rejections, null reference risks, missing error boundaries) and open remediation PRs proactively (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **CI failure auto-triage** — connect CI failure webhooks to Devin so it reads failure logs and pushes fixes without human intervention (see [Collaboration Model → CI Check Monitoring](../../reference/general-themes/collaboration-model.md#ci-check-monitoring))

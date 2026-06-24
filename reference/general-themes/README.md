@@ -2,7 +2,7 @@
 
 Concise reference cards for Devin's architecture, capabilities, and collaboration model. Use these as quick lookups during labs and workshops.
 
-For comprehensive training, see [Foundations](../../workshops/foundations/) and [Training Tracks](../../workshops/training-tracks/).
+For comprehensive training, see [Foundations](../../courses/foundations/) and [Tracks](../../courses/tracks/).
 
 | Reference Card | Quick Answer To |
 |----------------|----------------|

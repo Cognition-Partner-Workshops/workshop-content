@@ -1,36 +1,29 @@
 # Workshops
 
-Curated learning paths — reading material, training tracks, and hands-on lab sequences. Pick the workshop your facilitator assigned, or follow the progression model below.
+Hands-on, **choose-your-own-adventure** lab collections. Pick the workshop your facilitator assigned (or your interest), then pick the labs within it — there are no required sequences, solutions, or assessments here.
+
+> **New to Devin?** Do the reading-first [`courses/`](../courses/) first — [Foundations](../courses/foundations/) (Level 1) and your [Track](../courses/tracks/) (Level 2) — then come here to apply it hands-on.
 
 ## Progression Model
 
 ```
-Level 1: foundations/        ← Everyone starts here (concepts + product features)
+Reading first (../courses/):
+  Level 1: foundations/        ← Everyone starts here (concepts + product features)
+  Level 2: tracks/    ← Role-specific training (sales / solutions / engineering)
     ↓
-Level 2: training-tracks/    ← Role-specific training (sales / solutions / engineering)
-    ↓
-Level 3: by-tech-domain/    ← Deep-dives by technology area
-         by-tech-role/      ← Deep-dives by job function
-    ↓
-Practice: general/           ← Broad hands-on tour
-          otterworks/        ← Advanced monorepo deep-dive
+Hands-on (you are here, workshops/):
+  Practice: general/           ← Broad hands-on tour
+            otterworks/        ← Flagship monorepo deep-dive (300-level)
+  Level 3:  by-tech-domain/    ← Deep-dives by technology area
+            by-tech-role/      ← Deep-dives by job function
 ```
 
 ## Directory Structure
 
 ```
 workshops/
-├── foundations/              ← Level 1: Concepts + product features (everyone)
-│   ├── concepts/            ← Cloud vs. local, event-driven, orchestration, task selection
-│   └── product/             ← Feature tours organized by cloud / local
-│       ├── cloud/           ← Devin Cloud, DeepWiki, Sessions, Automations, Multi-Agent
-│       └── local/           ← Devin Desktop, Devin CLI
-├── training-tracks/         ← Level 2: Role-specific training
-│   ├── sales/               ← Operating model, cost structures, engagement capture
-│   ├── solutions/           ← System design, SDLC integration, live walkthroughs
-│   └── engineering/         ← Tactical platform usage, prompt engineering, orchestration
 ├── general/                 ← Hands-on broad tour (security, modernization, feature dev)
-├── otterworks/              ← Advanced monorepo hands-on (300-level)
+├── otterworks/              ← Flagship polyglot monorepo hands-on (300-level)
 ├── by-tech-domain/          ← Level 3: Deep-dives by technology area
 │   ├── modernization/       ← COBOL, .NET, Framework Upgrades, Data Migration, Platform Decomp
 │   ├── security/            ← Compliance, Enterprise Automation
@@ -40,6 +33,8 @@ workshops/
     ├── digital-engineering/ ← CI/CD, cloud infrastructure, observability
     └── quality-engineering/ ← Engineering, Engineering + Security
 ```
+
+Reading/learning enablement (foundations + training tracks) lives in [`../courses/`](../courses/).
 
 ## How Labs Work
 
@@ -51,28 +46,6 @@ Every lab follows a 4-step format:
 4. **Review & Give Feedback** — review the PR, leave comments, iterate with Devin
 
 Labs reference individual modules from [`labs/`](../labs/) — the detailed challenge definitions.
-
----
-
-## Level 1: Foundations
-
-| Workshop | Focus | Duration |
-|----------|-------|----------|
-| [Foundations](foundations/) | Cloud agent concepts, product features, platform mental model | 2-3 hours |
-
-Everyone starts here. Covers concepts (cloud vs. local, event-driven reactions, orchestration, task selection) and product features (Devin Cloud, Desktop, CLI, DeepWiki, Automations, Multi-Agent Workers).
-
----
-
-## Level 2: Training Tracks
-
-Role-specific training that builds on Foundations. See the [Tracks README](training-tracks/) for the full progression model.
-
-| Track | Persona | Duration |
-|-------|---------|----------|
-| [Sales](training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
-| [Solutions](training-tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
-| [Engineering](training-tracks/engineering/) | Engineers, Developers | 6-8 hours |
 
 ---
 

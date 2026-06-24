@@ -1,6 +1,6 @@
 # Design Patterns for Devin — Quick Reference
 
-> Comprehensive training: [Solutions Track — SDLC Integration Design](../../workshops/training-tracks/solutions/02-sdlc-integration-design.md) | [Solutions Track — Automation Topology Design](../../workshops/training-tracks/solutions/04-automation-topology-design.md)
+> Comprehensive training: [Solutions Track — SDLC Integration Design](../../courses/tracks/solutions/02-sdlc-integration-design.md) | [Solutions Track — Automation Topology Design](../../courses/tracks/solutions/04-automation-topology-design.md)
 
 ## Pattern Reference Card
 

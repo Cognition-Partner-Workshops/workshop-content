@@ -97,7 +97,7 @@ Open the repo's DeepWiki page to understand the extraction-comparison-decision p
 
 ## Going Further
 
-Document review connects to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+Document review connects to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **PR-triggered comparison rule updates** — When new document types are added to the system, trigger a Devin session that analyzes the new extraction templates and suggests appropriate comparison rules (field mappings, matching strategies, confidence thresholds)
 - **Scheduled accuracy audits** — Run a recurring session that evaluates the comparator's accuracy against a labeled test set, identifies degrading strategies, and opens PRs with tuned thresholds or alternative algorithms

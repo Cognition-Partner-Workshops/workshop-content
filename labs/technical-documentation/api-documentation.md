@@ -153,7 +153,7 @@ Open the repo's DeepWiki page to map out the complete API surface across both RE
 
 ## Going Further
 
-API documentation is well suited to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+API documentation is well suited to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **PR-triggered doc updates** — When a PR modifies API route handlers, trigger a Devin session that regenerates the OpenAPI spec from the updated code and opens a follow-up PR if the spec has drifted from the implementation
 - **Scheduled spec-vs-code audits** — Run a recurring session that compares the checked-in OpenAPI spec against the actual route definitions and flags any endpoints that were added, removed, or changed without a corresponding spec update

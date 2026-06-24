@@ -43,7 +43,7 @@ Map and analyze internal dependency graphs to identify circular dependencies, ti
 - How Devin identifies architectural risks like circular dependencies and tight coupling
 - Devin's ability to reason about module boundaries and suggest decoupling strategies
 - How to use AI-assisted analysis to prioritize refactoring efforts
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -51,7 +51,7 @@ Map and analyze internal dependency graphs to identify circular dependencies, ti
 - Architectural reasoning and pattern detection
 - Visualization and structured reporting
 - PR creation with refactoring changes
-- **Devin Review** — can flag new circular dependencies or coupling regressions in future PRs (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can flag new circular dependencies or coupling regressions in future PRs (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -133,7 +133,7 @@ Open the repo's DeepWiki page to understand the monorepo package architecture. L
 
 ## Going Further
 
-- **Scheduled dependency health checks** — run Devin on a monthly schedule to re-analyze the dependency graph, compare against the previous baseline, and flag new coupling regressions (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Devin Review for coupling prevention** — enable Devin Review with rules to flag PRs that introduce new cross-package dependencies or circular imports (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
-- **Parallel decoupling across modules** — use child agents to implement decoupling changes across multiple tightly coupled module pairs simultaneously, each following the same interface-extraction playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
-- **Dependency analysis as shared context** — add the dependency report to Devin's knowledge notes so future sessions understand the module architecture and avoid introducing new coupling (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- **Scheduled dependency health checks** — run Devin on a monthly schedule to re-analyze the dependency graph, compare against the previous baseline, and flag new coupling regressions (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Devin Review for coupling prevention** — enable Devin Review with rules to flag PRs that introduce new cross-package dependencies or circular imports (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
+- **Parallel decoupling across modules** — use child agents to implement decoupling changes across multiple tightly coupled module pairs simultaneously, each following the same interface-extraction playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Dependency analysis as shared context** — add the dependency report to Devin's knowledge notes so future sessions understand the module architecture and avoid introducing new coupling (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))

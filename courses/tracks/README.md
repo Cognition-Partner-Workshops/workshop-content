@@ -1,20 +1,18 @@
-# Workshop Training Tracks
+# Tracks
 
 ## Overview
 
-Three role-based tracks that build on the shared [Foundations](../foundations/) workshop. Each track targets a distinct persona in the partner systems integrator ecosystem and covers what that role needs to deliver effectively with Devin.
+Three role-based reading tracks that build on the shared [Foundations](../foundations/) course. Each track targets a distinct persona in the partner systems integrator ecosystem and covers what that role needs to deliver effectively with Devin.
 
 ```
-workshops/
+courses/
 ├── foundations/          ← Shared base (everyone completes this first)
-├── training-tracks/
-│   ├── sales/           ← Operating model, cost structures, engagement capture
-│   ├── solutions/       ← System design, SDLC integration, live walkthroughs
-│   └── engineering/     ← Tactical platform usage, prompt engineering, orchestration
-├── general/             ← Existing hands-on labs (cross-track reference material)
-├── by-tech-domain/      ← Deep-dives by technical domain (Level 3)
-├── by-tech-role/        ← Deep-dives by technical role (Level 3)
-└── otterworks/          ← Existing platform showcase
+└── tracks/
+    ├── sales/            ← Operating model, cost structures, engagement capture
+    ├── solutions/        ← System design, SDLC integration, live walkthroughs
+    └── engineering/      ← Tactical platform usage, prompt engineering, orchestration
+
+../workshops/             ← Hands-on practice (general, otterworks, by-tech-domain, by-tech-role)
 ```
 
 ---
@@ -23,8 +21,8 @@ workshops/
 
 | Level | Content | Audience | Status |
 |-------|---------|----------|--------|
-| **Level 1: Foundations** | `workshops/foundations/` | All personas | Exists |
-| **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,engineering}/` | Role-specific | Planned (this document) |
+| **Level 1: Foundations** | `courses/foundations/` | All personas | Exists |
+| **Level 2: Tracks** | `courses/tracks/{sales,solutions,engineering}/` | Role-specific | Planned (this document) |
 | **Level 3: Deep-Dives** | `workshops/by-tech-domain/` + `workshops/by-tech-role/` | Domain experts | Exists |
 
 ---
@@ -61,7 +59,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `workshops/training-tracks/sales/03-value-narrative-selection.md`; quick-reference: `shared/general-themes/value-narratives.md`)
+- Reading material (reference: `courses/tracks/sales/03-value-narrative-selection.md`; quick-reference: `reference/general-themes/value-narratives.md`)
 - Knowledge checks (multiple choice/response after each section)
 - Case study exercises (estimate an engagement, select a narrative, scope a campaign)
 - ROI estimation worksheets
@@ -96,7 +94,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: `workshops/training-tracks/solutions/01-platform-architecture-mastery.md`, `02-sdlc-integration-design.md`, `04-automation-topology-design.md`; quick-reference: `shared/general-themes/`)
+- Reading material (reference: `courses/tracks/solutions/01-platform-architecture-mastery.md`, `02-sdlc-integration-design.md`, `04-automation-topology-design.md`; quick-reference: `reference/general-themes/`)
 - Knowledge checks (architecture questions, "which pattern for this scenario?")
 - Design challenges (design an automation topology, configure an org)
 - Live walkthrough delivery in a simulated environment (uses `demos/` content as the script)
@@ -134,7 +132,7 @@ workshops/
 
 ### Modalities Required
 
-- Reading material (reference: Foundations 01-09; quick-reference: `shared/general-themes/when-to-use-devin.md`, `cloud-vs-local-agents.md`)
+- Reading material (reference: Foundations 01-09; quick-reference: `reference/general-themes/when-to-use-devin.md`, `cloud-vs-local-agents.md`)
 - Knowledge checks (the critical missing modality — "Is this task good for an agent?", "What's wrong with this prompt?")
 - Challenge-mode labs (write your OWN prompt for a given scenario — no copy-paste provided)
 - Debug exercises (diagnose what went wrong in a described session failure)
@@ -206,11 +204,11 @@ These will be built out as Level 2 tracks mature.
 
 | Existing Content | Role in Track Structure |
 |-----------------|----------------------|
-| `workshops/foundations/` | Level 1 prerequisite for all tracks — comprehensive training for all core topics |
-| `shared/general-themes/` | Quick-reference cheat sheets for lab use — condensed versions pointing back to foundations and tracks |
-| `workshops/training-tracks/sales/` | Comprehensive value narratives, operating model, unit economics (supersedes GT `value-narratives.md` for depth) |
-| `workshops/training-tracks/solutions/` | Comprehensive architecture, SDLC integration, automation topology (supersedes GT `architecture-strengths.md`, `design-patterns-for-devin.md` for depth) |
-| `workshops/training-tracks/engineering/` | Comprehensive platform fundamentals, task selection, orchestration (supersedes GT `when-to-use-devin.md`, `cloud-vs-local-agents.md` for depth) |
+| `courses/foundations/` | Level 1 prerequisite for all tracks — comprehensive training for all core topics |
+| `reference/general-themes/` | Quick-reference cheat sheets for lab use — condensed versions pointing back to foundations and tracks |
+| `courses/tracks/sales/` | Comprehensive value narratives, operating model, unit economics (supersedes GT `value-narratives.md` for depth) |
+| `courses/tracks/solutions/` | Comprehensive architecture, SDLC integration, automation topology (supersedes GT `architecture-strengths.md`, `design-patterns-for-devin.md` for depth) |
+| `courses/tracks/engineering/` | Comprehensive platform fundamentals, task selection, orchestration (supersedes GT `when-to-use-devin.md`, `cloud-vs-local-agents.md` for depth) |
 | `workshops/general/` | Practice labs for Engineering track |
 | `demos/` | Walkthrough scripts for Solutions track |
 | `workshops/by-tech-domain/` | Level 3 deep-dives by technical domain |

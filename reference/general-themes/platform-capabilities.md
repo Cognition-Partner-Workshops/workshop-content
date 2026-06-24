@@ -1,6 +1,6 @@
 # Platform Capabilities — Quick Reference
 
-> Comprehensive training: [Foundations — Sessions](../../workshops/foundations/product/cloud/06-devin-sessions.md) | [Foundations — Automations](../../workshops/foundations/product/cloud/08-automations.md) | [Foundations — Multi-Agent Workers](../../workshops/foundations/product/cloud/09-multi-agent-workers.md)
+> Comprehensive training: [Foundations — Sessions](../../courses/foundations/product/cloud/06-devin-sessions.md) | [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md) | [Foundations — Multi-Agent Workers](../../courses/foundations/product/cloud/09-multi-agent-workers.md)
 
 ## Feature Summary
 
@@ -16,25 +16,25 @@
 
 ### Scheduled Sessions
 
-See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/product/cloud/08-automations.md).
+See table above. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
 <a id="playbooks"></a>
 
 ### Playbooks
 
-See table above. Comprehensive training: [Foundations — Automations](../../workshops/foundations/product/cloud/08-automations.md).
+See table above. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
 <a id="child-agents-divide-and-conquer"></a>
 
 ### Child Agents
 
-See table above. Comprehensive training: [Foundations — Multi-Agent Workers](../../workshops/foundations/product/cloud/09-multi-agent-workers.md).
+See table above. Comprehensive training: [Foundations — Multi-Agent Workers](../../courses/foundations/product/cloud/09-multi-agent-workers.md).
 
 <a id="devin-review"></a>
 
 ### Devin Review
 
-See table above. Comprehensive training: [Foundations — Sessions § Devin Review](../../workshops/foundations/product/cloud/06-devin-sessions.md#devin-review).
+See table above. Comprehensive training: [Foundations — Sessions § Devin Review](../../courses/foundations/product/cloud/06-devin-sessions.md#devin-review).
 
 ## Session Lifecycle
 

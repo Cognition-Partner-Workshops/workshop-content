@@ -126,7 +126,7 @@ Open the repo's DeepWiki page to understand the application's configuration and 
 
 ## Going Further
 
-Incident response is where **incident-response automation** (alert → Devin investigates) delivers the most value (see [When to Use Devin → Event-Driven](../../shared/general-themes/when-to-use-devin.md)):
+Incident response is where **incident-response automation** (alert → Devin investigates) delivers the most value (see [When to Use Devin → Event-Driven](../../reference/general-themes/when-to-use-devin.md)):
 
 - **Alert-triggered investigation** — Connect PagerDuty, OpsGenie, or Azure Monitor alerts to the Devin API. When an alert fires, Devin automatically queries logs and metrics via MCP (Datadog, CloudWatch), correlates the failure with recent deployments, and posts a triage summary to the incident channel — before the on-call engineer finishes reading the alert
 - **Automated runbook execution** — When Devin detects a known failure pattern (e.g., database connection exhaustion), it can follow the runbook it generated: verify the symptom, apply the documented remediation (e.g., restart the connection pool), and confirm recovery — opening a PR for any code-level fixes

@@ -44,7 +44,7 @@ Fix a known visual bug in the application. This is a specific, verifiable challe
 - How Devin uses its browser to visually verify fixes
 - Screen recording / screenshot as proof of fix
 - Material-UI component styling patterns
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -52,7 +52,7 @@ Fix a known visual bug in the application. This is a specific, verifiable challe
 - CSS debugging
 - Screenshot/recording for before/after comparison
 - PR creation
-- **Devin Review** — can catch additional styling regressions in the fix PR (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch additional styling regressions in the fix PR (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -70,7 +70,7 @@ Application must be running to see the bug visually. Backend: `cd backend && npm
 
 - This is a good "quick win" challenge — specific, verifiable, and satisfying to fix
 - Pairs well with the data bug challenge (fix-data-bug) for a "bug bash" session
-- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication))
+- Multiple team members can comment on the same PR — Devin reads and responds to all reviewers (see [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication))
 
 ---
 
@@ -120,6 +120,6 @@ Open the repo's DeepWiki page to understand the component hierarchy and styling 
 
 ## Going Further
 
-- **Ticket-driven UI fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, reproduces the visual bug, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Scheduled UI consistency audits** — run Devin on a weekly schedule to scan for common CSS issues (inconsistent spacing, broken layouts at different viewports, accessibility contrast violations) and open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Devin Review for styling regressions** — enable Devin Review on the repo to automatically check every PR for visual regressions and CSS anti-patterns (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Ticket-driven UI fixes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, reproduces the visual bug, implements a fix, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Scheduled UI consistency audits** — run Devin on a weekly schedule to scan for common CSS issues (inconsistent spacing, broken layouts at different viewports, accessibility contrast violations) and open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Devin Review for styling regressions** — enable Devin Review on the repo to automatically check every PR for visual regressions and CSS anti-patterns (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))

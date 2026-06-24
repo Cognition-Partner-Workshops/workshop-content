@@ -120,7 +120,7 @@ Open the repo's DeepWiki page to understand the data warehouse schema relationsh
 
 - **Non-invasive static analysis**: Devin converts Teradata SQL from source files alone — no Teradata instance access, no ODBC connection, no production system changes required
 - **Feature-level mapping**: Every Teradata-specific construct (PI, PPI, COMPRESS, CSUM, MAVG) has a documented Snowflake equivalent or removal rationale
-- **Parallel migration workstreams**: DDL tables, views, stored procedures, and macros can each be converted independently — a natural fit for [child-session parallelism](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
+- **Parallel migration workstreams**: DDL tables, views, stored procedures, and macros can each be converted independently — a natural fit for [child-session parallelism](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
 - **Validation-first methodology**: Row count and checksum queries provide confidence that the conversion preserves data semantics
 
 ---
@@ -129,20 +129,20 @@ Open the repo's DeepWiki page to understand the data warehouse schema relationsh
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever new Teradata DDL is added to the repository, a Devin session automatically generates the Snowflake equivalent and updates the migration runbook. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever new Teradata DDL is added to the repository, a Devin session automatically generates the Snowflake equivalent and updates the migration runbook. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For large Teradata estates with hundreds of tables, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all DDL objects, then spawns a child session per object type or per schema. Each child converts its objects and opens its own PR.
+For large Teradata estates with hundreds of tables, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all DDL objects, then spawns a child session per object type or per schema. Each child converts its objects and opens its own PR.
 
 ### Scheduled Sessions
 
-Schedule a recurring Devin session to re-validate converted DDL against evolving Snowflake best practices (e.g., new clustering recommendations, deprecated syntax). See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a recurring Devin session to re-validate converted DDL against evolving Snowflake best practices (e.g., new clustering recommendations, deprecated syntax). See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your Teradata-to-Snowflake translation standards (e.g., "PI columns map to CLUSTER BY", "COMPRESS columns are dropped — Snowflake handles compression automatically"). Every Devin session inherits these conventions.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your Teradata-to-Snowflake translation standards (e.g., "PI columns map to CLUSTER BY", "COMPRESS columns are dropped — Snowflake handles compression automatically"). Every Devin session inherits these conventions.
 
 ### Team-Based Operation
 
-DBAs, data engineers, and business analysts can all review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../shared/general-themes/collaboration-model.md).
+DBAs, data engineers, and business analysts can all review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../reference/general-themes/collaboration-model.md).

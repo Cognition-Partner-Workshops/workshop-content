@@ -126,7 +126,7 @@ of the root cause in the PR description.
   to database operations
 - The difference between fixing symptoms vs. root causes
 - How the **PR feedback loop** works — reviewers comment, Devin iterates,
-  CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+  CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -136,7 +136,7 @@ of the root cause in the PR description.
 - Docker-based local environment setup
 - PR creation with structured fix explanations
 - **Devin Review** — can proactively catch related issues in the fix PR
-  (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+  (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -161,7 +161,7 @@ Beginner to Intermediate
 - If you have limited time, start with Option B targeting a single bug
 - For a deeper exercise, try Option A and aim to find all 8
 - Multiple team members can comment on the same PR — Devin reads and responds
-  to all reviewers (see [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication))
+  to all reviewers (see [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication))
 
 ---
 
@@ -176,7 +176,7 @@ Beginner to Intermediate
   on the PR and Devin pushes follow-up commits
 - Bug-hunt exercises translate directly to real-world code review and
   incident response workflows that Devin handles at scale through
-  event-driven triggers (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+  event-driven triggers (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
 
 ---
 
@@ -185,11 +185,11 @@ Beginner to Intermediate
 - **Ticket-driven bug fixes** — tag a Jira or GitHub Issue with
   `Devin:Implementation` and Devin picks it up automatically, reproduces
   the bug, implements a fix, and opens a PR linked back to the ticket
-  (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+  (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
 - **Scheduled code health analysis** — run Devin on a weekly schedule to
   scan for common bug patterns (unhandled promise rejections, null reference
   risks, missing error boundaries) and open remediation PRs proactively
-  (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
+  (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
 - **Divide and conquer** — for large codebases, use child sessions to
   audit frontend and backend in parallel, then consolidate findings into
-  a single PR (see [Platform Capabilities → Child Sessions](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+  a single PR (see [Platform Capabilities → Child Sessions](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

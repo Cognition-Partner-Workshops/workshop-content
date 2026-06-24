@@ -21,7 +21,7 @@ The translation must preserve the exact API contract defined in the OpenAPI spec
 - `services/search-service/app/api/health.py` — Health, readiness, and Prometheus metrics endpoints
 - `services/search-service/app/services/meilisearch_client.py` — MeiliSearch client integration
 - `services/search-service/requirements.txt` — Current Flask dependencies
-- `shared/openapi/search-service.yaml` — **The contract.** Every endpoint, parameter, and response schema.
+- `reference/openapi/search-service.yaml` — **The contract.** Every endpoint, parameter, and response schema.
 - `services/search-service/TRANSLATION_GUIDE.md` — **Read this first.** Lists every translation point with before/after code patterns.
 - `tests/contract/test_search_contract.py` — Contract test that validates responses against the OpenAPI spec.
 - `services/document-service/` — Reference implementation of a FastAPI service in this codebase (look at `app/api/documents.py` for patterns to follow)
@@ -53,7 +53,7 @@ Start with the health endpoints (simplest) to establish the FastAPI app structur
 
 ### Hint 3 — Approach
 
-Ask Devin to read `services/search-service/TRANSLATION_GUIDE.md`, the current Flask implementation in `services/search-service/app/api/search.py`, and the FastAPI reference at `services/document-service/app/api/documents.py`. Then ask it to translate the search-service to FastAPI while preserving the OpenAPI contract at `shared/openapi/search-service.yaml`.
+Ask Devin to read `services/search-service/TRANSLATION_GUIDE.md`, the current Flask implementation in `services/search-service/app/api/search.py`, and the FastAPI reference at `services/document-service/app/api/documents.py`. Then ask it to translate the search-service to FastAPI while preserving the OpenAPI contract at `reference/openapi/search-service.yaml`.
 
 ## Time Budget
 

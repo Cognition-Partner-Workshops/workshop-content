@@ -151,7 +151,7 @@ Open the repo's DeepWiki page to understand the data warehouse schema relationsh
 
 ## Going Further
 
-Inline documentation is a natural fit for **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+Inline documentation is a natural fit for **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **PR-triggered doc updates** — When a PR adds or modifies public functions, trigger a Devin session that adds or updates inline documentation for the changed code and opens a follow-up PR
 - **Scheduled documentation coverage audits** — Run a recurring session that identifies public functions and classes without documentation (using tools like `eslint-plugin-jsdoc` or Checkstyle Javadoc rules) and opens PRs to fill the gaps

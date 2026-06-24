@@ -126,7 +126,7 @@ Open the repo's DeepWiki page to understand the infrastructure topology and reso
 
 ## Going Further
 
-Cost optimization is well suited to **scheduled Devin sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+Cost optimization is well suited to **scheduled Devin sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Weekly IaC drift detection** — Schedule a Devin session to run `terraform plan` against live infrastructure and flag any drift from the checked-in configuration. Drift often introduces cost surprises (manually scaled instances left at higher tiers, forgotten resources)
 - **Monthly cost audit** — A recurring session analyzes resource utilization trends and opens a PR with updated right-sizing recommendations

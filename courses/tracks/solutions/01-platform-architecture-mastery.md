@@ -1,6 +1,6 @@
 # 1. Platform Architecture Mastery
 
-*Quick reference: [`shared/general-themes/architecture-strengths.md`](../../../shared/general-themes/architecture-strengths.md)*
+*Quick reference: [`reference/general-themes/architecture-strengths.md`](../../../reference/general-themes/architecture-strengths.md)*
 
 <a id="toc"></a>
 

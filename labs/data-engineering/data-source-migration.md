@@ -109,7 +109,7 @@ Open the repo's DeepWiki page to understand the loan service domain model and AP
 
 - **Non-invasive migration planning**: Devin reads schema definitions and column mappings to plan the migration — no need to connect to the production database or modify the running application during analysis
 - **Golden-file validation**: Capturing API responses before and after migration provides a reliable correctness check — Devin automates this comparison
-- **Parallel migration workstreams**: Each legacy table can be migrated independently (entity creation, migration script, service rewiring), making this a candidate for [child-session parallelism](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) in larger estates
+- **Parallel migration workstreams**: Each legacy table can be migrated independently (entity creation, migration script, service rewiring), making this a candidate for [child-session parallelism](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) in larger estates
 - **Incremental confidence**: The dual-read feature flag pattern lets teams switch between data sources at runtime — reducing migration risk
 
 ---
@@ -118,16 +118,16 @@ Open the repo's DeepWiki page to understand the loan service domain model and AP
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever the legacy schema or column mappings change, a Devin session automatically regenerates the migration service and validates API parity. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever the legacy schema or column mappings change, a Devin session automatically regenerates the migration service and validates API parity. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For migrations involving many legacy tables, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all tables, then spawns a child session per table. Each child handles entity creation, migration script, and service rewiring independently.
+For migrations involving many legacy tables, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all tables, then spawns a child session per table. Each child handles entity creation, migration script, and service rewiring independently.
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your migration conventions (e.g., "Status code abbreviations always expand to full enums", "Date fields migrate from VARCHAR MM/DD/YYYY to LocalDate"). Every Devin session inherits these conventions automatically.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your migration conventions (e.g., "Status code abbreviations always expand to full enums", "Date fields migrate from VARCHAR MM/DD/YYYY to LocalDate"). Every Devin session inherits these conventions automatically.
 
 ### Team-Based Operation
 
-Data engineers, application developers, and QA analysts can all review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates — the migration evolves through the same PR feedback loop as any other code change. See [Collaboration Model](../../shared/general-themes/collaboration-model.md).
+Data engineers, application developers, and QA analysts can all review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates — the migration evolves through the same PR feedback loop as any other code change. See [Collaboration Model](../../reference/general-themes/collaboration-model.md).

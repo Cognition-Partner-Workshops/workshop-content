@@ -112,7 +112,7 @@ Open the repo's DeepWiki page to understand the overall structure. Cross-referen
 
 - **Non-invasive static analysis**: Devin extracts the full ETL estate from XML exports alone — no PowerCenter server connection, no repository database access, no runtime environment needed
 - **Comprehensive lineage**: Transformation chains are traced from source fields through every intermediate step to target fields — this is the foundation for migration planning
-- **Parallel assessment potential**: Each XML export (CPM, LES, FDA_Leave, etc.) can be analyzed independently, making this a candidate for [child-session parallelism](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
+- **Parallel assessment potential**: Each XML export (CPM, LES, FDA_Leave, etc.) can be analyzed independently, making this a candidate for [child-session parallelism](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents)
 - **Migration readiness**: The assessment artifacts (inventory, lineage, complexity scores) are the inputs for scoping a migration project — effort estimation, risk identification, and sequencing
 
 ---
@@ -121,20 +121,20 @@ Open the repo's DeepWiki page to understand the overall structure. Cross-referen
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever new PowerCenter XML exports are added to the repository, a Devin session automatically updates the inventory and lineage documentation. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever new PowerCenter XML exports are added to the repository, a Devin session automatically updates the inventory and lineage documentation. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For large Informatica estates with dozens of mappings, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all XML exports, then spawns a child session per export. Each child extracts sources, targets, transformations, and lineage independently, opening its own PR.
+For large Informatica estates with dozens of mappings, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all XML exports, then spawns a child session per export. Each child extracts sources, targets, transformations, and lineage independently, opening its own PR.
 
 ### Scheduled Sessions
 
-Schedule a recurring Devin session to re-analyze the PowerCenter estate and detect changes — useful during active migration projects where mappings are being modified. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a recurring Devin session to re-analyze the PowerCenter estate and detect changes — useful during active migration projects where mappings are being modified. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your Informatica assessment conventions (e.g., "Expression transformations with >10 output ports are high-complexity", "Mappings using Joiner + Aggregator require special attention during migration"). Every Devin session inherits these conventions.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your Informatica assessment conventions (e.g., "Expression transformations with >10 output ports are high-complexity", "Mappings using Joiner + Aggregator require special attention during migration"). Every Devin session inherits these conventions.
 
 ### Team-Based Operation
 
-Data engineers, ETL developers, and migration architects can all review the assessment PR simultaneously. Devin reads feedback from any reviewer and iterates — the assessment evolves collaboratively. See [Collaboration Model](../../shared/general-themes/collaboration-model.md).
+Data engineers, ETL developers, and migration architects can all review the assessment PR simultaneously. Devin reads feedback from any reviewer and iterates — the assessment evolves collaboratively. See [Collaboration Model](../../reference/general-themes/collaboration-model.md).

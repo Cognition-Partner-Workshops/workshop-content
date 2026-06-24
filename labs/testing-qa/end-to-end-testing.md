@@ -73,7 +73,7 @@ Intermediate
 
 ## Prerequisites
 
-The application must be running locally on Devin's machine or hosted externally. See [runtime-resources.md](../../shared/runtime-resources.md) for hosted instance details.
+The application must be running locally on Devin's machine or hosted externally. See [runtime-resources.md](../../reference/runtime-resources.md) for hosted instance details.
 
 ---
 

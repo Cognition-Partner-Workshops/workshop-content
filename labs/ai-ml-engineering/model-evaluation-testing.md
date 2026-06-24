@@ -45,7 +45,7 @@ Build evaluation harnesses for ML models with metrics, validation splits, and ba
 - How Devin selects and implements appropriate metrics for different model types
 - How Devin approaches fairness and bias evaluation across data segments
 - The value of specifying evaluation criteria and data segments in prompts
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Build evaluation harnesses for ML models with metrics, validation splits, and ba
 - Test framework design for ML models
 - Data analysis and reporting
 - PR creation with evaluation artifacts
-- **Devin Review** — can catch data leakage, incorrect metric usage, or missing validation in evaluation code (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch data leakage, incorrect metric usage, or missing validation in evaluation code (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -68,7 +68,7 @@ Advanced
 - This module pairs well with ML Pipeline Setup — run them sequentially for a complete ML workflow
 - If no trained model exists yet, evaluation harness should include a simple baseline model for comparison
 - Encourage participants to specify which data segments matter for fairness checks (e.g., loan type, borrower demographics)
-- Evaluation results can be added to Devin's knowledge notes so future sessions understand model performance baselines (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- Evaluation results can be added to Devin's knowledge notes so future sessions understand model performance baselines (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
 
 ---
 
@@ -142,6 +142,6 @@ Open the repo's DeepWiki page to understand the field transformation rules in `d
 
 ## Going Further
 
-- **Scheduled model evaluation** — run Devin on a weekly schedule to re-evaluate models against fresh data, detect performance drift, and flag regressions (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Playbook-driven evaluation** — create a playbook encoding your team's evaluation standards (required metrics, minimum segment sizes, fairness thresholds) so every model evaluation follows consistent criteria (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
-- **Parallel evaluation across models** — use child agents to evaluate multiple models or model variants simultaneously, each producing a standardized metrics report for comparison (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Scheduled model evaluation** — run Devin on a weekly schedule to re-evaluate models against fresh data, detect performance drift, and flag regressions (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Playbook-driven evaluation** — create a playbook encoding your team's evaluation standards (required metrics, minimum segment sizes, fairness thresholds) so every model evaluation follows consistent criteria (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))
+- **Parallel evaluation across models** — use child agents to evaluate multiple models or model variants simultaneously, each producing a standardized metrics report for comparison (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

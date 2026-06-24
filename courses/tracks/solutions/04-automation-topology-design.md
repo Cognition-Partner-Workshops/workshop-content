@@ -1,6 +1,6 @@
 # 4. Automation Topology Design
 
-*Quick reference: [`shared/general-themes/platform-capabilities.md`](../../../shared/general-themes/platform-capabilities.md), [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
+*Quick reference: [`reference/general-themes/platform-capabilities.md`](../../../reference/general-themes/platform-capabilities.md), [`reference/general-themes/design-patterns-for-devin.md`](../../../reference/general-themes/design-patterns-for-devin.md)*
 
 <a id="toc"></a>
 

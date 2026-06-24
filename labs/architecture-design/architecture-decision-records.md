@@ -43,7 +43,7 @@ Analyze an existing codebase to identify key architectural decisions, then gener
 - How Devin recognizes architectural patterns (layering, API styles, data access strategies)
 - Devin's ability to produce structured technical documentation from code
 - How to evaluate and refine AI-generated architectural documentation
-- How **shared context** (knowledge notes with architecture decisions) helps Devin make better decisions on future tasks (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- How **shared context** (knowledge notes with architecture decisions) helps Devin make better decisions on future tasks (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
 
 ## Devin Features Exercised
 
@@ -51,7 +51,7 @@ Analyze an existing codebase to identify key architectural decisions, then gener
 - Architectural pattern recognition
 - Technical writing and documentation generation
 - PR creation
-- **Devin Review** — can reference ADRs when reviewing future PRs for architectural consistency (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can reference ADRs when reviewing future PRs for architectural consistency (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -133,6 +133,6 @@ Open the repo's DeepWiki page to understand the project structure and technology
 
 ## Going Further
 
-- **Scheduled architecture documentation refresh** — run Devin on a monthly schedule to analyze code changes since the last ADR update and propose new or revised ADRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **ADRs as shared context** — add generated ADRs to Devin's knowledge notes so every future session understands the team's architectural decisions and conventions (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
-- **Parallel ADR generation across repos** — use child agents to generate ADRs for multiple repositories simultaneously, each following the same MADR template (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Scheduled architecture documentation refresh** — run Devin on a monthly schedule to analyze code changes since the last ADR update and propose new or revised ADRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **ADRs as shared context** — add generated ADRs to Devin's knowledge notes so every future session understands the team's architectural decisions and conventions (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
+- **Parallel ADR generation across repos** — use child agents to generate ADRs for multiple repositories simultaneously, each following the same MADR template (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

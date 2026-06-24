@@ -1,6 +1,6 @@
 # Architecture Strengths — Quick Reference
 
-> Comprehensive training: [Solutions Track — Platform Architecture Mastery](../../workshops/training-tracks/solutions/01-platform-architecture-mastery.md)
+> Comprehensive training: [Solutions Track — Platform Architecture Mastery](../../courses/tracks/solutions/01-platform-architecture-mastery.md)
 
 ## Architecture Pillars
 

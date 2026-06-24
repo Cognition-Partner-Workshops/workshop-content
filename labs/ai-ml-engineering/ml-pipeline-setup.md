@@ -45,7 +45,7 @@ Add a machine learning component to an existing application — build training a
 - How Devin handles ML-specific dependency management and environment setup
 - How Devin structures training, evaluation, and inference as separable pipeline stages
 - The importance of specifying data sources and model requirements in prompts
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Add a machine learning component to an existing application — build training a
 - Dependency management and environment configuration
 - Codebase analysis for integration points
 - PR creation with technical documentation
-- **Devin Review** — can catch data leakage, missing validation, or reproducibility issues in ML code (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch data leakage, missing validation, or reproducibility issues in ML code (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -68,7 +68,7 @@ Advanced
 - Participants should review the existing codebase first using Ask Devin to understand data schemas and integration points
 - Good follow-up: pair with the Model Evaluation & Testing module for a complete ML workflow
 - Encourage participants to iterate on the prompt — specifying model type, input features, and target variable produces better results
-- Environment dependencies (Python packages, ML frameworks) can be configured in Devin's VM blueprint for faster startup in future sessions (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- Environment dependencies (Python packages, ML frameworks) can be configured in Devin's VM blueprint for faster startup in future sessions (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
 
 ---
 
@@ -142,6 +142,6 @@ Open the repo's DeepWiki page to understand the legacy-to-modern field mappings 
 
 ## Going Further
 
-- **Scheduled model retraining** — run Devin on a weekly schedule to retrain models on fresh data, compare performance against the previous baseline, and open a PR if the new model improves metrics (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Playbook-driven ML development** — create a playbook encoding your team's ML pipeline standards (data validation → feature engineering → training → evaluation → deployment) so every ML feature follows consistent practices (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
-- **Parallel pipeline development** — use child agents to build ML pipelines for multiple prediction targets simultaneously, each following the same pipeline playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Scheduled model retraining** — run Devin on a weekly schedule to retrain models on fresh data, compare performance against the previous baseline, and open a PR if the new model improves metrics (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Playbook-driven ML development** — create a playbook encoding your team's ML pipeline standards (data validation → feature engineering → training → evaluation → deployment) so every ML feature follows consistent practices (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))
+- **Parallel pipeline development** — use child agents to build ML pipelines for multiple prediction targets simultaneously, each following the same pipeline playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

@@ -45,7 +45,7 @@ Plan and execute a database schema evolution — adding new tables, modifying co
 - How Devin plans schema changes that preserve existing data
 - The importance of reversible migrations and rollback strategies
 - How to validate schema changes against running applications
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Plan and execute a database schema evolution — adding new tables, modifying co
 - Migration framework usage
 - Application code refactoring for schema changes
 - PR creation with migration documentation
-- **Devin Review** — can catch migration issues (missing rollbacks, ordering problems) before human review (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch migration issues (missing rollbacks, ordering problems) before human review (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -163,6 +163,6 @@ Open the repo's DeepWiki page to understand the existing schema and query patter
 
 ## Going Further
 
-- **Ticket-driven schema changes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, creates migration scripts, updates application code, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Scheduled schema health checks** — run Devin on a weekly schedule to analyze database queries for missing indexes, unused columns, and schema drift, then open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Parallel migration across services** — use child agents to apply the same schema pattern (e.g., adding audit columns) across multiple microservices simultaneously, each following the same migration playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Ticket-driven schema changes** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, creates migration scripts, updates application code, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Scheduled schema health checks** — run Devin on a weekly schedule to analyze database queries for missing indexes, unused columns, and schema drift, then open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Parallel migration across services** — use child agents to apply the same schema pattern (e.g., adding audit columns) across multiple microservices simultaneously, each following the same migration playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

@@ -45,7 +45,7 @@ Add LLM-powered features to existing applications — such as summarization, cla
 - How Devin handles production concerns like error handling, retries, and rate limiting
 - How Devin structures prompt templates and manages LLM configuration
 - The importance of specifying fallback behavior and error handling requirements in prompts
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Add LLM-powered features to existing applications — such as summarization, cla
 - Error handling and resilience patterns
 - Prompt engineering and LLM configuration
 - PR creation with integration documentation
-- **Devin Review** — can catch hardcoded secrets, missing error handling, or prompt injection risks in LLM integrations (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch hardcoded secrets, missing error handling, or prompt injection risks in LLM integrations (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -68,7 +68,7 @@ Intermediate to Advanced
 - Participants do not need real API keys — Devin should scaffold the integration with configurable API key settings and mock/stub modes for testing
 - Good follow-up: have participants review each other's LLM integrations for prompt quality and error handling robustness
 - Encourage specifying the exact LLM feature desired (summarization, classification, etc.) rather than leaving it open-ended
-- API keys should be managed through environment variables, consistent with Devin's secrets management layer (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- API keys should be managed through environment variables, consistent with Devin's secrets management layer (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
 
 ---
 
@@ -142,6 +142,6 @@ Open the repo's DeepWiki page to understand the document review pipeline and out
 
 ## Going Further
 
-- **Ticket-driven LLM feature requests** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, scaffolds the LLM integration with proper configuration, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Playbook-driven LLM integration** — create a playbook encoding your team's LLM integration standards (prompt template structure, error handling patterns, rate limiting, security checks) so every LLM feature follows consistent practices (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
-- **Scheduled prompt quality audits** — run Devin on a monthly schedule to review existing LLM prompts for quality, identify prompt injection risks, and check for deprecated model references (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Ticket-driven LLM feature requests** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, scaffolds the LLM integration with proper configuration, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Playbook-driven LLM integration** — create a playbook encoding your team's LLM integration standards (prompt template structure, error handling patterns, rate limiting, security checks) so every LLM feature follows consistent practices (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))
+- **Scheduled prompt quality audits** — run Devin on a monthly schedule to review existing LLM prompts for quality, identify prompt injection risks, and check for deprecated model references (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))

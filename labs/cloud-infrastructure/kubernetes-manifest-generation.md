@@ -126,7 +126,7 @@ Open the repo's DeepWiki page to understand the backend-frontend communication p
 
 ## Going Further
 
-Kubernetes manifest generation connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+Kubernetes manifest generation connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Scheduled manifest validation** — Run a recurring Devin session that applies `kubeval` or `kubeconform` against all manifests in the repo and opens PRs to fix schema violations as Kubernetes versions evolve
 - **Resource limit audits** — A periodic session compares declared resource limits against actual utilization metrics (via Prometheus/Datadog MCP) and opens PRs to right-size over- or under-provisioned workloads

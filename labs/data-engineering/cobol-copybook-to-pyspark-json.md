@@ -115,7 +115,7 @@ Open the DeepWiki page for ts-cobol-carddemo to understand the application domai
 - **Non-invasive analysis**: Devin reads copybook definitions and feed files directly — no mainframe runtime, no JCL execution, no EBCDIC conversion needed for the core exercise
 - **Construct-level mapping**: Every COBOL PIC clause type (DISPLAY, COMP, COMP-3, signed, implied decimal) maps to a documented PySpark equivalent
 - **Automated schema generation**: Manual copybook-to-schema translation is error-prone and tedious — Devin handles byte-offset arithmetic and type mapping systematically
-- **Parallel migration potential**: With multiple copybook → feed file pairs, a [child-session pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can process them all in parallel — one Devin session per copybook
+- **Parallel migration potential**: With multiple copybook → feed file pairs, a [child-session pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can process them all in parallel — one Devin session per copybook
 
 ---
 
@@ -123,20 +123,20 @@ Open the DeepWiki page for ts-cobol-carddemo to understand the application domai
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever new copybook files are added to the repository, a Devin session automatically generates the corresponding PySpark ingestion scripts and JSON schemas. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever new copybook files are added to the repository, a Devin session automatically generates the corresponding PySpark ingestion scripts and JSON schemas. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For estates with dozens of copybook → feed file pairs, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all copybooks, then spawns a child session per copybook. Each child generates its PySpark script and JSON schema independently, opening its own PR.
+For estates with dozens of copybook → feed file pairs, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all copybooks, then spawns a child session per copybook. Each child generates its PySpark script and JSON schema independently, opening its own PR.
 
 ### Scheduled Sessions
 
-Schedule a weekly Devin session to re-validate generated schemas against the latest feed files — catching drift if record layouts change upstream. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a weekly Devin session to re-validate generated schemas against the latest feed files — catching drift if record layouts change upstream. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your COBOL-to-PySpark type-mapping conventions (e.g., "COMP-3 fields always map to DecimalType with explicit precision"). Every future Devin session inherits these conventions automatically — no re-explaining required.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your COBOL-to-PySpark type-mapping conventions (e.g., "COMP-3 fields always map to DecimalType with explicit precision"). Every future Devin session inherits these conventions automatically — no re-explaining required.
 
 ### Team-Based Operation
 
-Multiple team members can review the generated PySpark schemas simultaneously via PR comments. Devin reads feedback from any reviewer and iterates. See [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication).
+Multiple team members can review the generated PySpark schemas simultaneously via PR comments. Devin reads feedback from any reviewer and iterates. See [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication).

@@ -9,7 +9,8 @@ root `AGENTS.md` for files under `demos/` only. (See also the root `REVIEW.md`
 `demos/` holds **facilitator-led demo showcases**: a presenter runs the demo
 live while others follow along. This is different from `labs/` and
 `workshops/`, which are participant-driven and may branch into separate
-choose-your-own-adventure tracks.
+choose-your-own-adventure tracks, and from `courses/`, which is reading-first
+sequential enablement.
 
 A demo doc is a **single linear thread** — one path, start to finish. It should
 read as though a user is reading and following along.
