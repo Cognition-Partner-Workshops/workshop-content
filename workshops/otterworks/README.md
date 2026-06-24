@@ -206,7 +206,7 @@ Focus: Investigating production incidents with increasing levels of automation, 
 - Divide-and-conquer turns weeks of dependency auditing into parallel hours
 - Playbooks ensure consistency across child sessions — every service gets the same thorough audit
 - The pattern scales linearly: 11 services today, 50 tomorrow, same approach
-- This same campaign could run on a weekly schedule — dependency lifecycle never drifts again
+- This same campaign could run on a weekly schedule — catching dependency drift before it accumulates
 
 ---
 

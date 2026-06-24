@@ -136,7 +136,7 @@ After the campaign, discuss: this same Playbook + child agent pattern could run 
 - Playbooks ensure consistency across child sessions — every service gets the same thorough audit
 - The pattern scales linearly: 11 services today, 50 services tomorrow, same approach
 - Dependency lifecycle is a "capacity-constrained" use case — teams defer it, Devin automates it
-- Campaign → Schedule: run this as a cron job and dependencies never drift again
+- Campaign → Schedule: run this as a cron job to catch dependency drift before it accumulates
 
 ## Time Budget
 
