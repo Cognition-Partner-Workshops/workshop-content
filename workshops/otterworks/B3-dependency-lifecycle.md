@@ -75,8 +75,8 @@ per service:
 11. services/audit-service (C#)
 
 Each child should work on the otterworks repo, read only
-its assigned service directory, and open a separate PR
-with findings and fixes.
+its assigned service directory, and include findings and
+fixes in its PR.
 ```
 
 ### Step 4 — Monitor and Review (20 min)

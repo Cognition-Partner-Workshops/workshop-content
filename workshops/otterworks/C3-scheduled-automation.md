@@ -34,7 +34,7 @@ Think about what you want the weekly session to do:
 3. Compare against the baseline (previous week's results)
 4. For new CRITICAL CVEs: attempt an automatic fix (upgrade dependency, run tests)
 5. For coverage regressions: identify which files lost coverage and why
-6. Open a PR with a weekly report and any fixes applied
+6. Include a weekly report and any fixes applied in the PR
 
 ### Step 3 — Create the Schedule (15 min)
 
@@ -62,8 +62,8 @@ Weekly security and coverage audit for OtterWorks.
    thresholds documented in docs/CI_STRATEGY.md:
    - Identify which files lost coverage
    - Add targeted tests for the uncovered code paths
-5. Open a single PR titled "Weekly Security & Coverage
-   Report - [date]" with:
+5. Title the PR "Weekly Security & Coverage
+   Report - [date]" and include:
    - Findings summary table
    - Any dependency upgrades applied
    - Any new tests added
