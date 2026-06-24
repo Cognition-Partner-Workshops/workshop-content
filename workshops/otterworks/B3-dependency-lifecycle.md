@@ -6,7 +6,7 @@ Use Devin's divide-and-conquer pattern to audit all OtterWorks services for outd
 
 ## Why This Matters
 
-OtterWorks has 11 backend services across 10 different language ecosystems. Manually checking each one for outdated dependencies, EOL runtimes, and license issues would take a developer days. This is the canonical "capacity-constrained" use case: valuable work that teams defer because no individual has time to do it across the entire monorepo.
+OtterWorks has 10 backend services plus an API gateway across 10 different language ecosystems. Manually checking each one for outdated dependencies, EOL runtimes, and license issues would take a developer days. This is the canonical "capacity-constrained" use case: valuable work that teams defer because no individual has time to do it across the entire monorepo.
 
 Devin's child agent pattern turns this from a multi-day slog into a parallel campaign that completes in an hour.
 
@@ -49,8 +49,8 @@ steps:
     run the service's test suite to verify
   - For HIGH findings: document the upgrade path and
     any breaking changes expected
-  - Open a PR with a findings table and any upgrades
-    applied
+  - Include a findings table and any upgrades applied
+    in the PR description
 ```
 
 ### Step 3 — Launch the Campaign (15 min)

@@ -71,7 +71,7 @@ steps:
     (not just removing the chaos flag)
   - Run the affected service's test suite to verify
   - Check related services for cascading effects
-  - Open a PR with root cause analysis in the description
+  - Include root cause analysis in the PR description
 ```
 
 ### Step 4 — Run the Playbook (10 min)
