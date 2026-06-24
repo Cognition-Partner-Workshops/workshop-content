@@ -12,7 +12,8 @@ workshops/
 │   ├── solutions/       ← System design, SDLC integration, live walkthroughs
 │   └── engineering/     ← Tactical platform usage, prompt engineering, orchestration
 ├── general/             ← Existing hands-on labs (cross-track reference material)
-├── specialties/         ← Future: domain-specific deep-dives (Level 3)
+├── by-tech-domain/      ← Deep-dives by technical domain (Level 3)
+├── by-tech-role/        ← Deep-dives by technical role (Level 3)
 └── otterworks/          ← Existing platform showcase
 ```
 
@@ -24,7 +25,7 @@ workshops/
 |-------|---------|----------|--------|
 | **Level 1: Foundations** | `workshops/foundations/` | All personas | Exists |
 | **Level 2: Tracks** | `workshops/training-tracks/{sales,solutions,engineering}/` | Role-specific | Planned (this document) |
-| **Level 3: Specialties** | `workshops/specialties/` | Domain experts | Future iteration (see [below](#level-3-specialties)) |
+| **Level 3: Deep-Dives** | `workshops/by-tech-domain/` + `workshops/by-tech-role/` | Domain experts | Exists |
 
 ---
 
@@ -35,7 +36,7 @@ workshops/
 - [Track: Solutions](#track-solutions)
 - [Track: Engineering](#track-engineering)
 - [Content Modalities](#content-modalities)
-- [Level 3 Specialties (Future)](#level-3-specialties)
+- [Level 3 Deep-Dives](#level-3-deep-dives)
 - [Relationship to Existing Content](#relationship-to-existing-content)
 
 ---
@@ -169,24 +170,25 @@ Each track uses a mix of modalities. The table below shows the target distributi
 
 ---
 
+<a id="level-3-deep-dives"></a>
 <a id="level-3-specialties"></a>
-## Level 3: Specialties (Future Iteration)
+## Level 3: Deep-Dives
 
-Level 3 content will live in `workshops/specialties/` which already has the directory structure:
+Level 3 content lives in two directories:
 
 ```
-workshops/specialties/
-├── technical-domains/
-│   ├── modernization/        ← COBOL, .NET, Framework Upgrades, Data Migration, Platform Decomposition
-│   ├── security/             ← Compliance, Enterprise Automation
-│   └── ai-and-automation/    ← Agentic AI
-└── job-families/
-    ├── development/          ← App Maintenance, Feature Development
-    ├── digital-engineering/   ← CI/CD, cloud infrastructure, observability
-    └── quality-assurance-and-engineering/  ← Engineering, Engineering + Security
+workshops/by-tech-domain/
+├── modernization/        ← COBOL, .NET, Framework Upgrades, Data Migration, Platform Decomposition
+├── security/             ← Compliance, Enterprise Automation
+└── ai-and-automation/    ← Agentic AI
+
+workshops/by-tech-role/
+├── development/          ← App Maintenance, Feature Development
+├── digital-engineering/  ← CI/CD, cloud infrastructure, observability
+└── quality-engineering/  ← Engineering, Engineering + Security
 ```
 
-**Future additions for Level 3 (domain-specific deep-dives):**
+**Planned additions for Level 3:**
 
 | Specialty | Track Prerequisite | Focus |
 |-----------|-------------------|-------|
@@ -195,7 +197,7 @@ workshops/specialties/
 | Data Migration Specialist | Engineering | SAS→Snowflake/Databricks, ETL translation, reconciliation harness design |
 | Enterprise Integration Architect | Solutions | MCP server design, multi-tool orchestration, network connectivity patterns |
 
-These will be built out once Level 2 tracks are established and validated.
+These will be built out as Level 2 tracks mature.
 
 ---
 
@@ -211,5 +213,6 @@ These will be built out once Level 2 tracks are established and validated.
 | `workshops/training-tracks/engineering/` | Comprehensive platform fundamentals, task selection, orchestration (supersedes GT `when-to-use-devin.md`, `cloud-vs-local-agents.md` for depth) |
 | `workshops/general/` | Practice labs for Engineering track |
 | `demos/` | Walkthrough scripts for Solutions track |
-| `workshops/specialties/` | Future Level 3 deep-dives |
+| `workshops/by-tech-domain/` | Level 3 deep-dives by technical domain |
+| `workshops/by-tech-role/` | Level 3 deep-dives by technical role |
 | `labs/` | Building blocks composed into walkthroughs and challenges |

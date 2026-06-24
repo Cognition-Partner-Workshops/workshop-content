@@ -11,7 +11,7 @@
 
 ---
 
-Knowing *what* to give Devin is as important as knowing *how* to prompt it. This section turns the [Foundations framework](../../foundations/04-what-to-give-ai.md) into a daily practice.
+Knowing *what* to give Devin is as important as knowing *how* to prompt it. This section turns the [Foundations framework](../../foundations/concepts/04-what-to-give-ai.md) into a daily practice.
 
 <a id="the-three-tests"></a>
 ## The Three Tests
@@ -94,7 +94,7 @@ Classify each scenario. For gray-zone tasks, identify the decomposition stages.
 | 9 | Decide whether to use Kafka or RabbitMQ for the new event bus | Not for Devin — architectural decision requiring trade-off analysis against team context. Use Devin for research ("Compare Kafka vs. RabbitMQ for X use case"), then decide |
 | 10 | Update API documentation to reflect the latest 3 PRs | Strong candidate — code is the source of truth, documentation accuracy is verifiable, existing format provides conventions |
 
-For the complete framework, see [What to Give AI vs. Not](../../foundations/04-what-to-give-ai.md).
+For the complete framework, see [What to Give AI vs. Not](../../foundations/concepts/04-what-to-give-ai.md).
 
 ---
 

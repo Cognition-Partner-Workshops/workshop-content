@@ -31,4 +31,4 @@ Challenges focused on monitoring, incident response, reliability engineering, an
 - Pod Remediation and Volume Anomaly Detection are **agentic AI** modules — Devin reasons about infrastructure state
 - Pairs well with [Cloud & Infrastructure](../cloud-infrastructure/) for a full platform reliability workshop
 - Pairs well with [DevOps & CI/CD](../devops-cicd/) for comprehensive operational excellence workshops
-- See the [Agentic AI Workshop](../../workshops/specialties/technical-domains/ai-and-automation/agentic-ai/README.md) for a lab sequence featuring these modules
+- See the [Agentic AI Workshop](../../workshops/by-tech-domain/ai-and-automation/agentic-ai/README.md) for a lab sequence featuring these modules

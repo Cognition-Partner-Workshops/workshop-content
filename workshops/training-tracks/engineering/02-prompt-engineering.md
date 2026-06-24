@@ -131,7 +131,7 @@ Complete context       → Merge-ready PR, minimal iteration needed
 
 The investment is asymmetric: spending 5 extra minutes writing a specific prompt saves 30+ minutes of review and iteration. For recurring tasks, this investment compounds — a well-written prompt becomes a Playbook that any team member can trigger.
 
-For the foundational framework on what makes a good agent task, see the [Prompt Quality section in What to Give AI](../../foundations/04-what-to-give-ai.md#prompt-quality-and-task-boundaries).
+For the foundational framework on what makes a good agent task, see the [Prompt Quality section in What to Give AI](../../foundations/concepts/04-what-to-give-ai.md#prompt-quality-and-task-boundaries).
 
 ---
 

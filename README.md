@@ -15,20 +15,39 @@ Welcome to the Devin hands-on workshop. This repo contains everything you need t
 
 ```
 workshop-instructions/
-├── labs/           ← individual lab instructions organized by discipline
-│   └── README.md      ← full index of all labs
-├── workshops/         ← structured lab sequences (your facilitator will point you here)
-│   ├── foundations/   ← theory, product features, platform mental model
-│   ├── general/       ← broad multi-repo hands-on tour (start here)
-│   ├── otterworks/    ← advanced monorepo deep-dive (300-level)
-│   └── specialties/   ← deep dives by technical domain or job family
-├── demos/             ← facilitator-led showcases (follow along, single linear thread)
-├── events/            ← event-specific agendas and customizations
-├── catalog/           ← reference inventory of all available repositories
+├── labs/                  ← individual lab instructions organized by discipline
+│   └── README.md             ← full index of all labs
+├── workshops/                ← structured learning paths
+│   ├── foundations/           ← Level 1: concepts + product features (start here)
+│   │   ├── concepts/         ← cloud vs. local, event-driven, orchestration, task selection
+│   │   └── product/          ← feature tours by cloud / local
+│   ├── training-tracks/      ← Level 2: role-specific training
+│   │   ├── sales/            ← operating model, cost structures, engagement capture
+│   │   ├── solutions/        ← system design, SDLC integration, live walkthroughs
+│   │   └── engineering/      ← prompt engineering, orchestration, troubleshooting
+│   ├── general/              ← hands-on broad tour (start here for labs)
+│   ├── otterworks/           ← advanced monorepo deep-dive (300-level)
+│   ├── by-tech-domain/       ← Level 3: deep dives by technology area
+│   └── by-tech-role/         ← Level 3: deep dives by job function
+├── demos/                    ← facilitator-led showcases (follow along, single linear thread)
+├── events/                   ← event-specific agendas and customizations
+├── catalog/                  ← reference inventory of all available repositories
 └── shared/
-    ├── general-themes/       ← how Devin works: architecture, patterns, collaboration
-    ├── product-features/     ← feature tours for Cloud, Desktop, and CLI
-    └── runtime-resources.md  ← how to run apps locally if needed
+    └── general-themes/       ← how Devin works: architecture, patterns, collaboration
+```
+
+### Progression Model
+
+```
+Level 1: workshops/foundations/        ← Everyone starts here
+    ↓
+Level 2: workshops/training-tracks/    ← Sales / Solutions / Engineering
+    ↓
+Level 3: workshops/by-tech-domain/     ← Modernization, Security, AI & Automation
+         workshops/by-tech-role/       ← Development, Digital Engineering, QE
+    ↓
+Practice: workshops/general/           ← Broad hands-on tour
+          workshops/otterworks/        ← Advanced monorepo deep-dive
 ```
 
 ### Find Labs by Interest
@@ -58,37 +77,47 @@ Your facilitator may have directed you to a specific workshop. Each workshop bun
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
-| [Foundations](workshops/foundations/) | Cloud agent theory, product features, platform mental model | 2-3 hours |
+| [Foundations](workshops/foundations/) | Cloud agent concepts, product features, platform mental model | 2-3 hours |
 | [General](workshops/general/) | Security, modernization, feature dev — broad multi-repo tour | 4-6 hours |
 | [OtterWorks](workshops/otterworks/) | Polyglot microservices — 300-level monorepo deep-dive | 4-6 hours |
 
-#### Specialties — Technical Domains
+#### Training Tracks
+
+Role-specific training that builds on Foundations.
+
+| Track | Persona | Duration |
+|-------|---------|----------|
+| [Sales](workshops/training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
+| [Solutions](workshops/training-tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
+| [Engineering](workshops/training-tracks/engineering/) | Engineers, Developers | 6-8 hours |
+
+#### By Technical Domain
 
 Collections of modules targeting specific tech stacks and engineering challenges.
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
-| [COBOL Modernization](workshops/specialties/technical-domains/modernization/cobol/) | End-to-end mainframe modernization | ~4 hours |
-| [Legacy Modernization](workshops/specialties/technical-domains/modernization/legacy/) | COBOL/legacy → modern tech stack | 2-4 hours |
-| [.NET Cloud-Native Modernization](workshops/specialties/technical-domains/modernization/dotnet-cloud-native/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours |
-| [Framework Upgrades](workshops/specialties/technical-domains/modernization/framework-upgrades/) | Angular + Spring Boot version upgrades | 1-2 hours |
-| [Data Source Migration](workshops/specialties/technical-domains/modernization/data-source-migration/) | Legacy DW → modern schema | 1-2 hours |
-| [Platform Microservice Decomposition](workshops/specialties/technical-domains/modernization/platform-decomposition/) | Monolith → platform-conformant microservices | 1.5-2 hours |
-| [Security & Compliance](workshops/specialties/technical-domains/security/compliance/) | CVE remediation, SAST, shift-left | 1-2 hours |
-| [Enterprise Security Automation](workshops/specialties/technical-domains/security/enterprise-automation/) | Event-driven SAST, mass remediation | ~4 hours |
-| [Agentic AI](workshops/specialties/technical-domains/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
+| [COBOL Modernization](workshops/by-tech-domain/modernization/cobol/) | End-to-end mainframe modernization | ~4 hours |
+| [Legacy Modernization](workshops/by-tech-domain/modernization/legacy/) | COBOL/legacy → modern tech stack | 2-4 hours |
+| [.NET Cloud-Native Modernization](workshops/by-tech-domain/modernization/dotnet-cloud-native/) | .NET monolith → Kubernetes-hosted cloud-native APIs | 2.5-3 hours |
+| [Framework Upgrades](workshops/by-tech-domain/modernization/framework-upgrades/) | Angular + Spring Boot version upgrades | 1-2 hours |
+| [Data Source Migration](workshops/by-tech-domain/modernization/data-source-migration/) | Legacy DW → modern schema | 1-2 hours |
+| [Platform Microservice Decomposition](workshops/by-tech-domain/modernization/platform-decomposition/) | Monolith → platform-conformant microservices | 1.5-2 hours |
+| [Security & Compliance](workshops/by-tech-domain/security/compliance/) | CVE remediation, SAST, shift-left | 1-2 hours |
+| [Enterprise Security Automation](workshops/by-tech-domain/security/enterprise-automation/) | Event-driven SAST, mass remediation | ~4 hours |
+| [Agentic AI](workshops/by-tech-domain/ai-and-automation/agentic-ai/) | Multi-agent systems, document processing | 2-4 hours |
 
-#### Specialties — Job Families
+#### By Technical Role
 
-One workshop per job family — broad coverage of the role's engineering concerns.
+One workshop per role — broad coverage of that role's engineering concerns.
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
-| [Application Development & Maintenance](workshops/specialties/job-families/development/app-maintenance/) | Feature dev, bug fixing, code maintenance | 4-6 hours |
-| [Feature Development](workshops/specialties/job-families/development/feature-development/) | New features on existing apps | 1-2 hours |
-| [Digital Engineering](workshops/specialties/job-families/digital-engineering/) | CI/CD, cloud infrastructure, observability | 4-6 hours |
-| [Quality Engineering & Assurance](workshops/specialties/job-families/quality-assurance-and-engineering/engineering/) | Test automation, E2E, continuous quality | 4-6 hours |
-| [Quality Engineering & Security](workshops/specialties/job-families/quality-assurance-and-engineering/engineering-security/) | QE + security remediation combined | ~3 hours |
+| [Application Development & Maintenance](workshops/by-tech-role/development/app-maintenance/) | Feature dev, bug fixing, code maintenance | 4-6 hours |
+| [Feature Development](workshops/by-tech-role/development/feature-development/) | New features on existing apps | 1-2 hours |
+| [Digital Engineering](workshops/by-tech-role/digital-engineering/) | CI/CD, cloud infrastructure, observability | 4-6 hours |
+| [Quality Engineering & Assurance](workshops/by-tech-role/quality-engineering/engineering/) | Test automation, E2E, continuous quality | 4-6 hours |
+| [Quality Engineering & Security](workshops/by-tech-role/quality-engineering/engineering-security/) | QE + security remediation combined | ~3 hours |
 
 ## Tips for Getting the Most from Your Workshop
 

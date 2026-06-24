@@ -5,10 +5,16 @@
 This repo is the **attendee-facing** content hub for Devin hands-on workshops. It contains the lab instructions, prompts, and reference material that participants use during a workshop session.
 
 - `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
-- `workshops/` — Structured lab sequences bundling modules into tracks
+- `workshops/` — Structured learning paths:
+  - `workshops/foundations/` — Level 1: Concepts (`concepts/`) + product features (`product/cloud/`, `product/local/`)
+  - `workshops/training-tracks/` — Level 2: Role-specific training (sales, solutions, engineering)
+  - `workshops/by-tech-domain/` — Level 3: Deep-dive labs by technology area (modernization, security, AI)
+  - `workshops/by-tech-role/` — Level 3: Deep-dive labs by job function (development, digital engineering, QE)
+  - `workshops/general/` — Broad hands-on tour
+  - `workshops/otterworks/` — Advanced monorepo deep-dive (300-level)
 - `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
 - `events/` — Event-specific agendas and customizations (active and archived)
-- `shared/` — General Devin themes, product feature tours, and runtime resource docs
+- `shared/` — General Devin themes and runtime resource docs
 - `catalog/` — Repository inventory and upstream provenance
 
 All content is Markdown. There is no application code in this repo.
@@ -67,6 +73,7 @@ Every module and workshop should incorporate applicable principles from `shared/
 ## Reference Files
 
 - General themes: `shared/general-themes/` (8 files)
+- Product feature tours: `workshops/foundations/product/` (cloud and local surfaces)
 - Runtime resources: `shared/runtime-resources.md`
 - Exemplar module: `labs/data-engineering/sas-migration-analysis.md`
 - Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
