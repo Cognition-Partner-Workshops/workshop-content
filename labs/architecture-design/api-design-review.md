@@ -43,7 +43,7 @@ Evaluate REST and GraphQL APIs against design standards — covering naming conv
 - How Devin evaluates API design against industry best practices
 - Devin's ability to generate or update API documentation (OpenAPI/Swagger)
 - How to use Devin for systematic design review workflows
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -51,7 +51,7 @@ Evaluate REST and GraphQL APIs against design standards — covering naming conv
 - Design pattern evaluation
 - Documentation generation
 - PR creation with implementation fixes
-- **Devin Review** — can be configured to check API design standards on every future PR (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can be configured to check API design standards on every future PR (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -133,6 +133,6 @@ Open the repo's DeepWiki page to understand the Express route structure and midd
 
 ## Going Further
 
-- **Scheduled API audits** — run Devin on a weekly schedule to audit API surfaces for new inconsistencies, missing documentation, and design drift, then open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Devin Review for API standards** — enable Devin Review with custom rules to check every PR for API design compliance (naming, error handling, pagination) automatically (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
-- **Parallel API reviews across services** — use child agents to audit API design across multiple microservices simultaneously, each producing a standardized review report (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Scheduled API audits** — run Devin on a weekly schedule to audit API surfaces for new inconsistencies, missing documentation, and design drift, then open remediation PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Devin Review for API standards** — enable Devin Review with custom rules to check every PR for API design compliance (naming, error handling, pagination) automatically (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
+- **Parallel API reviews across services** — use child agents to audit API design across multiple microservices simultaneously, each producing a standardized review report (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

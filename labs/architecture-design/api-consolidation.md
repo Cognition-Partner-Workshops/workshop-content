@@ -43,7 +43,7 @@ Consolidate two API designs into one consistent design pattern. The RealWorld ex
 - How Devin safely removes code while preserving functionality
 - Dependency cleanup in build files
 - Test verification after API surface changes
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -51,7 +51,7 @@ Consolidate two API designs into one consistent design pattern. The RealWorld ex
 - Safe code removal
 - Build configuration changes
 - PR creation
-- **Devin Review** — can verify that no functionality was lost during consolidation (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can verify that no functionality was lost during consolidation (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -104,6 +104,6 @@ Open the repo's DeepWiki page to understand the dual API architecture. Map out w
 
 ## Going Further
 
-- **Parallel API consolidation across services** — use child agents to consolidate API patterns across multiple microservices simultaneously, each following the same consolidation playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
-- **Scheduled dead-code detection** — run Devin on a weekly schedule to identify unused API endpoints, orphaned schema files, and unreferenced dependencies, then open cleanup PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Playbook-driven API standardization** — create a playbook encoding your team's API consolidation process (audit surfaces → map operations → remove redundant layer → verify tests → update docs) so it can be applied consistently across codebases (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
+- **Parallel API consolidation across services** — use child agents to consolidate API patterns across multiple microservices simultaneously, each following the same consolidation playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Scheduled dead-code detection** — run Devin on a weekly schedule to identify unused API endpoints, orphaned schema files, and unreferenced dependencies, then open cleanup PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Playbook-driven API standardization** — create a playbook encoding your team's API consolidation process (audit surfaces → map operations → remove redundant layer → verify tests → update docs) so it can be applied consistently across codebases (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))

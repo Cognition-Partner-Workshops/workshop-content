@@ -97,7 +97,7 @@ Open the repo's DeepWiki page to understand the full data model — legacy CDW t
 - **Static analysis of data flows**: Devin traces the data path from legacy CDW tables through service-layer transformations to API DTOs without requiring a running database connection
 - **Validation rule generation**: Schema definitions and column mappings provide enough information for Devin to infer meaningful validation rules automatically
 - **Data contracts as migration guardrails**: Explicit contracts on data shape and types catch regressions early — especially valuable when running legacy and modern schemas in parallel
-- **Parallel validation workstreams**: Each legacy table's validation rules can be developed independently, making this a candidate for [child-session parallelism](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) in larger estates
+- **Parallel validation workstreams**: Each legacy table's validation rules can be developed independently, making this a candidate for [child-session parallelism](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) in larger estates
 
 ---
 
@@ -105,16 +105,16 @@ Open the repo's DeepWiki page to understand the full data model — legacy CDW t
 
 ### Automation and Webhooks
 
-Configure a CI trigger so that data quality checks run automatically on every PR that modifies schema files or column mappings. When checks fail, a Devin session can investigate and propose fixes. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Configure a CI trigger so that data quality checks run automatically on every PR that modifies schema files or column mappings. When checks fail, a Devin session can investigate and propose fixes. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Scheduled Sessions
 
-Schedule a weekly Devin session to run the full data quality suite against the latest seed data and report any drift in data contracts. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a weekly Devin session to run the full data quality suite against the latest seed data and report any drift in data contracts. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your data quality standards (e.g., "All date fields must be validated against MM/DD/YYYY format", "Status codes must belong to the approved enumeration"). Every Devin session inherits these conventions automatically.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your data quality standards (e.g., "All date fields must be validated against MM/DD/YYYY format", "Status codes must belong to the approved enumeration"). Every Devin session inherits these conventions automatically.
 
 ### Team-Based Operation
 
-Multiple team members — data engineers, QA analysts, and domain experts — can review the generated validation rules simultaneously via PR comments. Devin reads feedback from any reviewer and iterates. See [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication).
+Multiple team members — data engineers, QA analysts, and domain experts — can review the generated validation rules simultaneously via PR comments. Devin reads feedback from any reviewer and iterates. See [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication).

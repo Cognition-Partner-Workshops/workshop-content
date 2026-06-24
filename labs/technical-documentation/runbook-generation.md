@@ -134,7 +134,7 @@ Open the repo's DeepWiki page to understand the infrastructure architecture, ser
 
 ## Going Further
 
-Runbook generation connects to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+Runbook generation connects to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **PR-triggered runbook updates** — When a PR modifies deployment configurations, scaling rules, or monitoring setup, trigger a Devin session that updates the affected runbook sections and opens a follow-up PR
 - **Scheduled runbook validation** — Run a recurring session that verifies runbook commands still work: execute non-destructive steps (e.g., `terraform plan`, `kubectl get pods`, health checks) and flag any steps that return errors

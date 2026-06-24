@@ -21,7 +21,7 @@ The first half covers **knowledge** — platform architecture internals, SDLC ph
 > **This is a design-and-delivery workshop.** Unlike hands-on labs where you paste prompts and review PRs, this workshop builds the knowledge and judgment you need to architect Devin solutions and present them convincingly. Each section ends with knowledge checks and design exercises — take them seriously, as they mirror the questions clients will ask.
 
 Tips:
-- **Read the source material first.** Each section is self-contained comprehensive training. Quick-reference cheat sheets in `shared/general-themes/` and walkthrough scripts in `demos/` supplement the material. Read those before attempting the knowledge checks.
+- **Read the source material first.** Each section is self-contained comprehensive training. Quick-reference cheat sheets in `reference/general-themes/` and walkthrough scripts in `demos/` supplement the material. Read those before attempting the knowledge checks.
 - **Practice walkthrough delivery out loud.** Section 3 includes delivery scripts. Practice explaining what is happening while Devin runs — this is the core skill clients evaluate you on.
 - **Build the simulated environment.** Section 5 walks you through configuring a complete Devin org. Do this hands-on — the muscle memory matters when you are configuring a client's environment live.
 - **Use the design challenges as preparation.** The capstone design challenge mirrors the kind of architecture proposal you will deliver in real engagements.
@@ -65,8 +65,8 @@ Additional materials needed to complete this track:
 - [ ] Integration design templates (editable topology diagrams for common automation patterns)
 - [ ] "Handling the hard questions" expanded guide (top 50 client questions with researched, precise answers)
 - [ ] Platform configuration lab environment (pre-configured sandbox where attendees practice org setup from scratch)
-- [ ] Walkthrough timing guides — *operator repo* (suggested pacing for 30-minute, 60-minute, and 90-minute walkthrough slots)
-- [ ] Objection handling reference — *operator repo* (how to respond to questions about alternative approaches)
+- [ ] Walkthrough timing guides — *workshop-operations repo* (suggested pacing for 30-minute, 60-minute, and 90-minute walkthrough slots)
+- [ ] Objection handling reference — *workshop-operations repo* (how to respond to questions about alternative approaches)
 - [ ] Multi-walkthrough sequencing guide (how to chain walkthroughs in a half-day or full-day session for maximum narrative impact)
 - [ ] Assessment exercises with automated grading (knowledge checks that report scores and identify weak areas)
 - [ ] Client-specific customization templates (how to adapt walkthrough prompts to a specific client's repos and technology stack)

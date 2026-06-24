@@ -45,7 +45,7 @@ Identify and resolve code smells, tech debt, and structural issues in a codebase
 - How Devin applies refactoring patterns (Extract Method, Rename, Move, etc.)
 - How to verify refactoring safety through existing tests
 - The difference between cosmetic cleanup and meaningful structural improvement
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -53,7 +53,7 @@ Identify and resolve code smells, tech debt, and structural issues in a codebase
 - Multi-file refactoring
 - Test verification (ensuring no regressions)
 - PR creation with refactoring rationale
-- **Devin Review** — can catch code smells in every future PR, preventing new tech debt from accumulating (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch code smells in every future PR, preventing new tech debt from accumulating (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -191,7 +191,7 @@ Open the repo's DeepWiki page to understand the dual API architecture and identi
 
 ## Going Further
 
-- **Scheduled code health analysis** — run Devin on a weekly schedule to scan for new code smells, complexity hotspots, and duplicated patterns, then open cleanup PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Devin Review for tech debt prevention** — enable Devin Review to flag code smells in every incoming PR, preventing new tech debt before it merges (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
-- **Parallel refactoring across repos** — use child agents to apply the same refactoring pattern (e.g., extracting shared utilities, standardizing error handling) across multiple repositories simultaneously (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
-- **Playbook-driven refactoring** — create a playbook encoding your team's refactoring process (analyze → prioritize → refactor → verify → document) so every tech debt session follows a consistent methodology (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
+- **Scheduled code health analysis** — run Devin on a weekly schedule to scan for new code smells, complexity hotspots, and duplicated patterns, then open cleanup PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Devin Review for tech debt prevention** — enable Devin Review to flag code smells in every incoming PR, preventing new tech debt before it merges (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
+- **Parallel refactoring across repos** — use child agents to apply the same refactoring pattern (e.g., extracting shared utilities, standardizing error handling) across multiple repositories simultaneously (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Playbook-driven refactoring** — create a playbook encoding your team's refactoring process (analyze → prioritize → refactor → verify → document) so every tech debt session follows a consistent methodology (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))

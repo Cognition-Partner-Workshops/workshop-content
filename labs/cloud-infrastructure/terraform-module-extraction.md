@@ -126,7 +126,7 @@ Open the repo's DeepWiki page to understand the infrastructure topology and reso
 
 ## Going Further
 
-Terraform module extraction connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+Terraform module extraction connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Scheduled `terraform plan` drift checks** — After extracting modules, run a recurring Devin session that executes `terraform plan` against each environment and opens a PR if drift is detected. This catches manual changes made outside the IaC pipeline
 - **Module version bumps** — When shared modules are updated, a scheduled session can identify downstream consumers and open PRs to bump module versions and verify compatibility

@@ -1,6 +1,6 @@
 # Collaboration Model — Quick Reference
 
-> Comprehensive training: [Foundations — Cloud Agent vs. Local Agent](../../workshops/foundations/concepts/01-cloud-agent-vs-local-agent.md) | [Foundations — Sessions](../../workshops/foundations/product/cloud/06-devin-sessions.md) | [Foundations — Automations](../../workshops/foundations/product/cloud/08-automations.md)
+> Comprehensive training: [Foundations — Cloud Agent vs. Local Agent](../../courses/foundations/concepts/01-cloud-agent-vs-local-agent.md) | [Foundations — Sessions](../../courses/foundations/product/cloud/06-devin-sessions.md) | [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md)
 
 ## The PR Feedback Loop
 

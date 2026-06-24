@@ -96,7 +96,7 @@ Open the repo's DeepWiki page to understand the infrastructure topology. Map out
 
 ## Going Further
 
-IaC translation pairs well with **scheduled drift detection sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+IaC translation pairs well with **scheduled drift detection sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Scheduled IaC drift detection** — After translating to a new IaC tool, run a recurring Devin session that compares `cdk synth` output against the live CloudFormation stack. If drift is detected, Devin opens a PR with the corrective changes
 - **Multi-tool parity checks** — If your organization maintains IaC in both Terraform and CDK, a scheduled session can diff the synthesized outputs and flag any divergence

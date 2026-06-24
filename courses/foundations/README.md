@@ -68,16 +68,16 @@ Once you've built this foundation, the next step depends on your role:
 
 | Next Step | Who It's For | What You'll Do |
 |-----------|-------------|---------------|
-| [Sales Track](../training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | Operating model, economics, engagement scoping |
-| [Solutions Track](../training-tracks/solutions/) | Solutions Engineers, Architects | Platform architecture, SDLC design, live walkthroughs |
-| [Engineering Track](../training-tracks/engineering/) | Engineers, Developers | Prompt engineering, orchestration, troubleshooting |
+| [Sales Track](../tracks/sales/) | Sales Engineers, AEs, Practice Leads | Operating model, economics, engagement scoping |
+| [Solutions Track](../tracks/solutions/) | Solutions Engineers, Architects | Platform architecture, SDLC design, live walkthroughs |
+| [Engineering Track](../tracks/engineering/) | Engineers, Developers | Prompt engineering, orchestration, troubleshooting |
 
 After completing your track, dive into hands-on workshops:
 
 | Next Step | What You'll Do |
 |-----------|---------------|
-| [General Workshop](../general/) | Security, modernization, and feature development labs |
-| [By Technical Domain](../by-tech-domain/) | Deep dives into modernization, security, AI & automation |
-| [By Technical Role](../by-tech-role/) | Role-specific lab sequences for development, digital engineering, QE |
+| [General Workshop](../../workshops/general/) | Security, modernization, and feature development labs |
+| [By Technical Domain](../../workshops/by-tech-domain/) | Deep dives into modernization, security, AI & automation |
+| [By Technical Role](../../workshops/by-tech-role/) | Role-specific lab sequences for development, digital engineering, QE |
 
 These workshops assume you understand the concepts covered here — cloud delegation, event-driven patterns, the PR feedback loop, and how Devin's context layer works.

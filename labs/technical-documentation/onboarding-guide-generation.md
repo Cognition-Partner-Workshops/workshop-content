@@ -134,7 +134,7 @@ Open the repo's DeepWiki page to understand the full monorepo architecture. A pr
 
 ## Going Further
 
-Onboarding guides connect to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+Onboarding guides connect to **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **PR-triggered guide updates** — When a PR adds a new module, changes the build process, or modifies environment requirements, trigger a Devin session that updates the relevant onboarding documents and opens a follow-up PR
 - **Scheduled freshness checks** — Run a recurring session that verifies the setup guide still works: clone the repo, follow the documented steps, and report any failures. If the guide is outdated, Devin opens a PR with corrections

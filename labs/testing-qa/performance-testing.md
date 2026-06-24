@@ -77,7 +77,7 @@ Intermediate to Advanced
 
 ## Prerequisites
 
-The application should be running locally for profiling. See [runtime-resources.md](../../shared/runtime-resources.md) for hosted instance details.
+The application should be running locally for profiling. See [runtime-resources.md](../../reference/runtime-resources.md) for hosted instance details.
 
 ---
 

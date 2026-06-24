@@ -130,7 +130,7 @@ Participants who finish early may attempt any challenge from the full [module ca
 - **timesheet-app:** Backend on port 3001, frontend on port 5173 (needed for Lab 2 E2E testing)
 - **SonarQube:** `docker compose -f docker-compose.sonarqube.yml up -d` on port 9000 (needed for Lab 3)
 
-If hosted instances are available, refer to [runtime-resources.md](../../../../shared/runtime-resources.md) for URLs and credentials.
+If hosted instances are available, refer to [runtime-resources.md](../../../../reference/runtime-resources.md) for URLs and credentials.
 
 ## Repo Duplication Notes
 

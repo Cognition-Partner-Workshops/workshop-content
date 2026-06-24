@@ -97,7 +97,7 @@ Open the repo's DeepWiki page to understand the detection pipeline flow from raw
 
 ## Going Further
 
-Volume anomaly detection connects directly to **incident-response automation** (see [When to Use Devin → Event-Driven](../../shared/general-themes/when-to-use-devin.md)):
+Volume anomaly detection connects directly to **incident-response automation** (see [When to Use Devin → Event-Driven](../../reference/general-themes/when-to-use-devin.md)):
 
 - **Alert-triggered anomaly investigation** — When the anomaly detector fires an alert (via Prometheus AlertManager or a custom webhook), trigger a Devin session that correlates the anomaly with recent deployments, configuration changes, and upstream service health — producing a triage report before the on-call engineer is paged
 - **Scheduled baseline recalibration** — Run a recurring Devin session that recomputes seasonal baselines from the latest production data, adjusts detection thresholds, and opens a PR with updated `detection_rules.yaml` — ensuring the detector adapts to changing traffic patterns

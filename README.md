@@ -1,47 +1,52 @@
-# Hands-On Workshop Labs
+# Devin Training & Hands-On Labs
 
-Welcome to the Devin hands-on workshop. This repo contains everything you need to get started: lab instructions, prompts to paste into Devin, and links to the repositories you will work with.
+The one-stop content hub for Devin enablement: reading courses, hands-on lab modules, workshop sequences, and facilitator-led demos — plus the prompts and repository references that make them runnable.
+
+Content is split by **how you consume it**: **`courses/`** is reading-first enablement you work through in sequence for your role; **`workshops/`** and **`labs/`** are hands-on, choose-your-own-adventure material you pick from.
 
 ## Quick Start
 
-1. **Find your workshop** — check `workshops/` for your session's lab guide, or ask your facilitator for the direct link
-2. **Pick a lab** — each lab has a prompt you copy-paste into a new Devin session
-3. **Kick off and move on** — Devin works autonomously. Start the next lab while it runs
-4. **Review the PR** — when Devin finishes, review its pull request and leave comments to iterate
+1. **Building intuition first?** Start with [`courses/foundations/`](courses/foundations/) — reading-first, no coding
+2. **Ready for hands-on?** Check `workshops/` for your session's lab guide, or ask your facilitator for the direct link
+3. **Pick a lab** — each lab has a prompt you copy-paste into a new Devin session
+4. **Kick off and move on** — Devin works autonomously. Start the next lab while it runs
+5. **Review the PR** — when Devin finishes, review its pull request and leave comments to iterate
 
 > **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
 
 ## How to Navigate
 
 ```
-workshop-instructions/
-├── labs/                  ← individual lab instructions organized by discipline
-│   └── README.md             ← full index of all labs
-├── workshops/                ← structured learning paths
-│   ├── foundations/           ← Level 1: concepts + product features (start here)
-│   │   ├── concepts/         ← cloud vs. local, event-driven, orchestration, task selection
-│   │   └── product/          ← feature tours by cloud / local
-│   ├── training-tracks/      ← Level 2: role-specific training
-│   │   ├── sales/            ← operating model, cost structures, engagement capture
-│   │   ├── solutions/        ← system design, SDLC integration, live walkthroughs
-│   │   └── engineering/      ← prompt engineering, orchestration, troubleshooting
-│   ├── general/              ← hands-on broad tour (start here for labs)
-│   ├── otterworks/           ← advanced monorepo deep-dive (300-level)
-│   ├── by-tech-domain/       ← Level 3: deep dives by technology area
-│   └── by-tech-role/         ← Level 3: deep dives by job function
-├── demos/                    ← facilitator-led showcases (follow along, single linear thread)
-├── events/                   ← event-specific agendas and customizations
-├── catalog/                  ← reference inventory of all available repositories
-└── shared/
-    └── general-themes/       ← how Devin works: architecture, patterns, collaboration
+workshop-content/
+├── courses/                 ← reading/learning enablement (sequential, by track — no coding)
+│   ├── foundations/         ← Level 1: concepts + product features (everyone starts here)
+│   │   ├── concepts/        ← cloud vs. local, event-driven, orchestration, task selection
+│   │   └── product/         ← feature tours by cloud / local
+│   └── tracks/     ← Level 2: role-specific training
+│       ├── sales/           ← operating model, cost structures, engagement capture
+│       ├── solutions/       ← system design, SDLC integration, live walkthroughs
+│       └── engineering/     ← prompt engineering, orchestration, troubleshooting
+├── workshops/               ← hands-on, choose-your-own-adventure lab collections (no solutions/assessments)
+│   ├── general/             ← broad hands-on tour (start here for labs)
+│   ├── otterworks/          ← flagship polyglot monorepo deep-dive (300-level)
+│   ├── by-tech-domain/      ← Level 3: deep dives by technology area
+│   └── by-tech-role/        ← Level 3: deep dives by job function
+├── labs/                    ← individual hands-on lab modules (the building blocks workshops compose)
+│   └── README.md            ← full index of all labs
+├── demos/                   ← facilitator-led showcases (follow along, single linear thread, persona-targeted)
+├── events/                  ← event-specific, non-reusable agendas and customizations
+├── catalog/                 ← machine-readable inventory of all available repositories (for agents + humans)
+└── reference/               ← shared lookup material used across courses, workshops, and labs
+    ├── general-themes/      ← how Devin works: architecture, patterns, collaboration
+    └── runtime-resources.md ← how to run lab apps locally
 ```
 
 ### Progression Model
 
 ```
-Level 1: workshops/foundations/        ← Everyone starts here
+Level 1: courses/foundations/        ← Everyone starts here
     ↓
-Level 2: workshops/training-tracks/    ← Sales / Solutions / Engineering
+Level 2: courses/tracks/    ← Sales / Solutions / Engineering
     ↓
 Level 3: workshops/by-tech-domain/     ← Modernization, Security, AI & Automation
          workshops/by-tech-role/       ← Development, Digital Engineering, QE
@@ -69,27 +74,27 @@ Practice: workshops/general/           ← Broad hands-on tour
 
 Browse all labs: [labs/README.md](labs/README.md)
 
+### Courses (read first)
+
+Reading-first enablement — work through these in sequence. No coding required. See [`courses/`](courses/) for the full index.
+
+| Course | Focus | Duration |
+|--------|-------|----------|
+| [Foundations](courses/foundations/) | Cloud agent concepts, product features, platform mental model | 2-3 hours |
+| [Sales Track](courses/tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
+| [Solutions Track](courses/tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
+| [Engineering Track](courses/tracks/engineering/) | Engineers, Developers | 6-8 hours |
+
 ### Find Labs by Workshop
 
-Your facilitator may have directed you to a specific workshop. Each workshop bundles labs into a structured sequence.
+Your facilitator may have directed you to a specific hands-on workshop. Each workshop bundles labs into a choose-your-own-adventure sequence.
 
 #### Start Here
 
 | Workshop | Focus | Duration |
 |----------|-------|----------|
-| [Foundations](workshops/foundations/) | Cloud agent concepts, product features, platform mental model | 2-3 hours |
 | [General](workshops/general/) | Security, modernization, feature dev — broad multi-repo tour | 4-6 hours |
-| [OtterWorks](workshops/otterworks/) | Polyglot microservices — 300-level monorepo deep-dive | 4-6 hours |
-
-#### Training Tracks
-
-Role-specific training that builds on Foundations.
-
-| Track | Persona | Duration |
-|-------|---------|----------|
-| [Sales](workshops/training-tracks/sales/) | Sales Engineers, AEs, Practice Leads | 4-5 hours |
-| [Solutions](workshops/training-tracks/solutions/) | Solutions Engineers, Architects | 8-10 hours |
-| [Engineering](workshops/training-tracks/engineering/) | Engineers, Developers | 6-8 hours |
+| [OtterWorks](workshops/otterworks/) | Flagship polyglot microservices — 300-level monorepo deep-dive | 4-6 hours |
 
 #### By Technical Domain
 
@@ -129,7 +134,7 @@ One workshop per role — broad coverage of that role's engineering concerns.
 
 ## Running Apps Locally
 
-Some labs require a running application. See [shared/runtime-resources.md](shared/runtime-resources.md) for local run instructions. Your facilitator will let you know if hosted instances are available.
+Some labs require a running application. See [reference/runtime-resources.md](reference/runtime-resources.md) for local run instructions. Your facilitator will let you know if hosted instances are available.
 
 ## Repository Catalog
 

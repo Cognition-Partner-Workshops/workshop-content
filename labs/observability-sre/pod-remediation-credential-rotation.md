@@ -97,7 +97,7 @@ Open the repo's DeepWiki page to understand the agent architecture and data flow
 
 ## Going Further
 
-Credential rotation remediation is a textbook case of **incident-response automation** (alert → Devin investigates → Devin remediates) (see [When to Use Devin → Event-Driven](../../shared/general-themes/when-to-use-devin.md)):
+Credential rotation remediation is a textbook case of **incident-response automation** (alert → Devin investigates → Devin remediates) (see [When to Use Devin → Event-Driven](../../reference/general-themes/when-to-use-devin.md)):
 
 - **Alert-triggered pod remediation** — Connect Kubernetes alerting (Prometheus AlertManager, PagerDuty) to the Devin API. When a CrashLoopBackOff alert fires after a credential rotation, Devin investigates the pod logs, correlates with recent secret changes, and executes the remediation workflow — creating a change request, waiting for approval, and performing the rolling restart
 - **Scheduled rotation health checks** — Run a recurring Devin session after each credential rotation window that verifies all affected pods restarted successfully and are passing health checks. If any pods are unhealthy, Devin opens an incident and begins remediation

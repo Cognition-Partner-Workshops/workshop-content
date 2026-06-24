@@ -1,8 +1,8 @@
-# Devin Review Guidelines — workshop-metadata
+# Devin Review Guidelines — workshop-content
 
 ## Repository Context
 
-This repo contains **attendee-facing** workshop content (modules, workshops, events) and shared reference materials for the Cognition-Partner-Workshops organization. All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
+This repo contains **attendee-facing** enablement content for the Cognition-Partner-Workshops organization: reading courses (`courses/`), hands-on lab modules (`labs/`), workshop sequences (`workshops/`), facilitator-led showcases (`demos/`), event instances (`events/`), a repo catalog (`catalog/`), and shared reference material (`reference/`). All content is Markdown. There is no application code — PRs contain documentation, prompts, and instructional materials. Facilitator-facing content (day-of guides, quality checklist, event templates, module facilitator notes) lives in the [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.
 
 **Exception — `demos/`:** the `demos/` directory holds facilitator-led demo showcases: a single linear thread a presenter runs live while others follow along. Unlike `labs/`/`workshops/` (participant-driven, can branch into choose-your-own-adventure tracks), demo docs walk one path start to finish and read as though a user is reading and following along. They are permitted to live in this repo and to use "demo" verbiage. Apply the demo-specific guidance below to anything under `demos/`.
 
@@ -10,7 +10,7 @@ This repo contains **attendee-facing** workshop content (modules, workshops, eve
 
 ### Language and Tone (High Priority)
 
-- **"demo" only under `demos/`** — Flag any use of "demo" in `labs/`, `workshops/`, or `events/` content; the correct terms there are "try", "hands-on", or "walkthrough" (headers say "What to Try" not "What to Demo"). **Do not flag "demo" verbiage in files under the `demos/` directory** — it is expected there.
+- **"demo" only under `demos/`** — Flag any use of "demo" in `courses/`, `labs/`, `workshops/`, or `events/` content; the correct terms there are "try", "hands-on", or "walkthrough" (headers say "What to Try" not "What to Demo"). **Do not flag "demo" verbiage in files under the `demos/` directory** — it is expected there.
 - **"Key Takeaways" not "Key Talking Points"** — Summary bullets under each lab/activity must use "Key Takeaways" as the header.
 - **"Workshops" not "arcs"** — User-facing names must say "workshop" not "arc". Internal structural references to arcs are fine.
 - **No overstatements** — Flag guarantee language ("every", "all", "always", "guaranteed", "comprehensive coverage") when describing probabilistic tools like DeepWiki or AI analysis. Prefer "typically", "in most cases", "coverage depends on repo structure".
@@ -18,7 +18,7 @@ This repo contains **attendee-facing** workshop content (modules, workshops, eve
 
 ### Content Separation (High Priority)
 
-- **Attendee-only content** — This entire repo is for attendees. Flag any facilitator-only content (MCP setup, presales positioning, timing guides, pacing tips for facilitators, post-event checklists). These belong in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo. **Exception**: Technical comparisons that explain practical differences (e.g., "static analysis requires no environment changes, unlike runtime trace tools") are general guidance that belongs here — only the sales/delivery *framing* of those comparisons belongs in operator.
+- **Attendee-only content** — This entire repo is for attendees. Flag any facilitator-only content (MCP setup, presales positioning, timing guides, pacing tips for facilitators, post-event checklists). These belong in the [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo. **Exception**: Technical comparisons that explain practical differences (e.g., "static analysis requires no environment changes, unlike runtime trace tools") are general guidance that belongs here — only the sales/delivery *framing* of those comparisons belongs in workshop-operations.
 - **`demos/` content** — Files under `demos/` are facilitator-led demo showcases and are allowed in this repo. They should read as a single linear thread a user can follow along with: minimal preamble, straight into prompts and user instructions, no participant-driven "try this" hands-on framing or choose-your-own-adventure branching. Summary sections still use "Key Takeaways". Flag demo docs that bury the steps under heavy preamble or read as internal facilitator-only notes (pacing/timing/presales) rather than a user-followable walkthrough.
 
 ### Prompt Formatting (Medium Priority)
@@ -58,7 +58,7 @@ This repo contains **attendee-facing** workshop content (modules, workshops, eve
 
 ## Common Pitfalls
 
-- Including facilitator/presales content in this repo (it belongs in operator)
+- Including facilitator/presales content in this repo (it belongs in workshop-operations)
 - Using blockquote format for prompts instead of fenced code blocks (loses GitHub copy button)
 - Including "Open a PR" in prompts
 - Absolute statements about DeepWiki coverage or AI analysis completeness

@@ -9,7 +9,8 @@ root `AGENTS.md` for files under `demos/` only. (See also the root `REVIEW.md`
 `demos/` holds **facilitator-led demo showcases**: a presenter runs the demo
 live while others follow along. This is different from `labs/` and
 `workshops/`, which are participant-driven and may branch into separate
-choose-your-own-adventure tracks.
+choose-your-own-adventure tracks, and from `courses/`, which is reading-first
+sequential enablement.
 
 A demo doc is a **single linear thread** — one path, start to finish. It should
 read as though a user is reading and following along.
@@ -28,7 +29,7 @@ read as though a user is reading and following along.
 - **Not internal facilitator notes.** Avoid pacing/timing/presales framing and
   narration cues ("narrate…", "call out…"). Write the steps so a user can
   execute them directly. (Day-of logistics still live in the
-  [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.)
+  [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.)
 
 ## Inherited from root `AGENTS.md`
 

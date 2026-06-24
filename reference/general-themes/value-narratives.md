@@ -1,6 +1,6 @@
 # Value Narratives — Quick Reference
 
-> Comprehensive training: [Sales Track — Value Narrative Selection](../../workshops/training-tracks/sales/03-value-narrative-selection.md) | [Sales Track — Operating Model Transformation](../../workshops/training-tracks/sales/01-operating-model-transformation.md)
+> Comprehensive training: [Sales Track — Value Narrative Selection](../../courses/tracks/sales/03-value-narrative-selection.md) | [Sales Track — Operating Model Transformation](../../courses/tracks/sales/01-operating-model-transformation.md)
 
 ## Narrative Selection Matrix
 
@@ -33,7 +33,7 @@
 | "Migrations take too long" | Velocity Multiplication |
 | "Losing RFPs on price" | Operating Model Efficiency |
 | "Engineers doing grunt work" | Engineering Focus Elevation |
-| "Can't predict project costs" | Unit-of-Work Economics (see [Sales Track](../../workshops/training-tracks/sales/02-unit-of-work-economics.md)) |
+| "Can't predict project costs" | Unit-of-Work Economics (see [Sales Track](../../courses/tracks/sales/02-unit-of-work-economics.md)) |
 
 ## Key Rules
 - Match the narrative to the buyer persona — same capability, different framing

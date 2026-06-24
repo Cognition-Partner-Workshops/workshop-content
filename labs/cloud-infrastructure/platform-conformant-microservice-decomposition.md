@@ -239,7 +239,7 @@ This is a **context repository** — it provides the IaC patterns that the new s
 
 ## Going Further
 
-Microservice decomposition connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+Microservice decomposition connects to **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Scheduled platform conformance audits** — After decomposition, run a recurring Devin session that compares each service's Helm chart against the platform standard and opens PRs to remediate any drift (e.g., missing network policies, outdated resource limits)
 - **Automated service scaffolding** — When a new bounded context is identified for extraction, trigger a Devin session with a playbook that generates the service skeleton, Helm chart, ArgoCD manifests, and CI/CD pipeline — all conformant to the platform standard from day one

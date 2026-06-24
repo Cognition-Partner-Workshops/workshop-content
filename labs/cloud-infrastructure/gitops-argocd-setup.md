@@ -126,7 +126,7 @@ Open the repo's DeepWiki page to understand the service architecture and inter-s
 
 ## Going Further
 
-GitOps configurations pair naturally with **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md)):
+GitOps configurations pair naturally with **IaC drift detection as scheduled sessions** (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md)):
 
 - **Scheduled drift detection** — Run a recurring Devin session that compares the Git-declared state against the live cluster state (`argocd app diff`) and opens a PR if drift is detected
 - **Automated manifest updates** — When a new service version is released, a Devin session triggered by a CI event can update the image tag in the GitOps repo and open a PR for review

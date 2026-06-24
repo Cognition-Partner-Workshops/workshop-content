@@ -98,7 +98,7 @@ Open the DeepWiki page for ts-sas-legacy-analytics to understand the macro libra
 
 - **Non-invasive analysis**: Devin reads SAS macro source files to understand transformation logic — no SAS license, no running SAS environment needed
 - **Construct-level mapping**: Every SAS pattern (PROC TRANSPOSE, BY-group processing, macro variable resolution) maps to a documented Python equivalent
-- **Parallel conversion potential**: With 90+ macros, a [child-session pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can convert groups of related macros in parallel — one Devin session per macro category
+- **Parallel conversion potential**: With 90+ macros, a [child-session pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can convert groups of related macros in parallel — one Devin session per macro category
 
 ---
 
@@ -142,20 +142,20 @@ Open the DeepWiki page for uc-data-migration-sas-to-snowflake to understand the 
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that whenever new SAS datasets are added to the repository, a Devin session automatically generates the Snowflake DDL, loading scripts, and validation queries. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that whenever new SAS datasets are added to the repository, a Devin session automatically generates the Snowflake DDL, loading scripts, and validation queries. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For large SAS estates with hundreds of datasets, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all datasets and groups them by domain, then spawns a child session per group. Each child generates DDL, loading scripts, and validation queries independently.
+For large SAS estates with hundreds of datasets, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session inventories all datasets and groups them by domain, then spawns a child session per group. Each child generates DDL, loading scripts, and validation queries independently.
 
 ### Scheduled Sessions
 
-Schedule a recurring Devin session to re-validate the migration pipeline against the latest dataset snapshots — catching drift if schemas evolve upstream. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a recurring Devin session to re-validate the migration pipeline against the latest dataset snapshots — catching drift if schemas evolve upstream. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your SAS-to-Snowflake migration conventions (e.g., "SAS date values → DATE with epoch 1960-01-01 conversion", "SAS7BDAT string encoding → UTF-8 normalization", "PROC FORMAT values → Snowflake lookup tables"). Every Devin session inherits these conventions.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your SAS-to-Snowflake migration conventions (e.g., "SAS date values → DATE with epoch 1960-01-01 conversion", "SAS7BDAT string encoding → UTF-8 normalization", "PROC FORMAT values → Snowflake lookup tables"). Every Devin session inherits these conventions.
 
 ### Team-Based Operation
 
-SAS analysts familiar with the data semantics and Snowflake engineers experienced with DDL patterns can review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../shared/general-themes/collaboration-model.md).
+SAS analysts familiar with the data semantics and Snowflake engineers experienced with DDL patterns can review the migration PR simultaneously. Devin reads feedback from any reviewer and iterates. See [Collaboration Model](../../reference/general-themes/collaboration-model.md).

@@ -1,6 +1,6 @@
 # 2. SDLC Integration Design
 
-*Quick reference: [`shared/general-themes/design-patterns-for-devin.md`](../../../shared/general-themes/design-patterns-for-devin.md)*
+*Quick reference: [`reference/general-themes/design-patterns-for-devin.md`](../../../reference/general-themes/design-patterns-for-devin.md)*
 
 <a id="toc"></a>
 

@@ -12,7 +12,7 @@
 
 ---
 
-This section covers when and how to use each orchestration pattern. For the theoretical foundations, see [Agent Orchestration](../../foundations/concepts/03-agent-orchestration.md) and [Multi-Agent Workers](../../foundations/product/cloud/09-multi-agent-workers.md). Quick reference: [Platform Capabilities](../../../shared/general-themes/platform-capabilities.md).
+This section covers when and how to use each orchestration pattern. For the theoretical foundations, see [Agent Orchestration](../../foundations/concepts/03-agent-orchestration.md) and [Multi-Agent Workers](../../foundations/product/cloud/09-multi-agent-workers.md). Quick reference: [Platform Capabilities](../../../reference/general-themes/platform-capabilities.md).
 
 <a id="pattern-1-single-agent"></a>
 ## Pattern 1: Single Agent

@@ -58,8 +58,8 @@ Once you have built the tactical skills covered here, you are ready for domain-s
 
 | Next Step | What You'll Do |
 |-----------|---------------|
-| [General Workshop](../../general/) | Hands-on labs across security, modernization, and feature dev — apply what you learned here |
-| [By Technical Domain](../../by-tech-domain/) | Deep dives into COBOL modernization, .NET cloud-native, framework upgrades, data migration |
-| [By Technical Role](../../by-tech-role/) | Role-specific lab sequences for AppDev, Digital Engineering, QA |
+| [General Workshop](../../../workshops/general/) | Hands-on labs across security, modernization, and feature dev — apply what you learned here |
+| [By Technical Domain](../../../workshops/by-tech-domain/) | Deep dives into COBOL modernization, .NET cloud-native, framework upgrades, data migration |
+| [By Technical Role](../../../workshops/by-tech-role/) | Role-specific lab sequences for AppDev, Digital Engineering, QA |
 
 These workshops assume you have the platform fundamentals, prompt engineering skills, and troubleshooting techniques covered in this track.

@@ -43,7 +43,7 @@ Define the functional behavior for a new feature, create the tests first, then h
 - TDD workflow with Devin: red → green → refactor
 - Multi-session workflow (one session writes tests, another implements)
 - How Devin respects constraints ("do not modify test files")
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -51,7 +51,7 @@ Define the functional behavior for a new feature, create the tests first, then h
 - Implementation from test specifications
 - Multi-session workflow
 - Branch-based collaboration
-- **Devin Review** — can verify the implementation matches test expectations (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can verify the implementation matches test expectations (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -149,6 +149,6 @@ Open the repo's DeepWiki page to understand the existing user interaction patter
 
 ## Going Further
 
-- **Scheduled test coverage expansion** — run Devin on a weekly schedule to identify modules with low test coverage, write tests for uncovered code paths, and open PRs (see [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions))
-- **Parallel TDD across modules** — use child agents to write tests and implement features across multiple modules simultaneously, each following the same TDD playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
-- **Playbook-driven TDD** — create a playbook encoding your team's TDD process (analyze requirements → write failing tests → implement → refactor → verify coverage) so every feature follows consistent test-first methodology (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
+- **Scheduled test coverage expansion** — run Devin on a weekly schedule to identify modules with low test coverage, write tests for uncovered code paths, and open PRs (see [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions))
+- **Parallel TDD across modules** — use child agents to write tests and implement features across multiple modules simultaneously, each following the same TDD playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Playbook-driven TDD** — create a playbook encoding your team's TDD process (analyze requirements → write failing tests → implement → refactor → verify coverage) so every feature follows consistent test-first methodology (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))

@@ -134,7 +134,7 @@ Open the DeepWiki page for ts-sas-legacy-analytics to understand the full macro 
 ### Key Takeaways
 
 - **Control-table pattern migration**: SAS's macro-driven orchestration translates to Airflow's DAG model — control tables become task dependencies and XCom
-- **Parallel migration potential**: With 90+ macros, a [child-session pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can convert groups of related macros in parallel — one Devin session per macro category
+- **Parallel migration potential**: With 90+ macros, a [child-session pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents) can convert groups of related macros in parallel — one Devin session per macro category
 
 ---
 
@@ -142,20 +142,20 @@ Open the DeepWiki page for ts-sas-legacy-analytics to understand the full macro 
 
 ### Automation and Webhooks
 
-Set up a CI trigger so that when new SAS macros are added or modified, a Devin session automatically generates or updates the corresponding Airflow DAG. See [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
+Set up a CI trigger so that when new SAS macros are added or modified, a Devin session automatically generates or updates the corresponding Airflow DAG. See [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers).
 
 ### Child Sessions for Scale
 
-For estates with dozens of SAS macros, use the [divide-and-conquer pattern](../../shared/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session categorizes macros (orchestration, transformation, I/O utility), then spawns a child session per category. Each child converts its macros to Airflow operators and opens its own PR.
+For estates with dozens of SAS macros, use the [divide-and-conquer pattern](../../reference/general-themes/design-patterns-for-devin.md#pattern-3-divide-and-conquer-with-child-agents): a parent session categorizes macros (orchestration, transformation, I/O utility), then spawns a child session per category. Each child converts its macros to Airflow operators and opens its own PR.
 
 ### Scheduled Sessions
 
-Schedule a weekly Devin session to validate that the Airflow DAGs remain functionally equivalent to the SAS source macros — catching drift if either side changes. See [Platform Capabilities → Scheduled Sessions](../../shared/general-themes/platform-capabilities.md#scheduled-sessions).
+Schedule a weekly Devin session to validate that the Airflow DAGs remain functionally equivalent to the SAS source macros — catching drift if either side changes. See [Platform Capabilities → Scheduled Sessions](../../reference/general-themes/platform-capabilities.md#scheduled-sessions).
 
 ### Shared Context Layer
 
-Create organization-level [knowledge notes](../../shared/general-themes/architecture-strengths.md#shared-context-layer) documenting your SAS-to-Airflow translation conventions (e.g., "%MACRO → PythonOperator", "control table → DAG task dependency graph", "SYSPARM → Airflow Variables"). Every Devin session inherits these conventions automatically.
+Create organization-level [knowledge notes](../../reference/general-themes/architecture-strengths.md#shared-context-layer) documenting your SAS-to-Airflow translation conventions (e.g., "%MACRO → PythonOperator", "control table → DAG task dependency graph", "SYSPARM → Airflow Variables"). Every Devin session inherits these conventions automatically.
 
 ### Team-Based Operation
 
-Data engineers can review the Airflow DAG logic while SAS SMEs validate the transformation accuracy — both reviewing the same PR simultaneously. See [Collaboration Model → Multi-User Communication](../../shared/general-themes/collaboration-model.md#multi-user-communication).
+Data engineers can review the Airflow DAG logic while SAS SMEs validate the transformation accuracy — both reviewing the same PR simultaneously. See [Collaboration Model → Multi-User Communication](../../reference/general-themes/collaboration-model.md#multi-user-communication).

@@ -134,7 +134,7 @@ Open the repo's DeepWiki page to understand the application architecture. Change
 
 ## Going Further
 
-Changelog generation is a natural fit for **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../shared/general-themes/when-to-use-devin.md)):
+Changelog generation is a natural fit for **documentation-on-code-change triggers** (see [When to Use Devin → Capacity-Constrained](../../reference/general-themes/when-to-use-devin.md)):
 
 - **Release-triggered changelog updates** — When a release tag is pushed or a release branch is created, trigger a Devin session that generates the changelog for the new version and opens a PR with the release notes
 - **PR-triggered change classification** — On every merged PR, trigger a lightweight Devin session that classifies the change (feature, fix, breaking) and appends it to a draft changelog — so the release notes are always up-to-date

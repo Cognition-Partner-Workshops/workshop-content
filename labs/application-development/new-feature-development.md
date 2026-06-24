@@ -45,7 +45,7 @@ Develop a new feature for an existing application — from requirements through 
 - How Devin handles full-stack changes (database + API + UI)
 - The importance of clear, specific requirements in prompts
 - How Devin creates tests for new functionality
-- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../shared/general-themes/collaboration-model.md))
+- How the **PR feedback loop** works — reviewers comment, Devin iterates, CI re-runs (see [Collaboration Model](../../reference/general-themes/collaboration-model.md))
 
 ## Devin Features Exercised
 
@@ -54,7 +54,7 @@ Develop a new feature for an existing application — from requirements through 
 - Test generation
 - Database schema design
 - PR creation with feature documentation
-- **Devin Review** — can catch issues in the new feature PR before human review (see [Platform Capabilities → Devin Review](../../shared/general-themes/platform-capabilities.md#devin-review))
+- **Devin Review** — can catch issues in the new feature PR before human review (see [Platform Capabilities → Devin Review](../../reference/general-themes/platform-capabilities.md#devin-review))
 
 ## Difficulty
 
@@ -170,6 +170,6 @@ Open the repo's DeepWiki page to understand the article domain model and existin
 
 ## Going Further
 
-- **Ticket-driven feature development** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, analyzes the requirements, implements the feature, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
-- **Playbook-driven feature scaffolding** — create a playbook that encodes your team's feature development process (scaffold model → add migration → implement API → add tests → update docs) so every new feature follows the same structure (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
-- **Parallel feature development** — use child agents to implement multiple independent features simultaneously, each following the same playbook (see [Platform Capabilities → Child Agents](../../shared/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))
+- **Ticket-driven feature development** — tag a Jira or GitHub Issue with `Devin:Implementation` and Devin picks it up automatically, analyzes the requirements, implements the feature, and opens a PR linked back to the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Playbook-driven feature scaffolding** — create a playbook that encodes your team's feature development process (scaffold model → add migration → implement API → add tests → update docs) so every new feature follows the same structure (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))
+- **Parallel feature development** — use child agents to implement multiple independent features simultaneously, each following the same playbook (see [Platform Capabilities → Child Agents](../../reference/general-themes/platform-capabilities.md#child-agents-divide-and-conquer))

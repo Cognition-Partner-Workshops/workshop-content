@@ -43,7 +43,7 @@ Ideate a feature enhancement or addition, and work with Devin to gather requirem
 - Devin's ability to analyze existing code to identify impacts
 - How Devin structures requirements (user stories, acceptance criteria, technical design)
 - The value of using Devin for planning before coding
-- How **shared context** (knowledge notes, codebase familiarity) helps Devin produce better requirements (see [Architecture Strengths → Shared Context Layer](../../shared/general-themes/architecture-strengths.md#shared-context-layer))
+- How **shared context** (knowledge notes, codebase familiarity) helps Devin produce better requirements (see [Architecture Strengths → Shared Context Layer](../../reference/general-themes/architecture-strengths.md#shared-context-layer))
 
 ## Devin Features Exercised
 
@@ -134,5 +134,5 @@ Open the repo's DeepWiki page to understand the booking data model and existing 
 ## Going Further
 
 - **Requirements-to-implementation pipeline** — use gathered requirements as input for a [New Feature Development](new-feature-development.md) session, creating a two-session workflow: plan → implement
-- **Playbook-driven requirements gathering** — create a playbook that encodes your team's requirements process (stakeholder questions → impact analysis → acceptance criteria → technical design) so every feature starts with consistent documentation (see [Platform Capabilities → Playbooks](../../shared/general-themes/platform-capabilities.md#playbooks))
-- **Ticket-driven requirements** — when a new Jira epic is created, trigger Devin to gather requirements automatically and post a detailed specification as a comment on the ticket (see [Design Patterns → Event-Driven Triggers](../../shared/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))
+- **Playbook-driven requirements gathering** — create a playbook that encodes your team's requirements process (stakeholder questions → impact analysis → acceptance criteria → technical design) so every feature starts with consistent documentation (see [Platform Capabilities → Playbooks](../../reference/general-themes/platform-capabilities.md#playbooks))
+- **Ticket-driven requirements** — when a new Jira epic is created, trigger Devin to gather requirements automatically and post a detailed specification as a comment on the ticket (see [Design Patterns → Event-Driven Triggers](../../reference/general-themes/design-patterns-for-devin.md#pattern-2-event-driven-triggers))

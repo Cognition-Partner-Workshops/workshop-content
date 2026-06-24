@@ -1,35 +1,40 @@
-# AGENTS.md — workshop-metadata
+# AGENTS.md — workshop-content
 
 ## Repository Purpose
 
-This repo is the **attendee-facing** content hub for Devin hands-on workshops. It contains the lab instructions, prompts, and reference material that participants use during a workshop session.
+This repo is the **attendee-facing** content hub for Devin enablement and hands-on workshops. It contains reading courses, lab instructions, prompts, and reference material that participants use.
 
-- `labs/` — Individual lab instructions organized by discipline (security, migration, data-engineering, etc.)
-- `workshops/` — Structured learning paths:
-  - `workshops/foundations/` — Level 1: Concepts (`concepts/`) + product features (`product/cloud/`, `product/local/`)
-  - `workshops/training-tracks/` — Level 2: Role-specific training (sales, solutions, engineering)
+Content is organized by **how it is consumed**:
+
+- `courses/` — **Reading/learning enablement** (sequential, low-optionality, by role/track — no coding):
+  - `courses/foundations/` — Level 1: Concepts (`concepts/`) + product features (`product/cloud/`, `product/local/`). Everyone starts here.
+  - `courses/tracks/` — Level 2: Role-specific training (sales, solutions, engineering)
+- `workshops/` — **Hands-on, choose-your-own-adventure lab collections** (no solutions/assessments):
+  - `workshops/general/` — Broad hands-on tour
+  - `workshops/otterworks/` — Flagship polyglot monorepo deep-dive (300-level)
   - `workshops/by-tech-domain/` — Level 3: Deep-dive labs by technology area (modernization, security, AI)
   - `workshops/by-tech-role/` — Level 3: Deep-dive labs by job function (development, digital engineering, QE)
-  - `workshops/general/` — Broad hands-on tour
-  - `workshops/otterworks/` — Advanced monorepo deep-dive (300-level)
-- `demos/` — Facilitator-led demo showcases (single linear thread, read for a user following along; not participant-driven)
-- `events/` — Event-specific agendas and customizations (active and archived)
-- `shared/` — General Devin themes and runtime resource docs
-- `catalog/` — Repository inventory and upstream provenance
+- `labs/` — Individual hands-on lab modules organized by discipline (the reusable building blocks workshops compose)
+- `demos/` — Facilitator-led demo showcases (single linear thread, persona-targeted, read for a user following along; not participant-driven)
+- `events/` — Event-specific, non-reusable agendas and customizations (active and archived)
+- `reference/` — Shared lookup material: general Devin themes (`general-themes/`) and runtime resource docs (`runtime-resources.md`)
+- `catalog/` — Machine-readable repository inventory and upstream provenance (for AI agents and humans)
 
 All content is Markdown. There is no application code in this repo.
 
-**Facilitator-facing content** (day-of logistics, quality checklist, repo naming conventions, module facilitator notes, event templates, provisioning scripts) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
+**Courses vs. workshops:** `courses/` is sequential reading you complete in order for your track. `workshops/` and `labs/` are hands-on and branch freely — pick the labs that fit your interest. Keep reading/learning material in `courses/`; keep paste-into-Devin hands-on material in `workshops/` and `labs/`.
+
+**Facilitator-facing content** (day-of logistics, quality checklist, repo naming conventions, module facilitator notes, event templates, provisioning scripts) lives in the [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.
 
 ## Content Rules
 
 ### Audience
-This repo is written for the **hands-on lab attendee** — the person sitting at the keyboard, pasting prompts into Devin, and reviewing PRs. Content should be action-oriented and help them succeed in the lab.
+This repo serves two attendee modes. Most content targets the **hands-on lab attendee** — the person sitting at the keyboard, pasting prompts into Devin, and reviewing PRs; this content should be action-oriented and help them succeed in the lab. Content under `courses/` targets the **reader/learner** building intuition before hands-on work — reading-first, sequential, with light exploration activities rather than copy-paste prompts.
 
 **Exception — `demos/`:** demo docs are a single linear thread a presenter runs live while others follow along, not a participant-driven lab. They differ from `labs/` and `workshops/` (which can offer separate choose-your-own-adventure tracks) by walking one path start to finish. Write them to read as though a user is reading and following along: lead straight into the guide with prompts and user instructions, keep preamble minimal, and avoid hands-on "try this"-style framing (the reader is following, not branching). Summary sections still use **"Key Takeaways"**.
 
 ### Language
-- Never say "demo" in `labs/`, `workshops/`, or `events/` content — use "try", "hands-on", or "walkthrough". **Exception:** content under the `demos/` directory is facilitator-led showcase material and may use "demo" verbiage (file names, titles, headers, and body). "demo" verbiage is permitted **only** under `demos/`.
+- Never say "demo" in `courses/`, `labs/`, `workshops/`, or `events/` content — use "try", "hands-on", or "walkthrough". **Exception:** content under the `demos/` directory is facilitator-led showcase material and may use "demo" verbiage (file names, titles, headers, and body). "demo" verbiage is permitted **only** under `demos/`.
 - Use "Key Takeaways" not "Key Talking Points"
 - Name events as "workshops" not "arcs"
 - No overstatement language ("every", "all", "always", "guaranteed") for probabilistic capabilities like DeepWiki or AI analysis. Use "typically", "in most cases", "coverage depends on repo structure"
@@ -51,7 +56,7 @@ This repo is written for the **hands-on lab attendee** — the person sitting at
 - Prompts must include repo names, file paths, and expected output format
 
 ### General Themes
-Every module and workshop should incorporate applicable principles from `shared/general-themes/`:
+Every module and workshop should incorporate applicable principles from `reference/general-themes/`:
 - Devin is a **team-based resource**, not an individual tool
 - Position tasks as event-driven, large-scale, or capacity-constrained work
 - Include automation narrative: webhooks, scheduled sessions, child sessions for divide-and-conquer
@@ -72,11 +77,11 @@ Every module and workshop should incorporate applicable principles from `shared/
 
 ## Reference Files
 
-- General themes: `shared/general-themes/` (8 files)
-- Product feature tours: `workshops/foundations/product/` (cloud and local surfaces)
-- Runtime resources: `shared/runtime-resources.md`
+- General themes: `reference/general-themes/` (8 files)
+- Product feature tours: `courses/foundations/product/` (cloud and local surfaces)
+- Runtime resources: `reference/runtime-resources.md`
 - Exemplar module: `labs/data-engineering/sas-migration-analysis.md`
-- Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
+- Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [workshop-operations repo](https://github.com/Cognition-Partner-Workshops/workshop-operations)
 
 ## Playbooks
 

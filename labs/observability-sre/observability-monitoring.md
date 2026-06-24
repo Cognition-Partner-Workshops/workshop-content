@@ -125,7 +125,7 @@ Open the repo's DeepWiki page to understand the application layers and identify 
 
 ## Going Further
 
-Observability connects directly to **incident-response automation** (see [When to Use Devin → Event-Driven](../../shared/general-themes/when-to-use-devin.md)):
+Observability connects directly to **incident-response automation** (see [When to Use Devin → Event-Driven](../../reference/general-themes/when-to-use-devin.md)):
 
 - **Alert-triggered investigation** — Once metrics endpoints are in place, connect alerting rules (Prometheus AlertManager, Datadog monitors) to the Devin API. When an alert fires (e.g., error rate > 5%), Devin queries logs and traces via MCP, identifies the root cause, and opens a fix PR — often before the on-call engineer is paged
 - **Dashboard-as-code maintenance** — Schedule a recurring Devin session that compares Grafana dashboard definitions against the application's current metrics endpoints, adding panels for new metrics and removing panels for deprecated ones
