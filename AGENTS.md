@@ -24,7 +24,7 @@ All content is Markdown. There is no application code in this repo.
 
 **Courses vs. workshops:** `courses/` is sequential reading you complete in order for your track. `workshops/` and `labs/` are hands-on and branch freely — pick the labs that fit your interest. Keep reading/learning material in `courses/`; keep paste-into-Devin hands-on material in `workshops/` and `labs/`.
 
-**Facilitator-facing content** (day-of logistics, quality checklist, repo naming conventions, module facilitator notes, event templates, provisioning scripts) lives in the [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.
+**Facilitator-facing content** (day-of logistics, quality checklist, repo naming conventions, module facilitator notes, event templates, provisioning scripts) lives in the [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.
 
 ## Content Rules
 
@@ -81,7 +81,7 @@ Every module and workshop should incorporate applicable principles from `referen
 - Product feature tours: `courses/foundations/product/` (cloud and local surfaces)
 - Runtime resources: `reference/runtime-resources.md`
 - Exemplar module: `labs/data-engineering/sas-migration-analysis.md`
-- Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [operator repo](https://github.com/Cognition-Partner-Workshops/operator)
+- Facilitator content (quality checklist, facilitator guide, repo naming, module facilitator notes): [workshop-operations repo](https://github.com/Cognition-Partner-Workshops/workshop-operations)
 
 ## Playbooks
 

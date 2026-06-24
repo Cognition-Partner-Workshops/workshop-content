@@ -29,7 +29,7 @@ read as though a user is reading and following along.
 - **Not internal facilitator notes.** Avoid pacing/timing/presales framing and
   narration cues ("narrate…", "call out…"). Write the steps so a user can
   execute them directly. (Day-of logistics still live in the
-  [operator](https://github.com/Cognition-Partner-Workshops/operator) repo.)
+  [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.)
 
 ## Inherited from root `AGENTS.md`
 
