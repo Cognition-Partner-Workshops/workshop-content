@@ -114,6 +114,19 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Key Teradata Features** | SET/MULTISET, PI/PPI, COMPRESS, CASESPECIFIC, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW, VOLATILE TABLE, MACRO |
 | **Challenges** | [DW Migration: Teradata to Snowflake](../labs/data-engineering/dw-migration-teradata-to-snowflake.md), [Informatica PowerCenter to Snowflake Migration](../labs/data-engineering/informatica-to-snowflake-migration.md) (reference) |
 
+### uc-dw-migration-teradata-to-bigquery
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-dw-migration-teradata-to-bigquery |
+| **Description** | Teradata-based retail banking analytics data warehouse as the migration source for Google BigQuery. 7 DDL tables, 3 views, 3 stored procedures, 3 macros, 2 BTEQ scripts, dimension + generated fact seed data (Norwegian locale), plus a DuckDB-backed parity harness that proves the BigQuery (GoogleSQL) conversion. |
+| **Tech Stack** | Teradata SQL, BTEQ → BigQuery Standard SQL (GoogleSQL); Python + DuckDB parity harness |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | None (scaffolded from scratch) |
+| **Key Teradata Features** | SET/MULTISET, PI/PPI, COMPRESS, CASESPECIFIC, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW, VOLATILE TABLE, MACRO, BTEQ |
+| **Notable** | `main` is the durable before-state (no converted SQL); a reference BigQuery conversion lives on the `bigquery-reference` branch. `verify/run_parity.py` is the programmatic verification loop; a portable Playbook (`.workshop/playbooks/`) and repo Skill (`.agents/skills/`) ship in-repo. |
+| **Challenges** | [DW Migration: Teradata to BigQuery](../labs/data-engineering/dw-migration-teradata-to-bigquery.md) |
+
 ### uc-data-migration-sas-to-snowflake
 | | |
 |---|---|
