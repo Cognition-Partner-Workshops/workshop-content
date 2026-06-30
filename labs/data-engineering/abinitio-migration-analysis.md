@@ -235,6 +235,14 @@ Add a reconciliation control for the channel default and build until the
 reconciliation report is green.
 ```
 
+> **Databricks target:** invoke `!convert-abinitio-to-databricks` against
+> `uc-data-migration-abinitio-to-databricks` instead, with the same DML/source
+> inputs. Target dbt models (`stg_transactions` + `curated_transactions` under
+> `dbt_project/`) rather than a PySpark job, and reproduce the channel default in
+> SQL (`coalesce(nullif(trim(channel), ''), 'UNKNOWN')`). The verification beat
+> below is identical — `make reconcile NS=dev` gates on the same
+> `transactions_channel_parity` control.
+
 #### Step 2: Watch the verification loop
 
 `dml/transaction_detail.dml` declares `string("\n", null("UNKNOWN")) channel` — a
@@ -302,6 +310,13 @@ Once all children complete, consolidate into a CONVERSION_SUMMARY.md listing eac
 pipeline, its target, the controls added, and any source-parity divergences the
 children caught.
 ```
+
+> **Databricks target:** swap the playbook to `!convert-abinitio-to-databricks`,
+> the target repo to `uc-data-migration-abinitio-to-databricks`, and the
+> per-child targets to dbt models (e.g. `stg_transactions` + `curated_transactions`,
+> a customer-CDC dbt snapshot + Delta `MERGE`, and `int_order_items`) instead of
+> the PySpark job paths. Everything else — own namespace per child, source as the
+> source of truth, green reconciliation report — stays the same.
 
 #### Step 2: Watch the Coordination
 
