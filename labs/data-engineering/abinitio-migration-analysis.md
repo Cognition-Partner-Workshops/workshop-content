@@ -252,7 +252,7 @@ make reconcile NS=dev
 ```
 
 This is the lesson: "looks reasonable" review ships the bug; the source-parity
-control catches it. Reproduce legacy behaviour faithfully — do not relax the
+control catches it. Reproduce legacy behavior faithfully — do not relax the
 control to make it pass.
 
 #### Step 3 (Optional): Read the DeepWiki
@@ -296,12 +296,11 @@ conversion into uc-data-migration-abinitio-to-pyspark — one child per pipeline
 
 Each child follows the !convert-abinitio-to-pyspark playbook, uses its own
 namespace (NS=child1, child2, ...), treats the Ab Initio source as the source of
-truth, and builds until its reconciliation report is green. Each child opens its
-own PR.
+truth, and builds until its reconciliation report is green.
 
 Once all children complete, consolidate into a CONVERSION_SUMMARY.md listing each
 pipeline, its target, the controls added, and any source-parity divergences the
-children caught. Open a final PR with the consolidated view.
+children caught.
 ```
 
 #### Step 2: Watch the Coordination
