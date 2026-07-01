@@ -38,6 +38,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **C13** | Sybase ASE → SQL Server Migration | *original* | `ts-tsql-sybase-legacy-db`, `uc-db-migration-sybase-to-sqlserver` | Sybase ASE 16 loan servicing database (stored procedures, views, triggers, functions, schema DDL) paired with SQL Server migration target, reconciliation harness, conversion playbook, synthetic data seeder, and CI/CD pipeline. |
 | **C14** | MuleSoft API → Spring Boot Migration | *original* | `ts-java-mulesoft-employee-api`, `uc-api-migration-mulesoft-to-spring-boot` | MuleSoft Mule 4 Employee Service API (OAuth2, RAML, PostgreSQL) paired with Spring Boot 3.5 migration target, OpenAPI contract verification harness, conversion playbook, and repo Skill. |
 | **C15** | Flutter Mobile App Development | *different upstreams* | `ts-dart-flutter-grocery`, `ts-dart-flutter-ecommerce` | Two Flutter mobile apps for mobile development process workshops: Figma→code generation, unit test generation, build/deploy. Grocery app (GetX/MVC, 44+ screens) and e-commerce template (38 screens, multi-platform). |
+| **C16** | Ab Initio Migration | *original* | `ts-python-abinitio-etl`, `uc-data-migration-abinitio-to-pyspark`, `uc-data-migration-abinitio-to-databricks` | Legacy Ab Initio ETL estate (graphs, DML record formats, PSET parameter sets, CDC, KornShell/AutoSys orchestration) paired with two migration targets: a platform-agnostic PySpark target (local reconciliation) and a dbt/Databricks Lakehouse target. Each target ships a source→target reconciliation harness, a conversion playbook, and a repo Skill. |
 
 ---
 
@@ -113,6 +114,26 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | None (scaffolded from scratch) |
 | **Key Teradata Features** | SET/MULTISET, PI/PPI, COMPRESS, CASESPECIFIC, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW, VOLATILE TABLE, MACRO |
 | **Challenges** | [DW Migration: Teradata to Snowflake](../labs/data-engineering/dw-migration-teradata-to-snowflake.md), [Informatica PowerCenter to Snowflake Migration](../labs/data-engineering/informatica-to-snowflake-migration.md) (reference) |
+
+### uc-data-migration-abinitio-to-pyspark
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-data-migration-abinitio-to-pyspark |
+| **Description** | Ab Initio to PySpark migration target — converted Spark jobs, DML→StructType mapping, a local source→target reconciliation harness (completeness, control totals, per-class parity), deterministic seeder, the `!convert-abinitio-to-pyspark` playbook source, and the repo Skill. Runs end to end locally (no cloud workspace). Maps from the Ab Initio estate in ts-python-abinitio-etl. |
+| **Tech Stack** | PySpark, Python, pytest, ruff, GitHub Actions |
+| **License** | — |
+| **Cluster** | C16 |
+| **Challenges** | [Ab Initio Migration Analysis](../labs/data-engineering/abinitio-migration-analysis.md) |
+
+### uc-data-migration-abinitio-to-databricks
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-data-migration-abinitio-to-databricks |
+| **Description** | Ab Initio to dbt/Databricks migration target — dbt project with staging/intermediate/marts layers, DML→Delta mapping, reconciliation harness (dbt singular tests + report), Asset Bundle Workflow replacing AutoSys/KornShell orchestration, the `!convert-abinitio-to-databricks` playbook source, and the repo Skill. Maps from the Ab Initio estate in ts-python-abinitio-etl. |
+| **Tech Stack** | dbt, SQL, Jinja, Databricks, sqlfluff, GitHub Actions |
+| **License** | — |
+| **Cluster** | C16 |
+| **Challenges** | [Ab Initio Migration Analysis](../labs/data-engineering/abinitio-migration-analysis.md) |
 
 ### uc-data-migration-sas-to-snowflake
 | | |
@@ -301,6 +322,16 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Cluster** | C14 (companion to `uc-api-migration-mulesoft-to-spring-boot`) |
 | **Key Contents** | Mule XML flows (`src/main/mule/employee-services-api.xml` — 1457 lines), RAML spec (`src/main/resources/api/employee-services-api.raml`), OAuth2 token management, DataWeave transforms, database setup SQL |
 | **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
+
+### ts-python-abinitio-etl
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-python-abinitio-etl |
+| **Description** | Legacy Ab Initio ETL estate — 2 graphs (CDC processor, parallel loader), 8 DML record formats (including nested/variable-length and packed-decimal layouts), 3 PSET parameter sets, KornShell/AutoSys batch wrappers, a DML parser utility, and deployment/monitoring helpers. Static-analysis source for Ab Initio → PySpark / Databricks migration. |
+| **Tech Stack** | Ab Initio (DML, graphs, PSETs), KornShell, Python |
+| **License** | — |
+| **Cluster** | C16 |
+| **Challenges** | [Ab Initio Migration Analysis](../labs/data-engineering/abinitio-migration-analysis.md) |
 
 ### ts-sas-legacy-analytics
 | | |

@@ -229,10 +229,31 @@ clusters:
       - ts-dart-flutter-grocery
       - ts-dart-flutter-ecommerce
 
+  C16:
+    label: "Ab Initio Migration"
+    upstream: null  # original
+    shared_initial_commit: null
+    reason: >
+      Legacy Ab Initio ETL estate (graphs, DML record formats, PSET parameter
+      sets, CDC, KornShell/AutoSys orchestration) paired with two migration
+      targets: a platform-agnostic PySpark target (runs locally, source->target
+      reconciliation) and a dbt/Databricks Lakehouse target. Each target ships a
+      reconciliation harness, a conversion playbook, and a repo Skill.
+    repos:
+      - ts-python-abinitio-etl              # Ab Initio source estate
+      - uc-data-migration-abinitio-to-pyspark    # PySpark target (local reconciliation)
+      - uc-data-migration-abinitio-to-databricks # dbt/Databricks target architecture
+
 # ============================================================
 # Per-repo upstream mapping (alphabetical)
 # ============================================================
 repos:
+
+  ts-python-abinitio-etl:
+    upstream: null
+    import_method: original
+    cluster: C16
+    note: "Ab Initio source estate — graphs, DML record formats, PSET parameter sets, CDC, KornShell/AutoSys orchestration"
 
   ts-python-aws-personalize:
     upstream: aws-samples/amazon-personalize-immersion-day
@@ -554,6 +575,18 @@ repos:
     upstream: null
     import_method: original
     cluster: null
+
+  uc-data-migration-abinitio-to-pyspark:
+    upstream: null
+    import_method: original
+    cluster: C16
+    note: "PySpark target — converted Spark jobs, DML->StructType mapping, local source->target reconciliation harness, conversion playbook + repo Skill"
+
+  uc-data-migration-abinitio-to-databricks:
+    upstream: null
+    import_method: original
+    cluster: C16
+    note: "dbt/Databricks target — staging/intermediate/marts models, DML->Delta mapping, reconciliation harness (dbt tests + report), Asset Bundle Workflow, conversion playbook + repo Skill"
 
   uc-data-migration-sas-to-snowflake:
     upstream: null
