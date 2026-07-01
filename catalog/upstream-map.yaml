@@ -616,6 +616,12 @@ repos:
     import_method: original
     cluster: null
 
+  uc-dw-migration-teradata-to-bigquery:
+    upstream: null
+    import_method: original
+    cluster: null
+    note: "Teradata DW source for a BigQuery (GoogleSQL) migration; main is the before-state, reference conversion on the bigquery-reference branch. Sibling to uc-dw-migration-teradata-to-snowflake (separate target = separate repo)."
+
   uc-spring-boot-upgrade-microservice-extraction:
     upstream: gothinkster/spring-boot-realworld-example-app
     upstream_url: https://github.com/gothinkster/spring-boot-realworld-example-app
