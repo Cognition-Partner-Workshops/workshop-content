@@ -220,8 +220,8 @@ The two patterns work together: Security Swarm finds vulnerabilities
 proactively through deep, threat-model-driven investigation, while
 event-driven remediation handles scanner findings reactively as they
 appear in CI. Together they provide both breadth (Security Swarm's
-Agentic MapReduce across the full codebase) and continuous coverage
-(event-driven response to every new finding).
+Agentic MapReduce across the codebase) and continuous coverage
+(event-driven response to new findings as they appear).
 
 For a full Security Swarm walkthrough, see
 [Security Swarm Scan Demo](use-cases/security-swarm-scan-demo.md).

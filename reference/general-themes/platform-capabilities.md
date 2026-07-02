@@ -14,6 +14,7 @@
 | **Devin Review** | Proactive code review on new PRs — bugs, security, quality | Findings as PR comments; can auto-open fix PRs; configurable rules; can block merge via status checks |
 
 <a id="automations"></a>
+<a id="scheduled-sessions"></a>
 
 ### Automations
 
@@ -26,6 +27,7 @@ See table above. Automations are the unified product combining event-driven and 
 See table above. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
 <a id="managed-devins"></a>
+<a id="child-agents-divide-and-conquer"></a>
 
 ### Managed Devins
 

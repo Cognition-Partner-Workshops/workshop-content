@@ -66,7 +66,7 @@ Devin implements multi-agent orchestration through a parent-child model:
 │  1. Receives campaign-level prompt                 │
 │  2. Analyzes scope (discovers all targets)         │
 │  3. Creates methodology (playbook)                 │
-│  4. Spawns child agents — one per target           │
+│  4. Spawns managed Devins — one per target          │
 │  5. Monitors progress                              │
 │  6. Handles failures and escalations               │
 │  7. Reports aggregate results                      │
@@ -121,9 +121,9 @@ update deprecated APIs, and ensure all tests pass.
 1. Scans connected repos → finds 50 services on Spring Boot 2.x
 2. Identifies the upgrade pattern: `spring-boot-starter` version bump + Jakarta namespace + deprecated API replacements
 3. Creates a playbook encoding the upgrade procedure
-4. Spawns 50 child agents, one per service
+4. Spawns 50 managed Devins, one per service
 
-**Each child agent:**
+**Each managed Devin:**
 1. Clones its assigned service
 2. Follows the upgrade playbook step by step
 3. Bumps the Spring Boot version
@@ -146,8 +146,8 @@ org-wide scan. Each finding should get its own session and PR.
 **Parent agent executes:**
 1. Queries the scan results (via MCP or API) → finds 120 HIGH/CRITICAL findings across 30 repos
 2. Groups findings by repo and type
-3. Spawns child agents — one per finding (or one per repo, depending on density)
-4. Each child remediates its assigned finding(s) and verifies with a re-scan
+3. Spawns managed Devins — one per finding (or one per repo, depending on density)
+4. Each worker remediates its assigned finding(s) and verifies with a re-scan
 
 **Result:** 120 findings addressed. Engineers review the PRs. Findings that the agent couldn't resolve are escalated back with an explanation.
 
