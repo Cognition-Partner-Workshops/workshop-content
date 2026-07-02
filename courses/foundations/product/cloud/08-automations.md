@@ -267,7 +267,7 @@ Devin provides 25+ pre-built automation templates covering common workflows. Tem
 | **Weekly Changelog** | Schedule (weekly) | Generates changelog from merged PRs |
 | **Stale PR Cleanup** | Schedule (weekly) | Identifies and closes stale PRs |
 
-Security Swarm Auto Scan is a specialized automation that uses Agentic MapReduce for deep security analysis — see [Recipe 5](#recipe-5) above.
+Security Swarm Auto Scan is a specialized automation that uses Agentic MapReduce for deep security analysis — see [Recipe 5](#recipe-5-security-swarm-auto-scan) above.
 
 ---
 

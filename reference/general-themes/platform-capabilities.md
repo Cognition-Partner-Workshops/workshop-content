@@ -66,5 +66,5 @@ Active (executing, costs ACUs)
 ## Key Rules
 - Devin never merges its own PRs — the merge decision is always human
 - Hibernation means cost tracks active work, not wall-clock time
-- Child agents scale linearly — one becomes N, each producing independent PRs
+- Managed Devins scale linearly — one becomes N, each producing independent PRs
 - The shared context layer is a one-time investment that compounds across every session
