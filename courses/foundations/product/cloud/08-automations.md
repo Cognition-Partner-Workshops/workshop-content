@@ -10,8 +10,8 @@
 - [Scheduled Sessions](#scheduled-sessions)
 - [Automation Architecture](#automation-architecture)
 - [Building Effective Automations](#building-effective-automations)
-- [Automation Templates](#automation-templates)
 - [Common Automation Recipes](#common-automation-recipes)
+- [Automation Templates](#automation-templates)
 - [Exploration Activity](#exploration-activity)
 - [Key Takeaways](#key-takeaways)
 
@@ -55,6 +55,7 @@ Event-driven automations connect Devin to your existing toolchain. When a signal
 | **GitHub** | Check run / CI failure | Read failure logs and push a fix |
 | **GitHub** | Push to branch | Run post-push validation or code generation |
 | **Slack** | Message or thread mention | Respond to requests in team channels |
+| **Jira** | Ticket created, label added, status changed | Implement tickets matching project/label/status filters |
 | **Linear** | Ticket assigned or status change | Read acceptance criteria, implement, open PR |
 | **Webhook** | Generic HTTP POST | Connect any system that can send webhooks |
 | **Schedule (cron)** | Time-based recurrence | Weekly dep bumps, daily scans, monthly audits |
@@ -263,7 +264,7 @@ Devin provides 25+ pre-built automation templates covering common workflows. Tem
 | **Code Pattern Enforcer** | GitHub PR opened | Checks PRs against coding standards, flags violations |
 | **SonarQube Quality Gate Fix** | Webhook | Reads SonarQube findings, pushes fixes |
 | **Figma Design Review** | Webhook | Compares implementation against Figma designs |
-| **Jira Ticket to PR** | Linear/Jira assignment | Reads ticket, implements, opens PR |
+| **Jira Ticket to PR** | Jira/Linear assignment | Reads ticket, implements, opens PR |
 | **Weekly Changelog** | Schedule (weekly) | Generates changelog from merged PRs |
 | **Stale PR Cleanup** | Schedule (weekly) | Identifies and closes stale PRs |
 
