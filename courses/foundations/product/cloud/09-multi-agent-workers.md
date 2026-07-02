@@ -1,5 +1,7 @@
 # Multi-Agent Workers
 
+> **Note:** Multi-agent workers are also referred to as **Managed Devins** in the platform. The coordinator pattern described here applies to both manual orchestration and automated campaigns.
+
 <a id="toc"></a>
 ## Table of Contents
 
@@ -9,6 +11,8 @@
 - [When to Use Multi-Agent](#when-to-use-multi-agent)
 - [The Role of Playbooks](#the-role-of-playbooks)
 - [Scaling Considerations](#scaling-considerations)
+- [Agentic MapReduce: Security Swarm](#agentic-mapreduce-security-swarm)
+- [Automations Integration](#automations-integration)
 - [Exploration Activity](#exploration-activity)
 - [Key Takeaways](#key-takeaways)
 
@@ -82,11 +86,15 @@ Devin implements multi-agent orchestration through a parent-child model:
 └─────────┘  └─────────┘  └─────────┘
 ```
 
-**Parent agent responsibilities:**
+**Parent agent (coordinator) responsibilities:**
 - Understands the full scope of the campaign
 - Determines the list of targets (repos, modules, findings)
 - Defines the methodology (or references an existing playbook)
-- Spawns children with specific, scoped instructions
+- Spawns managed Devins with specific, scoped instructions
+- Messages children to provide additional context or course-correct
+- Monitors ACU usage across the campaign
+- Can sleep or terminate children that are stuck or no longer needed
+- Schedules messages to itself for periodic progress checks
 - Tracks which children succeeded, failed, or need help
 - Reports aggregate status to the human
 
@@ -225,6 +233,36 @@ Not every child will succeed. The parent agent's monitoring role includes:
 - **Batch merge** — merge green PRs at once after spot-checking a sample
 - **Staggered delivery** — have the parent release PRs in batches of 10 so review doesn't pile up
 
+<a id="agentic-mapreduce-security-swarm"></a>
+## Agentic MapReduce: Security Swarm
+
+Security Swarm is a specialized application of multi-agent orchestration using the Agentic MapReduce pattern. Instead of a generic parent-child decomposition, Security Swarm follows a structured map-reduce lifecycle:
+
+```
+Coordinator
+├── Builds threat model for the target repository
+├── Maps: divides codebase into investigation units
+├── Spawns Worker 1 → investigates attack surface A
+├── Spawns Worker 2 → investigates attack surface B
+├── Spawns Worker N → investigates attack surface N
+└── Reduces: aggregates findings, delivers fixes via PRs
+```
+
+Security Swarm investigates vulnerabilities including RCE, SQLi, SSRF, auth bypasses, memory-safety issues, DoS vectors, and chained exploits. Interactive mode allows you to review and refine the threat model before workers begin their investigation. Auto Scan enables recurring scans on a schedule, and Profiles save scan configurations for reuse.
+
+See [Security Swarm docs](https://docs.devin.ai/work-with-devin/security-swarm) for the full product guide.
+
+<a id="automations-integration"></a>
+## Automations Integration
+
+Multi-agent campaigns can be triggered through [Automations](08-automations.md). Common patterns:
+
+- **Scheduled campaigns** — a cron-triggered automation spawns a coordinator that runs a portfolio-wide scan or upgrade on a recurring cadence
+- **Event-driven campaigns** — a GitHub event or webhook triggers a coordinator that decomposes the response across multiple managed Devins
+- **Security Swarm Auto Scan** — a specialized automation that runs Security Swarm on a schedule, combining Agentic MapReduce with the Automations trigger system
+
+Automations provide invocation limits, ACU limits, and trigger conditions as guardrails for multi-agent campaigns at scale.
+
 ---
 
 <a id="exploration-activity"></a>
@@ -246,11 +284,13 @@ Consider: If each target costs ~5 ACUs and you have 50 targets, that's ~250 ACUs
 <a id="key-takeaways"></a>
 ## Key Takeaways
 
-- Multi-agent orchestration decomposes large campaigns into independent units executed in parallel
-- The parent-child model: parent plans and coordinates, children execute independently
-- Each child has its own VM, branch, and PR — failures are isolated and don't cascade
-- Playbooks ensure consistency: each child receives the same validated procedure
+- Multi-agent orchestration (Managed Devins) decomposes large campaigns into independent units executed in parallel
+- The coordinator pattern: coordinator plans, messages, monitors ACU, and can sleep/terminate workers; workers execute independently
+- Each managed Devin has its own VM, branch, and PR — failures are isolated and don't cascade
+- Playbooks ensure consistency: each worker receives the same validated procedure
+- Security Swarm applies the Agentic MapReduce pattern for threat-model-driven security scanning
 - Multi-agent is for campaigns with many independent targets and a repeatable pattern — not for interdependent work
+- Automations can trigger multi-agent campaigns on schedules or in response to events
 - Start small with concurrency, plan ACU budgets, and set failure thresholds before scaling up
-- Review strategies (spot-check, automated gates, batch merge) manage the human review load
+- Review strategies (Devin Review with AutoFix, spot-check, automated gates, batch merge) manage the human review load
 - Elapsed time drops from weeks/months to days because N agents work simultaneously
