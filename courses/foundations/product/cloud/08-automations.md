@@ -1,6 +1,6 @@
 # Automations
 
-> **Note:** Automations are now the unified product combining event-driven and scheduled triggers. This replaces the standalone Scheduled Sessions model — all trigger sources (Slack, GitHub, Linear, webhooks, cron) are configured through the single Automations interface.
+> **Note:** Automations are now the unified product combining event-driven and scheduled triggers. This replaces the standalone Scheduled Sessions model — trigger sources (GitHub, Jira, Linear, webhooks, cron) are configured through the single Automations interface. Slack and Teams are separate native integrations where you mention Devin as a chat participant.
 
 <a id="toc"></a>
 ## Table of Contents
@@ -54,7 +54,6 @@ Event-driven automations connect Devin to your existing toolchain. When a signal
 | **GitHub** | Issue created with label | Implement feature requests tagged `Devin:Implementation` |
 | **GitHub** | Check run / CI failure | Read failure logs and push a fix |
 | **GitHub** | Push to branch | Run post-push validation or code generation |
-| **Slack** | Message or thread mention | Respond to requests in team channels |
 | **Jira** | Ticket created, label added, status changed | Implement tickets matching project/label/status filters |
 | **Linear** | Ticket assigned or status change | Read acceptance criteria, implement, open PR |
 | **Webhook** | Generic HTTP POST | Connect any system that can send webhooks |
@@ -79,12 +78,12 @@ Variables like `{{repo}}`, `{{severity}}`, and `{{finding_title}}` are populated
 
 ### Slack-Based Triage and Deduplication
 
-A common pattern for teams using Slack:
+Slack and Teams are **native chat integrations** — separate from Automations. You add Devin as a chat participant and mention it directly. A common triage pattern:
 
 ```
 Slack channel receives alert
     ↓
-Devin monitors the channel (automation trigger)
+Team member @mentions Devin in the thread
     ↓
 Devin deduplicates: "Is this the same issue as the alert 5 minutes ago?"
     ↓
@@ -248,7 +247,7 @@ resulting PR back to the ticket.
 <a id="automation-templates"></a>
 ## Automation Templates
 
-Devin provides 25+ pre-built automation templates covering common workflows. Templates include pre-configured triggers, conditions, and prompt templates — customize them for your repositories.
+Devin provides 25+ pre-built automation templates covering common workflows ([full list in the Automations docs](https://docs.devin.ai/product-guides/automations)). Templates include pre-configured triggers, conditions, and prompt templates — customize them for your repositories. A representative selection:
 
 | Template | Trigger | What It Does |
 |----------|---------|-------------|

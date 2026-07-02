@@ -6,7 +6,7 @@
 
 | Capability | What It Does | Key Detail |
 |-----------|-------------|------------|
-| **Automations** | Event-driven + scheduled triggers (Slack, GitHub, Linear, webhooks, cron) | 25+ pre-built templates. Replaces standalone Scheduled Sessions. Invocation and ACU limits for safeguards |
+| **Automations** | Event-driven + scheduled triggers (GitHub, Jira, Linear, webhooks, cron) | 25+ pre-built templates. Replaces standalone Scheduled Sessions. Invocation and ACU limits for safeguards |
 | **Playbooks** | Reusable step-by-step procedures encoding proven methodology | Repeatable, versionable, shareable, composable across teams |
 | **Managed Devins** | Coordinator breaks large task into N independent units, spawns one managed Devin per target | Each worker: own VM, own branch, own PR. Coordinator can message, monitor ACU, sleep/terminate. Failures isolated |
 | **Security Swarm** | Agentic MapReduce security scanning — builds threat model, investigates vulnerabilities, fixes via PRs | Auto Scan for recurring scans. Profiles for repeatable scan configurations |
@@ -18,7 +18,7 @@
 
 ### Automations
 
-See table above. Automations are the unified product combining event-driven and scheduled triggers — Slack, GitHub (check run/CI, PR, issue, push), Linear, webhooks, and cron schedules. 25+ pre-built templates cover common workflows like CI Failure Fixer, Weekly Dependency Updates, and Security Vulnerability Scan. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
+See table above. Automations are the unified product combining event-driven and scheduled triggers — GitHub (check run/CI, PR, issue, push), Jira, Linear, webhooks, and cron schedules. Slack and Teams are separate native chat integrations (not Automations triggers). 25+ pre-built templates cover common workflows like CI Failure Fixer, Weekly Dependency Updates, and Security Vulnerability Scan. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
 <a id="playbooks"></a>
 
