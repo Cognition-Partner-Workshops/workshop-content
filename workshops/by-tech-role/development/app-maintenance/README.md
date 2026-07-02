@@ -472,7 +472,15 @@ Once you're happy with the output from step 1, turn it into a recurring task usi
 
 - **Trigger:** Schedule — weekly, Monday mornings
 - **Action:** Start a new Devin session against `uc-cve-remediation-regulatory-compliance`
-- **Prompt:** "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it."
+- **Prompt:**
+
+```
+Check all dependencies for available minor and patch version
+updates. Upgrade to the latest minor versions. Run the full
+test suite and build to verify nothing is broken. If any
+upgrade breaks the build, revert that specific upgrade and
+note it.
+```
 
 Automations support both schedule and event-driven triggers — you could also add a GitHub push trigger to run dependency checks on every merge to `main`.
 
