@@ -76,7 +76,7 @@ Devin implements multi-agent orchestration through a parent-child model:
      │             │             │
      ▼             ▼             ▼
 ┌─────────┐  ┌─────────┐  ┌─────────┐
-│ CHILD 1  │  │ CHILD 2  │  │ CHILD N  │
+│ WORKER 1 │  │ WORKER 2 │  │ WORKER N │
 │          │  │          │  │          │
 │ Own VM   │  │ Own VM   │  │ Own VM   │
 │ Own branch│  │ Own branch│  │ Own branch│
@@ -98,7 +98,7 @@ Devin implements multi-agent orchestration through a parent-child model:
 - Tracks which children succeeded, failed, or need help
 - Reports aggregate status to the human
 
-**Child agent responsibilities:**
+**Managed Devin (worker) responsibilities:**
 - Receives a narrowly scoped task (one target)
 - Follows the playbook or instructions from the parent
 - Works independently on its own VM

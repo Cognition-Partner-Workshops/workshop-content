@@ -479,7 +479,8 @@ Check all dependencies for available minor and patch version
 updates. Upgrade to the latest minor versions. Run the full
 test suite and build to verify nothing is broken. If any
 upgrade breaks the build, revert that specific upgrade and
-note it.
+note it in the PR description. Title the PR
+"chore: weekly dependency version bump".
 ```
 
 Automations support both schedule and event-driven triggers — you could also add a GitHub push trigger to run dependency checks on every merge to `main`.
