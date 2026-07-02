@@ -12,6 +12,7 @@
 | 4 | **Human-in-the-Loop (PR)** | Devin proposes via PR; humans review, comment, approve; Devin iterates | Every implementation — the PR is the familiar, auditable review gate |
 | 5 | **Toolchain-Agnostic Stubs** | Design integration with replaceable tool slots — pattern stays the same | `[SAST Tool] → webhook → Trigger → Devin → PR` — swap SonarQube/Snyk/Trivy freely |
 | 6 | **Context Layer Config** | Invest in shared config once to benefit every future session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections |
+| 7 | **Agentic MapReduce** | Divide scope among parallel workers, each processes independently, results aggregated | Security scanning, large-scale analysis, portfolio-wide audits |
 
 <a id="pattern-2-event-driven-triggers"></a>
 
@@ -38,6 +39,22 @@ Parent Agent
 ```
 
 **Best practices:** Clear unit of work per child, playbooks for consistency, max concurrency cap, parent monitors and escalates failures.
+
+<a id="pattern-7-agentic-mapreduce"></a>
+
+## Agentic MapReduce Architecture
+
+```
+Coordinator
+├── Defines scope and builds threat model / analysis plan
+├── Maps: divides scope into N independent units
+├── Spawns Worker 1 → unit A → findings / fixes
+├── Spawns Worker 2 → unit B → findings / fixes
+├── Spawns Worker N → unit N → findings / fixes
+└── Reduces: aggregates results, delivers consolidated output
+```
+
+Agentic MapReduce extends Divide & Conquer with a structured map-reduce lifecycle: a coordinator divides the scope, parallel workers each process their unit independently, and results are aggregated into a consolidated output. Security Swarm uses this pattern to build a threat model, distribute vulnerability investigation across workers, and aggregate findings into actionable PRs. The same architecture applies to large-scale analysis, portfolio-wide audits, and any campaign where independent units can be processed in parallel and results merged.
 
 ## Key Rules
 - The tighter your build/test loop, the better Devin performs — Pattern 1 is the highest-impact investment

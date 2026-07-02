@@ -18,6 +18,8 @@ The tracks are designed to show Devin working across the quality spectrum:
 - **Track B** shows Devin as a system tester — running applications end-to-end, writing Playwright/Selenium tests, and validating cross-service integration
 - **Track C** shows Devin as a quality advocate — automating code review, performing static analysis, generating documentation, and building continuous quality pipelines
 
+Beyond individual sessions, Devin extends quality engineering into a platform capability. Security Swarm uses an Agentic MapReduce architecture to divide a codebase among parallel Devins, build a tailored threat model, and investigate vulnerabilities (SQL injection, RCE, authorization bypasses, and more) — treating security as a first-class quality dimension alongside functional correctness. Automations provide event-driven and scheduled triggers with pre-built templates like Nightly QA & Smoke Tests, SonarQube Quality Gate Fix, and CI Failure Fixer, turning continuous quality enforcement into a background process rather than a manual chore. Managed Devins let a coordinator session fan out test generation campaigns across repos or modules in parallel, compiling results and resolving conflicts — scaling quality work that would otherwise take a team days into hours.
+
 ## Getting the Most from This Workshop
 
 > **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
@@ -29,6 +31,9 @@ A few tips to maximize your hands-on time:
 - **Use Ask Devin to understand test coverage gaps.** Before writing tests, use Ask Devin to analyze existing coverage and identify the highest-risk untested code.
 - **Build up Devin's knowledge as you go.** Save testing conventions (framework choices, assertion style, test data patterns) as Knowledge items so future test generation follows the same patterns.
 - **Leave PR comments to steer Devin.** After Devin opens a test PR, review the assertions for quality — are they testing behavior or just padding coverage? Leave comments to improve.
+- **Explore Automations templates for continuous quality.** Templates like Nightly QA & Smoke Tests, SonarQube Quality Gate Fix, and CI Failure Fixer can turn one-off quality sessions into recurring, event-driven workflows that run without manual intervention.
+- **Use Security Swarm as an additional quality signal.** Security Swarm performs code-level vulnerability detection that complements traditional SAST/DAST tooling — treat its findings alongside test coverage and lint results as part of a holistic quality picture.
+- **Scale test campaigns with Managed Devins.** When you need tests generated across multiple repos or modules, a coordinator session can fan out work to Managed Devins in parallel — each one tackling a different service or package — and compile the results.
 
 ---
 
@@ -586,7 +591,7 @@ While Devin works on step 1, open **AskDevin** and explore:
 - *"What quality gates are most effective at preventing bugs in production?"*
 - *"How do you set coverage thresholds that encourage improvement without blocking emergency fixes?"*
 - *"What's the right balance between pipeline speed and thoroughness for quality gates?"*
-- Consider creating a **Devin Scheduled Session** that generates a weekly quality report
+- Consider setting up an **Automation** with the Nightly QA & Smoke Tests template to generate a recurring quality report
 
 #### Step 3 (Optional): Read the DeepWiki
 
@@ -595,6 +600,9 @@ Open the repo's **DeepWiki** page. Try:
 - Ask Devin to add **quality badges** (coverage, lint status) to the repo README
 - Try having Devin set up **PR size limits** (warn on PRs with more than 500 changed lines)
 - Ask Devin to integrate **SonarCloud** for comprehensive code quality tracking
+- Explore **Automations** templates — CI Failure Fixer can auto-remediate broken builds, and SonarQube Quality Gate Fix can address quality gate failures without manual triage
+- Try **Security Swarm Auto Scan** as an additional quality gate — schedule recurring vulnerability scans that produce findings with evidence and optional fix PRs
+- Use **Managed Devins** for quality campaigns at scale — a coordinator session can fan out lint fixes, test generation, or documentation tasks across multiple repos in parallel
 
 #### Step 4 (Optional): Review & Give Feedback
 
@@ -613,6 +621,7 @@ Focus on **pipeline effectiveness**:
   - **"Ratchet, don't regress"** — coverage and quality metrics should only go up. The pipeline prevents backsliding
   - **"Fast feedback = adoption"** — if quality gates take 10 minutes, developers will ignore them. Keep them under 3 minutes
   - **"Scheduled quality reports"** — weekly Devin sessions that analyze quality trends give engineering leaders visibility
+  - **"Continuous quality as a platform capability"** — Automations templates (Nightly QA & Smoke Tests, CI Failure Fixer, SonarQube Quality Gate Fix) and Security Swarm Auto Scan turn quality enforcement into a background process that runs on schedule or in response to events, without manual intervention
 
 - **Target Outcomes (any of these count):**
   - GitHub Actions quality pipeline with multiple gates
@@ -673,7 +682,9 @@ Participants who finish early or want to explore further can attempt any challen
   - Parallel sessions for testing across multiple repos/services simultaneously
   - Ask Devin for test strategy analysis and coverage gap identification
   - Knowledge and Playbooks for capturing testing conventions and patterns
-  - Scheduled sessions for continuous quality monitoring (weekly coverage reports, regression detection)
+  - Automations with pre-built templates for continuous quality enforcement (Nightly QA & Smoke Tests, CI Failure Fixer, SonarQube Quality Gate Fix)
+  - Security Swarm for vulnerability detection as a quality dimension — Agentic MapReduce architecture for deep, code-level scanning that complements SAST/DAST
+  - Managed Devins for parallel test generation campaigns across repos and modules
   - Screen recordings as test evidence for stakeholder communication
   - PR Review as an automatic quality gate for all changes
 

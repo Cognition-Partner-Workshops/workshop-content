@@ -18,6 +18,8 @@ The tracks are designed to show Devin working across the application lifecycle:
 - **Track B** shows Devin as a debugger and investigator — reproducing bugs, tracing root causes, and fixing issues across service boundaries
 - **Track C** shows Devin as a maintenance engineer — upgrading dependencies, evolving schemas, refactoring tech debt, and automating ongoing hygiene
 
+Beyond individual sessions, this workshop connects to three platform capabilities that turn one-off labs into sustainable maintenance practices. **Managed Devins** let a coordinator session spin up parallel workers — run the same dependency upgrade across ten repos simultaneously instead of one at a time. **Automations** (combining event-driven and schedule triggers) keep maintenance running without human initiation — a CI failure triggers an automatic fix session, or a weekly schedule runs dependency checks every Monday. **Security Swarm** adds proactive vulnerability scanning to the maintenance cadence, building a threat model tailored to your codebase and validating findings with evidence before surfacing them.
+
 ## Getting the Most from This Workshop
 
 > **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
@@ -29,6 +31,9 @@ A few tips to maximize your hands-on time:
 - **Use Ask Devin to refine requirements before creating a session.** The better-defined a task is, the better Devin's output. Ask Devin helps you think through the problem first so Devin can execute with less back-and-forth.
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer that makes Devin smarter over time. You can also create Knowledge manually for project conventions and standards.
 - **Leave PR comments to steer Devin.** After Devin opens a PR, the PR Review agent and CI checks provide automatic feedback loops. You can also leave comments directly on the PR and Devin will wake up and address them — this is the core workflow for iterating with Devin in production.
+- **Explore Automations templates.** Pre-built templates like *CI Failure Fixer* and *Weekly Dependency Updates* turn one-off labs into repeatable automated workflows — set one up after completing a lab to see the pattern run hands-free.
+- **Try Security Swarm for proactive scanning.** Security Swarm builds a threat model for your codebase and validates potential vulnerabilities with evidence. Use it as part of your application hygiene routine alongside dependency upgrades.
+- **Scale with Managed Devins.** When a maintenance task applies to multiple repos, a coordinator session can spin up Managed Devins to run it in parallel — the same upgrade prompt across ten services at once.
 
 ---
 
@@ -445,7 +450,7 @@ Track C demonstrates Devin as a maintenance engineer. Participants will set up a
 - **Repositories:**
   - [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Spring Boot app with Gradle
   - [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) — Node.js app with npm (alternative)
-- **Objective:** Upgrade dependencies to latest minor/patch versions, verify the build passes, and set up a recurring Devin scheduled session for automated weekly maintenance
+- **Objective:** Upgrade dependencies to latest minor/patch versions, verify the build passes, and set up a recurring Devin Automation for automated weekly maintenance
 
 #### Step 1: Paste into Devin (copy-paste this prompt into Devin)
 
@@ -461,13 +466,26 @@ While Devin works on step 1, open **AskDevin** and explore:
 - *"How should a team handle dependency upgrades that break the build — auto-revert and flag, or block and notify?"*
 - Consider creating a **Devin Knowledge item** capturing the dependency upgrade policy
 
-#### Step 3 (Optional): Set Up a Scheduled Session
+#### Step 3 (Optional): Set Up a Devin Automation
 
-Once you're happy with the output from step 1, turn it into a recurring task:
+Once you're happy with the output from step 1, turn it into a recurring task using **Automations**. Navigate to the Automations page and use the pre-built **Weekly Dependency Updates** template, or create a custom Automation with a schedule trigger:
+
+- **Trigger:** Schedule — weekly, Monday mornings
+- **Action:** Start a new Devin session against `uc-cve-remediation-regulatory-compliance`
+- **Prompt:**
 
 ```
-Create a Devin scheduled session that runs weekly on Monday mornings against uc-cve-remediation-regulatory-compliance. The schedule should use this prompt: "Check all dependencies for available minor and patch version updates. Upgrade to the latest minor versions. Run the full test suite and build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and note it.md."
+Check all dependencies for available minor and patch version
+updates. Upgrade to the latest minor versions. Run the full
+test suite and build to verify nothing is broken. If any
+upgrade breaks the build, revert that specific upgrade and
+note it in the PR description. Title the PR
+"chore: weekly dependency version bump".
 ```
+
+Automations support both schedule and event-driven triggers — you could also add a GitHub push trigger to run dependency checks on every merge to `main`.
+
+Consider pairing this with **Security Swarm Auto Scan** on a recurring schedule. Security Swarm builds a threat model for the repo, scans for vulnerabilities (dependency-related and beyond), and surfaces validated findings — a natural complement to dependency upgrades as part of your ongoing maintenance cadence.
 
 #### Step 4 (Optional): Extend to Multiple Repos
 
@@ -479,15 +497,16 @@ Check all npm dependencies in timesheet-app for available minor and patch versio
 
 - **Key Takeaways:**
   - **"Automate the boring stuff"** — dependency upgrades are repetitive, low-risk, and high-volume. Devin handles them weekly without human intervention
-  - **"Scheduled sessions = always-on maintenance"** — teams set the policy once, and Devin executes it on a cadence
+  - **"Automations = always-on maintenance"** — set up a Devin Automation with a schedule trigger once, and Devin executes on a cadence. Pre-built templates like *Weekly Dependency Updates* make setup even faster
+  - **"Security Swarm complements upgrades"** — dependency updates fix known CVEs, but Security Swarm catches vulnerabilities in your own code (injection, authorization bypasses, path traversal) that no dependency bump will fix
   - **"Safe by default"** — the prompt instructs Devin to verify builds, revert breaking upgrades, and document everything. The PR still requires human approval
-  - **"Scales across repos and tech stacks"** — the same pattern works for Gradle, npm, pip, cargo, etc.
+  - **"Scales across repos and tech stacks"** — the same pattern works for Gradle, npm, pip, cargo, etc. Use Managed Devins to run the same upgrade across multiple repos in parallel
 
 - **Target Outcomes (any of these count):**
-  - Devin scheduled session configured for weekly dependency upgrades
+  - Devin Automation configured for weekly dependency upgrades (schedule trigger)
   - PR with dependency upgrades and `DEPENDENCY_UPDATES.md`
   - Knowledge item capturing the team's dependency upgrade policy
-  - Same schedule replicated across multiple repos/tech stacks
+  - Same Automation replicated across multiple repos/tech stacks
 
 ---
 
@@ -665,7 +684,9 @@ Participants who finish early or want to explore further can attempt any challen
   - PR Review agent as automatic quality gate
   - Ask Devin for requirements gathering and problem analysis
   - Knowledge and Playbooks for capturing team conventions
-  - Scheduled sessions for ongoing maintenance automation
+  - Automations with pre-built templates (schedule + event-driven triggers) for ongoing maintenance
+  - Security Swarm for proactive vulnerability scanning as part of application hygiene
+  - Managed Devins for running parallel maintenance campaigns across multiple repos
   - Screen recordings as test evidence and debugging artifacts
   - Long-running task handling — Devin works while you're in meetings
 

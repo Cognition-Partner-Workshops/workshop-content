@@ -13,6 +13,7 @@ works across most languages and repository layouts.
 - [The Pattern](#the-pattern)
 - [Running It Live](#running-it-live)
 - [Scaling with Child Sessions](#scaling-with-child-sessions)
+- [Security Swarm: Proactive Threat-Model-Driven Scanning](#security-swarm)
 - [The Verification Loop](#the-verification-loop)
 - [Key Takeaways](#key-takeaways)
 
@@ -188,6 +189,42 @@ iterates over a list of repositories and spawns a child session per repo,
 each following the same remediation playbook. For a full walkthrough of
 multi-repo parallel orchestration, see
 [Portfolio-Scale Remediation](use-cases/portfolio-scale-remediation-demo.md).
+
+<a id="security-swarm"></a>
+## Security Swarm: Proactive Threat-Model-Driven Scanning
+
+The event-driven pattern above is reactive — it responds to scanner
+findings as they arrive. Security Swarm provides a complementary proactive
+approach using Agentic MapReduce to build threat models and investigate
+code-level vulnerabilities before scanners flag them.
+
+```
+Security Swarm (proactive):
+  Coordinator builds threat model
+        ↓
+  Divides codebase among parallel workers
+        ↓
+  Workers investigate attack surfaces independently
+        ↓
+  Findings aggregated → fixes delivered via PRs
+
+Event-Driven Remediation (reactive):
+  Scanner detects vulnerability
+        ↓
+  Automation triggers Devin session
+        ↓
+  Devin remediates and re-scans in a closed loop
+```
+
+The two patterns work together: Security Swarm finds vulnerabilities
+proactively through deep, threat-model-driven investigation, while
+event-driven remediation handles scanner findings reactively as they
+appear in CI. Together they provide both breadth (Security Swarm's
+Agentic MapReduce across the codebase) and continuous coverage
+(event-driven response to new findings as they appear).
+
+For a full Security Swarm walkthrough, see
+[Security Swarm Scan Demo](use-cases/security-swarm-scan-demo.md).
 
 ---
 

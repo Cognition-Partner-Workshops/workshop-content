@@ -6,17 +6,19 @@
 
 | Capability | What It Does | Key Detail |
 |-----------|-------------|------------|
-| **Scheduled Sessions** | Recurring tasks on cron (daily, weekly, custom) | Dep bumps, license audits, dead code detection, doc refresh, security scanning, coverage monitoring |
+| **Automations** | Event-driven + scheduled triggers (GitHub, Jira, Linear, webhooks, cron) | 25+ pre-built templates. Replaces standalone Scheduled Sessions. Invocation and ACU limits for safeguards |
 | **Playbooks** | Reusable step-by-step procedures encoding proven methodology | Repeatable, versionable, shareable, composable across teams |
-| **Child Agents** | Parent breaks large task into N independent units, spawns one child per target | Each child: own VM, own branch, own PR. Failures isolated |
+| **Managed Devins** | Coordinator breaks large task into N independent units, spawns one managed Devin per target | Each worker: own VM, own branch, own PR. Coordinator can message, monitor ACU, sleep/terminate. Failures isolated |
+| **Security Swarm** | Agentic MapReduce security scanning — builds threat model, investigates vulnerabilities, fixes via PRs | Auto Scan for recurring scans. Profiles for repeatable scan configurations |
 | **Team-Based Operation** | Org-wide shared context layer configured once, inherited by every session | Blueprints, Knowledge, Playbooks, MCP servers, Secrets, Git connections, Automations |
 | **Devin Review** | Proactive code review on new PRs — bugs, security, quality | Findings as PR comments; can auto-open fix PRs; configurable rules; can block merge via status checks |
 
+<a id="automations"></a>
 <a id="scheduled-sessions"></a>
 
-### Scheduled Sessions
+### Automations
 
-See table above. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
+See table above. Automations are the unified product combining event-driven and scheduled triggers — GitHub (check run/CI, PR, issue, push), Jira, Linear, webhooks, and cron schedules. Slack and Teams are separate native chat integrations (not Automations triggers). 25+ pre-built templates cover common workflows like CI Failure Fixer, Weekly Dependency Updates, and Security Vulnerability Scan. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
 <a id="playbooks"></a>
 
@@ -24,11 +26,18 @@ See table above. Comprehensive training: [Foundations — Automations](../../cou
 
 See table above. Comprehensive training: [Foundations — Automations](../../courses/foundations/product/cloud/08-automations.md).
 
+<a id="managed-devins"></a>
 <a id="child-agents-divide-and-conquer"></a>
 
-### Child Agents
+### Managed Devins
 
-See table above. Comprehensive training: [Foundations — Multi-Agent Workers](../../courses/foundations/product/cloud/09-multi-agent-workers.md).
+See table above. The coordinator can spawn, message, monitor ACU usage, sleep/terminate managed Devins, and schedule messages to itself. Comprehensive training: [Foundations — Multi-Agent Workers](../../courses/foundations/product/cloud/09-multi-agent-workers.md).
+
+<a id="security-swarm"></a>
+
+### Security Swarm
+
+Security Swarm is Devin's security scanning and remediation product using Agentic MapReduce. It divides the repository among parallel Devins for broad coverage and deep investigation. The workflow builds a threat model, investigates vulnerabilities (RCE, SQLi, SSRF, auth bypasses, memory-safety, DoS, chained exploits), and delivers fixes via PRs. Interactive mode allows threat model review before scanning begins. Auto Scan provides recurring scans on a schedule, and Profiles enable repeatable scan configurations. See [Security Swarm docs](https://docs.devin.ai/work-with-devin/security-swarm).
 
 <a id="devin-review"></a>
 
@@ -59,5 +68,5 @@ Active (executing, costs ACUs)
 ## Key Rules
 - Devin never merges its own PRs — the merge decision is always human
 - Hibernation means cost tracks active work, not wall-clock time
-- Child agents scale linearly — one becomes N, each producing independent PRs
+- Managed Devins scale linearly — one becomes N, each producing independent PRs
 - The shared context layer is a one-time investment that compounds across every session

@@ -18,6 +18,11 @@ The tracks are designed to show Devin working across the delivery lifecycle:
 - **Track B** shows Devin managing infrastructure as code — translating between IaC tools, generating Kubernetes manifests, setting up GitOps, and building platform-conformant services
 - **Track C** shows Devin as an SRE partner — setting up observability, investigating incidents, automating remediation, and detecting anomalies
 
+These tracks connect to three platform capabilities that extend Devin's impact beyond individual sessions:
+- **Security Swarm** uses Agentic MapReduce to divide a repository among parallel Devin sessions for broad, deep security scanning — building threat models and investigating vulnerabilities across IaC and application code. Auto Scan integrates this into CI/CD pipelines for continuous security coverage
+- **Automations** provides a unified trigger system that connects CI events, alerts, schedules, and webhooks to Devin sessions. Templates like CI Failure Fixer, Datadog Alert Investigation, and Daily Health Digest turn reactive toil into automated workflows
+- **Managed Devins** enable a coordinator pattern where a parent session spins up, monitors, and compiles results from multiple parallel sessions — ideal for multi-repo infrastructure provisioning, cross-service incident remediation, and large-scale platform work
+
 ## Getting the Most from This Workshop
 
 > **Devin works autonomously on its own machine.** Once you paste a prompt and kick off a session, Devin runs independently — you don't need to watch it. Move on to the next lab, explore Ask Devin, or grab coffee while it works. You'll get notified when it opens a PR.
@@ -29,6 +34,9 @@ A few tips to maximize your hands-on time:
 - **Use Ask Devin to understand existing infrastructure.** Before making changes to IaC or pipelines, use Ask Devin to understand the current state and dependencies.
 - **Build up Devin's knowledge as you go.** When Devin suggests a Knowledge item during a session, accept it — this is how teams build a shared context layer. Platform conventions (naming, tagging, resource limits) are especially valuable as Knowledge.
 - **Leave PR comments to steer Devin.** Infrastructure PRs benefit from review — ask Devin to add security groups, adjust resource limits, or fix pipeline stages.
+- **Explore Automations templates.** CI Failure Fixer, Datadog Alert Investigation, Daily Health Digest, and Security Vulnerability Scan are pre-built templates that connect triggers (CI failures, alerts, schedules) to Devin sessions — set them up to see how teams reduce toil.
+- **Try Security Swarm on IaC repos.** Auto Scan runs recurring security scans across infrastructure-as-code repositories, building threat models and surfacing vulnerabilities before they reach production.
+- **Use Managed Devins for parallel provisioning.** When a lab involves multi-repo or multi-service work, a parent Devin session can spin up managed sessions to handle infrastructure provisioning across repos simultaneously.
 
 ---
 
@@ -174,6 +182,7 @@ Focus on **root cause accuracy**:
   - **"Fix the code, not the pipeline"** — most CI failures indicate real code issues, not pipeline configuration problems
   - **"Document the resolution"** — the PR description should explain what failed and why, so the team learns from it
   - **"CI is a feedback loop"** — failing CI is a feature, not a bug. The system is telling you something is wrong
+  - **"Automate the fix loop"** — the CI Failure Fixer automation template can trigger a Devin session automatically when CI fails, closing the loop without manual intervention. Security Swarm Auto Scan adds proactive security scanning as a CI pipeline stage, catching vulnerabilities before they block builds
 
 - **Target Outcomes (any of these count):**
   - Root cause of CI failure identified
@@ -545,10 +554,11 @@ Focus on **operational safety**:
 - *"Add a dry-run mode that shows what the remediation would do without executing"*
 
 - **Key Takeaways:**
-  - **"Alerts → Devin → Fix"** — production alerts can trigger autonomous investigation and remediation sessions
+  - **"Alerts → Devin → Fix"** — production alerts can trigger autonomous investigation and remediation sessions. Automations makes this a first-class product capability with templates like Datadog Alert Investigation and Daily Health Digest that wire alert sources directly to Devin sessions
   - **"Pattern matching enables automation"** — common incidents (credential rotation, OOM, connection pool) follow predictable patterns that can be automated
   - **"Safety gates prevent over-automation"** — high-risk remediations require approval; low-risk ones can auto-execute
-  - **"Devin is always on-call"** — unlike human engineers, Devin responds to alerts immediately at any hour
+  - **"Devin is always on-call"** — unlike human engineers, Devin responds to alerts immediately at any hour. Security Swarm findings can serve as incident triggers — vulnerabilities detected in code scans surface as actionable alerts before they cause production issues
+  - **"Parallel remediation with Managed Devins"** — when an incident spans multiple services, a coordinator session can spin up managed sessions to investigate and remediate across repos simultaneously, compiling a unified incident report
 
 - **Target Outcomes (any of these count):**
   - Alert webhook receiver handling production alerts
@@ -599,10 +609,11 @@ Focus on **detection quality**:
 - *"Add historical false positive tracking so the system learns which patterns are benign"*
 
 - **Key Takeaways:**
-  - **"Proactive > reactive"** — anomaly detection catches issues while they're forming, before users are impacted
+  - **"Proactive > reactive"** — anomaly detection catches issues while they're forming, before users are impacted. Security Swarm complements runtime anomaly detection with code-level proactive scanning — catching vulnerabilities in source and IaC before they manifest as production anomalies
   - **"Correlation reduces noise"** — linking anomalies across services reduces false positives and identifies cascading failures
   - **"Runbook recommendations accelerate response"** — when the system suggests actions, engineers respond faster
   - **"Continuous improvement"** — anomaly detection systems get better over time as they learn normal patterns
+  - **"Automations close the loop"** — Automations can trigger a Devin investigation session when an anomaly alert fires, connecting detection to resolution without manual handoff
 
 - **Target Outcomes (any of these count):**
   - New anomaly detector (rate-of-change or alternative algorithm)
@@ -665,7 +676,9 @@ Participants who finish early or want to explore further can attempt any challen
   - Parallel sessions for provisioning multiple environments/services simultaneously
   - Ask Devin for understanding existing infrastructure before making changes
   - Knowledge and Playbooks for capturing platform standards and conventions
-  - Scheduled sessions for ongoing infrastructure hygiene (drift detection, cost reports)
+  - Security Swarm for proactive security scanning — Auto Scan runs recurring scans on IaC repos, building threat models and surfacing vulnerabilities using Agentic MapReduce
+  - Automations with pre-built templates (CI Failure Fixer, Datadog Alert Investigation, Daily Health Digest, Security Vulnerability Scan) connecting CI events, alerts, and schedules to Devin sessions
+  - Managed Devins for parallel platform work — a coordinator session orchestrates multiple managed sessions for multi-repo provisioning, cross-service remediation, and large-scale infrastructure changes
   - Cross-repo work — platform changes that span multiple repositories
   - Long-running task handling — Devin works on complex infrastructure while you focus on architecture
 

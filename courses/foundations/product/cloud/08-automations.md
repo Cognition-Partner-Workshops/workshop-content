@@ -1,5 +1,7 @@
 # Automations
 
+> **Note:** Automations are now the unified product combining event-driven and scheduled triggers. This replaces the standalone Scheduled Sessions model — trigger sources (GitHub, Jira, Linear, webhooks, cron) are configured through the single Automations interface. Slack and Teams are separate native integrations where you mention Devin as a chat participant.
+
 <a id="toc"></a>
 ## Table of Contents
 
@@ -9,6 +11,7 @@
 - [Automation Architecture](#automation-architecture)
 - [Building Effective Automations](#building-effective-automations)
 - [Common Automation Recipes](#common-automation-recipes)
+- [Automation Templates](#automation-templates)
 - [Exploration Activity](#exploration-activity)
 - [Key Takeaways](#key-takeaways)
 
@@ -49,11 +52,12 @@ Event-driven automations connect Devin to your existing toolchain. When a signal
 |--------|-------|-------------|
 | **GitHub** | PR opened | Run Devin Review for bugs and security issues |
 | **GitHub** | Issue created with label | Implement feature requests tagged `Devin:Implementation` |
-| **GitHub** | CI check failed | Read failure logs and push a fix |
+| **GitHub** | Check run / CI failure | Read failure logs and push a fix |
+| **GitHub** | Push to branch | Run post-push validation or code generation |
+| **Jira** | Ticket created, label added, status changed | Implement tickets matching project/label/status filters |
+| **Linear** | Ticket assigned or status change | Read acceptance criteria, implement, open PR |
 | **Webhook** | Generic HTTP POST | Connect any system that can send webhooks |
-| **Jira / Linear** | Ticket assigned to Devin | Read acceptance criteria, implement, open PR |
-| **Slack / Teams** | Message or thread mention | Respond to requests in team channels |
-| **Alert system** | Incident fires | Investigate, diagnose, propose fix |
+| **Schedule (cron)** | Time-based recurrence | Weekly dep bumps, daily scans, monthly audits |
 
 ### Prompt Templates
 
@@ -74,12 +78,12 @@ Variables like `{{repo}}`, `{{severity}}`, and `{{finding_title}}` are populated
 
 ### Slack-Based Triage and Deduplication
 
-A common pattern for teams using Slack:
+Slack and Teams are **native chat integrations** — separate from Automations. You add Devin as a chat participant and mention it directly. A common triage pattern:
 
 ```
 Slack channel receives alert
     ↓
-Devin monitors the channel (automation trigger)
+Team member @mentions Devin in the thread
     ↓
 Devin deduplicates: "Is this the same issue as the alert 5 minutes ago?"
     ↓
@@ -92,7 +96,9 @@ This prevents alert fatigue from spawning redundant sessions and keeps the team'
 <a id="scheduled-sessions"></a>
 ## Scheduled Sessions
 
-Scheduled sessions run on a recurring cadence — daily, weekly, or custom cron expressions. They perform proactive maintenance without human initiation.
+> **Update:** Automations with Schedule triggers are now the recommended approach for recurring tasks. The standalone Scheduled Sessions feature has been unified into the Automations product — configure a cron-based trigger in the Automations interface to get the same behavior with the full suite of conditions, templates, and guardrails.
+
+Scheduled automations run on a recurring cadence — daily, weekly, or custom cron expressions. They perform proactive maintenance without human initiation.
 
 ### Configuration
 
@@ -179,6 +185,8 @@ Before activating any automation:
 - [ ] Idempotency: multiple events from the same underlying issue are recognized and not re-triaged (consider an intermediary queue or deduplication key to prevent duplicate signals from reaching Devin)
 - [ ] Escalation: agent stops and surfaces findings if it cannot resolve the issue
 - [ ] Scope: only specific repos/branches/severities trigger responses
+- [ ] Invocation limit: cap how many times the automation fires per time window (e.g., at most 10 per hour)
+- [ ] ACU limit: set a maximum compute budget per session to prevent runaway consumption
 
 <a id="common-automation-recipes"></a>
 ## Common Automation Recipes
@@ -228,6 +236,38 @@ Implement the work described in ticket {{ticket_id}}:
 criteria. Work in {{repo}} on a new branch. Link the
 resulting PR back to the ticket.
 ```
+
+### Recipe 5: Security Swarm Auto Scan
+
+**Type:** Scheduled (weekly) or on-demand
+**Setup:** Navigate to **Security** in the Devin web app, select the target repository, and enable Auto Scan with a weekly cadence. Security Swarm uses Agentic MapReduce to divide the repo among parallel Devins, build a threat model, and investigate vulnerabilities. Create a Profile to save scan configuration for reuse.
+
+---
+
+<a id="automation-templates"></a>
+## Automation Templates
+
+Devin provides 25+ pre-built automation templates covering common workflows ([full list in the Automations docs](https://docs.devin.ai/product-guides/automations)). Templates include pre-configured triggers, conditions, and prompt templates — customize them for your repositories. A representative selection:
+
+| Template | Trigger | What It Does |
+|----------|---------|-------------|
+| **CI Failure Fixer** | GitHub check run failure | Reads CI logs, identifies the failure, pushes a fix |
+| **Nightly QA & Smoke Tests** | Schedule (daily) | Runs test suites, reports failures, opens issues |
+| **Weekly Dependency Updates** | Schedule (weekly) | Bumps patch/minor versions where tests pass |
+| **Daily Sentry Error Fixes** | Schedule (daily) or webhook | Investigates top Sentry errors, proposes fixes |
+| **Datadog Alert Investigation** | Webhook | Reads alert context, investigates root cause |
+| **Daily Health Digest** | Schedule (daily) | Summarizes repo health: coverage, lint, dep status |
+| **Security Vulnerability Scan** | Schedule or GitHub event | Scans for vulnerabilities, remediates findings |
+| **OWASP Security Hardening** | Schedule (weekly) | Audits against OWASP Top 10, proposes fixes |
+| **Secret Scanner** | GitHub push | Detects committed secrets, opens remediation PR |
+| **Code Pattern Enforcer** | GitHub PR opened | Checks PRs against coding standards, flags violations |
+| **SonarQube Quality Gate Fix** | Webhook | Reads SonarQube findings, pushes fixes |
+| **Figma Design Review** | Webhook | Compares implementation against Figma designs |
+| **Jira Ticket to PR** | Jira/Linear assignment | Reads ticket, implements, opens PR |
+| **Weekly Changelog** | Schedule (weekly) | Generates changelog from merged PRs |
+| **Stale PR Cleanup** | Schedule (weekly) | Identifies and closes stale PRs |
+
+Security Swarm Auto Scan is a specialized automation that uses Agentic MapReduce for deep security analysis — see [Recipe 5](#recipe-5-security-swarm-auto-scan) above.
 
 ---
 
