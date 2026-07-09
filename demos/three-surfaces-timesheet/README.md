@@ -33,7 +33,7 @@ loop — showing how the three surfaces connect into one workflow.
 | **Devin CLI** | Installed: `curl -fsSL https://cli.devin.ai/install.sh \| bash` |
 | **Devin Cloud** | Access to the Devin web app with a configured org |
 | **Repository** | [timesheet-app](https://github.com/Cognition-Partner-Workshops/timesheet-app) cloned locally and available in the org's GitHub connection |
-| **Node.js** | v18+ (for running the app locally if desired) |
+| **Node.js** | Installed (only needed to run the app locally, optional) |
 
 Clone the repo before starting:
 
