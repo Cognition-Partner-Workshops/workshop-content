@@ -244,6 +244,18 @@ clusters:
       - uc-data-migration-abinitio-to-pyspark    # PySpark target (local reconciliation)
       - uc-data-migration-abinitio-to-databricks # dbt/Databricks target architecture
 
+  C17:
+    label: "Ab Initio Lineage Analysis"
+    upstream: null  # scaffolded from scratch
+    shared_initial_commit: null
+    reason: >
+      Synthetic BFSI loan-servicing estate for non-invasive static data
+      lineage and impact analysis, with textual graph exports, field-level
+      transforms, Oracle/Teradata SQL, answer keys, and reusable analysis
+      playbook and repo Skill.
+    repos:
+      - ts-abinitio-loan-servicing
+
 # ============================================================
 # Per-repo upstream mapping (alphabetical)
 # ============================================================
@@ -254,6 +266,12 @@ repos:
     import_method: original
     cluster: C16
     note: "Ab Initio source estate — graphs, DML record formats, PSET parameter sets, CDC, KornShell/AutoSys orchestration"
+
+  ts-abinitio-loan-servicing:
+    upstream: null
+    import_method: original
+    cluster: C17
+    note: "Synthetic Ab Initio-style loan-servicing estate for static source-to-target lineage, column-level derivation, and impact analysis"
 
   ts-python-aws-personalize:
     upstream: aws-samples/amazon-personalize-immersion-day

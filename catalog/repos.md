@@ -39,6 +39,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **C14** | MuleSoft API → Spring Boot Migration | *original* | `ts-java-mulesoft-employee-api`, `uc-api-migration-mulesoft-to-spring-boot` | MuleSoft Mule 4 Employee Service API (OAuth2, RAML, PostgreSQL) paired with Spring Boot 3.5 migration target, OpenAPI contract verification harness, conversion playbook, and repo Skill. |
 | **C15** | Flutter Mobile App Development | *different upstreams* | `ts-dart-flutter-grocery`, `ts-dart-flutter-ecommerce` | Two Flutter mobile apps for mobile development process workshops: Figma→code generation, unit test generation, build/deploy. Grocery app (GetX/MVC, 44+ screens) and e-commerce template (38 screens, multi-platform). |
 | **C16** | Ab Initio Migration | *original* | `ts-python-abinitio-etl`, `uc-data-migration-abinitio-to-pyspark`, `uc-data-migration-abinitio-to-databricks` | Legacy Ab Initio ETL estate (graphs, DML record formats, PSET parameter sets, CDC, KornShell/AutoSys orchestration) paired with two migration targets: a platform-agnostic PySpark target (local reconciliation) and a dbt/Databricks Lakehouse target. Each target ships a source→target reconciliation harness, a conversion playbook, and a repo Skill. |
+| **C17** | Ab Initio Lineage Analysis | *original* | `ts-abinitio-loan-servicing` | Synthetic BFSI loan-servicing estate for non-invasive static lineage and impact analysis: textual Ab Initio graph exports, XFR transformations, DML layouts, Oracle/Teradata SQL, PSETs, KornShell/AutoSys orchestration, answer keys, and a lineage-analysis playbook plus repo Skill. |
 
 ---
 
@@ -345,6 +346,17 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | — |
 | **Cluster** | C16 |
 | **Challenges** | [Ab Initio Migration Analysis](../labs/data-engineering/abinitio-migration-analysis.md) |
+
+### ts-abinitio-loan-servicing
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/ts-abinitio-loan-servicing |
+| **Description** | Synthetic BFSI loan-servicing estate for non-invasive static data lineage and impact analysis. Includes 7 textual Ab Initio graph exports, XFR field transformations, DML record layouts, Oracle OLTP and Teradata reference/mart SQL, PSETs, KornShell/AutoSys orchestration, deterministic sample data, lineage and impact-analysis answer keys, a reusable playbook, and a repo Skill. |
+| **Tech Stack** | Ab Initio-style graph exports, DML, XFR, PSETs, Oracle SQL, Teradata SQL, KornShell, AutoSys JIL, Python |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | C17 (scaffolded from scratch) |
+| **Challenges** | [Ab Initio Lineage & Impact Analysis](../labs/data-engineering/abinitio-lineage-impact-analysis.md) |
 
 ### ts-sas-legacy-analytics
 | | |

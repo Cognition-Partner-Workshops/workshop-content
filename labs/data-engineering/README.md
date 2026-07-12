@@ -20,6 +20,7 @@ Challenges focused on data warehouse migration, ETL pipeline modernization, data
 | [SAS Migration Analysis](sas-migration-analysis.md) | Intermediate–Advanced | 75 min |
 | [SAS CI/CD & Operationalization](sas-cicd-operationalization.md) | Intermediate–Advanced | 60 min |
 | [Ab Initio Migration Analysis](abinitio-migration-analysis.md) | Intermediate–Advanced | 75 min |
+| [Ab Initio Lineage & Impact Analysis](abinitio-lineage-impact-analysis.md) | Intermediate–Advanced | 75 min |
 
 ## Repositories
 
@@ -36,6 +37,7 @@ Challenges focused on data warehouse migration, ETL pipeline modernization, data
 | ts-python-abinitio-etl | [Ab Initio Migration Analysis](abinitio-migration-analysis.md) |
 | uc-data-migration-abinitio-to-pyspark | [Ab Initio Migration Analysis](abinitio-migration-analysis.md) |
 | uc-data-migration-abinitio-to-databricks | [Ab Initio Migration Analysis](abinitio-migration-analysis.md) |
+| ts-abinitio-loan-servicing | [Ab Initio Lineage & Impact Analysis](abinitio-lineage-impact-analysis.md) |
 
 ## When to Use This Category
 
