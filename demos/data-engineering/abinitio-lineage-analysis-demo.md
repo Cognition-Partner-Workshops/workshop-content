@@ -37,10 +37,11 @@ KornShell orchestration, AutoSys JIL, and ground-truth answer keys under
   `expected/outstanding_loan_balance_lineage.json` with
   `python tools/validate_expected_lineage.py` and verified by an in-browser
   click-through of the visualization with a screen recording.
-- An Atlassian (Confluence) MCP integration with page-write access, and the
-  Confluence parent page **"Persistent — Ab Initio Lineage Demos"** on the
-  workshop Atlassian site. Each demo run publishes a new timestamped child
-  page under this parent so past demo runs never clash.
+- An Atlassian (Confluence) MCP integration with page-write access, and a
+  Confluence parent page for Ab Initio lineage demo runs on the workshop
+  Atlassian site (recorded in organization Knowledge). Each demo run publishes
+  a new timestamped child page under this parent so past demo runs never
+  clash.
 
 ---
 
@@ -109,7 +110,7 @@ Run 3 parallel child sessions using the attribute-lineage-analysis skill,
 one each for CUMULATIVE_PRINCIPAL_PAID, ACCRUED_INTEREST, and
 WRITTEN_OFF_AMOUNT. Then consolidate all four attributes into one
 portfolio-wide lineage & impact report and publish it to Confluence as a new
-timestamped child page under "Persistent — Ab Initio Lineage Demos".
+timestamped child page under the Ab Initio lineage demos parent page.
 ```
 
 Each child session runs the Skill end to end for its attribute — column-level
