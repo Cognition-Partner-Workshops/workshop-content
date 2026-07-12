@@ -64,12 +64,9 @@ The remainder of this page follows the same analysis in smaller visible steps.
   7 XFR transforms, 10 DML layouts, 7 PSETs, embedded and companion Oracle /
   Teradata SQL, sample data, KornShell orchestration, AutoSys JIL, and
   ground-truth lineage and impact-analysis answer keys.
-- [workshop-metadata](https://github.com/Cognition-Partner-Workshops/workshop-metadata)
-  — attendee-facing walkthroughs and hands-on modules, including this demo
-  guide.
 
-The analysis target is the first repository. The second repository is only the
-content source for this walkthrough.
+The analysis target is `ts-abinitio-loan-servicing`. It is synthetic and
+intended for static-analysis walkthroughs, not a production environment.
 
 ---
 

@@ -76,8 +76,6 @@ into a finished lineage-extraction product.
   transforms, 10 DML layouts, 7 PSETs, Oracle and Teradata SQL, deterministic
   sample data, KornShell and AutoSys orchestration, answer keys, a playbook,
   and a repo Skill.
-- [workshop-metadata](https://github.com/Cognition-Partner-Workshops/workshop-metadata)
-  — source for this reusable hands-on module and related walkthrough content.
 
 The target repository is synthetic and intended for static analysis practice.
 It does not represent a production environment.
