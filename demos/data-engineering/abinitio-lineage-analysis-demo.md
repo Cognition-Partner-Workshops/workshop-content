@@ -48,8 +48,8 @@ KornShell orchestration, AutoSys JIL, and ground-truth answer keys under
 <a id="step-1"></a>
 ## Step 1 — Ask Devin about the estate
 
-Start in Ask Devin (chat) mode on `ts-abinitio-loan-servicing` to orient the
-audience over the estate before any session runs:
+Start in Ask Devin (chat) mode on `ts-abinitio-loan-servicing` to explore the
+estate before any session runs:
 
 ```
 How is OUTSTANDING_LOAN_BALANCE in LOAN_PORTFOLIO_MART computed, and what
