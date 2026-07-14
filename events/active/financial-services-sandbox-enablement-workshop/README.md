@@ -284,7 +284,7 @@ When Devin opens a PR:
 - [ ] [uc-cve-remediation-regulatory-compliance](https://github.com/Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance) — Lab 2
 - [ ] *(optional, Going Further)* [uc-legacy-modernization-cobol-to-java](https://github.com/Cognition-Partner-Workshops/uc-legacy-modernization-cobol-to-java), [uc-db-migration-sybase-to-sqlserver](https://github.com/Cognition-Partner-Workshops/uc-db-migration-sybase-to-sqlserver), or [fineract](https://github.com/Cognition-Partner-Workshops/fineract)
 
-Confirm the required repos are connected in Devin's org settings, and trigger DeepWiki indexing, before the session. See the [facilitator companion](README-facilitator.md) for the full pre-session checklist.
+Confirm the required repos are connected in Devin's org settings, and trigger DeepWiki indexing, before the session. Facilitator setup, pacing, and positioning notes live in the [workshop-operations](https://github.com/Cognition-Partner-Workshops/workshop-operations) repo.
 
 ---
 
@@ -308,6 +308,6 @@ Extend the sandbox into real-world banking workflows after the session:
 
 - **The differentiator is the full SDLC.** Devin turns requirements into designs, designs into tested implementations, and implementations into governed PRs — where other AI coding assistants stop at code completion.
 - **Requirements and technical design are the real bottlenecks** in most banking delivery, and this is where Devin removes the most friction.
-- **Testing, compliance, and governance stay first-class.** Every change ships with tests run on Devin's VM and auditable artifacts (spec, design, triage, remediation) for review.
+- **Testing, compliance, and governance stay first-class.** Changes ship with tests run on Devin's VM and auditable artifacts (spec, design, triage, remediation) for review.
 - **The objective is throughput with quality held constant** — more capacity and faster cycle time without loosening security or compliance controls, keeping headcount flat.
 - **You leave with a reusable sandbox** and two flows that map to a banking client's top use cases, ready to customize for a joint customer workshop and next steps toward a pilot.
