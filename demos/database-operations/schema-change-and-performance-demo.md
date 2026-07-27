@@ -1,7 +1,12 @@
 # Live Schema Change and Query Regression — Database Operations Demo
 
-This walkthrough follows a document-list latency regression from alert to query,
-then through pool review, an expand/contract change, and review automation in
+A single-thread demo of day-two database work on a polyglot platform: a p95
+latency alert traced back to the ORM call that caused it, a connection-pool
+audit fanned out across services with child sessions, an expand/contract schema
+change written with a rollback path and reviewed before any DDL runs, and the
+review and alert automation that keeps the database team out of the critical
+path. The agent proposes and prepares; a human DBA executes against production.
+
 ## Table of Contents
 
 - [Quick Start](#quick-start)
@@ -16,6 +21,8 @@ then through pool review, an expand/contract change, and review automation in
 - [What Still Needs a Human](#what-still-needs-a-human)
 - [Key Takeaways](#key-takeaways)
 
+---
+
 <a id="quick-start"></a>
 ## Quick Start
 
@@ -24,10 +31,10 @@ Run the first investigation prompt against
 
 ```text
 In Cognition-Partner-Workshops/otterworks, trace the document-service latency
-regression from the Grafana alert uid document-service-high-latency through
-the API route to list_documents() in
+regression from the Grafana alert uid document-service-high-latency, through
+the gateway route in services/api-gateway/internal/proxy/router.go, to
+list_documents() in
 services/document-service/app/services/document_service.py.
-services/api-gateway/internal/proxy/router.go
 
 Read these exact files:
 services/document-service/app/services/document_service.py
@@ -50,10 +57,17 @@ Return a concise summary of the findings, the proposed SQL shape, and the
 created artifact path. Do not execute production DDL.
 ```
 
+These commands set and clear the injected document-read latency for a tenant
+namespace: `document-slow` sets the Redis flag
+`chaos:document-service:slow_queries`, as recorded in
+`scripts/bug-catalog.yaml`; `<ATTENDEE_ID>` is the tenant ID.
+
 ```bash
 ./scripts/inject-bug.sh <ATTENDEE_ID> document-slow
 ./scripts/inject-bug.sh <ATTENDEE_ID> reset
 ```
+
+---
 
 <a id="repository"></a>
 ## Repository
@@ -75,6 +89,7 @@ RDS PostgreSQL instance, DynamoDB tables, and a shared Redis replication group.
 | `collab-service` | Redis | `ioredis` | Two Redis clients in `services/collab-service/src/services/redis-adapter.ts` | None |
 | `search-service` | MeiliSearch, Redis flags | MeiliSearch SDK, `redis` | Lazy Redis singleton in `services/search-service/app/api/search.py` | None |
 | `api-gateway` | None | Go/Chi routing and proxy | None | None |
+
 Infrastructure facts are in `infrastructure/terraform/modules/database/main.tf`
 and `infrastructure/terraform/modules/cache/main.tf`. RDS is PostgreSQL 15.7,
 database `otterworks`, encrypted, and defaults to `db.t3.micro`. No
@@ -84,8 +99,12 @@ group. Redis is 7.1, defaults to `cache.t3.micro`, and uses `default.redis7`.
 The DynamoDB tables are file metadata, audit events, notifications, folders,
 file versions, and file shares; each uses `PAY_PER_REQUEST`.
 
+---
+
 <a id="part-1"></a>
 ## Part 1 — From p95 alert to the query that caused it
+
+Run the Quick Start investigation prompt now, then follow its evidence here.
 
 The alert is in `observability/grafana/provisioning/alerting/alert-rules.yml`
 with uid `document-service-high-latency`. It detects document-service P95
@@ -116,8 +135,9 @@ for doc in documents:
 ```
 
 The source marks this loop with `TODO: This is slow for large result sets
-(ETL-445, deferred Q2 2024)`. For page size `N`, the endpoint performs one
-document-page query plus `N` version queries, or `N + 1` before the count query.
+(ETL-445, deferred Q2 2024)`. For page size `N`, one request issues a count
+query, one page query, and `N` version queries — the classic N+1 shape, and it
+grows with the page size the caller asks for.
 
 The Alembic revision
 `services/document-service/alembic/versions/001_initial_schema.py` indexes
@@ -133,6 +153,8 @@ can compete with auth-service and report-service. The
 `observability/grafana/dashboards/infrastructure.json` uses
 `pg_stat_activity_count{datname="otterworks"}`; Prometheus scrapes
 `postgres-exporter:9187` in `observability/prometheus/prometheus.yml`.
+
+---
 
 <a id="part-2"></a>
 ## Part 2 — Fan out across services with child sessions
@@ -189,6 +211,8 @@ the language or schema format, the current read/write behavior, and the
 release step that must change it. Include a grep command and the exact
 matched paths so a reviewer can reproduce the inventory.
 ```
+
+---
 
 <a id="part-3"></a>
 ## Part 3 — The expand/contract schema change
@@ -247,10 +271,16 @@ The backfill should record a stable cursor or key range, cap batches, tolerate
 retries, and expose progress. A production operator decides batch size, rate
 limit, maintenance constraints, and index definition.
 
+---
+
 <a id="part-4"></a>
 ## Part 4 — Devin Review as the migration gate
 
-Make the review hazard concrete with this deliberately unsafe migration:
+This is the review case a database team cares about most: the risky migration
+arrives on an application developer's PR, not on the DBA's. Stand that PR up on
+a working branch of `Cognition-Partner-Workshops/otterworks` by adding a new
+Alembic revision under `services/document-service/alembic/versions/` whose
+`upgrade()` executes this deliberately unsafe DDL:
 
 ```sql
 ALTER TABLE documents
@@ -264,13 +294,11 @@ SET deleted_at = NOW()
 WHERE is_deleted = TRUE;
 
 ALTER TABLE document_versions
-  ADD COLUMN document_owner_id UUID REFERENCES users(id);
+  ADD COLUMN supersedes_id UUID REFERENCES document_versions(id);
 ```
 
-Commit that snippet as
-`services/document-service/alembic/versions/999_review_fixture.py` in the
-`Cognition-Partner-Workshops/otterworks` working branch, then ask Devin Review
-to inspect the resulting PR diff:
+Devin Review runs on the PR and comments on the diff without being asked. To
+direct it at the database concerns specifically, comment on the PR with:
 
 ```text
 Review the new migration in Cognition-Partner-Workshops/otterworks as a
@@ -294,8 +322,11 @@ files.
 ```
 
 A useful review comment flags table-lock or rewrite risk, a transaction
-boundary conflict, unbounded write load, and foreign-key lookup performance.
-It should propose a safe rewrite rather than merely labeling SQL unsafe.
+boundary conflict, unbounded write load, and foreign-key lookup performance,
+and proposes a safe rewrite rather than merely labeling the SQL unsafe. That is
+the bottleneck this removes: the database team stops being the mandatory
+reviewer on the mechanical hazards in application schema PRs and reviews the
+plans and the exceptions instead.
 
 Close the loop when a reviewer requests a concrete revision:
 
@@ -326,7 +357,10 @@ and which content belongs in the Devin shared context layer. Return the exact
 artifact paths and do not alter application code.
 ```
 
-The otterworks repository has no root `REVIEW.md`; do not claim it was updated.
+The otterworks repository has no root `REVIEW.md` today, so this step creates
+the guidance artifact rather than editing one.
+
+---
 
 <a id="part-5"></a>
 ## Part 5 — Wire the trigger: hands-free
@@ -376,18 +410,30 @@ updates the resumable backfill plan, and returns the changed paths and local
 verification output. Do not include production credentials or execute DDL.
 ```
 
-Grafana sends alert data to `admin-service` at
-`/api/v1/admin/alerts/ingest`; the Rails controller expects an `alerts` array.
-A forwarder can pass these fields to a Devin v3 session:
+The second trigger is already wired in the repository. Grafana posts the
+Unified Alerting payload to `/api/v1/admin/alerts/ingest`, handled by
+`services/admin-service/app/controllers/api/v1/admin/alerts_controller.rb`.
+The controller reads `labels.alertname`, `labels.affected_service`,
+`labels.severity`, `annotations.summary`, and `annotations.description` from
+each entry in the `alerts` array, skips the alert when an incident for that
+service is already open or investigating, creates an `Incident` record, and — when
+`AdminSettingsService.auto_investigate_enabled?` is true — calls
+`services/admin-service/app/services/devin_session_service.rb`, which POSTs to
+`https://api.devin.ai/v3/organizations/{org_id}/sessions` and stores the
+returned session URL on the incident.
 
-- alert uid: `document-service-high-latency`
-- `affected_service`: `document-service`
-- summary: `P95 latency spike on document-service`
-- time window: the alert evaluation window, one minute for this rule
+For the p95 rule in this thread the payload carries alertname
+`document-service-high-latency`, `affected_service: document-service`, and the
+summary `P95 latency spike on document-service`, over the rule's one-minute
+evaluation window. Reproduce the whole path locally with
+`./scripts/inject-bug.sh <ATTENDEE_ID> document-slow`: latency climbs, the rule
+fires, the incident is created, and a session opens with the alert context
+already in the prompt. Nobody typed anything. At 2 a.m. the query analysis and
+the pool evidence are attached to the incident before the on-call DBA reads it
+— and the session investigates and proposes only; production stays behind the
+human.
 
-At 2 a.m., that path can open an investigation session with the alert payload,
-query analysis, and shared-resource panels. The agent investigates and
-proposes; it does not touch production.
+---
 
 <a id="part-6"></a>
 ## Part 6 — Shared context layer
@@ -405,6 +451,8 @@ proposes; it does not touch production.
   connect ticket or observability context without claiming that a specific
   integration is wired into this workshop environment.
 
+---
+
 <a id="before-after"></a>
 ## Before / After
 
@@ -418,6 +466,8 @@ Use directional, illustrative measures; replace them with measured values:
 | Alert-to-root-cause hypothesis | Depends on who is awake and has repository context | An alert session assembles Grafana, code, and schema evidence |
 | Pool configuration across 12 services | Explicit settings are uneven; report and legacy have none | Pool settings and capacity assumptions are inventoried and owned |
 
+---
+
 <a id="what-still-needs-a-human"></a>
 ## What Still Needs a Human
 
@@ -429,6 +479,8 @@ Use directional, illustrative measures; replace them with measured values:
 - Incident command and prioritization during an active outage.
 - Acceptance of the final query plan and index tradeoffs against production
   data distribution.
+
+---
 
 <a id="key-takeaways"></a>
 ## Key Takeaways
