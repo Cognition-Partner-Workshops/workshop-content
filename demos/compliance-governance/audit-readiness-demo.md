@@ -265,7 +265,11 @@ printf '\n    private String reviewMarker;\n' >> \
   core-banking-service/src/main/java/com/javatodev/finance/model/entity/TransactionEntity.java
 git add core-banking-service/src/main/java/com/javatodev/finance/model/entity/TransactionEntity.java
 git commit -m "Add transaction review marker"
+git push origin workshop-control-review
 ```
+
+Open a PR against `main` from the `workshop-control-review` branch via the
+GitHub UI.
 
 Ask Devin Review to inspect the resulting PR for control conformance:
 
