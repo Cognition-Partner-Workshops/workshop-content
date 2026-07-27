@@ -88,8 +88,17 @@ material rather than assuming a generic JavaScript test standard.
 | Quarantine debt | `test.skip` and `test.fixme` entries can carry TODOs without an owner or burn-down date. | `FLAKY_REGISTRY.md` records owner, first-seen date, trace link, and disposition. |
 | CI quality gate | CI proves that the current suite passed. | A reusable gate checks whether changed product behavior has a corresponding test change and whether quarantine records are owned. |
 
+This is team capacity, not a solo debugging exercise. The nightly run continues
+regardless of who is on call, while the registry gives a QE manager an owned
+backlog that can be burned down.
+
 <a id="part-1"></a>
 ## Part 1 — The Baseline the Agent Produces Itself
+
+An IDE assistant can help with one test while an engineer is present. A cloud
+agent can rerun an eight-shard Playwright suite with repeat-each for hours,
+overnight, across the monorepo. That capacity is the reason this loop starts
+with an unattended baseline rather than an editor-side inspection.
 
 Paste this prompt into Devin:
 
@@ -141,8 +150,16 @@ critical-flow coverage, and quarantine debt. Do not change
 application code or test files in this step.
 ```
 
+`TEST_QUALITY_BASELINE.md` comes back with the configured project counts, shard
+wall times, pass-on-retry results, and a skip/fixme inventory with its TODO
+text. Read the retry signal first, then the skipped-test paths: together they
+show where a green suite may be hiding unstable or deferred coverage.
+
 <a id="part-2"></a>
 ## Part 2 — Fan Out Coverage Gaps with Child Sessions
+
+Use the baseline to divide the next wave into five bounded areas, with one
+child session per area:
 
 1. `apps/web/playwright` booking flows
 2. `apps/web/playwright` event-types flows
@@ -190,6 +207,11 @@ with area, test path, behavior protected, red-run evidence,
 green-run evidence, and remaining risk. Do not pad assertions,
 duplicate an existing test, or change generated files.
 ```
+
+The parent returns an aggregated `COVERAGE_GAP_REPORT.md` with one section per
+child and a table of protected behavior, paths, commands, and remaining risk.
+Read the red-then-green evidence column first: a test with no red run is
+assertion padding, not useful signal.
 
 The `petclinic-rest-api` child uses the existing `pom.xml` JaCoCo rules and
 does not claim generated REST DTO or API code as a meaningful gap. Its report
@@ -244,6 +266,10 @@ workflow pattern does. Keep credentials in GitHub Actions secrets
 and do not write secrets to the repository.
 ```
 
+With nobody watching, the scheduled run repeats the eight shards, merges their
+blob reports, and sends Devin a payload containing the spec path, title,
+project/shard, failure message, trace artifact, and repeat-run pass rate.
+
 The triage session receives the payload and updates the registry.
 Paste this second prompt into the triage session:
 
@@ -287,12 +313,16 @@ entry, and issue link. End with counts for fixed, quarantined,
 and escalated flakes.
 ```
 
+The triage split separates product races, test-infrastructure timing, and
+external dependencies. Devin fixes within two attempts; unresolved cases go
+to `FLAKY_REGISTRY.md` and a GitHub Issue instead of looping.
+
 <a id="part-4"></a>
 ## Part 4 — Devin Review as the Test-Quality Reviewer
 
 ### A human PR arriving in Cal.com
 
-Configure Devin Review to inspect an incoming human PR and comment on:
+When an incoming human PR reaches Devin Review, it reports on:
 
 - whether the changed behavior has a test
 - whether assertions express behavior rather than implementation detail
@@ -343,6 +373,11 @@ End with the expected review comment format: finding, file path,
 behavior at risk, suggested change, and verification command.
 ```
 
+The guideline gives Devin Review a durable test-quality vocabulary beside the
+repository's existing agent guidance. Review comments can point to a behavior,
+an owned flake, and a verification command instead of making a generic quality
+claim.
+
 ### Closing the loop on Devin's own PR
 
 A human reviewer can leave a concrete comment on the triage PR:
@@ -370,9 +405,6 @@ Follow the reusable-workflow convention in existing files such as
 
 The gate runs for a PR through the existing aggregation path in
 .github/workflows/all-checks.yml and .github/workflows/pr.yml.
-Use the one child-produced petclinic-rest-api result as the cross-stack
-input: include its JaCoCo gap summary and exclusions from petclinic-rest-api/pom.xml
-in the posted quality summary, without creating a workflow in that repository.
 It must:
 
 1. Map changed product source paths to the relevant changed spec
@@ -384,6 +416,11 @@ It must:
    without an owner recorded for the remaining decision.
 4. Post one summary comment containing changed source paths,
    changed test paths, warnings, and blocking findings.
+
+Use the one child-produced petclinic-rest-api result as the
+cross-stack input. Include its JaCoCo gap summary and exclusions
+from petclinic-rest-api/pom.xml in the posted quality summary,
+without creating a workflow in that repository.
 
 Document the policy in agents/test-quality-review-guideline.md:
 - missing tests for changed behavior are blocking
