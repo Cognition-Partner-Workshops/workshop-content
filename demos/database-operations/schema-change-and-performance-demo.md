@@ -258,8 +258,8 @@ Use these phases:
 
 For each phase, state rollback steps and whether it is safe while the
 application serves traffic. Explain that CREATE INDEX CONCURRENTLY cannot run
-inside a transaction and what that requires in Alembic. Call out the
-production hazard of ddl-auto=update in report-service and legacy-portal.
+inside a transaction and what that requires in Alembic. Note the production
+hazard of ddl-auto=update in report-service and legacy-portal.
 
 Write the plan and code only. A human DBA executes production DDL after plan
 approval. The agent may run checks against local docker-compose Postgres or a
