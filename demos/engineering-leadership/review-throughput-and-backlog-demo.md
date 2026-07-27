@@ -218,8 +218,7 @@ reports:
   reviewer who has never opened this file can follow it
 - that `ratelimit_test.go` covers the previous window semantics and was not
   updated — a test-coverage gap on the changed path
-- whether the change interacts with
-  `internal/middleware/metrics.go` or the
+- whether the change interacts with `internal/middleware/metrics.go` or the
   circuit breaker in `internal/proxy/circuitbreaker.go`
 
 The mechanical layer of the review is done before a human opens the PR. What is
@@ -246,10 +245,10 @@ For each repo include:
 - the three files or directories that appear most often in
   changed-file lists
 
-Then a cross-repo section: which repo has the longest first
--response time, and which directories concentrate the
-review load. Use the GitHub API for the data and state the
-query window and the exact counts you used.
+Then a cross-repo section: which repo has the longest
+time to first response, and which directories concentrate
+the review load. Use the GitHub API for the data and state
+the query window and the exact counts you used.
 ```
 
 This is the report a delivery lead usually cannot get without asking someone to
