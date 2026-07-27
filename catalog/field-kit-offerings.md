@@ -19,7 +19,7 @@ This repo splits content by **how it is consumed**. Each type is a distinct kind
 | 1 | **Courses** | Reading-first enablement, sequential by role (no coding) | 4 (Foundations + 3 tracks) | `Course` *(new)* | Enablement, role-specific | 100–200 |
 | 2 | **Workshops** | Hands-on, choose-your-own-adventure lab collections (no solutions/assessments) | 16 | `Hands On Lab` (collection) | Engineering, Systems Integration | 200–300 |
 | 3 | **Labs** | Individual hands-on lab modules — the building blocks workshops compose | 85 (13 disciplines) | `Hands On Lab` | Engineering | 100–400 |
-| 4 | **Demos** | Facilitator-led linear showcases, persona-targeted | 11 (3 categories) | `Demo` | Sales, Solutions | 200 |
+| 4 | **Demos** | Facilitator-led linear showcases, persona-targeted | 15 (5 categories) | `Demo` | Sales, Solutions | 200 |
 | 5 | **Reference** | Shared lookup cards on how Devin works + runtime run instructions | 7 cards + 1 | `Solution Brief` / `Toolkit` | All | 100–200 |
 | 6 | **Catalog** | Machine-readable repo inventory + upstream provenance | 1 (15 clusters) | `Toolkit` | Enablement, Engineering | n/a |
 | 7 | **Events** | Non-reusable, network/laptop-specific event instances | varies | *(do not catalog — internal)* | — | — |
@@ -75,7 +75,7 @@ OtterWorks is the **north-star** offering: tag it distinctly (`custom: ["flagshi
 
 ## 4. Demos (facilitator-led)
 
-11 showcases across data-engineering, migration, and security. Tree: [`demos/`](../demos/). One Packet per demo, `packetType: Demo`, `audience: [Sales, Solutions]`. These are linear "follow along" scripts, not labs.
+15 showcases across data-engineering, migration, security, application-development, and observability-sre. Tree: [`demos/`](../demos/). One Packet per demo, `packetType: Demo`, `audience: [Sales, Solutions]`. These are linear "follow along" scripts, not labs.
 
 ## 5. Reference (shared lookup)
 
