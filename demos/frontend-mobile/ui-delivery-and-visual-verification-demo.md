@@ -404,8 +404,8 @@ report a before/after violation table plus screenshots.
 
 Monitor the children until each reports a green scan on its branch.
 Aggregate the results into a single markdown table of repo, rules
-fixed, nodes remaining, and the token changes made, and call out
-any repo where the token fix could not be applied at the theme
+ fixed, nodes remaining, and the token changes made, and list
+ any repo where the token fix could not be applied at the theme
 level.
 ```
 
