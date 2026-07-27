@@ -105,7 +105,7 @@ signature in `services/api-gateway` without updating its callers, or bump a
 dependency in `services/collab-service/package.json` to a version that fails
 `npm test`. Push and open a PR against `main`.
 
-Watch the sequence in the PR's Checks tab:
+The sequence in the PR's Checks tab is:
 
 1. `ci.yml` runs its path-filtered jobs — only the jobs for the changed
    service run (the workflow uses `dorny/paths-filter` to skip untouched
