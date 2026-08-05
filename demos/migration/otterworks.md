@@ -241,7 +241,9 @@ when the service stops needing an exemption from the estate's own scanners and
 CI. Trivy over the service goes from 131 findings (10 CRITICAL / 56 HIGH) to 80
 (6 CRITICAL / 29 HIGH) — most of it from the Boot 2.5.14 → 3.2.5 transitive tree,
 with the remainder needing a further Boot 3.3+ bump, which is the next
-quarter's ticket rather than a blocker.
+quarter's ticket rather than a blocker. On the PR, the proof is the checks
+themselves: `report-service` now green on Java 17, `dependency-scan` green with
+no `--skip-dirs` exemption, and `api-flow-tests` green through the gateway.
 
 <a id="act-3"></a>
 ### Act 3 — Translate Flask to FastAPI against the contract
