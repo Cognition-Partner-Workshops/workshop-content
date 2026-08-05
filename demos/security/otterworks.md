@@ -292,8 +292,9 @@ branch named demo-secscan1 cut from the Part 1 branch that carries
 that file. If SECURITY_BACKLOG.md does not exist yet, run the Part 1
 scan prompt first to generate it, then continue from that branch.
 
-Work in this order and stop at the first finding you cannot fix
-without a breaking change:
+Work in this order. Skip any finding that needs a breaking change,
+record why, and keep going — do not halt the whole run on the first
+one:
 
 1. Dependency bumps to the fixed version in the correct
    manifest for that ecosystem — services/collab-service/
@@ -301,8 +302,10 @@ without a breaking change:
    services/admin-service/Gemfile,
    services/document-service/pyproject.toml,
    services/file-service/Cargo.toml,
-   services/api-gateway/go.mod. Update the corresponding lock
-   file with the ecosystem's own tool, never by hand.
+   services/api-gateway/go.mod, plus any other manifest the
+   backlog names (the frontends and demo-platform/dashboard
+   carry findings too). Update the corresponding lock file with
+   the ecosystem's own tool, never by hand.
 2. The hardcoded credentials in etl/config.ini (an AWS-style
    secret key, an "etl_pr0d_2019!" database password, and a
    MeiliSearch master key). Move them to environment variables
@@ -314,7 +317,10 @@ After each service:
   rspec, cargo test, go test ./..., ./mvnw test as
   appropriate).
 - Re-run make security-scan and show the specific finding is
-  gone from the output.
+  gone from the output. If the target's Trivy step fails on a
+  Maven Central 429, rerun it as trivy fs --config
+  security/scanning/trivy-config.yaml --offline-scan . and say
+  in the report that you did.
 
 Produce REMEDIATION_REPORT.md with a before/after table: CVE,
 package, version before, version after, the test command you
@@ -324,7 +330,7 @@ version bump, breaking API change) and add a narrowed
 .trivyignore entry with the service, reason, and review date.
 ```
 
-Watch for three specific behaviors in the session:
+Watch for four specific behaviors in the session:
 
 - **Ecosystem-correct edits.** A Node bump updates `package-lock.json` via `npm`;
   a Python bump updates the pin and, for `services/document-service`, goes
@@ -332,6 +338,16 @@ Watch for three specific behaviors in the session:
   that service.
 - **The re-scan as the gate.** The evidence in `REMEDIATION_REPORT.md` is a line
   of scanner output, not a claim.
+- **Deferral instead of a forced bump.** On the live run, seven groups were
+  skipped as breaking and recorded with narrowed `.trivyignore` entries carrying
+  a service, a reason, and a review date — the OpenTelemetry JS SDK in
+  `collab-service`, Puma 7 in `admin-service`, Starlette/FastAPI in
+  `document-service`, `rustls-webpki` through the AWS SDK stack in
+  `file-service`, Angular 19 in `frontend/admin-dashboard`, `react-router` 8 in
+  `frontend/client-app`, and `report-service`. The remaining bumps landed with
+  per-service suites green (for example collab-service `npm test` 45 passed,
+  admin-service `bundle exec rspec` 120 examples 0 failures, api-gateway
+  `go test ./...` all packages passing).
 - **An honest stop.** The offline Trivy rerun surfaced
   `commons-io 2.6` / `CVE-2024-47554` from
   `services/report-service/pom.xml`. That real finding is not a dependency bump
