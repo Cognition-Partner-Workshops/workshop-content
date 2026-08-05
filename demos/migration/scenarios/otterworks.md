@@ -236,12 +236,15 @@ Do not propose changes to main or to t-main. Every unit is verified on its own
 demo-<id> tenant first.
 ```
 
-Wave 1 comes out of this looking like the units that touch nothing else:
-`report-service` (nothing calls it), `search-service` (contract-covered),
-the cron ETL scripts, and the `admin-service` boot defect. Waves 2 and 3 are
-where `api-gateway` and `auth-service` live, and they wait until the harness
-around them is stronger — which is the argument for running the coverage and
-contract work of Wave 1 first rather than treating it as cleanup.
+Applied to this estate, the blast-radius rule puts the leaves and the gate
+repair in Wave 1 — `report-service` (nothing calls it), `legacy-portal`, the
+`admin-dashboard`, the unpinned Rust toolchain, and a cross-cutting unit that
+makes the un-failable gates real. The contract-covered components such as
+`search-service` land in Wave 2, and `api-gateway` and `auth-service` in
+Wave 3, once the harness around them is stronger. That ordering is the argument
+for treating the gate repair as the first unit of delivery rather than as
+cleanup: everything downstream is verified by gates that Wave 1 made capable of
+failing.
 
 This is the artifact the engagement lead maps to sprints. The architect
 validates the sequencing; the plan is an input to that decision, not a
@@ -265,15 +268,16 @@ What Wave 1 inherits:
 | Per-branch environments | `.github/workflows/cd-tenant.yml` | `demo-<id>` → `t-<id>.demo.otterworks.app`, rebuilding only changed services |
 | Cross-service flow tests | `tests/api/` | 10 flow suites — auth, file, document, collaboration, search, audit/analytics/report, side effects, degradation, WebSocket presence. The `api-flow-tests` CI job only collects them (`ci.yml:431`); running them is `make test-api-flows` |
 | Contract validation | `tests/contract/` | OpenAPI conformance, currently for search only — a gate to extend, not to invent |
-| Coverage | `make test-coverage` | A per-service coverage baseline to measure a delta against |
+| Coverage | `make test-coverage` | A per-service coverage baseline to measure a delta against — reporting only, until Wave 1 makes it fail |
 | Security | `make security-scan`, `.github/workflows/security-scan.yml`, `.github/workflows/sast-auto-remediate.yml` | Scanning plus an event-driven remediation path |
 | Observability | `observability/` | Grafana dashboards (`incident-overview.json`, `chaos-scenarios.json`, `service-detail.json`, and more), Prometheus alerts, Jaeger, OTel collector, Fluent Bit |
 | Runbooks | `docs/runbooks/` | Seven incident runbooks keyed to the failure modes the estate can actually exhibit |
 | Repo context | `.devin/wiki.json`, `.agents/skills/`, `.workshop/playbooks/` | The estate's own conventions, loaded automatically by any session working in it |
 
 The gaps discovery found are the foundation work Wave 1 actually needs: the
-`|| true` gate, the one-service contract suite, the dead Makefile targets. That
-is a day of work, not a sprint of scaffolding.
+`|| true` suppressions, the zeroed coverage thresholds, the collect-only flow
+test job, the one-service contract suite, and the dead Makefile targets. That is
+days of work against an existing harness, not a sprint of scaffolding.
 
 ---
 
@@ -337,7 +341,7 @@ planning was for — so it runs in parallel rather than in series. One child
 session per unit, each on its own branch, its own tenant, its own PR.
 
 ```
-Fan out the rest of Wave 1 from analysis/WAVE_PLAN.md in
+Fan out the remaining units from analysis/WAVE_PLAN.md in
 Cognition-Partner-Workshops/otterworks. Spawn one child session per unit,
 each on its own branch so cd-tenant.yml gives it its own tenant, and each
 following the corresponding module in
@@ -357,10 +361,15 @@ Cognition-Partner-Workshops/workshop-content under workshops/otterworks/:
    implementation side and add a contract test under tests/contract/ that
    fails if it recurs.
 
-3. branch demo-admin-boot — fix the Rails 7.1 logger defect at
-   services/admin-service/config/environments/production.rb:8 so the
-   service boots in production configuration, and add a test that covers
-   production boot per C3-test-coverage.md.
+3. branch demo-gate-repair — make the un-failable gates capable of failing:
+   remove the `|| true` from the admin-dashboard lint and test steps in
+   .github/workflows/ci.yml and from the lines in the Makefile's
+   test-coverage and security-scan targets, raise the zero coverage
+   thresholds in services/search-service/.coveragerc and
+   services/collab-service/jest.config.js to the current measured level, and
+   change the api-flow-tests CI job so it runs tests/api rather than only
+   collecting it. Report every gate that fails once it is able to, and fix
+   the failures rather than restoring the suppression.
 
 4. branch demo-coverage-blitz — run `make test-coverage`, identify the three
    services with the weakest coverage, and add meaningful tests to them per
