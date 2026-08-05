@@ -72,11 +72,10 @@ changes ship on a tenant branch.
   `auth-service`, Rust `file-service`, Python/FastAPI `document-service`,
   Node/Yjs `collab-service`, Kotlin `notification-service`, Python/Flask
   `search-service`, Scala `analytics-service`, Ruby/Rails `admin-service`, C#
-  `audit-service`, and an intentionally legacy Java 8 `report-service`) plus
-  a separate legacy-portal service directory that is not on the Helm/EKS
-  deployment path. It also includes a React `frontend/client-app` and an
-  Angular `frontend/admin-dashboard`, deployed to EKS through a multi-tenant
-  demo platform.
+  `audit-service`, and an intentionally legacy Java 8 `report-service`), plus a
+  React `frontend/client-app` and an Angular `frontend/admin-dashboard`, all
+  deployed to EKS through a multi-tenant demo platform. `services/legacy-portal`
+  also lives in the repo but is not on the Helm/EKS deployment path.
 
 The slice in this demo touches four places:
 
@@ -352,7 +351,7 @@ curl "https://$TENANT/api/health"
 
 TOKEN=$(curl -sS -X POST "https://$API/api/v1/auth/login" \
   -H 'Content-Type: application/json' \
-  -d '{"email":"<seeded-user>","password":"<seeded-password>"}' \
+  -d '{"email":"<email>","password":"<password>"}' \
   | python3 -c 'import json,sys; print(json.load(sys.stdin)["accessToken"])')
 
 # Archive a document, then confirm it leaves the default list
