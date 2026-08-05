@@ -65,10 +65,13 @@ cd otterworks
 make up            # LocalStack + Postgres + Redis + the services
 make seed          # synthetic tenant data
 make test          # per-service unit tests across nine languages
-make test-coverage # the same, with coverage reports
+make test-coverage # the same, with coverage reports (does not fail)
 make lint          # per-service linters
-make security-scan # Semgrep / Trivy / dependency scanning
+make security-scan # Trivy + per-language audits (does not fail)
 ```
+
+`make test-coverage` and `make security-scan` end every line in `|| true`: they
+report, they do not gate. That is a Phase 1 finding, not a footnote.
 
 `make help` lists every target. The API-level gates are Python:
 
@@ -182,6 +185,8 @@ with evidence is the difference between a scope estimate and a guess:
 | `search-service` is the only Python service still on **Flask**, while `document-service` is FastAPI. Two Python idioms to maintain, one of them the older one | `services/search-service/`, `services/document-service/` |
 | The Rust build is on **unpinned `rust:latest`** — the build is not reproducible, which matters more to a delivery timeline than to a developer | `services/file-service/Dockerfile` |
 | The **admin dashboard's lint and test steps are suffixed `\|\| true`** — a gate that is configured never to fail. The engagement was counting it as coverage | `.github/workflows/ci.yml` |
+| **`make test-coverage` and `make security-scan` end every line in `\|\| true`**, and the CI `api-flow-tests` job runs `pytest tests/api --collect-only` — so coverage, scanning, and the flow suites report but never block a merge | `Makefile` (`test-coverage`, `security-scan`), `.github/workflows/ci.yml:431` |
+| Coverage thresholds are set to **zero**: `fail_under = 0` for search, and `branches/functions/lines/statements: 0` for collab | `services/search-service/.coveragerc`, `services/collab-service/jest.config.js:14` |
 | Three Makefile targets reference **`frontend/web-app`**, which does not exist; the real directory is `frontend/client-app`. Frontend targets silently do nothing | `Makefile:107`, `Makefile:125`, `Makefile:150` |
 | `admin-service` fails to boot in production: `ActiveSupport::TaggedLogging.logger($stdout)` is not the Rails 7.1 factory API | `services/admin-service/config/environments/production.rb:8` |
 | The notification event schema requires `notificationId` while the audit of consumer expectations in `docs/labs/contract-audit-guide.md` documents drift against it | `shared/events/schemas/notification-events.json` |
@@ -258,7 +263,7 @@ What Wave 1 inherits:
 |---|---|---|
 | Change-gated CI | `.github/workflows/ci.yml` | A `detect-changes` job routes to per-service jobs, so a one-service PR runs one service's build, lint, and tests |
 | Per-branch environments | `.github/workflows/cd-tenant.yml` | `demo-<id>` → `t-<id>.demo.otterworks.app`, rebuilding only changed services |
-| Cross-service flow tests | `tests/api/` | 10 flow suites — auth, file, document, collaboration, search, audit/analytics/report, side effects, degradation, WebSocket presence |
+| Cross-service flow tests | `tests/api/` | 10 flow suites — auth, file, document, collaboration, search, audit/analytics/report, side effects, degradation, WebSocket presence. The `api-flow-tests` CI job only collects them (`ci.yml:431`); running them is `make test-api-flows` |
 | Contract validation | `tests/contract/` | OpenAPI conformance, currently for search only — a gate to extend, not to invent |
 | Coverage | `make test-coverage` | A per-service coverage baseline to measure a delta against |
 | Security | `make security-scan`, `.github/workflows/security-scan.yml`, `.github/workflows/sast-auto-remediate.yml` | Scanning plus an event-driven remediation path |
