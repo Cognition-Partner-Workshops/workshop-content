@@ -187,11 +187,21 @@ evidence rather than generalities:
 
 | Finding | Where |
 |---|---|
+| **Every action mapping sets `validate="false"`** — all 39 of them — so the entire `validation.xml` rule set is inert, and `IntakeSubmitAction` re-implements intake validation in Java by hand | `struts-config*.xml`; `web/IntakeSubmitAction.java` |
+| **The service layer has no callers.** `ClaimManager`, `PolicyManager` and `SettlementService` are never invoked from the web tier — actions go straight to DAOs or raw JDBC. Only `SettlementCalculator` sits on a request path | `com.northstar.claims.service` |
+| String-concatenated SQL — an injection path, not a style nit | `dao/PolicyDAO.java:100` (`findByLine`), `dao/ClaimDAO.java:122` (`search`), `dao/ClaimDAO.java:202`, and the concatenated `UPDATE`s in `web/Workbench{Assign,Status,Reserve}Action.java` — fired via GET links |
 | Duplicate date-formatting helpers in different packages | `dao/DateHelper.java` and `util/DateUtil.java` |
-| A form bean mapped in `struts-config` but unreachable from any JSP | `DeadForm` |
-| String-concatenated SQL — an injection path, not a style nit | `web/WorkbenchStatusAction.java:25`, `web/WorkbenchReserveAction.java:22`, `web/WorkbenchAssignAction.java:25`, `web/ClaimsActionSupport.java:68` |
+| A form bean mapped in `struts-config` but unreachable from any JSP; and an admin mapping referencing a form bean that is never declared | `DeadForm`; `adjusterForm` in `struts-config-admin.xml:10` |
+| Orphan JSPs and a dead link | `workbench/note.jsp`, `workbench/assignment.jsp`, `admin/editAdjuster.jsp`, `editAdjuster.do` |
 | Architecture doc describing a class that no longer exists | `docs/ARCHITECTURE.txt` describes `WorkflowAction`; nothing in `src/` references it |
 | Business rules living inside `execute()` rather than a service | the settlement and workbench actions |
+
+The first two rows are the ones worth pausing on, because they are the kind of
+finding that changes a migration plan. An architect handed this estate would
+reasonably assume the `validation.xml` rules and the manager classes are load
+bearing, and would budget time to port both. Neither runs. Reading that out of
+39 mappings and a call graph by hand is a day's work; it is also exactly the kind
+of thing a hand analysis gets wrong.
 
 That last row is the bridge into Phase 2. The framework behaviors surfaced here
 — blank-field coercion, lenient dates, `double` rounding — are exactly what the
@@ -235,7 +245,7 @@ SKIP (not yet extracted) today and must end green:
 Namespace: settlement (PORT_OFFSET=100).
 ```
 
-Two things are worth watching before any code is written. Devin reads the legacy
+Two things happen before any code is written. Devin reads the legacy
 module end to end and separates domain rules from Struts plumbing — the
 settlement formula, limit capping and status transitions are migrated as logic,
 while `ActionForm` population and `ActionForward` selection are simply replaced
