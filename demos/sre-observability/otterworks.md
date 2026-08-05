@@ -224,16 +224,27 @@ fix it:
 3. Add a pytest case under services/search-service/tests/ that drives
    suggest() with results missing _rankingScore and asserts a 200 with
    a suggestions list. Run: cd services/search-service && pytest.
-4. Report the failing expression, the fix, and the pytest output.
+4. Work on the demo-sre01 branch. The chaos scenario is a deliberately
+   planted bug under the golden-app policy in AGENTS.md, so this fix
+   stays on the branch and its PR is not merged into main.
+5. Report the failing expression, the fix, and the pytest output.
 ```
 
 Expected root cause: the enrichment path sorts with
-`key=lambda s: s["_rankingScore"]`, and MeiliSearch only returns `_rankingScore`
-when it is explicitly requested — so the key lookup raises `KeyError`, the Flask
-handler returns 500, and the after-request hook in `main.py` records that 5xx
-into `search_service_requests_total`, which is exactly what the alert reads. The
-non-chaos branch swallows failures and returns an empty suggestion list, which is
-why only this path pages anyone.
+`key=lambda s: s["_rankingScore"]`, and MeiliSearch only returns that field when
+it is explicitly requested — the search client in
+`services/search-service/app/services/` retrieves only the display attributes, so
+the key lookup raises `KeyError`, the Flask handler returns 500, and the
+after-request hook in `main.py` records that 5xx into
+`search_service_requests_total`, which is exactly what the alert reads. The
+enrichment branch also sits outside the handler's `try/except`, while the
+non-chaos branch catches failures and returns an empty suggestion list — which is
+why only one of the two paths ever pages anyone.
+
+A sound fix keeps the feature and closes both holes: request the ranking score
+explicitly where the client queries MeiliSearch, sort with a default for missing
+scores, and bring the branch inside the error handling so `suggest()` returns 200
+with a list either way.
 
 Verify the way an SRE verifies. First the code gate:
 
@@ -251,10 +262,17 @@ curl -s "https://t-sre01.demo.otterworks.app/api/v1/search/suggest?q=re" | head
 # Incidents page: the alert's resolved webhook closes the incident
 ```
 
-Push the fix to `demo-sre01`; CD rebuilds only `search-service` and redeploys the
-tenant, so the fix is verifiable in a browser on the same host that showed the
-outage. Devin Review comments on the PR, and the review thread is where the
-change gets accepted before it reaches `main` and, from there, `t-main`.
+Note the ordering: fixing the code makes the flag harmless, but the alert clears
+only once the tenant runs the fixed image or the flag is cleared. Push to
+`demo-sre01` and CD rebuilds only `search-service` and redeploys the tenant, so
+the fix is verifiable in a browser on the same host that showed the outage.
+
+The PR stays on the branch. `AGENTS.md` in otterworks makes `main` the golden app
+and treats the chaos scenarios as deliberately planted bugs, so merging this fix
+would retire the `search-suggest-500` scenario for everyone. Devin Review flags
+exactly that on the PR, which is a useful beat in itself: the review loop caught a
+policy conflict a green test suite could not. What lands on `main` from this demo
+is the runbook and the instrumentation, not the chaos fix.
 
 ---
 
@@ -444,8 +462,9 @@ repo.
 `sbt scalafmtCheck test` is green.
 
 **5. The reference environment is untouched.** `https://t-main.otterworks.app`
-still serves the golden app with an empty Incidents page — the chaos lived and
-died inside the ephemeral tenant, which is why the demo is repeatable.
+still serves the golden app with an empty Incidents page, and the chaos scenario
+is still intact on `main` — the outage and its fix lived and died inside the
+ephemeral tenant and its branch, which is why the demo is repeatable.
 
 ---
 
@@ -493,5 +512,7 @@ died inside the ephemeral tenant, which is why the demo is repeatable.
   boilerplate.
 - Blast radius is a first-class design choice: chaos is scoped to one ephemeral
   tenant with a self-expiring flag, the perpetual reference environment refuses
-  injection outright, and every fix travels through a branch, CD, a PR, and
-  review before it reaches the golden app.
+  injection outright, and every change travels through a branch, CD, a PR, and
+  review. Review is a real gate, not a formality — on this thread it is what
+  catches that the incident fix must stay on the branch under the golden-app
+  policy while the runbook and instrumentation work are what belong on `main`.
