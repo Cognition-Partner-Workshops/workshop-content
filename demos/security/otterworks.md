@@ -60,9 +60,11 @@ Two properties matter for the demo and are worth confirming in the recipe at
 - `services/report-service` is skipped outright — the intentionally legacy Java 8
   service is excluded from scanning, not fixed.
 
-Prerequisites: `trivy`, `npm`, `pip-audit`, and `bundle-audit` on the PATH. Any
-missing scanner degrades silently for the same reason (`|| true`), which is
-itself the first thing Devin reports in Part 1.
+Prerequisites: `trivy`, `npm`, `pip-audit`, and `bundle-audit` on the PATH. In
+the live run, only `npm audit` was present on the fresh session VM;
+`trivy`, `pip-audit`, and `bundle-audit` were absent. The `|| true` suffixes
+hid all three missing commands while the target still exited 0; Part 1
+records that observed failure mode.
 
 The live golden app is at [https://t-main.otterworks.app](https://t-main.otterworks.app)
 (user SPA at `/`, admin dashboard at `/admin`, health at `/api/health`). It
@@ -87,14 +89,20 @@ destructive changes.
 
 The OtterWorks security surfaces the demo touches:
 
-| Surface | Path | What it is |
-|---|---|---|
-| Scan gate | `Makefile` → `security-scan` | Trivy + `npm audit` + `pip-audit` + `bundle-audit` |
-| Trivy settings | `security/scanning/trivy-config.yaml` | CRITICAL/HIGH, OS + library, table output, 10m timeout |
-| Suppression list | `.trivyignore` | ~30 CVE entries, section comments, one wildcard |
-| PR scan workflow | `.github/workflows/security-scan.yml` | Trivy diff vs. merge base, Gitleaks, Semgrep |
-| Event-driven loop | `.github/workflows/sast-auto-remediate.yml` | Findings → PR comment → Devin session → escalation |
-| Attendee lab | `workshops/otterworks/C1-security-sprint.md` | The hands-on version of this thread |
+The security surfaces this demo touches are:
+
+- **Scan gate:** `Makefile` → `security-scan`; Trivy, `npm audit`,
+  `pip-audit`, and `bundle-audit`.
+- **Trivy settings:** `security/scanning/trivy-config.yaml`; CRITICAL/HIGH,
+  OS and library vulnerabilities, table output, and a 10-minute timeout.
+- **Suppression list:** `.trivyignore`; 31 original entries and section
+  comments, with explicit suppressions.
+- **PR scan workflow:** `.github/workflows/security-scan.yml`; Trivy diff
+  versus the merge base, Gitleaks, and Semgrep.
+- **Event-driven loop:** `.github/workflows/sast-auto-remediate.yml`;
+  findings → PR comment → Devin session → escalation.
+- **Attendee lab:** `workshops/otterworks/C1-security-sprint.md`; the
+  hands-on version of this thread.
 
 ---
 
@@ -104,7 +112,8 @@ The OtterWorks security surfaces the demo touches:
 **Before**
 
 - `make security-scan` prints CRITICAL/HIGH findings and exits 0.
-- `.trivyignore` suppresses a year of CVEs with a wildcard.
+- `.trivyignore` contains a `CVE-2021-*` line that looks like a year-wide
+  suppression, but Trivy's plain ignore format does not expand wildcards.
 - `report-service` is skipped.
 - `main` contains dependency concerns documented in manifests and suppressions,
   hardcoded credentials in `etl/config.ini`, and a `.trivyignore` reference to
@@ -133,9 +142,15 @@ Two things about the before state that make it realistic rather than a toy:
    CVE-2021-*
    ```
 
-   That pattern suppresses matching 2021 CVE IDs across the repository. The
-   file does not provide a ticket, owner, or expiry for this entry, and it is
-   unclear which Q4 the comment refers to.
+   Trivy's plain `.trivyignore` format does not expand wildcards, so this line
+   suppresses nothing. The live session proved that the actual suppression was
+   13 explicit entries hiding 14 CRITICAL/HIGH findings: a full-severity scan
+   found 52 CRITICAL/HIGH findings without an ignore file and 38 with it.
+   Eighteen of the original 31 entries were dead no-ops, including all seven
+   `frontend/web-app` Next.js entries. That directory was deleted; the real app
+   is `frontend/client-app`, a Vite/React app with no Next.js. A suppression
+   list nobody re-derives drifts into load-bearing and decorative entries, and
+   you cannot tell which is which by reading it.
 
 Work on a branch named `demo-<id>` (for example `demo-secscan1`). Pushing that
 branch triggers `.github/workflows/cd-tenant.yml`, which builds only the changed
@@ -185,14 +200,28 @@ Report the scanner versions you used and quote the exit code of
 make security-scan.
 ```
 
-What comes back is more interesting than the finding count. Devin reports the
-coverage gaps as first-class findings: the audit steps cover Node, Python, and
-Ruby for exactly one service each, while `services/api-gateway` (Go),
+What comes back is more interesting than the finding count. In the live run,
+the backlog held 45 CRITICAL/HIGH rows — 2 CRITICAL and 43 HIGH — across
+`services/admin-service`, `services/collab-service`,
+`services/api-gateway`, `services/document-service`,
+`services/file-service`, `frontend/admin-dashboard`,
+`frontend/client-app`, and `demo-platform/dashboard`. Counts move as
+advisories publish, so treat them as illustrative rather than fixed.
+
+Devin also reports the coverage gaps as first-class findings: the audit steps
+cover Node, Python, and Ruby for exactly one service each, while
+`services/api-gateway` (Go),
 `services/file-service` (Rust), `services/auth-service` and
 `services/report-service` (Java), `services/audit-service` (C#),
 `services/analytics-service` (Scala), `services/notification-service` (Kotlin),
 and both frontends have no dedicated audit step — Trivy's filesystem scan is the
-only thing looking at them.
+only thing looking at them. `pip-audit` reported 10 advisories for
+`services/search-service/requirements.txt`, but it emits no severity, so those
+cannot be triaged by severity from that tool.
+
+After Trivy was installed, its target step failed with a Maven Central HTTP 429
+while resolving Spring Boot parent POMs. An `--offline-scan` rerun was needed
+to complete; `|| true` converted the failed target step into a silent pass.
 
 The "Suppressed" section is where Part 2 begins.
 
@@ -221,9 +250,10 @@ For every entry, determine:
 
 Two specific things to check and report on:
 1. The "CVE-2021-*" wildcard entry commented "Bulk ignore —
-   revisit in Q4". Enumerate what that single line suppresses
-   across the monorepo by running Trivy with and without the
-   ignore file and diffing the CRITICAL/HIGH results.
+   revisit in Q4". Check whether it has any effect at all under
+   Trivy's plain ignore-file semantics, then quantify the list's
+   real suppression by running Trivy with and without the ignore
+   file and diffing the CRITICAL/HIGH results.
 2. The "frontend/web-app" section header. Confirm whether that
    directory exists on main, and if not, name the directory
    that does.
@@ -237,13 +267,17 @@ if removing an entry reintroduces a CRITICAL/HIGH finding, list
 that finding in SECURITY_BACKLOG.md instead.
 ```
 
-The diff-with-and-without-ignore-file step is what makes this concrete: instead
-of arguing about whether a wildcard is bad practice, the session shows the exact
-list of CRITICAL and HIGH findings that line was hiding. The stale
-`frontend/web-app` header is a second, cheaper proof — the real directory is
-`frontend/client-app`, so those suppression comments have been describing a
-directory that does not exist. (The same stale path appears in `Makefile` build,
-test, and lint targets, which Devin picks up while it is in there.)
+The diff-with-and-without-ignore-file step is what makes this concrete. On the
+live run it showed the wildcard to be a no-op, then named the 14 CRITICAL/HIGH
+findings that 13 explicit entries were actually hiding — 52 findings without an
+ignore file versus 38 with it. The stale `frontend/web-app` header is a second,
+cheaper proof: all seven of its Next.js entries are dead no-ops because that
+directory was deleted. The real directory
+is `frontend/client-app`, a Vite/React app with no Next.js. (The same stale path
+appears in `Makefile` build, test, and lint targets, which Devin picks up while
+it is in there.) The lesson is that a suppression list nobody re-derives drifts
+into load-bearing and decorative entries, and reading the file cannot tell you
+which is which.
 
 ---
 
@@ -253,13 +287,15 @@ test, and lint targets, which Devin picks up while it is in there.)
 Now fix findings, with the re-scan as the gate. Paste this:
 
 ```
-Using SECURITY_BACKLOG.md in the
-Cognition-Partner-Workshops/otterworks repo, remediate the
-CRITICAL and HIGH findings on a branch named demo-secscan1 cut
-from main.
+In the Cognition-Partner-Workshops/otterworks repo, remediate the
+CRITICAL and HIGH findings recorded in SECURITY_BACKLOG.md on a
+branch named demo-secscan1 cut from the Part 1 branch that carries
+that file. If SECURITY_BACKLOG.md does not exist yet, run the Part 1
+scan prompt first to generate it, then continue from that branch.
 
-Work in this order and stop at the first finding you cannot fix
-without a breaking change:
+Work in this order. Skip any finding that needs a breaking change,
+record why, and keep going — do not halt the whole run on the first
+one:
 
 1. Dependency bumps to the fixed version in the correct
    manifest for that ecosystem — services/collab-service/
@@ -267,8 +303,10 @@ without a breaking change:
    services/admin-service/Gemfile,
    services/document-service/pyproject.toml,
    services/file-service/Cargo.toml,
-   services/api-gateway/go.mod. Update the corresponding lock
-   file with the ecosystem's own tool, never by hand.
+   services/api-gateway/go.mod, plus any other manifest the
+   backlog names (the frontends and demo-platform/dashboard
+   carry findings too). Update the corresponding lock file with
+   the ecosystem's own tool, never by hand.
 2. The hardcoded credentials in etl/config.ini (an AWS-style
    access/secret key pair, a database password, and a
    MeiliSearch master key). Move them to environment variables
@@ -280,7 +318,10 @@ After each service:
   rspec, cargo test, go test ./..., ./mvnw test as
   appropriate).
 - Re-run make security-scan and show the specific finding is
-  gone from the output.
+  gone from the output. If the target's Trivy step fails on a
+  Maven Central 429, rerun it as trivy fs --config
+  security/scanning/trivy-config.yaml --offline-scan . and say
+  in the report that you did.
 
 Produce REMEDIATION_REPORT.md with a before/after table: CVE,
 package, version before, version after, the test command you
@@ -290,7 +331,7 @@ version bump, breaking API change) and add a narrowed
 .trivyignore entry with the service, reason, and review date.
 ```
 
-Watch for three specific behaviors in the session:
+Watch for four specific behaviors in the session:
 
 - **Ecosystem-correct edits.** A Node bump updates `package-lock.json` via `npm`;
   a Python bump updates the pin and, for `services/document-service`, goes
@@ -298,9 +339,20 @@ Watch for three specific behaviors in the session:
   that service.
 - **The re-scan as the gate.** The evidence in `REMEDIATION_REPORT.md` is a line
   of scanner output, not a claim.
-- **An honest stop.** The `services/report-service` Guava `28.0-jre` finding on
-  Java 8 (`services/report-service/pom.xml`) is not a dependency bump — it is the
-  Java 8 → 17 upgrade covered by lab
+- **Deferral instead of a forced bump.** On the live run, seven groups were
+  skipped as breaking and recorded with narrowed `.trivyignore` entries carrying
+  a service, a reason, and a review date — the OpenTelemetry JS SDK in
+  `collab-service`, Puma 7 in `admin-service`, Starlette/FastAPI in
+  `document-service`, `rustls-webpki` through the AWS SDK stack in
+  `file-service`, Angular 19 in `frontend/admin-dashboard`, `react-router` 8 in
+  `frontend/client-app`, and `report-service`. The remaining bumps landed with
+  per-service suites green (for example collab-service `npm test` 45 passed,
+  admin-service `bundle exec rspec` 120 examples 0 failures, api-gateway
+  `go test ./...` all packages passing).
+- **An honest stop.** The offline Trivy rerun surfaced
+  `commons-io 2.6` / `CVE-2024-47554` from
+  `services/report-service/pom.xml`. That real finding is not a dependency bump
+  — it is the Java 8 → 17 upgrade covered by lab
   [A2](../../workshops/otterworks/A2-framework-upgrade.md). The correct outcome is a
   documented deferral with a narrowed suppression, not a forced bump.
 
@@ -499,9 +551,10 @@ the thing that confirms the fix.
 
 **2. The suppression list defends itself.** Open the rewritten `.trivyignore`.
 Every remaining entry names its service, its reason, and a review date; the
-`CVE-2021-*` wildcard is gone, and anything it was hiding is either fixed or
-listed in `SECURITY_BACKLOG.md`. Suppressions are now a reviewable backlog rather
-than silence.
+`CVE-2021-*` wildcard is gone because it was a no-op. Thirteen explicit entries
+were load-bearing, hiding 14 CRITICAL/HIGH findings; 18 of the original 31
+entries were dead no-ops. Suppressions are now a reviewable backlog rather than
+silence.
 
 **3. Tests pass and the platform runs.** Show the per-service test output in
 `REMEDIATION_REPORT.md`, then the tenant at
@@ -544,10 +597,12 @@ to run concurrently with other sessions.
   map of what the gate does not cover — the finding a scanner cannot report about
   itself.
 - **Suppression lists are an important review surface of a security pipeline.**
-  One `CVE-2021-*` line suppresses matching CVE IDs across nine language
-  ecosystems with no owner or expiry in the file. Devin can quantify it by
-  diffing Trivy with and without the ignore file, which turns a style argument
-  into a list.
+  The `CVE-2021-*` line looked like a year-wide suppression, but Trivy's plain
+  ignore format does not expand wildcards, so it suppresses nothing. Thirteen
+  explicit entries hid 14 CRITICAL/HIGH findings; 18 of the original 31
+  entries were dead no-ops, including the seven stale `frontend/web-app`
+  Next.js entries. Diffing Trivy with and without the ignore file turns a style
+  argument into a list of load-bearing and decorative entries.
 - **Remediation is verified by the scanner, not asserted.** A finding is fixed
   when the same scan no longer reports it and the service's tests still pass.
   Every row of `REMEDIATION_REPORT.md` carries both.
