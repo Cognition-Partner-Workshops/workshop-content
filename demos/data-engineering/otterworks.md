@@ -155,6 +155,16 @@ The dashboard reads only `GET /api/v1/admin/metrics/summary` from Rails
 analytics plane does compute `/api/v1/analytics/top-content` and
 `/api/v1/analytics/storage`. This is a visible lineage gap: an aggregate exists
 in the analytics plane without a serving path to the surface that needs it.
+The assessment also traces two adjacent gaps. The report-service call site at
+`services/report-service/src/main/java/com/otterworks/report/service/ReportDataFetcher.java:77-97`
+fetches `GET /api/v1/analytics/events`, while
+`services/analytics-service/src/main/scala/com/otterworks/analytics/api/EventRoutes.scala:16-34`
+defines that route as POST-only and the report service falls back to generated
+sample rows. The batch `UsageRollupJob` writes to
+`/var/lib/otterworks/usage-rollup.json`; the Helm CronJob mounts that directory
+from `emptyDir` at
+`infrastructure/helm/analytics-service/templates/cronjob.yaml:58-63`, with no
+durable upload or persistent volume configured.
 
 The verification loop starts with the deterministic seed and rollup numbers.
 `UsageRollupAggregator` is pure and I/O-free; its
@@ -171,6 +181,8 @@ what surface that class of error.
 
 Use this read-only assessment to produce the estate map, schedule inventory,
 and forward lineage from pipeline inputs to consuming surfaces.
+Some gaps may be intentional workshop material, so keep this assessment
+read-only and put any changes on a branch rather than `main`.
 
 ```
 Using the Cognition-Partner-Workshops/otterworks repo, perform a read-only
@@ -207,8 +219,10 @@ etl/airflow/dags/.
 Read etl/ETL_UPGRADE_GUIDE.md first. Split main() into extract, compare,
 quarantine, and report tasks. Preserve the S3 key formats, the
 otterworks-file-metadata DynamoDB table name, and the orphan predicate.
-Replace inline boto3 and psycopg2 with S3Hook, DynamoDBHook, and PostgresHook.
-Move values out of etl/config.ini into Airflow Connections and Variables.
+Replace inline boto3 with S3Hook and DynamoDBHook. Include the PostgreSQL
+provider in etl/airflow/requirements.txt for the later pipelines that need it,
+but do not add PostgreSQL access to this S3/DynamoDB-only DAG. Move values out of
+etl/config.ini into Airflow Connections and Variables.
 Configure exponential-backoff retries, use Python logging, and keep task
 boundaries explicit.
 Create etl/airflow/requirements.txt and etl/airflow/docker-compose.yml. Add
@@ -229,6 +243,11 @@ pytest etl/airflow/tests
 
 The pure-transform split makes the pipeline testable without live services.
 Review the produced PR with Devin Review and use the PR feedback loop.
+Running the S3 listing and DynamoDB metadata scan as parallel tasks creates a
+scan-window hazard: an object uploaded between the scans can look like an
+orphan and be quarantined. The review loop should surface this task-shape risk;
+use a modification-time grace window or re-check metadata for each candidate
+before quarantine.
 
 ---
 
@@ -267,6 +286,12 @@ the sum of per-batch distinct users. Sbt/Maven resolution can return HTTP 429
 for `org.scala-sbt:sbt:1.9.9`; run the comparison once resolution succeeds.
 Tenant SNS/SQS eventing is disabled by default on ephemeral tenants, so use
 tests and the local comparison rather than changing `t-main`.
+Treat infrastructure security checks as part of this verification loop. New
+Terraform can trip `.github/workflows/sast-auto-remediate.yml` and
+`.github/workflows/security-scan.yml`; for example, a Lambda with unencrypted
+environment variables fails
+`terraform.aws.security.aws-lambda-environment-unencrypted` until a
+customer-managed KMS key is configured.
 
 ---
 
