@@ -31,7 +31,7 @@ it changes what the code *is*, and proves the behavior did not move with it.
   - [Act 1 — Inventory the modernization debt](#act-1)
   - [Act 2 — Upgrade the legacy Java service](#act-2)
   - [Act 3 — Translate Flask to FastAPI against the contract](#act-3)
-  - [Act 4 — The divergence the contract suite catches](#act-4)
+  - [Act 4 — What the gates catch that a diff review does not](#act-4)
   - [Act 5 — Fan the remaining debt out in parallel](#act-5)
 - [Part 2 — Confirm It in the Live Product](#part-2)
 - [Confidence = Programmatic Verification](#confidence)
@@ -99,18 +99,24 @@ parity requirement real.
 |---|---|---|
 | `report-service` | Boot 2.5.14 parent, `<java.version>1.8</java.version>`, 16 `import javax.*` statements across 4 source files, `SecurityConfig extends WebSecurityConfigurerAdapter` with `antMatchers()`, SpringFox 3.0 `Docket` bean, iText 5.5.13.3 (AGPL), Guava 28.0-jre, Commons Lang 2.6, Commons IO 2.6, POI 4.1.2, OpenCSV 4.6, JUnit 4 + Mockito 3.12.4 | Boot 3.2.x parent on Java 17, `jakarta.*` throughout, a `@Bean SecurityFilterChain` with `requestMatchers()`, springdoc-openapi 2.x, OpenPDF, current library versions, JUnit 5 + Mockito 5 — same endpoints, same generated PDF/CSV/Excel outputs |
 | `search-service` | Flask 3.0.2 + Gunicorn, `Blueprint`s in `app/api/{search,index,health}.py`, dataclass config, `jsonify` responses, sync MeiliSearch SDK calls, SQS polling on a background thread | FastAPI + Uvicorn, `APIRouter`s, Pydantic models, `async def` handlers, MeiliSearch calls off the event loop, an `asyncio` SQS consumer — identical paths, status codes, response bodies, metric names, and log event names |
-| Guardrails | Trivy skips the legacy service (`--skip-dirs services/report-service` in `.github/workflows/security-scan.yml`); the CI job pins `java-version: '8'` | The carve-out is deleted and the CI job pins Java 17 — the service rejoins the scanned estate |
+| Guardrails | Trivy skips the legacy service (`--skip-dirs services/report-service`, three invocations in `.github/workflows/security-scan.yml`); the `security-scan` Makefile target prints `Report Service (skipped - legacy)`; the CI job pins `java-version: '8'` | The carve-outs are deleted and the CI job pins Java 17 — the service rejoins the scanned estate |
 
 The verification loop sits between the two columns. **Parity does not mean "it
 starts"**:
 
-- For `search-service`, parity means `tests/contract/test_search_contract.py`
-  passes *unchanged* against the FastAPI process — every path in the spec, the
+- For `search-service`, parity means the 18 tests in
+  `tests/contract/test_search_contract.py` run *unchanged* against the FastAPI
+  process and do no worse than the recorded Flask baseline — the
   `400` + `{"error": ...}` envelope for a missing `q`, the empty-suggestions
   200 for a one-character prefix, the `503` +
   `{"ready": false, "reason": "meilisearch_unavailable"}` readiness body, the
   four `search_service_*` Prometheus metric families, and the response schemas
-  resolved out of the OpenAPI document.
+  resolved out of the OpenAPI document. Record that baseline first: the Flask
+  service on `main` passes 16 of the 18 and fails
+  `test_index_document_missing_body` and `test_index_file_missing_body`, because
+  Flask answers a missing JSON body with an HTML 400 instead of the documented
+  `{"error": ...}` envelope. Parity is measured against that number, not against
+  an assumed 18/18.
 - For `report-service`, parity means the existing test suite passes on the new
   runtime (`make test-report`), the jar still builds (`make build-report`), and
   the report lifecycle still works end to end through the gateway
@@ -160,7 +166,11 @@ cite file paths and line numbers as evidence.
 Expected: a sequenced, evidence-cited plan — 11 upgrade axes for the Java
 service with the dependency ordering made explicit, an endpoint-by-endpoint
 translation map for the Python service, and the list of CI/scanner exemptions
-that only exist because the legacy service could not pass them. With DeepWiki
+that only exist because the legacy service could not pass them (there are more
+than the guides mention: the Trivy `--skip-dirs` argument appears three times).
+The inventory should also flag what *not* to touch — the planted chaos branch in
+`services/search-service/app/api/search.py` is a lab feature that carries over to
+FastAPI unchanged. With DeepWiki
 over the repo, Devin typically maps an unfamiliar estate this way in minutes
 (coverage depends on repo structure). Save the inventory as a Knowledge note so
 the sessions in the following acts start from the same shared context.
@@ -193,9 +203,11 @@ Include:
   cleanup), and commons-lang 2.6 -> commons-lang3.
 - JUnit 4 -> JUnit 5 and Mockito 3 -> 5 in src/test, with
   maven-surefire-plugin 3.x.
-- Re-admit the service to the estate's guardrails: drop the
-  --skip-dirs services/report-service argument from both Trivy steps in
-  .github/workflows/security-scan.yml, update the .trivyignore comment,
+- Re-admit the service to the estate's guardrails: drop every
+  --skip-dirs services/report-service argument in
+  .github/workflows/security-scan.yml (three invocations: the two
+  PR-gating steps and the full-baseline job), update the .trivyignore
+  comment,
   un-skip the report-service step in the security-scan Makefile target,
   and set java-version to 17 in the report-service job of
   .github/workflows/ci.yml.
@@ -208,11 +220,30 @@ the final test output, and a CVE before/after summary for the upgraded
 dependencies.
 ```
 
-Expected: one branch where the compile is clean, `mvn test` is green on Java 17,
-the PDF/CSV/Excel generators produce the same artifacts, and the security
-carve-outs are gone — plus a per-axis account of what broke mid-upgrade. The last
-bullet is the part teams undervalue: the upgrade is only finished when the
-service stops needing an exemption from the estate's own scanners and CI.
+Expected: one branch where the compile is clean, `make test-report` reports
+`Tests run: 44, Failures: 0` on Java 17, the PDF/CSV/Excel generators produce the
+same artifacts, and the security carve-outs are gone — plus a per-axis account of
+what broke mid-upgrade. Two of those breakages are the ones the guide does not
+list, and they are the reason this work needs an engineer rather than a
+find-and-replace:
+
+- **Spring 6 rejects the HTTP client.** `config/AppConfig.java` builds a
+  `RestTemplate` on Apache HttpComponents 4;
+  `HttpComponentsClientHttpRequestFactory` in Spring 6 takes an hc5 client and
+  no longer exposes `setReadTimeout(int)`. The fix is `httpclient5` plus timeouts
+  moved onto the connection pool config.
+- **OpenPDF has no `BaseColor`.** The iText 5 → OpenPDF swap is billed as a
+  package rename, but `service/PdfReportGenerator.java` has to move to
+  `java.awt.Color` with the same RGB values to keep the PDF layout identical.
+
+The last prompt bullet is the part teams undervalue: the upgrade is only finished
+when the service stops needing an exemption from the estate's own scanners and
+CI. Trivy over the service goes from 131 findings (10 CRITICAL / 56 HIGH) to 80
+(6 CRITICAL / 29 HIGH) — most of it from the Boot 2.5.14 → 3.2.5 transitive tree,
+with the remainder needing a further Boot 3.3+ bump, which is the next
+quarter's ticket rather than a blocker. On the PR, the proof is the checks
+themselves: `report-service` now green on Java 17, `dependency-scan` green with
+no `--skip-dirs` exemption, and `api-flow-tests` green through the gateway.
 
 <a id="act-3"></a>
 ### Act 3 — Translate Flask to FastAPI against the contract
@@ -261,34 +292,47 @@ grep search_service_` against the Flask version.
 ```
 
 Expected: an ASGI service with the same wire behavior, the contract suite green
-without a single assertion edited, and the metrics output identical to the Flask
-baseline.
+without a single assertion edited (18 passed, up from the Flask baseline's 16 —
+the translation *fixes* the two missing-body cases where Flask itself violated
+the documented envelope), the 41 existing unit tests still passing, and
+`/metrics` output with identical HELP/TYPE lines and label sets.
 
 <a id="act-4"></a>
-### Act 4 — The divergence the contract suite catches
+### Act 4 — What the gates catch that a diff review does not
 
 FastAPI's defaults are *better* than Flask's for a new service and *wrong* for
-this one. A translation that looks clean in review fails the contract in two
-specific places, both flagged in the guide's pitfalls section:
+this one. Three specific traps sit in this translation, and none of them is
+visible as a suspicious-looking diff.
 
-```
-tests/contract/test_search_contract.py::TestSearchEndpoint::test_search_requires_query
-  FAILED  assert resp.status_code == 400
-          Actual: 422 — FastAPI's RequestValidationError handler
-          returned {"detail": [{"loc": ["query", "q"], ...}]}
-          Contract requires: 400 with the ErrorResponse schema
-          {"error": "Query parameter 'q' is required"}
-```
+**1. The error envelope (caught by the contract).** Declared as typed query
+parameters, `q` / `page` / `size` make FastAPI answer a bad request with `422`
+and `{"detail": [{"loc": ["query", "q"], ...}]}` — where the spec documents
+`400` and `{"error": "Query parameter 'q' is required"}`. The fix is to accept
+the parameters as raw strings and parse them, with a
+`RequestValidationError` handler emitting the documented envelope as a backstop.
+The fix goes in the service, not the test: the test encodes what the SPA's search
+page and every other caller already depend on.
 
-The fix is a `RequestValidationError` exception handler that emits the documented
-`error` envelope with the documented status code — plus handling the trailing
-slash on `/api/v1/search/` so FastAPI does not answer with a redirect where Flask
-answered directly. The fix is in the service, **never** in the test: the test
-encodes what the SPA's search page and every other caller already depend on.
+**2. The trailing slash.** Flask ran with `strict_slashes=False`; FastAPI answers
+`/api/v1/search` with a redirect unless both variants are registered (the
+no-slash one with `include_in_schema=False` so the generated spec stays clean).
 
-This is the whole argument for a contract gate on a translation. Both
-divergences return a plausible-looking JSON body, neither shows up in a code
-review of the diff, and both would surface as a broken search box in production.
+**3. Metrics that quietly stop counting failures (caught by Devin Review, not by
+the contract).** The natural translation of Flask's `after_request` metrics hook
+is a Starlette `BaseHTTPMiddleware` that increments
+`search_service_requests_total` after `await call_next(request)`. That records
+nothing when a handler raises: Starlette's `ServerErrorMiddleware` sits outside
+user middleware, so the counter line never runs. Flask's `wsgi_app` did record
+those 500s. Nothing in the contract suite fails — the endpoints all still behave
+— but the estate's `search-suggest-500` chaos scenario and the 5xx alert in
+`observability/grafana/provisioning/alerting/alert-rules.yml` are driven by that
+exact counter, so they would have gone flat during a real outage. The reviewer
+flagged it with the alert query as evidence; the fix wraps `call_next` in
+`try/except`, records the 500 sample, and re-raises.
+
+That is the layering worth taking away: the contract suite gates the wire
+behavior, and automated review on the PR catches the operational regression the
+contract cannot see.
 
 <a id="act-5"></a>
 ### Act 5 — Fan the remaining debt out in parallel
@@ -335,6 +379,12 @@ the results and report every behavioral divergence a child caught.
 Each child runs on its own machine with its own branch, so the rows never
 collide, and the parent reports one rollup. The same fan-out pattern is how a
 whole-estate upgrade wave gets run in a week instead of a quarter.
+
+One scoping rule matters here: the estate already has a
+`!dep_sweep` procedure for routine dependency and EOL upgrades that deliberately
+excludes `services/report-service` as a separately handled legacy exercise. Rows
+1 and 2 are that exception; rows 3-5 are the routine sweep. Keeping the two apart
+is what stops a fan-out from producing five PRs that fight over the same files.
 
 ---
 
@@ -441,8 +491,9 @@ head.
 ## Key Takeaways
 
 - **Application modernization is two distinct problems, and Devin does both.** A runtime/framework upgrade (Java 8 → 17, Boot 2.5 → 3.2, `javax` → `jakarta`) is 11 interlocking changes where the middle does not compile; a language/framework translation (Flask → FastAPI) is a rewrite of the framework layer that has to land on the same wire contract. This thread runs one of each against a live estate.
-- **The contract is the gate, and it catches what review misses.** FastAPI's default `422`/`{"detail": ...}` validation response is plausible, invisible in a diff review, and a breaking change for every existing caller — the contract suite fails it, and the fix goes in the service, never in the test.
-- **An upgrade is not done until the exemptions are gone.** The finish line includes deleting the Trivy `--skip-dirs` carve-out and flipping the CI `java-version` pin, so the service rejoins the estate's scanners and pipelines instead of staying quarantined.
+- **The gates layer, and each one catches what the other cannot.** FastAPI's default `422`/`{"detail": ...}` validation response is plausible, invisible in a diff review, and a breaking change for existing callers — the contract suite fails it. The ASGI metrics middleware that silently stops counting 500s passes every contract test — automated PR review caught that one, with the affected alert query as evidence.
+- **Record the baseline before claiming parity.** The Flask service on `main` fails 2 of its own 18 contract tests; "the suite is green" only means something measured against that number.
+- **An upgrade is not done until the exemptions are gone.** The finish line includes deleting the three Trivy `--skip-dirs` carve-outs, un-skipping the Makefile scan step, and flipping the CI `java-version` pin, so the service rejoins the estate's scanners and pipelines instead of staying quarantined — and the finding count drops from 131 to 80 on the way.
 - **Nothing user-visible moved, and you can see that in a browser.** The modernized branch deploys to its own tenant, and the search page and report flow behave the same as the golden app at t-main — which keeps the "before" available for the next run.
 - **This scales by fan-out, not by heroics.** One assessment session produces the plan; child sessions take a row each (upgrade, translation, contract audit, CVE sweep, coverage) on their own branches with their own verification commands, and the parent reports one rollup.
 - **It layers with infrastructure migration.** This thread changes what the code is; the [AWS cloud-native demo](./aws-cloud-native-modernization-demo.md) changes where it runs. Same estate, same verification bar, and the two waves can run against the same repo.
