@@ -107,7 +107,7 @@ depends on repo structure.
 | | Code | What you can see |
 |---|---|---|
 | **Before** | `main`: documents support create, read, update, soft delete, version restore, versions, comments, and templates — there is **no archive** concept; the Python gate is red (`9 failed, 33 passed`) and the client gate is green | [https://t-main.otterworks.app/documents](https://t-main.otterworks.app/documents) — the golden baseline, with no Archived view |
-| **After** | branch `demo-<id>`: archive/unarchive endpoints, an `is_archived` + `archived_at` model change, a repaired Python suite (`46 passed` in the live run), and an Archived toggle plus an archived badge in the React client | `t-<id>.demo.otterworks.app/documents` — your tenant, deployed from the branch by `.github/workflows/cd-tenant.yml` |
+| **After** | branch `demo-<id>`: archive/unarchive endpoints, an `is_archived` + `archived_at` model change, a repaired Python suite (`46 passed`), and an Archived toggle plus an archived badge in the React client | `t-<id>.demo.otterworks.app/documents` — your tenant, deployed from the branch by `.github/workflows/cd-tenant.yml` |
 
 Two gates guard the slice, and they catch different classes of defect:
 
