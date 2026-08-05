@@ -250,10 +250,10 @@ For every entry, determine:
 
 Two specific things to check and report on:
 1. The "CVE-2021-*" wildcard entry commented "Bulk ignore —
-   revisit in Q4". Check whether it has any effect under Trivy's
-   plain `.trivyignore` semantics, then quantify the real suppression
-   list by running Trivy with and without the ignore file and diffing
-   the CRITICAL/HIGH results.
+   revisit in Q4". Check whether it has any effect at all under
+   Trivy's plain ignore-file semantics, then quantify the list's
+   real suppression by running Trivy with and without the ignore
+   file and diffing the CRITICAL/HIGH results.
 2. The "frontend/web-app" section header. Confirm whether that
    directory exists on main, and if not, name the directory
    that does.
@@ -267,11 +267,10 @@ if removing an entry reintroduces a CRITICAL/HIGH finding, list
 that finding in SECURITY_BACKLOG.md instead.
 ```
 
-The diff-with-and-without-ignore-file step is what makes this concrete: the
-session proves that the wildcard is a no-op, then shows the exact 14
-CRITICAL/HIGH findings hidden by 13 explicit entries. The full-severity result
-is 52 findings without an ignore file versus 38 with it. The stale
-`frontend/web-app` header is a second, cheaper proof: all seven of its Next.js
+The diff-with-and-without-ignore-file step is what makes this concrete. On the
+live run it showed the wildcard to be a no-op, then named the 14 CRITICAL/HIGH
+findings that 13 explicit entries were actually hiding — 52 findings without an
+ignore file versus 38 with it. The stale `frontend/web-app` header is a second, cheaper proof: all seven of its Next.js
 entries are dead no-ops because that directory was deleted. The real directory
 is `frontend/client-app`, a Vite/React app with no Next.js. (The same stale path
 appears in `Makefile` build, test, and lint targets, which Devin picks up while
@@ -287,11 +286,11 @@ which is which.
 Now fix findings, with the re-scan as the gate. Paste this:
 
 ```
-Starting from the Part 1 branch that contains SECURITY_BACKLOG.md in the
-Cognition-Partner-Workshops/otterworks repo, remediate the
-CRITICAL and HIGH findings on a branch named demo-secscan1 cut
-from main. If starting cold, first run the Part 1 scan prompt on a
-branch and generate SECURITY_BACKLOG.md, then continue from that branch.
+In the Cognition-Partner-Workshops/otterworks repo, remediate the
+CRITICAL and HIGH findings recorded in SECURITY_BACKLOG.md on a
+branch named demo-secscan1 cut from the Part 1 branch that carries
+that file. If SECURITY_BACKLOG.md does not exist yet, run the Part 1
+scan prompt first to generate it, then continue from that branch.
 
 Work in this order and stop at the first finding you cannot fix
 without a breaking change:
