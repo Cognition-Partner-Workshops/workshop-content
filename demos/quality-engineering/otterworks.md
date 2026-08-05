@@ -190,9 +190,15 @@ covered and which remain open.
 
 Expected: new tests that read like the ones already in the service, a green
 run of that service's native command, and a quoted before/after from
-`make test-coverage`. If a real defect surfaces while writing the tests, the
-fix goes in the code and the test stays as written — the assertion is the
-contract, and relaxing it to get green defeats the exercise.
+`make test-coverage`. In a recorded run against file-service, that delta was
+`11 passed` before and `37 passed` after — 26 new inline `#[cfg(test)]` tests
+over error-response mapping, the DynamoDB metadata layer (against a mocked AWS
+client), SNS event shapes, and handler validation. Where a service has no
+coverage plugin configured, as with Rust here, the delta is quoted in tests and
+covered paths rather than a percentage, and the missing tooling is recorded as
+an open item instead of papered over. If a real defect surfaces while writing
+the tests, the fix goes in the code and the test stays as written — the
+assertion is the contract, and relaxing it to get green defeats the exercise.
 
 <a id="act-3"></a>
 ### Act 3 — Cross-service API flows
@@ -226,9 +232,20 @@ shape of the user flow, and run all tests against the local stack.
 
 Expected: a pass/fail/skip breakdown of the 10 existing flow modules, a named
 coverage gap justified against `docs/api-route-matrix.md`, and one new module
-that asserts a cross-service outcome. Some event-driven paths (notification and
-search fan-out) depend on SNS/SQS being enabled, so Devin should report those as
-skipped or environment-gated rather than silently passing them.
+that asserts a cross-service outcome. A recorded run finished at
+`23 passed, 3 skipped` — the skips are the `degradation` tests, gated behind
+`OTTERWORKS_RUN_DEGRADATION_TESTS=1`, which is the right way to report an
+environment-gated path rather than silently passing it.
+
+The gap that run picked was the recipient side of file sharing — the "Shared
+with me" page on the SPA. The existing `test_file_flow.py` asserts only that the
+share POST returns 201; nothing checked that the file appears for the other
+user. Writing that flow surfaced two real defects the unit tests could not see:
+the gateway authenticated `/api/v1/admin/*` without checking the `ADMIN` role
+claim, and one existing assertion encoded a contract the gateway no longer has.
+This is the beat worth pausing on — a cross-service test found an authorization
+gap, and the change to an existing assertion was called out explicitly for
+review rather than made quietly.
 
 <a id="act-4"></a>
 ### Act 4 — Contract audit
