@@ -231,13 +231,17 @@ fix it:
 ```
 
 Expected root cause: the enrichment path sorts with
-`key=lambda s: s["_rankingScore"]`, and MeiliSearch only returns that field when
-it is explicitly requested — the search client in
-`services/search-service/app/services/` retrieves only the display attributes, so
-the key lookup raises `KeyError`, the Flask handler returns 500, and the
-after-request hook in `main.py` records that 5xx into
-`search_service_requests_total`, which is exactly what the alert reads. The
-enrichment branch also sits outside the handler's `try/except`, while the
+`key=lambda s: s["_rankingScore"]`, but the search client's `suggest()` in
+`services/search-service/app/services/meilisearch_client.py` returns a
+`list[str]` — it queries MeiliSearch with
+`attributesToRetrieve: ["title", "name"]` and flattens each hit to its display
+text. So the subscript fails on a string with a `TypeError` whenever the index has
+results, and raises `KeyError: '_rankingScore'` only on the empty-index fallback.
+Either way the Flask handler returns 500, and the after-request hook in `main.py`
+records that 5xx into `search_service_requests_total`, which is exactly what the
+alert reads.
+
+The enrichment branch also sits outside the handler's `try/except`, while the
 non-chaos branch catches failures and returns an empty suggestion list — which is
 why only one of the two paths ever pages anyone.
 
@@ -502,8 +506,8 @@ ephemeral tenant and its branch, which is why the demo is repeatable.
 - **Resolution is verified by the signal, not the diff.** The fix is done when the
   alert stops firing and the error-rate series returns to baseline, with a test
   that reproduces the failing condition — that is the SRE definition of done.
-- Root cause is usually a small, findable expression. Here a sort key on a field
-  the search client returns only when asked for it turned an enrichment feature
+- Root cause is usually a small, findable expression. Here a sort key indexed into
+  values the search client never returns as objects turned an enrichment feature
   into a 500-per-request outage, while the neighboring code path failed silently
   and paged no one — a gap the runbook now records.
 - **Runbook and instrumentation debt is where SRE capacity goes to die.** It is
