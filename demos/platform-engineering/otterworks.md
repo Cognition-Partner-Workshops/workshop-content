@@ -70,7 +70,7 @@ EKS cluster `otterworks-dev`.
 ## Repository
 
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — a
-  polyglot platform (12 backend services across 9 languages plus a React
+  polyglot platform (11 backend microservices across 9 languages plus a React
   `frontend/client-app` and an Angular `frontend/admin-dashboard`) *and* the
   multi-tenant platform that runs it:
   - `demo-platform/` — the control plane: a Next.js ops dashboard
