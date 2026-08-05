@@ -70,6 +70,7 @@ curl -s -o /dev/null -w '%{http_code}\n' \
 The 401 shows that the analytics serving path is live and auth-gated.
 
 ---
+
 <a id="repositories"></a>
 ## Repositories
 
@@ -105,10 +106,12 @@ not receive chaos injection or destructive changes. Ephemeral tenants come
 from `workshop-<id>` or `demo-<id>` branches through
 `.github/workflows/cd-tenant.yml`.
 
-The verified `/admin` response is the client SPA shell, not proof that Angular
-renders there. Run Angular with `make dev-admin` on `:4200`, route `/analytics`.
+`https://t-main.otterworks.app/admin` serves the client SPA shell, so the
+Angular admin dashboard where the analytics page lives is run from the repo
+with `make dev-admin` on `:4200`, route `/analytics`.
 
 ---
+
 <a id="before-after"></a>
 ## Before, After, and the Verification Loop
 
@@ -128,7 +131,8 @@ The five legacy scripts have these measured sizes:
 | `etl/scripts/storage_cleanup_daily.py` | 217 | Compares S3 objects with DynamoDB references, quarantines orphans, and writes a savings report |
 
 Each has a single `main()` function. `etl/config.ini` contains committed AWS
-keys, a database password, and a MeiliSearch key; do not print their values.
+keys, a database password, and a MeiliSearch key; the values themselves are not
+reproduced in this document or in the assessment output.
 `etl/crontab` contains five independent schedules without dependency
 management. Bare `except:` blocks log-and-continue or silently skip errors:
 `analytics_daily.py:68-85` and `:93-103`, `audit_archive_weekly.py:139-167`,
@@ -156,13 +160,17 @@ The verification loop starts with the deterministic seed and rollup numbers.
 `UsageRollupAggregator` is pure and I/O-free; its
 `UsageRollupAggregatorSpec.scala` and `UsageRollupJobSpec.scala` test behavior.
 Any re-architecture must reproduce the same numbers. `activeUsers` is
-distinct, not additive: summing per-batch distinct users can report 55 rather
-than 8. This is the conditional failure class the baseline catches, not an
-observed result.
+distinct, not additive: an incremental implementation that adds per-batch
+distinct users would report 55 per day instead of 8. The baseline numbers are
+what surface that class of error.
 
 ---
+
 <a id="phase-1"></a>
 ## Phase 1 — Map the data plane and its lineage
+
+Use this read-only assessment to produce the estate map, schedule inventory,
+and forward lineage from pipeline inputs to consuming surfaces.
 
 ```
 Using the Cognition-Partner-Workshops/otterworks repo, perform a read-only
@@ -185,8 +193,12 @@ map; coverage depends on repo structure.
 ```
 
 ---
+
 <a id="phase-2"></a>
 ## Phase 2 — Migrate the storage-cleanup pipeline
+
+Use this prompt to turn the clearest extract/compare/act/report pipeline into
+the first orchestrated DAG and establish the pure-transform test pattern.
 
 ```
 In the Cognition-Partner-Workshops/otterworks repo, migrate
@@ -207,6 +219,10 @@ report showing pytest etl/airflow/tests passes. Do not reference
 etl/config.ini from the DAG.
 ```
 
+From the repo root, run this against the Airflow requirements produced in
+`etl/airflow/requirements.txt`; `etl/airflow/` does not exist on a bare
+checkout before Phase 2.
+
 ```bash
 pytest etl/airflow/tests
 ```
@@ -215,8 +231,12 @@ The pure-transform split makes the pipeline testable without live services.
 Review the produced PR with Devin Review and use the PR feedback loop.
 
 ---
+
 <a id="phase-3"></a>
 ## Phase 3 — Re-architect the nightly rollup to event-driven
+
+Use this prompt to replace the nightly batch boundary while retaining the
+existing pure aggregation semantics and deterministic comparison point.
 
 ```
 In the Cognition-Partner-Workshops/otterworks repo, re-architect the nightly
@@ -243,14 +263,18 @@ make batch-usage-rollup OUT=/tmp/usage-rollup.json
 ```
 
 Compare batch JSON with incremental output and assert `activeUsers` is 8, not
-the sum of per-batch distinct users. Dependency resolution can fail with HTTP
-429 fetching `org.scala-sbt:sbt:1.9.9`; preserve that failure in the record.
+the sum of per-batch distinct users. Sbt/Maven resolution can return HTTP 429
+for `org.scala-sbt:sbt:1.9.9`; run the comparison once resolution succeeds.
 Tenant SNS/SQS eventing is disabled by default on ephemeral tenants, so use
 tests and the local comparison rather than changing `t-main`.
 
 ---
+
 <a id="phase-4"></a>
 ## Phase 4 — Serve the missing metrics and gate on freshness
+
+Use this prompt to connect the two missing analytics metrics to the admin
+surface and add freshness signals for stalled or silently failing pipelines.
 
 ```
 In the Cognition-Partner-Workshops/otterworks repo, complete two related
@@ -270,9 +294,16 @@ Expected output: serving code and tests for both metrics, observability
 configuration, a lineage note, and a verification report with exact commands.
 ```
 
+The dev server on `:4200` should render `/analytics` with the previously empty
+Top File Types and Peak Usage Hours cards populated:
+
 ```bash
 make dev-admin
 ```
+
+The API-flow suite exercises the analytics surface, including ingestion,
+dashboard, activity, document stats, top content, active users, storage, and
+export:
 
 ```bash
 make test-api-flows
@@ -294,8 +325,12 @@ The existing observability set is:
 Add the new data-quality dashboard beside these files.
 
 ---
+
 <a id="fan-out"></a>
 ## Fan out the remaining four pipelines
+
+Use one parent session to apply the Phase 2 pattern consistently while child
+sessions handle the remaining independent scripts.
 
 | Session | Script | Schedule | What it produces |
 |---|---|---|---|
@@ -328,8 +363,12 @@ deterministic usage-rollup baseline.
 ```
 
 ---
+
 <a id="automation"></a>
 ## Scheduled and event-driven automation
+
+Use the scheduled prompt for recurring output-quality checks with the baseline
+and freshness signals as its evidence.
 
 ```
 Create a scheduled Devin session for the
@@ -341,6 +380,9 @@ or the incremental rollup differs from the batch baseline, create an
 investigation report with the failing pipeline, task, output path, and exact
 comparison result. Do not change t-main or inject chaos.
 ```
+
+Use the alert-triggered prompt to carry the failing task and incident context
+into an investigation session.
 
 ```
 When a pipeline-failure or freshness alert reaches the OtterWorks
@@ -367,7 +409,7 @@ These signals plug into the existing alert → webhook → admin-service inciden
 - The serving fix is proven by `make dev-admin`, `/analytics`, API tests, and
   chart-data assertions.
 - Freshness is proven by Prometheus alerts, Grafana panels, and incidents.
-- The useful standard is not “the script ran”; it is preserved business
+- The useful standard is not "the script ran"; it is preserved business
   results, exposed lineage, and passing tests and operational checks.
 
 ---
@@ -375,10 +417,15 @@ These signals plug into the existing alert → webhook → admin-service inciden
 <a id="run-artifact"></a>
 ## Run the Produced Artifact
 
+The first block regenerates and runs the deterministic rollup baseline:
+
 ```bash
 make batch-usage-rollup-seed
 make batch-usage-rollup OUT=/tmp/usage-rollup.json
 ```
+
+The second block runs the produced Airflow tests, API-flow verification, and
+local admin surface:
 
 ```bash
 pytest etl/airflow/tests
