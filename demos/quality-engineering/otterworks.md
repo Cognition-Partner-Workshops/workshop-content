@@ -54,11 +54,13 @@ make test-coverage          # per-service coverage across the estate
 make test-api-flows         # black-box API flow tests via the gateway
 ```
 
-`make test-coverage` runs each service's native coverage tool (pytest-cov, Jest,
-`go test -cover`, Jacoco, `cargo test`, RSpec) and does not stop on failure, so
-one broken toolchain never hides the rest of the report. `make test-api-flows`
-runs `tests/api/` against `OTTERWORKS_API_BASE_URL`, defaulting to
-`http://localhost:8080`.
+`make test-coverage` runs the native coverage tool (pytest-cov, Jest,
+`go test -cover`, Jacoco, `cargo test`, RSpec) for 7 of the 12 services under
+`services/` and does not stop on failure, so one broken toolchain never hides
+the rest of the report. The other five (analytics, notification, audit, report,
+legacy-portal) need their native test commands to complete the picture — part of
+what Act 1 produces. `make test-api-flows` runs `tests/api/` against
+`OTTERWORKS_API_BASE_URL`, defaulting to `http://localhost:8080`.
 
 `t-main` tracks `main` and is the shared reference environment — read from it,
 never change it.
@@ -123,9 +125,10 @@ not just the percentages.
 Using the Cognition-Partner-Workshops/otterworks repo on main, measure
 test coverage across the whole estate and record a baseline.
 
-Run `make test-coverage` from the repo root. That target runs each
-service's native coverage tool and continues past failures, so capture
-both the coverage numbers and any service whose toolchain did not run.
+Run `make test-coverage` from the repo root. That target covers only
+some of the services and continues past failures, so run the native
+test command for any service it skips, and capture both the coverage
+numbers and any service whose toolchain did not run.
 
 Then write docs/quality/coverage-baseline.md containing:
 1. A table of every backend service under services/ with: language,
@@ -143,11 +146,15 @@ change any service code in this step.
 ```
 
 Expected: a baseline table covering the services under `services/`, the
-uninstrumented paths called out by name, and a ranked shortlist. Services with
-few dedicated test files — file-service (Rust, tests live inline in
-`src/handlers.rs`, `src/metadata.rs`, and `src/events.rs`) and collab-service
-(Node) among them — typically surface near the top, but the ranking comes from
-the run, not from this document.
+uninstrumented paths called out by name, and a ranked shortlist. In a recorded
+run of this prompt, `make test-coverage` reported line coverage for seven
+services (document 78%, search 75%, auth 73.3%, collab 65.1%, audit 54.5%,
+admin 36.8%, and api-gateway per package), left five without a coverage plugin,
+and ranked file-service weakest — its Rust handlers and the DynamoDB, S3, and
+SNS layers are untested despite the inline `#[cfg(test)]` modules in
+`src/handlers.rs`, `src/metadata.rs`, and `src/events.rs`. The run also surfaces
+pre-existing failures on `main`, which belong in the baseline rather than in the
+fix. The ranking comes from the run, not from this document.
 
 <a id="act-2"></a>
 ### Act 2 — Strengthen the weakest service
@@ -159,6 +166,9 @@ The instruction that matters is the one that rules out vanity coverage.
 Using the ranking in docs/quality/coverage-baseline.md in the
 Cognition-Partner-Workshops/otterworks repo, add meaningful tests to the
 weakest service.
+
+The baseline from the previous step lives on its own branch; work from
+that branch so the ranking is available.
 
 Rules:
 - Write tests in that service's existing framework and file layout
@@ -180,9 +190,15 @@ covered and which remain open.
 
 Expected: new tests that read like the ones already in the service, a green
 run of that service's native command, and a quoted before/after from
-`make test-coverage`. If a real defect surfaces while writing the tests, the
-fix goes in the code and the test stays as written — the assertion is the
-contract, and relaxing it to get green defeats the exercise.
+`make test-coverage`. In a recorded run against file-service, that delta was
+`11 passed` before and `37 passed` after — 26 new inline `#[cfg(test)]` tests
+over error-response mapping, the DynamoDB metadata layer (against a mocked AWS
+client), SNS event shapes, and handler validation. Where a service has no
+coverage plugin configured, as with Rust here, the delta is quoted in tests and
+covered paths rather than a percentage, and the missing tooling is recorded as
+an open item instead of papered over. If a real defect surfaces while writing
+the tests, the fix goes in the code and the test stays as written — the
+assertion is the contract, and relaxing it to get green defeats the exercise.
 
 <a id="act-3"></a>
 ### Act 3 — Cross-service API flows
@@ -216,9 +232,20 @@ shape of the user flow, and run all tests against the local stack.
 
 Expected: a pass/fail/skip breakdown of the 10 existing flow modules, a named
 coverage gap justified against `docs/api-route-matrix.md`, and one new module
-that asserts a cross-service outcome. Some event-driven paths (notification and
-search fan-out) depend on SNS/SQS being enabled, so Devin should report those as
-skipped or environment-gated rather than silently passing them.
+that asserts a cross-service outcome. A recorded run finished at
+`23 passed, 3 skipped` — the skips are the `degradation` tests, gated behind
+`OTTERWORKS_RUN_DEGRADATION_TESTS=1`, which is the right way to report an
+environment-gated path rather than silently passing it.
+
+The gap that run picked was the recipient side of file sharing — the "Shared
+with me" page on the SPA. The existing `test_file_flow.py` asserts only that the
+share POST returns 201; nothing checked that the file appears for the other
+user. Writing that flow surfaced two real defects the unit tests could not see:
+the gateway authenticated `/api/v1/admin/*` without checking the `ADMIN` role
+claim, and one existing assertion encoded a contract the gateway no longer has.
+This is the beat worth pausing on — a cross-service test found an authorization
+gap, and the change to an existing assertion was called out explicitly for
+review rather than made quietly.
 
 <a id="act-4"></a>
 ### Act 4 — Contract audit
