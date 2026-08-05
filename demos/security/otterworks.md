@@ -270,8 +270,9 @@ that finding in SECURITY_BACKLOG.md instead.
 The diff-with-and-without-ignore-file step is what makes this concrete. On the
 live run it showed the wildcard to be a no-op, then named the 14 CRITICAL/HIGH
 findings that 13 explicit entries were actually hiding — 52 findings without an
-ignore file versus 38 with it. The stale `frontend/web-app` header is a second, cheaper proof: all seven of its Next.js
-entries are dead no-ops because that directory was deleted. The real directory
+ignore file versus 38 with it. The stale `frontend/web-app` header is a second,
+cheaper proof: all seven of its Next.js entries are dead no-ops because that
+directory was deleted. The real directory
 is `frontend/client-app`, a Vite/React app with no Next.js. (The same stale path
 appears in `Makefile` build, test, and lint targets, which Devin picks up while
 it is in there.) The lesson is that a suppression list nobody re-derives drifts
