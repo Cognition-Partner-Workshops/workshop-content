@@ -472,7 +472,7 @@ framework upgrade, not a dependency bump.
 Monitor the children until each reports back, then write
 REMEDIATION_SUMMARY.md with one row per service: findings
 fixed, findings deferred with reasons, test result, and the
-branch name. Call out any child whose dependency bump broke a
+branch name. Report any child whose dependency bump broke a
 test and how it resolved it.
 ```
 

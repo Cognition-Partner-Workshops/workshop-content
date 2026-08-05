@@ -296,7 +296,7 @@ review of the diff, and both would surface as a broken search box in production.
 The two moves in this thread are the flagships, not the whole backlog. The
 remaining work is independent per service, which is exactly the shape that fans
 out: one parent session spawns a child per unit, each on its own branch, each
-opening its own verified PR.
+producing its own verified change.
 
 ```
 Act as the orchestrator for an application-modernization wave across
@@ -329,7 +329,7 @@ the verification command that must be green before it reports done:
    rather than asserting new behavior.
 
 Monitor the children until each row's verification is green. Summarize
-the results and call out every behavioral divergence a child caught.
+the results and report every behavioral divergence a child caught.
 ```
 
 Each child runs on its own machine with its own branch, so the rows never

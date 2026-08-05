@@ -6,8 +6,9 @@ engagement in the abstract. This is the same engagement run concretely, on one
 real estate, against a system that is already serving users.
 
 The estate is **OtterWorks** — a collaborative file storage and document
-editing platform: twelve service directories across nine languages plus two
-frontends, on EKS, with CI, contract tests, observability, and runbooks
+editing platform: eleven deployable backend services across nine languages,
+plus the separate `legacy-portal` application and two frontends, on EKS, with
+CI, contract tests, observability, and runbooks
 already in place. The running system is at
 **[t-main.otterworks.app](https://t-main.otterworks.app)**. That constraint is
 the whole point of the thread: the engagement has to inventory the estate, plan
@@ -15,7 +16,7 @@ waves, convert services, and stabilize *without the live system going down*.
 
 | Delivery phase | What it is on this estate | Evidence it produced |
 |---|---|---|
-| **1. Discovery & assessment** | Inventory twelve services in nine languages, classify each one replatform / refactor / rewrite / retain, and baseline the quality gates that already exist | `analysis/ESTATE_INVENTORY.md`, `MODERNIZATION_STRATEGY.md`, `GATE_BASELINE.md` |
+| **1. Discovery & assessment** | Inventory eleven deployable backend services plus the separate `legacy-portal` application across nine languages, classify each one replatform / refactor / rewrite / retain, and baseline the quality gates that already exist | `analysis/ESTATE_INVENTORY.md`, `MODERNIZATION_STRATEGY.md`, `GATE_BASELINE.md` |
 | **2. Architecture & wave planning** | Sequence the estate into waves by dependency and blast radius, with the risk to the live system priced per wave | `analysis/WAVE_PLAN.md`, `analysis/RISK_REGISTER.md` |
 | **3. Foundation** | Already built and reused, not rebuilt: `.github/workflows/ci.yml`, `tests/api/`, `tests/contract/`, `make test-coverage`, and per-branch ephemeral tenants from `cd-tenant.yml` | A tenant URL per branch, CI green per service |
 | **4. Iterative conversion** | One wave executed: the wave anchor live, the remaining items fanned out to child sessions in parallel | One PR per unit, each with its own tenant and CI run |
@@ -23,8 +24,8 @@ waves, convert services, and stabilize *without the live system going down*.
 | **6. Cutover & stabilization** | Chaos rehearsal on a throwaway tenant, alert → incident → session automation, runbooks in `docs/runbooks/` | An incident with a fix PR attached |
 
 The engagement lead's problem is not that any one of these is hard. It is that
-there are twelve of them in nine languages and the client's users are on the
-system today.
+there are eleven deployable backend services plus a separate legacy application
+across nine languages, and users are on the system today.
 
 ## Table of Contents
 
@@ -84,7 +85,8 @@ pytest tests/contract/ -v                 # OpenAPI contract validation
 ## Repositories
 
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — the
-  estate. Twelve service directories under `services/` (`api-gateway` Go 1.22,
+  estate. Eleven deployable backend service directories under `services/`
+  (`api-gateway` Go 1.22,
   `auth-service` Java 17 / Spring Boot 3.2, `file-service` Rust / Actix,
   `document-service` Python 3.12 / FastAPI, `collab-service` Node 20 / Express,
   `notification-service` Kotlin / Ktor, `search-service` Python 3.12 / Flask,
@@ -178,7 +180,7 @@ with evidence is the difference between a scope estimate and a guess:
 
 | Finding | Where |
 |---|---|
-| `report-service` runs **Java 8 on Spring Boot 2.5.14** — both out of support — while `auth-service` next to it is Java 17 / Boot 3.2.4. The estate is not uniformly behind; it is unevenly behind | `services/report-service/pom.xml` vs `services/auth-service/pom.xml` |
+| `report-service` runs **Java 8 on Spring Boot 2.5.14** — both out of support — while `auth-service` next to it is Java 17 / Boot 3.2.4. The estate is not uniformly behind; it is unevenly behind | `services/report-service/pom.xml` vs `services/auth-service/build.gradle` |
 | `search-service` is the only Python service still on **Flask**, while `document-service` is FastAPI. Two Python idioms to maintain, one of them the older one | `services/search-service/`, `services/document-service/` |
 | The Rust build is on **unpinned `rust:latest`** — the build is not reproducible, which matters more to a delivery timeline than to a developer | `services/file-service/Dockerfile` |
 | The **admin dashboard's lint and test steps are suffixed `\|\| true`** — a gate that is configured never to fail. The engagement was counting it as coverage | `.github/workflows/ci.yml` |
@@ -365,7 +367,8 @@ Cognition-Partner-Workshops/workshop-content under workshops/otterworks/:
 No child may modify main, deploy to t-main, run scripts/inject-bug.sh, or
 weaken a gate to make it pass — including removing an assertion or adding
 `|| true`. A child is done when its CI run is green, its tenant serves
-traffic, and its PR is open with the gate output quoted in the description.
+traffic, and its change is ready for review with the gate output quoted in the
+description.
 Monitor them and report each child's status, the gate results, and anything
 it escalated.
 ```
@@ -492,8 +495,9 @@ proven on its own hostname first.
 ## Key Takeaways
 
 - **The engagement's bottleneck is capacity, and it shows up per language.**
-  Twelve components in nine languages means twelve upgrade paths, twelve
-  linters, and twelve test idioms. That is the work that scales with the
+  Eleven deployable backend services plus a separate legacy application across
+  nine languages means many upgrade paths, linters, and test idioms. That is the
+  work that scales with the
   portfolio, and it is the work that parallelizes.
 - **Discovery is worth doing against files, not interviews.** A gate suffixed
   `|| true`, three Makefile targets pointing at a directory that does not
@@ -515,5 +519,5 @@ proven on its own hostname first.
   before cutover, and the runbook gets fixed while someone is using it.
 - **Human judgment stays where it belongs.** The architect validates the wave
   sequencing, tech leads review the PRs, and the engagement lead owns scope
-  and the client relationship. The twelve conversions underneath them are the
+  and the client relationship. The conversions underneath them are the
   part that does not need to consume a sprint each.

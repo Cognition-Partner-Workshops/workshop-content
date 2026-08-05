@@ -97,7 +97,8 @@ The sibling demo
 covers synthetic test-data generation and the `testdata/` validation harness in
 the same repository. This walkthrough does not repeat that material. The repo
 Skill `.agents/skills/synthetic-testdata-generation/SKILL.md` belongs to that
-sibling demo; `make testdata-*` is referenced there rather than here.
+sibling demo; `make testdata-setup-schema`, `make testdata-validate`, and
+`make testdata-clean` are referenced there rather than here.
 
 The live golden app is
 [https://t-main.otterworks.app](https://t-main.otterworks.app); its user SPA is
