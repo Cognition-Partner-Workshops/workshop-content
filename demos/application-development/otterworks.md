@@ -205,11 +205,13 @@ idempotent.
 
 The starting `pytest` run has 9 failures and 33 passes, all in
 tests/test_documents_api.py, because those tests are missing the JWT
-authentication headers required after auth hardening. Repair those tests by
-adding the headers, keep their assertions honest rather than weakening them,
-and make list_versions return versions in descending order. Report the
-before/after pass counts, then get `pytest` green from
-services/document-service and paste the summary line.
+authentication headers required after auth hardening. Repair those
+tests by adding the headers and keep their assertions honest rather
+than weakening them. Where a version-ordering assertion disagrees with
+list_versions, align the assertion with the ascending contract that
+tests/api/test_document_flow.py already relies on rather than changing
+the service. Report the before/after pass counts, then get `pytest`
+green from services/document-service and paste the summary line.
 ```
 
 Expected: `9 failed, 33 passed` before the repair and `46 passed` after it,
