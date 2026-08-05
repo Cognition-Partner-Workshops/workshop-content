@@ -98,12 +98,10 @@ Everything below is on `main` and is where the analysis in Act 2 concentrates.
 every configured route except two exact public paths —
 `/api/v1/auth/login`, `/api/v1/auth/register` — and the `/health`, `/metrics`,
 and `/socket.io` prefixes. Downstream services may also enforce their own
-authorization.
-`auth-service`
-(`services/auth-service/src/main/java/com/otterworks/auth/config/SecurityConfig.java`)
-makes register / login / refresh `permitAll`, requires authentication elsewhere,
-and gates
-`/api/v1/auth/users/**` behind role `ADMIN`. Tokens are HS256/384 JWTs;
+authorization. `auth-service` (`SecurityConfig.java` under
+`services/auth-service/src/main/java/com/otterworks/auth/config/`) makes
+register / login / refresh `permitAll`, requires authentication elsewhere, and
+gates `/api/v1/auth/users/**` behind role `ADMIN`. Tokens are HS256/384 JWTs;
 passwords use `BCryptPasswordEncoder(12)`.
 
 **The admin plane.** `admin-service` (Rails,
@@ -113,10 +111,9 @@ decodes the Bearer JWT and puts `sub`, `email`, and `role` into the Rack env,
 but **excludes four paths** from that check:
 `/health`, `/metrics`, `/api/v1/admin/alerts/ingest`, and `/api/v1/admin/chaos`.
 The alert-ingest and chaos endpoints use their own shared-secret headers
-(`X-Alert-Secret`, `X-Chaos-Secret`) — and the chaos controller
-(`services/admin-service/app/controllers/api/v1/admin/chaos_controller.rb`)
-**allows the
-request when its secret is unset or empty** ("dev mode"). These boundary
+(`X-Alert-Secret`, `X-Chaos-Secret`) — and the chaos controller under
+`services/admin-service/app/controllers/api/v1/admin/` **allows the request when
+its secret is unset or empty** ("dev mode"). These boundary
 disagreements — the gateway's public list vs. each service's own checks, and
 middleware exclusions with secret-optional fallbacks — are exactly the seams
 where a multi-step chain forms.
@@ -192,11 +189,12 @@ Read:
 - services/admin-service/app/controllers/api/v1/admin/chaos_controller.rb
   for how the excluded endpoints authenticate instead
 
-Produce THREAT_MODEL.md that lists the /api/v1/* routes, who
-is allowed to call it according to the gateway, who is allowed
-according to the downstream service, and every place those two
-answers disagree. Flag each disagreement as a candidate attack
-boundary. Do not attempt any exploit yet.
+Produce THREAT_MODEL.md that lists the /api/v1/* routes and,
+for each one, who is allowed to call it according to the
+gateway, who is allowed according to the downstream service,
+and every place those two answers disagree. Flag each
+disagreement as a candidate attack boundary. Do not attempt any
+exploit yet.
 ```
 
 The expected output is a boundary map: the gateway's public allow-list, each
@@ -333,13 +331,12 @@ test with its passing output. Keep every change on demo-threat1
 
 The loop closes on itself: the same request that returned unauthorized data
 should return `401`/`403` after the fix, and a new test in the suite fails if the
-boundary ever regresses.
-`t-main` was never touched — it remains the reference the tenant is compared
+boundary ever regresses. `t-main` was never touched — it remains the reference the tenant is compared
 against.
 
 The PR tells the whole story: threat model → analysis → runtime evidence → fix →
 re-test, all on a disposable tenant. For automating the reactive scanner side of
-this posture, cross-link to
+this posture, see
 [Event-Driven SAST Remediation](event-driven-sast-remediation-demo.md); this use
 case stays focused on the proactive application-layer chain.
 

@@ -133,9 +133,9 @@ Two things about the before state that make it realistic rather than a toy:
    CVE-2021-*
    ```
 
-That pattern suppresses matching 2021 CVE IDs across the repository. The file
-does not provide a ticket, owner, or expiry for this entry, and it is unclear
-which Q4 the comment refers to.
+   That pattern suppresses matching 2021 CVE IDs across the repository. The
+   file does not provide a ticket, owner, or expiry for this entry, and it is
+   unclear which Q4 the comment refers to.
 
 Work on a branch named `demo-<id>` (for example `demo-secscan1`). Pushing that
 branch triggers `.github/workflows/cd-tenant.yml`, which builds only the changed
