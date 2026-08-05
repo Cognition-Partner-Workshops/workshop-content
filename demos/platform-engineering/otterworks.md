@@ -193,7 +193,12 @@ Expected: a map naming `expires_at`, `persistent`, `idle_since`, `req_count`,
 `was_running`, and the `CONFIG#reaper` keys (`enabled`, `grace_seconds`,
 `idle_after_seconds`, `sweep_infra`, `sweep_infra_delete`), plus a coverage table
 whose last row is the finding that drives Act 3: **`platform/**` matches no CI
-filter**, so the VPC, EKS, and ECR layer merges ungated.
+filter**, so the VPC, EKS, and ECR layer merges ungated. A live run of this
+prompt also flagged `.github/workflows/`, `observability/`, `shared/`, and
+`tests/contract/` as uncovered, and noted two quirks worth knowing before you
+change the file: ShellCheck deliberately skips `scripts/**` even though that path
+triggers the `demo-platform` job, and the admin-dashboard lint and test steps are
+`|| true`.
 
 <a id="act-2"></a>
 ### Act 2 — Fix the retention defect live, with verification
@@ -239,24 +244,34 @@ policy: which tenants break, how it presents to a user, and why
 the failure is silent.
 ```
 
-**The verification beat.** A plausible first cut adds a `tagPrefixList` rule for
-`main` and `tenant-` and leaves the existing keep-last-10 rule as written. It
-formats, initializes, and validates cleanly — Terraform does not evaluate ECR
-rule semantics — and the assertion is what fails, because the untouched
-`tagStatus = "any"` rule still selects the golden image:
-
-```
-  FAIL - golden 'main' tag is protected from expiry
-         (rule 1: tagStatus=any, imageCountMoreThan=10 selects any
-          image, including the one tagged 'main')
-```
-
-The fix is to reorder and re-scope the rules — protected tag prefixes first with
-their own retention, the catch-all rule last and narrowed — not to relax the
-assertion. Re-run and the gate is green:
+**The verification beat.** The test is what separates this from a plausible-looking
+diff. A live run added
+`platform/terraform/modules/ecr/tests/lifecycle_policy.tftest.hcl` — a native
+`terraform test` run against a mocked AWS provider — asserting on the rendered
+policy that no `tagStatus "any"` rule exists, that the `main` rule holds the
+lowest `rulePriority` and the `tenant-` rule outranks every expiring rule, that
+untagged and leftover `<slug>-<sha>` images are still expired, and that the
+priorities are unique:
 
 ```bash
-cd platform/terraform && terraform validate
+cd platform/terraform/modules/ecr && terraform init -backend=false \
+  && terraform test
+#   tests/lifecycle_policy.tftest.hcl... pass
+#   Success! 1 passed, 0 failed.
+```
+
+The same suite run against the previous single-rule policy fails, which is the
+proof that matters: a first cut that adds `tagPrefixList` rules for `main` and
+`tenant-` but leaves the keep-last-10 rule as written still formats, initializes,
+and validates cleanly — `terraform validate` does not evaluate ECR rule
+semantics — and the assertion is what catches that the untouched `tagStatus =
+"any"` rule still selects the golden image. The fix is to reorder and re-scope
+the rules, protected tag prefixes first with their own retention counts and no
+catch-all `any` rule at all, not to relax the assertion:
+
+```bash
+cd platform/terraform && terraform fmt -check -recursive \
+  && terraform init -backend=false && terraform validate
 #   Success! The configuration is valid.
 ```
 
@@ -269,6 +284,12 @@ couples every tenant's fallback image to how often other tenants build.
 
 The defect merged because nothing looked at it. Close that, plus the two other
 gaps Act 1 surfaced.
+
+A session that reaches the retention fix by way of the coverage table often adds
+the `platform/**` filter and its Terraform job on the Act 2 branch, since that is
+the gap the defect exposed. Where that has happened, item 1 below is already
+landed — reconcile the two branches into one filter and one job rather than
+adding a second.
 
 ```
 In Cognition-Partner-Workshops/otterworks, close the CI coverage
