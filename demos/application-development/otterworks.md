@@ -7,8 +7,8 @@ frontends, ships a full-stack feature slice (Python/FastAPI
 both languages, and then the branch lands on a **live, browsable tenant** at
 `t-<id>.demo.otterworks.app` — compared side by side against the golden
 baseline at [https://t-main.otterworks.app](https://t-main.otterworks.app).
-Along the way the browser catches a cross-language contract divergence that the
-unit tests did not, and the PR review loop closes it.
+Along the way the live tenant makes a cross-language contract hazard concrete,
+and the PR review loop hardens the check.
 
 This is the microservices counterpart to
 [`banking-feature-sdlc-demo.md`](banking-feature-sdlc-demo.md), which runs the
@@ -24,7 +24,7 @@ green test gate; this one's is a running deployment you can click through.
   - [Act 1 — Orient across the polyglot stack](#act-1)
   - [Act 2 — The backend half of the slice](#act-2)
   - [Act 3 — The React surface, on a tenant branch](#act-3)
-  - [Act 4 — See it live, and close the divergence](#act-4)
+  - [Act 4 — See it live, and harden the contract](#act-4)
   - [Act 5 — Fan the remaining slices out](#act-5)
 - [Part 2 — Run the Produced Artifact](#part-2)
 - [Confirming Completion](#confirming-completion)
@@ -50,6 +50,13 @@ path, so use the per-service commands):
 cd services/document-service && pytest          # FastAPI slice
 cd frontend/client-app && npm test && npm run build   # React surface
 ```
+
+On unmodified `main`, the document-service suite is currently red:
+`9 failed, 33 passed`, all in `tests/test_documents_api.py`, with `401`
+responses from tests that were not updated after auth hardening. Repairing that
+gate is part of the slice. The client-app gates are green on `main`:
+`npm test` passes 1 file with 4 tests, `npm run lint` exits 0 with one warning,
+and `npm run build` is green.
 
 The full local stack, if you want to exercise the slice before it deploys:
 
@@ -99,23 +106,27 @@ depends on repo structure.
 
 | | Code | What you can see |
 |---|---|---|
-| **Before** | `main`: documents support create, read, update, soft delete, version restore, versions, comments, and templates — there is **no archive** concept | [https://t-main.otterworks.app/documents](https://t-main.otterworks.app/documents) — the golden baseline, with no Archived view |
-| **After** | branch `demo-<id>`: archive/unarchive endpoints, an `is_archived` + `archived_at` model change, pytest coverage, and an Archived toggle plus an archived badge in the React client | `t-<id>.demo.otterworks.app/documents` — your tenant, deployed from the branch by `.github/workflows/cd-tenant.yml` |
+| **Before** | `main`: documents support create, read, update, soft delete, version restore, versions, comments, and templates — there is **no archive** concept; the Python gate is red (`9 failed, 33 passed`) and the client gate is green | [https://t-main.otterworks.app/documents](https://t-main.otterworks.app/documents) — the golden baseline, with no Archived view |
+| **After** | branch `demo-<id>`: archive/unarchive endpoints, an `is_archived` + `archived_at` model change, a repaired Python suite (`46 passed`), and an Archived toggle plus an archived badge in the React client | `t-<id>.demo.otterworks.app/documents` — your tenant, deployed from the branch by `.github/workflows/cd-tenant.yml` |
 
 Two gates guard the slice, and they catch different classes of defect:
 
-- **Per-service tests** — `pytest` in `services/document-service`, `npm test`
-  and `npm run build` in `frontend/client-app`. On the PR,
-  `.github/workflows/ci.yml` runs the same commands for the changed paths only
-  (`poetry run ruff check .` and `poetry run pytest --cov=app` for the document
-  service; `npm run lint`, `npm test`, `npm run build` for the client).
+- **Per-service tests** — the starting Python gate is red
+  (`9 failed, 33 passed`) in `services/document-service`, while `npm test`,
+  `npm run lint`, and `npm run build` are green in `frontend/client-app`.
+  Act 2 repairs the Python suite to `46 passed`. On the PR,
+  `.github/workflows/ci.yml` runs the configured checks for the changed paths
+  (`poetry run ruff check .` and `poetry run pytest --cov=app` for the
+  document service; `npm run lint`, `npm test`, `npm run build` for the
+  client).
 - **The running tenant** — a push to `demo-<id>` triggers `cd-tenant.yml`,
   which builds images only for the changed services and syncs the tenant. The
   result is a hostname you can open next to `t-main` and compare.
 
 > **On "done":** in a polyglot stack, "done" means the contract holds *across*
-> the language boundary. Two green suites on either side of an HTTP call can
-> still add up to a blank field in the browser — Act 4 is exactly that case.
+> the language boundary. A green client suite and a repaired Python suite still
+> need a live contract check: a casing mismatch can add up to a blank field in
+> the browser.
 
 ---
 
@@ -190,13 +201,22 @@ Add tests to services/document-service/tests/test_documents_api.py
 covering: archive sets is_archived and archived_at, unarchive clears
 both, archived documents are absent from the default list and present
 with archived=true, and archiving an already-archived document is
-idempotent. Get `pytest` green from services/document-service and
-paste the summary line.
+idempotent.
+
+The starting `pytest` run has 9 failures and 33 passes, all in
+tests/test_documents_api.py, because those tests are missing the JWT
+authentication headers required after auth hardening. Repair those
+tests by adding the headers and keep their assertions honest rather
+than weakening them. Where a version-ordering assertion disagrees with
+list_versions, align the assertion with the ascending contract that
+tests/api/test_document_flow.py already relies on rather than changing
+the service. Report the before/after pass counts, then get `pytest`
+green from services/document-service and paste the summary line.
 ```
 
-Expected: a green `pytest` run in `services/document-service`, the new
-endpoints reachable through the existing gateway prefix, and no gateway or
-Helm change required.
+Expected: `9 failed, 33 passed` before the repair and `46 passed` after it,
+with the new endpoints reachable through the existing gateway prefix and no
+gateway or Helm change required.
 
 <a id="act-3"></a>
 ### Act 3 — The React surface, on a tenant branch
@@ -228,12 +248,15 @@ the tenant hostname (t-<id>.demo.otterworks.app).
 ```
 
 Expected: green `npm test` and `npm run build`, and a `cd-tenant.yml` run that
-rebuilds only `document-service` and `client-app` — the changed services — then
-syncs the tenant. Branches matching `workshop-**` or `demo-**` are what trigger
-tenant CD; the tenant is created with a TTL if it does not exist yet.
+rebuilds the `web-app` and `document-service` filters — the changed
+`frontend/client-app` and backend surfaces — then syncs the tenant. Branches
+matching `workshop-**` or `demo-**` are what trigger tenant CD; the tenant is
+created with a TTL if it does not exist yet. Once the run finishes,
+`https://t-<id>.demo.otterworks.app` answers 200 and `/api/health` reports
+`{"status":"healthy","service":"web-app"}`.
 
 <a id="act-4"></a>
-### Act 4 — See it live, and close the divergence
+### Act 4 — See it live, and harden the contract
 
 Open the two hostnames side by side:
 
@@ -241,13 +264,12 @@ Open the two hostnames side by side:
 - `https://t-<id>.demo.otterworks.app/documents` — the branch, with the toggle
 
 The toggle works, the archived document moves out of the Active list, and the
-badge appears. **But the archived date on the badge is blank.** Both suites are
-green: the pytest test asserts the API returns `archived_at`, and the Vitest
-test passes because its fixture was written from the FastAPI schema, in
-`snake_case`.
+badge appears with its archived date — because the card reads
+`document.isArchived` and `document.archivedAt`, the camelCase names the client
+actually receives.
 
-The divergence lives between them. The axios response interceptor rewrites
-response keys before any component sees them:
+That last detail is the contract hazard worth showing. The axios response
+interceptor rewrites response keys before any component sees them:
 
 ```ts
 // frontend/client-app/src/lib/api-client.ts
@@ -256,28 +278,22 @@ function snakeToCamel(s: string): string {
 }
 ```
 
-So the browser is handed `archivedAt`, while the type and the card read
-`archived_at`. Neither gate could see it — one stops at the HTTP response, the
-other starts from a hand-written fixture. Only the running app shows it.
+The browser is handed `archivedAt`, while the FastAPI schema emits
+`archived_at`. If a component or type reads the field in `snake_case`, the
+browser renders a blank value while both test suites stay green: one suite stops
+at the HTTP response, and the other starts from a hand-written fixture. The
+running tenant is the only place that mismatch shows up — so pin it down with a
+test instead of leaving it to the browser.
 
 ```
 On the demo-<id> branch of Cognition-Partner-Workshops/otterworks,
-the archived date renders blank in the browser on the deployed
-tenant, though pytest and Vitest are both green.
+harden the client-side contract around the archived date.
 
-Root cause: transformKeys in
-frontend/client-app/src/lib/api-client.ts rewrites response keys
-from snake_case to camelCase, so the client receives archivedAt
-while src/types/index.ts and
-src/components/documents/document-card.tsx read archived_at.
-
-Fix it on the client side of the boundary, not by changing the
-FastAPI schema:
-- Align the Document interface and the card with the camelCase
-  convention already used for wordCount / createdAt / trashedAt.
-- Rewrite the Vitest fixture so it is produced by the same
-  transform the runtime uses, so a future casing mismatch fails the
-  test instead of the browser.
+- Build the Vitest fixture for the document card through the same
+  transform the runtime applies (transformKeys in
+  frontend/client-app/src/lib/api-client.ts) so a casing mismatch
+  fails a test instead of the browser. Do not change the FastAPI
+  schema to hide a client-side mismatch.
 - Sweep src/lib/api.ts and src/types/index.ts for any other field
   read in snake_case and report what you find.
 
@@ -287,14 +303,17 @@ respond to the review comments on the pull request for this branch
 and push the follow-ups.
 ```
 
-The fix corrects the client to match the contract; the fixture change is what
-makes the class of bug catchable next time. The redeploy is another
-`cd-tenant.yml` run over the changed frontend only, and the date renders on
-refresh.
+The fixture change makes this class of casing mismatch catchable next time.
+The redeploy is another `cd-tenant.yml` run over the changed frontend, and the
+date remains visible on refresh when the client follows the contract.
 
 Devin Review comments on the PR and Devin answers them on the same branch —
 each round is another CI run plus another tenant redeploy, so reviewers read
 the diff and click the running result.
+
+One deployment wrinkle to expect on repeat pushes: a `cd-tenant.yml` run can
+fail when an immutable ECR `tenant-<id>` tag cannot be overwritten. Deleting the
+stale tags and retriggering the workflow clears it.
 
 <a id="act-5"></a>
 ### Act 5 — Fan the remaining slices out
@@ -396,10 +415,9 @@ not the other. The deployment is the artifact, not a screenshot of a diff.
 `frontend/client-app`, with the same commands re-run by `ci.yml` for the
 changed paths on the PR.
 
-**3. The casing divergence is caught by a test now, not by the browser.** Show
-the rewritten Vitest fixture built through the same transform the runtime
-applies, and show it failing if the field is read in `snake_case`. The bug that
-escaped both suites is now inside one of them.
+**3. The casing hazard is covered by a test before it reaches the browser.**
+Show the rewritten Vitest fixture built through the same transform the runtime
+applies, and show it failing if the field is read in `snake_case`.
 
 **4. `main` and `t-main` are untouched.** The golden app still has no archive
 concept, and the whole slice — code, tests, and its own deployment — lives on
@@ -414,7 +432,7 @@ several people at once.
 - **Automations** — a ticket moving into implementation, or a red check on
   `demo-<id>`, can start a session that ships the fix and redeploys the tenant.
   See [Automations](https://docs.devin.ai/product-guides/automations).
-- **Contract enforcement** — the casing divergence in Act 4 is the same class of
+- **Contract enforcement** — the casing hazard in Act 4 is the same class of
   defect the API contract audit covers in
   [`workshops/otterworks/C2-contract-audit.md`](../../workshops/otterworks/C2-contract-audit.md);
   `tests/contract/` and `tests/api/` are where that check becomes permanent.
@@ -447,8 +465,8 @@ several people at once.
   [t-main](https://t-main.otterworks.app) baseline. Reviewers click the feature
   instead of imagining it from a diff.
 - **Green suites on both sides of an HTTP call are not the same as a working
-  feature.** The `snake_case` → `camelCase` interceptor let a blank field
-  through both gates; the running tenant surfaced it in seconds.
+  feature.** The `snake_case` → `camelCase` interceptor is a live hazard; the
+  running tenant verifies that the client reads the transformed fields.
 - **The fix strengthens the gate, not just the code.** Rebuilding the test
   fixture through the runtime transform turns a whole class of casing bugs into
   test failures instead of browser surprises.
