@@ -221,8 +221,8 @@ quarantine, and report tasks. Preserve the S3 key formats, the
 otterworks-file-metadata DynamoDB table name, and the orphan predicate.
 Replace inline boto3 with S3Hook and DynamoDBHook. Include the PostgreSQL
 provider in etl/airflow/requirements.txt for the later pipelines that need it,
-but do not add PostgreSQL access to this S3/DynamoDB-only DAG. Move values out of
-etl/config.ini into Airflow Connections and Variables.
+but do not add PostgreSQL access to this S3/DynamoDB-only DAG. Move values
+out of etl/config.ini into Airflow Connections and Variables.
 Configure exponential-backoff retries, use Python logging, and keep task
 boundaries explicit.
 Create etl/airflow/requirements.txt and etl/airflow/docker-compose.yml. Add
