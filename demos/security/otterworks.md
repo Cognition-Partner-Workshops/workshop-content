@@ -270,7 +270,7 @@ without a breaking change:
    services/api-gateway/go.mod. Update the corresponding lock
    file with the ecosystem's own tool, never by hand.
 2. The hardcoded credentials in etl/config.ini (an AWS-style
-   secret key, an "etl_pr0d_2019!" database password, and a
+   access/secret key pair, a database password, and a
    MeiliSearch master key). Move them to environment variables
    following how other services read config, and confirm
    Gitleaks no longer reports them.
