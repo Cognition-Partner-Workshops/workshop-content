@@ -249,9 +249,9 @@ Expected: green `npm test` and `npm run build`, and a `cd-tenant.yml` run that
 rebuilds the `web-app` and `document-service` filters — the changed
 `frontend/client-app` and backend surfaces — then syncs the tenant. Branches
 matching `workshop-**` or `demo-**` are what trigger tenant CD; the tenant is
-created with a TTL if it does not exist yet. In the live run,
-`https://t-appdev1.demo.otterworks.app` returned 200 and
-`/api/health` reported `{"status":"healthy","service":"web-app"}`.
+created with a TTL if it does not exist yet. Once the run finishes,
+`https://t-<id>.demo.otterworks.app` answers 200 and `/api/health` reports
+`{"status":"healthy","service":"web-app"}`.
 
 <a id="act-4"></a>
 ### Act 4 — See it live, and harden the contract
@@ -261,13 +261,13 @@ Open the two hostnames side by side:
 - `https://t-main.otterworks.app/documents` — golden baseline, no Archived view
 - `https://t-<id>.demo.otterworks.app/documents` — the branch, with the toggle
 
-In the live run, the toggle worked, the archived document moved out of the
-Active list, and the badge appeared with its archived date. The Act 3
-implementation followed the client convention and read `document.isArchived`
-and `document.archivedAt`, so the blank-date bug did not occur.
+The toggle works, the archived document moves out of the Active list, and the
+badge appears with its archived date — because the card reads
+`document.isArchived` and `document.archivedAt`, the camelCase names the client
+actually receives.
 
-Keep the response transform in view as a live contract hazard. The axios
-response interceptor rewrites response keys before any component sees them:
+That last detail is the contract hazard worth showing. The axios response
+interceptor rewrites response keys before any component sees them:
 
 ```ts
 // frontend/client-app/src/lib/api-client.ts
@@ -278,18 +278,20 @@ function snakeToCamel(s: string): string {
 
 The browser is handed `archivedAt`, while the FastAPI schema emits
 `archived_at`. If a component or type reads the field in `snake_case`, the
-browser renders a blank value while both test suites can stay green: one suite
-stops at the HTTP response, and the other starts from a hand-written fixture.
-The live tenant is where you can verify that the implementation follows the
-contract.
+browser renders a blank value while both test suites stay green: one suite stops
+at the HTTP response, and the other starts from a hand-written fixture. The
+running tenant is the only place that mismatch shows up — so pin it down with a
+test instead of leaving it to the browser.
 
 ```
 On the demo-<id> branch of Cognition-Partner-Workshops/otterworks,
 harden the client-side contract around the archived date.
 
-Build the Vitest fixture through the same transform the runtime uses,
-so a casing mismatch fails a test instead of the browser. Do not change
-the FastAPI schema to hide a client-side mismatch.
+- Build the Vitest fixture for the document card through the same
+  transform the runtime applies (transformKeys in
+  frontend/client-app/src/lib/api-client.ts) so a casing mismatch
+  fails a test instead of the browser. Do not change the FastAPI
+  schema to hide a client-side mismatch.
 - Sweep src/lib/api.ts and src/types/index.ts for any other field
   read in snake_case and report what you find.
 
@@ -307,9 +309,9 @@ Devin Review comments on the PR and Devin answers them on the same branch —
 each round is another CI run plus another tenant redeploy, so reviewers read
 the diff and click the running result.
 
-One deployment wrinkle appeared during the live run: two `cd-tenant.yml` runs
-failed when ECR immutable `tenant-<id>` tags could not be overwritten on a
-re-push. Deleting the stale tags and retriggering the workflow resolved it.
+One deployment wrinkle to expect on repeat pushes: a `cd-tenant.yml` run can
+fail when an immutable ECR `tenant-<id>` tag cannot be overwritten. Deleting the
+stale tags and retriggering the workflow clears it.
 
 <a id="act-5"></a>
 ### Act 5 — Fan the remaining slices out
