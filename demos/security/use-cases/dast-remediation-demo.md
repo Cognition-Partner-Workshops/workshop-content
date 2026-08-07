@@ -134,9 +134,10 @@ FAIL  DAST-MISSING-SECURITY-HEADERS  medium    missing content-security-policy, 
                                                x-content-type-options, x-frame-options
 PASS  DAST-UNSIGNED-JWT              critical  all forged tokens were rejected
 PASS  DAST-SQLI-ERROR-BASED          critical  no SQL errors surfaced from injected parameters
-PASS  DAST-IDENTITY-HEADER-SPOOF     critical  spoofed identity header did not grant access
 SKIP  DAST-BOLA-DOCUMENTS            critical  the owner is also refused; the read path rejects
                                                every caller, so cross-tenant access cannot be assessed
+SKIP  DAST-IDENTITY-HEADER-SPOOF     critical  the owner is also refused, so the spoofed header
+                                               cannot be assessed either
 ...
 DAST gate FAILED: 4 finding(s) at or above medium
 ```
