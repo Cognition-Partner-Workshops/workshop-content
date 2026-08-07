@@ -260,7 +260,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | None (scaffolded from scratch) |
-| **Challenges** | [Volume Anomaly Detection](../labs/observability-sre/volume-anomaly-detection.md) |
+| **Challenges** | [Volume Anomaly Detection](../labs/observability-sre/volume-anomaly-detection.md), [Model Pipeline & Eval Demo](../demos/ai-ml/model-pipeline-and-eval-demo.md) |
 
 ---
 
