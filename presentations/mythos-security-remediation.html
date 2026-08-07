@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mythos Imperative — Operationalizing Security Remediation</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --r-background-color: #0a0a0f;
+      --r-main-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --r-heading-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --r-code-font: 'JetBrains Mono', monospace;
+      --r-main-font-size: 28px;
+      --r-main-color: #e2e8f0;
+      --r-heading-color: #f8fafc;
+      --r-link-color: #60a5fa;
+      --threat-red: #ef4444;
+      --threat-red-glow: rgba(239, 68, 68, 0.3);
+      --warning-amber: #f59e0b;
+      --solution-blue: #3b82f6;
+      --solution-teal: #14b8a6;
+      --accent-purple: #a78bfa;
+      --muted: #94a3b8;
+      --surface: rgba(255, 255, 255, 0.04);
+      --surface-border: rgba(255, 255, 255, 0.08);
+    }
+
+    .reveal {
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-transform: none;
+    }
+
+    .reveal h1 { font-size: 2.6em; }
+    .reveal h2 { font-size: 1.8em; margin-bottom: 0.6em; }
+    .reveal h3 { font-size: 1.2em; color: var(--muted); font-weight: 500; }
+
+    .reveal .slide-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    /* ── Title slide ── */
+    .title-slide h1 {
+      font-size: 2.8em;
+      font-weight: 900;
+      background: linear-gradient(135deg, #f8fafc 0%, var(--threat-red) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.2em;
+    }
+
+    .title-slide .subtitle {
+      font-size: 1.15em;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0;
+    }
+
+    .title-slide .date-line {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7em;
+      color: var(--accent-purple);
+      margin-top: 2em;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Section dividers ── */
+    .section-divider {
+      text-align: left;
+    }
+
+    .section-divider h2 {
+      font-size: 2.4em;
+      font-weight: 900;
+    }
+
+    .section-divider .section-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65em;
+      color: var(--threat-red);
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.5em;
+    }
+
+    /* ── Stat cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2em;
+      margin: 1em 0;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.2em 1.4em;
+      text-align: left;
+    }
+
+    .stat-card .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.4em;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.15em;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.7em;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .stat-red .stat-number { color: var(--threat-red); }
+    .stat-amber .stat-number { color: var(--warning-amber); }
+    .stat-blue .stat-number { color: var(--solution-blue); }
+    .stat-teal .stat-number { color: var(--solution-teal); }
+    .stat-purple .stat-number { color: var(--accent-purple); }
+
+    /* ── Highlight text ── */
+    .text-red { color: var(--threat-red); }
+    .text-amber { color: var(--warning-amber); }
+    .text-blue { color: var(--solution-blue); }
+    .text-teal { color: var(--solution-teal); }
+    .text-purple { color: var(--accent-purple); }
+    .text-muted { color: var(--muted); }
+    .text-white { color: #f8fafc; }
+
+    .bold { font-weight: 700; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ── Content lists ── */
+    .reveal ul, .reveal ol {
+      display: block;
+      margin-left: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .content-list li {
+      padding: 0.5em 0 0.5em 1.8em;
+      position: relative;
+      font-size: 0.88em;
+      line-height: 1.5;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .content-list li:last-child { border-bottom: none; }
+
+    .content-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.85em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--threat-red);
+    }
+
+    .content-list.blue-dots li::before { background: var(--solution-blue); }
+    .content-list.teal-dots li::before { background: var(--solution-teal); }
+    .content-list.amber-dots li::before { background: var(--warning-amber); }
+    .content-list.purple-dots li::before { background: var(--accent-purple); }
+
+    /* ── Quote blocks ── */
+    .callout {
+      background: var(--surface);
+      border-left: 4px solid var(--threat-red);
+      border-radius: 0 12px 12px 0;
+      padding: 1em 1.4em;
+      margin: 1em 0;
+      text-align: left;
+      font-size: 0.92em;
+      line-height: 1.6;
+    }
+
+    .callout.blue { border-left-color: var(--solution-blue); }
+    .callout.teal { border-left-color: var(--solution-teal); }
+    .callout.amber { border-left-color: var(--warning-amber); }
+    .callout.purple { border-left-color: var(--accent-purple); }
+
+    /* ── Pipeline / flow diagrams ── */
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3em;
+      flex-wrap: wrap;
+      margin: 1em 0;
+    }
+
+    .flow-step {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 0.5em 0.9em;
+      font-size: 0.72em;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .flow-arrow {
+      color: var(--muted);
+      font-size: 1.2em;
+    }
+
+    .flow-step.red { border-color: var(--threat-red); color: var(--threat-red); }
+    .flow-step.blue { border-color: var(--solution-blue); color: var(--solution-blue); }
+    .flow-step.teal { border-color: var(--solution-teal); color: var(--solution-teal); }
+    .flow-step.amber { border-color: var(--warning-amber); color: var(--warning-amber); }
+    .flow-step.green { border-color: #22c55e; color: #22c55e; }
+
+    /* ── Two-column layout ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      text-align: left;
+    }
+
+    .two-col .col-header {
+      font-size: 0.85em;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6em;
+      padding-bottom: 0.3em;
+      border-bottom: 2px solid var(--surface-border);
+    }
+
+    /* ── IS / IS NOT comparison ── */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5em;
+      margin-top: 1em;
+    }
+
+    .comparison-card {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 1.4em;
+      text-align: left;
+    }
+
+    .comparison-card.is-card {
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .comparison-card.isnot-card {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .comparison-card h3 {
+      font-size: 1.1em;
+      font-weight: 800;
+      margin-bottom: 0.6em;
+      margin-top: 0;
+    }
+
+    .comparison-card ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .comparison-card li {
+      font-size: 0.75em;
+      line-height: 1.6;
+      padding: 0.25em 0;
+      color: var(--muted);
+    }
+
+    /* ── Source citations ── */
+    .sources {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5em;
+      color: rgba(148, 163, 184, 0.5);
+      margin-top: 1.5em;
+      text-align: left;
+    }
+
+    .sources a {
+      color: rgba(148, 163, 184, 0.5);
+      text-decoration: none;
+    }
+
+    .sources a:hover { color: var(--r-link-color); }
+
+    /* ── Tag / pill ── */
+    .tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6em;
+      font-weight: 600;
+      padding: 0.2em 0.7em;
+      border-radius: 99px;
+      margin: 0.15em;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-red { background: rgba(239, 68, 68, 0.15); color: var(--threat-red); }
+    .tag-amber { background: rgba(245, 158, 11, 0.15); color: var(--warning-amber); }
+    .tag-blue { background: rgba(59, 130, 246, 0.15); color: var(--solution-blue); }
+
+    /* ── Timeline ── */
+    .timeline-item {
+      text-align: left;
+      padding: 0.6em 0 0.6em 2em;
+      position: relative;
+      font-size: 0.82em;
+      border-left: 2px solid var(--surface-border);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0.9em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--threat-red);
+      border: 2px solid var(--r-background-color);
+    }
+
+    .timeline-item .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      color: var(--threat-red);
+      font-weight: 600;
+    }
+
+    .timeline-item .timeline-text {
+      color: var(--muted);
+      margin-top: 0.15em;
+    }
+
+    /* ── Glow effect for emphasis ── */
+    .glow-red {
+      text-shadow: 0 0 40px var(--threat-red-glow);
+    }
+
+    /* ── Big number emphasis ── */
+    .big-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 5em;
+      font-weight: 900;
+      line-height: 1;
+      margin: 0.1em 0;
+    }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 900px) {
+      .two-col, .comparison-grid, .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── Subtle background pattern ── */
+    .reveal .slides {
+      text-align: left;
+    }
+
+    .reveal .slides > section {
+      padding: 40px 60px;
+    }
+
+    /* ── Progress bar ── */
+    .reveal .progress {
+      height: 3px;
+      color: var(--threat-red);
+    }
+
+    /* ── Slide transitions ── */
+    .reveal .slides section .fragment.grow-in {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.4s ease;
+    }
+
+    .reveal .slides section .fragment.grow-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Logo area */
+    .logo-area {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.55em;
+      color: rgba(148, 163, 184, 0.3);
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 1: TITLE                              -->
+      <!-- ════════════════════════════════════════════ -->
+      <section class="title-slide" data-transition="fade">
+        <div style="margin-top: 1em;">
+          <p class="mono text-red" style="font-size: 0.65em; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 0.5em;">SECURITY BRIEFING</p>
+          <h1>The Mythos<br>Imperative</h1>
+          <p class="subtitle">Why your security remediation pipeline<br>must scale&mdash;starting now</p>
+          <p class="date-line">April 2026 &nbsp;&bull;&nbsp; Cognition Partner Workshop</p>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 2: THE WORLD CHANGED                  -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <div class="section-divider">
+          <span class="section-number">01 &mdash; Context</span>
+          <h2>The world changed<br>on <span class="text-red">April 7, 2026</span></h2>
+        </div>
+        <div class="callout" style="margin-top: 1.2em;">
+          Anthropic announced <span class="bold text-white">Project Glasswing</span>&mdash;a defensive cybersecurity initiative powered by an unreleased model called <span class="bold text-red">Claude Mythos Preview</span>.
+        </div>
+        <div class="stat-grid" style="margin-top: 1em;">
+          <div class="stat-card stat-red fragment">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Launch partners including AWS, Apple, Microsoft, Google, CrowdStrike, NVIDIA</div>
+          </div>
+          <div class="stat-card stat-amber fragment">
+            <div class="stat-number">1000s</div>
+            <div class="stat-label">High-severity vulnerabilities already discovered across every major OS and browser</div>
+          </div>
+          <div class="stat-card stat-purple fragment">
+            <div class="stat-number">Limited</div>
+            <div class="stat-label">Access restricted because the same capability can be used offensively</div>
+          </div>
+        </div>
+        <div class="sources">Source: <a href="https://www.anthropic.com/glasswing">anthropic.com/glasswing</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 3: WHAT MYTHOS CAN DO                 -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>What Mythos can do</h2>
+        <p class="text-muted" style="font-size: 0.8em; margin-bottom: 0.8em;">This is not a pattern-matching scanner. It reasons about code.</p>
+        <ul class="content-list">
+          <li class="fragment">Found old, subtle vulnerabilities in <span class="bold text-white">OpenBSD</span> and <span class="bold text-white">FFmpeg</span>&mdash;missed by decades of manual review</li>
+          <li class="fragment">Chained Linux kernel vulnerabilities into a <span class="bold text-red">full privilege escalation</span></li>
+          <li class="fragment">Can develop related exploits <span class="bold text-red">largely autonomously</span></li>
+          <li class="fragment">Helped Mozilla identify and fix <span class="bold text-amber">271 vulnerabilities</span> in Firefox 150</li>
+        </ul>
+        <div class="sources">Sources: <a href="https://www.anthropic.com/glasswing">Anthropic</a>, <a href="https://blog.mozilla.org/en/privacy-security/ai-security-zero-day-vulnerabilities/">Mozilla Blog</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 4: FIREFOX PROOF POINT                -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The proof point: <span class="text-amber">Firefox 150</span></h2>
+        <div class="two-col" style="margin-top: 0.8em;">
+          <div>
+            <div class="stat-card stat-amber" style="margin-bottom: 0.8em;">
+              <div class="stat-number">271</div>
+              <div class="stat-label">Vulnerabilities identified by Claude Mythos Preview in a single browser release</div>
+            </div>
+            <div class="stat-card stat-blue">
+              <div class="stat-number">22</div>
+              <div class="stat-label">Security-sensitive bugs fixed in Firefox 148 using the earlier Opus 4.6 model</div>
+            </div>
+          </div>
+          <div>
+            <div class="callout amber" style="font-size: 0.82em;">
+              Mozilla's CTO framed this as a <span class="bold text-white">major defender advantage</span>&mdash;but also warned that teams will feel <span class="bold text-amber">"vertigo"</span> from the volume of findings.
+            </div>
+            <p class="text-muted" style="font-size: 0.72em; line-height: 1.5; margin-top: 0.6em;">
+              This is what happens when AI accelerates discovery: the finding rate outpaces the fixing rate.
+              The bottleneck moves downstream.
+            </p>
+          </div>
+        </div>
+        <div class="sources">Sources: <a href="https://blog.mozilla.org/en/privacy-security/ai-security-zero-day-vulnerabilities/">Mozilla Blog</a>, <a href="https://www.securityweek.com/claude-mythos-finds-271-firefox-vulnerabilities/">SecurityWeek</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 5: HYPE CHECK                         -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The hype check <span class="tag tag-amber">important</span></h2>
+        <div class="callout amber" style="margin-top: 0.8em;">
+          <span class="bold text-amber">271 vulnerabilities &ne; 271 critical CVEs.</span>
+        </div>
+        <ul class="content-list amber-dots" style="margin-top: 0.8em;">
+          <li class="fragment">Firefox 150 addressed <span class="bold text-white">&gt;40 CVEs</span> in its public advisory</li>
+          <li class="fragment">Only <span class="bold text-white">3</span> were explicitly credited to Claude Mythos</li>
+          <li class="fragment">Many of the 271 findings were likely <span class="text-muted">lower-severity, hardening, defense-in-depth, or internal-only</span></li>
+          <li class="fragment">This is still a <span class="bold text-amber">12x improvement</span> over the Opus 4.6 collaboration (22 bugs in FF148)</li>
+        </ul>
+        <div class="callout" style="margin-top: 0.8em; font-size: 0.82em;">
+          <span class="bold text-white">The signal is clear:</span> AI vulnerability discovery is scaling exponentially.
+          The exact numbers matter less than the trajectory.
+        </div>
+        <div class="sources">Source: <a href="https://www.securityweek.com/claude-mythos-finds-271-firefox-vulnerabilities/">SecurityWeek</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 6: DEMYSTIFYING MYTHOS                -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>Demystifying <span class="text-red">Mythos</span></h2>
+        <div class="comparison-grid">
+          <div class="comparison-card is-card">
+            <h3 class="text-red">What Mythos IS</h3>
+            <ul class="content-list" style="font-size: 0.95em;">
+              <li>An <span class="bold text-white">imminent</span>, not hypothetical, AI capability for deep vulnerability discovery</li>
+              <li>Proof that AI can find old, subtle bugs <span class="bold text-white">humans missed for decades</span></li>
+              <li>A forcing function&mdash;your remediation pipeline must handle <span class="bold text-red">order-of-magnitude more findings</span></li>
+              <li>Restricted today to <span class="bold text-white">12 launch partners</span>&mdash;but the capability curve only goes up</li>
+            </ul>
+          </div>
+          <div class="comparison-card isnot-card">
+            <h3 class="text-muted">What Mythos is NOT</h3>
+            <ul class="content-list" style="font-size: 0.95em;">
+              <li style="border-color: rgba(148,163,184,0.1);"><span class="bold text-white">Not available today</span> to most organizations&mdash;access is tightly controlled</li>
+              <li style="border-color: rgba(148,163,184,0.1);"><span class="bold text-white">Not the only answer</span>&mdash;existing scanners, SCA, and SAST still find real issues now</li>
+              <li style="border-color: rgba(148,163,184,0.1);"><span class="bold text-white">Not a reason to wait</span>&mdash;&ldquo;we'll fix it when Mythos finds it&rdquo; is the wrong posture</li>
+              <li style="border-color: rgba(148,163,184,0.1);"><span class="bold text-white">Not a silver bullet</span>&mdash;finding vulnerabilities is only half the problem; fixing them is the other</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout teal" style="margin-top: 0.8em; font-size: 0.88em; text-align: center;">
+          <span class="bold text-teal">The real question isn't whether Mythos-class threats arrive&mdash;it's whether your security program can absorb the impact.</span><br>
+          <span class="text-muted" style="font-size: 0.92em;">You need a <span class="bold text-white">self-healing, resilient security program</span> that can automatically triage, prioritize, remediate, and verify at scale&mdash;because the volume of findings headed your way will overwhelm any manual process.</span>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 7: THE CONTAINMENT PROBLEM            -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The containment problem</h2>
+        <div class="timeline-item fragment">
+          <div class="timeline-date">April 7, 2026</div>
+          <div class="timeline-text">Anthropic announces Project Glasswing with restricted access to Mythos</div>
+        </div>
+        <div class="timeline-item fragment">
+          <div class="timeline-date">April 21, 2026</div>
+          <div class="timeline-text">Bloomberg reports unauthorized group accessed Mythos through a third-party vendor environment</div>
+        </div>
+        <div class="timeline-item fragment">
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-text">Anthropic confirms investigation into unauthorized access</div>
+        </div>
+        <div class="callout" style="margin-top: 1em;">
+          <span class="bold text-white">This doesn't prove broad malicious use.</span> But it validates the central concern:
+          <span class="bold text-red">capabilities this powerful are hard to contain perfectly.</span>
+        </div>
+        <p class="text-muted" style="font-size: 0.75em; margin-top: 0.8em;">
+          If even one advanced model leaks its vulnerability-discovery capabilities, every unpatched system becomes a softer target. The question is not <em>if</em> this capability proliferates&mdash;it is <em>when</em>.
+        </p>
+        <div class="sources">Source: <a href="https://www.bloomberg.com/news/articles/2026-04-21/anthropic-s-mythos-model-is-being-accessed-by-unauthorized-users">Bloomberg</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 8: SECTION DIVIDER — THE SHIFT        -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at center, rgba(239,68,68,0.08), transparent 70%)">
+        <div class="section-divider" style="text-align: center;">
+          <span class="section-number">02 &mdash; The Shift</span>
+          <h2 style="font-size: 2.2em;">The bottleneck moves from<br><span class="text-muted">"find the bug"</span> to<br><span class="text-red">"fix it fast enough"</span></h2>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 9: FIVE NEW PRESSURES                 -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The new pressure on engineering teams</h2>
+        <div style="margin-top: 0.6em;">
+          <div class="callout fragment" style="margin-bottom: 0.6em; border-left-color: var(--threat-red);">
+            <span class="bold text-red">1. More findings hit the queue.</span><br>
+            <span class="text-muted" style="font-size: 0.85em;">Some are real and urgent. Some are noisy. Many need codebase context to assess.</span>
+          </div>
+          <div class="callout fragment" style="margin-bottom: 0.6em; border-left-color: var(--warning-amber);">
+            <span class="bold text-amber">2. Exploitability matters more than abstract severity.</span><br>
+            <span class="text-muted" style="font-size: 0.85em;">Reachability, exposure, auth boundaries, KEV/EPSS, and exploit proof outweigh raw CVSS.</span>
+          </div>
+          <div class="callout fragment" style="margin-bottom: 0.6em; border-left-color: var(--solution-blue);">
+            <span class="bold text-blue">3. Remediation becomes an engineering throughput problem.</span><br>
+            <span class="text-muted" style="font-size: 0.85em;">Dependency bumps, framework upgrades, API replacements, regression tests, PR reviews.</span>
+          </div>
+          <div class="callout fragment" style="margin-bottom: 0.6em; border-left-color: var(--accent-purple);">
+            <span class="bold text-purple">4. Human expertise moves up the stack.</span><br>
+            <span class="text-muted" style="font-size: 0.85em;">Validate risk, approve tricky fixes, update policy, review architecture&mdash;not grind through package bumps.</span>
+          </div>
+          <div class="callout fragment" style="border-left-color: var(--muted);">
+            <span class="bold text-white">5. Open-source maintainers are exposed.</span><br>
+            <span class="text-muted" style="font-size: 0.85em;">AI may surface real bugs faster than maintainers can absorb them. Low-quality automated reports become an operational burden.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 10: THE REMEDIATION GAP               -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The remediation gap</h2>
+        <p class="text-muted" style="font-size: 0.8em;">Anthropic's own guidance now recommends:</p>
+        <ul class="content-list amber-dots" style="margin-top: 0.6em;">
+          <li class="fragment"><span class="bold text-white">Much faster patching cadences</span>&mdash;current SLAs may be too slow</li>
+          <li class="fragment">Plan for an <span class="bold text-amber">order-of-magnitude increase</span> in vulnerability volume</li>
+          <li class="fragment">Add <span class="bold text-white">AI-assisted code review</span> to CI pipelines</li>
+          <li class="fragment">Use <span class="bold text-white">automation to triage, dedupe, and draft remediation</span> work</li>
+        </ul>
+        <div class="callout" style="margin-top: 1em; text-align: center; font-size: 1.05em;">
+          The gap between <span class="bold text-red">discovery velocity</span> and
+          <span class="bold text-blue">remediation capacity</span> is where risk lives.
+        </div>
+        <div class="sources">Source: <a href="https://claude.com/blog/preparing-your-security-program-for-ai-accelerated-offense">claude.com/blog — Preparing your security program</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 11: WHY FIX NOW                       -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at center, rgba(239,68,68,0.06), transparent 70%)">
+        <div style="text-align: center;">
+          <p class="mono text-red" style="font-size: 0.7em; font-weight: 600; letter-spacing: 0.15em;">THE CORE ARGUMENT</p>
+          <h2 style="font-size: 2em; margin-bottom: 0.4em;">Fix the stuff now.</h2>
+          <p style="font-size: 1em; color: var(--muted); max-width: 700px; margin: 0 auto; line-height: 1.6;">
+            You don't need Mythos access to act on this.
+            The imminent reality of intelligent models finding new threat vectors
+            that bad actors can <span class="bold text-red">exploit</span> means the
+            vulnerabilities in your code <em>today</em> are on a shorter clock than they were last month.
+          </p>
+          <div class="stat-grid" style="margin-top: 1.5em; max-width: 650px; margin-left: auto; margin-right: auto;">
+            <div class="stat-card stat-red fragment">
+              <div class="stat-number" style="font-size: 1.8em;">Now</div>
+              <div class="stat-label">You know about vulnerabilities but can patch at your own pace</div>
+            </div>
+            <div class="stat-card stat-amber fragment">
+              <div class="stat-number" style="font-size: 1.8em;">Soon</div>
+              <div class="stat-label">AI finds net-new vulnerabilities before you do&mdash;and so can adversaries</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 12: SECTION DIVIDER — OPERATIONALIZE  -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at center, rgba(59,130,246,0.08), transparent 70%)">
+        <div class="section-divider" style="text-align: center;">
+          <span class="section-number" style="color: var(--solution-blue);">03 &mdash; The Solution</span>
+          <h2 style="font-size: 2.2em;">Operationalizing<br><span class="text-blue">security remediation</span></h2>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 13: THE PIPELINE                      -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The remediation pipeline</h2>
+        <p class="text-muted" style="font-size: 0.8em;">From finding to verified fix&mdash;every step must scale.</p>
+
+        <div class="flow-row" style="margin-top: 1.2em;">
+          <div class="flow-step red fragment">Scanner Finds Issue</div>
+          <span class="flow-arrow fragment">&rarr;</span>
+          <div class="flow-step amber fragment">Triage &amp; Prioritize</div>
+          <span class="flow-arrow fragment">&rarr;</span>
+          <div class="flow-step blue fragment">Prepare Patch + Tests</div>
+          <span class="flow-arrow fragment">&rarr;</span>
+          <div class="flow-step teal fragment">CI / Security Gates</div>
+          <span class="flow-arrow fragment">&rarr;</span>
+          <div class="flow-step fragment" style="border-color: #f8fafc; color: #f8fafc;">Human Review</div>
+          <span class="flow-arrow fragment">&rarr;</span>
+          <div class="flow-step green fragment">Deploy &amp; Verify</div>
+        </div>
+
+        <div class="two-col" style="margin-top: 1.5em;">
+          <div>
+            <div class="col-header text-red">Where teams get stuck</div>
+            <ul class="content-list" style="font-size: 0.9em;">
+              <li>Manual triage of hundreds of findings</li>
+              <li>Dependency bumps that break builds</li>
+              <li>No tests for the vulnerable codepath</li>
+              <li>PR backlog waiting for security review</li>
+            </ul>
+          </div>
+          <div>
+            <div class="col-header text-blue">What can be automated</div>
+            <ul class="content-list blue-dots" style="font-size: 0.9em;">
+              <li>Dedup, prioritize by CVSS + reachability</li>
+              <li>Draft version bumps with regression tests</li>
+              <li>Generate missing test coverage for fix areas</li>
+              <li>Open PRs with linked evidence and CI checks</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 14: WHERE DEVIN FITS                  -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>Where <span class="text-blue">Devin</span> fits</h2>
+        <div class="callout blue" style="margin-top: 0.6em; font-size: 0.95em;">
+          Mythos creates a remediation bottleneck.<br>
+          <span class="bold text-white">Devin is built to execute software engineering work at the bottleneck.</span>
+        </div>
+        <div class="comparison-grid" style="margin-top: 1em;">
+          <div class="comparison-card" style="border-color: rgba(59,130,246,0.3);">
+            <h3 class="text-blue">What Devin does</h3>
+            <ul class="content-list blue-dots" style="font-size: 0.95em;">
+              <li style="border-color: rgba(59,130,246,0.1);">Writes, runs, and tests code changes</li>
+              <li style="border-color: rgba(59,130,246,0.1);">Handles dependency upgrades and version bumps</li>
+              <li style="border-color: rgba(59,130,246,0.1);">Opens PRs with linked scanner evidence</li>
+              <li style="border-color: rgba(59,130,246,0.1);">Runs security scans (npm audit, pip-audit, trivy, cargo audit)</li>
+              <li style="border-color: rgba(59,130,246,0.1);">Applies the same fix pattern across many repositories</li>
+            </ul>
+          </div>
+          <div class="comparison-card" style="border-color: rgba(148,163,184,0.15);">
+            <h3 class="text-muted">What Devin is not</h3>
+            <ul class="content-list" style="font-size: 0.95em;">
+              <li style="border-color: rgba(148,163,184,0.1);">Not a replacement for security judgment</li>
+              <li style="border-color: rgba(148,163,184,0.1);">Not "Mythos for your repo"</li>
+              <li style="border-color: rgba(148,163,184,0.1);">Not a vulnerability scanner&mdash;it is a remediation engine</li>
+              <li style="border-color: rgba(148,163,184,0.1);">Not unchecked autonomy&mdash;runs with engineering controls</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 15: DEVIN + SECURITY STACK            -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>Devin + your security stack</h2>
+        <p class="text-muted" style="font-size: 0.78em; margin-bottom: 0.8em;">Devin works downstream of your existing security tools.</p>
+
+        <div class="stat-grid">
+          <div class="stat-card fragment" style="border-color: rgba(59,130,246,0.2);">
+            <div class="stat-number text-blue" style="font-size: 1.4em;">Snyk for Devin</div>
+            <div class="stat-label">Real-time scanning, agent-led remediation, policy context, reduced MTTR</div>
+          </div>
+          <div class="stat-card fragment" style="border-color: rgba(20,184,166,0.2);">
+            <div class="stat-number text-teal" style="font-size: 1.4em;">Security Scan</div>
+            <div class="stat-label">Automation template: runs scanners, cross-refs CVEs, dedupes, files tickets, opens patch PRs</div>
+          </div>
+          <div class="stat-card fragment" style="border-color: rgba(167,139,250,0.2);">
+            <div class="stat-number text-purple" style="font-size: 1.4em;">OWASP Hardening</div>
+            <div class="stat-label">Recurring audits against OWASP Top 10, creating tickets and fix PRs for safe remediations</div>
+          </div>
+        </div>
+
+        <div class="callout blue" style="margin-top: 1em; text-align: center; font-size: 0.9em;">
+          <span class="bold">The mental model:</span><br>
+          <span class="text-red">Mythos-class tools</span> increase vulnerability discovery &rarr;
+          <span class="text-amber">Snyk / GitHub / CodeQL / Trivy</span> provide security signals &rarr;
+          <span class="text-blue">Devin</span> turns the fixable signals into reviewed engineering output.
+        </div>
+        <div class="sources">Sources: <a href="https://snyk.io/blog/snyk-cognition-partner-integration/">Snyk</a>, <a href="https://docs.devin.ai/automation-templates/security-vulnerability-scan">Devin Docs — Security Scan</a>, <a href="https://docs.devin.ai/automation-templates/owasp-security-hardening">Devin Docs — OWASP</a></div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 16: THE RIGHT SETUP                   -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <h2>The right operational model</h2>
+        <div class="flow-row" style="margin-top: 1em; margin-bottom: 1em;">
+          <div class="flow-step red">Security tool<br><span style="font-size:0.8em;">finds / validates</span></div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step blue">Devin<br><span style="font-size:0.8em;">prepares patch + tests</span></div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step teal">CI / scanners<br><span style="font-size:0.8em;">run gates</span></div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step" style="border-color: #f8fafc; color: #f8fafc;">Human owner<br><span style="font-size:0.8em;">reviews &amp; approves</span></div>
+          <span class="flow-arrow">&rarr;</span>
+          <div class="flow-step green">Deploy<br><span style="font-size:0.8em;">verify &amp; close</span></div>
+        </div>
+
+        <ul class="content-list blue-dots" style="margin-top: 0.8em;">
+          <li class="fragment"><span class="bold text-white">Branch protections</span> and validation checks gate every merge</li>
+          <li class="fragment"><span class="bold text-white">Human security expertise</span> validates risk and approves tricky fixes</li>
+          <li class="fragment"><span class="bold text-white">Devin handles the grind</span>&mdash;bumps, tests, PRs, changelogs, re-runs</li>
+          <li class="fragment"><span class="bold text-white">Scanners confirm closure</span>&mdash;the vulnerability is gone, not just patched</li>
+        </ul>
+
+        <div class="callout purple" style="margin-top: 0.8em; font-size: 0.85em;">
+          <span class="bold text-purple">Key metric in the Mythos era:</span>
+          Time from <span class="mono text-red">finding</span> &rarr; <span class="mono text-blue">merged fix</span> &rarr; <span class="mono text-teal">deployed fix</span>
+          becomes your primary security KPI.
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 17: WHAT TO DO NOW                    -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="slide">
+        <div class="section-divider">
+          <span class="section-number" style="color: var(--solution-teal);">04 &mdash; Action</span>
+          <h2>What you should do <span class="text-teal">now</span></h2>
+        </div>
+
+        <div style="margin-top: 0.8em;">
+          <div class="callout teal fragment" style="margin-bottom: 0.5em; font-size: 0.88em;">
+            <span class="bold text-teal">1.</span> &nbsp;<span class="bold text-white">Audit your remediation SLAs.</span>
+            If your critical patch window is 30+ days, it's too slow for the Mythos era.
+          </div>
+          <div class="callout teal fragment" style="margin-bottom: 0.5em; font-size: 0.88em;">
+            <span class="bold text-teal">2.</span> &nbsp;<span class="bold text-white">Burn down the existing backlog.</span>
+            Every known-unfixed vulnerability is a liability with a shrinking clock.
+          </div>
+          <div class="callout teal fragment" style="margin-bottom: 0.5em; font-size: 0.88em;">
+            <span class="bold text-teal">3.</span> &nbsp;<span class="bold text-white">Automate the repeatable work.</span>
+            Dependency upgrades, version bumps, OWASP fixes&mdash;let Devin handle the volume.
+          </div>
+          <div class="callout teal fragment" style="margin-bottom: 0.5em; font-size: 0.88em;">
+            <span class="bold text-teal">4.</span> &nbsp;<span class="bold text-white">Elevate your security engineers.</span>
+            Shift human effort from manual patching to risk validation, architecture review, and policy.
+          </div>
+          <div class="callout teal fragment" style="font-size: 0.88em;">
+            <span class="bold text-teal">5.</span> &nbsp;<span class="bold text-white">Plan for 10x finding volume.</span>
+            Build the intake, triage, and remediation pipeline now&mdash;before the flood arrives.
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 18: KEY TAKEAWAY                      -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at center, rgba(239,68,68,0.06), transparent 60%)">
+        <div style="text-align: center; margin-top: 1em;">
+          <p class="mono text-red" style="font-size: 0.65em; font-weight: 600; letter-spacing: 0.15em; margin-bottom: 0.5em;">KEY TAKEAWAY</p>
+          <h2 style="font-size: 2em; max-width: 800px; margin: 0 auto 0.5em;">
+            You don't need <span class="text-red">Mythos</span> access<br>to act on the <span class="text-red">Mythos</span> reality.
+          </h2>
+          <p style="font-size: 0.95em; color: var(--muted); max-width: 650px; margin: 0 auto; line-height: 1.6;">
+            AI-accelerated vulnerability discovery is here.
+            The organizations that survive the shift are the ones
+            that can <span class="bold text-white">triage, patch, test, review, deploy, and verify</span>
+            faster than adversaries can exploit.
+          </p>
+          <div style="margin-top: 2em;">
+            <span class="tag tag-red">DISCOVERY</span>
+            <span style="color: var(--muted); margin: 0 0.3em;">&rarr;</span>
+            <span class="tag tag-amber">TRIAGE</span>
+            <span style="color: var(--muted); margin: 0 0.3em;">&rarr;</span>
+            <span class="tag tag-blue">REMEDIATION AT SCALE</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════ -->
+      <!-- SLIDE 19: CLOSING                           -->
+      <!-- ════════════════════════════════════════════ -->
+      <section data-transition="fade">
+        <div style="text-align: center; margin-top: 2em;">
+          <h2 style="font-size: 2.4em; margin-bottom: 0.3em;">
+            <span class="text-blue">Scale the fix.</span><br>
+            <span class="text-muted" style="font-size: 0.6em; font-weight: 400;">Before the find scales for everyone.</span>
+          </h2>
+          <div style="margin-top: 2.5em;">
+            <p class="mono text-muted" style="font-size: 0.6em; letter-spacing: 0.1em;">
+              COGNITION &nbsp;&bull;&nbsp; DEVIN &nbsp;&bull;&nbsp; PARTNER WORKSHOP
+            </p>
+          </div>
+          <div class="sources" style="text-align: center; margin-top: 3em;">
+            <a href="https://www.anthropic.com/glasswing">Anthropic — Project Glasswing</a> &nbsp;&bull;&nbsp;
+            <a href="https://blog.mozilla.org/en/privacy-security/ai-security-zero-day-vulnerabilities/">Mozilla Blog</a> &nbsp;&bull;&nbsp;
+            <a href="https://www.securityweek.com/claude-mythos-finds-271-firefox-vulnerabilities/">SecurityWeek</a> &nbsp;&bull;&nbsp;
+            <a href="https://claude.com/blog/preparing-your-security-program-for-ai-accelerated-offense">Claude Blog</a><br>
+            <a href="https://snyk.io/blog/snyk-cognition-partner-integration/">Snyk + Cognition</a> &nbsp;&bull;&nbsp;
+            <a href="https://docs.devin.ai/automation-templates/security-vulnerability-scan">Devin — Security Scan</a> &nbsp;&bull;&nbsp;
+            <a href="https://docs.devin.ai/automation-templates/owasp-security-hardening">Devin — OWASP Hardening</a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- .slides -->
+  </div><!-- .reveal -->
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: false,
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2.0,
+      pdfSeparateFragments: false,
+      pdfMaxPagesPerSlide: 1
+    });
+  </script>
+</body>
+</html>
