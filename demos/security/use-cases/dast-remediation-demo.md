@@ -146,7 +146,9 @@ Three verdicts, not two. `vulnerable` means the attack ran and worked, with the
 request and response captured as evidence. `secure` means the attack failed
 **and** a control request confirmed the legitimate caller still succeeds.
 `inconclusive` means no verdict was possible — and it never counts as a pass.
-The exit code is what CI gates on.
+The exit code is what CI gates on: `1` for findings, and `3` when a focused
+verification could not reach a verdict at all, so an unproven remediation can
+never exit clean.
 
 ---
 
