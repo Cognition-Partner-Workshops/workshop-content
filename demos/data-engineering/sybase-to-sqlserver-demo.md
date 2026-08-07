@@ -106,6 +106,7 @@ triggers, and functions. For each object, identify every Sybase-specific
 construct that needs conversion to SQL Server. Reference the migration map at
 uc-db-migration-sybase-to-sqlserver/docs/SYBASE_TO_SQLSERVER_MIGRATION_MAP.md
 and rank each object by conversion complexity (simple, medium, complex).
+Explain clearly and simply to someone completely new to this codebase.
 ```
 
 Expected: Devin maps 7 tables, 12 stored procedures, 3 views, 2 triggers, and
