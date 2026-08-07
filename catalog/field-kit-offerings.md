@@ -75,7 +75,7 @@ OtterWorks is the **north-star** offering: tag it distinctly (`custom: ["flagshi
 
 ## 4. Demos (facilitator-led)
 
-11 showcases across data-engineering, migration, and security. Tree: [`demos/`](../demos/). One Packet per demo, `packetType: Demo`, `audience: [Sales, Solutions]`. These are linear "follow along" scripts, not labs.
+15 showcases across data-engineering, security, migration, application-development, and technical-documentation. Tree: [`demos/`](../demos/). One Packet per demo, `packetType: Demo`, `audience: [Sales, Solutions]`. These are linear "follow along" scripts, not labs.
 
 ## 5. Reference (shared lookup)
 
