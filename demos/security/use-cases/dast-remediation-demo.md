@@ -330,9 +330,12 @@ runs the same playbook on a cadence — the recurring maintenance sweep no one
 volunteers for:
 
 ```
-Every weekday at 07:00 UTC, run
-make dast-scan DAST_TARGET=https://api-t-main.otterworks.app
-on Cognition-Partner-Workshops/otterworks.
+Every weekday at 07:00 UTC, deploy a disposable tenant from
+main with scripts/deploy-tenant.sh, run
+make dast-scan DAST_TARGET=<that tenant's api URL>
+on Cognition-Partner-Workshops/otterworks, then tear the
+tenant down. A scan registers accounts and writes documents,
+so it never runs against a shared tenant.
 
 If the gate fails on a finding that is not in
 security/dast/baseline.json, post the report summary to
