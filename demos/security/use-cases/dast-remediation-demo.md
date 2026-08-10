@@ -16,11 +16,12 @@ repeatable check that the fix works.
 - [Part 1 — Orient: What Is Actually Exposed](#part-1)
 - [Part 2 — Attack It: The First Scan](#part-2)
 - [Part 3 — The Finding the Scanner Would Have Missed](#part-3)
-- [Part 4 — Fix It and Prove It](#part-4)
-- [Part 5 — Fan Out Across the Remaining Findings](#part-5)
-- [Part 6 — Where the Confidence Comes From](#part-6)
-- [Part 7 — Run It Unattended: CI, Schedules, Automations](#part-7)
-- [Part 8 — Confirm It in the Dashboards](#part-8)
+- [Part 4 — What the Scan Never Touched](#part-4)
+- [Part 5 — Fix It and Prove It](#part-5)
+- [Part 6 — Fan Out Across the Remaining Findings](#part-6)
+- [Part 7 — Where the Confidence Comes From](#part-7)
+- [Part 8 — Run It Unattended: CI, Schedules, Automations](#part-8)
+- [Part 9 — Confirm It in the Dashboards](#part-9)
 - [Key Takeaways](#key-takeaways)
 
 ---
@@ -200,7 +201,85 @@ a blanket `401` be recorded as a pass.
 ---
 
 <a id="part-4"></a>
-## Part 4 — Fix It and Prove It
+## Part 4 — What the Scan Never Touched
+
+A report only ever describes requests that were made. Nothing in a green result
+says which endpoints nobody tried — and that number decays every time somebody
+merges a new route.
+
+```
+Before we fix anything: how much of the attack surface
+did that scan actually reach?
+
+Derive the edge-reachable routes from the source rather
+than from a crawl — the gateway's route table plus each
+service's own route definitions — and compare them with
+the requests the scan issued. Show me the routes nothing
+attacked, and which services you could not parse.
+```
+
+Devin reads route definitions out of four languages — FastAPI decorators, Flask
+blueprints, an actix `web::scope`, Spring `@RequestMapping` — resolves them
+through the gateway's proxy table, and diffs the result against the paths
+recorded in the report:
+
+```
+Coverage of the edge-reachable surface, from the last scan:
+  reached by a probe:             61/61
+  attacked as a logged-in caller:  6/61
+```
+
+Two depths, deliberately. Every route is swept unauthenticated the moment it is
+declared in the source, so a route added yesterday cannot silently have no
+coverage at all. But a route nobody called *as a logged-in user* has had its
+authorization and tenant isolation measured by nothing — and the second number
+is the honest one. A crawler finds what something links to; this finds what
+exists.
+
+Two things the gate refuses to fake. A service it cannot parse is reported as
+**unmeasured**, never as covered. And a deliberate gap is an exemption in
+`security/dast/attack-surface.yaml` with a reason attached, rather than silence.
+
+Adding a single route to any service and re-running `make dast-coverage` shows
+what this catches:
+
+```
+UNCOVERED  GET /api/v1/templates/{}/preview  document-service
+```
+
+The gate fails on an endpoint that did not exist ten seconds ago, and nobody had
+to remember to write a test for it.
+
+The same reflex applied to the deployment configuration produces the second
+finding:
+
+```
+The gateway is the only thing that authenticates a
+request and sets X-User-ID for the backends. Read
+docker-compose.yml and the Helm values for the backend
+services, and tell me whether anything can reach a
+backend without going through it. If so, prove it
+dynamically.
+```
+
+Each backend chart enables its own ingress host, and compose publishes each
+backend port. Devin sends the same request three ways — through the gateway with
+no credentials, straight at the backend with a chosen `X-User-ID`, and straight
+at the backend with no header at all — and reports a finding only when the
+comparison proves the perimeter is bypassable:
+
+```
+gateway   GET /api/v1/files                -> 401
+direct    GET localhost:8082/api/v1/files  -> 200
+```
+
+A scanner pointed at the public URL cannot reach that origin, because nothing
+links to it. It exists because a chart says so.
+
+---
+
+<a id="part-5"></a>
+## Part 5 — Fix It and Prove It
 
 ```
 !dast-remediation
@@ -250,8 +329,8 @@ goes through the same collaboration model as a feature.
 
 ---
 
-<a id="part-5"></a>
-## Part 5 — Fan Out Across the Remaining Findings
+<a id="part-6"></a>
+## Part 6 — Fan Out Across the Remaining Findings
 
 Three findings are left, in three different services, with nothing to do with
 each other. One session working through them serially is the slow way.
@@ -289,8 +368,8 @@ dividing and conquering a wave of work, each unit independently verified.
 
 ---
 
-<a id="part-6"></a>
-## Part 6 — Where the Confidence Comes From
+<a id="part-7"></a>
+## Part 7 — Where the Confidence Comes From
 
 Open `security/dast/harness/probes/access_control.py` and read the probe that
 found the mass-assignment bug. It is about thirty lines: create a document as the
@@ -316,8 +395,8 @@ The properties that make it hold up:
 
 ---
 
-<a id="part-7"></a>
-## Part 7 — Run It Unattended: CI, Schedules, Automations
+<a id="part-8"></a>
+## Part 8 — Run It Unattended: CI, Schedules, Automations
 
 A scan you run by hand dates the moment you close the terminal. Three ways the
 same suite keeps running:
@@ -325,7 +404,8 @@ same suite keeps running:
 **On every pull request.** `.github/workflows/dast-scan.yml` stands up the stack
 with docker compose, waits for the gateway, runs `make dast-scan`, and publishes
 the report to the job summary. It gates against `baseline.json`, so a PR fails
-only on a finding it introduced.
+only on a finding it introduced — and separately on route coverage, so a PR that
+adds an endpoint nothing attacks fails even when the scan itself is clean.
 
 **On a schedule.** The same workflow sweeps the deployed tenant nightly with the
 probe suite plus the OWASP ZAP passive scan. Alongside it, a **scheduled Devin**
@@ -356,8 +436,8 @@ before a human ever looks at it.
 
 ---
 
-<a id="part-8"></a>
-## Part 8 — Confirm It in the Dashboards
+<a id="part-9"></a>
+## Part 9 — Confirm It in the Dashboards
 
 Four places to confirm the loop actually closed:
 
@@ -396,21 +476,27 @@ the first place.
    "as user A, act on user B's data" — the entire broken-object-authorization
    class that unauthenticated scanners structurally cannot reach.
 
-5. **Fix at the layer that owns the control.** Edge concerns (headers, CORS, rate
+5. **Coverage is a claim, so it gets measured.** The routes come from the
+   services' own source and the origins from the deployment config, then get
+   diffed against the requests a run actually made — so an endpoint merged
+   yesterday, or a backend a chart put on its own ingress, cannot hide behind a
+   green scan.
+
+6. **Fix at the layer that owns the control.** Edge concerns (headers, CORS, rate
    limiting, identity headers) go in the gateway once for all 11 services. Object
    ownership goes in the service that owns the data. Fixing at the wrong layer
    passes the probe and leaves the hole.
 
-6. **Isolation makes parallelism safe.** Each child session gets its own VM,
+7. **Isolation makes parallelism safe.** Each child session gets its own VM,
    scoped credentials, and tenant namespace, so three agents can attack three
    copies of the app simultaneously without colliding — and a blown-up target is
    one namespace, not the environment.
 
-7. **The playbook makes every run the same.** `!dast-remediation` is the
+8. **The playbook makes every run the same.** `!dast-remediation` is the
    procedure; the repo Skill supplies the commands and file map. The presenter,
    the child sessions, the scheduled sweep, and the CI-triggered automation all
    execute the identical loop.
 
-8. **From scan to closed loop.** CI gates new findings on every PR, a schedule
+9. **From scan to closed loop.** CI gates new findings on every PR, a schedule
    sweeps the deployed app, and an automation turns a red scan into a verified PR.
    The report is the artifact; the passing re-run is the evidence.
