@@ -218,15 +218,16 @@ the requests the scan issued. Show me the routes nothing
 attacked, and which services you could not parse.
 ```
 
-Devin reads route definitions out of four languages — FastAPI decorators, Flask
-blueprints, an actix `web::scope`, Spring `@RequestMapping` — resolves them
+Devin reads route definitions out of five frameworks — FastAPI decorators, Flask
+blueprints, an actix `web::scope`, Spring `@RequestMapping`, a Ktor `routing`
+block — resolves them
 through the gateway's proxy table, and diffs the result against the paths
 recorded in the report:
 
 ```
 Coverage of the edge-reachable surface, from the last scan:
-  reached by a probe:             61/61
-  attacked as a logged-in caller:  6/61
+  reached by a probe:             69/69
+  attacked as a logged-in caller:  6/69
 ```
 
 Two depths, deliberately. Every route is swept unauthenticated the moment it is
