@@ -42,7 +42,10 @@ repeatable check that the fix works.
 <a id="quick-start"></a>
 ## Quick Start
 
-Paste this into Devin to run the whole loop against your tenant:
+Paste this into Devin to run the whole loop against your tenant. Without a
+tenant, use the local stack instead: substitute `http://localhost:8080` for the
+tenant URL in every prompt below and Devin will stand the stack up with
+`make up` before it attacks it.
 
 ```
 !dast-remediation
@@ -114,7 +117,7 @@ code, with citations, in minutes.
 ```
 Run the DAST suite against my tenant:
 
-make dast-scan DAST_TARGET=https://api-t-<your-id>.demo.otterworks.app
+make dast-scan DAST_TARGET=<your target>
 
 Then walk me through security/dast/reports/dast-report.md:
 which attacks succeeded, which failed, and which could
@@ -203,11 +206,11 @@ a blanket `401` be recorded as a pass.
 !dast-remediation
 
 Finding: DAST-MASS-ASSIGNMENT-OWNER
-Target: https://api-t-<your-id>.demo.otterworks.app
+Target: <your target>
 Repo: Cognition-Partner-Workshops/otterworks
 
 Fix it in the service that owns the control, redeploy
-my tenant, and re-run the probe until it reports
+the target, and re-run the probe until it reports
 secure. Keep main untouched — the fix goes on a branch.
 ```
 
@@ -227,7 +230,7 @@ The playbook drives the sequence; the repo Skill supplies the commands. Devin:
 
    ```
    make dast-verify FINDING=DAST-MASS-ASSIGNMENT-OWNER \
-     DAST_TARGET=https://api-t-<your-id>.demo.otterworks.app
+     DAST_TARGET=<your target>
    ```
 
    ```
@@ -261,7 +264,7 @@ DAST-MISSING-SECURITY-HEADERS (api-gateway, Go).
 
 Launch one child session per finding. Give each child
 the !dast-remediation playbook, its own branch off main,
-and its own tenant to scan so the scans do not collide.
+and its own target to scan so the scans do not collide.
 Each child re-runs make dast-verify for its own finding
 and opens its own PR.
 
