@@ -226,16 +226,21 @@ recorded in the report:
 
 ```
 Coverage of the edge-reachable surface, from the last scan:
-  reached by a probe:             69/69
-  attacked as a logged-in caller:  6/69
+  reached by a probe:              64/69
+  attacked by a written probe:      7/69
+  attacked as a logged-in caller:   6/69
 ```
 
-Two depths, deliberately. Every route is swept unauthenticated the moment it is
+Three depths, deliberately. Every route is swept unauthenticated the moment it is
 declared in the source, so a route added yesterday cannot silently have no
-coverage at all. But a route nobody called *as a logged-in user* has had its
-authorization and tenant isolation measured by nothing — and the second number
-is the honest one. A crawler finds what something links to; this finds what
-exists.
+coverage at all — but the sweep walks the same inventory the gate reads, so that
+top number mostly says the sweep got there. The five it did not reach are routes
+that would carry out a tenant-wide operation if they turned out to be
+unauthenticated, so they are excluded by name with a reason. The numbers that
+carry information are the lower two: a route nobody attacked *as a logged-in
+user* has had its authorization and tenant isolation measured by nothing. A
+crawler finds what something links to; this finds what exists, and then says how
+far in it actually went.
 
 Two things the gate refuses to fake. A service it cannot parse is reported as
 **unmeasured**, never as covered. And a deliberate gap is an exemption in
@@ -249,7 +254,9 @@ UNCOVERED  GET /api/v1/templates/{}/preview  document-service
 ```
 
 The gate fails on an endpoint that did not exist ten seconds ago, and nobody had
-to remember to write a test for it.
+to remember to write a test for it — it is grading the source as it stands now
+against what the last scan actually requested, so the new route is missing from
+the evidence rather than merely missing a test.
 
 The same reflex applied to the deployment configuration produces the second
 finding:
