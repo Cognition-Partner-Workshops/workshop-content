@@ -104,7 +104,7 @@ business outcomes — `procs/transcripts/plans/PLANS-001.json`:
   "entrypoint": "billing.fn_list_plans",
   "rules": ["PLANS-001"],
   "source_sha": "2b98f8dc350f9c70906398cf1ee3bae173239b53237b89b2ade4a51d43821929",
-  "fixture_sha": "1364098e851cbdcb7544076cb99de19f438877e23d5f327b060e38d29884a054",
+  "fixture_sha": "53b308f59df78d844cc95bb8d9071fdd8eb03bbae52c708dd67820d099f406da",
   "inputs": {},
   "business_fields": {
     "codes": ["STARTER", "GROWTH", "SCALE"],
@@ -128,6 +128,21 @@ under `procs/transcripts/` and on every transcript, and replay verifies both
 globally and per transcript. Row comparisons preserve the order recorded by the
 scenario's `capture_query`; there is no `sort_by` canonicalization because
 ordering can be a business rule.
+
+Scenarios are pure operations over one fixed seed. They do not declare
+`setup_sql`, and the harness test rejects any scenario that tries to add it.
+Preconditions are seeded as distinct data instead: `RATING-001` rates a tenant
+with no prior finalized periods, `RATING-005` rates a tenant seeded at 202
+units, and `INVOICE-003` issues a tenant whose credit dates are chronological.
+The recorder's `after_sql` hook is different: it runs after the entrypoint.
+`DUNNING-005` uses it to call the suspension procedure a second time, proving
+idempotency through `notification_kinds` rather than a notification count.
+
+Replay grades only modules marked `extracted`, skips only modules marked
+`pending`, and treats any other status as a contract error. Once grading has
+begun, it writes both `procs/reports/parity.md` and
+`procs/reports/parity.json` on every exit path, including a failed or
+unreachable target, so the diagnostic is available when it is most needed.
 
 > **On "parity":** parity means the recorded behavior of the running procedures
 > reproduces against the new service — a deterministic contract over business
@@ -329,12 +344,25 @@ Note what did *not* catch it: not a unit test (they encode the developer's
 understanding, which was the thing that was wrong), and not a human reviewer
 looking at three correct plan codes and three correct prices.
 
+The same gate then caught a more fundamental fixture defect. The recorder had
+been applying scenario `setup_sql` to the legacy database before recording,
+while replay reset only the target and never reproduced that setup. Two
+scenarios therefore had identical inputs but different expected answers: one
+deleted prior rating results to create a no-rollover case, while the other
+retained them for rollover. A correct extracted service could not reproduce
+both states from the fixed seed, so the gate refused to certify it even when
+its business logic was right. The repair moved those preconditions into
+distinct seeded tenants and re-recorded the transcripts; the procedures
+themselves remained unchanged. That is a stronger reason to treat recordings
+as evidence than merely checking that a probe is well-shaped: the harness
+caught an unreproducible experiment, not an implementation divergence.
+
 The fix goes into the domain code, against the procedure — never into the
 transcript, the scenario, or the mapping contract. That distinction is what
 separates a gate from a decoration, and the harness is built to make the
 shortcut hard: there are no per-scenario contract overrides, transcripts are
-immutable, and a transcript whose `SOURCE_SHA` no longer matches the procedures
-is a hard failure rather than a re-record.
+immutable, and a transcript whose `SOURCE_SHA` or `FIXTURE_SHA` no longer
+matches the procedures or fixture is a hard failure rather than a re-record.
 
 > To reproduce it live, reverse the ordering in the plans domain function in
 > `services/billing-service/app/domain.py`, then `make procs-up NS=demo` and
