@@ -76,7 +76,7 @@ legacy app on `8944` and the billing service on `12944`.
 
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — everything is in one repo:
   - `services/legacy-billing/` — the **before**: a billing estate whose rules live in `db/procs/{plans,rating,invoicing,dunning}.sql`, fronted by a deliberately thin Flask app that only binds parameters, calls `billing.fn_*` / `billing.sp_*`, and renders the result. No rule is duplicated in Python.
-  - `procs/` — the controls: `scenarios/` (24 scenarios across the four modules), `transcripts/` (the immutable recordings plus `SOURCE_SHA`), `rules/` (the approved ledgers), `routes.yaml` (the mapping contract), `harness/`, `reports/`.
+  - `procs/` — the controls: `scenarios/` (24 scenarios across the four modules), `transcripts/` (the immutable recordings plus `SOURCE_SHA` and `FIXTURE_SHA`), `rules/` (the approved ledgers), `routes.yaml` (the mapping contract), `harness/`, `reports/`.
   - `services/billing-service/` — the **after** pattern: FastAPI, its own `billing_svc` schema, rules in pure Python, a thin repository with no ordering or conditional logic in SQL.
   - `frontend/client-app/src/features/billing/` — the React screens for the extracted module.
 
@@ -104,6 +104,7 @@ business outcomes — `procs/transcripts/plans/PLANS-001.json`:
   "entrypoint": "billing.fn_list_plans",
   "rules": ["PLANS-001"],
   "source_sha": "2b98f8dc350f9c70906398cf1ee3bae173239b53237b89b2ade4a51d43821929",
+  "fixture_sha": "1364098e851cbdcb7544076cb99de19f438877e23d5f327b060e38d29884a054",
   "inputs": {},
   "business_fields": {
     "codes": ["STARTER", "GROWTH", "SCALE"],
@@ -113,14 +114,26 @@ business outcomes — `procs/transcripts/plans/PLANS-001.json`:
 }
 ```
 
-For a procedure that *writes*, the transcript also captures state probes — the
-rows the call left behind — because "the response looked right" is not the same
-claim as "the database ended up in the same state".
+For a mutating procedure, the transcript also captures state probes — the rows
+the call left behind — because "the response looked right" is not the same
+claim as "the database ended up in the same state". Read-only function
+scenarios have no probes because their `fields` already capture the returned
+outcome. Mutation probes use one named business value per probe id, with
+`collect_rows` and explicit columns when several rows matter.
+
+The transcript's `source_sha` covers only `services/legacy-billing/db/procs/*.sql`
+(procedure logic). Its `fixture_sha` covers
+`services/legacy-billing/db/schema.sql` and `seed.sql`. Both are stored globally
+under `procs/transcripts/` and on every transcript, and replay verifies both
+globally and per transcript. Row comparisons preserve the order recorded by the
+scenario's `capture_query`; there is no `sort_by` canonicalization because
+ordering can be a business rule.
 
 > **On "parity":** parity means the recorded behavior of the running procedures
 > reproduces against the new service — a deterministic contract over business
 > outcomes, not a byte-for-byte diff. Recordings are immutable: the harness
-> refuses to overwrite them unless the procedures' `SOURCE_SHA` changed.
+> refuses to overwrite them unless the procedure or fixture digest changed, or
+> an audited re-record reason was supplied.
 
 ---
 
@@ -193,9 +206,14 @@ procedure source changes)
 ```
 
 That refusal is the point — a recording is evidence, and evidence that can be
-regenerated on demand is not evidence. Re-recording requires a changed
-`SOURCE_SHA`, or the explicitly audited `RERECORD_REASON=harness-change` path,
-which writes the reason into the transcripts.
+regenerated on demand is not evidence. A changed procedure source
+(`SOURCE_SHA`) permits an authorized re-record. A changed fixture
+(`schema.sql` or `seed.sql`, reflected in `FIXTURE_SHA`) is also a legitimate
+re-record condition and does not require an audited reason. When both digests
+are unchanged, use one of the audited paths:
+`RERECORD_REASON=harness-change` for recorder or harness behavior changes, or
+`RERECORD_REASON=scenario-redesign` for scenario setup or probe-shape changes.
+Each reason is written into the regenerated transcripts.
 
 <a id="hitl"></a>
 ### The human gate: the rule ledger
@@ -241,6 +259,12 @@ the module is claimed by a rule, and every rule id appears on a
 `@pytest.mark.rule(...)` test in the service. `make procs-parity` refuses to
 grade a module whose ledger is not green — the sign-off is a build gate, not a
 convention.
+
+Scenario YAML files do not declare rules. The approved ledger's `scenarios:`
+claims are the only source of rule attribution; the recorder, transcript index,
+and `make procs-list` derive their scenario rule lists from those claims. A
+scenario with no approved claim remains recordable and gradable with an empty
+rule list.
 
 <a id="extract-one"></a>
 ### Extract one module live
@@ -416,7 +440,7 @@ merged since the last green run.
 that reacts instead of waiting:
 
 - *On CI failure* → start a session that reads `procs/reports/parity.json` from the failed job, reproduces the failure locally, fixes the service, and opens a PR. Transcripts are immutable, so an automated fix cannot paper over a behavior change.
-- *On a commit touching `services/legacy-billing/db/procs/`* → the procedures moved, so `SOURCE_SHA` no longer matches and parity fails closed. The automation re-records against the changed procedures, replays, and opens a PR reporting exactly which recorded behaviors changed — which is also the review a DBA's "small procedure tweak" never gets today.
+- *On a commit touching `services/legacy-billing/db/procs/`* → the procedures moved, so `SOURCE_SHA` no longer matches and parity fails closed. A commit touching `services/legacy-billing/db/schema.sql` or `seed.sql` likewise changes `FIXTURE_SHA`. The automation re-records against the changed procedures or fixtures, replays, and opens a PR reporting exactly which recorded behaviors changed — which is also the review a DBA's "small procedure tweak" never gets today.
 
 ---
 
@@ -431,7 +455,7 @@ extraction is correct.
 | "A human approved these rules" | `make procs-rules-gate` — every rule has a decision, a reviewer, a date, and an answer to every question raised, or the build fails |
 | "The rules that were approved are the rules that got implemented" | every rule id appears on a `@pytest.mark.rule(...)` test, and the gate rejects a marker for a rule no ledger contains |
 | "The service behaves like the procedures" | `make procs-parity` — every recorded scenario replays with identical business fields *and* identical resulting state |
-| "The recordings are still about these procedures" | per-transcript and global `SOURCE_SHA` checks; a mismatch fails rather than re-records |
+| "The recordings are still about these procedures and fixtures" | per-transcript and global `SOURCE_SHA` checks for procedure logic plus `FIXTURE_SHA` checks for `schema.sql` and `seed.sql`; either mismatch fails rather than silently re-recording |
 | "An unextracted module is not quietly passing" | pending modules report `SKIP`, and a selection that matches no transcripts exits non-zero instead of reporting an empty green run |
 | "The logic actually left the database" | the repository layer holds no `CASE` or business `ORDER BY`; the domain tests run without a database |
 | "Nothing regressed" | CI on every PR: lint → service tests → harness tests → client suite → rules gate → stack up → parity, with the report uploaded |
