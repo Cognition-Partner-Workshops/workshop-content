@@ -49,6 +49,7 @@ Tips:
 | — | [Challenge-Mode Labs](08-challenge-labs.md) | Write your own prompts for real-world scenarios |
 | — | [Debug Exercises](09-debug-exercises.md) | Diagnose what went wrong in failing sessions |
 | — | [Gaps & Future Content](10-gaps-future-content.md) | What additional materials are needed |
+| — | [The Session Gallery](11-session-gallery.md) | Fifteen real sessions — ten that worked, five set up to fail — and how to read them |
 
 ---
 
