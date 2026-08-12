@@ -108,6 +108,23 @@ session; the fan-out rows have children underneath them.
 |---|---|---|---|
 | S01 | Supplementary platform build | [Incident reproduction and verification harness](https://partner-workshops.devinenterprise.com/sessions/fe32b3ecb13c4d458aad6f385df108b7) | A check with three verdicts — pass, fail, and *inconclusive* — plus a legitimate-traffic assertion, so a fix cannot pass by refusing everybody |
 
+### Reading the two fan-out rows
+
+The fan-out rows are where the review bar either scales or quietly stops scaling,
+so read them differently from the rest. Open the parent, find the point where it
+stops working and starts delegating, and check what it handed each child: a single
+unit of work, its own branch and namespace, and its own gate. Then open the
+children and ask the question that actually matters — did each one clear *its* gate
+on *its* own, or did the parent summarize a green result nobody proved?
+
+Two things worth noticing while you are in there. In the compliance fan-out, the
+most useful children are the ones that came back with deferrals and a stated
+reason (no fix exists in the current major version) rather than the ones that
+reported everything fixed — a fan-out that never defers anything is usually one
+that has been given permission to lower the bar. And in the rules fan-out, both
+children stopped at the human gate with their decisions still pending, which is
+the designed outcome: parallelism gets you to the questions faster, not past them.
+
 <a id="near-misses"></a>
 ## Near Misses: Prompts That Look Fine
 
@@ -128,6 +145,35 @@ Compare each near miss with its well-formed twin — N01 against G11, N02 agains
 G12, N05 against G15. The task is the same and the estate is the same. The
 difference is entirely in what the prompt made checkable, which is the most
 useful single comparison in this section.
+
+### What the near misses actually did
+
+Read these before you assume a weak prompt produces a weak session, because the
+runs are more interesting than that:
+
+- **The proxy metric was hit, exactly as asked.** N01 reached 91% line coverage
+  from 78% with a green pipeline. Nothing is wrong with the PR — and nothing in it
+  tells a reviewer whether a single one of those tests would fail if the behavior
+  broke. G11 answers that question because the prompt made it answerable: it asks
+  for the code to be broken deliberately, per test, with the failure pasted in.
+- **The unverifiable claim came back as a claim.** N05 reports "behavior and
+  visuals unchanged", and there is no artifact that could support or refute it.
+  N03 reports the refactor as behavior-preserving on the strength of the existing
+  Go tests, which is *evidence* — but the prompt never said what "identical" had
+  to mean, so the reviewer has to decide whether that was the right bar.
+- **The honest answer to a bad question is often a finding about your repository.**
+  N02 stopped and reported pre-existing failures on `main`, verified against a
+  clean checkout, rather than reporting the sweep as done. N04 reported the
+  environment blueprint as incomplete and stopped. Both are useful outputs; both
+  are also the session telling you the request could not be satisfied as written.
+
+The same is true of the warm-up set: the two most dangerous prompts in it — rewrite
+the estate, and skip the tests and push to `main` — were refused with the policy
+they violated cited back, and the prompt naming code in no attached repository
+came back as "I can't find that; here is the closest thing and why it doesn't
+match." Judge a session by whether its ending is honest, not by whether it is a
+PR. Read the ones that stopped early first; they are the clearest illustration of
+what happens when a prompt cannot be satisfied.
 
 <a id="warm-up"></a>
 ## Warm-Up: The Obvious Failures
