@@ -125,15 +125,15 @@ What happens, and why it is credible:
 2. It opens `app/middleware/auth.py:51`:
 
    ```python
-   if svc_key and svc_key == expected_key:
+   if token and token == auth_config.service_token:
    ```
 
-   Both mutants on this line survived. With `and → or`, any non-empty key
-   authenticates; with `== → !=`, only *wrong* keys authenticate. Either
+   Both mutants on this line survived. With `and → or`, any non-empty token
+   authenticates; with `== → !=`, only *wrong* tokens authenticate. Either
    mutation is an **authentication bypass the test suite cannot see** — the
    line has coverage; the decision has no assertions.
 3. Devin writes the negative-path tests the suite was missing: a request with a
-   wrong internal key must be rejected; the correct key must be accepted. The
+   wrong service token must be rejected; the correct token must be accepted. The
    clean suite stays green.
 4. It re-runs the gate — which now **fails closed**: the baseline still lists
    the two mutants as allowed survivors, but they are killed. A stale ledger is
