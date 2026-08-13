@@ -6,11 +6,21 @@ record the behavior of the *running* database, get the derived rules signed off,
 extract one module live, catch a real divergence, fan the rest out in parallel,
 and drive the new service from a React UI.
 
-The estate is PostgreSQL PL/pgSQL rather than Oracle PL/SQL — the same problem
-shape (packages of procedures and functions holding the rules, a thin app that
-only calls them), running in Docker with no licensing to arrange. Everything in
-this thread applies unchanged to an Oracle, DB2, or SQL Server estate; only the
+This thread's estate is PostgreSQL PL/pgSQL — the same problem shape (packages
+of procedures and functions holding the rules, a thin app that only calls
+them), running in Docker with no licensing to arrange. Everything in this
+thread applies unchanged to an Oracle, DB2, or SQL Server estate; only the
 dialect of the `.sql` files differs.
+
+For a genuine Oracle starting point, the same repo also carries the
+**Commission Pay insurance fixture** under
+`services/industry-solutions/insurance/`: an Oracle Database Free container
+(zero license cost, full PL/SQL fidelity) with an OLTP schema whose
+commission-rate and split-commission rules live in a PL/SQL package, an OLAP
+star schema fed by a PL/SQL ETL package, seed data, and PL/SQL test suites —
+run with `make insurance-up NS=<ns>`, `make insurance-test NS=<ns>`,
+`make insurance-down NS=<ns>`. It is the true Oracle before-state this
+procedure starts from when the source dialect matters.
 
 Two gates run this demo, and neither is optional:
 
@@ -76,6 +86,7 @@ legacy app on `8944` and the billing service on `12944`.
 
 - [otterworks](https://github.com/Cognition-Partner-Workshops/otterworks) — everything is in one repo:
   - `services/legacy-billing/` — the **before**: a billing estate whose rules live in `db/procs/{plans,rating,invoicing,dunning}.sql`, fronted by a deliberately thin Flask app that only binds parameters, calls `billing.fn_*` / `billing.sp_*`, and renders the result. No rule is duplicated in Python.
+  - `services/industry-solutions/insurance/` — the **Oracle before**: the Commission Pay fixture on Oracle Database Free, with the commission-rate and split-commission business rules in the `COMMISSION_PAY` PL/SQL package and an OLAP star schema in `COMMISSION_DW`, plus seed data and PL/SQL test suites. Use it when the demo should start from real Oracle PL/SQL.
   - `procs/` — the controls: `scenarios/` (24 scenarios across the four modules), `transcripts/` (the immutable recordings plus `SOURCE_SHA` and `FIXTURE_SHA`), `rules/` (the approved ledgers), `routes.yaml` (the mapping contract), `harness/`, `reports/`.
   - `services/billing-service/` — the **after** pattern: FastAPI, its own `billing_svc` schema, rules in pure Python, a thin repository with no ordering or conditional logic in SQL.
   - `frontend/client-app/src/features/billing/` — the React screens for the extracted module.
