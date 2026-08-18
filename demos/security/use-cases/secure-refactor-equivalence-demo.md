@@ -167,11 +167,14 @@ Two details make this evidence rather than a screenshot:
   template), two files inside the export archive and one outside it. A case that
   needs its own setup step is a case the replay cannot reproduce, and it is
   rejected.
-- **The recording is fingerprinted against everything that can change it** — the
-  subject sources, the seed, the case file, the emitter, and the captured
-  interface signatures. Edit the recorded evidence to make a gate pass and the
-  fingerprint goes stale: the gate reports `stale` and exits `2`, which is not a
-  pass.
+- **The recording is fingerprinted against everything that can change what it
+  observes** — the subject sources, the seed, the case file, the emitter.
+  Change any of those inputs and the gate reports `stale` and exits `2`, which
+  is not a pass; drop a recorded case from the case file and it grades as
+  `missing`. The evidence file itself is a committed artifact guarded by review
+  of its diff plus an audited re-record path (`ALLOW_RERECORD=1` with a stored
+  `REASON`) — and `eq-exploit` re-derives the attack verdict from the running
+  code with the recording ignored, so the recording is never the only witness.
 
 The nine failing tests are pre-existing on `main` — mutating endpoints called
 without an auth header. The gate compares against the **recorded pass list**
@@ -429,7 +432,11 @@ the report has to make both.
 ## Part 9 — Run It Unattended: CI, Schedules, Automations
 
 **On every pull request.** `.github/workflows/equivalence-gate.yml` runs
-`eq-gate` and `eq-tests` and uploads the reports as artifacts. `eq-gate` picks
+`eq-gate`, `eq-exploit-refactored` and `eq-tests` and uploads the reports as
+artifacts. `eq-exploit-refactored` demands a closed exploit verdict, re-derived
+from the running code, from every finding whose subject changed — a refactor
+that deletes its attack coverage exits `3` instead of passing on the contract
+cases alone. `eq-gate` picks
 the stage per finding from the fingerprints: a subject that still matches the
 recording is graded as the before-state, a changed subject is graded as a
 refactor. A branch cannot choose the easier contract for itself.
@@ -493,10 +500,12 @@ sentence someone wrote in a PR description.
    behavior, so a refactor that renames a parameter fails as interface drift
    rather than surfacing at a caller later.
 
-5. **Evidence you cannot quietly rewrite.** Recordings are fingerprinted against
-   the source, seed, cases and emitter; re-recording needs an audited reason; and
-   `stale`, `missing` or `unmeasured` exits `2` instead of passing. A red gate is a
-   real divergence or a broken fixture — both get fixed at the root.
+5. **Evidence that is never the only witness.** Recordings are fingerprinted
+   against the source, seed, cases and emitter; re-recording needs an audited
+   reason; `stale`, `missing` or `unmeasured` exits `2` instead of passing; and
+   the exploit verdict is independently re-derived from the running code in CI.
+   A red gate is a real divergence or a broken fixture — both get fixed at the
+   root.
 
 6. **Unit evidence, then runtime evidence.** Re-run the *original* probe against a
    rebuilt image. Skipping the rebuild is how a "remediated" verdict gets issued
