@@ -105,7 +105,7 @@ Devin answers with the route map, the caller for each API call, and
 
 ```
 FINDING    SEV      STATUS      SPEC     TITLE
-OW-UI-101  high     open        MISSING  Notification data calls return 400 on every authenticated route
+OW-UI-101  high     open        MISSING  The unread-count badge errors on every authenticated route
 OW-UI-102  high     open        MISSING  Settings page calls a route that does not exist
 OW-UI-103  medium   open        MISSING  Text file detail page never shows the file contents
 OW-UI-104  medium   open        MISSING  Download action gives no visible feedback
@@ -129,7 +129,7 @@ graded against — not the diagnosis, and not the fix.
 <a id="part-2"></a>
 ## Part 2 — Reproduce It in a Browser
 
-`OW-UI-101` is the interesting one: the notification calls fail on *every*
+`OW-UI-101` is the interesting one: the notification data is broken on *every*
 authenticated route, and the UI shows no sign of it.
 
 ```
@@ -147,27 +147,34 @@ getting.
 ```
 
 Devin starts the stack, drives the app in its own browser, and comes back with
-the failing state on screen and the contract mismatch in words:
+something better than the expected answer — **the recorded symptom is gone, and
+the defect is not**:
 
-- `GET /api/v1/notifications/unread-count` → `400`, body naming a required
-  caller identity that was not supplied.
-- The notifications page renders its **empty state** on that failure, so the UI
-  reports "You're all caught up" while its data call is broken.
-- The callers are `src/components/ui/notification-bell.tsx` and
-  `src/pages/notifications.tsx`, both through the shared axios client in
-  `src/lib/api.ts`.
-- The Ktor handler in `services/notification-service/.../routes/Routes.kt`
-  requires the caller's identity and returns `400` without it; the gateway in
-  `services/api-gateway/internal/proxy/router.go` is the component that is
-  supposed to attach it.
+- `GET /api/v1/notifications/unread-count` → `200`,
+  `{"userId":"<uuid>","unreadCount":0}`. The registry's `400` no longer
+  reproduces: `services/api-gateway/internal/proxy/router.go` now injects the
+  caller identity the Ktor handler in
+  `services/notification-service/.../routes/Routes.kt` requires.
+- The badge is still broken, for a different reason. `src/lib/api.ts` reads
+  `data.count` from a response whose contract is `{userId, unreadCount}`, so the
+  query resolves `undefined` and the console carries
+  `Query data cannot be undefined ... ["notifications","unread-count"]` on
+  **every** authenticated route.
+- The callers are `src/components/ui/notification-bell.tsx` (30-second poll on
+  every route) and `src/pages/notifications.tsx`, which renders its **empty
+  state** when its list call fails — so the UI reports "You're all caught up"
+  whether the data is empty or broken.
 
-That is a defect no unit test catches, because each side's tests supply exactly
-what the other side is missing.
+That is a defect no unit test catches: the frontend's tests mock the client, the
+service's tests assert its own shape, and nobody compares the two.
 
 **Key Takeaways**
 
 - Devin uses a real browser as an instrument: it reads the network panel and the
   rendered page, and screenshots the failing state as evidence for a human.
+- A registry records what someone saw on the day they filed it. Reproducing
+  first is what catches symptom drift — the status code had changed, the
+  expectation was still violated, and the finding was still open.
 - "Empty" versus "broken" is the whole defect. A UI that renders its empty state
   on a failed request makes a broken system look healthy on every screen.
 
@@ -190,8 +197,8 @@ from "could not load notifications".
 
 Then run `make ui-repro FINDING=OW-UI-101` and show me
 the failure. I want the spec red before anything is
-fixed, and I want the failure to be the 400 you
-observed — not a selector or login problem.
+fixed, and I want it to fail for the reason you observed
+in the browser — not on a selector or a login problem.
 ```
 
 `make ui-repro` inverts the usual contract: it **requires** the spec to fail.
@@ -233,8 +240,10 @@ calls from now on, and an after-screenshot of
 
 Two things happen here, and the second is the one worth watching.
 
-The fix makes the contract true end to end. Then the registry edit removes the
-suppression that had been keeping the route sweep green:
+The fix is one line in the layer that broke the contract —
+`data.count` → `data.unreadCount` in `src/lib/api.ts` — plus a real `isError`
+state on the notifications page instead of the empty state. Then the registry
+edit removes the suppression that had been keeping the route sweep green:
 
 ```yaml
 - id: OW-UI-101
