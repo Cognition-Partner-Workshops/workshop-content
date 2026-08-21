@@ -31,13 +31,7 @@ Set up Playwright visual comparison tests for UI components. Capture baseline sc
 Paste this into a new Devin session to get started immediately:
 
 ```
-Set up Playwright visual regression tests for the
-timesheet-app frontend. Create visual comparison tests
-that capture baseline screenshots for: the login page,
-dashboard with stats cards, clients table, work entries
-form, and reports page with export buttons. Configure
-tests for both desktop (1280x720) and mobile (375x667)
-viewports. Set a pixel diff threshold of 0.2%.
+Set up Playwright visual regression tests for the timesheet-app frontend. Create visual comparison tests that capture baseline screenshots for: the login page, dashboard with stats cards, clients table, work entries form, and reports page with export buttons. Configure tests for both desktop (1280x720) and mobile (375x667) viewports. Set a pixel diff threshold of 0.2%.
 ```
 
 <a id="target-outcomes"></a>
@@ -84,13 +78,7 @@ React + Material-UI frontend with multiple pages (Dashboard, Clients, Work Entri
 ### Step 1: Paste into Devin
 
 ```
-Set up Playwright visual regression tests for the
-timesheet-app frontend. Create visual comparison tests
-that capture baseline screenshots for: the login page,
-dashboard with stats cards, clients table, work entries
-form, and reports page with export buttons. Configure
-tests for both desktop (1280x720) and mobile (375x667)
-viewports. Set a pixel diff threshold of 0.2%.
+Set up Playwright visual regression tests for the timesheet-app frontend. Create visual comparison tests that capture baseline screenshots for: the login page, dashboard with stats cards, clients table, work entries form, and reports page with export buttons. Configure tests for both desktop (1280x720) and mobile (375x667) viewports. Set a pixel diff threshold of 0.2%.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -125,14 +113,7 @@ Full-featured scheduling platform with a complex UI — extensive visual surface
 ### Step 1: Paste into Devin
 
 ```
-Set up Playwright visual regression tests for the calcom
-web application. Create visual comparison tests covering:
-the public booking page (date picker and time slot
-selection), the event types listing page, the
-availability/schedule editor, and the settings page.
-Configure viewport testing for desktop and mobile. Use
-Playwright's toHaveScreenshot with a maxDiffPixelRatio
-threshold.
+Set up Playwright visual regression tests for the calcom web application. Create visual comparison tests covering: the public booking page (date picker and time slot selection), the event types listing page, the availability/schedule editor, and the settings page. Configure viewport testing for desktop and mobile. Use Playwright's toHaveScreenshot with a maxDiffPixelRatio threshold.
 ```
 
 ### Step 2: Research with Ask Devin

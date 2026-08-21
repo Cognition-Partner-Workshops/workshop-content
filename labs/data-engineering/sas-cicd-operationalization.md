@@ -24,17 +24,7 @@
 Already familiar with Devin? Copy the prompt below into a Devin session and go.
 
 ```
-Analyze the batch orchestration in ts-sas-legacy-analytics/BatchJobs/ and the
-CI/CD artifacts in uc-data-migration-sas-to-databricks/ (specifically
-.github/workflows/, workflows/, .pre-commit-config.yaml, and Makefile). Produce
-a comparison document showing SAS DevOps vs dbt/Databricks DevOps across these
-5 dimensions: (1) Version Control — how code is stored and promoted,
-(2) Testing — how quality is validated before deployment, (3) Deployment — how
-code moves from development to production, (4) Scheduling — how jobs are
-orchestrated and triggered, (5) Monitoring — how failures are detected and
-handled. For each dimension, document the legacy SAS approach, the modern
-dbt/Databricks approach, and the specific artifacts in each repo that
-demonstrate the pattern.
+Analyze the batch orchestration in ts-sas-legacy-analytics/BatchJobs/ and the CI/CD artifacts in uc-data-migration-sas-to-databricks/ (specifically .github/workflows/, workflows/, .pre-commit-config.yaml, and Makefile). Produce a comparison document showing SAS DevOps vs dbt/Databricks DevOps across these 5 dimensions: (1) Version Control — how code is stored and promoted, (2) Testing — how quality is validated before deployment, (3) Deployment — how code moves from development to production, (4) Scheduling — how jobs are orchestrated and triggered, (5) Monitoring — how failures are detected and handled. For each dimension, document the legacy SAS approach, the modern dbt/Databricks approach, and the specific artifacts in each repo that demonstrate the pattern.
 ```
 
 Then continue to [Lab 2](#lab-2-extend-cicd-with-deployment-stage) and [Lab 3](#lab-3-add-monitoring-and-alerting) when ready.
@@ -96,17 +86,7 @@ Compare the legacy SAS operational model (batch scheduling, manual deployment, l
 #### Step 1: Paste into Devin
 
 ```
-Analyze the batch orchestration in ts-sas-legacy-analytics/BatchJobs/ and the
-CI/CD artifacts in uc-data-migration-sas-to-databricks/ (specifically
-.github/workflows/, workflows/, .pre-commit-config.yaml, and Makefile). Produce
-a comparison document showing SAS DevOps vs dbt/Databricks DevOps across these
-5 dimensions: (1) Version Control — how code is stored and promoted,
-(2) Testing — how quality is validated before deployment, (3) Deployment — how
-code moves from development to production, (4) Scheduling — how jobs are
-orchestrated and triggered, (5) Monitoring — how failures are detected and
-handled. For each dimension, document the legacy SAS approach, the modern
-dbt/Databricks approach, and the specific artifacts in each repo that
-demonstrate the pattern.
+Analyze the batch orchestration in ts-sas-legacy-analytics/BatchJobs/ and the CI/CD artifacts in uc-data-migration-sas-to-databricks/ (specifically .github/workflows/, workflows/, .pre-commit-config.yaml, and Makefile). Produce a comparison document showing SAS DevOps vs dbt/Databricks DevOps across these 5 dimensions: (1) Version Control — how code is stored and promoted, (2) Testing — how quality is validated before deployment, (3) Deployment — how code moves from development to production, (4) Scheduling — how jobs are orchestrated and triggered, (5) Monitoring — how failures are detected and handled. For each dimension, document the legacy SAS approach, the modern dbt/Databricks approach, and the specific artifacts in each repo that demonstrate the pattern.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -133,16 +113,8 @@ The existing GitHub Actions workflow enforces quality gates (lint, test, build) 
 #### Step 1: Paste into Devin
 
 ```
-Review the GitHub Actions workflow in
-uc-data-migration-sas-to-databricks/.github/workflows/dbt_ci.yml and extend it
-with a deployment stage that uses the Databricks CLI to deploy the workflow
-definition from workflows/daily_banking_pipeline.json. Add environment-specific
-variable handling so the pipeline can target dev, staging, or prod Databricks
-workspaces based on the branch or trigger event. The deployment stage should:
-(1) only run after all quality gates pass (lint, test, build),
-(2) use GitHub environment secrets for workspace URLs and tokens,
-(3) validate the workflow JSON before deploying,
-(4) include a dry-run option for staging deployments.
+Review the GitHub Actions workflow in uc-data-migration-sas-to-databricks/.github/workflows/dbt_ci.yml and extend it with a deployment stage that uses the Databricks CLI to deploy the workflow definition from workflows/daily_banking_pipeline.json. Add environment-specific variable handling so the pipeline can target dev, staging, or prod Databricks workspaces based on the branch or trigger event. The deployment stage should:
+(1) only run after all quality gates pass (lint, test, build), (2) use GitHub environment secrets for workspace URLs and tokens, (3) validate the workflow JSON before deploying, (4) include a dry-run option for staging deployments.
 ```
 
 #### Step 2 (Optional): Read the DeepWiki
@@ -167,17 +139,8 @@ The CI/CD pipeline enforces quality before merge, but production monitoring is n
 #### Step 1: Paste into Devin
 
 ```
-The CI/CD pipeline in uc-data-migration-sas-to-databricks enforces quality
-before merge, but production monitoring is not yet configured. Add a monitoring
-section to the Databricks Workflow definition in
-workflows/daily_banking_pipeline.json that includes:
-(1) failure notifications (email or Slack webhook),
-(2) SLA-based alerting if a job exceeds its expected duration,
-(3) retry policies that mirror the Control-M restart logic from the legacy
-    environment in ts-sas-legacy-analytics/BatchJobs/.
-Document the mapping between legacy Control-M monitoring (log inspection,
-manual alerts) and the new Databricks-native monitoring in a
-MONITORING_COMPARISON.md.
+The CI/CD pipeline in uc-data-migration-sas-to-databricks enforces quality before merge, but production monitoring is not yet configured. Add a monitoring section to the Databricks Workflow definition in workflows/daily_banking_pipeline.json that includes:
+(1) failure notifications (email or Slack webhook), (2) SLA-based alerting if a job exceeds its expected duration, (3) retry policies that mirror the Control-M restart logic from the legacy environment in ts-sas-legacy-analytics/BatchJobs/. Document the mapping between legacy Control-M monitoring (log inspection, manual alerts) and the new Databricks-native monitoring in a MONITORING_COMPARISON.md.
 ```
 
 #### Step 2: Research with Ask Devin

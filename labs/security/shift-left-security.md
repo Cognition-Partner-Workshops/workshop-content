@@ -27,12 +27,7 @@ Define or enhance the CI process to improve security posture. Automate Devin's a
 Paste this prompt into Devin to get started immediately:
 
 ```
-Review the existing security scanning workflows in
-timesheet-app (.github/workflows/). Enhance them by
-adding: SBOM generation in CycloneDX format, a
-dependency-review step on PRs, and a Trivy container
-scan if Dockerfiles exist. The workflow should fail
-the PR on CRITICAL severity findings.
+Review the existing security scanning workflows in timesheet-app (.github/workflows/). Enhance them by adding: SBOM generation in CycloneDX format, a dependency-review step on PRs, and a Trivy container scan if Dockerfiles exist. The workflow should fail the PR on CRITICAL severity findings.
 ```
 
 ## Target Outcomes
@@ -73,12 +68,7 @@ Has existing `sast-scan.yml` and `pr-checks.yml` workflows — good for studying
 ### Step 1: Paste into Devin
 
 ```
-Review the existing security scanning workflows in
-timesheet-app (.github/workflows/). Enhance them by
-adding: SBOM generation in CycloneDX format, a
-dependency-review step on PRs, and a Trivy container
-scan if Dockerfiles exist. The workflow should fail
-the PR on CRITICAL severity findings.
+Review the existing security scanning workflows in timesheet-app (.github/workflows/). Enhance them by adding: SBOM generation in CycloneDX format, a dependency-review step on PRs, and a Trivy container scan if Dockerfiles exist. The workflow should fail the PR on CRITICAL severity findings.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -115,12 +105,7 @@ No CI currently (workflows were removed) — but has OWASP Dependency-Check and 
 ### Step 1: Paste into Devin
 
 ```
-Create a GitHub Actions CI pipeline for
-uc-cve-remediation-regulatory-compliance that: builds
-with Gradle, runs ./gradlew dependencyCheckAnalyze,
-fails the PR if any dependency has CVSS >= 7.0,
-generates an SBOM in CycloneDX format, and uploads
-the dependency check report as a build artifact.
+Create a GitHub Actions CI pipeline for uc-cve-remediation-regulatory-compliance that: builds with Gradle, runs ./gradlew dependencyCheckAnalyze, fails the PR if any dependency has CVSS >= 7.0, generates an SBOM in CycloneDX format, and uploads the dependency check report as a build artifact.
 ```
 
 ### Step 2: Research with Ask Devin

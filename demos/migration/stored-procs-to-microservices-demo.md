@@ -164,35 +164,21 @@ Nothing here changes code. The output is the map an extraction plan needs, and
 the module boundaries it will respect.
 
 ```
-Using the Cognition-Partner-Workshops/otterworks repo, map the stored-procedure
-estate under services/legacy-billing/db:
+Using the Cognition-Partner-Workshops/otterworks repo, map the stored-procedure estate under services/legacy-billing/db:
 
-- every procedure and function in db/procs/*.sql: its signature, the tables it
-  reads, the tables it writes, and whether it is called from the app
-  (services/legacy-billing/app/app.py) or from another procedure
-- where the module boundaries actually fall, based on table ownership and
-  cross-procedure calls rather than on which file something happens to live in;
-  call out every shared table and every cross-module call, since those are the
-  seams that will hurt
-- for each procedure, which lines encode a business rule versus which are
-  plumbing (parameter binding, cursor mechanics, result assembly)
+- every procedure and function in db/procs/*.sql: its signature, the tables it reads, the tables it writes, and whether it is called from the app (services/legacy-billing/app/app.py) or from another procedure
+- where the module boundaries actually fall, based on table ownership and cross-procedure calls rather than on which file something happens to live in; call out every shared table and every cross-module call, since those are the seams that will hurt
+- for each procedure, which lines encode a business rule versus which are plumbing (parameter binding, cursor mechanics, result assembly)
 
-Give me a table per section and write the inventory to
-analysis/PROCS_INVENTORY.md.
+Give me a table per section and write the inventory to analysis/PROCS_INVENTORY.md.
 ```
 
 Then the question that decides the plan.
 
 ```
-For the four modules (plans, rating, invoicing, dunning) in
-Cognition-Partner-Workshops/otterworks, tell me which business rules are
-implemented *only* in SQL and would be lost if someone rewrote these procedures
-from the documentation. Quote the exact lines.
+For the four modules (plans, rating, invoicing, dunning) in Cognition-Partner-Workshops/otterworks, tell me which business rules are implemented *only* in SQL and would be lost if someone rewrote these procedures from the documentation. Quote the exact lines.
 
-Pay specific attention to: rounding direction and where it happens in the
-arithmetic, date boundaries (inclusive vs exclusive), the order in which
-credits, caps, and tiers apply, and any ORDER BY whose result a caller depends
-on. Write it to analysis/RULES_AT_RISK.md.
+Pay specific attention to: rounding direction and where it happens in the arithmetic, date boundaries (inclusive vs exclusive), the order in which credits, caps, and tiers apply, and any ORDER BY whose result a caller depends on. Write it to analysis/RULES_AT_RISK.md.
 ```
 
 That last sentence is not decoration. Those four categories are where ports
@@ -221,8 +207,7 @@ make procs-record NS=demo MODULE=rating
 The `rating` transcripts are already on `main`, so this run should refuse:
 
 ```
-would overwrite immutable transcript(s) (pass --allow-rerecord only after
-procedure source changes)
+would overwrite immutable transcript(s) (pass --allow-rerecord only after procedure source changes)
 ```
 
 That refusal is the point — a recording is evidence, and evidence that can be
@@ -242,34 +227,22 @@ Now Devin derives the rules — and, more importantly, tells you what it is not
 sure about.
 
 ```
-In Cognition-Partner-Workshops/otterworks, derive the business rules of the
-rating module from services/legacy-billing/db/procs/rating.sql and write the
-ledger at procs/rules/rating.rules.yaml, following the format and field set of
-the approved procs/rules/plans.rules.yaml exactly.
+In Cognition-Partner-Workshops/otterworks, derive the business rules of the rating module from services/legacy-billing/db/procs/rating.sql and write the ledger at procs/rules/rating.rules.yaml, following the format and field set of the approved procs/rules/plans.rules.yaml exactly.
 
-For each rule: the statement, the source file and line range it comes from, the
-scenarios under procs/scenarios/rating/ that exercise it, your confidence, and —
-wherever the SQL is ambiguous, surprising, or could be read two ways — an
-explicit question for me.
+For each rule: the statement, the source file and line range it comes from, the scenarios under procs/scenarios/rating/ that exercise it, your confidence, and — wherever the SQL is ambiguous, surprising, or could be read two ways — an explicit question for me.
 
-Leave every decision status pending. Do not answer your own questions and do not
-approve anything. Then show me the questions as a list, with the lines of SQL
-each one is about.
+Leave every decision status pending. Do not answer your own questions and do not approve anything. Then show me the questions as a list, with the lines of SQL each one is about.
 ```
 
 Read the questions and answer them; that is the human-in-the-loop step, and the
 gate enforces it:
 
 ```
-Here are the decisions on procs/rules/rating.rules.yaml. Record each one with me
-as the reviewer and today's date, and record my answer to every question
-verbatim next to the rule it belongs to.
+Here are the decisions on procs/rules/rating.rules.yaml. Record each one with me as the reviewer and today's date, and record my answer to every question verbatim next to the rule it belongs to.
 
-<your decisions here, rule by rule: approved as stated, or changed with the
-reason and the corrected statement>
+<your decisions here, rule by rule: approved as stated, or changed with the reason and the corrected statement>
 
-Then run `make procs-rules-gate MODULE=rating` and show me the output. Implement
-only what I approved.
+Then run `make procs-rules-gate MODULE=rating` and show me the output. Implement only what I approved.
 ```
 
 `make procs-rules-gate MODULE=rating` fails unless every rule has a decision
@@ -292,25 +265,18 @@ rule list.
 ```
 !stored-procs-to-microservices
 
-Module: rating, in Cognition-Partner-Workshops/otterworks —
-billing.fn_usage_rating, billing.fn_usage_summary and
-billing.sp_finalize_rating in services/legacy-billing/db/procs/rating.sql.
+Module: rating, in Cognition-Partner-Workshops/otterworks — billing.fn_usage_rating, billing.fn_usage_summary and billing.sp_finalize_rating in services/legacy-billing/db/procs/rating.sql.
 
 Approved rules: procs/rules/rating.rules.yaml (already reviewed and approved).
 
-Target: extend services/billing-service the way the plans module is
-implemented — rules in pure Python in app/domain.py with the rule id on each
-test, a thin parameterized repository with no ordering or conditional logic in
-SQL, routes mapped declaratively in procs/routes.yaml with rating flipped to
-extracted.
+Target: extend services/billing-service the way the plans module is implemented — rules in pure Python in app/domain.py with the rule id on each test, a thin parameterized repository with no ordering or conditional logic in SQL, routes mapped declaratively in procs/routes.yaml with rating flipped to extracted.
 
 Done means, in namespace demo:
 
     make procs-rules-gate MODULE=rating
     make procs-parity NS=demo
 
-with the rating scenarios green, the plans scenarios still green, and invoicing
-and dunning still SKIP.
+with the rating scenarios green, the plans scenarios still green, and invoicing and dunning still SKIP.
 
 Namespace: demo.
 ```
@@ -380,25 +346,14 @@ Modules are independent once their boundaries are agreed, so the rest of the
 wave parallelizes.
 
 ```
-Fan out the remaining billing modules in
-Cognition-Partner-Workshops/otterworks. Spawn one child session per pending
-module — invoicing and dunning — each following
-!stored-procs-to-microservices in its own namespace, on its own branch:
+Fan out the remaining billing modules in Cognition-Partner-Workshops/otterworks. Spawn one child session per pending module — invoicing and dunning — each following !stored-procs-to-microservices in its own namespace, on its own branch:
 
 - invoicing → NS=inv
 - dunning   → NS=dun
 
-Each child writes its own rule ledger with pending decisions and stops for my
-approval before implementing anything. After approval, a child is done when
-`make procs-rules-gate MODULE=<module>` and `make procs-parity NS=<ns>
-MODULE=<module>` are both green, the already-extracted modules still pass, and
-its PR is open with the parity report and the approved ledger in it.
+Each child writes its own rule ledger with pending decisions and stops for my approval before implementing anything. After approval, a child is done when `make procs-rules-gate MODULE=<module>` and `make procs-parity NS=<ns> MODULE=<module>` are both green, the already-extracted modules still pass, and its PR is open with the parity report and the approved ledger in it.
 
-Monitor them and report each child's status, the questions it raised, and the
-divergences parity caught. No child may edit a transcript, a scenario, or
-routes.yaml for another module. A child reporting "parity green" for a module
-still marked pending has skipped, not passed — check the report, not the
-summary.
+Monitor them and report each child's status, the questions it raised, and the divergences parity caught. No child may edit a transcript, a scenario, or routes.yaml for another module. A child reporting "parity green" for a module still marked pending has skipped, not passed — check the report, not the summary.
 ```
 
 Each child runs on its own VM with its own scoped credentials, namespace, and
@@ -419,19 +374,11 @@ consume it. The plans screens under
 extracted service's API, and no screen contains a rule.
 
 ```
-In Cognition-Partner-Workshops/otterworks, add the React screens for the newly
-extracted rating module under frontend/client-app/src/features/billing/,
-following how the plans screens are built: a usage/rating view for a tenant and
-a period, driven only by the billing service's API.
+In Cognition-Partner-Workshops/otterworks, add the React screens for the newly extracted rating module under frontend/client-app/src/features/billing/, following how the plans screens are built: a usage/rating view for a tenant and a period, driven only by the billing service's API.
 
-Requirements: every request has error handling and a visible dismissible error
-alert, loading state starts true and empty-state copy never shows while loading
-or after an error, stale responses from a previous tenant or period are never
-painted, inputs have labels, and errors are associated with their field. Add
-React Testing Library tests with the API mocked, including the failure paths.
+Requirements: every request has error handling and a visible dismissible error alert, loading state starts true and empty-state copy never shows while loading or after an error, stale responses from a previous tenant or period are never painted, inputs have labels, and errors are associated with their field. Add React Testing Library tests with the API mocked, including the failure paths.
 
-No business rule may live in the client — if a number needs computing, the
-service computes it.
+No business rule may live in the client — if a number needs computing, the service computes it.
 ```
 
 Then harden what the extraction produced, which is safe to do precisely because
@@ -440,14 +387,11 @@ behavior is pinned:
 ```
 Harden the billing service in Cognition-Partner-Workshops/otterworks:
 
-- one test per approved rule, tagged with its rule id, so a future refactor
-  cannot silently drop a rule the ledger says exists
-- make the linters, the type checks, the service tests, the harness tests and
-  the client suite clean
+- one test per approved rule, tagged with its rule id, so a future refactor cannot silently drop a rule the ledger says exists
+- make the linters, the type checks, the service tests, the harness tests and the client suite clean
 - re-run make procs-rules-gate ALL=1 and make procs-parity after every change
 
-Report anything you could not fix without changing behavior, rather than
-changing behavior.
+Report anything you could not fix without changing behavior, rather than changing behavior.
 ```
 
 <a id="always-on"></a>
@@ -459,14 +403,9 @@ The same procedure runs unattended.
 rather than by a customer:
 
 ```
-Create a scheduled Devin that runs every weekday at 07:00 UTC against
-Cognition-Partner-Workshops/otterworks:
+Create a scheduled Devin that runs every weekday at 07:00 UTC against Cognition-Partner-Workshops/otterworks:
 
-Run `make procs-up NS=nightly && make procs-rules-gate ALL=1 && make
-procs-parity NS=nightly && make procs-down NS=nightly`. If everything passes,
-post a one-line summary. If anything fails, open an issue with the failing
-scenarios, the field-level diffs from procs/reports/parity.md, and the commits
-merged since the last green run.
+Run `make procs-up NS=nightly && make procs-rules-gate ALL=1 && make procs-parity NS=nightly && make procs-down NS=nightly`. If everything passes, post a one-line summary. If anything fails, open an issue with the failing scenarios, the field-level diffs from procs/reports/parity.md, and the commits merged since the last green run.
 ```
 
 **Event-driven** — an [Automation](https://docs.devin.ai/product-guides/automations)

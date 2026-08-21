@@ -21,34 +21,12 @@
 Paste this prompt into Devin to try estate discovery on the Oracle Forms HRMS application:
 
 ```
-Analyze the entire Oracle Forms/PL/SQL estate in
-ts-plsql-oracle-forms-hrms. Produce the following artifacts:
+Analyze the entire Oracle Forms/PL/SQL estate in ts-plsql-oracle-forms-hrms. Produce the following artifacts:
 
-1. APPLICATION_INVENTORY.md — catalog every Forms XML export
-   in forms/xml-exports/, PLL library in forms/libraries/,
-   menu module in forms/menus/, PL/SQL package in
-   plsql/packages/, trigger in plsql/triggers/, and schema
-   object in schema/. For each, list: filename, purpose
-   (inferred from code), layer (UI/business logic/data
-   access/integration/utility), and key dependencies.
-2. DATA_DICTIONARY.md — for every table defined in
-   schema/tables/, extract: table name, columns with data
-   types and constraints, business meaning, relationships
-   (foreign keys), and audit columns. Group by business
-   domain (employee, payroll, leave, performance, security,
-   system).
-3. DEPENDENCY_MAP.md — build a multi-layer dependency graph:
-   Forms modules → PLL libraries → PL/SQL packages →
-   database tables. Identify circular dependencies, shared
-   utilities, and the batch job scheduling topology
-   (DBMS_SCHEDULER references).
-4. TECHNICAL_DEBT_REPORT.md — find all intentional bugs and
-   anti-patterns: security vulnerabilities (look for MD5,
-   SQL injection, hard-coded keys), race conditions (look
-   for missing SELECT FOR UPDATE), performance issues
-   (cursor loops, CONNECT BY), validation drift (compare
-   PLL vs package validation), and circular dependencies.
-   Rank by severity and recommend migration priority.
+1. APPLICATION_INVENTORY.md — catalog every Forms XML export in forms/xml-exports/, PLL library in forms/libraries/, menu module in forms/menus/, PL/SQL package in plsql/packages/, trigger in plsql/triggers/, and schema object in schema/. For each, list: filename, purpose (inferred from code), layer (UI/business logic/data access/integration/utility), and key dependencies.
+2. DATA_DICTIONARY.md — for every table defined in schema/tables/, extract: table name, columns with data types and constraints, business meaning, relationships (foreign keys), and audit columns. Group by business domain (employee, payroll, leave, performance, security, system).
+3. DEPENDENCY_MAP.md — build a multi-layer dependency graph: Forms modules → PLL libraries → PL/SQL packages → database tables. Identify circular dependencies, shared utilities, and the batch job scheduling topology (DBMS_SCHEDULER references).
+4. TECHNICAL_DEBT_REPORT.md — find all intentional bugs and anti-patterns: security vulnerabilities (look for MD5, SQL injection, hard-coded keys), race conditions (look for missing SELECT FOR UPDATE), performance issues (cursor loops, CONNECT BY), validation drift (compare PLL vs package validation), and circular dependencies. Rank by severity and recommend migration priority.
 ```
 
 ---
@@ -125,34 +103,12 @@ Oracle Forms 11g/12c HRMS legacy application. Contains Forms XML exports, PLL li
 ### Step 1: Paste into Devin — Estate Discovery
 
 ```
-Analyze the entire Oracle Forms/PL/SQL estate in
-ts-plsql-oracle-forms-hrms. Produce the following artifacts:
+Analyze the entire Oracle Forms/PL/SQL estate in ts-plsql-oracle-forms-hrms. Produce the following artifacts:
 
-1. APPLICATION_INVENTORY.md — catalog every Forms XML export
-   in forms/xml-exports/, PLL library in forms/libraries/,
-   menu module in forms/menus/, PL/SQL package in
-   plsql/packages/, trigger in plsql/triggers/, and schema
-   object in schema/. For each, list: filename, purpose
-   (inferred from code), layer (UI/business logic/data
-   access/integration/utility), and key dependencies.
-2. DATA_DICTIONARY.md — for every table defined in
-   schema/tables/, extract: table name, columns with data
-   types and constraints, business meaning, relationships
-   (foreign keys), and audit columns. Group by business
-   domain (employee, payroll, leave, performance, security,
-   system).
-3. DEPENDENCY_MAP.md — build a multi-layer dependency graph:
-   Forms modules → PLL libraries → PL/SQL packages →
-   database tables. Identify circular dependencies, shared
-   utilities, and the batch job scheduling topology
-   (DBMS_SCHEDULER references).
-4. TECHNICAL_DEBT_REPORT.md — find all intentional bugs and
-   anti-patterns: security vulnerabilities (look for MD5,
-   SQL injection, hard-coded keys), race conditions (look
-   for missing SELECT FOR UPDATE), performance issues
-   (cursor loops, CONNECT BY), validation drift (compare
-   PLL vs package validation), and circular dependencies.
-   Rank by severity and recommend migration priority.
+1. APPLICATION_INVENTORY.md — catalog every Forms XML export in forms/xml-exports/, PLL library in forms/libraries/, menu module in forms/menus/, PL/SQL package in plsql/packages/, trigger in plsql/triggers/, and schema object in schema/. For each, list: filename, purpose (inferred from code), layer (UI/business logic/data access/integration/utility), and key dependencies.
+2. DATA_DICTIONARY.md — for every table defined in schema/tables/, extract: table name, columns with data types and constraints, business meaning, relationships (foreign keys), and audit columns. Group by business domain (employee, payroll, leave, performance, security, system).
+3. DEPENDENCY_MAP.md — build a multi-layer dependency graph: Forms modules → PLL libraries → PL/SQL packages → database tables. Identify circular dependencies, shared utilities, and the batch job scheduling topology (DBMS_SCHEDULER references).
+4. TECHNICAL_DEBT_REPORT.md — find all intentional bugs and anti-patterns: security vulnerabilities (look for MD5, SQL injection, hard-coded keys), race conditions (look for missing SELECT FOR UPDATE), performance issues (cursor loops, CONNECT BY), validation drift (compare PLL vs package validation), and circular dependencies. Rank by severity and recommend migration priority.
 ```
 
 ### Step 2: Research with Ask Devin

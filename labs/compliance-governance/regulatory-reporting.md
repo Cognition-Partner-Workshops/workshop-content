@@ -25,23 +25,8 @@ Generate comprehensive compliance reports from SAST, DAST, and dependency scan o
 Paste this prompt into Devin to get started immediately:
 
 ```
-Run ./gradlew dependencyCheckAnalyze on
-uc-cve-remediation-regulatory-compliance to generate a
-dependency vulnerability report. Then analyze the
-results and produce a comprehensive regulatory
-compliance report with three sections:
-(1) an executive summary with a risk dashboard showing
-    total findings by severity, top-risk components,
-    and overall compliance posture;
-(2) a detailed findings section with each vulnerability,
-    its CVSS score, affected component, and business
-    impact;
-(3) a remediation plan with prioritized actions,
-    estimated effort, and a timeline.
-Save the report as REGULATORY_COMPLIANCE_REPORT.md.
-Also create a reports/ directory with the raw scan
-output and a reporting-framework.md that documents how
-to regenerate these reports.
+Run ./gradlew dependencyCheckAnalyze on uc-cve-remediation-regulatory-compliance to generate a dependency vulnerability report. Then analyze the results and produce a comprehensive regulatory compliance report with three sections:
+(1) an executive summary with a risk dashboard showing total findings by severity, top-risk components, and overall compliance posture; (2) a detailed findings section with each vulnerability, its CVSS score, affected component, and business impact; (3) a remediation plan with prioritized actions, estimated effort, and a timeline. Save the report as REGULATORY_COMPLIANCE_REPORT.md. Also create a reports/ directory with the raw scan output and a reporting-framework.md that documents how to regenerate these reports.
 ```
 
 ## Target Outcomes
@@ -84,23 +69,8 @@ Spring Boot application with pre-configured OWASP Dependency-Check and SonarQube
 ### Step 1: Paste into Devin
 
 ```
-Run ./gradlew dependencyCheckAnalyze on
-uc-cve-remediation-regulatory-compliance to generate a
-dependency vulnerability report. Then analyze the
-results and produce a comprehensive regulatory
-compliance report with three sections:
-(1) an executive summary with a risk dashboard showing
-    total findings by severity, top-risk components,
-    and overall compliance posture;
-(2) a detailed findings section with each vulnerability,
-    its CVSS score, affected component, and business
-    impact;
-(3) a remediation plan with prioritized actions,
-    estimated effort, and a timeline.
-Save the report as REGULATORY_COMPLIANCE_REPORT.md.
-Also create a reports/ directory with the raw scan
-output and a reporting-framework.md that documents how
-to regenerate these reports.
+Run ./gradlew dependencyCheckAnalyze on uc-cve-remediation-regulatory-compliance to generate a dependency vulnerability report. Then analyze the results and produce a comprehensive regulatory compliance report with three sections:
+(1) an executive summary with a risk dashboard showing total findings by severity, top-risk components, and overall compliance posture; (2) a detailed findings section with each vulnerability, its CVSS score, affected component, and business impact; (3) a remediation plan with prioritized actions, estimated effort, and a timeline. Save the report as REGULATORY_COMPLIANCE_REPORT.md. Also create a reports/ directory with the raw scan output and a reporting-framework.md that documents how to regenerate these reports.
 ```
 
 ### Step 2: Research with Ask Devin

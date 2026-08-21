@@ -34,12 +34,7 @@ Use Devin to review pull requests — both Devin-generated PRs and human-authore
 Paste this into a new Devin session to get started immediately:
 
 ```
-Review the open PR on timesheet-app. Check for: security
-issues (SQL injection, XSS, missing input validation),
-performance problems (N+1 queries, missing indexes), code
-style violations, missing error handling, and test
-coverage gaps. Leave inline comments on specific lines
-with suggested fixes. Provide an overall review summary.
+Review the open PR on timesheet-app. Check for: security issues (SQL injection, XSS, missing input validation), performance problems (N+1 queries, missing indexes), code style violations, missing error handling, and test coverage gaps. Leave inline comments on specific lines with suggested fixes. Provide an overall review summary.
 ```
 
 <a id="target-outcomes"></a>
@@ -93,12 +88,7 @@ Node.js/Express + React application — review PRs for JavaScript/TypeScript bes
 ### Step 1: Paste into Devin
 
 ```
-Review the open PR on timesheet-app. Check for: security
-issues (SQL injection, XSS, missing input validation),
-performance problems (N+1 queries, missing indexes), code
-style violations, missing error handling, and test
-coverage gaps. Leave inline comments on specific lines
-with suggested fixes. Provide an overall review summary.
+Review the open PR on timesheet-app. Check for: security issues (SQL injection, XSS, missing input validation), performance problems (N+1 queries, missing indexes), code style violations, missing error handling, and test coverage gaps. Leave inline comments on specific lines with suggested fixes. Provide an overall review summary.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -132,11 +122,7 @@ Spring Boot Java application — review PRs for Java best practices and Spring p
 ### Step 1: Paste into Devin
 
 ```
-Review the open PR on ts-java-spring-boot-realworld.
-Check for: proper exception handling, Spring dependency
-injection patterns, JPA entity design, REST API
-conventions, and test coverage. Leave inline comments
-with suggested improvements. Provide a review summary.
+Review the open PR on ts-java-spring-boot-realworld. Check for: proper exception handling, Spring dependency injection patterns, JPA entity design, REST API conventions, and test coverage. Leave inline comments with suggested improvements. Provide a review summary.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -170,12 +156,7 @@ Spring Boot monolith with GraphQL + REST — review PRs for architectural consis
 ### Step 1: Paste into Devin
 
 ```
-Review the open PR on
-uc-spring-boot-upgrade-microservice-extraction. Focus on:
-architectural consistency (does the change follow existing
-patterns?), Spring Security configuration, GraphQL schema
-design, database migration safety, and test coverage.
-Leave inline comments and provide a summary.
+Review the open PR on uc-spring-boot-upgrade-microservice-extraction. Focus on: architectural consistency (does the change follow existing patterns?), Spring Security configuration, GraphQL schema design, database migration safety, and test coverage. Leave inline comments and provide a summary.
 ```
 
 ### Step 2: Research with Ask Devin

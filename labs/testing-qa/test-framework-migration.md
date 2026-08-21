@@ -31,11 +31,7 @@ Migrate from deprecated test frameworks to modern alternatives. This challenge c
 Paste this into a new Devin session to get started immediately:
 
 ```
-Migrate the test infrastructure in petclinic-angular from
-Karma/Jasmine to Vitest. Analyze all .spec.ts files,
-convert them to Vitest syntax, update the test
-configuration, and ensure all tests pass with the new
-runner. Remove the Karma/Jasmine dependencies.
+Migrate the test infrastructure in petclinic-angular from Karma/Jasmine to Vitest. Analyze all .spec.ts files, convert them to Vitest syntax, update the test configuration, and ensure all tests pass with the new runner. Remove the Karma/Jasmine dependencies.
 ```
 
 <a id="target-outcomes"></a>
@@ -83,11 +79,7 @@ Angular application currently using Karma + Jasmine for unit tests and Protracto
 ### Step 1: Paste into Devin
 
 ```
-Migrate the test infrastructure in petclinic-angular from
-Karma/Jasmine to Vitest. Analyze all .spec.ts files,
-convert them to Vitest syntax, update the test
-configuration, and ensure all tests pass with the new
-runner. Remove the Karma/Jasmine dependencies.
+Migrate the test infrastructure in petclinic-angular from Karma/Jasmine to Vitest. Analyze all .spec.ts files, convert them to Vitest syntax, update the test configuration, and ensure all tests pass with the new runner. Remove the Karma/Jasmine dependencies.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -123,23 +115,12 @@ Angular app that already uses Vitest + Playwright — use as a **reference targe
 ### Step 1: Paste into Devin
 
 ```
-Review the test infrastructure in ts-angular-realworld.
-This repo already uses Vitest for unit tests and
-Playwright for E2E tests. Analyze the test configuration
-patterns, helper utilities, and test structure. Then apply
-what you learn to petclinic-angular — use this repo as
-the reference implementation for the migration target.
+Review the test infrastructure in ts-angular-realworld. This repo already uses Vitest for unit tests and Playwright for E2E tests. Analyze the test configuration patterns, helper utilities, and test structure. Then apply what you learn to petclinic-angular — use this repo as the reference implementation for the migration target.
 
 Specifically:
-1. Document the Vitest configuration pattern
-   (vitest.config.ts, test setup files, Angular-specific
-   configuration)
-2. Document the Playwright configuration pattern
-   (playwright.config.ts, test helpers, authentication
-   fixtures)
-3. Create a migration guide comparing the Karma/Jasmine
-   patterns in petclinic-angular to the equivalent
-   Vitest/Playwright patterns in this repo
+1. Document the Vitest configuration pattern (vitest.config.ts, test setup files, Angular-specific configuration)
+2. Document the Playwright configuration pattern (playwright.config.ts, test helpers, authentication fixtures)
+3. Create a migration guide comparing the Karma/Jasmine patterns in petclinic-angular to the equivalent Vitest/Playwright patterns in this repo
 ```
 
 ### Step 2: Research with Ask Devin

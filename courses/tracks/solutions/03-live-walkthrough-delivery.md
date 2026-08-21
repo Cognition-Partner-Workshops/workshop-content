@@ -30,33 +30,26 @@ This section teaches you how to run each walkthrough type end-to-end in a simula
 **Create the scanner workflow:**
 
 ```
-Create a GitHub Actions workflow called security-scan.yml
-on the Cognition-Partner-Workshops/otterworks repo that:
+Create a GitHub Actions workflow called security-scan.yml on the Cognition-Partner-Workshops/otterworks repo that:
 
 1. Triggers on pull_request events (opened, synchronize).
-2. Runs a Trivy scan targeting HIGH and CRITICAL severity
-   findings.
+2. Runs a Trivy scan targeting HIGH and CRITICAL severity findings.
 3. Reports results as a GitHub check run.
-4. Posts a PR comment summarizing findings by service
-   directory.
+4. Posts a PR comment summarizing findings by service directory.
 ```
 
 **Create the automation trigger:**
 
 ```
-When a security scan check run fails on
-Cognition-Partner-Workshops/otterworks, start a Devin
-session that:
+When a security scan check run fails on Cognition-Partner-Workshops/otterworks, start a Devin session that:
 
 1. Reads the scan findings attached to the check run.
 2. Triages HIGH and CRITICAL findings by service directory.
-3. Applies fixes — dependency upgrades or code changes —
-   in the correct manifest or source file.
+3. Applies fixes — dependency upgrades or code changes — in the correct manifest or source file.
 4. Runs each affected service's tests.
 5. Pushes the fix to the same branch.
 
-Cap at 2 invocations per PR. Set an ACU limit of 50 per
-session.
+Cap at 2 invocations per PR. Set an ACU limit of 50 per session.
 ```
 
 ### What to Explain While It Runs
@@ -93,15 +86,7 @@ session.
 **Orient over the legacy estate:**
 
 ```
-Using the ts-java-mulesoft-employee-api repo, give me a map
-of the MuleSoft API estate: the Mule XML flows in
-src/main/mule/employee-services-api.xml, what each flow does
-(OAuth, employee goals, learning, pay date, PTO), the RAML
-spec at src/main/resources/api/employee-services-api.raml,
-the database tables (api_clients, employee_goals,
-employee_learning, employee_pto), and how the authentication
-flow works (client credentials → token validation →
-protected endpoints).
+Using the ts-java-mulesoft-employee-api repo, give me a map of the MuleSoft API estate: the Mule XML flows in src/main/mule/employee-services-api.xml, what each flow does (OAuth, employee goals, learning, pay date, PTO), the RAML spec at src/main/resources/api/employee-services-api.raml, the database tables (api_clients, employee_goals, employee_learning, employee_pto), and how the authentication flow works (client credentials → token validation → protected endpoints).
 ```
 
 **Convert one endpoint with playbook verification:**
@@ -157,12 +142,7 @@ in uc-api-migration-mulesoft-to-spring-boot.
 **Orient over the SAS estate:**
 
 ```
-Using the ts-sas-legacy-analytics repo, give me a map of
-the SAS estate: the banking and insurance programs, what
-each one reads and writes, the LIBNAMEs, the macros and
-PROC FORMATs they depend on, and which programs are
-set-based (good for dbt) vs procedural/multi-output
-(better as PySpark).
+Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate: the banking and insurance programs, what each one reads and writes, the LIBNAMEs, the macros and PROC FORMATs they depend on, and which programs are set-based (good for dbt) vs procedural/multi-output (better as PySpark).
 ```
 
 **Convert one program with reconciliation verification:**
@@ -217,21 +197,13 @@ uc-data-migration-sas-to-databricks.
 **Feature implementation:**
 
 ```
-In the Cognition-Partner-Workshops/timesheet-app repo,
-add a "Bulk Import" feature to the timesheet entries.
-Requirements:
+In the Cognition-Partner-Workshops/timesheet-app repo, add a "Bulk Import" feature to the timesheet entries. Requirements:
 
-1. Add a CSV upload endpoint (POST /api/entries/import)
-   that accepts a CSV file with columns: date, project,
-   hours, description.
-2. Validate each row (date format, hours > 0, project
-   exists).
-3. Return a summary: imported count, skipped count,
-   and error details for skipped rows.
-4. Add unit tests for the CSV parsing and validation
-   logic.
-5. Add an integration test that uploads a sample CSV
-   and verifies the response.
+1. Add a CSV upload endpoint (POST /api/entries/import) that accepts a CSV file with columns: date, project, hours, description.
+2. Validate each row (date format, hours > 0, project exists).
+3. Return a summary: imported count, skipped count, and error details for skipped rows.
+4. Add unit tests for the CSV parsing and validation logic.
+5. Add an integration test that uploads a sample CSV and verifies the response.
 ```
 
 ### What to Explain While It Runs

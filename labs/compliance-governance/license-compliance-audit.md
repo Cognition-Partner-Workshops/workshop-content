@@ -27,16 +27,7 @@ Scan dependencies for license conflicts, generate a Software Bill of Materials (
 Paste this prompt into Devin to get started immediately:
 
 ```
-Scan all dependencies in timesheet-app for license
-compliance. Use npm sbom --sbom-format cyclonedx (or
-install @cyclonedx/cyclonedx-npm if needed) to generate
-an SBOM in CycloneDX format. Then analyze dependency
-licenses — identify any copyleft (GPL, AGPL, LGPL) or
-restrictive licenses that could create legal issues for
-commercial use. Produce a LICENSE_COMPLIANCE_REPORT.md
-with: a summary of license types found, a list of
-flagged dependencies with risk ratings, and recommended
-replacements for any problematic dependencies.
+Scan all dependencies in timesheet-app for license compliance. Use npm sbom --sbom-format cyclonedx (or install @cyclonedx/cyclonedx-npm if needed) to generate an SBOM in CycloneDX format. Then analyze dependency licenses — identify any copyleft (GPL, AGPL, LGPL) or restrictive licenses that could create legal issues for commercial use. Produce a LICENSE_COMPLIANCE_REPORT.md with: a summary of license types found, a list of flagged dependencies with risk ratings, and recommended replacements for any problematic dependencies.
 ```
 
 ## Target Outcomes
@@ -79,16 +70,7 @@ Node.js/Express application with npm dependencies — ideal for license auditing
 ### Step 1: Paste into Devin
 
 ```
-Scan all dependencies in timesheet-app for license
-compliance. Use npm sbom --sbom-format cyclonedx (or
-install @cyclonedx/cyclonedx-npm if needed) to generate
-an SBOM in CycloneDX format. Then analyze dependency
-licenses — identify any copyleft (GPL, AGPL, LGPL) or
-restrictive licenses that could create legal issues for
-commercial use. Produce a LICENSE_COMPLIANCE_REPORT.md
-with: a summary of license types found, a list of
-flagged dependencies with risk ratings, and recommended
-replacements for any problematic dependencies.
+Scan all dependencies in timesheet-app for license compliance. Use npm sbom --sbom-format cyclonedx (or install @cyclonedx/cyclonedx-npm if needed) to generate an SBOM in CycloneDX format. Then analyze dependency licenses — identify any copyleft (GPL, AGPL, LGPL) or restrictive licenses that could create legal issues for commercial use. Produce a LICENSE_COMPLIANCE_REPORT.md with: a summary of license types found, a list of flagged dependencies with risk ratings, and recommended replacements for any problematic dependencies.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -124,18 +106,7 @@ Spring Boot/Gradle monolith with Java dependencies — try license auditing usin
 ### Step 1: Paste into Devin
 
 ```
-Scan all dependencies in
-uc-spring-boot-upgrade-microservice-extraction for
-license compliance. Add the
-com.github.jk1.dependency-license-report Gradle plugin
-(or a similar license reporting plugin) to generate a
-full dependency license report. Also generate an SBOM
-using CycloneDX Gradle plugin (org.cyclonedx.bom).
-Analyze the results — flag any copyleft (GPL, AGPL),
-restrictive, or unknown licenses. Create a
-LICENSE_COMPLIANCE_REPORT.md with: license distribution
-summary, flagged dependencies with risk levels, and
-recommended actions.
+Scan all dependencies in uc-spring-boot-upgrade-microservice-extraction for license compliance. Add the com.github.jk1.dependency-license-report Gradle plugin (or a similar license reporting plugin) to generate a full dependency license report. Also generate an SBOM using CycloneDX Gradle plugin (org.cyclonedx.bom). Analyze the results — flag any copyleft (GPL, AGPL), restrictive, or unknown licenses. Create a LICENSE_COMPLIANCE_REPORT.md with: license distribution summary, flagged dependencies with risk levels, and recommended actions.
 ```
 
 ### Step 2: Research with Ask Devin

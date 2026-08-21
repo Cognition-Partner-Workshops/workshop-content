@@ -51,16 +51,10 @@ Paste this into Devin to run the whole loop for one finding.
 ```
 !secure-refactor-equivalence
 
-Finding: OW-SEC-401, SQL injection in
-services/document-service/app/services/document_query_repository.py
+Finding: OW-SEC-401, SQL injection in services/document-service/app/services/document_query_repository.py
 Repo: Cognition-Partner-Workshops/otterworks
 
-Characterize the current behavior, reproduce the injection,
-refactor the class with parameter binding and an ORDER BY
-allow-list keeping the public interface unchanged, then prove
-with the harness that every contract case is byte-identical
-and the attack cases are closed. Work on your own branch —
-main stays vulnerable on purpose.
+Characterize the current behavior, reproduce the injection, refactor the class with parameter binding and an ORDER BY allow-list keeping the public interface unchanged, then prove with the harness that every contract case is byte-identical and the attack cases are closed. Work on your own branch — main stays vulnerable on purpose.
 ```
 
 ---
@@ -86,13 +80,9 @@ Start from where a security report stops: three findings and a service nobody on
 the call has read.
 
 ```
-A security assessment flagged three source-level findings in
-the OtterWorks document-service. These need code changes,
-not version bumps.
+A security assessment flagged three source-level findings in the OtterWorks document-service. These need code changes, not version bumps.
 
-Before changing anything, report for each finding: the file,
-the class, the exact methods, the CWE, the insecure pattern
-in the code today, and the HTTP route that reaches it.
+Before changing anything, report for each finding: the file, the class, the exact methods, the CWE, the insecure pattern in the code today, and the HTTP route that reaches it.
 
 Use make eq-list and answer with the table.
 ```
@@ -132,13 +122,9 @@ This is the half most remediation work skips: pin what the code does *now*,
 including the parts nobody would think to write down.
 
 ```
-Characterize the current externally observable behavior of
-all three subjects before any change: inputs, outputs,
-ordering, side effects and error cases, at the class level
-and through the HTTP routes.
+Characterize the current externally observable behavior of all three subjects before any change: inputs, outputs, ordering, side effects and error cases, at the class level and through the HTTP routes.
 
-Run make eq-baseline and make eq-tests, and tell me what is
-under contract and what the attack cases assert.
+Run make eq-baseline and make eq-tests, and tell me what is under contract and what the attack cases assert.
 ```
 
 ```
@@ -189,9 +175,7 @@ nobody is tempted to "fix" the suite to get a clean run.
 A fix for a vulnerability you never demonstrated is a guess.
 
 ```
-Before refactoring, prove each finding is real. Run
-make eq-exploit and show me, for each attack case, the
-request or call that fires it and what it returns today.
+Before refactoring, prove each finding is real. Run make eq-exploit and show me, for each attack case, the request or call that fires it and what it returns today.
 ```
 
 ```
@@ -225,11 +209,7 @@ answered it before.
 ## Part 4 — Refactor, Interface Unchanged
 
 ```
-Refactor all three subjects with the secure pattern for each
-finding. Constraints: the public interface stays exactly as
-it is — same class names, same method names, same signatures,
-same return shapes — and no behavior changes except the
-attacks closing.
+Refactor all three subjects with the secure pattern for each finding. Constraints: the public interface stays exactly as it is — same class names, same method names, same signatures, same return shapes — and no behavior changes except the attacks closing.
 
 Explain each pattern you applied and what it preserves.
 ```
@@ -310,10 +290,7 @@ production is a recorded behavior that a command compares byte for byte.
 ## Part 6 — Prove Functional Equivalence
 
 ```
-Now prove the whole claim: run make eq-verify,
-make eq-exploit and make eq-tests, and tell me exactly what
-each one proves and what it would take for each to be
-wrong.
+Now prove the whole claim: run make eq-verify, make eq-exploit and make eq-tests, and tell me exactly what each one proves and what it would take for each to be wrong.
 ```
 
 Three gates pointing in three different directions:
@@ -356,9 +333,7 @@ ends at the running service. The repo already has the probe suite, so the answer
 is to rerun the *original* attack, not to write a new one.
 
 ```
-Bring the stack up locally, rebuild document-service from the
-refactored code, and re-run the original probes for these
-findings against the running app:
+Bring the stack up locally, rebuild document-service from the refactored code, and re-run the original probes for these findings against the running app:
 
   make up
   docker compose up -d --build document-service
@@ -366,9 +341,7 @@ findings against the running app:
   make dast-verify FINDING=DAST-PATH-TRAVERSAL-EXPORT DAST_TARGET=http://localhost:8080
   make dast-verify FINDING=DAST-SHARE-TOKEN-FORGERY DAST_TARGET=http://localhost:8080
 
-Attach the request and response evidence for each probe
-before and after, then run the full suite with
-make dast-scan.
+Attach the request and response evidence for each probe before and after, then run the full suite with make dast-scan.
 ```
 
 The rebuild step is the one people skip. Probe the old image and you get a
@@ -390,17 +363,11 @@ reports "not vulnerable" forever.
 Three findings in one service is one session. A remediation backlog is not.
 
 ```
-Here are the remaining findings from the assessment. Launch
-one child session per finding, each with the
-!secure-refactor-equivalence playbook, its own branch off
-main and its own scoped PR.
+Here are the remaining findings from the assessment. Launch one child session per finding, each with the !secure-refactor-equivalence playbook, its own branch off main and its own scoped PR.
 
-Every child runs the full loop — eq-baseline, eq-exploit,
-refactor, eq-verify, eq-exploit, eq-tests — and reports in
-the same evidence format.
+Every child runs the full loop — eq-baseline, eq-exploit, refactor, eq-verify, eq-exploit, eq-tests — and reports in the same evidence format.
 
-Monitor them and give me a table of finding, CWE, subject
-class, pattern applied, session, PR and gate result.
+Monitor them and give me a table of finding, CWE, subject class, pattern applied, session, PR and gate result.
 ```
 
 Each child gets its own VM, its own scoped credentials and its own branch, so
@@ -411,14 +378,9 @@ Isolation is what makes the parallelism safe rather than exciting.
 Then the report a security team can actually file:
 
 ```
-Produce a single auditor-ready report covering all findings:
-for each one the CWE, the file/class/method, the insecure
-pattern, the secure pattern applied, the evidence that the
-exploit is closed, the evidence that behavior is unchanged,
-the residual risk and any compensating control still needed.
+Produce a single auditor-ready report covering all findings: for each one the CWE, the file/class/method, the insecure pattern, the secure pattern applied, the evidence that the exploit is closed, the evidence that behavior is unchanged, the residual risk and any compensating control still needed.
 
-Include the commands and their exit codes so a reader can
-re-derive every claim.
+Include the commands and their exit codes so a reader can re-derive every claim.
 ```
 
 Residual risk is a required field, not a flourish. The export route has no
@@ -445,11 +407,7 @@ refactor. A branch cannot choose the easier contract for itself.
 still in place" spreadsheet:
 
 ```
-Every Monday at 07:00 UTC, run make eq-list and make eq-gate
-on Cognition-Partner-Workshops/otterworks and report which
-findings are still open, which have evidence recorded, and
-any finding whose evidence has gone stale. Do not change any
-code.
+Every Monday at 07:00 UTC, run make eq-list and make eq-gate on Cognition-Partner-Workshops/otterworks and report which findings are still open, which have evidence recorded, and any finding whose evidence has gone stale. Do not change any code.
 ```
 
 **On an event.** A [Devin Automation](https://docs.devin.ai/product-guides/automations)

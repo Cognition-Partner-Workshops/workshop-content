@@ -22,10 +22,7 @@
 Paste this prompt into Devin to try upgrading an Angular application:
 
 ```
-Upgrade petclinic-angular to the latest Angular version.
-Handle any breaking changes from the Angular update guide,
-update all dependencies, fix deprecated APIs, and ensure
-the app builds successfully.
+Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully.
 ```
 
 ---
@@ -94,10 +91,7 @@ Angular front-end for the PetClinic application. Uses an older Angular version w
 ### Step 1: Paste into Devin — Angular Upgrade
 
 ```
-Upgrade petclinic-angular to the latest Angular version.
-Handle any breaking changes from the Angular update guide,
-update all dependencies, fix deprecated APIs, and ensure
-the app builds successfully.
+Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -134,9 +128,7 @@ Angular RealWorld example app with a different module structure. Provides a seco
 ### Step 1: Paste into Devin — Angular Upgrade (Alternative Repo)
 
 ```
-Upgrade ts-angular-realworld to the latest Angular version.
-Handle any breaking changes, update dependencies, fix
-deprecated APIs, and ensure the app builds and tests pass.
+Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -164,11 +156,7 @@ Spring Boot 2.6.3 backend with Java 11. Requires upgrading to Java 17 + Spring B
 ### Step 1: Paste into Devin — Spring Boot Upgrade
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
-Handle the javax to jakarta namespace migration, update
-Gradle build configuration, fix any deprecations, and
-ensure all tests pass.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -105,11 +105,7 @@ repo, Devin typically maps an unfamiliar estate in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-python-abinitio-etl repo, give me a map of the Ab Initio estate:
-the graphs in graphs/, the DML record formats in dml/, the PSET parameter sets
-in psets/, and the KornShell wrappers in scripts/. For each pipeline, tell me
-what it reads and writes, which DML it binds, and whether it is set-based (good
-for dbt) or procedural/multi-output (better as a PySpark/notebook job).
+Using the ts-python-abinitio-etl repo, give me a map of the Ab Initio estate: the graphs in graphs/, the DML record formats in dml/, the PSET parameter sets in psets/, and the KornShell wrappers in scripts/. For each pipeline, tell me what it reads and writes, which DML it binds, and whether it is set-based (good for dbt) or procedural/multi-output (better as a PySpark/notebook job).
 ```
 
 Expected: a tour of `graphs/cdc_processor.py` and `graphs/parallel_loader.py`,
@@ -128,9 +124,7 @@ with the reconciliation report.
 ```
 !convert-abinitio-to-databricks
 
-Convert the Ab Initio transactions detail pipeline from the ts-python-abinitio-etl
-estate into dbt models on Databricks, writing to
-uc-data-migration-abinitio-to-databricks.
+Convert the Ab Initio transactions detail pipeline from the ts-python-abinitio-etl estate into dbt models on Databricks, writing to uc-data-migration-abinitio-to-databricks.
 
 - DML: dml/transaction_detail.dml (nested merchant_info + line_items[] array)
 - Source layout/orchestration: scripts/run_daily_orders.ksh
@@ -186,32 +180,18 @@ spawns a child Devin session per graph and monitors them — one agent fanning
 itself out across the wave. Paste:
 
 ```
-Act as the orchestrator for an Ab Initio->Databricks migration across multiple
-graphs, using child Devin sessions to parallelize the work.
+Act as the orchestrator for an Ab Initio->Databricks migration across multiple graphs, using child Devin sessions to parallelize the work.
 
-Repos: read Cognition-Partner-Workshops/ts-python-abinitio-etl (the Ab Initio
-source), write Cognition-Partner-Workshops/uc-data-migration-abinitio-to-databricks.
+Repos: read Cognition-Partner-Workshops/ts-python-abinitio-etl (the Ab Initio source), write Cognition-Partner-Workshops/uc-data-migration-abinitio-to-databricks.
 
-Spawn one child Devin session per pipeline below. Give each child both repos, its
-own namespace (NS=child1, child2, ...), and tell it to follow the
-!convert-abinitio-to-databricks playbook (the repo's Skill supplies the
-`make demo-up NS=...` / `make reconcile NS=...` mechanics): treat the Ab Initio
-source as the source of truth and reproduce its logic exactly, including DML
-null(...) defaults and the CDC hash column list; flag (do not silently fix)
-anything that looks wrong; add reconciliation controls (completeness, a control
-total, and a parity check for every default/mapping/CDC class); and build until
-everything is green, with the reconciliation report included.
+Spawn one child Devin session per pipeline below. Give each child both repos, its own namespace (NS=child1, child2, ...), and tell it to follow the !convert-abinitio-to-databricks playbook (the repo's Skill supplies the `make demo-up NS=...` / `make reconcile NS=...` mechanics): treat the Ab Initio source as the source of truth and reproduce its logic exactly, including DML null(...) defaults and the CDC hash column list; flag (do not silently fix) anything that looks wrong; add reconciliation controls (completeness, a control total, and a parity check for every default/mapping/CDC class); and build until everything is green, with the reconciliation report included.
 
 Pipelines:
-1. dml/transaction_detail.dml (+ scripts/run_daily_orders.ksh)
-   -> stg_transactions + curated_transactions
-2. graphs/cdc_processor.py (+ psets/pset_templates/customer_cdc.pset)
-   -> customer-CDC dbt snapshot + Delta MERGE
+1. dml/transaction_detail.dml (+ scripts/run_daily_orders.ksh) -> stg_transactions + curated_transactions
+2. graphs/cdc_processor.py (+ psets/pset_templates/customer_cdc.pset) -> customer-CDC dbt snapshot + Delta MERGE
 3. dml/order_items.dml -> int_order_items (explode arrays)
 
-After launching, monitor the child sessions until each pipeline is converted with
-a green reconciliation report. Then summarize the results and call out any
-source-parity divergences the children caught (e.g. the channel default).
+After launching, monitor the child sessions until each pipeline is converted with a green reconciliation report. Then summarize the results and call out any source-parity divergences the children caught (e.g. the channel default).
 ```
 
 The children inherit the organization's Databricks secrets, and each writes to

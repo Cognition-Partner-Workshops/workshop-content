@@ -105,55 +105,28 @@ This lab intentionally spans the full lifecycle so you can narrate each stage to
 ### Paste into Devin
 
 ```
-Deliver a new "Account Statement & Transaction History" feature
-end-to-end in ts-java-spring-boot-internet-banking. This is a
-Java 21 / Spring Boot 3.2.4 banking microservices application
-using Gradle, Spring Data JPA, Flyway, and Lombok. Work entirely
-inside core-banking-service and follow the existing patterns.
+Deliver a new "Account Statement & Transaction History" feature end-to-end in ts-java-spring-boot-internet-banking. This is a Java 21 / Spring Boot 3.2.4 banking microservices application using Gradle, Spring Data JPA, Flyway, and Lombok. Work entirely inside core-banking-service and follow the existing patterns.
 
 Run the full lifecycle and produce artifacts at each stage:
 
 1. Requirements (SPEC.md at the core-banking-service root):
-   - Analyze the existing code first: TransactionController
-     (/api/v1/transaction), TransactionService,
-     TransactionRepository, and the TransactionEntity mapped to
-     the banking_core_transaction table.
-   - Write user stories and testable acceptance criteria for an
-     account statement / transaction history capability
-     (list transactions for an account, filter by date range and
-     transaction type, paginate results).
+   - Analyze the existing code first: TransactionController (/api/v1/transaction), TransactionService, TransactionRepository, and the TransactionEntity mapped to the banking_core_transaction table.
+   - Write user stories and testable acceptance criteria for an account statement / transaction history capability (list transactions for an account, filter by date range and transaction type, paginate results).
 
 2. Technical design (DESIGN.md at the core-banking-service root):
-   - Endpoint contracts, request/response DTOs, the repository
-     query, the service method, and the schema change needed.
-   - Note that TransactionEntity currently has no timestamp
-     column and describe the Flyway migration to add one.
+   - Endpoint contracts, request/response DTOs, the repository query, the service method, and the schema change needed.
+   - Note that TransactionEntity currently has no timestamp column and describe the Flyway migration to add one.
 
-3. Implementation (in core-banking-service, matching existing
-   conventions — package com.javatodev.finance, Lombok
-   @Data/@Builder DTOs, @Getter/@Setter entities):
-   - Flyway migration under
-     src/main/resources/db/migration/ that adds a
-     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP column to
-     banking_core_transaction; update TransactionEntity.
-   - A TransactionHistoryDto (transaction id, amount, type,
-     reference number, timestamp).
-   - A repository query on TransactionRepository that finds
-     transactions by account number, most recent first.
-   - A getTransactionHistory method on TransactionService that
-     maps entities to the DTO with date-range and type filtering.
-   - GET /api/v1/account/{accountNumber}/transactions on the
-     controller, returning a paginated list, with @Operation and
-     @Tag annotations matching existing style.
+3. Implementation (in core-banking-service, matching existing conventions — package com.javatodev.finance, Lombok @Data/@Builder DTOs, @Getter/@Setter entities):
+   - Flyway migration under src/main/resources/db/migration/ that adds a created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP column to banking_core_transaction; update TransactionEntity.
+   - A TransactionHistoryDto (transaction id, amount, type, reference number, timestamp).
+   - A repository query on TransactionRepository that finds transactions by account number, most recent first.
+   - A getTransactionHistory method on TransactionService that maps entities to the DTO with date-range and type filtering.
+   - GET /api/v1/account/{accountNumber}/transactions on the controller, returning a paginated list, with @Operation and @Tag annotations matching existing style.
 
-4. Tests: add service-layer tests following the pattern in
-   TransactionServiceTest, covering the happy path, an empty
-   result, and date-range filtering.
+4. Tests: add service-layer tests following the pattern in TransactionServiceTest, covering the happy path, an empty result, and date-range filtering.
 
-5. Quality gates: run ./gradlew test for core-banking-service and
-   confirm it is green. Summarize the lifecycle in the PR
-   description: what changed at each stage, the acceptance
-   criteria met, and how the change was verified.
+5. Quality gates: run ./gradlew test for core-banking-service and confirm it is green. Summarize the lifecycle in the PR description: what changed at each stage, the acceptance criteria met, and how the change was verified.
 ```
 
 <a id="lab-1--while-devin-works-try-ask-devin"></a>
@@ -202,36 +175,15 @@ This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependen
 ### Paste into Devin
 
 ```
-Triage and remediate the security findings in
-uc-cve-remediation-regulatory-compliance. This is a Spring Boot
-2.6.3 / Java 11 Gradle application with known vulnerable
-dependencies and OWASP Dependency-Check + SonarQube plugins
-configured.
+Triage and remediate the security findings in uc-cve-remediation-regulatory-compliance. This is a Spring Boot 2.6.3 / Java 11 Gradle application with known vulnerable dependencies and OWASP Dependency-Check + SonarQube plugins configured.
 
-1. Triage: review build.gradle and identify the outdated,
-   vulnerable dependencies. If a SAST tool MCP (SonarQube, Snyk,
-   or similar) is connected, use it to fetch current findings and
-   quality-gate status as well. Group findings by severity.
+1. Triage: review build.gradle and identify the outdated, vulnerable dependencies. If a SAST tool MCP (SonarQube, Snyk, or similar) is connected, use it to fetch current findings and quality-gate status as well. Group findings by severity.
 
-2. Root-cause analysis: for the highest-severity findings,
-   explain the root cause and the safe upgrade path. Capture this
-   in SECURITY_TRIAGE.md — include the vulnerable component, the
-   relevant CVE(s), severity, and the recommended fix. Cover at
-   least Spring Boot 2.6.3 (Spring4Shell and related CVEs),
-   SnakeYAML (transitive RCE, CVE-2022-1471), and
-   sqlite-jdbc 3.36.0.3.
+2. Root-cause analysis: for the highest-severity findings, explain the root cause and the safe upgrade path. Capture this in SECURITY_TRIAGE.md — include the vulnerable component, the relevant CVE(s), severity, and the recommended fix. Cover at least Spring Boot 2.6.3 (Spring4Shell and related CVEs), SnakeYAML (transitive RCE, CVE-2022-1471), and sqlite-jdbc 3.36.0.3.
 
-3. Fix: upgrade Spring Boot from 2.6.3 to the latest 2.7.x in
-   build.gradle (staying on 2.7.x keeps Java 11 compatibility;
-   3.x would require Java 17+). Add version overrides for
-   SnakeYAML (2.0+) and sqlite-jdbc (3.42.0.1+). Migrate the
-   deprecated WebSecurityConfigurerAdapter to a
-   SecurityFilterChain @Bean and fix any other breaking changes.
+3. Fix: upgrade Spring Boot from 2.6.3 to the latest 2.7.x in build.gradle (staying on 2.7.x keeps Java 11 compatibility; 3.x would require Java 17+). Add version overrides for SnakeYAML (2.0+) and sqlite-jdbc (3.42.0.1+). Migrate the deprecated WebSecurityConfigurerAdapter to a SecurityFilterChain @Bean and fix any other breaking changes.
 
-4. Verify: run ./gradlew test and confirm it is green after the
-   upgrades. Write SECURITY_REMEDIATION.md documenting which
-   dependencies were upgraded, which CVEs are resolved, and the
-   before/after versions.
+4. Verify: run ./gradlew test and confirm it is green after the upgrades. Write SECURITY_REMEDIATION.md documenting which dependencies were upgraded, which CVEs are resolved, and the before/after versions.
 ```
 
 ### While Devin works: try Ask Devin

@@ -91,25 +91,13 @@ Paste this prompt into Devin to scan both repositories and produce a single
 consolidated findings report:
 
 ```
-You are coordinating a security remediation across 2
-repositories. First, run security scans on both repos
-to build a consolidated findings report:
+You are coordinating a security remediation across 2 repositories. First, run security scans on both repos to build a consolidated findings report:
 
-Repo 1 — Cognition-Partner-Workshops/timesheet-app:
-Run npm audit --json and capture the output. Also run
-npx eslint . --format json to check for
-security-related lint violations.
+Repo 1 — Cognition-Partner-Workshops/timesheet-app: Run npm audit --json and capture the output. Also run npx eslint . --format json to check for security-related lint violations.
 
-Repo 2 — Cognition-Partner-Workshops/
-uc-cve-remediation-regulatory-compliance:
-Run ./gradlew dependencyCheckAnalyze and capture the
-OWASP Dependency-Check report.
+Repo 2 — Cognition-Partner-Workshops/uc-cve-remediation-regulatory-compliance: Run ./gradlew dependencyCheckAnalyze and capture the OWASP Dependency-Check report.
 
-Create a consolidated SECURITY_BACKLOG.md that lists
-findings across both repos, organized by severity
-(CRITICAL > HIGH > MEDIUM). For each finding, note:
-the repo, the dependency or file, the CVE or rule ID,
-and the CVSS score where available.
+Create a consolidated SECURITY_BACKLOG.md that lists findings across both repos, organized by severity (CRITICAL > HIGH > MEDIUM). For each finding, note: the repo, the dependency or file, the CVE or rule ID, and the CVSS score where available.
 ```
 
 Devin clones both repos, runs the scanners, and produces `SECURITY_BACKLOG.md`.
@@ -132,9 +120,7 @@ Once the backlog is built, launch the full orchestration. Paste this prompt
 to trigger parent-child remediation:
 
 ```
-Using the SECURITY_BACKLOG.md you just created,
-remediate all CRITICAL and HIGH findings across both
-repositories in parallel.
+Using the SECURITY_BACKLOG.md you just created, remediate all CRITICAL and HIGH findings across both repositories in parallel.
 
 Launch a child session for timesheet-app that:
 - Upgrades vulnerable npm dependencies to fixed versions
@@ -142,21 +128,15 @@ Launch a child session for timesheet-app that:
 - Runs npm audit again to verify findings are resolved
 - Creates a REMEDIATION_REPORT.md documenting each fix
 
-Launch a child session for
-uc-cve-remediation-regulatory-compliance that:
+Launch a child session for uc-cve-remediation-regulatory-compliance that:
 - Upgrades Spring Boot from 2.6.3 to 3.2+
 - Upgrades SnakeYAML to 2.x
 - Upgrades sqlite-jdbc to latest
 - Handles javax → jakarta namespace migration
 - Runs ./gradlew dependencyCheckAnalyze to verify
-- Creates a REMEDIATION_REPORT.md with before/after
-  CVSS scores
+- Creates a REMEDIATION_REPORT.md with before/after CVSS scores
 
-After both children complete, produce a consolidated
-REMEDIATION_SUMMARY.md summarizing: total findings
-addressed, per-repo status, and any findings that
-could not be automatically resolved (for human
-escalation).
+After both children complete, produce a consolidated REMEDIATION_SUMMARY.md summarizing: total findings addressed, per-repo status, and any findings that could not be automatically resolved (for human escalation).
 ```
 
 The parent session:
@@ -269,19 +249,14 @@ regardless of which repository it targets.
 Create a Knowledge note in Devin Settings → Knowledge:
 
 ```
-Name: Security Remediation Standards
-Trigger: When remediating security vulnerabilities
+Name: Security Remediation Standards Trigger: When remediating security vulnerabilities
 
 Contents:
-- Always prefer direct dependency upgrades over transitive
-  pinning
+- Always prefer direct dependency upgrades over transitive pinning
 - Run the full test suite after any dependency change
-- If a major version upgrade is required, check for
-  breaking changes in the changelog before upgrading
+- If a major version upgrade is required, check for breaking changes in the changelog before upgrading
 - Never downgrade a dependency to resolve a CVE
-- If a finding cannot be resolved without architectural
-  changes, document it in REMEDIATION_REPORT.md and
-  mark it for human escalation
+- If a finding cannot be resolved without architectural changes, document it in REMEDIATION_REPORT.md and mark it for human escalation
 - Include before/after CVSS scores in remediation reports
 ```
 

@@ -87,22 +87,12 @@ engineer to spend days reading unfamiliar code.
 ```
 Analyze the legacy codebase in <repo-name>. Produce:
 
-1. SYSTEM_INVENTORY.md — list every module, service,
-   and batch job with a one-line description of its
-   purpose
-2. DEPENDENCY_MAP.md — internal dependencies (which
-   modules call which), external dependencies (third-
-   party libraries, APIs, databases), and data flow
-   between components
-3. TECH_DEBT_REPORT.md — deprecated APIs, known
-   vulnerabilities, dead code paths, and framework
-   version gaps
-4. COMPLEXITY_ASSESSMENT.md — LOC per module, cyclomatic
-   complexity hotspots, and test coverage gaps
+1. SYSTEM_INVENTORY.md — list every module, service, and batch job with a one-line description of its purpose
+2. DEPENDENCY_MAP.md — internal dependencies (which modules call which), external dependencies (third-party libraries, APIs, databases), and data flow between components
+3. TECH_DEBT_REPORT.md — deprecated APIs, known vulnerabilities, dead code paths, and framework version gaps
+4. COMPLEXITY_ASSESSMENT.md — LOC per module, cyclomatic complexity hotspots, and test coverage gaps
 
-Use the repo's actual file structure and package
-manifests. Do not speculate — report only what the
-code shows.
+Use the repo's actual file structure and package manifests. Do not speculate — report only what the code shows.
 ```
 
 **Phase output:** A discovery package that the solution architect uses to
@@ -139,25 +129,13 @@ architecture decisions. The architect defines the direction; Devin does the
 mapping work.
 
 ```
-Using SYSTEM_INVENTORY.md and DEPENDENCY_MAP.md from the
-discovery phase, produce a migration plan:
+Using SYSTEM_INVENTORY.md and DEPENDENCY_MAP.md from the discovery phase, produce a migration plan:
 
-1. COMPONENT_MAPPING.md — for each legacy module, the
-   target service/package in the new architecture, the
-   migration strategy (replatform / refactor / rewrite),
-   and the estimated complexity (low / medium / high)
-2. MIGRATION_SEQUENCE.md — dependency-ordered conversion
-   sequence, identifying which components can be
-   converted in parallel and which must be serialized
-3. INTERFACE_CONTRACTS.md — for each module boundary
-   that will become a service boundary, document the
-   current implicit interface (function signatures,
-   data shapes, error codes) as an explicit contract
+1. COMPONENT_MAPPING.md — for each legacy module, the target service/package in the new architecture, the migration strategy (replatform / refactor / rewrite), and the estimated complexity (low / medium / high)
+2. MIGRATION_SEQUENCE.md — dependency-ordered conversion sequence, identifying which components can be converted in parallel and which must be serialized
+3. INTERFACE_CONTRACTS.md — for each module boundary that will become a service boundary, document the current implicit interface (function signatures, data shapes, error codes) as an explicit contract
 
-Reference the actual code in <repo-name> for all
-interface details. Flag any circular dependencies or
-shared mutable state that will require architectural
-decisions.
+Reference the actual code in <repo-name> for all interface details. Flag any circular dependencies or shared mutable state that will require architectural decisions.
 ```
 
 **Phase output:** A migration roadmap the engagement lead can map to sprints
@@ -189,25 +167,15 @@ Devin generates the scaffolding code — the boilerplate that follows establishe
 patterns and does not require architectural decisions.
 
 ```
-Create the project scaffold for the <target-service>
-microservice in <target-repo>:
+Create the project scaffold for the <target-service> microservice in <target-repo>:
 
-1. Project structure following the patterns in
-   <reference-service> (same framework, same layout)
-2. Dockerfile with multi-stage build matching the
-   base image and build conventions in
-   infrastructure/docker/
-3. CI pipeline configuration (.github/workflows/ or
-   azure-pipelines.yml) matching the existing pipeline
-   patterns
-4. Health check endpoint, structured logging, and
-   externalized configuration following the platform
-   conventions documented in <platform-standards-repo>
-5. Contract test stubs using the interface contracts
-   from INTERFACE_CONTRACTS.md
+1. Project structure following the patterns in <reference-service> (same framework, same layout)
+2. Dockerfile with multi-stage build matching the base image and build conventions in infrastructure/docker/
+3. CI pipeline configuration (.github/workflows/ or azure-pipelines.yml) matching the existing pipeline patterns
+4. Health check endpoint, structured logging, and externalized configuration following the platform conventions documented in <platform-standards-repo>
+5. Contract test stubs using the interface contracts from INTERFACE_CONTRACTS.md
 
-The scaffold should compile and pass CI with empty
-implementations (stubs that return 501 Not Implemented).
+The scaffold should compile and pass CI with empty implementations (stubs that return 501 Not Implemented).
 ```
 
 **Phase output:** A target-state codebase that compiles, deploys, and runs
@@ -243,24 +211,16 @@ Devin executes the conversion for each component. The playbook encodes the
 methodology; Devin applies it to each target.
 
 ```
-Convert the <legacy-module> from <source-repo> to its
-target implementation in <target-repo>/<target-service>.
+Convert the <legacy-module> from <source-repo> to its target implementation in <target-repo>/<target-service>.
 
 Follow the conversion playbook:
-1. Read the legacy source code and the interface
-   contract from INTERFACE_CONTRACTS.md
-2. Implement the business logic in the target
-   framework, following the patterns established in
-   <reference-service>
+1. Read the legacy source code and the interface contract from INTERFACE_CONTRACTS.md
+2. Implement the business logic in the target framework, following the patterns established in <reference-service>
 3. Write unit tests covering the core logic paths
-4. Run the contract test suite — the tests must pass
-   against your implementation
-5. Run the full CI pipeline and resolve any lint,
-   type-check, or build failures
+4. Run the contract test suite — the tests must pass against your implementation
+5. Run the full CI pipeline and resolve any lint, type-check, or build failures
 
-Reference the legacy code for behavioral accuracy.
-Use the interface contract as the source of truth for
-input/output shapes.
+Reference the legacy code for behavioral accuracy. Use the interface contract as the source of truth for input/output shapes.
 ```
 
 **Phase output:** A stream of PRs, each converting one component, each
@@ -298,23 +258,12 @@ be prohibitively time-consuming to execute manually.
 ```
 Run the full validation suite for <target-repo>:
 
-1. Execute all contract tests and report pass/fail
-   per endpoint
-2. Run data reconciliation between legacy database
-   snapshots and target database state — compare row
-   counts, checksums, and sample records for each
-   table documented in DATA_MAPPING.md
-3. Execute performance baseline tests: measure
-   response time for each endpoint under <N>
-   concurrent requests and compare against the
-   legacy baseline in PERFORMANCE_BASELINE.md
-4. Generate VALIDATION_REPORT.md summarizing results,
-   flagging any discrepancies, and linking to the
-   specific test output for each finding
+1. Execute all contract tests and report pass/fail per endpoint
+2. Run data reconciliation between legacy database snapshots and target database state — compare row counts, checksums, and sample records for each table documented in DATA_MAPPING.md
+3. Execute performance baseline tests: measure response time for each endpoint under <N> concurrent requests and compare against the legacy baseline in PERFORMANCE_BASELINE.md
+4. Generate VALIDATION_REPORT.md summarizing results, flagging any discrepancies, and linking to the specific test output for each finding
 
-Report discrepancies with enough detail for a
-developer to investigate: expected value, actual
-value, test command to reproduce.
+Report discrepancies with enough detail for a developer to investigate: expected value, actual value, test command to reproduce.
 ```
 
 **Phase output:** A validation report the engagement lead can present to the
@@ -348,23 +297,14 @@ Devin operates as an incident response agent during stabilization — monitoring
 for issues and producing fixes faster than a human on-call rotation.
 
 ```
-Monitor the deployment of <target-service> in the
-staging environment. If any health check, log error
-rate, or integration test failure occurs:
+Monitor the deployment of <target-service> in the staging environment. If any health check, log error rate, or integration test failure occurs:
 
-1. Investigate: query application logs, identify the
-   failing component, and trace the root cause
-2. Classify: determine whether this is a regression
-   from the conversion (fixable) or a pre-existing
-   issue in the legacy system (document and escalate)
-3. If fixable: implement the fix, run the contract
-   test suite, and push a PR targeting the release
-   branch
-4. If not fixable: open a GitHub Issue with the
-   investigation findings, tagged for human review
+1. Investigate: query application logs, identify the failing component, and trace the root cause
+2. Classify: determine whether this is a regression from the conversion (fixable) or a pre-existing issue in the legacy system (document and escalate)
+3. If fixable: implement the fix, run the contract test suite, and push a PR targeting the release branch
+4. If not fixable: open a GitHub Issue with the investigation findings, tagged for human review
 
-Log all investigation steps in the PR or Issue for
-the client's audit trail.
+Log all investigation steps in the PR or Issue for the client's audit trail.
 ```
 
 **Phase output:** Rapid incident response during the highest-risk window of

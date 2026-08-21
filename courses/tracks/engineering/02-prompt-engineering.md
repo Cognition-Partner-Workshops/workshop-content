@@ -52,9 +52,7 @@ Fix the bug in the user API.
 **Level 2 — Better (correct direction, missing verification):**
 
 ```
-Fix the 500 error on the /api/users endpoint in
-my-service when the email field contains unicode
-characters.
+Fix the 500 error on the /api/users endpoint in my-service when the email field contains unicode characters.
 ```
 
 *Improvements:* Devin knows the symptom (500 error), the endpoint, and the trigger condition (unicode in email). *Still missing:* Which repo? Which file contains the validation logic? How should Devin verify the fix?
@@ -64,12 +62,7 @@ characters.
 **Level 3 — Good (actionable and verifiable):**
 
 ```
-Fix the 500 error on /api/users in my-service when
-the email field contains unicode characters. The
-validation logic is in src/validators/user.py. Tests
-are in tests/test_user_validator.py. The fix should
-handle all unicode categories, not just ASCII. Run
-the existing tests to verify.
+Fix the 500 error on /api/users in my-service when the email field contains unicode characters. The validation logic is in src/validators/user.py. Tests are in tests/test_user_validator.py. The fix should handle all unicode categories, not just ASCII. Run the existing tests to verify.
 ```
 
 *Improvements:* Devin knows the exact files, has a verification mechanism (existing tests), and has a constraint (handle all unicode categories). This prompt will typically succeed.
@@ -79,23 +72,17 @@ the existing tests to verify.
 **Level 4 — Great (complete context, constraints, and verification):**
 
 ```
-Fix the 500 error on /api/users in my-service when
-the email field contains unicode characters like
-"user@examplé.com".
+Fix the 500 error on /api/users in my-service when the email field contains unicode characters like "user@examplé.com".
 
 Context:
 - Validation logic: src/validators/user.py
 - Tests: tests/test_user_validator.py
-- The validator currently uses an ASCII-only regex
-  for email validation
+- The validator currently uses an ASCII-only regex for email validation
 
 Requirements:
-- Use the email-validator library (already in
-  requirements.txt) instead of the custom regex
+- Use the email-validator library (already in requirements.txt) instead of the custom regex
 - Handle internationalized domain names (IDN)
-- Add test cases for: standard ASCII emails,
-  accented characters in local part, IDN domains,
-  and malformed inputs
+- Add test cases for: standard ASCII emails, accented characters in local part, IDN domains, and malformed inputs
 - All existing tests must continue to pass
 
 Verify by running: pytest tests/test_user_validator.py -v

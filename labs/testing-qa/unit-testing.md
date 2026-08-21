@@ -35,9 +35,7 @@ Add or improve unit test coverage for a repository, create a test coverage repor
 Paste this into a new Devin session to get started immediately:
 
 ```
-Analyze the current test coverage of petclinic-backend.
-Add missing unit tests to increase coverage to at least 80%.
-Generate a JaCoCo coverage report and fix any failing tests.
+Analyze the current test coverage of petclinic-backend. Add missing unit tests to increase coverage to at least 80%. Generate a JaCoCo coverage report and fix any failing tests.
 ```
 
 <a id="target-outcomes"></a>
@@ -84,10 +82,7 @@ Canonical Spring Boot application with an existing JUnit test suite.
 ### Step 1: Paste into Devin
 
 ```
-Analyze the current test coverage of petclinic-backend.
-Add missing unit tests to increase coverage to at least 80%.
-Generate a JaCoCo coverage report and fix any failing
-tests.
+Analyze the current test coverage of petclinic-backend. Add missing unit tests to increase coverage to at least 80%. Generate a JaCoCo coverage report and fix any failing tests.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -122,10 +117,7 @@ React + Node.js/Express application with Jest tests in `backend/src/__tests__/`.
 ### Step 1: Paste into Devin
 
 ```
-Analyze the current test coverage of timesheet-app.
-Add missing Jest unit tests for the backend API routes
-and service layer. Generate a coverage report and fix
-any failing tests.
+Analyze the current test coverage of timesheet-app. Add missing Jest unit tests for the backend API routes and service layer. Generate a coverage report and fix any failing tests.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -159,10 +151,7 @@ Spring Boot RealWorld example app with existing JUnit tests.
 ### Step 1: Paste into Devin
 
 ```
-Analyze the current test coverage of
-ts-java-spring-boot-realworld. Add missing unit tests
-to increase coverage to at least 80%. Generate a JaCoCo
-coverage report.
+Analyze the current test coverage of ts-java-spring-boot-realworld. Add missing unit tests to increase coverage to at least 80%. Generate a JaCoCo coverage report.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -195,11 +184,7 @@ Spring Boot 2.6.3 monolith with JUnit test infrastructure.
 ### Step 1: Paste into Devin
 
 ```
-Analyze the current test coverage of
-uc-spring-boot-upgrade-microservice-extraction. Add
-missing JUnit tests targeting the service and controller
-layers. Generate a JaCoCo coverage report and ensure all
-tests pass.
+Analyze the current test coverage of uc-spring-boot-upgrade-microservice-extraction. Add missing JUnit tests targeting the service and controller layers. Generate a JaCoCo coverage report and ensure all tests pass.
 ```
 
 ### Step 2: Research with Ask Devin

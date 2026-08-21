@@ -21,18 +21,13 @@
 Paste this prompt into Devin to try a multi-repo parallel upgrade:
 
 ```
-Upgrade petclinic-angular to the latest Angular version.
-Handle any breaking changes from the Angular update guide,
-update all dependencies, fix deprecated APIs, and ensure
-the app builds successfully.
+Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully.
 ```
 
 Then start a **second Devin session** (or child session) with:
 
 ```
-Upgrade ts-angular-realworld to the latest Angular version.
-Handle any breaking changes, update dependencies, fix
-deprecated APIs, and ensure the app builds and tests pass.
+Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
 ```
 
 Run both upgrades in parallel to see how Devin handles the same type of task across different codebases simultaneously.
@@ -106,10 +101,7 @@ Angular front-end for the PetClinic application. Uses an older Angular version w
 #### Step 1: Paste into Devin
 
 ```
-Upgrade petclinic-angular to the latest Angular version.
-Handle any breaking changes from the Angular update guide,
-update all dependencies, fix deprecated APIs, and ensure
-the app builds successfully.
+Upgrade petclinic-angular to the latest Angular version. Handle any breaking changes from the Angular update guide, update all dependencies, fix deprecated APIs, and ensure the app builds successfully.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -125,9 +117,7 @@ Angular RealWorld example app. A different Angular codebase to upgrade in parall
 #### Step 1: Paste into Devin
 
 ```
-Upgrade ts-angular-realworld to the latest Angular version.
-Handle any breaking changes, update dependencies, fix
-deprecated APIs, and ensure the app builds and tests pass.
+Upgrade ts-angular-realworld to the latest Angular version. Handle any breaking changes, update dependencies, fix deprecated APIs, and ensure the app builds and tests pass.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -155,11 +145,7 @@ Spring Boot 2.6.3 + Java 11 backend. Requires upgrading to Java 17 + Spring Boot
 ### Step 1: Paste into Devin
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
-Handle the javax to jakarta namespace migration, update
-Gradle build configuration, fix any deprecations, and
-ensure all tests pass.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2. Handle the javax to jakarta namespace migration, update Gradle build configuration, fix any deprecations, and ensure all tests pass.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -32,14 +32,7 @@ Paste this into a new Devin session to get started immediately:
 
 ```
 Implement configuration management for timesheet-app:
-(1) Create a config module that reads settings from
-environment variables with sensible defaults (PORT,
-DATABASE_URL, LOG_LEVEL, etc.), (2) Add dotenv support
-with .env.example documenting all variables, (3) Implement
-a simple feature flag system using a JSON config file or
-environment variables, (4) Use a feature flag to gate a
-new "dark mode" UI toggle — when the flag is off, the
-toggle is hidden.
+(1) Create a config module that reads settings from environment variables with sensible defaults (PORT, DATABASE_URL, LOG_LEVEL, etc.), (2) Add dotenv support with .env.example documenting all variables, (3) Implement a simple feature flag system using a JSON config file or environment variables, (4) Use a feature flag to gate a new "dark mode" UI toggle — when the flag is off, the toggle is hidden.
 ```
 
 <a id="target-outcomes"></a>
@@ -89,14 +82,7 @@ Node.js/Express application — externalize configuration and add feature flags.
 
 ```
 Implement configuration management for timesheet-app:
-(1) Create a config module that reads settings from
-environment variables with sensible defaults (PORT,
-DATABASE_URL, LOG_LEVEL, etc.), (2) Add dotenv support
-with .env.example documenting all variables, (3) Implement
-a simple feature flag system using a JSON config file or
-environment variables, (4) Use a feature flag to gate a
-new "dark mode" UI toggle — when the flag is off, the
-toggle is hidden.
+(1) Create a config module that reads settings from environment variables with sensible defaults (PORT, DATABASE_URL, LOG_LEVEL, etc.), (2) Add dotenv support with .env.example documenting all variables, (3) Implement a simple feature flag system using a JSON config file or environment variables, (4) Use a feature flag to gate a new "dark mode" UI toggle — when the flag is off, the toggle is hidden.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -130,15 +116,8 @@ Spring Boot application — use Spring Profiles and add feature flag support.
 ### Step 1: Paste into Devin
 
 ```
-Implement configuration management for
-uc-spring-boot-upgrade-microservice-extraction:
-(1) Create Spring Profile configurations for dev, staging,
-and production (application-dev.yml, application-staging
-.yml, application-prod.yml), (2) Externalize all hardcoded
-values to configuration properties, (3) Add Togglz or
-FF4J for feature flag support, (4) Use a feature flag to
-gate the GraphQL API — when the flag is off, only REST
-endpoints are available.
+Implement configuration management for uc-spring-boot-upgrade-microservice-extraction:
+(1) Create Spring Profile configurations for dev, staging, and production (application-dev.yml, application-staging .yml, application-prod.yml), (2) Externalize all hardcoded values to configuration properties, (3) Add Togglz or FF4J for feature flag support, (4) Use a feature flag to gate the GraphQL API — when the flag is off, only REST endpoints are available.
 ```
 
 ### Step 2: Research with Ask Devin

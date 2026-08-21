@@ -31,13 +31,7 @@ Generate consumer-driven contract tests (Pact or Spring Cloud Contract) for serv
 Paste this into a new Devin session to get started immediately:
 
 ```
-Analyze the service boundaries in
-petclinic-microservices. The API Gateway calls Customers
-Service and Visits Service via WebClient. Generate Spring
-Cloud Contract tests for at least 2 of these service
-boundaries — create both the consumer (gateway) and
-provider (service) contract tests. Ensure the contract
-verification passes.
+Analyze the service boundaries in petclinic-microservices. The API Gateway calls Customers Service and Visits Service via WebClient. Generate Spring Cloud Contract tests for at least 2 of these service boundaries — create both the consumer (gateway) and provider (service) contract tests. Ensure the contract verification passes.
 ```
 
 <a id="target-outcomes"></a>
@@ -84,13 +78,7 @@ Spring Cloud microservices with multiple service boundaries (API Gateway, Custom
 ### Step 1: Paste into Devin
 
 ```
-Analyze the service boundaries in
-petclinic-microservices. The API Gateway calls Customers
-Service and Visits Service via WebClient. Generate Spring
-Cloud Contract tests for at least 2 of these service
-boundaries — create both the consumer (gateway) and
-provider (service) contract tests. Ensure the contract
-verification passes.
+Analyze the service boundaries in petclinic-microservices. The API Gateway calls Customers Service and Visits Service via WebClient. Generate Spring Cloud Contract tests for at least 2 of these service boundaries — create both the consumer (gateway) and provider (service) contract tests. Ensure the contract verification passes.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -125,11 +113,7 @@ Open the repo's DeepWiki page to understand the API Gateway's aggregation patter
 ### Step 1: Paste into Devin
 
 ```
-Analyze the service boundaries in
-quickapp-microservices. Identify the inter-service API
-contracts and generate Pact consumer-driven contract tests
-for at least 2 service boundaries. Create both consumer
-and provider test implementations.
+Analyze the service boundaries in quickapp-microservices. Identify the inter-service API contracts and generate Pact consumer-driven contract tests for at least 2 service boundaries. Create both consumer and provider test implementations.
 ```
 
 ### Step 2: Research with Ask Devin

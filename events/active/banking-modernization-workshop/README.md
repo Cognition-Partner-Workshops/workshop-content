@@ -78,47 +78,24 @@ The CardDemo application is a real mainframe credit card management system with 
 ### Paste into Devin
 
 ```
-Analyze the mainframe CardDemo application in
-ts-cobol-carddemo and generate modern
-TypeScript models from the COBOL data structures.
+Analyze the mainframe CardDemo application in ts-cobol-carddemo and generate modern TypeScript models from the COBOL data structures.
 
-**Step 1 — Extract the data model:** Read the COBOL
-copybooks in `app/cpy/` to understand the domain entities:
-- `CVACT01Y.cpy` — Account record (balance, credit limit,
-  dates, status)
-- `CUSTREC.cpy` — Customer record (name, address, SSN,
-  FICO score, DOB)
-- `CVACT02Y.cpy` — Card record (card number, CVV, expiry,
-  embossed name, status)
-- `CVACT03Y.cpy` — Card cross-reference (card ↔ customer
-  ↔ account mapping)
+**Step 1 — Extract the data model:** Read the COBOL copybooks in `app/cpy/` to understand the domain entities:
+- `CVACT01Y.cpy` — Account record (balance, credit limit, dates, status)
+- `CUSTREC.cpy` — Customer record (name, address, SSN, FICO score, DOB)
+- `CVACT02Y.cpy` — Card record (card number, CVV, expiry, embossed name, status)
+- `CVACT03Y.cpy` — Card cross-reference (card ↔ customer ↔ account mapping)
 
-**Step 2 — Map the screens:** Read 3–4 BMS screen maps in
-`app/bms/` (start with `COSGN00.bms`, `COACTVW.bms`, and
-`COCRDLI.bms`) to understand the 3270 terminal layouts
-and field positions.
+**Step 2 — Map the screens:** Read 3–4 BMS screen maps in `app/bms/` (start with `COSGN00.bms`, `COACTVW.bms`, and `COCRDLI.bms`) to understand the 3270 terminal layouts and field positions.
 
-**Step 3 — Generate a frontend starter:** Create a new
-`frontend/` directory with:
+**Step 3 — Generate a frontend starter:** Create a new `frontend/` directory with:
 
-1. **TypeScript interfaces** (`frontend/src/models/`) —
-   one interface per copybook record, mapping COBOL PIC
-   clauses to TypeScript types (PIC X → string,
-   COMP-3 → number, etc.). Include JSDoc comments
-   showing the original COBOL field definition.
-2. **Mock data** (`frontend/src/data/mock-accounts.ts`) —
-   derive 5–10 sample records from the ASCII feed files
-   in `app/data/ASCII/` (acctdata.txt, custdata.txt,
-   carddata.txt)
-3. **One Angular component** — an Account List page
-   (`frontend/src/app/accounts/`) using Angular Material
-   table that imports and displays the mock account data
-4. **Minimal Angular setup** — `package.json`,
-   `angular.json`, app module, and routing so the
-   component is reachable at `/accounts`
+1. **TypeScript interfaces** (`frontend/src/models/`) — one interface per copybook record, mapping COBOL PIC clauses to TypeScript types (PIC X → string, COMP-3 → number, etc.). Include JSDoc comments showing the original COBOL field definition.
+2. **Mock data** (`frontend/src/data/mock-accounts.ts`) — derive 5–10 sample records from the ASCII feed files in `app/data/ASCII/` (acctdata.txt, custdata.txt, carddata.txt)
+3. **One Angular component** — an Account List page (`frontend/src/app/accounts/`) using Angular Material table that imports and displays the mock account data
+4. **Minimal Angular setup** — `package.json`, `angular.json`, app module, and routing so the component is reachable at `/accounts`
 
-Include a `MODERNIZATION_NOTES.md` at the repo root
-documenting:
+Include a `MODERNIZATION_NOTES.md` at the repo root documenting:
 - Field-level mapping from COBOL copybook → TypeScript
 - BMS screen → future Angular component mapping table
 - Data type conversion rules used
@@ -160,47 +137,23 @@ This is a Java 21 / Spring Boot 3.2.4 banking application with 6 microservices: 
 ### Paste into Devin
 
 ```
-Add a transaction history endpoint to
-ts-java-spring-boot-internet-banking. This is a Java 21 /
-Spring Boot 3.2.4 banking microservices application using
-Gradle, Spring Data JPA, and Lombok.
+Add a transaction history endpoint to ts-java-spring-boot-internet-banking. This is a Java 21 / Spring Boot 3.2.4 banking microservices application using Gradle, Spring Data JPA, and Lombok.
 
-First, analyze how the existing services are structured —
-look at core-banking-service's controllers, services,
-repositories, DTOs, and entities. Follow the same patterns
-exactly.
+First, analyze how the existing services are structured — look at core-banking-service's controllers, services, repositories, DTOs, and entities. Follow the same patterns exactly.
 
 Build the following in core-banking-service:
 
-1. **DTO:** Create `TransactionHistoryDto` in the existing
-   DTO package — include transaction ID, amount, type
-   (FUND_TRANSFER or UTILITY_PAYMENT), reference number,
-   and the existing `transactionDateTime` field. Use
-   Lombok `@Data`/`@Builder` matching existing DTO style.
+1. **DTO:** Create `TransactionHistoryDto` in the existing DTO package — include transaction ID, amount, type (FUND_TRANSFER or UTILITY_PAYMENT), reference number, and the existing `transactionDateTime` field. Use Lombok `@Data`/`@Builder` matching existing DTO style.
 
-2. **Repository query:** Add a method to the existing
-   `TransactionRepository` that finds transactions by
-   account number (check `TransactionEntity` for the
-   correct field name), ordered by most recent first.
+2. **Repository query:** Add a method to the existing `TransactionRepository` that finds transactions by account number (check `TransactionEntity` for the correct field name), ordered by most recent first.
 
-3. **Service method:** Add a `getTransactionHistory`
-   method to `TransactionService` that retrieves
-   transactions for an account and maps entities to the
-   DTO.
+3. **Service method:** Add a `getTransactionHistory` method to `TransactionService` that retrieves transactions for an account and maps entities to the DTO.
 
-4. **Controller endpoint:** Add
-   `GET /api/v1/account/{accountNumber}/transactions`
-   to the existing controller. Return a list of
-   `TransactionHistoryDto`. Include `@Operation` and
-   `@Tag` annotations matching the existing style.
+4. **Controller endpoint:** Add `GET /api/v1/account/{accountNumber}/transactions` to the existing controller. Return a list of `TransactionHistoryDto`. Include `@Operation` and `@Tag` annotations matching the existing style.
 
-5. **One unit test:** Add a test for the service method
-   following the pattern in `TransactionServiceTest`.
+5. **One unit test:** Add a test for the service method following the pattern in `TransactionServiceTest`.
 
-Follow existing code conventions: Lombok `@Data`/
-`@Builder` for DTOs, `@Getter`/`@Setter`/`@Builder`
-for entities, the existing package structure under
-`com.javatodev.finance`.
+Follow existing code conventions: Lombok `@Data`/ `@Builder` for DTOs, `@Getter`/`@Setter`/`@Builder` for entities, the existing package structure under `com.javatodev.finance`.
 ```
 
 ### While Devin works: try Ask Devin
@@ -239,43 +192,24 @@ This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependen
 ### Paste into Devin
 
 ```
-Perform a targeted security remediation on
-uc-cve-remediation-regulatory-compliance. This is a Spring
-Boot 2.6.3 / Java 11 application with known vulnerable
-dependencies.
+Perform a targeted security remediation on uc-cve-remediation-regulatory-compliance. This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies.
 
-1. **Check SonarQube findings (if MCP available):** If
-   the SonarQube MCP is connected, use it to fetch the
-   current open issues and quality gate status for this
-   project. List any vulnerabilities, security hotspots,
-   and bugs by severity.
+1. **Check SonarQube findings (if MCP available):** If the SonarQube MCP is connected, use it to fetch the current open issues and quality gate status for this project. List any vulnerabilities, security hotspots, and bugs by severity.
 
-2. **Identify dependency vulnerabilities:** Review
-   `build.gradle` and identify the outdated dependencies:
+2. **Identify dependency vulnerabilities:** Review `build.gradle` and identify the outdated dependencies:
    - Spring Boot 2.6.3 (Spring4Shell, multiple CVEs)
-   - SnakeYAML (transitive via Spring Boot — known RCE:
-     CVE-2022-1471)
-   - sqlite-jdbc 3.36.0.3 (multiple CVEs)
-   Document what you find in a brief `SECURITY_TRIAGE.md`.
+   - SnakeYAML (transitive via Spring Boot — known RCE: CVE-2022-1471)
+   - sqlite-jdbc 3.36.0.3 (multiple CVEs) Document what you find in a brief `SECURITY_TRIAGE.md`.
 
-3. **Upgrade Spring Boot:** Upgrade from 2.6.3 to the
-   latest 2.7.x in `build.gradle`. Note: upgrading to
-   3.x requires Java 17+ — stay on 2.7.x for this lab.
+3. **Upgrade Spring Boot:** Upgrade from 2.6.3 to the latest 2.7.x in `build.gradle`. Note: upgrading to 3.x requires Java 17+ — stay on 2.7.x for this lab.
 
-4. **Fix breaking changes:** Spring Boot 2.7 deprecates
-   `WebSecurityConfigurerAdapter`. Migrate the security
-   config to use `SecurityFilterChain` @Bean method
-   instead. Fix any other compilation errors.
+4. **Fix breaking changes:** Spring Boot 2.7 deprecates `WebSecurityConfigurerAdapter`. Migrate the security config to use `SecurityFilterChain` @Bean method instead. Fix any other compilation errors.
 
-5. **Override transitive vulnerabilities:** Add version
-   overrides in `build.gradle` for:
+5. **Override transitive vulnerabilities:** Add version overrides in `build.gradle` for:
    - SnakeYAML → 2.0+ (fixes CVE-2022-1471)
    - sqlite-jdbc → 3.42.0.1+ (fixes known CVEs)
 
-6. **Verify:** Run `./gradlew test` to confirm all tests
-   pass after upgrades. Create `SECURITY_REMEDIATION.md`
-   documenting: which dependencies were upgraded, which
-   CVEs are resolved, and the before/after versions.
+6. **Verify:** Run `./gradlew test` to confirm all tests pass after upgrades. Create `SECURITY_REMEDIATION.md` documenting: which dependencies were upgraded, which CVEs are resolved, and the before/after versions.
 ```
 
 ### While Devin works: try Ask Devin
@@ -312,69 +246,45 @@ The workshop prompts above are scoped for ~10-minute execution so you see result
 Generates a complete 10-component Angular Material application with full routing, responsive layout, mock data services, and login flow — replacing the entire 3270 terminal interface.
 
 ```
-Analyze the mainframe CardDemo application in
-ts-cobol-carddemo and generate a modern
-Angular frontend that replaces the 3270 terminal screens.
+Analyze the mainframe CardDemo application in ts-cobol-carddemo and generate a modern Angular frontend that replaces the 3270 terminal screens.
 
-**Step 1 — Understand the data model:** Read the COBOL
-copybooks in `app/cpy/` to extract the domain entities:
-- `CVACT01Y.cpy` — Account record (balance, credit limit,
-  dates, status)
-- `CUSTREC.cpy` — Customer record (name, address, SSN,
-  FICO score, DOB)
-- `CVACT02Y.cpy` — Card record (card number, CVV, expiry,
-  embossed name, status)
-- `CVACT03Y.cpy` — Card cross-reference (card ↔ customer
-  ↔ account mapping)
+**Step 1 — Understand the data model:** Read the COBOL copybooks in `app/cpy/` to extract the domain entities:
+- `CVACT01Y.cpy` — Account record (balance, credit limit, dates, status)
+- `CUSTREC.cpy` — Customer record (name, address, SSN, FICO score, DOB)
+- `CVACT02Y.cpy` — Card record (card number, CVV, expiry, embossed name, status)
+- `CVACT03Y.cpy` — Card cross-reference (card ↔ customer ↔ account mapping)
 
-**Step 2 — Understand the screens:** Read the BMS screen
-maps in `app/bms/` to understand the 3270 terminal
-layouts, then cross-reference with the online COBOL
-programs in `app/cbl/` to identify user-facing functions:
+**Step 2 — Understand the screens:** Read the BMS screen maps in `app/bms/` to understand the 3270 terminal layouts, then cross-reference with the online COBOL programs in `app/cbl/` to identify user-facing functions:
 
 BMS maps (screen layouts):
 - `COACTVW.bms` / `COACTUP.bms` — Account screens
-- `COCRDLI.bms` / `COCRDSL.bms` / `COCRDUP.bms` —
-  Credit card screens
-- `COTRN00.bms` / `COTRN01.bms` / `COTRN02.bms` —
-  Transaction screens
+- `COCRDLI.bms` / `COCRDSL.bms` / `COCRDUP.bms` — Credit card screens
+- `COTRN00.bms` / `COTRN01.bms` / `COTRN02.bms` — Transaction screens
 - `COBIL00.bms` — Bill payment screen
 - `COSGN00.bms` — Sign-on screen
 
 COBOL programs (business logic):
 - `COACTVWC.cbl` / `COACTUPC.cbl` — Account view/update
-- `COCRDLIC.cbl` / `COCRDSLC.cbl` / `COCRDUPC.cbl` —
-  Credit card list/view/update
-- `COTRN00C.cbl` / `COTRN01C.cbl` / `COTRN02C.cbl` —
-  Transaction list/view/add
+- `COCRDLIC.cbl` / `COCRDSLC.cbl` / `COCRDUPC.cbl` — Credit card list/view/update
+- `COTRN00C.cbl` / `COTRN01C.cbl` / `COTRN02C.cbl` — Transaction list/view/add
 - `COBIL00C.cbl` — Bill payment
 - `COSGN00C.cbl` — Sign-on screen
 
-**Step 3 — Generate the Angular app:** Create a new
-`frontend/` directory with a complete Angular 17+
-application:
+**Step 3 — Generate the Angular app:** Create a new `frontend/` directory with a complete Angular 17+ application:
 
-1. **TypeScript interfaces** matching each COBOL copybook
-   record layout (Account, Customer, Card, Transaction)
-2. **Angular services** with mock data derived from the
-   ASCII feed files in `app/data/ASCII/` (acctdata.txt,
-   custdata.txt, carddata.txt, cardxref.txt)
+1. **TypeScript interfaces** matching each COBOL copybook record layout (Account, Customer, Card, Transaction)
+2. **Angular services** with mock data derived from the ASCII feed files in `app/data/ASCII/` (acctdata.txt, custdata.txt, carddata.txt, cardxref.txt)
 3. **Components and routing** for each screen:
    - Dashboard (account summary)
    - Account list and detail view
    - Credit card list and detail view
-   - Transaction list with filtering and a transaction
-     add form
+   - Transaction list with filtering and a transaction add form
    - Bill payment form
    - Login page
-4. **Angular Material** for UI components (tables, forms,
-   cards, navigation)
-5. **Responsive layout** with sidebar navigation replacing
-   the mainframe menu system
+4. **Angular Material** for UI components (tables, forms, cards, navigation)
+5. **Responsive layout** with sidebar navigation replacing the mainframe menu system
 
-Include a `MODERNIZATION_NOTES.md` documenting the mapping
-from COBOL copybook fields to TypeScript interfaces and
-from BMS screens to Angular components.
+Include a `MODERNIZATION_NOTES.md` documenting the mapping from COBOL copybook fields to TypeScript interfaces and from BMS screens to Angular components.
 ```
 
 </details>
@@ -385,72 +295,35 @@ from BMS screens to Angular components.
 Builds a full account statement feature with Flyway schema migration, two API endpoints, monthly summary aggregation, comprehensive tests, and OpenAPI documentation.
 
 ```
-Add an account statement and transaction history feature
-to ts-java-spring-boot-internet-banking. This is a Java 21
-/ Spring Boot 3.2.4 banking microservices application
-using Gradle, Spring Data JPA, Flyway, and Lombok.
+Add an account statement and transaction history feature to ts-java-spring-boot-internet-banking. This is a Java 21 / Spring Boot 3.2.4 banking microservices application using Gradle, Spring Data JPA, Flyway, and Lombok.
 
-Analyze the existing codebase architecture first — look at
-how core-banking-service, fund-transfer-service, and
-utility-payment-service are structured (controllers,
-services, repositories, DTOs, entities). Follow the same
-patterns.
+Analyze the existing codebase architecture first — look at how core-banking-service, fund-transfer-service, and utility-payment-service are structured (controllers, services, repositories, DTOs, entities). Follow the same patterns.
 
 Build the following in the core-banking-service:
 
-1. **Schema evolution:**
-   The existing `banking_core_transaction` table has no
-   timestamp column. Add a Flyway migration in
-   `src/main/resources/db/migration/` that adds a
-   `created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP`
-   column and a `description VARCHAR(255)` column to
-   `banking_core_transaction`. Update
-   `TransactionEntity.java` to include the new fields.
+1. **Schema evolution:** The existing `banking_core_transaction` table has no timestamp column. Add a Flyway migration in `src/main/resources/db/migration/` that adds a `created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP` column and a `description VARCHAR(255)` column to `banking_core_transaction`. Update `TransactionEntity.java` to include the new fields.
 
 2. **Account Statement API:**
-   - `GET /api/v1/account/{account_number}/statement` —
-     returns a paginated list of transactions for an
-     account, with optional date range filtering
-     (`fromDate`, `toDate` query params) and transaction
-     type filtering (`type` param: FUND_TRANSFER,
-     UTILITY_PAYMENT, or ALL)
-   - Response should include: transaction ID, date,
-     description, amount, type (credit/debit), running
-     balance, and reference number
+   - `GET /api/v1/account/{account_number}/statement` — returns a paginated list of transactions for an account, with optional date range filtering (`fromDate`, `toDate` query params) and transaction type filtering (`type` param: FUND_TRANSFER, UTILITY_PAYMENT, or ALL)
+   - Response should include: transaction ID, date, description, amount, type (credit/debit), running balance, and reference number
 
 3. **Monthly Summary API:**
-   - `GET /api/v1/account/{account_number}/summary` —
-     returns monthly aggregated totals: total credits,
-     total debits, net change, opening balance, closing
-     balance, and transaction count — for a given month
-     (`month` and `year` query params)
+   - `GET /api/v1/account/{account_number}/summary` — returns monthly aggregated totals: total credits, total debits, net change, opening balance, closing balance, and transaction count — for a given month (`month` and `year` query params)
 
 4. **Implementation:**
-   - DTOs: `StatementResponse`, `TransactionHistoryDto`,
-     `MonthlySummaryResponse` (use Lombok `@Data`
-     classes to match the existing DTO style)
+   - DTOs: `StatementResponse`, `TransactionHistoryDto`, `MonthlySummaryResponse` (use Lombok `@Data` classes to match the existing DTO style)
    - Service layer with proper business logic
-   - Repository queries using Spring Data JPA
-     `@Query` or Specification for date/type filtering
-   - Input validation (`@Valid`, custom validators for
-     date ranges)
-   - Error handling consistent with the existing
-     `GlobalExceptionHandler`
-   - OpenAPI `@Operation` and `@Tag` annotations
-     matching the existing controller style
+   - Repository queries using Spring Data JPA `@Query` or Specification for date/type filtering
+   - Input validation (`@Valid`, custom validators for date ranges)
+   - Error handling consistent with the existing `GlobalExceptionHandler`
+   - OpenAPI `@Operation` and `@Tag` annotations matching the existing controller style
 
 5. **Tests:**
-   - Unit tests for the service layer (use Mockito,
-     follow the pattern in `TransactionServiceTest`)
+   - Unit tests for the service layer (use Mockito, follow the pattern in `TransactionServiceTest`)
    - Integration tests for the new API endpoints
-   - Note: the existing `TransactionServiceTest` has a
-     compilation error (all-args constructor call on a
-     `@Data` class) — fix it if encountered
+   - Note: the existing `TransactionServiceTest` has a compilation error (all-args constructor call on a `@Data` class) — fix it if encountered
 
-Follow existing code conventions: Lombok `@Data`/
-`@Builder` for DTOs, `@Getter`/`@Setter`/`@Builder`
-for entities, the existing package structure under
-`com.javatodev.finance`.
+Follow existing code conventions: Lombok `@Data`/ `@Builder` for DTOs, `@Getter`/`@Setter`/`@Builder` for entities, the existing package structure under `com.javatodev.finance`.
 ```
 
 </details>
@@ -461,61 +334,31 @@ for entities, the existing package structure under
 Uses SonarQube MCP to fetch baseline findings, performs full OWASP Dependency-Check scan, comprehensive triage, multi-dependency remediation, before/after verification, and adds CI gating workflow.
 
 ```
-Perform a comprehensive security remediation on
-uc-cve-remediation-regulatory-compliance. This is a Spring
-Boot 2.6.3 / Java 11 application with known vulnerable
-dependencies and pre-configured security scanning tools.
+Perform a comprehensive security remediation on uc-cve-remediation-regulatory-compliance. This is a Spring Boot 2.6.3 / Java 11 application with known vulnerable dependencies and pre-configured security scanning tools.
 
-1. **Check SonarQube baseline:** Use the SonarQube MCP to
-   fetch the current quality gate status, open
-   vulnerabilities, security hotspots, and bugs. This is
-   the "before" snapshot for comparison.
+1. **Check SonarQube baseline:** Use the SonarQube MCP to fetch the current quality gate status, open vulnerabilities, security hotspots, and bugs. This is the "before" snapshot for comparison.
 
-2. **Upgrade and Run OWASP Dependency-Check:**
-   The repo ships with dependency-check plugin v7.4.4,
-   which uses the retired NVD v1.1 data feed. First
-   upgrade the plugin to 10.x+ in `build.gradle` (the
-   `org.owasp.dependencycheck` plugin line), then run:
-   `./gradlew dependencyCheckAnalyze`
-   The report is at
-   `build/reports/dependency-check-report.html`.
+2. **Upgrade and Run OWASP Dependency-Check:** The repo ships with dependency-check plugin v7.4.4, which uses the retired NVD v1.1 data feed. First upgrade the plugin to 10.x+ in `build.gradle` (the `org.owasp.dependencycheck` plugin line), then run: `./gradlew dependencyCheckAnalyze` The report is at `build/reports/dependency-check-report.html`.
 
-3. **Triage Findings:**
-   Combine the SonarQube MCP findings and OWASP report.
-   Create `SECURITY_TRIAGE.md` documenting findings with:
+3. **Triage Findings:** Combine the SonarQube MCP findings and OWASP report. Create `SECURITY_TRIAGE.md` documenting findings with:
    - CVE ID (for dependency vulnerabilities)
    - Severity (Critical/High/Medium/Low)
-   - Affected component (dependency name + version, or
-     source file + line)
+   - Affected component (dependency name + version, or source file + line)
    - Description and recommended fix
    - Priority for remediation (fix now vs. accept risk)
 
-4. **Remediate Critical and High Findings:**
-   Focus on the top findings:
-   - Upgrade Spring Boot from 2.6.3 to latest 2.7.x
-     (address Spring4Shell and related CVEs). Note:
-     upgrading to 3.x requires Java 17+ and significant
-     API changes — 2.7.x is the safer path.
-   - Upgrade SnakeYAML (transitive dependency via Spring
-     Boot — override version to fix CVE-2022-1471)
+4. **Remediate Critical and High Findings:** Focus on the top findings:
+   - Upgrade Spring Boot from 2.6.3 to latest 2.7.x (address Spring4Shell and related CVEs). Note: upgrading to 3.x requires Java 17+ and significant API changes — 2.7.x is the safer path.
+   - Upgrade SnakeYAML (transitive dependency via Spring Boot — override version to fix CVE-2022-1471)
    - Upgrade sqlite-jdbc from 3.36.0.3 (known CVEs)
-   - Fix any code-level security issues SonarQube
-     reports (SQL injection, hardcoded credentials,
-     insecure crypto, etc.)
+   - Fix any code-level security issues SonarQube reports (SQL injection, hardcoded credentials, insecure crypto, etc.)
 
-5. **Verify:**
-   Re-run OWASP and use the SonarQube MCP to check the
-   updated quality gate. Document before/after results
-   in `SECURITY_REMEDIATION.md` with:
+5. **Verify:** Re-run OWASP and use the SonarQube MCP to check the updated quality gate. Document before/after results in `SECURITY_REMEDIATION.md` with:
    - Summary table: vulnerability count before vs. after
    - Specific CVEs resolved
-   - Any remaining findings with justification for
-     deferral
+   - Any remaining findings with justification for deferral
 
-6. **Add CI Gating:**
-   Add a GitHub Actions workflow that runs OWASP
-   Dependency-Check on every PR and fails the build if
-   any CRITICAL severity CVEs are found.
+6. **Add CI Gating:** Add a GitHub Actions workflow that runs OWASP Dependency-Check on every PR and fails the build if any CRITICAL severity CVEs are found.
 ```
 
 </details>

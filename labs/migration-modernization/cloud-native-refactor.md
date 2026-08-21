@@ -21,12 +21,7 @@
 Paste this prompt into Devin to try cloud-native refactoring:
 
 ```
-Make timesheet-app more cloud-native: add a /health
-endpoint, externalize all configuration to environment
-variables, add structured JSON logging with Winston,
-create a Dockerfile with multi-stage build, and add a
-Kubernetes deployment manifest with resource limits and
-readiness probes.
+Make timesheet-app more cloud-native: add a /health endpoint, externalize all configuration to environment variables, add structured JSON logging with Winston, create a Dockerfile with multi-stage build, and add a Kubernetes deployment manifest with resource limits and readiness probes.
 ```
 
 ---
@@ -94,12 +89,7 @@ Node.js timesheet application. Traditional deployment model — needs cloud-nati
 ### Step 1: Paste into Devin — Cloud-Native Refactor (Node.js)
 
 ```
-Make timesheet-app more cloud-native: add a /health
-endpoint, externalize all configuration to environment
-variables, add structured JSON logging with Winston,
-create a Dockerfile with multi-stage build, and add a
-Kubernetes deployment manifest with resource limits and
-readiness probes.
+Make timesheet-app more cloud-native: add a /health endpoint, externalize all configuration to environment variables, add structured JSON logging with Winston, create a Dockerfile with multi-stage build, and add a Kubernetes deployment manifest with resource limits and readiness probes.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -134,13 +124,7 @@ Spring Boot backend. Uses Spring Boot Actuator for health endpoints but needs ad
 ### Step 1: Paste into Devin — Cloud-Native Refactor (Spring Boot)
 
 ```
-Make uc-spring-boot-upgrade-microservice-extraction more
-cloud-native: enable Spring Boot Actuator with /health and
-/info endpoints, externalize database configuration to
-environment variables, add graceful shutdown configuration,
-create a Dockerfile with multi-stage build, and add a
-Kubernetes deployment manifest with liveness and readiness
-probes pointing to Actuator.
+Make uc-spring-boot-upgrade-microservice-extraction more cloud-native: enable Spring Boot Actuator with /health and /info endpoints, externalize database configuration to environment variables, add graceful shutdown configuration, create a Dockerfile with multi-stage build, and add a Kubernetes deployment manifest with liveness and readiness probes pointing to Actuator.
 ```
 
 ### Step 2: Research with Ask Devin

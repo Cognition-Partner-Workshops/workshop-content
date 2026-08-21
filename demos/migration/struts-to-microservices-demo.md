@@ -138,48 +138,31 @@ With DeepWiki indexed over the repo, Devin typically orients in minutes
 Start with the estate map.
 
 ```
-Using the Cognition-Partner-Workshops/ts-java-struts-claims-management repo,
-give me a map of this Struts estate:
+Using the Cognition-Partner-Workshops/ts-java-struts-claims-management repo, give me a map of this Struts estate:
 
-- every action mapping across src/main/webapp/WEB-INF/struts-config.xml,
-  struts-config-claims.xml and struts-config-admin.xml, with its Action class,
-  form bean, validation rules, and forwards
-- the JSP inventory under src/main/webapp/WEB-INF/jsp: which JSPs post to which
-  actions, which are reachable, and which custom tags they use
-- the DAO layer: every SQL statement in com.northstar.claims.dao and the tables
-  it touches
+- every action mapping across src/main/webapp/WEB-INF/struts-config.xml, struts-config-claims.xml and struts-config-admin.xml, with its Action class, form bean, validation rules, and forwards
+- the JSP inventory under src/main/webapp/WEB-INF/jsp: which JSPs post to which actions, which are reachable, and which custom tags they use
+- the DAO layer: every SQL statement in com.northstar.claims.dao and the tables it touches
 - a call graph from each Action down through the manager singletons and DAOs
 
-Give me a table per section, and write the raw inventories to
-analysis/ESTATE_INVENTORY.md.
+Give me a table per section, and write the raw inventories to analysis/ESTATE_INVENTORY.md.
 ```
 
 Then the judgment call that actually matters — what is business logic and what
 is framework plumbing.
 
 ```
-For each Action class in com.northstar.claims.web, classify every method into
-(a) domain business rules, (b) Struts/JSP framework plumbing, or (c)
-persistence. Call out anything you cannot cleanly classify and explain why.
+For each Action class in com.northstar.claims.web, classify every method into (a) domain business rules, (b) Struts/JSP framework plumbing, or (c) persistence. Call out anything you cannot cleanly classify and explain why.
 
-Then tell me specifically which business rules are embedded inside Action
-classes rather than in a service layer, since those are the ones a migration is
-most likely to drop. Write it to analysis/LOGIC_VS_PLUMBING.md.
+Then tell me specifically which business rules are embedded inside Action classes rather than in a service layer, since those are the ones a migration is most likely to drop. Write it to analysis/LOGIC_VS_PLUMBING.md.
 ```
 
 Then the boundaries and the debt.
 
 ```
-Propose service boundaries for decomposing this monolith based on the actual
-coupling in the code rather than the package layout: which actions, tables, and
-domain rules move together, and where the seams are cleanest. For each candidate
-service, list what it owns and what it would have to call.
+Propose service boundaries for decomposing this monolith based on the actual coupling in the code rather than the package layout: which actions, tables, and domain rules move together, and where the seams are cleanest. For each candidate service, list what it owns and what it would have to call.
 
-Separately, report the estate's technical debt with file and line evidence:
-duplicated logic, dead code, string-concatenated SQL, and any place where
-framework behavior — blank-field coercion, lenient date parsing, money
-rounding — is silently deciding a business outcome. Write both to
-analysis/SERVICE_BOUNDARIES.md and analysis/TECH_DEBT.md.
+Separately, report the estate's technical debt with file and line evidence: duplicated logic, dead code, string-concatenated SQL, and any place where framework behavior — blank-field coercion, lenient date parsing, money rounding — is silently deciding a business outcome. Write both to analysis/SERVICE_BOUNDARIES.md and analysis/TECH_DEBT.md.
 ```
 
 The estate has real finds waiting, and the report should surface them with
@@ -225,16 +208,9 @@ Start a session on the target repo and invoke the macro.
 ```
 !struts-to-microservice
 
-Module: the settlement and payments module of the NorthStar Claims monolith in
-Cognition-Partner-Workshops/ts-java-struts-claims-management —
-SettlementCalculateAction, SettlementSaveAction, SettlementDetailAction,
-PaymentIssueAction, PaymentHistoryAction, PaymentDetailAction,
-PaymentRemittanceAction, SettlementForm, PaymentForm, SettlementDAO,
-PaymentDAO, SettlementCalculator, and the JSPs those actions forward to.
+Module: the settlement and payments module of the NorthStar Claims monolith in Cognition-Partner-Workshops/ts-java-struts-claims-management — SettlementCalculateAction, SettlementSaveAction, SettlementDetailAction, PaymentIssueAction, PaymentHistoryAction, PaymentDetailAction, PaymentRemittanceAction, SettlementForm, PaymentForm, SettlementDAO, PaymentDAO, SettlementCalculator, and the JSPs those actions forward to.
 
-Target service: services/settlement-service on port 8083, wired into
-docker-compose, the Makefile, and CI the same way policy-service and
-claims-intake-service are.
+Target service: services/settlement-service on port 8083, wired into docker-compose, the Makefile, and CI the same way policy-service and claims-intake-service are.
 
 Transcript scope: the settlement module. Every one of those scenarios reports
 SKIP (not yet extracted) today and must end green:
@@ -328,19 +304,12 @@ Modules are independent once their seams are identified, so the remaining wave
 parallelizes. From an orchestrator session:
 
 ```
-Fan out the rest of the NorthStar migration. Spawn one child session per
-remaining module — workbench and reporting — each following
-!struts-to-microservice with its own namespace, its own branch, and its own
-transcript scope:
+Fan out the rest of the NorthStar migration. Spawn one child session per remaining module — workbench and reporting — each following !struts-to-microservice with its own namespace, its own branch, and its own transcript scope:
 
 - workbench  → services/workbench-service,  NS=workbench,  PORT_OFFSET=200
 - reporting  → services/reporting-service,  NS=reporting,  PORT_OFFSET=300
 
-Monitor them. A child is done when `make parity MODULE=<module>` is green in
-its namespace with the already-extracted modules still passing, and its PR is
-open with the parity report attached. Report each child's status, the
-divergences it hit, and the quirks it reproduced. Do not let a child modify a
-transcript.
+Monitor them. A child is done when `make parity MODULE=<module>` is green in its namespace with the already-extracted modules still passing, and its PR is open with the parity report attached. Report each child's status, the divergences it hit, and the quirks it reproduced. Do not let a child modify a transcript.
 ```
 
 Each child runs on its own VM, with its own scoped credentials, its own
@@ -361,19 +330,14 @@ the surrounding modernization is safe to do, because anything that changes
 behavior fails the loop immediately.
 
 ```
-Now harden the extracted services in
-uc-legacy-modernization-struts-to-microservices:
+Now harden the extracted services in uc-legacy-modernization-struts-to-microservices:
 
-- generate unit tests that lock in every legacy quirk listed in
-  docs/KNOWN_LEGACY_QUIRKS.md — one test per quirk, named for the behavior it
-  pins, so a future refactor cannot silently drop it
-- fix every Semgrep finding `make sast` reports, including the SQL that was
-  string-concatenated in the legacy estate; parameterize it
+- generate unit tests that lock in every legacy quirk listed in docs/KNOWN_LEGACY_QUIRKS.md — one test per quirk, named for the behavior it pins, so a future refactor cannot silently drop it
+- fix every Semgrep finding `make sast` reports, including the SQL that was string-concatenated in the legacy estate; parameterize it
 - make `make lint` clean across the services and the harness
 - re-run `make parity` after every change
 
-Report anything you could not fix without changing behavior, rather than
-changing behavior.
+Report anything you could not fix without changing behavior, rather than changing behavior.
 ```
 
 The Java upgrade is the same shape of task: the legacy estate is Java-6-era code
@@ -390,13 +354,9 @@ The same procedure runs without a human in the loop.
 the extracted services and reports drift:
 
 ```
-Create a scheduled Devin that runs every weekday at 07:00 UTC against
-uc-legacy-modernization-struts-to-microservices:
+Create a scheduled Devin that runs every weekday at 07:00 UTC against uc-legacy-modernization-struts-to-microservices:
 
-Run `make up NS=nightly && make parity NS=nightly && make down NS=nightly`.
-If every scenario passes, post a one-line summary. If anything fails or errors,
-open an issue with the failing scenarios, the field-level diffs from
-parity/report.md, and the commits merged since the last green run.
+Run `make up NS=nightly && make parity NS=nightly && make down NS=nightly`. If every scenario passes, post a one-line summary. If anything fails or errors, open an issue with the failing scenarios, the field-level diffs from parity/report.md, and the commits merged since the last green run.
 ```
 
 **Event-driven** — an [Automation](https://docs.devin.ai/product-guides/automations)

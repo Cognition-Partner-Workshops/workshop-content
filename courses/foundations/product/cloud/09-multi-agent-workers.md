@@ -113,9 +113,7 @@ Devin implements multi-agent orchestration through a coordinator-worker model (a
 
 **Prompt to coordinator:**
 ```
-Upgrade all Spring Boot 2.x services in our org to Spring Boot 3.2.
-Each service should get its own PR. Migrate the Jakarta namespace,
-update deprecated APIs, and ensure all tests pass.
+Upgrade all Spring Boot 2.x services in our org to Spring Boot 3.2. Each service should get its own PR. Migrate the Jakarta namespace, update deprecated APIs, and ensure all tests pass.
 ```
 
 **Coordinator executes:**
@@ -140,8 +138,7 @@ update deprecated APIs, and ensure all tests pass.
 
 **Prompt to coordinator:**
 ```
-Remediate all HIGH and CRITICAL findings from our latest SonarQube
-org-wide scan. Each finding should get its own session and PR.
+Remediate all HIGH and CRITICAL findings from our latest SonarQube org-wide scan. Each finding should get its own session and PR.
 ```
 
 **Coordinator executes:**
@@ -185,15 +182,7 @@ A playbook encodes:
 ```
 Playbook: "Spring Boot 3 Upgrade"
 
-Step 1: Update pom.xml — bump spring-boot-starter-parent to 3.2.x
-Step 2: Run compile — fix any immediate compilation errors
-Step 3: Migrate javax → jakarta namespace in all Java files
-Step 4: Replace deprecated APIs (list of known replacements)
-Step 5: Run full test suite
-Step 6: If tests fail, read errors and fix
-Step 7: Run again — iterate up to 3 times
-Step 8: If still failing, escalate to parent with error details
-Step 9: If all checks pass, mark task as complete
+Step 1: Update pom.xml — bump spring-boot-starter-parent to 3.2.x Step 2: Run compile — fix any immediate compilation errors Step 3: Migrate javax → jakarta namespace in all Java files Step 4: Replace deprecated APIs (list of known replacements) Step 5: Run full test suite Step 6: If tests fail, read errors and fix Step 7: Run again — iterate up to 3 times Step 8: If still failing, escalate to parent with error details Step 9: If all checks pass, mark task as complete
 ```
 
 Each worker receives the same procedure. The output is typically predictable, reviewable, and consistent — regardless of which specific service the worker is handling.

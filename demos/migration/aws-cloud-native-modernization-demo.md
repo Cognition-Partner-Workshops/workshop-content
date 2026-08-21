@@ -184,14 +184,7 @@ With DeepWiki over the repo, Devin typically maps an unfamiliar estate in minute
 (coverage depends on repo structure).
 
 ```
-Using the Cognition-Partner-Workshops/otterworks repo, map the
-search-service: how app/api/*.py routes reach the backend through
-app/services/meilisearch_client.py, how app/config.py selects the
-backend from env, what MeiliSearch provides today (self-managed on ECS
-Fargate in infrastructure/terraform/modules/search plus the in-cluster
-MeiliSearch in scripts/deploy-dev.sh), and every behavior the contract
-suite tests/contract/test_search_contract.py asserts against
-shared/openapi/search-service.yaml.
+Using the Cognition-Partner-Workshops/otterworks repo, map the search-service: how app/api/*.py routes reach the backend through app/services/meilisearch_client.py, how app/config.py selects the backend from env, what MeiliSearch provides today (self-managed on ECS Fargate in infrastructure/terraform/modules/search plus the in-cluster MeiliSearch in scripts/deploy-dev.sh), and every behavior the contract suite tests/contract/test_search_contract.py asserts against shared/openapi/search-service.yaml.
 ```
 
 Expected: a tour of the backend seam (`query` / `suggest` / `advanced` / `index`
@@ -212,22 +205,14 @@ PR with the verification report.
 ```
 !aws-cloud-native
 
-Migrate search-service from self-managed MeiliSearch to Amazon
-OpenSearch Serverless in Cognition-Partner-Workshops/otterworks.
+Migrate search-service from self-managed MeiliSearch to Amazon OpenSearch Serverless in Cognition-Partner-Workshops/otterworks.
 
-- Backend seam: services/search-service/app/services/meilisearch_client.py
-  (add a sibling opensearch_client.py implementing the same methods,
-  selected by a new SEARCH_BACKEND env; default meilisearch so main is
-  unchanged)
-- Contract / source of truth: tests/contract/test_search_contract.py +
-  shared/openapi/search-service.yaml
-- IaC: add infrastructure/terraform/modules/opensearch (an OpenSearch
-  Serverless SEARCH collection + encryption/network/data-access policies,
-  namespaced) and extend the search-service IRSA policy with
+- Backend seam: services/search-service/app/services/meilisearch_client.py (add a sibling opensearch_client.py implementing the same methods, selected by a new SEARCH_BACKEND env; default meilisearch so main is unchanged)
+- Contract / source of truth: tests/contract/test_search_contract.py + shared/openapi/search-service.yaml
+- IaC: add infrastructure/terraform/modules/opensearch (an OpenSearch Serverless SEARCH collection + encryption/network/data-access policies, namespaced) and extend the search-service IRSA policy with
   aoss:APIAccessAll
 - Namespace: os-demo   (branch migration/opensearch-os-demo)
-- Prove parity with the contract suite, then run a before/after load
-  test and capture the OpenSearch Dashboards + CloudWatch view.
+- Prove parity with the contract suite, then run a before/after load test and capture the OpenSearch Dashboards + CloudWatch view.
 ```
 
 **The verification beat (the real bug).** The OpenSearch adapter uses a `match`
@@ -236,9 +221,7 @@ reasonable" review would ship it. But the contract suite catches the semantics
 gap:
 
 ```
-tests/contract/test_search_contract.py::TestSuggestEndpoint::test_suggest_valid_prefix
-  FAILED
-  Expected: prefix "tes" returns type-ahead suggestions
+tests/contract/test_search_contract.py::TestSuggestEndpoint::test_suggest_valid_prefix FAILED Expected: prefix "tes" returns type-ahead suggestions
   Actual:   [] — OpenSearch `match` tokenizes on whole terms;
             MeiliSearch is prefix-first by default
 ```
@@ -271,20 +254,9 @@ pool). One human doing this hand-edits dozens of files consistently across
 languages they may not all know; Devin does it as one governed sweep.
 
 ```
-In Cognition-Partner-Workshops/otterworks, replatform the PostgreSQL
-data layer to Amazon Aurora Serverless v2 (provisioned as a namespaced
-Terraform module alongside modules/database, not replacing it). Do not
-change any schema or SQL.
+In Cognition-Partner-Workshops/otterworks, replatform the PostgreSQL data layer to Amazon Aurora Serverless v2 (provisioned as a namespaced Terraform module alongside modules/database, not replacing it). Do not change any schema or SQL.
 
-Across every service that connects to PostgreSQL, update only the
-connection layer to target the Aurora endpoint via the existing
-DB_HOST / DATABASE_URL config, add IAM database authentication and TLS,
-and keep the current PostgreSQL config wired for revert. Enumerate every
-file you change, per language (Java/Kotlin JDBC, Go database/sql, Rust
-sqlx, Python psycopg, C# Npgsql, Scala Slick, Ruby ActiveRecord, Node
-pool). Prove parity by running each service's existing DB-backed tests
-and the tests/api flow suite against Aurora, and report a before/after
-connection/latency comparison.
+Across every service that connects to PostgreSQL, update only the connection layer to target the Aurora endpoint via the existing DB_HOST / DATABASE_URL config, add IAM database authentication and TLS, and keep the current PostgreSQL config wired for revert. Enumerate every file you change, per language (Java/Kotlin JDBC, Go database/sql, Rust sqlx, Python psycopg, C# Npgsql, Scala Slick, Ruby ActiveRecord, Node pool). Prove parity by running each service's existing DB-backed tests and the tests/api flow suite against Aurora, and report a before/after connection/latency comparison.
 ```
 
 Expected: a single PR with the identical connection change applied
@@ -307,14 +279,7 @@ pay-per-request function behind API Gateway, preserving the API.
 ```
 !aws-cloud-native
 
-Refactor services/report-service (legacy Java 8, always-on EKS pod) to
-run as AWS Lambda behind API Gateway in Cognition-Partner-Workshops/
-otterworks, preserving its HTTP API exactly. Provision the function and
-gateway as a namespaced Terraform module; keep the EKS deployment intact
-on main for revert. Prove the existing report flow tests
-(tests/api/test_audit_analytics_report_flow.py) pass through the API
-Gateway URL, and capture Lambda invocations/duration/cold-start from
-CloudWatch.
+Refactor services/report-service (legacy Java 8, always-on EKS pod) to run as AWS Lambda behind API Gateway in Cognition-Partner-Workshops/otterworks, preserving its HTTP API exactly. Provision the function and gateway as a namespaced Terraform module; keep the EKS deployment intact on main for revert. Prove the existing report flow tests (tests/api/test_audit_analytics_report_flow.py) pass through the API Gateway URL, and capture Lambda invocations/duration/cold-start from CloudWatch.
 ```
 
 **Re-architect to event-driven — `notification-service` → EventBridge + SQS +
@@ -323,12 +288,7 @@ Lambda.** A synchronous/in-cluster consumer becomes a decoupled event pipeline.
 ```
 !aws-cloud-native
 
-Re-architect notification delivery in Cognition-Partner-Workshops/
-otterworks to an event-driven pipeline: publish domain events to Amazon
-EventBridge, route to an SQS queue, and process with a Lambda consumer,
-provisioned as a namespaced Terraform module. Keep the existing in-cluster
-consumer on main. Prove the notification flow tests still pass end to end,
-and show the EventBridge rule + SQS + Lambda wiring in the console.
+Re-architect notification delivery in Cognition-Partner-Workshops/otterworks to an event-driven pipeline: publish domain events to Amazon EventBridge, route to an SQS queue, and process with a Lambda consumer, provisioned as a namespaced Terraform module. Keep the existing in-cluster consumer on main. Prove the notification flow tests still pass end to end, and show the EventBridge rule + SQS + Lambda wiring in the console.
 ```
 
 **Re-architect the analytics store — Scala `analytics-service` → S3 + Apache
@@ -341,14 +301,7 @@ lakehouse story.
 ```
 !aws-cloud-native
 
-In Cognition-Partner-Workshops/otterworks, re-architect analytics-service
-persistence to an S3 data lake in Apache Iceberg table format (Glue
-catalog + Athena), provisioned as a namespaced Terraform module and wired
-through the existing analytics.s3.data-lake-bucket config. Events consumed
-from SQS are written as Iceberg records; the dashboard summary reads back
-via Athena. Add a continuous-validation check that reconciles Iceberg
-aggregates against the current in-memory/Postgres path for a seeded event
-set, and keep the existing path on main for revert.
+In Cognition-Partner-Workshops/otterworks, re-architect analytics-service persistence to an S3 data lake in Apache Iceberg table format (Glue catalog + Athena), provisioned as a namespaced Terraform module and wired through the existing analytics.s3.data-lake-bucket config. Events consumed from SQS are written as Iceberg records; the dashboard summary reads back via Athena. Add a continuous-validation check that reconciles Iceberg aggregates against the current in-memory/Postgres path for a seeded event set, and keep the existing path on main for revert.
 ```
 
 Note the continuous-validation ask in the last prompt: when a **refactor** also
@@ -364,19 +317,9 @@ modernization wave, each child on its own namespace and branch, each opening its
 own verified PR.
 
 ```
-Act as the orchestrator for an AWS cloud-native modernization of
-Cognition-Partner-Workshops/otterworks, using child Devin sessions to
-parallelize the R's of migration.
+Act as the orchestrator for an AWS cloud-native modernization of Cognition-Partner-Workshops/otterworks, using child Devin sessions to parallelize the R's of migration.
 
-Spawn one child Devin session per row below. Give each child the repo,
-its own namespace + branch (migration/<row>-<ns>), and tell it to follow
-the !aws-cloud-native playbook (the repo Skill supplies the adapter
-seams, IaC module locations, deploy wiring, and contract-test commands):
-provision the managed/serverless target as namespaced least-privilege
-IaC, wire the app behind its existing interface via a config flip or
-connection change, prove parity with the repo's contract/flow tests,
-catch and fix any behavioral divergence against the contract, and run a
-before/after performance test.
+Spawn one child Devin session per row below. Give each child the repo, its own namespace + branch (migration/<row>-<ns>), and tell it to follow the !aws-cloud-native playbook (the repo Skill supplies the adapter seams, IaC module locations, deploy wiring, and contract-test commands): provision the managed/serverless target as namespaced least-privilege IaC, wire the app behind its existing interface via a config flip or connection change, prove parity with the repo's contract/flow tests, catch and fix any behavioral divergence against the contract, and run a before/after performance test.
 
 Rows:
 1. Replatform: search-service   -> Amazon OpenSearch Serverless (flagship)
@@ -385,9 +328,7 @@ Rows:
 4. Re-architect: notification    -> EventBridge + SQS + Lambda
 5. Re-architect: analytics store -> S3 + Apache Iceberg
 
-After launching, monitor the child sessions until each row's verification
-is green. Summarize the results and call out every divergence the children
-caught (e.g. the prefix/type-ahead gap in search).
+After launching, monitor the child sessions until each row's verification is green. Summarize the results and call out every divergence the children caught (e.g. the prefix/type-ahead gap in search).
 ```
 
 Each child runs in its own VM with scoped credentials and its own namespace, so

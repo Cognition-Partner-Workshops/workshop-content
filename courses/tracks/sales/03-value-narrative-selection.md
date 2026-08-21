@@ -87,11 +87,7 @@ Different stakeholders care about different outcomes. The same human + agent del
 Use this matrix to select your primary and secondary narratives before a client conversation:
 
 ```
-Step 1: Identify the buyer's role
-Step 2: Identify their primary pain point
-Step 3: Select the matching narrative from the table above
-Step 4: Prepare evidence specific to their context
-Step 5: Anticipate objections based on their persona
+Step 1: Identify the buyer's role Step 2: Identify their primary pain point Step 3: Select the matching narrative from the table above Step 4: Prepare evidence specific to their context Step 5: Anticipate objections based on their persona
 ```
 
 | Pain Point | Narrative to Lead With | Key Metric |

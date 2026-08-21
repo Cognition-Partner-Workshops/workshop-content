@@ -31,12 +31,7 @@ Create or improve CI/CD pipelines using GitHub Actions. This exercises Devin's a
 Paste this into a new Devin session to get started immediately:
 
 ```
-Create a GitHub Actions CI workflow for timesheet-app.
-The workflow should: trigger on push to main and on pull
-requests, install dependencies with npm ci, run linting
-(npm run lint), run tests (npm test) with coverage
-reporting, and upload the coverage report as an artifact.
-Add caching for node_modules.
+Create a GitHub Actions CI workflow for timesheet-app. The workflow should: trigger on push to main and on pull requests, install dependencies with npm ci, run linting (npm run lint), run tests (npm test) with coverage reporting, and upload the coverage report as an artifact. Add caching for node_modules.
 ```
 
 <a id="target-outcomes"></a>
@@ -83,12 +78,7 @@ Node.js/Express application — create a CI pipeline with npm install, lint, tes
 ### Step 1: Paste into Devin
 
 ```
-Create a GitHub Actions CI workflow for timesheet-app.
-The workflow should: trigger on push to main and on pull
-requests, install dependencies with npm ci, run linting
-(npm run lint), run tests (npm test) with coverage
-reporting, and upload the coverage report as an artifact.
-Add caching for node_modules.
+Create a GitHub Actions CI workflow for timesheet-app. The workflow should: trigger on push to main and on pull requests, install dependencies with npm ci, run linting (npm run lint), run tests (npm test) with coverage reporting, and upload the coverage report as an artifact. Add caching for node_modules.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -122,13 +112,7 @@ Spring Boot/Gradle application — create a CI pipeline with Gradle build, test,
 ### Step 1: Paste into Devin
 
 ```
-Create a GitHub Actions CI workflow for
-uc-spring-boot-upgrade-microservice-extraction. The
-workflow should: trigger on push to main and on pull
-requests, set up Java 17, run Gradle build with tests,
-generate JaCoCo coverage report, upload test results and
-coverage as artifacts, and fail if coverage drops below
-60%. Add Gradle caching.
+Create a GitHub Actions CI workflow for uc-spring-boot-upgrade-microservice-extraction. The workflow should: trigger on push to main and on pull requests, set up Java 17, run Gradle build with tests, generate JaCoCo coverage report, upload test results and coverage as artifacts, and fail if coverage drops below 60%. Add Gradle caching.
 ```
 
 ### Step 2: Research with Ask Devin

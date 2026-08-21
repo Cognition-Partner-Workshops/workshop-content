@@ -31,12 +31,7 @@ Set up mutation testing (PIT for Java, Stryker for JavaScript) to evaluate test 
 Paste this into a new Devin session to get started immediately:
 
 ```
-Set up PIT (pitest) mutation testing for
-uc-spring-boot-upgrade-microservice-extraction. Configure
-the Gradle pitest plugin, run the mutation analysis
-against the service and controller layers, and generate
-a mutation coverage report. Identify the top surviving
-mutants and add or improve JUnit tests to kill them.
+Set up PIT (pitest) mutation testing for uc-spring-boot-upgrade-microservice-extraction. Configure the Gradle pitest plugin, run the mutation analysis against the service and controller layers, and generate a mutation coverage report. Identify the top surviving mutants and add or improve JUnit tests to kill them.
 ```
 
 <a id="target-outcomes"></a>
@@ -83,12 +78,7 @@ Spring Boot 2.6.3 monolith with an existing JUnit test suite and Gradle build â€
 ### Step 1: Paste into Devin
 
 ```
-Set up PIT (pitest) mutation testing for
-uc-spring-boot-upgrade-microservice-extraction. Configure
-the Gradle pitest plugin, run the mutation analysis
-against the service and controller layers, and generate
-a mutation coverage report. Identify the top surviving
-mutants and add or improve JUnit tests to kill them.
+Set up PIT (pitest) mutation testing for uc-spring-boot-upgrade-microservice-extraction. Configure the Gradle pitest plugin, run the mutation analysis against the service and controller layers, and generate a mutation coverage report. Identify the top surviving mutants and add or improve JUnit tests to kill them.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -123,12 +113,7 @@ Node.js/Express backend with Jest tests â€” suitable for Stryker mutation testin
 ### Step 1: Paste into Devin
 
 ```
-Set up Stryker mutation testing for the backend of
-timesheet-app. Configure Stryker with the Jest test
-runner, run mutation analysis against the API routes and
-validation logic, and generate a mutation score report.
-Identify surviving mutants and add or improve Jest tests
-to kill them.
+Set up Stryker mutation testing for the backend of timesheet-app. Configure Stryker with the Jest test runner, run mutation analysis against the API routes and validation logic, and generate a mutation score report. Identify surviving mutants and add or improve Jest tests to kill them.
 ```
 
 ### Step 2: Research with Ask Devin

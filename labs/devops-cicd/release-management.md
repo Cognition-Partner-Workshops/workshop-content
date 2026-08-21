@@ -32,12 +32,7 @@ Paste this into a new Devin session to get started immediately:
 
 ```
 Set up automated release management for timesheet-app:
-(1) Add conventional commit linting with commitlint and
-husky, (2) Configure standard-version for automated
-changelog generation and version bumping, (3) Create a
-GitHub Actions workflow that creates a GitHub Release with
-generated release notes when a version tag is pushed,
-(4) Add a CHANGELOG.md with the initial release.
+(1) Add conventional commit linting with commitlint and husky, (2) Configure standard-version for automated changelog generation and version bumping, (3) Create a GitHub Actions workflow that creates a GitHub Release with generated release notes when a version tag is pushed, (4) Add a CHANGELOG.md with the initial release.
 ```
 
 <a id="target-outcomes"></a>
@@ -86,12 +81,7 @@ Node.js application — set up semantic-release or standard-version with GitHub 
 
 ```
 Set up automated release management for timesheet-app:
-(1) Add conventional commit linting with commitlint and
-husky, (2) Configure standard-version for automated
-changelog generation and version bumping, (3) Create a
-GitHub Actions workflow that creates a GitHub Release with
-generated release notes when a version tag is pushed,
-(4) Add a CHANGELOG.md with the initial release.
+(1) Add conventional commit linting with commitlint and husky, (2) Configure standard-version for automated changelog generation and version bumping, (3) Create a GitHub Actions workflow that creates a GitHub Release with generated release notes when a version tag is pushed, (4) Add a CHANGELOG.md with the initial release.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -125,13 +115,8 @@ Spring Boot/Gradle application — set up Gradle release plugin with GitHub Acti
 ### Step 1: Paste into Devin
 
 ```
-Set up automated release management for
-uc-spring-boot-upgrade-microservice-extraction:
-(1) Configure the Gradle release plugin for semantic
-versioning, (2) Create a GitHub Actions workflow that
-builds a release artifact (JAR), creates a GitHub Release,
-and attaches the JAR when a version tag is pushed,
-(3) Add a CHANGELOG.md template with categorized sections.
+Set up automated release management for uc-spring-boot-upgrade-microservice-extraction:
+(1) Configure the Gradle release plugin for semantic versioning, (2) Create a GitHub Actions workflow that builds a release artifact (JAR), creates a GitHub Release, and attaches the JAR when a version tag is pushed, (3) Add a CHANGELOG.md template with categorized sections.
 ```
 
 ### Step 2: Research with Ask Devin

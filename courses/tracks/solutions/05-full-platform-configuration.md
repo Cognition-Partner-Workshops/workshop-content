@@ -217,10 +217,7 @@ A security remediation playbook:
 **Example configuration:**
 
 ```
-When a security scan check run fails on any repo in the
-organization, start a Devin session that reads the scan
-findings, triages HIGH and CRITICAL issues, remediates
-them, runs tests, and pushes the fix.
+When a security scan check run fails on any repo in the organization, start a Devin session that reads the scan findings, triages HIGH and CRITICAL issues, remediates them, runs tests, and pushes the fix.
 
 Conditions:
 - Only trigger on check_run conclusion = failure

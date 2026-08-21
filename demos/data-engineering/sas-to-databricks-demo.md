@@ -106,10 +106,7 @@ Devin typically maps an unfamiliar estate in minutes (coverage depends on repo
 structure).
 
 ```
-Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate:
-the banking and insurance programs, what each one reads and writes, the
-LIBNAMEs, the macros and PROC FORMATs they depend on, and which programs are
-set-based (good for dbt) vs procedural/multi-output (better as PySpark).
+Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate: the banking and insurance programs, what each one reads and writes, the LIBNAMEs, the macros and PROC FORMATs they depend on, and which programs are set-based (good for dbt) vs procedural/multi-output (better as PySpark).
 ```
 
 Expected: a tour of `Programs/Banking/*`, `Programs/Insurance/*`, the `Macro/`
@@ -127,9 +124,7 @@ with the reconciliation report.
 ```
 !convert-sas-to-databricks
 
-Convert the SAS program Programs/Banking/monthly_regulatory_reporting.sas in
-the ts-sas-legacy-analytics estate into dbt models on Databricks, writing to
-uc-data-migration-sas-to-databricks.
+Convert the SAS program Programs/Banking/monthly_regulatory_reporting.sas in the ts-sas-legacy-analytics estate into dbt models on Databricks, writing to uc-data-migration-sas-to-databricks.
 
 - SAS program: Programs/Banking/monthly_regulatory_reporting.sas
 - Target model(s): mart_regulatory_rwa + mart_delinquency_aging
@@ -182,35 +177,19 @@ spawns a child Devin session per program and monitors them — one agent fanning
 itself out across the wave. Paste:
 
 ```
-Act as the orchestrator for a SAS->Databricks migration across multiple
-programs, using child Devin sessions to parallelize the work.
+Act as the orchestrator for a SAS->Databricks migration across multiple programs, using child Devin sessions to parallelize the work.
 
-Repos: read Cognition-Partner-Workshops/ts-sas-legacy-analytics (the SAS
-source), write Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks.
+Repos: read Cognition-Partner-Workshops/ts-sas-legacy-analytics (the SAS source), write Cognition-Partner-Workshops/uc-data-migration-sas-to-databricks.
 
-Spawn one child Devin session per program below. Give each child both repos, its
-own namespace (NS=child1, child2, ...), and tell it to follow the
-!convert-sas-to-databricks playbook (the repo's Skill supplies the
-`make demo-up NS=...` / `make reconcile NS=...` mechanics): treat the SAS source
-as the source of truth and reproduce its logic exactly; flag (do not silently
-fix) anything that looks wrong; add reconciliation controls (completeness, a
-control total, and a parity check for every CASE/mapping); and build until
-everything is green, with the reconciliation report included.
+Spawn one child Devin session per program below. Give each child both repos, its own namespace (NS=child1, child2, ...), and tell it to follow the !convert-sas-to-databricks playbook (the repo's Skill supplies the `make demo-up NS=...` / `make reconcile NS=...` mechanics): treat the SAS source as the source of truth and reproduce its logic exactly; flag (do not silently fix) anything that looks wrong; add reconciliation controls (completeness, a control total, and a parity check for every CASE/mapping); and build until everything is green, with the reconciliation report included.
 
 Programs:
-1. Programs/Banking/monthly_regulatory_reporting.sas
-   -> mart_regulatory_rwa + mart_delinquency_aging
-2. Programs/Insurance/claims_processing.sas
-   -> stg_claims + int_claims_adjudication (dbt) AND a PySpark job
-      src/pyspark/claims_processing.py
-3. Programs/Insurance/policy_valuation.sas
-   -> int_policy_valuation + mart_loss_ratios
+1. Programs/Banking/monthly_regulatory_reporting.sas -> mart_regulatory_rwa + mart_delinquency_aging
+2. Programs/Insurance/claims_processing.sas -> stg_claims + int_claims_adjudication (dbt) AND a PySpark job src/pyspark/claims_processing.py
+3. Programs/Insurance/policy_valuation.sas -> int_policy_valuation + mart_loss_ratios
 4. Programs/Reports/customer_profitability.sas -> mart_customer_pnl
 
-After launching, monitor the child sessions until each program is converted with
-a green reconciliation report. Then summarize the results and call out any
-source-parity divergences the children caught (e.g. a risk-weight mapping that
-did not match the SAS source).
+After launching, monitor the child sessions until each program is converted with a green reconciliation report. Then summarize the results and call out any source-parity divergences the children caught (e.g. a risk-weight mapping that did not match the SAS source).
 ```
 
 The children inherit the organization's Databricks secrets, and each writes to

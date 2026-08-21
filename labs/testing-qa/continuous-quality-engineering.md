@@ -36,12 +36,7 @@ This exercises Devin's platform capabilities beyond one-shot prompts: Playbooks 
 Paste this into a new Devin session to get started immediately:
 
 ```
-Run the test suite for timesheet-app and generate a
-quality report covering: overall test coverage, tests
-that are likely flaky (non-deterministic), test files
-that haven't been updated in the last 6 months, and
-test anti-patterns (empty assertions, commented-out tests,
-tests with no assertions).
+Run the test suite for timesheet-app and generate a quality report covering: overall test coverage, tests that are likely flaky (non-deterministic), test files that haven't been updated in the last 6 months, and test anti-patterns (empty assertions, commented-out tests, tests with no assertions).
 ```
 
 <a id="target-outcomes"></a>
@@ -96,12 +91,7 @@ Node.js/Express + React application — use for an initial quality audit and Pla
 ### Step 1: Paste into Devin
 
 ```
-Run the test suite for timesheet-app and generate a
-quality report covering: overall test coverage, tests
-that are likely flaky (non-deterministic), test files
-that haven't been updated in the last 6 months, and
-test anti-patterns (empty assertions, commented-out tests,
-tests with no assertions).
+Run the test suite for timesheet-app and generate a quality report covering: overall test coverage, tests that are likely flaky (non-deterministic), test files that haven't been updated in the last 6 months, and test anti-patterns (empty assertions, commented-out tests, tests with no assertions).
 ```
 
 ### Step 2: Review and Refine
@@ -115,17 +105,11 @@ Based on the results, create a Playbook for recurring quality audits:
 ```
 Playbook: Weekly QA Audit
 
-1. Run the full test suite and capture pass/fail/skip
-   counts
-2. Generate coverage report and compare against the
-   baseline (80% target)
-3. Identify flaky tests (run suite 3x, flag tests that
-   pass inconsistently)
-4. Scan for test anti-patterns: empty assertions,
-   commented-out tests, tests with no assertions,
-   tests that never fail
-5. Check for stale test files (not updated in 6+ months
-   while source files changed)
+1. Run the full test suite and capture pass/fail/skip counts
+2. Generate coverage report and compare against the baseline (80% target)
+3. Identify flaky tests (run suite 3x, flag tests that pass inconsistently)
+4. Scan for test anti-patterns: empty assertions, commented-out tests, tests with no assertions, tests that never fail
+5. Check for stale test files (not updated in 6+ months while source files changed)
 6. Fix the top 3 highest-priority issues found
 7. Open a PR with improvements and a summary report
 ```
@@ -165,17 +149,9 @@ Spring Boot + Cucumber BDD framework — use for continuous BDD coverage monitor
 ### Step 1: Paste into Devin
 
 ```
-Analyze the BDD test coverage in
-uc-bdd-test-generation-cucumber. Map every REST API
-endpoint to its corresponding Gherkin feature file.
-Identify endpoints that have no BDD scenarios, endpoints
-with only happy-path coverage (no error scenarios), and
-endpoints missing boundary condition tests.
+Analyze the BDD test coverage in uc-bdd-test-generation-cucumber. Map every REST API endpoint to its corresponding Gherkin feature file. Identify endpoints that have no BDD scenarios, endpoints with only happy-path coverage (no error scenarios), and endpoints missing boundary condition tests.
 
-Generate a BDD_COVERAGE_MATRIX.md that shows: endpoint
-→ feature file → scenarios (happy path, error, boundary).
-Fill the gaps by writing new Gherkin scenarios for
-uncovered endpoints.
+Generate a BDD_COVERAGE_MATRIX.md that shows: endpoint → feature file → scenarios (happy path, error, boundary). Fill the gaps by writing new Gherkin scenarios for uncovered endpoints.
 ```
 
 ### Step 2: Create a Playbook
@@ -187,10 +163,8 @@ Playbook: BDD Coverage Audit
 
 1. List all REST API endpoints from controllers
 2. Map each endpoint to its Gherkin feature file
-3. For each endpoint, check: has happy path scenario?
-   has error scenario? has boundary scenario?
-4. Generate missing scenarios following existing Cucumber
-   step definition patterns
+3. For each endpoint, check: has happy path scenario? has error scenario? has boundary scenario?
+4. Generate missing scenarios following existing Cucumber step definition patterns
 5. Run `mvn test` to verify all scenarios pass
 6. Update the BDD_COVERAGE_MATRIX.md
 7. Open a PR with new scenarios and updated matrix
@@ -219,20 +193,11 @@ Angular frontend — use for continuous frontend test quality monitoring across 
 ### Step 1: Paste into Devin
 
 ```
-Analyze the test quality in petclinic-angular. For each
-Angular component, check whether it has a corresponding
-.spec.ts file. For each existing spec file, audit: does
-it test user-visible behavior (not implementation
-details)? Does it cover error states? Does it test input
-validation? Are the mocks minimal and realistic?
+Analyze the test quality in petclinic-angular. For each Angular component, check whether it has a corresponding .spec.ts file. For each existing spec file, audit: does it test user-visible behavior (not implementation details)? Does it cover error states? Does it test input validation? Are the mocks minimal and realistic?
 
-Generate a COMPONENT_TEST_AUDIT.md that shows: component
-→ has spec? → tests behavior? → tests errors? → tests
-validation? → mock quality.
+Generate a COMPONENT_TEST_AUDIT.md that shows: component → has spec? → tests behavior? → tests errors? → tests validation? → mock quality.
 
-For the 3 components with the weakest test quality,
-rewrite or improve their tests following Angular testing
-best practices.
+For the 3 components with the weakest test quality, rewrite or improve their tests following Angular testing best practices.
 ```
 
 ### Step 2: Create a Knowledge Item
@@ -243,15 +208,10 @@ Based on the audit, create a Knowledge item that captures the project's testing 
 Knowledge: PetClinic Angular Testing Standards
 
 - Every component must have a .spec.ts file
-- Tests should assert on user-visible behavior (rendered
-  text, element visibility), not implementation details
-  (private methods, internal state)
-- Error states must be tested: what does the component
-  show when the API returns an error?
-- Forms must have validation tests: required fields,
-  min/max length, pattern matching
-- Mocks should be minimal: prefer HttpClientTestingModule
-  over mocking the entire service
+- Tests should assert on user-visible behavior (rendered text, element visibility), not implementation details (private methods, internal state)
+- Error states must be tested: what does the component show when the API returns an error?
+- Forms must have validation tests: required fields, min/max length, pattern matching
+- Mocks should be minimal: prefer HttpClientTestingModule over mocking the entire service
 ```
 
 This Knowledge item will automatically inform future Devin sessions working on this repo.

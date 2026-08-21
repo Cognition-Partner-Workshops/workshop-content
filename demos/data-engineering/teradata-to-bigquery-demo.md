@@ -89,12 +89,7 @@ typically maps an unfamiliar estate in minutes (coverage depends on repo
 structure).
 
 ```
-Using the uc-dw-migration-teradata-to-bigquery repo, give me a map of the
-Teradata warehouse: the dimension and fact tables in ddl/tables/, the views in
-ddl/views/, the stored procedures and macros in dml/, the BTEQ scripts, and the
-Teradata-specific features each one depends on (SET/MULTISET, PI/PPI, COMPRESS,
-QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Note which objects are the parity
-harness's targets.
+Using the uc-dw-migration-teradata-to-bigquery repo, give me a map of the Teradata warehouse: the dimension and fact tables in ddl/tables/, the views in ddl/views/, the stored procedures and macros in dml/, the BTEQ scripts, and the Teradata-specific features each one depends on (SET/MULTISET, PI/PPI, COMPRESS, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Note which objects are the parity harness's targets.
 ```
 
 Expected: a tour of the 7 tables, 3 views, 3 stored procedures, 3 macros, and the
@@ -112,10 +107,7 @@ a divergence, fixes it, and produces a PR with the parity report.
 ```
 !convert-teradata-to-bigquery
 
-Convert the three Teradata views in ddl/views/ to BigQuery Standard SQL in the
-uc-dw-migration-teradata-to-bigquery repo. Write the converted CREATE OR REPLACE
-VIEW statements into bigquery/views/ so the parity harness can run them, then run
-`python verify/run_parity.py` and iterate until every metric matches golden.
+Convert the three Teradata views in ddl/views/ to BigQuery Standard SQL in the uc-dw-migration-teradata-to-bigquery repo. Write the converted CREATE OR REPLACE VIEW statements into bigquery/views/ so the parity harness can run them, then run `python verify/run_parity.py` and iterate until every metric matches golden.
 ```
 
 **The verification beat (the real bug).** Teradata `MAVG(volume, 3, month)` in
@@ -150,17 +142,11 @@ follows the same playbook and produces its own verified PR — the same review b
 applied many times in parallel instead of once in series.
 
 ```
-Act as the orchestrator for a Teradata->BigQuery migration across the estate,
-using child Devin sessions to parallelize the work.
+Act as the orchestrator for a Teradata->BigQuery migration across the estate, using child Devin sessions to parallelize the work.
 
 Repo: Cognition-Partner-Workshops/uc-dw-migration-teradata-to-bigquery.
 
-Spawn one child Devin session per object group below. Tell each child to follow
-the !convert-teradata-to-bigquery playbook (the repo's Skill supplies the
-`python verify/run_parity.py` mechanics): treat the Teradata SQL as the source of
-truth and reproduce its logic exactly; flag (do not silently fix) anything that
-looks wrong; and build until the parity harness is green, with the report
-included in its PR.
+Spawn one child Devin session per object group below. Tell each child to follow the !convert-teradata-to-bigquery playbook (the repo's Skill supplies the `python verify/run_parity.py` mechanics): treat the Teradata SQL as the source of truth and reproduce its logic exactly; flag (do not silently fix) anything that looks wrong; and build until the parity harness is green, with the report included in its PR.
 
 Object groups:
 1. ddl/views/ -> bigquery/views/ (the three analytic views; the Act 2 example)
@@ -168,9 +154,7 @@ Object groups:
 3. dml/stored_procedures/ + dml/macros/ -> bigquery/procedures/ (scripting / table functions)
 4. dml/scripts/ (BTEQ) -> a bq load / EXPORT DATA + orchestration plan
 
-After launching, monitor the child sessions until each group is converted with a
-green parity report. Then summarize results and call out any source-parity
-divergences the children caught (e.g. a window-frame off-by-one).
+After launching, monitor the child sessions until each group is converted with a green parity report. Then summarize results and call out any source-parity divergences the children caught (e.g. a window-frame off-by-one).
 ```
 
 This is the same verified conversion loop as a single session — run many times at

@@ -21,30 +21,12 @@
 Paste this prompt into Devin to try estate discovery on the CardDemo COBOL application:
 
 ```
-Analyze the entire COBOL estate in
-uc-legacy-modernization-cobol-to-java. Produce the following
-artifacts:
+Analyze the entire COBOL estate in uc-legacy-modernization-cobol-to-java. Produce the following artifacts:
 
-1. APPLICATION_INVENTORY.md — list every program in app/cbl/
-   and sub-application directories with: filename, purpose
-   (inferred from code), classification (batch/online), key
-   I/O operations (files read/written, DB2 tables accessed),
-   and copybooks referenced. Also catalog all JCL jobs in
-   app/jcl/ with their step sequences.
-2. DATA_DICTIONARY.md — for every copybook in app/cpy/,
-   extract: field names, PIC clauses, data types, business
-   meaning (inferred), and validation rules. Group fields by
-   business entity (account, customer, card, transaction).
-3. DEPENDENCY_MAP.md — build a call graph showing which
-   programs CALL or PERFORM other programs. Map dataset
-   lineage: which JCL jobs read/write which files, and which
-   programs process them. Identify the end-to-end batch
-   pipeline flow.
-4. HOTSPOT_REPORT.md — rank the top 10 programs by: lines of
-   code, number of copybooks referenced, number of I/O
-   operations, business logic density (EVALUATE/IF nesting
-   depth), and inter-program dependencies. Recommend which
-   programs to modernize first and why.
+1. APPLICATION_INVENTORY.md — list every program in app/cbl/ and sub-application directories with: filename, purpose (inferred from code), classification (batch/online), key I/O operations (files read/written, DB2 tables accessed), and copybooks referenced. Also catalog all JCL jobs in app/jcl/ with their step sequences.
+2. DATA_DICTIONARY.md — for every copybook in app/cpy/, extract: field names, PIC clauses, data types, business meaning (inferred), and validation rules. Group fields by business entity (account, customer, card, transaction).
+3. DEPENDENCY_MAP.md — build a call graph showing which programs CALL or PERFORM other programs. Map dataset lineage: which JCL jobs read/write which files, and which programs process them. Identify the end-to-end batch pipeline flow.
+4. HOTSPOT_REPORT.md — rank the top 10 programs by: lines of code, number of copybooks referenced, number of I/O operations, business logic density (EVALUATE/IF nesting depth), and inter-program dependencies. Recommend which programs to modernize first and why.
 ```
 
 ---
@@ -120,30 +102,12 @@ AWS Mainframe Modernization CardDemo (Apache 2.0). Contains 30+ COBOL programs, 
 ### Step 1: Paste into Devin — Estate Discovery
 
 ```
-Analyze the entire COBOL estate in
-uc-legacy-modernization-cobol-to-java. Produce the following
-artifacts:
+Analyze the entire COBOL estate in uc-legacy-modernization-cobol-to-java. Produce the following artifacts:
 
-1. APPLICATION_INVENTORY.md — list every program in app/cbl/
-   and sub-application directories with: filename, purpose
-   (inferred from code), classification (batch/online), key
-   I/O operations (files read/written, DB2 tables accessed),
-   and copybooks referenced. Also catalog all JCL jobs in
-   app/jcl/ with their step sequences.
-2. DATA_DICTIONARY.md — for every copybook in app/cpy/,
-   extract: field names, PIC clauses, data types, business
-   meaning (inferred), and validation rules. Group fields by
-   business entity (account, customer, card, transaction).
-3. DEPENDENCY_MAP.md — build a call graph showing which
-   programs CALL or PERFORM other programs. Map dataset
-   lineage: which JCL jobs read/write which files, and which
-   programs process them. Identify the end-to-end batch
-   pipeline flow.
-4. HOTSPOT_REPORT.md — rank the top 10 programs by: lines of
-   code, number of copybooks referenced, number of I/O
-   operations, business logic density (EVALUATE/IF nesting
-   depth), and inter-program dependencies. Recommend which
-   programs to modernize first and why.
+1. APPLICATION_INVENTORY.md — list every program in app/cbl/ and sub-application directories with: filename, purpose (inferred from code), classification (batch/online), key I/O operations (files read/written, DB2 tables accessed), and copybooks referenced. Also catalog all JCL jobs in app/jcl/ with their step sequences.
+2. DATA_DICTIONARY.md — for every copybook in app/cpy/, extract: field names, PIC clauses, data types, business meaning (inferred), and validation rules. Group fields by business entity (account, customer, card, transaction).
+3. DEPENDENCY_MAP.md — build a call graph showing which programs CALL or PERFORM other programs. Map dataset lineage: which JCL jobs read/write which files, and which programs process them. Identify the end-to-end batch pipeline flow.
+4. HOTSPOT_REPORT.md — rank the top 10 programs by: lines of code, number of copybooks referenced, number of I/O operations, business logic density (EVALUATE/IF nesting depth), and inter-program dependencies. Recommend which programs to modernize first and why.
 ```
 
 ### Step 2: Research with Ask Devin

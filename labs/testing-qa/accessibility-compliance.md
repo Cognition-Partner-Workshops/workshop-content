@@ -32,12 +32,7 @@ Audit and improve the accessibility (a11y) compliance of a web application. This
 Paste this into a new Devin session to get started immediately:
 
 ```
-Run timesheet-app locally (frontend on port 5173). Run
-a Lighthouse accessibility audit on the main pages
-(/work-entries, /clients, /reports). Fix all critical
-and serious accessibility violations: missing form labels,
-insufficient color contrast, missing alt text, and
-keyboard navigation issues.
+Run timesheet-app locally (frontend on port 5173). Run a Lighthouse accessibility audit on the main pages (/work-entries, /clients, /reports). Fix all critical and serious accessibility violations: missing form labels, insufficient color contrast, missing alt text, and keyboard navigation issues.
 ```
 
 <a id="target-outcomes"></a>
@@ -88,12 +83,7 @@ React application with Material-UI components — good candidate for ARIA attrib
 ### Step 1: Paste into Devin
 
 ```
-Run timesheet-app locally (frontend on port 5173). Run
-a Lighthouse accessibility audit on the main pages
-(/work-entries, /clients, /reports). Fix all critical
-and serious accessibility violations: missing form labels,
-insufficient color contrast, missing alt text, and
-keyboard navigation issues.
+Run timesheet-app locally (frontend on port 5173). Run a Lighthouse accessibility audit on the main pages (/work-entries, /clients, /reports). Fix all critical and serious accessibility violations: missing form labels, insufficient color contrast, missing alt text, and keyboard navigation issues.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -127,11 +117,7 @@ Complex scheduling application where accessibility is critical for public-facing
 ### Step 1: Paste into Devin
 
 ```
-Start calcom locally with `yarn dev`. Run a Lighthouse
-accessibility audit on the public booking page. Fix all
-critical accessibility issues: ensure the date/time
-picker is keyboard-navigable, all form fields have proper
-labels, and color contrast meets WCAG 2.1 AA.
+Start calcom locally with `yarn dev`. Run a Lighthouse accessibility audit on the public booking page. Fix all critical accessibility issues: ensure the date/time picker is keyboard-navigable, all form fields have proper labels, and color contrast meets WCAG 2.1 AA.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -23,15 +23,7 @@
 Paste this prompt into Devin to try the data source migration phase (the most self-contained phase):
 
 ```
-Review the legacy CDW schema in
-uc-data-source-migration-jdbc-normalization. The current
-app reads from denormalized tables where everything is
-VARCHAR. Create modern JPA entities matching
-data/modern-schema/modern_tables.sql with proper types
-(LocalDate, BigDecimal, Long). Write a migration service
-that transforms legacy data per
-data/mappings/column_mappings.md. Rewire LoanService.java
-to use modern repositories. Verify API responses match.
+Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. The current app reads from denormalized tables where everything is VARCHAR. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Verify API responses match.
 ```
 
 ---
@@ -113,11 +105,7 @@ Migrate a COBOL batch program to Java. See [COBOL to Java](cobol-to-java.md) for
 ### Step 1: Paste into Devin
 
 ```
-Select the COBOL program CBACT01C.cbl from
-uc-legacy-modernization-cobol-to-java. Analyze its business
-logic, data structures, and I/O operations. Rewrite it as a
-Java 17+ application with JUnit tests that verify functional
-equivalence.
+Select the COBOL program CBACT01C.cbl from uc-legacy-modernization-cobol-to-java. Analyze its business logic, data structures, and I/O operations. Rewrite it as a Java 17+ application with JUnit tests that verify functional equivalence.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -145,11 +133,7 @@ Upgrade from Spring Boot 2 to 3, then extract a domain into a microservice. See 
 ### Step 1: Paste into Devin
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Spring Boot 2.6.3 to 3.x, then extract the article
-management domain into a standalone microservice with its
-own API contract, Dockerfile, and database. Create a
-docker-compose.yml that runs both services.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Spring Boot 2.6.3 to 3.x, then extract the article management domain into a standalone microservice with its own API contract, Dockerfile, and database. Create a docker-compose.yml that runs both services.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -177,15 +161,7 @@ Modernize a legacy data access layer from denormalized VARCHAR tables to properl
 ### Step 1: Paste into Devin
 
 ```
-Review the legacy CDW schema in
-uc-data-source-migration-jdbc-normalization. The current
-app reads from denormalized tables where everything is
-VARCHAR. Create modern JPA entities matching
-data/modern-schema/modern_tables.sql with proper types
-(LocalDate, BigDecimal, Long). Write a migration service
-that transforms legacy data per
-data/mappings/column_mappings.md. Rewire LoanService.java
-to use modern repositories. Verify API responses match.
+Review the legacy CDW schema in uc-data-source-migration-jdbc-normalization. The current app reads from denormalized tables where everything is VARCHAR. Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories. Verify API responses match.
 ```
 
 ### Step 2: Research with Ask Devin

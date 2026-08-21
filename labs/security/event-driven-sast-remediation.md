@@ -30,19 +30,8 @@ This is an **enterprise integration pattern** — it demonstrates Devin operatin
 Paste this prompt into Devin to get started immediately:
 
 ```
-Analyze the existing .github/workflows/sast-scan.yml in
-timesheet-app. This workflow triggers Devin to fix SonarQube
-findings. Extend this pattern to create a new workflow called
-sast-auto-remediate.yml that:
-(1) triggers on PRs opened by users other than
-    devin-ai-integration[bot],
-(2) runs npm audit --json and Trivy container scan,
-(3) if HIGH or CRITICAL findings are found, posts a PR
-    comment summarizing the findings and triggers a Devin
-    session via the Devin API to remediate them on the
-    same branch,
-(4) includes a re-scan step that verifies the fix.
-Document the architecture in an ARCHITECTURE.md.
+Analyze the existing .github/workflows/sast-scan.yml in timesheet-app. This workflow triggers Devin to fix SonarQube findings. Extend this pattern to create a new workflow called sast-auto-remediate.yml that:
+(1) triggers on PRs opened by users other than devin-ai-integration[bot], (2) runs npm audit --json and Trivy container scan, (3) if HIGH or CRITICAL findings are found, posts a PR comment summarizing the findings and triggers a Devin session via the Devin API to remediate them on the same branch, (4) includes a re-scan step that verifies the fix. Document the architecture in an ARCHITECTURE.md.
 ```
 
 ## Architecture
@@ -108,19 +97,8 @@ Has existing `sast-scan.yml` and `pr-checks.yml` workflows that already demonstr
 ### Step 1: Paste into Devin
 
 ```
-Analyze the existing .github/workflows/sast-scan.yml in
-timesheet-app. This workflow triggers Devin to fix SonarQube
-findings. Extend this pattern to create a new workflow called
-sast-auto-remediate.yml that:
-(1) triggers on PRs opened by users other than
-    devin-ai-integration[bot],
-(2) runs npm audit --json and Trivy container scan,
-(3) if HIGH or CRITICAL findings are found, posts a PR
-    comment summarizing the findings and triggers a Devin
-    session via the Devin API to remediate them on the
-    same branch,
-(4) includes a re-scan step that verifies the fix.
-Document the architecture in an ARCHITECTURE.md.
+Analyze the existing .github/workflows/sast-scan.yml in timesheet-app. This workflow triggers Devin to fix SonarQube findings. Extend this pattern to create a new workflow called sast-auto-remediate.yml that:
+(1) triggers on PRs opened by users other than devin-ai-integration[bot], (2) runs npm audit --json and Trivy container scan, (3) if HIGH or CRITICAL findings are found, posts a PR comment summarizing the findings and triggers a Devin session via the Devin API to remediate them on the same branch, (4) includes a re-scan step that verifies the fix. Document the architecture in an ARCHITECTURE.md.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -157,23 +135,8 @@ No existing CI workflows — build the entire event-driven SAST pipeline from sc
 ### Step 1: Paste into Devin
 
 ```
-Create a complete event-driven security remediation pipeline
-for uc-cve-remediation-regulatory-compliance. Build a GitHub
-Actions workflow sast-auto-remediate.yml that:
-(1) triggers on pull_request events from non-bot authors,
-(2) runs ./gradlew dependencyCheckAnalyze and captures
-    the report,
-(3) parses the report for findings with CVSS >= 7.0,
-(4) if critical findings exist, calls the Devin API to
-    create a session with the prompt "Remediate the
-    CRITICAL and HIGH CVEs found in the dependency check
-    report at [artifact URL]. Push fixes to branch
-    [branch-ref]. Re-run ./gradlew
-    dependencyCheckAnalyze to verify.",
-(5) includes a verification step that re-runs the scan
-    after Devin's commit.
-Add author filtering to prevent bot loops. Document the
-full architecture in EVENT_DRIVEN_SECURITY.md.
+Create a complete event-driven security remediation pipeline for uc-cve-remediation-regulatory-compliance. Build a GitHub Actions workflow sast-auto-remediate.yml that:
+(1) triggers on pull_request events from non-bot authors, (2) runs ./gradlew dependencyCheckAnalyze and captures the report, (3) parses the report for findings with CVSS >= 7.0, (4) if critical findings exist, calls the Devin API to create a session with the prompt "Remediate the CRITICAL and HIGH CVEs found in the dependency check report at [artifact URL]. Push fixes to branch [branch-ref]. Re-run ./gradlew dependencyCheckAnalyze to verify.", (5) includes a verification step that re-runs the scan after Devin's commit. Add author filtering to prevent bot loops. Document the full architecture in EVENT_DRIVEN_SECURITY.md.
 ```
 
 ### Step 2: Research with Ask Devin

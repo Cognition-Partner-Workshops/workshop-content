@@ -28,18 +28,9 @@ Copy the prompt below into a Devin session to begin:
 ```
 !abinitio-lineage-analysis
 
-Analyze the static estate in ts-abinitio-loan-servicing. Use
-OUTSTANDING_LOAN_BALANCE as the selected attribute and analyze the proposed
-rename of PAYMENT_TXN.PRINCIPAL_COMPONENT to
-PAYMENT_TXN.PRINCIPAL_PAID_AMOUNT.
+Analyze the static estate in ts-abinitio-loan-servicing. Use OUTSTANDING_LOAN_BALANCE as the selected attribute and analyze the proposed rename of PAYMENT_TXN.PRINCIPAL_COMPONENT to PAYMENT_TXN.PRINCIPAL_PAID_AMOUNT.
 
-Read README.md, .agents/skills/abinitio-lineage-analysis/SKILL.md,
-graphs/*.mp, xfr/*.xfr, dml/*.dml, psets/*.pset, sql/oracle/*.sql,
-sql/teradata/*.sql, scripts/*.ksh, and scheduler/loan_servicing.jil.
-Produce LINEAGE.json, LINEAGE.md with Mermaid, IMPACT_ANALYSIS.md, and
-BUSINESS_DOCUMENTATION.md. Verify the selected chain with
-python tools/validate_expected_lineage.py. Do not use a live database,
-invoke air, or modify source artifacts.
+Read README.md, .agents/skills/abinitio-lineage-analysis/SKILL.md, graphs/*.mp, xfr/*.xfr, dml/*.dml, psets/*.pset, sql/oracle/*.sql, sql/teradata/*.sql, scripts/*.ksh, and scheduler/loan_servicing.jil. Produce LINEAGE.json, LINEAGE.md with Mermaid, IMPACT_ANALYSIS.md, and BUSINESS_DOCUMENTATION.md. Verify the selected chain with python tools/validate_expected_lineage.py. Do not use a live database, invoke air, or modify source artifacts.
 ```
 
 The source repository already contains the answer keys
@@ -160,21 +151,11 @@ dependencies.
 #### Step 1: Paste into Devin
 
 ```
-In ts-abinitio-loan-servicing, map the static Ab Initio estate before
-extracting lineage. Read README.md and
-.agents/skills/abinitio-lineage-analysis/SKILL.md.
+In ts-abinitio-loan-servicing, map the static Ab Initio estate before extracting lineage. Read README.md and .agents/skills/abinitio-lineage-analysis/SKILL.md.
 
-Inventory graphs/*.mp, xfr/*.xfr, dml/*.dml, psets/*.pset,
-sql/oracle/*.sql, sql/teradata/*.sql, scripts/*.ksh, and
-scheduler/loan_servicing.jil. For each graph, record its input and output
-components, ports and links, referenced DML, XFR, PSET, SQL, and predecessor
-or successor stages.
+Inventory graphs/*.mp, xfr/*.xfr, dml/*.dml, psets/*.pset, sql/oracle/*.sql, sql/teradata/*.sql, scripts/*.ksh, and scheduler/loan_servicing.jil. For each graph, record its input and output components, ports and links, referenced DML, XFR, PSET, SQL, and predecessor or successor stages.
 
-Confirm that the 7 graph files are:
-extract_loan_accounts, extract_payments, cdc_loan_balances,
-rollup_payments, compute_outstanding_balance, enrich_dimensions, and
-load_loan_portfolio_mart. Confirm that referenced artifact paths resolve.
-Return a concise inventory in Markdown. Keep the analysis static.
+Confirm that the 7 graph files are: extract_loan_accounts, extract_payments, cdc_loan_balances, rollup_payments, compute_outstanding_balance, enrich_dimensions, and load_loan_portfolio_mart. Confirm that referenced artifact paths resolve. Return a concise inventory in Markdown. Keep the analysis static.
 ```
 
 #### Step 2: Review the map
@@ -209,24 +190,13 @@ record and graph stage to the final mart column. This is the core walkthrough.
 #### Step 1: Paste into Devin
 
 ```
-In ts-abinitio-loan-servicing, extract end-to-end source-to-target lineage
-for LOAN_PORTFOLIO_MART.OUTSTANDING_LOAN_BALANCE.
+In ts-abinitio-loan-servicing, extract end-to-end source-to-target lineage for LOAN_PORTFOLIO_MART.OUTSTANDING_LOAN_BALANCE.
 
-Parse embedded and companion SQL under sql/oracle/ and sql/teradata/,
-component wiring in graphs/*.mp, field assignments in
-xfr/extract_loan_accounts.xfr, xfr/extract_payments.xfr,
-xfr/rollup_payments.xfr, xfr/compute_outstanding_balance.xfr,
-xfr/enrich_dimensions.xfr, and xfr/load_loan_portfolio_mart.xfr, plus the
-relevant DML layouts under dml/.
+Parse embedded and companion SQL under sql/oracle/ and sql/teradata/, component wiring in graphs/*.mp, field assignments in xfr/extract_loan_accounts.xfr, xfr/extract_payments.xfr, xfr/rollup_payments.xfr, xfr/compute_outstanding_balance.xfr, xfr/enrich_dimensions.xfr, and xfr/load_loan_portfolio_mart.xfr, plus the relevant DML layouts under dml/.
 
-Preserve the complete chain for ORIGINAL_PRINCIPAL,
-PRINCIPAL_COMPONENT, WRITTEN_OFF_AMOUNT, ANNUAL_INTEREST_RATE,
-ORIGINATION_DATE, and SNAPSHOT_DATE. Include intermediate fields and the
-formula for accrued interest and outstanding balance.
+Preserve the complete chain for ORIGINAL_PRINCIPAL, PRINCIPAL_COMPONENT, WRITTEN_OFF_AMOUNT, ANNUAL_INTEREST_RATE, ORIGINATION_DATE, and SNAPSHOT_DATE. Include intermediate fields and the formula for accrued interest and outstanding balance.
 
-Write LINEAGE.json and LINEAGE.md. Put a Mermaid dataflow diagram in
-LINEAGE.md. Run python tools/validate_expected_lineage.py and compare the
-selected chain with expected/outstanding_loan_balance_lineage.json.
+Write LINEAGE.json and LINEAGE.md. Put a Mermaid dataflow diagram in LINEAGE.md. Run python tools/validate_expected_lineage.py and compare the selected chain with expected/outstanding_loan_balance_lineage.json.
 ```
 
 #### Step 2: Review the derivation
@@ -275,20 +245,11 @@ DML, extraction, rollup, balance, enrichment, and mart artifacts.
 ```
 In ts-abinitio-loan-servicing, analyze this proposed schema change:
 
-Rename PAYMENT_TXN.PRINCIPAL_COMPONENT to
-PAYMENT_TXN.PRINCIPAL_PAID_AMOUNT.
+Rename PAYMENT_TXN.PRINCIPAL_COMPONENT to PAYMENT_TXN.PRINCIPAL_PAID_AMOUNT.
 
-Find direct references in sql/oracle/loan_servicing_schema.sql,
-sql/oracle/extract_payments.sql, graphs/extract_payments.mp,
-dml/payment_txn.dml, and xfr/extract_payments.xfr. Follow downstream
-references through xfr/rollup_payments.xfr,
-xfr/compute_outstanding_balance.xfr,
-xfr/enrich_dimensions.xfr, and xfr/load_loan_portfolio_mart.xfr.
+Find direct references in sql/oracle/loan_servicing_schema.sql, sql/oracle/extract_payments.sql, graphs/extract_payments.mp, dml/payment_txn.dml, and xfr/extract_payments.xfr. Follow downstream references through xfr/rollup_payments.xfr, xfr/compute_outstanding_balance.xfr, xfr/enrich_dimensions.xfr, and xfr/load_loan_portfolio_mart.xfr.
 
-Separate direct impacts, downstream impacts, and non-impacts. Write
-IMPACT_ANALYSIS.md with artifact paths, affected columns, dependency paths,
-and recommended validation. Cross-check it against
-expected/impact_analysis_example.md. Do not edit source artifacts.
+Separate direct impacts, downstream impacts, and non-impacts. Write IMPACT_ANALYSIS.md with artifact paths, affected columns, dependency paths, and recommended validation. Cross-check it against expected/impact_analysis_example.md. Do not edit source artifacts.
 ```
 
 #### Step 2: Review through the feedback loop
@@ -317,17 +278,11 @@ matters, but explain the business meaning in plain language.
 #### Step 1: Paste into Devin
 
 ```
-Using the verified lineage in ts-abinitio-loan-servicing, create
-BUSINESS_DOCUMENTATION.md for a non-technical BFSI stakeholder.
+Using the verified lineage in ts-abinitio-loan-servicing, create BUSINESS_DOCUMENTATION.md for a non-technical BFSI stakeholder.
 
-Describe LOAN_PORTFOLIO_MART, borrower/product/branch enrichment, payment
-measures, write-offs, accrued interest, the snapshot date, and the business
-meaning of OUTSTANDING_LOAN_BALANCE. Explain the formula in plain language.
-Include a compact table mapping source table.column to intermediate field,
-graph/XFR hop, and final mart column.
+Describe LOAN_PORTFOLIO_MART, borrower/product/branch enrichment, payment measures, write-offs, accrued interest, the snapshot date, and the business meaning of OUTSTANDING_LOAN_BALANCE. Explain the formula in plain language. Include a compact table mapping source table.column to intermediate field, graph/XFR hop, and final mart column.
 
-State that this is a synthetic estate and that the result is based on static
-artifacts rather than a live database or Ab Initio runtime. Use US English.
+State that this is a synthetic estate and that the result is based on static artifacts rather than a live database or Ab Initio runtime. Use US English.
 ```
 
 #### Step 2: Review the narrative
@@ -356,24 +311,16 @@ playbook, Skill, and shared context consistent.
 #### Step 1: Paste into Devin
 
 ```
-Act as the coordinator for a static lineage campaign in
-ts-abinitio-loan-servicing. Spawn one child Devin session for each target:
+Act as the coordinator for a static lineage campaign in ts-abinitio-loan-servicing. Spawn one child Devin session for each target:
 
 1. LOAN_PORTFOLIO_MART.OUTSTANDING_LOAN_BALANCE
 2. LOAN_PORTFOLIO_MART.ACCRUED_INTEREST
 3. LOAN_PORTFOLIO_MART.CUMULATIVE_PRINCIPAL_PAID
 4. LOAN_PORTFOLIO_MART.BRANCH_REGION
 
-Give each child the repo Skill at
-.agents/skills/abinitio-lineage-analysis/SKILL.md and require the
-!abinitio-lineage-analysis playbook. Each child should produce a
-namespaced LINEAGE.json and LINEAGE.md with a Mermaid diagram, cite the
-relevant graphs, XFRs, DMLs, SQL, and PSETs, and report unresolved
-references. Keep all work static and preserve the answer-key verification for
-OUTSTANDING_LOAN_BALANCE.
+Give each child the repo Skill at .agents/skills/abinitio-lineage-analysis/SKILL.md and require the !abinitio-lineage-analysis playbook. Each child should produce a namespaced LINEAGE.json and LINEAGE.md with a Mermaid diagram, cite the relevant graphs, XFRs, DMLs, SQL, and PSETs, and report unresolved references. Keep all work static and preserve the answer-key verification for OUTSTANDING_LOAN_BALANCE.
 
-After the children finish, consolidate their findings into a summary with
-coverage, differences, unresolved references, and follow-up review items.
+After the children finish, consolidate their findings into a summary with coverage, differences, unresolved references, and follow-up review items.
 ```
 
 #### Step 2: Discuss automation and context

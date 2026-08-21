@@ -32,11 +32,7 @@ Try Devin's capabilities for end-to-end testing against a locally hosted applica
 Paste this into a new Devin session to get started immediately:
 
 ```
-Set up and run timesheet-app locally (backend on port
-3001, frontend on port 5173). Write Playwright E2E tests
-for the work entries workflow: login, create a work entry,
-verify it appears in the list, edit it, and delete it.
-Run the tests and take a screen recording.
+Set up and run timesheet-app locally (backend on port 3001, frontend on port 5173). Write Playwright E2E tests for the work entries workflow: login, create a work entry, verify it appears in the list, edit it, and delete it. Run the tests and take a screen recording.
 ```
 
 <a id="target-outcomes"></a>
@@ -86,11 +82,7 @@ Simpler application — good for first-timers with E2E testing. Backend on port 
 ### Step 1: Paste into Devin
 
 ```
-Set up and run timesheet-app locally (backend on port
-3001, frontend on port 5173). Write Playwright E2E tests
-for the work entries workflow: login, create a work entry,
-verify it appears in the list, edit it, and delete it.
-Run the tests and take a screen recording.
+Set up and run timesheet-app locally (backend on port 3001, frontend on port 5173). Write Playwright E2E tests for the work entries workflow: login, create a work entry, verify it appears in the list, edit it, and delete it. Run the tests and take a screen recording.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -126,12 +118,7 @@ Rich scheduling application with existing Playwright configuration. `yarn dev` s
 ### Step 1: Paste into Devin
 
 ```
-Start calcom locally with `yarn dev`. Write Playwright
-E2E tests for the booking flow: navigate to a public
-booking page, select a time slot, fill in attendee
-details, and confirm the booking. Use the existing
-Playwright config in the repo. Run the tests and take
-a screen recording.
+Start calcom locally with `yarn dev`. Write Playwright E2E tests for the booking flow: navigate to a public booking page, select a time slot, fill in attendee details, and confirm the booking. Use the existing Playwright config in the repo. Run the tests and take a screen recording.
 ```
 
 ### Step 2: Research with Ask Devin

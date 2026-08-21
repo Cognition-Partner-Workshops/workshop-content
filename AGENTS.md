@@ -51,7 +51,7 @@ This repo serves two attendee modes. Most content targets the **hands-on lab att
 
 ### Prompts
 - All paste-into-Devin prompts use triple-backtick fenced code blocks (for GitHub copy button)
-- Line-wrap prompts at ~80 chars for readability
+- Never hard-wrap prompt text: keep each sentence/paragraph on a single line so pasting into a chat input renders normally (blank lines between paragraphs and real list items are fine)
 - Do NOT include "Open a PR" in prompts — Devin does this by default
 - Prompts must include repo names, file paths, and expected output format
 

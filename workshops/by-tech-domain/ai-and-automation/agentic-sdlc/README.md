@@ -234,22 +234,10 @@ This three-level intelligence model covers the "nodes and relationships" from th
 #### Step 1: Paste into Devin
 
 ```
-Analyze the internal dependency graph of
-uc-spring-boot-upgrade-microservice-extraction.
-Map the package-level dependencies across the
-application — controllers, datafetchers, services,
-repositories, and domain models. Identify:
-(1) any circular dependencies between packages,
-(2) tightly coupled modules where changes in one
-package would cascade across many others,
-(3) packages with the highest fan-in and fan-out.
+Analyze the internal dependency graph of uc-spring-boot-upgrade-microservice-extraction. Map the package-level dependencies across the application — controllers, datafetchers, services, repositories, and domain models. Identify:
+(1) any circular dependencies between packages, (2) tightly coupled modules where changes in one package would cascade across many others, (3) packages with the highest fan-in and fan-out.
 
-Produce a dependency analysis report in
-docs/dependency-analysis.md that includes a
-text-based dependency graph, a list of coupling
-hotspots, and prioritized refactoring
-recommendations. Implement the top quick-win
-decoupling change.
+Produce a dependency analysis report in docs/dependency-analysis.md that includes a text-based dependency graph, a list of coupling hotspots, and prioritized refactoring recommendations. Implement the top quick-win decoupling change.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -288,20 +276,10 @@ Open the repo's DeepWiki page. Compare the auto-generated architecture documenta
 #### Step 1: Paste into Devin
 
 ```
-Analyze the dependency graph of the calcom monorepo.
-Focus on the packages under packages/ and their
-relationships to apps/web/. Map which packages depend
-on each other, identify:
-(1) circular dependencies between packages,
-(2) packages with excessive fan-out (importing from
-too many other packages),
-(3) packages that are tightly coupled and could
-benefit from clearer interface boundaries.
+Analyze the dependency graph of the calcom monorepo. Focus on the packages under packages/ and their relationships to apps/web/. Map which packages depend on each other, identify:
+(1) circular dependencies between packages, (2) packages with excessive fan-out (importing from too many other packages), (3) packages that are tightly coupled and could benefit from clearer interface boundaries.
 
-Produce a dependency analysis report in
-docs/dependency-analysis.md with a structured
-dependency matrix, coupling hotspots, and prioritized
-refactoring recommendations.
+Produce a dependency analysis report in docs/dependency-analysis.md with a structured dependency matrix, coupling hotspots, and prioritized refactoring recommendations.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -375,12 +353,7 @@ This is the foundational lab for self-healing regression. Participants build the
 #### Step 1: Paste into Devin
 
 ```
-Run the test suite for timesheet-app and generate a
-quality report covering: overall test coverage, tests
-that are likely flaky (non-deterministic), test files
-that haven't been updated in the last 6 months, and
-test anti-patterns (empty assertions, commented-out
-tests, tests with no assertions).
+Run the test suite for timesheet-app and generate a quality report covering: overall test coverage, tests that are likely flaky (non-deterministic), test files that haven't been updated in the last 6 months, and test anti-patterns (empty assertions, commented-out tests, tests with no assertions).
 ```
 
 #### Step 2: Create a Playbook
@@ -390,17 +363,11 @@ After reviewing the quality report, create a Playbook that encodes the self-heal
 ```
 Playbook: Self-Healing QA Audit
 
-1. Run the full test suite and capture pass/fail/skip
-   counts
-2. Generate coverage report and compare against the
-   baseline (80% target)
-3. Identify flaky tests (run suite 3x, flag tests
-   that pass inconsistently)
-4. Scan for test anti-patterns: empty assertions,
-   commented-out tests, tests with no assertions,
-   tests that never fail
-5. Check for stale test files (not updated in 6+
-   months while source files changed)
+1. Run the full test suite and capture pass/fail/skip counts
+2. Generate coverage report and compare against the baseline (80% target)
+3. Identify flaky tests (run suite 3x, flag tests that pass inconsistently)
+4. Scan for test anti-patterns: empty assertions, commented-out tests, tests with no assertions, tests that never fail
+5. Check for stale test files (not updated in 6+ months while source files changed)
 6. Fix the top 3 highest-priority issues found
 7. Commit improvements and include a summary report
 ```
@@ -422,10 +389,8 @@ Capture project-specific testing conventions:
 ```
 Knowledge: timesheet-app Testing Standards
 
-- All API route tests must include both happy path
-  and 400/404 error cases
-- Use supertest for integration tests, Jest mocks
-  for unit tests
+- All API route tests must include both happy path and 400/404 error cases
+- Use supertest for integration tests, Jest mocks for unit tests
 - Coverage target: 80% line coverage minimum
 - Flaky tests should be quarantined, not deleted
 ```
@@ -452,24 +417,10 @@ This lab adapts the event-driven SAST remediation pattern to test regression hea
 #### Step 1: Paste into Devin
 
 ```
-Analyze the existing CI workflows in timesheet-app.
-Create a new GitHub Actions workflow called
-test-regression-healer.yml that:
-(1) triggers on push to any branch when the test
-    suite fails,
-(2) filters out pushes from devin-ai-integration[bot]
-    to prevent infinite loops,
-(3) captures the test failure output (which tests
-    failed, error messages, stack traces),
-(4) posts a PR comment summarizing the failures,
-(5) documents the architecture in a
-    REGRESSION_HEALER.md explaining the event-driven
-    flow, trigger conditions, and escalation policy.
+Analyze the existing CI workflows in timesheet-app. Create a new GitHub Actions workflow called test-regression-healer.yml that:
+(1) triggers on push to any branch when the test suite fails, (2) filters out pushes from devin-ai-integration[bot] to prevent infinite loops, (3) captures the test failure output (which tests failed, error messages, stack traces), (4) posts a PR comment summarizing the failures, (5) documents the architecture in a REGRESSION_HEALER.md explaining the event-driven flow, trigger conditions, and escalation policy.
 
-Include a circuit breaker: if the same test has failed
-3 times in a row across Devin fix attempts, escalate
-to a human reviewer via a GitHub Issue instead of
-retrying.
+Include a circuit breaker: if the same test has failed 3 times in a row across Devin fix attempts, escalate to a human reviewer via a GitHub Issue instead of retrying.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -503,15 +454,7 @@ retrying.
 
 ```
 Implement configuration management for timesheet-app:
-(1) Create a config module that reads settings from
-environment variables with sensible defaults (PORT,
-DATABASE_URL, LOG_LEVEL, etc.),
-(2) Add dotenv support with .env.example documenting
-all variables,
-(3) Implement a simple feature flag system using a
-JSON config file or environment variables,
-(4) Use a feature flag to gate a new "dark mode" UI
-toggle — when the flag is off, the toggle is hidden.
+(1) Create a config module that reads settings from environment variables with sensible defaults (PORT, DATABASE_URL, LOG_LEVEL, etc.), (2) Add dotenv support with .env.example documenting all variables, (3) Implement a simple feature flag system using a JSON config file or environment variables, (4) Use a feature flag to gate a new "dark mode" UI toggle — when the flag is off, the toggle is hidden.
 ```
 
 #### Key Takeaways
@@ -559,9 +502,7 @@ Start with codebase understanding before any code generation:
 #### Step 2: Paste into Devin (the "Semantic Analyzer" + "Documentation Agent")
 
 ```
-Select the COBOL program CBACT01C.cbl from
-uc-legacy-modernization-cobol-to-java. Analyze its
-business logic, data structures, and I/O operations.
+Select the COBOL program CBACT01C.cbl from uc-legacy-modernization-cobol-to-java. Analyze its business logic, data structures, and I/O operations.
 
 First, produce docs/SYSTEM_ANALYSIS.md documenting:
 - Business logic flow (what the program does)
@@ -570,8 +511,7 @@ First, produce docs/SYSTEM_ANALYSIS.md documenting:
 - Dependencies on other programs or copybooks
 - Edge cases and error handling paths
 
-Then rewrite the program as a Java 17+ application
-with JUnit tests that verify functional equivalence.
+Then rewrite the program as a Java 17+ application with JUnit tests that verify functional equivalence.
 ```
 
 #### Step 3 (Optional): Review & Give Feedback
@@ -616,18 +556,9 @@ The "forward engineering" phase maps to:
 #### Step 2: Paste into Devin (the "Design + Dev + Test Agents")
 
 ```
-Add a "Projects" management feature to timesheet-app.
-This is a React 19 + Node.js/Express + SQLite app for
-tracking billable hours.
+Add a "Projects" management feature to timesheet-app. This is a React 19 + Node.js/Express + SQLite app for tracking billable hours.
 
-Build the full feature following existing patterns —
-backend Express routes, SQLite migration (Projects
-table: id, name, description, client_id FK,
-start_date, end_date, status
-[active/completed/on-hold], budget_hours), frontend
-React components with MUI styling. Link projects to
-existing clients and work entries. Include backend
-API tests.
+Build the full feature following existing patterns — backend Express routes, SQLite migration (Projects table: id, name, description, client_id FK, start_date, end_date, status [active/completed/on-hold], budget_hours), frontend React components with MUI styling. Link projects to existing clients and work entries. Include backend API tests.
 ```
 
 #### Step 3: Review & Give Feedback (the "Review Agent")
@@ -659,31 +590,15 @@ This capstone ties together every pattern from the day: parent-child orchestrati
 #### Paste into Devin
 
 ```
-Run a parallel modernization pipeline across three
-repositories using child sessions:
+Run a parallel modernization pipeline across three repositories using child sessions:
 
-Child 1 — uc-legacy-modernization-cobol-to-java:
-Analyze CBACT01C.cbl business logic and translate to
-Java 17+ with JUnit parity tests.
+Child 1 — uc-legacy-modernization-cobol-to-java: Analyze CBACT01C.cbl business logic and translate to Java 17+ with JUnit parity tests.
 
-Child 2 — uc-spring-boot-upgrade-microservice-extraction:
-Upgrade from Spring Boot 2.6.3 to 3.x, migrate javax
-to jakarta, and extract the article management domain
-into a standalone microservice with its own
-Dockerfile.
+Child 2 — uc-spring-boot-upgrade-microservice-extraction: Upgrade from Spring Boot 2.6.3 to 3.x, migrate javax to jakarta, and extract the article management domain into a standalone microservice with its own Dockerfile.
 
-Child 3 — uc-data-source-migration-jdbc-normalization:
-Create modern JPA entities matching
-data/modern-schema/modern_tables.sql with proper
-types (LocalDate, BigDecimal, Long). Write a migration
-service that transforms legacy data per
-data/mappings/column_mappings.md. Rewire
-LoanService.java to use modern repositories.
+Child 3 — uc-data-source-migration-jdbc-normalization: Create modern JPA entities matching data/modern-schema/modern_tables.sql with proper types (LocalDate, BigDecimal, Long). Write a migration service that transforms legacy data per data/mappings/column_mappings.md. Rewire LoanService.java to use modern repositories.
 
-After all children complete, produce a
-MODERNIZATION_SUMMARY.md documenting: which phases
-completed, artifacts produced per repo, and any
-issues requiring human review.
+After all children complete, produce a MODERNIZATION_SUMMARY.md documenting: which phases completed, artifacts produced per repo, and any issues requiring human review.
 ```
 
 #### Key Takeaways

@@ -95,14 +95,7 @@ repo, Devin typically maps an unfamiliar service in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-java-spring-boot-internet-banking repo, map the
-transaction area of the core-banking-service module: the
-TransactionController (/api/v1/transaction), TransactionService,
-TransactionRepository, and the TransactionEntity mapped to the
-banking_core_transaction table. Explain how a transaction links to
-an account (BankAccountEntity.number), what the existing endpoints
-do, and how the Flyway migrations under
-src/main/resources/db/migration build the schema.
+Using the ts-java-spring-boot-internet-banking repo, map the transaction area of the core-banking-service module: the TransactionController (/api/v1/transaction), TransactionService, TransactionRepository, and the TransactionEntity mapped to the banking_core_transaction table. Explain how a transaction links to an account (BankAccountEntity.number), what the existing endpoints do, and how the Flyway migrations under src/main/resources/db/migration build the schema.
 ```
 
 Expected: a tour of the write-side transaction flow — `fundTransfer` and
@@ -121,32 +114,13 @@ it, and produces a PR that walks the lifecycle.
 ```
 !deliver-banking-feature-sdlc
 
-Deliver an "Account Statement & Transaction History" feature
-end-to-end in the core-banking-service module of
-ts-java-spring-boot-internet-banking. Work entirely inside
-core-banking-service and follow existing patterns.
+Deliver an "Account Statement & Transaction History" feature end-to-end in the core-banking-service module of ts-java-spring-boot-internet-banking. Work entirely inside core-banking-service and follow existing patterns.
 
-Requirements (SPEC.md at the module root): a read endpoint
-GET /api/v1/account/{accountNumber}/transactions returning an
-account's transactions most-recent-first, with inclusive date-range
-filtering (from/to), optional transaction-type filtering, and
-pagination. Include acceptance criteria and edge cases (empty
-result, range boundaries).
+Requirements (SPEC.md at the module root): a read endpoint GET /api/v1/account/{accountNumber}/transactions returning an account's transactions most-recent-first, with inclusive date-range filtering (from/to), optional transaction-type filtering, and pagination. Include acceptance criteria and edge cases (empty result, range boundaries).
 
-Design (DESIGN.md): an additive Flyway migration adding a
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP column to
-banking_core_transaction (new migration file; update
-TransactionEntity); a TransactionHistoryDto (id, amount, type,
-reference number, timestamp); a repository query returning an
-account's transactions newest-first; a service method mapping
-entities to the DTO with date-range and type filtering; and the
-controller endpoint with @Operation and @Tag matching existing
-style.
+Design (DESIGN.md): an additive Flyway migration adding a created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP column to banking_core_transaction (new migration file; update TransactionEntity); a TransactionHistoryDto (id, amount, type, reference number, timestamp); a repository query returning an account's transactions newest-first; a service method mapping entities to the DTO with date-range and type filtering; and the controller endpoint with @Operation and @Tag matching existing style.
 
-Tests: follow TransactionServiceTest — cover the happy path, an
-empty result, most-recent-first ordering, and a date-range
-boundary case. Run ./gradlew test for core-banking-service and get
-it green.
+Tests: follow TransactionServiceTest — cover the happy path, an empty result, most-recent-first ordering, and a date-range boundary case. Run ./gradlew test for core-banking-service and get it green.
 ```
 
 **The verification beat (the real bug).** A plausible first cut filters the date
@@ -155,10 +129,7 @@ timestamp.isBefore(to)`. It compiles and the happy path passes. The boundary tes
 fails:
 
 ```
-TransactionServiceTest > getTransactionHistory_includesBoundaryTransactions FAILED
-  org.opentest4j.AssertionFailedError:
-  Expected size: 3 but was: 1
-  A transaction whose timestamp equals the range end was dropped.
+TransactionServiceTest > getTransactionHistory_includesBoundaryTransactions FAILED org.opentest4j.AssertionFailedError: Expected size: 3 but was: 1 A transaction whose timestamp equals the range end was dropped.
 ```
 
 The acceptance criteria say the range is **inclusive** on both ends. The fix is
@@ -202,30 +173,17 @@ child Devin session per feature and monitors them — one agent fanning itself o
 across the wave. Paste:
 
 ```
-Act as the orchestrator for an account-statement feature wave in
-the core-banking-service module of
-Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking,
-using child Devin sessions to parallelize the work.
+Act as the orchestrator for an account-statement feature wave in the core-banking-service module of Cognition-Partner-Workshops/ts-java-spring-boot-internet-banking, using child Devin sessions to parallelize the work.
 
-Spawn one child Devin session per feature below. Give each child
-the repo, its own feature branch (feature/child1, child2, ...),
-and tell it to follow the !deliver-banking-feature-sdlc playbook
-(the repo's Skill supplies the ./gradlew test mechanics and
-package conventions): write SPEC.md and DESIGN.md, implement
-against existing patterns, add tests that assert the contract, and
-build until ./gradlew test is green.
+Spawn one child Devin session per feature below. Give each child the repo, its own feature branch (feature/child1, child2, ...), and tell it to follow the !deliver-banking-feature-sdlc playbook (the repo's Skill supplies the ./gradlew test mechanics and package conventions): write SPEC.md and DESIGN.md, implement against existing patterns, add tests that assert the contract, and build until ./gradlew test is green.
 
 Features:
-1. Transaction history endpoint
-   GET /api/v1/account/{accountNumber}/transactions
-2. Monthly statement summary (totals by transaction type for a
-   period)
+1. Transaction history endpoint GET /api/v1/account/{accountNumber}/transactions
+2. Monthly statement summary (totals by transaction type for a period)
 3. Statement export DTO (CSV/JSON projection of history)
 4. Balance-as-of-date query
 
-After launching, monitor the child sessions until each feature is
-delivered with a green test run. Summarize the results and call
-out any boundary or ordering divergences the children caught.
+After launching, monitor the child sessions until each feature is delivered with a green test run. Summarize the results and call out any boundary or ordering divergences the children caught.
 ```
 
 The children inherit the organization's scoped credentials, and each writes to

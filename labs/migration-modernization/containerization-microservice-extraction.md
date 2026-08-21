@@ -21,12 +21,7 @@
 Paste this prompt into Devin to try containerizing a microservices application:
 
 ```
-Analyze the microservices architecture of
-petclinic-microservices. Add Docker health checks to all
-services, create a unified Docker Compose file with proper
-networking, and add a reverse proxy (nginx or Traefik) in
-front of the services. Ensure all services start and
-communicate correctly.
+Analyze the microservices architecture of petclinic-microservices. Add Docker health checks to all services, create a unified Docker Compose file with proper networking, and add a reverse proxy (nginx or Traefik) in front of the services. Ensure all services start and communicate correctly.
 ```
 
 ---
@@ -93,12 +88,7 @@ Spring Cloud microservices version of PetClinic. Multiple services (customers, v
 ### Step 1: Paste into Devin — Containerization
 
 ```
-Analyze the microservices architecture of
-petclinic-microservices. Add Docker health checks to all
-services, create a unified Docker Compose file with proper
-networking, and add a reverse proxy (nginx or Traefik) in
-front of the services. Ensure all services start and
-communicate correctly.
+Analyze the microservices architecture of petclinic-microservices. Add Docker health checks to all services, create a unified Docker Compose file with proper networking, and add a reverse proxy (nginx or Traefik) in front of the services. Ensure all services start and communicate correctly.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -133,12 +123,7 @@ Spring Boot monolith with multiple domains (articles, comments, users). The Comm
 ### Step 1: Paste into Devin — Domain Extraction
 
 ```
-Analyze the domain boundaries in
-uc-spring-boot-upgrade-microservice-extraction. Extract the
-Comments domain into a standalone Spring Boot microservice
-with its own database, Dockerfile, and REST API. The monolith
-should communicate with the comments microservice via HTTP.
-Create a docker-compose.yml that runs both services.
+Analyze the domain boundaries in uc-spring-boot-upgrade-microservice-extraction. Extract the Comments domain into a standalone Spring Boot microservice with its own database, Dockerfile, and REST API. The monolith should communicate with the comments microservice via HTTP. Create a docker-compose.yml that runs both services.
 ```
 
 ### Step 2: Research with Ask Devin

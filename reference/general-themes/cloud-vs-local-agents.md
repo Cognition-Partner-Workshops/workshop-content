@@ -18,18 +18,7 @@
 ## Decision Tree
 
 ```
-Is the task quick and local?
-  YES → Local agent (Devin Desktop / Devin CLI)
-  NO ↓
-Does it need your real-time judgment at every step?
-  YES → Local agent
-  NO ↓
-Will it take more than a few minutes of active execution?
-  YES → Cloud Devin
-Should it run on a schedule or respond to events?
-  YES → Cloud Devin
-Do you need parallel execution across repos?
-  YES → Cloud Devin (child agents)
+Is the task quick and local? YES → Local agent (Devin Desktop / Devin CLI) NO ↓ Does it need your real-time judgment at every step? YES → Local agent NO ↓ Will it take more than a few minutes of active execution? YES → Cloud Devin Should it run on a schedule or respond to events? YES → Cloud Devin Do you need parallel execution across repos? YES → Cloud Devin (child agents)
 ```
 
 ## The Handoff

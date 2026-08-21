@@ -31,14 +31,7 @@ Generate BDD test cases from REST API Swagger/OpenAPI definitions and integrate 
 Paste this into a new Devin session to get started immediately:
 
 ```
-Review the uc-bdd-test-generation-cucumber codebase.
-This is a Cucumber BDD framework for testing REST APIs.
-Add new Gherkin feature files that test a Petstore-style
-API (pets CRUD: create, read, update, delete, list).
-Include scenarios for: successful CRUD operations,
-validation errors (missing required fields), not-found
-cases, and pagination. Implement the corresponding step
-definitions.
+Review the uc-bdd-test-generation-cucumber codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions.
 ```
 
 <a id="target-outcomes"></a>
@@ -87,14 +80,7 @@ Spring Boot + Cucumber BDD test framework for REST API validation. Imported from
 ### Step 1: Paste into Devin
 
 ```
-Review the uc-bdd-test-generation-cucumber codebase.
-This is a Cucumber BDD framework for testing REST APIs.
-Add new Gherkin feature files that test a Petstore-style
-API (pets CRUD: create, read, update, delete, list).
-Include scenarios for: successful CRUD operations,
-validation errors (missing required fields), not-found
-cases, and pagination. Implement the corresponding step
-definitions.
+Review the uc-bdd-test-generation-cucumber codebase. This is a Cucumber BDD framework for testing REST APIs. Add new Gherkin feature files that test a Petstore-style API (pets CRUD: create, read, update, delete, list). Include scenarios for: successful CRUD operations, validation errors (missing required fields), not-found cases, and pagination. Implement the corresponding step definitions.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -128,13 +114,7 @@ Swagger Petstore sample API — use as the target API specification for BDD test
 ### Step 1: Paste into Devin
 
 ```
-Review the ts-java-swagger-petstore Swagger/OpenAPI
-specification. Generate a complete set of Gherkin feature
-files covering all Petstore API endpoints (pets, store,
-users). For each endpoint, include scenarios for:
-successful operations, invalid input, authentication
-failures, and boundary conditions. Save the feature files
-in a `features/` directory with one file per API resource.
+Review the ts-java-swagger-petstore Swagger/OpenAPI specification. Generate a complete set of Gherkin feature files covering all Petstore API endpoints (pets, store, users). For each endpoint, include scenarios for: successful operations, invalid input, authentication failures, and boundary conditions. Save the feature files in a `features/` directory with one file per API resource.
 ```
 
 ### Step 2: Research with Ask Devin
