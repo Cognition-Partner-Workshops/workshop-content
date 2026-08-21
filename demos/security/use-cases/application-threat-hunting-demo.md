@@ -88,15 +88,10 @@ Prompt Devin to analyze the application for exploitable attack chains:
 Analyze this application for multi-step security attack chains.
 
 Focus areas:
-1. Authentication and authorization boundaries — are there
-   endpoints missing auth checks that are reachable from
-   authenticated paths?
-2. Input validation — are there paths where user input flows
-   to internal service calls without validation?
-3. Resource access — are there IDOR vulnerabilities where
-   predictable IDs allow access to other users' data?
-4. Redirect and callback handling — are there open redirects
-   that could be chained with OAuth flows?
+1. Authentication and authorization boundaries — are there endpoints missing auth checks that are reachable from authenticated paths?
+2. Input validation — are there paths where user input flows to internal service calls without validation?
+3. Resource access — are there IDOR vulnerabilities where predictable IDs allow access to other users' data?
+4. Redirect and callback handling — are there open redirects that could be chained with OAuth flows?
 
 For each finding:
 - Describe the full attack chain (step by step)
@@ -129,8 +124,7 @@ actually **execute** the attack chain against the running application.
 Prompt Devin to confirm exploitability:
 
 ```
-Using the findings from THREAT_ANALYSIS.md, confirm
-exploitability of the top-severity attack chains.
+Using the findings from THREAT_ANALYSIS.md, confirm exploitability of the top-severity attack chains.
 
 For each chain:
 1. Start the application in the dev environment
@@ -144,8 +138,7 @@ Produce EXPLOITATION_EVIDENCE.md with:
 - Response evidence showing the exploit worked
 - The data or access gained through the chain
 
-This is for defensive purposes — confirming the vulnerability
-exists so we can fix it with confidence.
+This is for defensive purposes — confirming the vulnerability exists so we can fix it with confidence.
 ```
 
 Observe Devin:
@@ -167,15 +160,12 @@ application, produced this unauthorized data access." Not theoretical — proven
 Now prompt Devin to fix the confirmed vulnerabilities and prove the fix:
 
 ```
-Remediate the confirmed attack chains from
-EXPLOITATION_EVIDENCE.md.
+Remediate the confirmed attack chains from EXPLOITATION_EVIDENCE.md.
 
 For each confirmed vulnerability:
-1. Implement the fix (authorization check, input validation,
-   rate limiting, etc.)
+1. Implement the fix (authorization check, input validation, rate limiting, etc.)
 2. Re-run the exact same attack chain from the evidence
-3. Confirm the attack is now blocked (expected: 401/403 or
-   validation error)
+3. Confirm the attack is now blocked (expected: 401/403 or validation error)
 4. Run the full test suite to confirm no regressions
 5. Document the fix and re-test evidence
 

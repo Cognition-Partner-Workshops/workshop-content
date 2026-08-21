@@ -93,14 +93,7 @@ repo, Devin typically maps an unfamiliar estate in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-java-mulesoft-employee-api repo, give me a map of the
-MuleSoft API estate: the Mule XML flows in
-src/main/mule/employee-services-api.xml, what each flow does (OAuth,
-employee goals, learning, pay date, PTO), the RAML spec at
-src/main/resources/api/employee-services-api.raml, the database tables
-(api_clients, employee_goals, employee_learning, employee_pto), and how
-the authentication flow works (client credentials → token validation →
-protected endpoints).
+Using the ts-java-mulesoft-employee-api repo, give me a map of the MuleSoft API estate: the Mule XML flows in src/main/mule/employee-services-api.xml, what each flow does (OAuth, employee goals, learning, pay date, PTO), the RAML spec at src/main/resources/api/employee-services-api.raml, the database tables (api_clients, employee_goals, employee_learning, employee_pto), and how the authentication flow works (client credentials → token validation → protected endpoints).
 ```
 
 Expected: a tour of the Mule XML flows — `oauth-token-flow`,
@@ -120,12 +113,9 @@ PR with the verification report.
 ```
 !convert-mulesoft-to-spring-boot
 
-Convert the employee goals endpoint from the MuleSoft estate in
-ts-java-mulesoft-employee-api into the Spring Boot target in
-uc-api-migration-mulesoft-to-spring-boot.
+Convert the employee goals endpoint from the MuleSoft estate in ts-java-mulesoft-employee-api into the Spring Boot target in uc-api-migration-mulesoft-to-spring-boot.
 
-- MuleSoft source: src/main/mule/employee-services-api.xml
-  (get:\employee\{employeeId}\goals flow + related subflows)
+- MuleSoft source: src/main/mule/employee-services-api.xml (get:\employee\{employeeId}\goals flow + related subflows)
 - RAML spec: src/main/resources/api/employee-services-api.raml
 - Target: spring-boot-app/ in uc-api-migration-mulesoft-to-spring-boot
 - Namespace: migration/emp-goals
@@ -137,9 +127,7 @@ plausible-looking conversion uses Spring's `ResponseEntity.notFound().build()` �
 which returns an *empty* 404 body. The contract test catches the mismatch:
 
 ```
-ContractVerificationIT > GoalsEndpoint > shouldReturn404WithMessageForUnknownEmployee
-  FAILED
-  Expected: body containing "message"
+ContractVerificationIT > GoalsEndpoint > shouldReturn404WithMessageForUnknownEmployee FAILED Expected: body containing "message"
   Actual:   empty response body
 ```
 
@@ -181,37 +169,20 @@ spawns a child Devin session per endpoint group and monitors them — one agent
 fanning itself out across the wave. Paste:
 
 ```
-Act as the orchestrator for a MuleSoft-to-Spring-Boot migration across
-multiple endpoints, using child Devin sessions to parallelize the work.
+Act as the orchestrator for a MuleSoft-to-Spring-Boot migration across multiple endpoints, using child Devin sessions to parallelize the work.
 
-Repos: read Cognition-Partner-Workshops/ts-java-mulesoft-employee-api
-(the MuleSoft source), write
-Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-spring-boot.
+Repos: read Cognition-Partner-Workshops/ts-java-mulesoft-employee-api (the MuleSoft source), write Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-spring-boot.
 
-Spawn one child Devin session per endpoint group below. Give each child
-both repos, its own namespace branch (migration/child1, child2, ...),
-and tell it to follow the !convert-mulesoft-to-spring-boot playbook
-(the repo's Skill supplies the make build / make verify mechanics):
-treat the MuleSoft XML and RAML as the source of truth, reproduce the
-API behavior exactly, add contract tests proving parity, and build
-until everything is green.
+Spawn one child Devin session per endpoint group below. Give each child both repos, its own namespace branch (migration/child1, child2, ...), and tell it to follow the !convert-mulesoft-to-spring-boot playbook (the repo's Skill supplies the make build / make verify mechanics): treat the MuleSoft XML and RAML as the source of truth, reproduce the API behavior exactly, add contract tests proving parity, and build until everything is green.
 
 Endpoint groups:
-1. OAuth2 flow: oauth-token-flow + validate-token-subflow
-   -> OAuthController + TokenService
-2. Employee goals: get:\employee\{employeeId}\goals
-   -> GoalsController + GoalService
-3. Learning status: get:\employee\{employeeId}\learning-status
-   -> LearningController + LearningService
-4. Pay date: get:\employee\{employeeId}\next-pay-date
-   -> PayDateController + PayDateService
-5. PTO: balance GET + schedule POST
-   -> PtoController + PtoService
+1. OAuth2 flow: oauth-token-flow + validate-token-subflow -> OAuthController + TokenService
+2. Employee goals: get:\employee\{employeeId}\goals -> GoalsController + GoalService
+3. Learning status: get:\employee\{employeeId}\learning-status -> LearningController + LearningService
+4. Pay date: get:\employee\{employeeId}\next-pay-date -> PayDateController + PayDateService
+5. PTO: balance GET + schedule POST -> PtoController + PtoService
 
-After launching, monitor the child sessions until each endpoint group
-is converted with green contract tests. Summarize the results and call
-out any contract divergences the children caught (e.g., a 404 response
-format that did not match the MuleSoft source).
+After launching, monitor the child sessions until each endpoint group is converted with green contract tests. Summarize the results and call out any contract divergences the children caught (e.g., a 404 response format that did not match the MuleSoft source).
 ```
 
 The children inherit the organization's database credentials, and each writes to

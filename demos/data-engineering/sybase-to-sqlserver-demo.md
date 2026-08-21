@@ -100,12 +100,7 @@ makes this safe to repeat and safe to run concurrently.
 Open the Sybase source estate and ask Devin to explain it.
 
 ```
-Using the ts-tsql-sybase-legacy-db repo, give me a map of the Sybase estate:
-the tables, stored procedures (Servicing, Reporting, Batch, CRUD), views,
-triggers, and functions. For each object, identify every Sybase-specific
-construct that needs conversion to SQL Server. Reference the migration map at
-uc-db-migration-sybase-to-sqlserver/docs/SYBASE_TO_SQLSERVER_MIGRATION_MAP.md
-and rank each object by conversion complexity (simple, medium, complex).
+Using the ts-tsql-sybase-legacy-db repo, give me a map of the Sybase estate: the tables, stored procedures (Servicing, Reporting, Batch, CRUD), views, triggers, and functions. For each object, identify every Sybase-specific construct that needs conversion to SQL Server. Reference the migration map at uc-db-migration-sybase-to-sqlserver/docs/SYBASE_TO_SQLSERVER_MIGRATION_MAP.md and rank each object by conversion complexity (simple, medium, complex).
 ```
 
 Expected: Devin maps 7 tables, 12 stored procedures, 3 views, 2 triggers, and
@@ -124,20 +119,14 @@ runs the reconciliation controls, catches a divergence, fixes it, and produces
 a PR with the reconciliation report.
 
 ```
-Convert the Sybase stored procedure
-ts-tsql-sybase-legacy-db/stored_procs/Reporting/sp_delinquency_aging_report.sql
-to SQL Server, following the conversion playbook at
-uc-db-migration-sybase-to-sqlserver/docs/CONVERSION_PLAYBOOK.md.
+Convert the Sybase stored procedure ts-tsql-sybase-legacy-db/stored_procs/Reporting/sp_delinquency_aging_report.sql to SQL Server, following the conversion playbook at uc-db-migration-sybase-to-sqlserver/docs/CONVERSION_PLAYBOOK.md.
 
-Place the converted file at:
-  migrations/stored_procs/Reporting/111_sp_delinquency_aging_report.sql
+Place the converted file at: migrations/stored_procs/Reporting/111_sp_delinquency_aging_report.sql
 
-Use [$(NS)] schema prefix for namespace isolation. After conversion, deploy
-and run reconciliation:
+Use [$(NS)] schema prefix for namespace isolation. After conversion, deploy and run reconciliation:
   make demo-down NS=dev && make demo-up NS=dev
 
-If any reconciliation control fails, identify the root cause and fix it.
-Include the reconciliation report in the PR.
+If any reconciliation control fails, identify the root cause and fix it. Include the reconciliation report in the PR.
 ```
 
 **The verification beat (the real bug).** The Sybase source uses `*=` (outer

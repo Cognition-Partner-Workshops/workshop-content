@@ -89,22 +89,13 @@ This Spring Boot 2.6.3 application ships with known CVEs including Spring4Shell 
 ### Paste into Devin
 
 ```
-Remediate the critical dependency CVEs in
-uc-cve-remediation-regulatory-compliance.
+Remediate the critical dependency CVEs in uc-cve-remediation-regulatory-compliance.
 
-1. **Identify known CVEs:** This Spring Boot 2.6.3 app has
-   Spring4Shell (CVE-2022-22965, CVSS 9.8), SnakeYAML
-   unsafe deserialization (CVE-2022-1471, CVSS 9.8), and
-   sqlite-jdbc vulnerabilities.
+1. **Identify known CVEs:** This Spring Boot 2.6.3 app has Spring4Shell (CVE-2022-22965, CVSS 9.8), SnakeYAML unsafe deserialization (CVE-2022-1471, CVSS 9.8), and sqlite-jdbc vulnerabilities.
 
-2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18,
-   SnakeYAML from 1.29 to 2.0+, and sqlite-jdbc from
-   3.36.0.3 to 3.42+. Fix any breaking API changes from
-   the upgrades and ensure `./gradlew build` passes.
+2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18, SnakeYAML from 1.29 to 2.0+, and sqlite-jdbc from 3.36.0.3 to 3.42+. Fix any breaking API changes from the upgrades and ensure `./gradlew build` passes.
 
-3. **Document:** Create `SECURITY_REMEDIATION.md` with a
-   findings table (CVE ID, severity, old version, new
-   version, status) and a summary of what was fixed.
+3. **Document:** Create `SECURITY_REMEDIATION.md` with a findings table (CVE ID, severity, old version, new version, status) and a summary of what was fixed.
 ```
 
 ### While Devin works: try Ask Devin
@@ -151,31 +142,15 @@ The CardDemo application is a real mainframe credit card management system with 
 ### Paste into Devin
 
 ```
-Analyze the COBOL program CBACT01C.cbl in
-uc-legacy-modernization-cobol-to-java. This is an account
-file batch processing program from a mainframe credit card
-management system (CardDemo).
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. This is an account file batch processing program from a mainframe credit card management system (CardDemo).
 
-1. **Understand the COBOL:** Read CBACT01C.cbl in app/cbl/
-   and the copybooks it references in app/cpy/ (especially
-   CVACT01Y.cpy for account record layout). Document the
-   business logic: what data it reads, what processing it
-   performs, and what outputs it produces.
+1. **Understand the COBOL:** Read CBACT01C.cbl in app/cbl/ and the copybooks it references in app/cpy/ (especially CVACT01Y.cpy for account record layout). Document the business logic: what data it reads, what processing it performs, and what outputs it produces.
 
-2. **Translate to Java 17+:** Rewrite the program as a
-   modern Java application using records for data
-   structures, proper date/decimal handling for COBOL
-   COMP-3 and PIC types, and standard file I/O. Preserve
-   the same business logic and processing flow.
+2. **Translate to Java 17+:** Rewrite the program as a modern Java application using records for data structures, proper date/decimal handling for COBOL COMP-3 and PIC types, and standard file I/O. Preserve the same business logic and processing flow.
 
-3. **Add parity tests:** Create JUnit tests that verify the
-   Java version produces identical results to the COBOL
-   version for sample inputs. Use the data files in
-   app/data/ as test fixtures.
+3. **Add parity tests:** Create JUnit tests that verify the Java version produces identical results to the COBOL version for sample inputs. Use the data files in app/data/ as test fixtures.
 
-4. **Document decisions:** Create MIGRATION_NOTES.md
-   covering: COBOL-to-Java type mappings, business rules
-   extracted, and any ambiguities in the original code.
+4. **Document decisions:** Create MIGRATION_NOTES.md covering: COBOL-to-Java type mappings, business rules extracted, and any ambiguities in the original code.
 ```
 
 ### While Devin works: try Ask Devin
@@ -225,36 +200,13 @@ The SAS codebase contains 90+ macros covering data export, transformation, dedup
 **Session A — SAS macro translation (ts-sas-legacy-analytics):**
 
 ```
-Analyze the SAS macros in ts-sas-legacy-analytics/Macro/ —
-focus on the data transformation macros: transpose.sas,
-subset_data.sas, compare.sas, dedup_string.sas,
-dedup_mstring.sas, and the export family (export_csv.sas,
-export_xlsx.sas, export_dbms.sas). For each macro, translate
-the SAS logic into equivalent Python functions using pandas.
-Preserve the same function signatures (input dataset,
-parameters, output dataset). Create pytest tests that
-validate the Python functions produce the same results as
-the SAS originals for sample inputs. Document each
-translation decision in a SAS_TO_PYTHON_TRANSLATION.md.
+Analyze the SAS macros in ts-sas-legacy-analytics/Macro/ — focus on the data transformation macros: transpose.sas, subset_data.sas, compare.sas, dedup_string.sas, dedup_mstring.sas, and the export family (export_csv.sas, export_xlsx.sas, export_dbms.sas). For each macro, translate the SAS logic into equivalent Python functions using pandas. Preserve the same function signatures (input dataset, parameters, output dataset). Create pytest tests that validate the Python functions produce the same results as the SAS originals for sample inputs. Document each translation decision in a SAS_TO_PYTHON_TRANSLATION.md.
 ```
 
 **Session B — Snowflake DDL + loading scripts (uc-data-migration-sas-to-snowflake):**
 
 ```
-Analyze the sample datasets in
-uc-data-migration-sas-to-snowflake/sample_data/ — examine
-the CSV files (CUST_ACCOUNTS.csv, DAILY_BALANCE.csv,
-MONTHLY_AMB.csv) and the two migration scenarios in
-Scenario1/ and Scenario2/. Create Snowflake-compatible DDL
-for each dataset with proper column types, constraints, and
-clustering keys. Then write Python scripts that: (1) read
-the SAS7BDAT files using the sas7bdat or pyreadstat library,
-(2) apply any necessary data type conversions (dates,
-decimals, string encoding), (3) generate Snowflake COPY INTO
-statements for bulk loading, and (4) create validation
-queries comparing row counts and checksums between source and
-target. Include a SAS_TO_SNOWFLAKE_MIGRATION.md documenting
-the schema mapping and loading strategy.
+Analyze the sample datasets in uc-data-migration-sas-to-snowflake/sample_data/ — examine the CSV files (CUST_ACCOUNTS.csv, DAILY_BALANCE.csv, MONTHLY_AMB.csv) and the two migration scenarios in Scenario1/ and Scenario2/. Create Snowflake-compatible DDL for each dataset with proper column types, constraints, and clustering keys. Then write Python scripts that: (1) read the SAS7BDAT files using the sas7bdat or pyreadstat library, (2) apply any necessary data type conversions (dates, decimals, string encoding), (3) generate Snowflake COPY INTO statements for bulk loading, and (4) create validation queries comparing row counts and checksums between source and target. Include a SAS_TO_SNOWFLAKE_MIGRATION.md documenting the schema mapping and loading strategy.
 ```
 
 ### While Devin works: try Ask Devin
@@ -304,29 +256,13 @@ This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld bloggi
 ### Paste into Devin
 
 ```
-Extract the Article bounded context from
-uc-framework-upgrade-monolith-to-microservices — a Spring
-Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis
-persistence, and a Next.js frontend.
+Extract the Article bounded context from uc-framework-upgrade-monolith-to-microservices — a Spring Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis persistence, and a Next.js frontend.
 
-1. **Read the codebase:** Identify the 4 bounded contexts
-   (articles/tags, comments, favorites, users/profiles)
-   and their coupling points.
+1. **Read the codebase:** Identify the 4 bounded contexts (articles/tags, comments, favorites, users/profiles) and their coupling points.
 
-2. **Document extraction decisions:** Create
-   docs/EXTRACTION_DECISIONS.md documenting: which domain
-   objects move to the Article service (articles, tags),
-   what stays (comments, favorites, users/profiles),
-   coupling points between domains, and the cross-service
-   communication strategy.
+2. **Document extraction decisions:** Create docs/EXTRACTION_DECISIONS.md documenting: which domain objects move to the Article service (articles, tags), what stays (comments, favorites, users/profiles), coupling points between domains, and the cross-service communication strategy.
 
-3. **Extract:** Create article-service/ — a standalone
-   Spring Boot service with its own build configuration,
-   database migrations, and MyBatis persistence. Include
-   articles and tags. Replace direct User domain calls
-   with a REST client and DTOs. ./gradlew build
-   -x jacocoTestCoverageVerification must pass for both
-   services.
+3. **Extract:** Create article-service/ — a standalone Spring Boot service with its own build configuration, database migrations, and MyBatis persistence. Include articles and tags. Replace direct User domain calls with a REST client and DTOs. ./gradlew build -x jacocoTestCoverageVerification must pass for both services.
 ```
 
 ### While Devin works: try Ask Devin
@@ -375,23 +311,16 @@ Participants who want to keep exploring after the main labs can try these additi
 #### Paste into Devin
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
 
 Handle the full upgrade checklist:
-1. Update build.gradle — Spring Boot plugin, Java target
-   compatibility, and dependency versions
-2. Migrate javax.* imports to jakarta.* across all source
-   files
-3. Update Spring Security configuration to the new lambda
-   DSL (Spring Security 6.x)
+1. Update build.gradle — Spring Boot plugin, Java target compatibility, and dependency versions
+2. Migrate javax.* imports to jakarta.* across all source files
+3. Update Spring Security configuration to the new lambda DSL (Spring Security 6.x)
 4. Fix any deprecated MyBatis or DGS (GraphQL) APIs
-5. Update Flyway configuration for Spring Boot 3
-   compatibility
-6. Run ./gradlew build and ./gradlew test — fix any
-   compilation errors or test failures
-7. Document the breaking changes encountered and how each
-   was resolved in the PR description
+5. Update Flyway configuration for Spring Boot 3 compatibility
+6. Run ./gradlew build and ./gradlew test — fix any compilation errors or test failures
+7. Document the breaking changes encountered and how each was resolved in the PR description
 ```
 
 ---
@@ -405,22 +334,12 @@ Handle the full upgrade checklist:
 #### Paste into Devin
 
 ```
-Analyze the entire COBOL estate in
-uc-legacy-modernization-cobol-to-java. Produce the following
-artifacts:
+Analyze the entire COBOL estate in uc-legacy-modernization-cobol-to-java. Produce the following artifacts:
 
-1. APPLICATION_INVENTORY.md — list every program in app/cbl/
-   and sub-application directories with: filename, purpose,
-   classification (batch/online), key I/O operations, and
-   copybooks referenced.
-2. DATA_DICTIONARY.md — for every copybook in app/cpy/,
-   extract: field names, PIC clauses, data types, business
-   meaning, and validation rules.
-3. DEPENDENCY_MAP.md — build a call graph showing which
-   programs CALL or PERFORM other programs. Map dataset
-   lineage from JCL jobs.
-4. HOTSPOT_REPORT.md — rank the top 10 programs by
-   complexity and recommend which to modernize first.
+1. APPLICATION_INVENTORY.md — list every program in app/cbl/ and sub-application directories with: filename, purpose, classification (batch/online), key I/O operations, and copybooks referenced.
+2. DATA_DICTIONARY.md — for every copybook in app/cpy/, extract: field names, PIC clauses, data types, business meaning, and validation rules.
+3. DEPENDENCY_MAP.md — build a call graph showing which programs CALL or PERFORM other programs. Map dataset lineage from JCL jobs.
+4. HOTSPOT_REPORT.md — rank the top 10 programs by complexity and recommend which to modernize first.
 ```
 
 ---
@@ -434,18 +353,7 @@ artifacts:
 #### Paste into Devin
 
 ```
-Analyze the SAS codebase in ts-sas-legacy-analytics to
-produce a comprehensive migration assessment. Start with
-Config/autoexec.sas to understand the library assignments
-and database connections. Then analyze all programs in
-Programs/Banking/, Programs/Insurance/, and Programs/Reports/
-— for each, document: (1) data sources read, (2) outputs
-produced, (3) macro dependencies, (4) SAS constructs used,
-and (5) a complexity rating. Produce a
-SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data
-lineage diagram, macro dependency graph, complexity scores,
-risk areas, and a recommended migration sequence targeting
-dbt on Databricks.
+Analyze the SAS codebase in ts-sas-legacy-analytics to produce a comprehensive migration assessment. Start with Config/autoexec.sas to understand the library assignments and database connections. Then analyze all programs in Programs/Banking/, Programs/Insurance/, and Programs/Reports/ — for each, document: (1) data sources read, (2) outputs produced, (3) macro dependencies, (4) SAS constructs used, and (5) a complexity rating. Produce a SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram, macro dependency graph, complexity scores, risk areas, and a recommended migration sequence targeting dbt on Databricks.
 ```
 
 ---
@@ -459,34 +367,17 @@ dbt on Databricks.
 #### Paste into Devin
 
 ```
-Migrate the petclinic-angular frontend from Angular to React
-using a test-driven approach with parallel child sessions.
-Scope to the three interconnected modules: owners, pets,
-and visits.
+Migrate the petclinic-angular frontend from Angular to React using a test-driven approach with parallel child sessions. Scope to the three interconnected modules: owners, pets, and visits.
 
-1. **Map the API contract:** Read the Angular service files
-   and TypeScript interfaces for owners, pets, and visits.
-   Produce docs/API_CONTRACT.md documenting each REST
-   endpoint. Base URL is
-   http://localhost:9966/petclinic/api/. Commit this to a
-   new branch.
+1. **Map the API contract:** Read the Angular service files and TypeScript interfaces for owners, pets, and visits. Produce docs/API_CONTRACT.md documenting each REST endpoint. Base URL is http://localhost:9966/petclinic/api/. Commit this to a new branch.
 
 2. **Spin up two child sessions in parallel:**
 
-   Child A — "In petclinic-angular, create React Testing
-   Library + MSW tests in react-frontend/src/__tests__/
-   validating owner CRUD, pet management, and visit
-   creation against docs/API_CONTRACT.md."
+   Child A — "In petclinic-angular, create React Testing Library + MSW tests in react-frontend/src/__tests__/validating owner CRUD, pet management, and visit creation against docs/API_CONTRACT.md."
 
-   Child B — "In petclinic-angular, migrate the owners,
-   pets, and visits modules to React 18+/TypeScript/Vite
-   in react-frontend/. Preserve routing, form validation,
-   error handling. npm run build must pass."
+   Child B — "In petclinic-angular, migrate the owners, pets, and visits modules to React 18+/TypeScript/Vite in react-frontend/. Preserve routing, form validation, error handling. npm run build must pass."
 
-3. **When both children finish:** Merge both PRs into a
-   combined branch. Run the tests from Child A against
-   the React app from Child B. Report which tests pass
-   and which fail.
+3. **When both children finish:** Merge both PRs into a combined branch. Run the tests from Child A against the React app from Child B. Report which tests pass and which fail.
 ```
 
 ---
@@ -501,27 +392,12 @@ and visits.
 
 **Security sprint:**
 ```
-Run a security audit on the otterworks repository. Start
-with the dependency manifests in each service directory:
-services/collab-service/package.json (Node.js),
-services/search-service/requirements.txt (Python),
-services/admin-service/Gemfile (Ruby), and the Java/Kotlin
-services' build.gradle files. Check .trivyignore for
-suppressed CVEs. Scan for hardcoded secrets or credentials,
-check for insecure API endpoints, and produce a
-SECURITY_AUDIT.md with findings prioritized by severity.
+Run a security audit on the otterworks repository. Start with the dependency manifests in each service directory: services/collab-service/package.json (Node.js), services/search-service/requirements.txt (Python), services/admin-service/Gemfile (Ruby), and the Java/Kotlin services' build.gradle files. Check .trivyignore for suppressed CVEs. Scan for hardcoded secrets or credentials, check for insecure API endpoints, and produce a SECURITY_AUDIT.md with findings prioritized by severity.
 ```
 
 **Incident investigation:**
 ```
-Investigate the recent performance degradation in otterworks.
-Start with the service architecture in docker-compose.yml
-and the observability config in observability/. Analyze the
-API gateway in services/gateway-service/ and the file
-service in services/file-service/. Trace cross-service
-request flows using the OpenTelemetry instrumentation, and
-produce an INCIDENT_REPORT.md with root cause analysis and
-recommended fixes.
+Investigate the recent performance degradation in otterworks. Start with the service architecture in docker-compose.yml and the observability config in observability/. Analyze the API gateway in services/gateway-service/ and the file service in services/file-service/. Trace cross-service request flows using the OpenTelemetry instrumentation, and produce an INCIDENT_REPORT.md with root cause analysis and recommended fixes.
 ```
 
 ---

@@ -77,10 +77,7 @@ tax calculation, inventory management, wishlists, and order placement.
 ### Option A: Open-ended bug hunt
 
 ```text
-Check out the buggy branch of the
-Cognition-Partner-Workshops/i-retail-mern-ecommerce
-repository. This MERN ecommerce app has several bugs planted
-across the React/Redux frontend and Express/MongoDB backend.
+Check out the buggy branch of the Cognition-Partner-Workshops/i-retail-mern-ecommerce repository. This MERN ecommerce app has several bugs planted across the React/Redux frontend and Express/MongoDB backend.
 
 Key directories to audit:
 - client/app/containers/ (React/Redux actions and reducers)
@@ -88,32 +85,19 @@ Key directories to audit:
 - server/utils/store.js (tax and pricing logic)
 - server/middleware/ (auth middleware)
 
-Set up the app locally using docker-compose, then review the
-code systematically — look at cart operations, authentication,
-product search, tax calculations, inventory management,
-wishlist queries, and order placement. Identify and fix every
-bug you find.
+Set up the app locally using docker-compose, then review the code systematically — look at cart operations, authentication, product search, tax calculations, inventory management, wishlist queries, and order placement. Identify and fix every bug you find.
 
-Expected output: a PR where each commit fixes one bug, with
-a summary table in the PR description listing each bug
-(file path, line, root cause, and fix description).
+Expected output: a PR where each commit fixes one bug, with a summary table in the PR description listing each bug (file path, line, root cause, and fix description).
 ```
 
 ### Option B: Targeted fix (single bug)
 
 ```text
-Check out the buggy branch of the
-Cognition-Partner-Workshops/i-retail-mern-ecommerce
-repository. Users report that the cart total is wrong — when
-they add items, the total doesn't match the expected
-price × quantity calculation.
+Check out the buggy branch of the Cognition-Partner-Workshops/i-retail-mern-ecommerce repository. Users report that the cart total is wrong — when they add items, the total doesn't match the expected price × quantity calculation.
 
-Investigate the cart total logic in
-client/app/containers/Cart/actions.js (the
-calculateCartTotal function) and fix the bug.
+Investigate the cart total logic in client/app/containers/Cart/actions.js (the calculateCartTotal function) and fix the bug.
 
-Expected output: a PR with the fix and a brief explanation
-of the root cause in the PR description.
+Expected output: a PR with the fix and a brief explanation of the root cause in the PR description.
 ```
 
 ---

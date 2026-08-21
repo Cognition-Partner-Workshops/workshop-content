@@ -22,19 +22,12 @@
 Paste this prompt into Devin to try migrating Oracle Forms PL/SQL to Java:
 
 ```
-Migrate the Employee Management module from
-ts-plsql-oracle-forms-hrms to Java. Analyze
-plsql/packages/PKG_EMPLOYEE.pks and PKG_EMPLOYEE.pkb to
-understand the business logic. Use the scaffolded project in
-uc-legacy-modernization-oracle-forms-to-java/java-target/ as
-your starting point.
+Migrate the Employee Management module from ts-plsql-oracle-forms-hrms to Java. Analyze plsql/packages/PKG_EMPLOYEE.pks and PKG_EMPLOYEE.pkb to understand the business logic. Use the scaffolded project in uc-legacy-modernization-oracle-forms-to-java/java-target/ as your starting point.
 
 Create:
-1. Spring Boot REST controllers matching the PL/SQL
-   package procedures
+1. Spring Boot REST controllers matching the PL/SQL package procedures
 2. JPA entities matching the schema in schema/tables/
-3. Service classes that preserve the business rules from
-   PKG_EMPLOYEE
+3. Service classes that preserve the business rules from PKG_EMPLOYEE
 4. Unit tests verifying business logic parity
 5. A MIGRATION_NOTES.md documenting translation decisions
 ```
@@ -128,30 +121,15 @@ Each participant creates a `workshop-<attendee_id>` branch from `main` and pushe
 ### Step 1: Paste into Devin — PL/SQL to Java Migration
 
 ```
-Migrate the Employee Management module from
-ts-plsql-oracle-forms-hrms to Java. Analyze
-plsql/packages/PKG_EMPLOYEE.pks and PKG_EMPLOYEE.pkb to
-understand the business logic, validations, and data access
-patterns.
+Migrate the Employee Management module from ts-plsql-oracle-forms-hrms to Java. Analyze plsql/packages/PKG_EMPLOYEE.pks and PKG_EMPLOYEE.pkb to understand the business logic, validations, and data access patterns.
 
-Use the scaffolded project in
-uc-legacy-modernization-oracle-forms-to-java/java-target/ as
-your starting point. Create:
+Use the scaffolded project in uc-legacy-modernization-oracle-forms-to-java/java-target/ as your starting point. Create:
 
-1. Spring Boot REST controllers matching the PL/SQL package
-   procedures (hire, terminate, transfer, promote, etc.)
-2. JPA entities matching the schema in schema/tables/
-   (employees, departments, job_history, etc.) with proper
-   relationships and constraints
-3. Service classes that preserve the business rules from
-   PKG_EMPLOYEE (validation logic, status transitions,
-   department transfer rules)
-4. Unit tests verifying business logic parity — the Java
-   version should produce identical results to the PL/SQL
-   for the same inputs
-5. A MIGRATION_NOTES.md documenting each translation
-   decision: PL/SQL cursor → JPA query, PL/SQL exception →
-   Java exception, PL/SQL record type → Java DTO, etc.
+1. Spring Boot REST controllers matching the PL/SQL package procedures (hire, terminate, transfer, promote, etc.)
+2. JPA entities matching the schema in schema/tables/ (employees, departments, job_history, etc.) with proper relationships and constraints
+3. Service classes that preserve the business rules from PKG_EMPLOYEE (validation logic, status transitions, department transfer rules)
+4. Unit tests verifying business logic parity — the Java version should produce identical results to the PL/SQL for the same inputs
+5. A MIGRATION_NOTES.md documenting each translation decision: PL/SQL cursor → JPA query, PL/SQL exception → Java exception, PL/SQL record type → Java DTO, etc.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -27,12 +27,7 @@ Use local SAST tools to identify and remediate the most critical preexisting vul
 Paste this prompt into Devin to get started immediately:
 
 ```
-Run npm audit on timesheet-app to identify dependency
-vulnerabilities. Then run Trivy (install if needed) to
-scan for additional issues. Remediate all critical and
-high severity findings. Re-run scans to verify fixes.
-Create a SECURITY_REMEDIATION.md with before/after
-evidence.
+Run npm audit on timesheet-app to identify dependency vulnerabilities. Then run Trivy (install if needed) to scan for additional issues. Remediate all critical and high severity findings. Re-run scans to verify fixes. Create a SECURITY_REMEDIATION.md with before/after evidence.
 ```
 
 ## Target Outcomes
@@ -79,12 +74,7 @@ Node.js application with Trivy scanning already configured.
 ### Step 1: Paste into Devin
 
 ```
-Run npm audit on timesheet-app to identify dependency
-vulnerabilities. Then run Trivy (install if needed) to
-scan for additional issues. Remediate all critical and
-high severity findings. Re-run scans to verify fixes.
-Create a SECURITY_REMEDIATION.md with before/after
-evidence.
+Run npm audit on timesheet-app to identify dependency vulnerabilities. Then run Trivy (install if needed) to scan for additional issues. Remediate all critical and high severity findings. Re-run scans to verify fixes. Create a SECURITY_REMEDIATION.md with before/after evidence.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -156,14 +146,7 @@ The repo ships with Spring Boot 2.6.3 and several outdated dependencies. Key fin
 ### Step 1: Paste into Devin
 
 ```
-Run ./gradlew dependencyCheckAnalyze on
-uc-cve-remediation-regulatory-compliance to identify
-dependency CVEs. Remediate the top 5 most critical
-findings (CVSS >= 7.0) — start with Spring Boot 2.6.3,
-SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the
-scan to verify the fixes. Create a
-SECURITY_REMEDIATION.md documenting the before/after
-results.
+Run ./gradlew dependencyCheckAnalyze on uc-cve-remediation-regulatory-compliance to identify dependency CVEs. Remediate the top 5 most critical findings (CVSS >= 7.0) — start with Spring Boot 2.6.3, SnakeYAML 1.29, and sqlite-jdbc 3.36.0.3. Re-run the scan to verify the fixes. Create a SECURITY_REMEDIATION.md documenting the before/after results.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -70,8 +70,7 @@ Perform a comprehensive technical assessment of ts-java-spring-boot-internet-ban
    - Integration points (Keycloak, RabbitMQ, Zipkin, database connections)
    - Build and deployment pipeline summary (Docker Compose, Gradle)
 
-2. **Engineering Standards Gap Analysis** (`docs/GAP_ANALYSIS.md`):
-   Compare the codebase against these engineering best practices and document gaps:
+2. **Engineering Standards Gap Analysis** (`docs/GAP_ANALYSIS.md`): Compare the codebase against these engineering best practices and document gaps:
    - **Code organization:** Consistent project structure across services, separation of concerns, shared library usage
    - **Error handling:** Centralized error handling, consistent error response format, proper HTTP status codes
    - **Testing:** Unit test coverage, integration tests, contract tests between services
@@ -82,8 +81,7 @@ Perform a comprehensive technical assessment of ts-java-spring-boot-internet-ban
 
    For each gap, rate severity (Critical/High/Medium/Low) and estimate effort to remediate (Small/Medium/Large).
 
-3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
-   Prioritize the gaps into a phased plan: Phase 1 (quick wins), Phase 2 (important), Phase 3 (polish). Include sample Devin prompts for each remediation item.
+3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`): Prioritize the gaps into a phased plan: Phase 1 (quick wins), Phase 2 (important), Phase 3 (polish). Include sample Devin prompts for each remediation item.
 
 Open a PR with all three documents.
 ```

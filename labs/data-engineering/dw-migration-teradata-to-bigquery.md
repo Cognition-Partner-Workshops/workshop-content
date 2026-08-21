@@ -132,14 +132,7 @@ converted SQL); a reference conversion lives on the `bigquery-reference` branch.
 ### Step 1: Paste into Devin
 
 ```
-Analyze all Teradata DDL in uc-dw-migration-teradata-to-bigquery/ddl/ (tables
-and views). Convert every table and view to BigQuery Standard SQL (GoogleSQL),
-handling all Teradata-specific features (SET/MULTISET, PI, PPI, COMPRESS,
-CASESPECIFIC, FORMAT, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Place converted
-view files in the bigquery/views/ directory so the parity harness can run them.
-Then run `python verify/run_parity.py` and iterate until every parity metric
-matches golden. Create a MIGRATION_RUNBOOK.md documenting every translation
-decision.
+Analyze all Teradata DDL in uc-dw-migration-teradata-to-bigquery/ddl/ (tables and views). Convert every table and view to BigQuery Standard SQL (GoogleSQL), handling all Teradata-specific features (SET/MULTISET, PI, PPI, COMPRESS, CASESPECIFIC, FORMAT, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Place converted view files in the bigquery/views/ directory so the parity harness can run them. Then run `python verify/run_parity.py` and iterate until every parity metric matches golden. Create a MIGRATION_RUNBOOK.md documenting every translation decision.
 ```
 
 ### Step 2: Research with Ask Devin

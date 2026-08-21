@@ -31,11 +31,7 @@ Resolve linting issues in a codebase using Devin. This is a great entry-level ch
 Paste this into a new Devin session to get started immediately:
 
 ```
-Resolve this GitHub Issue:
-https://github.com/Cognition-Partner-Workshops/
-timesheet-app/issues/3 — fix all ESLint linting errors
-in the codebase, run the linter to verify all issues are
-resolved.
+Resolve this GitHub Issue: https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/3 — fix all ESLint linting errors in the codebase, run the linter to verify all issues are resolved.
 ```
 
 <a id="target-outcomes"></a>
@@ -79,11 +75,7 @@ React 19 + Node.js/Express timesheet application with ESLint and Prettier config
 ### Step 1: Paste into Devin
 
 ```
-Resolve this GitHub Issue:
-https://github.com/Cognition-Partner-Workshops/
-timesheet-app/issues/3 — fix all ESLint linting errors
-in the codebase, run the linter to verify all issues are
-resolved.
+Resolve this GitHub Issue: https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/3 — fix all ESLint linting errors in the codebase, run the linter to verify all issues are resolved.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -119,9 +111,7 @@ Terraform infrastructure code for hosting the timesheet application.
 ### Step 1: Paste into Devin
 
 ```
-Fix all Terraform formatting issues in timesheet-infra
-using `terraform fmt`. Run `terraform validate` to
-confirm the configuration is still valid after formatting.
+Fix all Terraform formatting issues in timesheet-infra using `terraform fmt`. Run `terraform validate` to confirm the configuration is still valid after formatting.
 ```
 
 ### Step 2: Research with Ask Devin

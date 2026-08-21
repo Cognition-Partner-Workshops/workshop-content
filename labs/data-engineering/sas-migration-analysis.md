@@ -26,20 +26,7 @@
 Already familiar with Devin? Skip the background and start the hands-on work immediately. Copy the prompt below into a Devin session and go.
 
 ```
-Analyze the SAS codebase in ts-sas-legacy-analytics to produce a comprehensive
-migration assessment. Start with Config/autoexec.sas to understand the library
-assignments and database connections. Then analyze all programs in
-Programs/Banking/, Programs/Insurance/, and Programs/Reports/ — for each,
-document: (1) what data sources it reads from (LIBNAME.dataset), (2) what
-outputs it produces, (3) which macros from Macro/ it depends on, (4) which SAS
-constructs it uses (DATA step, PROC SQL, PROC MEANS, hash objects, RETAIN,
-etc.), and (5) a complexity rating. Also analyze the batch orchestrators in
-BatchJobs/ to understand the execution dependency chain. Examine Formats/ for
-custom format definitions that will need migration to dbt macros or seed tables.
-Use the log files in Logs/ to understand production data volumes and execution
-times. Produce a SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data
-lineage diagram, macro dependency graph, dataset usage matrix, complexity
-scores, risk areas, and a recommended migration sequence.
+Analyze the SAS codebase in ts-sas-legacy-analytics to produce a comprehensive migration assessment. Start with Config/autoexec.sas to understand the library assignments and database connections. Then analyze all programs in Programs/Banking/, Programs/Insurance/, and Programs/Reports/ — for each, document: (1) what data sources it reads from (LIBNAME.dataset), (2) what outputs it produces, (3) which macros from Macro/ it depends on, (4) which SAS constructs it uses (DATA step, PROC SQL, PROC MEANS, hash objects, RETAIN, etc.), and (5) a complexity rating. Also analyze the batch orchestrators in BatchJobs/ to understand the execution dependency chain. Examine Formats/ for custom format definitions that will need migration to dbt macros or seed tables. Use the log files in Logs/ to understand production data volumes and execution times. Produce a SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram, macro dependency graph, dataset usage matrix, complexity scores, risk areas, and a recommended migration sequence.
 ```
 
 Then continue to [Lab 2](#lab-2-dbt-target-mapping) and [Lab 3](#lab-3-validate--extend-dbt-models) when ready.
@@ -103,20 +90,7 @@ The SAS estate includes 7 business programs across banking, insurance, and repor
 #### Step 1: Paste into Devin
 
 ```
-Analyze the SAS codebase in ts-sas-legacy-analytics to produce a comprehensive
-migration assessment. Start with Config/autoexec.sas to understand the library
-assignments and database connections. Then analyze all programs in
-Programs/Banking/, Programs/Insurance/, and Programs/Reports/ — for each,
-document: (1) what data sources it reads from (LIBNAME.dataset), (2) what
-outputs it produces, (3) which macros from Macro/ it depends on, (4) which SAS
-constructs it uses (DATA step, PROC SQL, PROC MEANS, hash objects, RETAIN,
-etc.), and (5) a complexity rating. Also analyze the batch orchestrators in
-BatchJobs/ to understand the execution dependency chain. Examine Formats/ for
-custom format definitions that will need migration to dbt macros or seed tables.
-Use the log files in Logs/ to understand production data volumes and execution
-times. Produce a SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data
-lineage diagram, macro dependency graph, dataset usage matrix, complexity
-scores, risk areas, and a recommended migration sequence.
+Analyze the SAS codebase in ts-sas-legacy-analytics to produce a comprehensive migration assessment. Start with Config/autoexec.sas to understand the library assignments and database connections. Then analyze all programs in Programs/Banking/, Programs/Insurance/, and Programs/Reports/ — for each, document: (1) what data sources it reads from (LIBNAME.dataset), (2) what outputs it produces, (3) which macros from Macro/ it depends on, (4) which SAS constructs it uses (DATA step, PROC SQL, PROC MEANS, hash objects, RETAIN, etc.), and (5) a complexity rating. Also analyze the batch orchestrators in BatchJobs/ to understand the execution dependency chain. Examine Formats/ for custom format definitions that will need migration to dbt macros or seed tables. Use the log files in Logs/ to understand production data volumes and execution times. Produce a SAS_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram, macro dependency graph, dataset usage matrix, complexity scores, risk areas, and a recommended migration sequence.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -150,16 +124,7 @@ While Devin works on the assessment, explore the codebase with Ask Devin:
 #### Step 1: Paste into Devin
 
 ```
-Using the assessment from the previous session and the reference dbt project in
-uc-data-migration-sas-to-databricks/dbt_project/, create a detailed migration
-plan mapping each SAS program to its dbt/Databricks equivalent. For each
-program, specify: (1) which dbt model layer it maps to
-(staging/intermediate/marts), (2) which SAS constructs need translation (use
-docs/SAS_TO_DBT_MIGRATION_MAP.md as the reference), (3) estimated effort and
-risk. Pay special attention to: PROC FORMAT → dbt macros (reference macros/ in
-the dbt project), RETAIN/BY-group → window functions, hash objects → broadcast
-joins, %INCLUDE chains → dbt ref() DAG, and Control-M scheduling → Databricks
-Workflows. Add the migration plan to the PR.
+Using the assessment from the previous session and the reference dbt project in uc-data-migration-sas-to-databricks/dbt_project/, create a detailed migration plan mapping each SAS program to its dbt/Databricks equivalent. For each program, specify: (1) which dbt model layer it maps to (staging/intermediate/marts), (2) which SAS constructs need translation (use docs/SAS_TO_DBT_MIGRATION_MAP.md as the reference), (3) estimated effort and risk. Pay special attention to: PROC FORMAT → dbt macros (reference macros/ in the dbt project), RETAIN/BY-group → window functions, hash objects → broadcast joins, %INCLUDE chains → dbt ref() DAG, and Control-M scheduling → Databricks Workflows. Add the migration plan to the PR.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -185,27 +150,14 @@ The dbt project has models for customer accounts, transactions, and risk scoring
 #### Step 1: Paste into Devin
 
 ```
-Review the dbt project in uc-data-migration-sas-to-databricks/dbt_project/ —
-verify that each dbt model correctly implements the SAS logic from
-ts-sas-legacy-analytics. Cross-reference the migration patterns in
-docs/SAS_TO_DBT_MIGRATION_MAP.md. For any gaps (SAS programs without
-corresponding dbt models), create stub dbt models following the established
-pattern.
+Review the dbt project in uc-data-migration-sas-to-databricks/dbt_project/ — verify that each dbt model correctly implements the SAS logic from ts-sas-legacy-analytics. Cross-reference the migration patterns in docs/SAS_TO_DBT_MIGRATION_MAP.md. For any gaps (SAS programs without corresponding dbt models), create stub dbt models following the established pattern.
 ```
 
 #### Step 2: Paste into Devin — Extend Missing Models
 
 ```
-The dbt_project/ in uc-data-migration-sas-to-databricks has models for customer
-accounts, transactions, and risk scoring. Add the missing dbt models for:
-(1) monthly_regulatory_reporting.sas → mart_regulatory_rwa.sql +
-    mart_delinquency_aging.sql,
-(2) claims_processing.sas → stg_claims.sql + int_claims_adjudication.sql,
-(3) policy_valuation.sas → int_policy_valuation.sql + mart_loss_ratios.sql,
-(4) customer_profitability.sas → mart_customer_pnl.sql.
-Follow the patterns in the existing models and reference the
-SAS_TO_DBT_MIGRATION_MAP.md for construct translations. Add dbt tests for key
-business rules.
+The dbt_project/ in uc-data-migration-sas-to-databricks has models for customer accounts, transactions, and risk scoring. Add the missing dbt models for:
+(1) monthly_regulatory_reporting.sas → mart_regulatory_rwa.sql + mart_delinquency_aging.sql, (2) claims_processing.sas → stg_claims.sql + int_claims_adjudication.sql, (3) policy_valuation.sas → int_policy_valuation.sql + mart_loss_ratios.sql, (4) customer_profitability.sas → mart_customer_pnl.sql. Follow the patterns in the existing models and reference the SAS_TO_DBT_MIGRATION_MAP.md for construct translations. Add dbt tests for key business rules.
 ```
 
 #### Step 3 (Optional): Read the DeepWiki
@@ -230,28 +182,15 @@ In a real migration with dozens or hundreds of SAS programs, a single session an
 #### Step 1: Paste into Devin
 
 ```
-You are the parent coordinator for a SAS migration analysis across
-ts-sas-legacy-analytics. Create child Devin sessions to divide and conquer
-the analysis — one child per program group:
+You are the parent coordinator for a SAS migration analysis across ts-sas-legacy-analytics. Create child Devin sessions to divide and conquer the analysis — one child per program group:
 
-- Child 1: Analyze Programs/Banking/ (4 programs) — produce a
-  BANKING_MIGRATION_ASSESSMENT.md with artifact inventory, data lineage,
-  macro dependencies, complexity scores, and recommended migration sequence
-  for the banking domain only.
-- Child 2: Analyze Programs/Insurance/ (2 programs) — produce an
-  INSURANCE_MIGRATION_ASSESSMENT.md with the same structure.
-- Child 3: Analyze Programs/Reports/ (1 program) — produce a
-  REPORTS_MIGRATION_ASSESSMENT.md.
+- Child 1: Analyze Programs/Banking/ (4 programs) — produce a BANKING_MIGRATION_ASSESSMENT.md with artifact inventory, data lineage, macro dependencies, complexity scores, and recommended migration sequence for the banking domain only.
+- Child 2: Analyze Programs/Insurance/ (2 programs) — produce an INSURANCE_MIGRATION_ASSESSMENT.md with the same structure.
+- Child 3: Analyze Programs/Reports/ (1 program) — produce a REPORTS_MIGRATION_ASSESSMENT.md.
 
-Each child should read Config/autoexec.sas for shared library assignments
-and cross-reference Macro/ for macro dependencies. Each child opens its own
-PR with its domain-specific assessment.
+Each child should read Config/autoexec.sas for shared library assignments and cross-reference Macro/ for macro dependencies. Each child opens its own PR with its domain-specific assessment.
 
-Once all children complete, consolidate their assessments into a single
-CONSOLIDATED_MIGRATION_ASSESSMENT.md that includes: cross-domain dataset
-dependencies, shared macro usage across domains, a unified migration
-sequence, and total effort estimate. Open a final PR with the consolidated
-view.
+Once all children complete, consolidate their assessments into a single CONSOLIDATED_MIGRATION_ASSESSMENT.md that includes: cross-domain dataset dependencies, shared macro usage across domains, a unified migration sequence, and total effort estimate. Open a final PR with the consolidated view.
 ```
 
 #### Step 2: Watch the Coordination
@@ -342,17 +281,14 @@ When working with a real customer SAS estate (outside this workshop), the follow
 ### Email Template
 
 ```
-To perform our SAS migration analysis, we need the following artifacts from
-your SAS environment. These can be provided via a file share or secure
-upload — no changes to your running SAS environment are required.
+To perform our SAS migration analysis, we need the following artifacts from your SAS environment. These can be provided via a file share or secure upload — no changes to your running SAS environment are required.
 
 Required:
 1. All .sas source files — programs, macros, and include files
 2. All .egp Enterprise Guide project files
 3. autoexec.sas and any project-level autoexec files
 4. Macro autocall library contents (all files from your autocall paths)
-5. LIBNAME configuration — a document or extract showing how library names
-   map to physical paths, databases, or schemas
+5. LIBNAME configuration — a document or extract showing how library names map to physical paths, databases, or schemas
 
 Recommended (accelerates analysis):
 6. .spk deployment packages
@@ -360,12 +296,9 @@ Recommended (accelerates analysis):
 8. Format catalogs or PROC FORMAT source code
 9. Scheduling metadata (job schedules, dependencies, execution windows)
 10. PROC CONTENTS output for key datasets (or data dictionary exports)
-11. Database connection details for any external sources accessed via
-    SAS/ACCESS engines
+11. Database connection details for any external sources accessed via SAS/ACCESS engines
 
-Not needed: No XML logging configuration changes, no -logconfigloc updates,
-no audit logger enablement. Our analysis is entirely static — we read your
-source code, not runtime traces.
+Not needed: No XML logging configuration changes, no -logconfigloc updates, no audit logger enablement. Our analysis is entirely static — we read your source code, not runtime traces.
 ```
 
 ### Comparison: Static Analysis vs. Runtime Trace Tools

@@ -20,27 +20,16 @@
 Paste this prompt into Devin to try investigating a cross-service bug:
 
 ```
-Order confirmation notification emails are showing wrong
-amounts after the microservice decomposition. A $149.99
-order shows as $1.50 in the email preview.
+Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview.
 
-Investigate and fix this bug in quickapp-microservices.
-Work on branch workshop-<attendee_id>.
+Investigate and fix this bug in quickapp-microservices. Work on branch workshop-<attendee_id>.
 
 To reproduce:
 1. Run the notification-service locally
-2. POST to http://localhost:5005/api/notification/
-   events/order-placed with body:
-   {"orderId": "11111111-1111-1111-1111-111111111111",
-    "customerId": "22222222-2222-2222-2222-222222222222",
-    "totalAmount": 149.99,
-    "placedAt": "2026-03-17T12:00:00Z"}
-3. Open the preview URL from the response — the total
-   shows $1.50 instead of $149.99
+2. POST to http://localhost:5005/api/notification/events/order-placed with body: {"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}
+3. Open the preview URL from the response — the total shows $1.50 instead of $149.99
 
-Find the root cause, fix it, take before/after
-screenshots, and open a PR with your fix and root cause
-analysis.
+Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
 ```
 
 ---
@@ -113,27 +102,16 @@ Each participant creates a `workshop-<attendee_id>` branch from `main` and pushe
 ### Step 1: Paste into Devin — Bug Investigation
 
 ```
-Order confirmation notification emails are showing wrong
-amounts after the microservice decomposition. A $149.99
-order shows as $1.50 in the email preview.
+Order confirmation notification emails are showing wrong amounts after the microservice decomposition. A $149.99 order shows as $1.50 in the email preview.
 
-Investigate and fix this bug in quickapp-microservices.
-Work on branch workshop-<attendee_id>.
+Investigate and fix this bug in quickapp-microservices. Work on branch workshop-<attendee_id>.
 
 To reproduce:
 1. Run the notification-service locally
-2. POST to http://localhost:5005/api/notification/
-   events/order-placed with body:
-   {"orderId": "11111111-1111-1111-1111-111111111111",
-    "customerId": "22222222-2222-2222-2222-222222222222",
-    "totalAmount": 149.99,
-    "placedAt": "2026-03-17T12:00:00Z"}
-3. Open the preview URL from the response — the total
-   shows $1.50 instead of $149.99
+2. POST to http://localhost:5005/api/notification/events/order-placed with body: {"orderId": "11111111-1111-1111-1111-111111111111", "customerId": "22222222-2222-2222-2222-222222222222", "totalAmount": 149.99, "placedAt": "2026-03-17T12:00:00Z"}
+3. Open the preview URL from the response — the total shows $1.50 instead of $149.99
 
-Find the root cause, fix it, take before/after
-screenshots, and open a PR with your fix and root cause
-analysis.
+Find the root cause, fix it, take before/after screenshots, and open a PR with your fix and root cause analysis.
 ```
 
 ### Step 2: Research with Ask Devin

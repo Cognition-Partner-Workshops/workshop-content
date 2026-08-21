@@ -27,18 +27,7 @@ Scan the codebase for PII handling patterns — personal data storage, transmiss
 Paste this prompt into Devin to get started immediately:
 
 ```
-Scan timesheet-app for GDPR and PII compliance issues.
-Analyze the entire codebase to identify where personal
-data (names, emails, passwords, user identifiers) is
-stored, processed, transmitted, and logged. Check for:
-unencrypted PII in the database, PII leaked in logs or
-error messages, missing data anonymization, lack of
-consent mechanisms, and insecure data transmission.
-Create a PII_COMPLIANCE_REPORT.md with a data flow map,
-a list of compliance gaps rated by severity
-(Critical/High/Medium/Low), and recommended fixes.
-Implement the highest-priority fixes (e.g., removing
-PII from logs, adding password hashing if missing).
+Scan timesheet-app for GDPR and PII compliance issues. Analyze the entire codebase to identify where personal data (names, emails, passwords, user identifiers) is stored, processed, transmitted, and logged. Check for: unencrypted PII in the database, PII leaked in logs or error messages, missing data anonymization, lack of consent mechanisms, and insecure data transmission. Create a PII_COMPLIANCE_REPORT.md with a data flow map, a list of compliance gaps rated by severity (Critical/High/Medium/Low), and recommended fixes. Implement the highest-priority fixes (e.g., removing PII from logs, adding password hashing if missing).
 ```
 
 ## Target Outcomes
@@ -81,18 +70,7 @@ Node.js/Express timesheet application that handles user data including names, em
 ### Step 1: Paste into Devin
 
 ```
-Scan timesheet-app for GDPR and PII compliance issues.
-Analyze the entire codebase to identify where personal
-data (names, emails, passwords, user identifiers) is
-stored, processed, transmitted, and logged. Check for:
-unencrypted PII in the database, PII leaked in logs or
-error messages, missing data anonymization, lack of
-consent mechanisms, and insecure data transmission.
-Create a PII_COMPLIANCE_REPORT.md with a data flow map,
-a list of compliance gaps rated by severity
-(Critical/High/Medium/Low), and recommended fixes.
-Implement the highest-priority fixes (e.g., removing
-PII from logs, adding password hashing if missing).
+Scan timesheet-app for GDPR and PII compliance issues. Analyze the entire codebase to identify where personal data (names, emails, passwords, user identifiers) is stored, processed, transmitted, and logged. Check for: unencrypted PII in the database, PII leaked in logs or error messages, missing data anonymization, lack of consent mechanisms, and insecure data transmission. Create a PII_COMPLIANCE_REPORT.md with a data flow map, a list of compliance gaps rated by severity (Critical/High/Medium/Low), and recommended fixes. Implement the highest-priority fixes (e.g., removing PII from logs, adding password hashing if missing).
 ```
 
 ### Step 2: Research with Ask Devin
@@ -128,19 +106,7 @@ Java banking application handling sensitive customer financial and personal data
 ### Step 1: Paste into Devin
 
 ```
-Scan Online-Banking-System-using-Java for GDPR and PII
-compliance issues. This is a banking application
-handling highly sensitive customer data. Analyze the
-codebase to identify: where customer PII (names,
-addresses, account numbers, financial data) is stored
-and processed, whether sensitive data is encrypted at
-rest and in transit, if PII appears in log output or
-exception messages, and whether there are data access
-controls. Create a PII_COMPLIANCE_REPORT.md with a data
-flow map for customer information, a severity-rated
-list of compliance gaps, and recommended fixes.
-Implement critical fixes (e.g., masking PII in logs,
-adding input validation for sensitive fields).
+Scan Online-Banking-System-using-Java for GDPR and PII compliance issues. This is a banking application handling highly sensitive customer data. Analyze the codebase to identify: where customer PII (names, addresses, account numbers, financial data) is stored and processed, whether sensitive data is encrypted at rest and in transit, if PII appears in log output or exception messages, and whether there are data access controls. Create a PII_COMPLIANCE_REPORT.md with a data flow map for customer information, a severity-rated list of compliance gaps, and recommended fixes. Implement critical fixes (e.g., masking PII in logs, adding input validation for sensitive fields).
 ```
 
 ### Step 2: Research with Ask Devin

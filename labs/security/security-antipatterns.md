@@ -29,14 +29,7 @@ Discover security flaws or design antipatterns preexisting in application source
 Paste this prompt into Devin to get started immediately:
 
 ```
-Perform a security code review of timesheet-app against
-the OWASP Top 10. Focus on: authentication weaknesses
-(email-only, no password), SQL injection risks in the
-SQLite queries, XSS vulnerabilities in the React
-frontend, and CSRF protection. For each finding,
-explain the vulnerability, its severity, and provide a
-recommended fix. Implement fixes for the top 3 most
-critical findings.
+Perform a security code review of timesheet-app against the OWASP Top 10. Focus on: authentication weaknesses (email-only, no password), SQL injection risks in the SQLite queries, XSS vulnerabilities in the React frontend, and CSRF protection. For each finding, explain the vulnerability, its severity, and provide a recommended fix. Implement fixes for the top 3 most critical findings.
 ```
 
 ## Target Outcomes
@@ -78,14 +71,7 @@ Node.js/Express application with email-only auth (no password) and potential SQL
 ### Step 1: Paste into Devin
 
 ```
-Perform a security code review of timesheet-app against
-the OWASP Top 10. Focus on: authentication weaknesses
-(email-only, no password), SQL injection risks in the
-SQLite queries, XSS vulnerabilities in the React
-frontend, and CSRF protection. For each finding,
-explain the vulnerability, its severity, and provide a
-recommended fix. Implement fixes for the top 3 most
-critical findings.
+Perform a security code review of timesheet-app against the OWASP Top 10. Focus on: authentication weaknesses (email-only, no password), SQL injection risks in the SQLite queries, XSS vulnerabilities in the React frontend, and CSRF protection. For each finding, explain the vulnerability, its severity, and provide a recommended fix. Implement fixes for the top 3 most critical findings.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -120,13 +106,7 @@ Java banking application — likely has multiple security antipatterns given the
 ### Step 1: Paste into Devin
 
 ```
-Perform a security code review of
-Online-Banking-System-using-Java against the OWASP
-Top 10. A banking application should have strong
-security — identify authentication bypass risks,
-injection vulnerabilities, hardcoded credentials,
-insecure session management, and missing encryption.
-Implement fixes for the top 3 most critical findings.
+Perform a security code review of Online-Banking-System-using-Java against the OWASP Top 10. A banking application should have strong security — identify authentication bypass risks, injection vulnerabilities, hardcoded credentials, insecure session management, and missing encryption. Implement fixes for the top 3 most critical findings.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -161,14 +141,7 @@ Spring Boot application — review for OWASP Top 10 issues in addition to depend
 ### Step 1: Paste into Devin
 
 ```
-Perform a security code review of
-uc-cve-remediation-regulatory-compliance beyond its
-dependency vulnerabilities. Look for: SQL injection via
-MyBatis dynamic SQL, insecure Spring Security
-configuration, missing CSRF protection, exposed
-actuator endpoints, and hardcoded secrets. For each
-finding, explain severity and recommended fix.
-Implement fixes for the top 3.
+Perform a security code review of uc-cve-remediation-regulatory-compliance beyond its dependency vulnerabilities. Look for: SQL injection via MyBatis dynamic SQL, insecure Spring Security configuration, missing CSRF protection, exposed actuator endpoints, and hardcoded secrets. For each finding, explain severity and recommended fix. Implement fixes for the top 3.
 ```
 
 ### Step 2: Research with Ask Devin

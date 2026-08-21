@@ -70,8 +70,7 @@ Finding: {{finding_title}}
 Advisory: {{advisory_url}}
 Affected file: {{file_path}}:{{line_number}}
 
-Fix the vulnerability and run the SAST scan again to verify
-the finding is resolved. Follow existing code patterns.
+Fix the vulnerability and run the SAST scan again to verify the finding is resolved. Follow existing code patterns.
 ```
 
 Variables like `{{repo}}`, `{{severity}}`, and `{{finding_title}}` are populated from the event payload. The agent receives a specific, actionable prompt — not a generic instruction.
@@ -196,11 +195,7 @@ Before activating any automation:
 **Type:** Scheduled (weekly, Monday morning)
 **Prompt:**
 ```
-Check all dependencies in [repo] for available updates.
-Bump patch and minor versions where tests pass. Bundle
-all compatible updates together. Skip major version
-bumps — flag those in the PR description for manual
-review.
+Check all dependencies in [repo] for available updates. Bump patch and minor versions where tests pass. Bundle all compatible updates together. Skip major version bumps — flag those in the PR description for manual review.
 ```
 
 ### Recipe 2: CI Failure Auto-Fix
@@ -209,9 +204,7 @@ review.
 **Condition:** Only for repos in the `backend/` namespace, only for branches with open PRs
 **Prompt:**
 ```
-Build failed on branch {{branch}} in {{repo}}. Read the
-CI logs, identify the failure, and push a fix commit to
-the same branch.
+Build failed on branch {{branch}} in {{repo}}. Read the CI logs, identify the failure, and push a fix commit to the same branch.
 ```
 
 ### Recipe 3: Security Finding Remediation
@@ -220,10 +213,7 @@ the same branch.
 **Condition:** Severity >= HIGH
 **Prompt:**
 ```
-Remediate {{finding_title}} ({{severity}}) in {{repo}}
-at {{file_path}}:{{line}}. Apply the recommended fix from
-{{advisory_url}}. Run the scan again to verify the finding
-is resolved.
+Remediate {{finding_title}} ({{severity}}) in {{repo}} at {{file_path}}:{{line}}. Apply the recommended fix from {{advisory_url}}. Run the scan again to verify the finding is resolved.
 ```
 
 ### Recipe 4: New Ticket Implementation
@@ -231,10 +221,7 @@ is resolved.
 **Type:** Event-driven (Jira/Linear ticket assigned to Devin)
 **Prompt:**
 ```
-Implement the work described in ticket {{ticket_id}}:
-{{ticket_title}}. Read the full description and acceptance
-criteria. Work in {{repo}} on a new branch. Link the
-resulting PR back to the ticket.
+Implement the work described in ticket {{ticket_id}}: {{ticket_title}}. Read the full description and acceptance criteria. Work in {{repo}} on a new branch. Link the resulting PR back to the ticket.
 ```
 
 ### Recipe 5: Security Swarm Auto Scan

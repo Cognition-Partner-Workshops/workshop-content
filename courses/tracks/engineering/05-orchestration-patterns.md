@@ -30,14 +30,9 @@ This section covers when and how to use each orchestration pattern. For the theo
 **Example prompt:**
 
 ```
-Fix the N+1 query in the articles feed endpoint in
-my-api-service. The endpoint GET /api/articles/feed
-currently executes one query per article to fetch the
-author profile. Refactor to use a JOIN or batch fetch.
+Fix the N+1 query in the articles feed endpoint in my-api-service. The endpoint GET /api/articles/feed currently executes one query per article to fetch the author profile. Refactor to use a JOIN or batch fetch.
 
-Verify by running: ./gradlew test
-Confirm that the feed endpoint test response time
-drops below 200ms for 100 articles (currently ~2s).
+Verify by running: ./gradlew test Confirm that the feed endpoint test response time drops below 200ms for 100 articles (currently ~2s).
 ```
 
 **When NOT to use:** When the same task needs to be applied to many targets (use parent-child) or when the task should run automatically in response to events (use event-driven) or on a schedule (use scheduled).
@@ -64,9 +59,7 @@ drops below 200ms for 100 articles (currently ~2s).
 **Example parent prompt:**
 
 ```
-Upgrade Spring Boot from 2.7 to 3.2 across the
-following microservices: order-service, user-service,
-notification-service, payment-service, inventory-service.
+Upgrade Spring Boot from 2.7 to 3.2 across the following microservices: order-service, user-service, notification-service, payment-service, inventory-service.
 
 For each service:
 1. Update Spring Boot version in build.gradle
@@ -75,8 +68,7 @@ For each service:
 4. Run ./gradlew test to verify
 5. Document breaking changes in the PR description
 
-Use the spring-boot-3-upgrade Playbook. Run up to
-5 services in parallel.
+Use the spring-boot-3-upgrade Playbook. Run up to 5 services in parallel.
 ```
 
 **Monitoring children:** The parent agent tracks child progress. If a child fails, the parent can retry, adjust the approach, or escalate. You will see individual PRs from each child — review them like any other PR.
@@ -137,14 +129,7 @@ Scheduled sessions are configured in Devin's settings or via the API:
 **Example scheduled session prompt:**
 
 ```
-Check all npm dependencies in my-frontend-app for
-available minor and patch updates. Run npm update to
-apply non-breaking upgrades. Run npm test and
-npm run build to verify nothing is broken. If any
-upgrade breaks the build, revert that specific
-upgrade and document why. Create a
-DEPENDENCY_UPDATES.md summarizing what was updated.
-Title the PR "chore: weekly dependency bump".
+Check all npm dependencies in my-frontend-app for available minor and patch updates. Run npm update to apply non-breaking upgrades. Run npm test and npm run build to verify nothing is broken. If any upgrade breaks the build, revert that specific upgrade and document why. Create a DEPENDENCY_UPDATES.md summarizing what was updated. Title the PR "chore: weekly dependency bump".
 ```
 
 ---

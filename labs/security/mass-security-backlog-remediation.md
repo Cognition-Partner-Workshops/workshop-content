@@ -30,29 +30,15 @@ This is an **agent orchestration pattern** — it demonstrates Devin coordinatin
 Paste this prompt into Devin to get started immediately:
 
 ```
-You are coordinating a mass security remediation across
-2 repositories. First, run security scans on both repos
-to build a consolidated findings report:
+You are coordinating a mass security remediation across 2 repositories. First, run security scans on both repos to build a consolidated findings report:
 
-Repo 1 — timesheet-app: Run npm audit --json and capture
-the output. Also run npx eslint . --format json to check
-for security-related lint violations.
+Repo 1 — timesheet-app: Run npm audit --json and capture the output. Also run npx eslint . --format json to check for security-related lint violations.
 
-Repo 2 — uc-cve-remediation-regulatory-compliance: Run
-./gradlew dependencyCheckAnalyze and capture the OWASP
-DC report.
+Repo 2 — uc-cve-remediation-regulatory-compliance: Run ./gradlew dependencyCheckAnalyze and capture the OWASP DC report.
 
-Create a consolidated SECURITY_BACKLOG.md that lists
-findings across both repos, organized by severity
-(CRITICAL > HIGH > MEDIUM). For each finding, note: the
-repo, the dependency/file, the CVE/rule ID, and the
-CVSS score.
+Create a consolidated SECURITY_BACKLOG.md that lists findings across both repos, organized by severity (CRITICAL > HIGH > MEDIUM). For each finding, note: the repo, the dependency/file, the CVE/rule ID, and the CVSS score.
 
-Then remediate the CRITICAL and HIGH findings in
-timesheet-app: upgrade vulnerable npm dependencies, fix
-ESLint security violations, and verify with a re-scan.
-Open a PR in timesheet-app with the fixes and a
-REMEDIATION_REPORT.md documenting what was fixed.
+Then remediate the CRITICAL and HIGH findings in timesheet-app: upgrade vulnerable npm dependencies, fix ESLint security violations, and verify with a re-scan. Open a PR in timesheet-app with the fixes and a REMEDIATION_REPORT.md documenting what was fixed.
 ```
 
 ## Architecture
@@ -123,29 +109,15 @@ Node.js/Express application. The child agent for this repo will focus on npm dep
 ### Step 1: Paste into Devin (Parent Session Prompt)
 
 ```
-You are coordinating a mass security remediation across
-2 repositories. First, run security scans on both repos
-to build a consolidated findings report:
+You are coordinating a mass security remediation across 2 repositories. First, run security scans on both repos to build a consolidated findings report:
 
-Repo 1 — timesheet-app: Run npm audit --json and capture
-the output. Also run npx eslint . --format json to check
-for security-related lint violations.
+Repo 1 — timesheet-app: Run npm audit --json and capture the output. Also run npx eslint . --format json to check for security-related lint violations.
 
-Repo 2 — uc-cve-remediation-regulatory-compliance: Run
-./gradlew dependencyCheckAnalyze and capture the OWASP
-DC report.
+Repo 2 — uc-cve-remediation-regulatory-compliance: Run ./gradlew dependencyCheckAnalyze and capture the OWASP DC report.
 
-Create a consolidated SECURITY_BACKLOG.md that lists
-findings across both repos, organized by severity
-(CRITICAL > HIGH > MEDIUM). For each finding, note: the
-repo, the dependency/file, the CVE/rule ID, and the
-CVSS score.
+Create a consolidated SECURITY_BACKLOG.md that lists findings across both repos, organized by severity (CRITICAL > HIGH > MEDIUM). For each finding, note: the repo, the dependency/file, the CVE/rule ID, and the CVSS score.
 
-Then remediate the CRITICAL and HIGH findings in
-timesheet-app: upgrade vulnerable npm dependencies, fix
-ESLint security violations, and verify with a re-scan.
-Open a PR in timesheet-app with the fixes and a
-REMEDIATION_REPORT.md documenting what was fixed.
+Then remediate the CRITICAL and HIGH findings in timesheet-app: upgrade vulnerable npm dependencies, fix ESLint security violations, and verify with a re-scan. Open a PR in timesheet-app with the fixes and a REMEDIATION_REPORT.md documenting what was fixed.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -180,28 +152,15 @@ Spring Boot 2.6.3 / Gradle application with 18+ known CVEs. The child agent for 
 ### Step 1: Paste into Devin (Child Session Prompt)
 
 ```
-Remediate the CRITICAL and HIGH CVEs in
-uc-cve-remediation-regulatory-compliance based on the
-following prioritized findings from the OWASP
-Dependency-Check scan:
+Remediate the CRITICAL and HIGH CVEs in uc-cve-remediation-regulatory-compliance based on the following prioritized findings from the OWASP Dependency-Check scan:
 
-1. Spring Boot 2.6.3 (CVE-2022-22965 Spring4Shell,
-   CVSS 9.8) — upgrade to Spring Boot 3.2+
-2. SnakeYAML 1.29 (CVE-2022-1471, CVSS 9.8) —
-   upgrade to 2.x
-3. sqlite-jdbc 3.36.0.3 (CVE-2023-32697, CVSS 9.8) —
-   upgrade to latest
-4. Spring Security (multiple CVEs) — addressed by
-   Spring Boot upgrade
-5. Jackson Databind (CVE-2022-42003, CVSS 7.5) —
-   upgrade to 2.15+
+1. Spring Boot 2.6.3 (CVE-2022-22965 Spring4Shell, CVSS 9.8) — upgrade to Spring Boot 3.2+
+2. SnakeYAML 1.29 (CVE-2022-1471, CVSS 9.8) — upgrade to 2.x
+3. sqlite-jdbc 3.36.0.3 (CVE-2023-32697, CVSS 9.8) — upgrade to latest
+4. Spring Security (multiple CVEs) — addressed by Spring Boot upgrade
+5. Jackson Databind (CVE-2022-42003, CVSS 7.5) — upgrade to 2.15+
 
-For each fix: upgrade the dependency in build.gradle,
-handle any breaking API changes (especially
-javax → jakarta for Spring Boot 3), and verify the
-build passes. Re-run ./gradlew dependencyCheckAnalyze
-to confirm remediation. Create a REMEDIATION_REPORT.md
-with before/after CVSS scores.
+For each fix: upgrade the dependency in build.gradle, handle any breaking API changes (especially javax → jakarta for Spring Boot 3), and verify the build passes. Re-run ./gradlew dependencyCheckAnalyze to confirm remediation. Create a REMEDIATION_REPORT.md with before/after CVSS scores.
 ```
 
 ### Step 2: Research with Ask Devin

@@ -88,11 +88,7 @@ DeepWiki over the repo, Devin typically maps an unfamiliar schema in minutes
 (coverage depends on repo structure).
 
 ```
-Using the Cognition-Partner-Workshops/otterworks repo, give me a map of
-the database schema across all services: the tables in auth-service
-(Flyway migrations) and admin-service (Rails schema.rb), their columns,
-types, FK relationships, enum constraints, and business rules. Identify
-which tables need synthetic data for a realistic lower-environment dataset.
+Using the Cognition-Partner-Workshops/otterworks repo, give me a map of the database schema across all services: the tables in auth-service (Flyway migrations) and admin-service (Rails schema.rb), their columns, types, FK relationships, enum constraints, and business rules. Identify which tables need synthetic data for a realistic lower-environment dataset.
 ```
 
 Expected: a tour of `services/auth-service/src/main/resources/db/migration/V*.sql`
@@ -170,24 +166,18 @@ Instead of launching each session by hand, run one **orchestrator** session that
 spawns child Devin sessions per issue and monitors them:
 
 ```
-Act as the orchestrator for synthetic test-data generation across multiple
-GitHub Issues, using child Devin sessions to parallelize the work.
+Act as the orchestrator for synthetic test-data generation across multiple GitHub Issues, using child Devin sessions to parallelize the work.
 
 Repo: Cognition-Partner-Workshops/otterworks
 
-Spawn one child Devin session per issue below. Give each child the repo, its
-own namespace, and tell it to follow the !generate-testdata playbook: read the
-issue's acceptance criteria, generate scripts, load data, and validate until
-green.
+Spawn one child Devin session per issue below. Give each child the repo, its own namespace, and tell it to follow the !generate-testdata playbook: read the issue's acceptance criteria, generate scripts, load data, and validate until green.
 
 Issues:
 1. Issue #376 -> namespace child1 (500 users + file-sharing audit logs)
 2. Issue #377 -> namespace child2 (50 incidents + audit trails)
 3. Issue #378 -> namespace child3 (announcements + feature flags)
 
-After launching, monitor the child sessions until each is validated green.
-Summarize results and call out any validation failures the children caught
-and fixed.
+After launching, monitor the child sessions until each is validated green. Summarize results and call out any validation failures the children caught and fixed.
 ```
 
 The children inherit the organization's DB credentials, and each writes to its
@@ -282,9 +272,7 @@ Configure a scheduled Devin session to regenerate test data nightly, keeping
 lower environments stocked with fresh, validated datasets:
 
 ```
-Every night at 2 AM UTC, run !generate-testdata against Issues labeled
-testdata-refresh in the Cognition-Partner-Workshops/otterworks repo,
-namespace nightly.
+Every night at 2 AM UTC, run !generate-testdata against Issues labeled testdata-refresh in the Cognition-Partner-Workshops/otterworks repo, namespace nightly.
 ```
 
 The same playbook and harness run unattended on a cadence — if validation fails,
@@ -295,10 +283,7 @@ Devin attempts to fix the generator before opening the PR.
 Set up an automation triggered when a new issue is labeled `testdata`:
 
 ```
-When a GitHub Issue is labeled testdata on the
-Cognition-Partner-Workshops/otterworks repo, start a Devin session that
-invokes !generate-testdata with the issue number and namespace derived
-from the issue ID.
+When a GitHub Issue is labeled testdata on the Cognition-Partner-Workshops/otterworks repo, start a Devin session that invokes !generate-testdata with the issue number and namespace derived from the issue ID.
 ```
 
 This turns test-data requests into a self-service workflow: a QA engineer writes

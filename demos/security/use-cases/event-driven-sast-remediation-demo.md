@@ -47,39 +47,15 @@ Before starting, confirm:
 Paste this into Devin to build the dual-scanner event-driven pipeline on OtterWorks:
 
 ```
-Create a GitHub Actions workflow called
-sast-auto-remediate.yml on the otterworks repo that
-supports two trigger paths:
+Create a GitHub Actions workflow called sast-auto-remediate.yml on the otterworks repo that supports two trigger paths:
 
 PATH 1 — Trivy (pull_request trigger):
-(1) triggers on PRs opened by users other than
-    devin-ai-integration[bot],
-(2) runs a Trivy filesystem scan for HIGH and CRITICAL
-    severity vulnerabilities (skip services/report-service,
-    respect .trivyignore),
-(3) parses the Trivy JSON output and posts a PR comment
-    summarizing findings by service,
-(4) if findings exist and fewer than 2 fix attempts have
-    been made, calls the Devin v3 API to create a
-    remediation session on the same branch,
-(5) if findings persist after 2 attempts, opens a GitHub
-    Issue for human review.
+(1) triggers on PRs opened by users other than devin-ai-integration[bot], (2) runs a Trivy filesystem scan for HIGH and CRITICAL severity vulnerabilities (skip services/report-service, respect .trivyignore), (3) parses the Trivy JSON output and posts a PR comment summarizing findings by service, (4) if findings exist and fewer than 2 fix attempts have been made, calls the Devin v3 API to create a remediation session on the same branch, (5) if findings persist after 2 attempts, opens a GitHub Issue for human review.
 
 PATH 2 — SonarCloud (check_run trigger):
-(1) listens for check_run completed events from the
-    sonarqubecloud GitHub app,
-(2) when the quality gate fails, validates the PR is
-    open and not authored by devin-ai-integration[bot],
-(3) checks that Devin hasn't already attempted a fix
-    (one-time remediation),
-(4) calls the Devin v3 API with SonarCloud dashboard
-    link and remediation instructions,
-(5) posts a PR comment with the Devin session link.
+(1) listens for check_run completed events from the sonarqubecloud GitHub app, (2) when the quality gate fails, validates the PR is open and not authored by devin-ai-integration[bot], (3) checks that Devin hasn't already attempted a fix (one-time remediation), (4) calls the Devin v3 API with SonarCloud dashboard link and remediation instructions, (5) posts a PR comment with the Devin session link.
 
-Also create sonar-project.properties for the polyglot
-monorepo and write docs/EVENT_DRIVEN_SECURITY.md
-documenting the architecture, bot-loop prevention, and
-escalation policy.
+Also create sonar-project.properties for the polyglot monorepo and write docs/EVENT_DRIVEN_SECURITY.md documenting the architecture, bot-loop prevention, and escalation policy.
 ```
 
 ---
@@ -199,12 +175,9 @@ engineering team.
 Open Devin and paste this prompt to start remediating the backlog:
 
 ```
-Review the SonarCloud dashboard for otterworks at
-https://sonarcloud.io/project/issues?id=Cognition-Partner-Workshops_otterworks&types=VULNERABILITY&resolved=false
+Review the SonarCloud dashboard for otterworks at https://sonarcloud.io/project/issues?id=Cognition-Partner-Workshops_otterworks&types=VULNERABILITY&resolved=false
 
-There are 29 open vulnerabilities across the polyglot
-monorepo. Triage them by severity (BLOCKER first, then
-CRITICAL, then MAJOR). For each one:
+There are 29 open vulnerabilities across the polyglot monorepo. Triage them by severity (BLOCKER first, then CRITICAL, then MAJOR). For each one:
 
 1. Read the SonarCloud issue detail to understand the fix.
 2. Check out a branch from main.
@@ -212,9 +185,7 @@ CRITICAL, then MAJOR). For each one:
 4. Run the affected service's tests.
 5. Push the fix.
 
-Group related fixes per service into single PRs when
-possible (e.g., all docker-compose.yml password issues
-in one PR, all Dockerfile COPY issues in another).
+Group related fixes per service into single PRs when possible (e.g., all docker-compose.yml password issues in one PR, all Dockerfile COPY issues in another).
 
 Skip findings in test files — those are acceptable.
 ```
@@ -385,9 +356,7 @@ created by the escalation job. The format:
 ```
 Title: SAST findings require manual review — PR #999
 Labels: security, needs-human-review
-Body:
-  Devin attempted to remediate these findings 2 times
-  without success. Manual review is required.
+Body: Devin attempted to remediate these findings 2 times without success. Manual review is required.
 
   [Full findings summary attached]
 ```
@@ -406,20 +375,14 @@ parent-child orchestration. The parent session triages findings and launches
 one child session per service for parallel remediation.
 
 ```
-You are coordinating a polyglot security remediation
-across the otterworks monorepo.
+You are coordinating a polyglot security remediation across the otterworks monorepo.
 
-Run make security-scan and capture the output. Create a
-SECURITY_BACKLOG.md that lists all CRITICAL and HIGH
-findings organized by service.
+Run make security-scan and capture the output. Create a SECURITY_BACKLOG.md that lists all CRITICAL and HIGH findings organized by service.
 
-Then launch parallel child sessions — one per affected
-service — with scoped instructions:
+Then launch parallel child sessions — one per affected service — with scoped instructions:
 - Each child works only on its assigned service directory
-- Each child upgrades the vulnerable dependency, runs
-  the service tests, and pushes to the same branch
-- After all children complete, summarize results in
-  REMEDIATION_SUMMARY.md
+- Each child upgrades the vulnerable dependency, runs the service tests, and pushes to the same branch
+- After all children complete, summarize results in REMEDIATION_SUMMARY.md
 ```
 
 This demonstrates the same event-driven pattern at organizational scale: one

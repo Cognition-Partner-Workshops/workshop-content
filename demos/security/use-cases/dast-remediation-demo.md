@@ -51,14 +51,10 @@ tenant URL in every prompt below and Devin will stand the stack up with
 ```
 !dast-remediation
 
-Finding: whatever the DAST suite reports first at
-critical or high severity.
-Target: https://api-t-<your-id>.demo.otterworks.app
+Finding: whatever the DAST suite reports first at critical or high severity. Target: https://api-t-<your-id>.demo.otterworks.app
 Repo: Cognition-Partner-Workshops/otterworks
 
-Reproduce it, fix it in the service that owns the
-control, redeploy the tenant, and re-run the probe
-until it reports secure. Do not commit the fix to main.
+Reproduce it, fix it in the service that owns the control, redeploy the tenant, and re-run the probe until it reports secure. Do not commit the fix to main.
 ```
 
 ---
@@ -82,14 +78,9 @@ Start with a question no static scanner answers: what does this system expose to
 the internet right now, and who is allowed to call it?
 
 ```
-Read the OtterWorks repo and map its runtime attack
-surface as an attacker would see it.
+Read the OtterWorks repo and map its runtime attack surface as an attacker would see it.
 
-Which routes are reachable through the API gateway
-without a token? Where does the gateway derive caller
-identity, and what does it forward to the backends?
-Which services enforce object ownership themselves
-rather than trusting the gateway?
+Which routes are reachable through the API gateway without a token? Where does the gateway derive caller identity, and what does it forward to the backends? Which services enforce object ownership themselves rather than trusting the gateway?
 
 Answer with file references.
 ```
@@ -120,9 +111,7 @@ Run the DAST suite against my tenant:
 
 make dast-scan DAST_TARGET=<your target>
 
-Then walk me through security/dast/reports/dast-report.md:
-which attacks succeeded, which failed, and which could
-not be assessed. Do not fix anything yet.
+Then walk me through security/dast/reports/dast-report.md: which attacks succeeded, which failed, and which could not be assessed. Do not fix anything yet.
 ```
 
 The suite registers two throwaway identities — an attacker and a victim,
@@ -169,13 +158,9 @@ not a route that is protecting anything, so the probe reported `inconclusive`
 and sent us to look at the write path instead.
 
 ```
-DAST-BOLA-DOCUMENTS came back inconclusive because the
-owner is refused as well as the attacker. That means
-the read-side check is not what is protecting these
-documents.
+DAST-BOLA-DOCUMENTS came back inconclusive because the owner is refused as well as the attacker. That means the read-side check is not what is protecting these documents.
 
-Look at how a document gets its owner_id on create.
-Can the attacker set it?
+Look at how a document gets its owner_id on create. Can the attacker set it?
 ```
 
 Devin finds that the create endpoint accepts `owner_id` from the request body.
@@ -208,14 +193,9 @@ says which endpoints nobody tried — and that number decays every time somebody
 merges a new route.
 
 ```
-Before we fix anything: how much of the attack surface
-did that scan actually reach?
+Before we fix anything: how much of the attack surface did that scan actually reach?
 
-Derive the edge-reachable routes from the source rather
-than from a crawl — the gateway's route table plus each
-service's own route definitions — and compare them with
-the requests the scan issued. Show me the routes nothing
-attacked, and which services you could not parse.
+Derive the edge-reachable routes from the source rather than from a crawl — the gateway's route table plus each service's own route definitions — and compare them with the requests the scan issued. Show me the routes nothing attacked, and which services you could not parse.
 ```
 
 Devin reads route definitions out of five frameworks — FastAPI decorators, Flask
@@ -262,12 +242,7 @@ The same reflex applied to the deployment configuration produces the second
 finding:
 
 ```
-The gateway is the only thing that authenticates a
-request and sets X-User-ID for the backends. Read
-docker-compose.yml and the Helm values for the backend
-services, and tell me whether anything can reach a
-backend without going through it. If so, prove it
-dynamically.
+The gateway is the only thing that authenticates a request and sets X-User-ID for the backends. Read docker-compose.yml and the Helm values for the backend services, and tell me whether anything can reach a backend without going through it. If so, prove it dynamically.
 ```
 
 Each backend chart enables its own ingress host, and compose publishes each
@@ -344,19 +319,11 @@ Three findings are left, in three different services, with nothing to do with
 each other. One session working through them serially is the slow way.
 
 ```
-Three DAST findings remain on my tenant:
-DAST-CREDENTIAL-BRUTE-FORCE (auth-service, Java),
-DAST-EXPOSED-TELEMETRY (api-gateway, Go), and
-DAST-MISSING-SECURITY-HEADERS (api-gateway, Go).
+Three DAST findings remain on my tenant: DAST-CREDENTIAL-BRUTE-FORCE (auth-service, Java), DAST-EXPOSED-TELEMETRY (api-gateway, Go), and DAST-MISSING-SECURITY-HEADERS (api-gateway, Go).
 
-Launch one child session per finding. Give each child
-the !dast-remediation playbook, its own branch off main,
-and its own target to scan so the scans do not collide.
-Each child re-runs make dast-verify for its own finding
-and opens its own PR.
+Launch one child session per finding. Give each child the !dast-remediation playbook, its own branch off main, and its own target to scan so the scans do not collide. Each child re-runs make dast-verify for its own finding and opens its own PR.
 
-Monitor them and report back with a table of finding,
-session, PR, and verify result.
+Monitor them and report back with a table of finding, session, PR, and verify result.
 ```
 
 Each child gets its own VM, its own scoped credentials, and its own tenant
@@ -421,16 +388,9 @@ runs the same playbook on a cadence — the recurring maintenance sweep no one
 volunteers for:
 
 ```
-Every weekday at 07:00 UTC, deploy a disposable tenant from
-main with scripts/deploy-tenant.sh, run
-make dast-scan DAST_TARGET=<that tenant's api URL>
-on Cognition-Partner-Workshops/otterworks, then tear the
-tenant down. A scan registers accounts and writes documents,
-so it never runs against a shared tenant.
+Every weekday at 07:00 UTC, deploy a disposable tenant from main with scripts/deploy-tenant.sh, run make dast-scan DAST_TARGET=<that tenant's api URL> on Cognition-Partner-Workshops/otterworks, then tear the tenant down. A scan registers accounts and writes documents, so it never runs against a shared tenant.
 
-If the gate fails on a finding that is not in
-security/dast/baseline.json, post the report summary to
-Slack with the finding IDs and the evidence.
+If the gate fails on a finding that is not in security/dast/baseline.json, post the report summary to Slack with the finding IDs and the evidence.
 ```
 
 **On an event.** A [Devin Automation](https://docs.devin.ai/product-guides/automations)

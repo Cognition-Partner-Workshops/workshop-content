@@ -22,13 +22,7 @@
 Paste this prompt into Devin to try migrating a COBOL program to Java:
 
 ```
-Analyze the COBOL program CBACT01C.cbl in
-uc-legacy-modernization-cobol-to-java. Understand its business
-logic, data structures (copybooks), and I/O operations.
-Rewrite it as a Java 17+ application using modern idioms.
-Create JUnit tests that verify the Java version produces
-identical results to the COBOL version for a set of sample
-inputs.
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs.
 ```
 
 ---
@@ -114,13 +108,7 @@ AWS Mainframe Modernization CardDemo (Apache 2.0). Contains 30+ COBOL programs (
 ### Step 1: Paste into Devin — COBOL to Java Migration
 
 ```
-Analyze the COBOL program CBACT01C.cbl in
-uc-legacy-modernization-cobol-to-java. Understand its business
-logic, data structures (copybooks), and I/O operations.
-Rewrite it as a Java 17+ application using modern idioms.
-Create JUnit tests that verify the Java version produces
-identical results to the COBOL version for a set of sample
-inputs.
+Analyze the COBOL program CBACT01C.cbl in uc-legacy-modernization-cobol-to-java. Understand its business logic, data structures (copybooks), and I/O operations. Rewrite it as a Java 17+ application using modern idioms. Create JUnit tests that verify the Java version produces identical results to the COBOL version for a set of sample inputs.
 ```
 
 ### Step 2: Research with Ask Devin

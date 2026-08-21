@@ -85,35 +85,17 @@ The PetClinic Angular frontend is a full-featured veterinary clinic management U
 ### Paste into Devin
 
 ```
-Migrate the petclinic-angular frontend from Angular to React
-using a test-driven approach with parallel child sessions.
-Scope to the three interconnected modules: owners, pets,
-and visits.
+Migrate the petclinic-angular frontend from Angular to React using a test-driven approach with parallel child sessions. Scope to the three interconnected modules: owners, pets, and visits.
 
-1. **Map the API contract:** Read the Angular service files
-   and TypeScript interfaces for owners, pets, and visits.
-   Produce docs/API_CONTRACT.md documenting each REST
-   endpoint: HTTP method, URL pattern, request/response
-   shapes, and error handling. Base URL is
-   http://localhost:9966/petclinic/api/. Commit this to a
-   new branch.
+1. **Map the API contract:** Read the Angular service files and TypeScript interfaces for owners, pets, and visits. Produce docs/API_CONTRACT.md documenting each REST endpoint: HTTP method, URL pattern, request/response shapes, and error handling. Base URL is http://localhost:9966/petclinic/api/. Commit this to a new branch.
 
 2. **Spin up two child sessions in parallel:**
 
-   Child A — "In petclinic-angular, create React Testing
-   Library + MSW tests in react-frontend/src/__tests__/
-   validating owner CRUD, pet management, and visit
-   creation against docs/API_CONTRACT.md."
+   Child A — "In petclinic-angular, create React Testing Library + MSW tests in react-frontend/src/__tests__/validating owner CRUD, pet management, and visit creation against docs/API_CONTRACT.md."
 
-   Child B — "In petclinic-angular, migrate the owners,
-   pets, and visits modules to React 18+/TypeScript/Vite
-   in react-frontend/. Preserve routing, form validation,
-   error handling. npm run build must pass."
+   Child B — "In petclinic-angular, migrate the owners, pets, and visits modules to React 18+/TypeScript/Vite in react-frontend/. Preserve routing, form validation, error handling. npm run build must pass."
 
-3. **When both children finish:** Merge both PRs into a
-   combined branch. Run the tests from Child A against
-   the React app from Child B. Report which tests pass
-   and which fail — do not attempt to fix failing tests.
+3. **When both children finish:** Merge both PRs into a combined branch. Run the tests from Child A against the React app from Child B. Report which tests pass and which fail — do not attempt to fix failing tests.
 ```
 
 ### While Devin works: try Ask Devin
@@ -165,25 +147,13 @@ This Spring Boot 2.6.3 application ships with known CVEs including Spring4Shell 
 ### Paste into Devin
 
 ```
-Perform a security assessment of
-uc-cve-remediation-regulatory-compliance and remediate the
-most critical findings.
+Perform a security assessment of uc-cve-remediation-regulatory-compliance and remediate the most critical findings.
 
-1. **Scan:** Run `./gradlew dependencyCheckAnalyze` to
-   identify dependency CVEs. Categorize findings by CVSS
-   severity.
+1. **Scan:** Run `./gradlew dependencyCheckAnalyze` to identify dependency CVEs. Categorize findings by CVSS severity.
 
-2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18
-   (resolves Spring4Shell CVE-2022-22965), SnakeYAML from
-   1.29 to 2.0+ (resolves CVE-2022-1471), and sqlite-jdbc
-   from 3.36.0.3 to 3.42+. Fix any breaking API changes
-   from the upgrades and ensure `./gradlew build` passes.
+2. **Remediate:** Upgrade Spring Boot from 2.6.3 to 2.7.18 (resolves Spring4Shell CVE-2022-22965), SnakeYAML from 1.29 to 2.0+ (resolves CVE-2022-1471), and sqlite-jdbc from 3.36.0.3 to 3.42+. Fix any breaking API changes from the upgrades and ensure `./gradlew build` passes.
 
-3. **Re-scan and document:** Run
-   `./gradlew dependencyCheckAnalyze` again to verify
-   remediations. Create `SECURITY_REMEDIATION.md` with a
-   before/after findings table (CVE ID, severity, old
-   version, new version, status).
+3. **Re-scan and document:** Run `./gradlew dependencyCheckAnalyze` again to verify remediations. Create `SECURITY_REMEDIATION.md` with a before/after findings table (CVE ID, severity, old version, new version, status).
 ```
 
 ### While Devin works: try Ask Devin
@@ -229,30 +199,13 @@ This is a Spring Boot 2.6.3 / Java 11 monolith implementing the RealWorld bloggi
 ### Paste into Devin
 
 ```
-Extract the Article bounded context from
-uc-spring-boot-upgrade-microservice-extraction — a Spring
-Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis
-persistence, and a Next.js frontend.
+Extract the Article bounded context from uc-spring-boot-upgrade-microservice-extraction — a Spring Boot 2.6.3 monolith with REST and GraphQL APIs, MyBatis persistence, and a Next.js frontend.
 
-1. **Read the codebase:** Identify the 4 bounded contexts
-   (articles/tags, comments, favorites, users/profiles)
-   and their coupling points.
+1. **Read the codebase:** Identify the 4 bounded contexts (articles/tags, comments, favorites, users/profiles) and their coupling points.
 
-2. **Document extraction decisions:** Create
-   docs/EXTRACTION_DECISIONS.md documenting: which domain
-   objects move to the Article service (articles, tags,
-   comments, favorites), what stays (users/profiles),
-   coupling points between domains, and the cross-service
-   communication strategy.
+2. **Document extraction decisions:** Create docs/EXTRACTION_DECISIONS.md documenting: which domain objects move to the Article service (articles, tags, comments, favorites), what stays (users/profiles), coupling points between domains, and the cross-service communication strategy.
 
-3. **Extract:** Create article-service/ — a standalone
-   Spring Boot service with its own build configuration,
-   database migrations, and MyBatis persistence. Include
-   articles, tags, comments, and favorites. Replace direct
-   User domain calls with a REST client and DTOs.
-   ./gradlew build must pass for both services. Do not
-   attempt to fix pre-existing CI thresholds (e.g., JaCoCo
-   coverage gates).
+3. **Extract:** Create article-service/ — a standalone Spring Boot service with its own build configuration, database migrations, and MyBatis persistence. Include articles, tags, comments, and favorites. Replace direct User domain calls with a REST client and DTOs. ./gradlew build must pass for both services. Do not attempt to fix pre-existing CI thresholds (e.g., JaCoCo coverage gates).
 ```
 
 ### While Devin works: try Ask Devin
@@ -305,35 +258,20 @@ This lab runs in **two parallel sessions** to cover more ground:
 
 **Session A — Requirements & Implementation:**
 ```
-Add a "Projects" management feature to timesheet-app. This
-is a React 19 + Node.js/Express + SQLite app for tracking
-billable hours.
+Add a "Projects" management feature to timesheet-app. This is a React 19 + Node.js/Express + SQLite app for tracking billable hours.
 
-Build the full feature following existing patterns — backend
-Express routes, SQLite migration (Projects table: id, name,
-description, client_id FK, start_date, end_date, status
-[active/completed/on-hold], budget_hours), frontend React
-components with MUI styling. Link projects to existing
-clients and work entries. Include backend API tests.
+Build the full feature following existing patterns — backend Express routes, SQLite migration (Projects table: id, name, description, client_id FK, start_date, end_date, status [active/completed/on-hold], budget_hours), frontend React components with MUI styling. Link projects to existing clients and work entries. Include backend API tests.
 ```
 
 **Session B — Requirements for a Second Feature (optional, kick off in parallel):**
 ```
-Analyze timesheet-app and propose a "Dashboard & Analytics"
-feature. Create a detailed GitHub Issue with:
-- User stories for a dashboard showing: total hours this week/
-  month, hours by client breakdown (pie chart), hours trend
-  over time (line chart), top projects by hours, utilization
-  rate (logged hours vs. available hours)
-- Technical design: which charting library to use (evaluate
-  Recharts vs. Chart.js vs. Nivo), API endpoints needed for
-  aggregation queries, database query designs
+Analyze timesheet-app and propose a "Dashboard & Analytics" feature. Create a detailed GitHub Issue with:
+- User stories for a dashboard showing: total hours this week/month, hours by client breakdown (pie chart), hours trend over time (line chart), top projects by hours, utilization rate (logged hours vs. available hours)
+- Technical design: which charting library to use (evaluate Recharts vs. Chart.js vs. Nivo), API endpoints needed for aggregation queries, database query designs
 - Acceptance criteria for each dashboard widget
 - Estimated implementation complexity for each component
 
-Do not implement — just produce the requirements document as a
-GitHub Issue. This shows how Devin can do technical discovery
-and requirements gathering.
+Do not implement — just produce the requirements document as a GitHub Issue. This shows how Devin can do technical discovery and requirements gathering.
 ```
 
 ### While Devin works: try Ask Devin
@@ -383,24 +321,15 @@ Participants who want to keep exploring after the workshop can try these additio
 **Session 1 — Write Tests:**
 
 ```
-I want to add a "duplicate work entry" feature to
-timesheet-app. Write failing Jest tests for a new
-POST /api/work-entries/:id/duplicate endpoint that
-creates a copy of an existing work entry with today's
-date.
+I want to add a "duplicate work entry" feature to timesheet-app. Write failing Jest tests for a new POST /api/work-entries/:id/duplicate endpoint that creates a copy of an existing work entry with today's date.
 
-Test: successful duplication, 404 for non-existent
-entry, 403 for entry owned by another user. Commit
-the tests to a new branch.
+Test: successful duplication, 404 for non-existent entry, 403 for entry owned by another user. Commit the tests to a new branch.
 ```
 
 **Session 2 — Implement:**
 
 ```
-The branch feature/duplicate-entry in timesheet-app has
-failing tests for a new "duplicate work entry" feature.
-Implement the feature so all tests pass. Do not modify
-the test files.
+The branch feature/duplicate-entry in timesheet-app has failing tests for a new "duplicate work entry" feature. Implement the feature so all tests pass. Do not modify the test files.
 ```
 
 ---
@@ -414,23 +343,16 @@ the test files.
 #### Paste into Devin
 
 ```
-Upgrade uc-spring-boot-upgrade-microservice-extraction from
-Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
+Upgrade uc-spring-boot-upgrade-microservice-extraction from Java 11 + Spring Boot 2.6.3 to Java 17 + Spring Boot 3.2.
 
 Handle the full upgrade checklist:
-1. Update build.gradle — Spring Boot plugin, Java target
-   compatibility, and dependency versions
-2. Migrate javax.* imports to jakarta.* across all source
-   files
-3. Update Spring Security configuration to the new lambda
-   DSL (Spring Security 6.x)
+1. Update build.gradle — Spring Boot plugin, Java target compatibility, and dependency versions
+2. Migrate javax.* imports to jakarta.* across all source files
+3. Update Spring Security configuration to the new lambda DSL (Spring Security 6.x)
 4. Fix any deprecated MyBatis or DGS (GraphQL) APIs
-5. Update Flyway configuration for Spring Boot 3
-   compatibility
-6. Run ./gradlew build and ./gradlew test — fix any
-   compilation errors or test failures
-7. Document the breaking changes encountered and how each
-   was resolved in the PR description
+5. Update Flyway configuration for Spring Boot 3 compatibility
+6. Run ./gradlew build and ./gradlew test — fix any compilation errors or test failures
+7. Document the breaking changes encountered and how each was resolved in the PR description
 ```
 
 ---
@@ -444,29 +366,16 @@ Handle the full upgrade checklist:
 #### Paste into Devin
 
 ```
-Analyze the COBOL copybook `app/cpy/CVACT01Y.cpy` in
-ts-cobol-carddemo. This defines the ACCOUNT-RECORD
-layout (300 bytes) with fields like ACCT-ID
-(PIC 9(11)), ACCT-CURR-BAL (PIC S9(10)V99), dates
-(PIC X(10)), and FILLER.
+Analyze the COBOL copybook `app/cpy/CVACT01Y.cpy` in ts-cobol-carddemo. This defines the ACCOUNT-RECORD layout (300 bytes) with fields like ACCT-ID (PIC 9(11)), ACCT-CURR-BAL (PIC S9(10)V99), dates (PIC X(10)), and FILLER.
 
 Generate:
-1. A PySpark script that reads
-   `app/data/ASCII/acctdata.txt` as a fixed-width file
-   using the copybook-derived schema
-2. A JSON schema file describing each field's name,
-   COBOL PIC clause, PySpark type, byte offset, and
-   length
-3. Validation output comparing parsed PySpark DataFrame
-   row counts and sample values against the raw feed
-   file
+1. A PySpark script that reads `app/data/ASCII/acctdata.txt` as a fixed-width file using the copybook-derived schema
+2. A JSON schema file describing each field's name, COBOL PIC clause, PySpark type, byte offset, and length
+3. Validation output comparing parsed PySpark DataFrame row counts and sample values against the raw feed file
 
-Then repeat for `CUSTREC.cpy` → `custdata.txt` and
-`CVACT02Y.cpy` → `carddata.txt`.
+Then repeat for `CUSTREC.cpy` → `custdata.txt` and `CVACT02Y.cpy` → `carddata.txt`.
 
-Create a `COPYBOOK_PARSING_NOTES.md` documenting your
-type-mapping decisions (e.g., COMP-3 → DecimalType,
-PIC X → StringType).
+Create a `COPYBOOK_PARSING_NOTES.md` documenting your type-mapping decisions (e.g., COMP-3 → DecimalType, PIC X → StringType).
 ```
 
 ---

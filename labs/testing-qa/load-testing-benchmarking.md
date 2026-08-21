@@ -31,13 +31,7 @@ Create load test suites using k6 or Gatling, define performance baselines, and a
 Paste this into a new Devin session to get started immediately:
 
 ```
-Create a k6 load test suite for timesheet-app. Write
-load test scripts that cover: authentication flow, client
-CRUD operations, work entry creation, and report
-generation (including CSV/PDF export). Define realistic
-load profiles with ramp-up, sustained load, and ramp-down
-stages. Include performance thresholds (p95 latency
-< 500ms, error rate < 1%). Document the baseline results.
+Create a k6 load test suite for timesheet-app. Write load test scripts that cover: authentication flow, client CRUD operations, work entry creation, and report generation (including CSV/PDF export). Define realistic load profiles with ramp-up, sustained load, and ramp-down stages. Include performance thresholds (p95 latency < 500ms, error rate < 1%). Document the baseline results.
 ```
 
 <a id="target-outcomes"></a>
@@ -84,13 +78,7 @@ Node.js/Express API with authentication, CRUD operations, and report generation 
 ### Step 1: Paste into Devin
 
 ```
-Create a k6 load test suite for timesheet-app. Write
-load test scripts that cover: authentication flow, client
-CRUD operations, work entry creation, and report
-generation (including CSV/PDF export). Define realistic
-load profiles with ramp-up, sustained load, and ramp-down
-stages. Include performance thresholds (p95 latency
-< 500ms, error rate < 1%). Document the baseline results.
+Create a k6 load test suite for timesheet-app. Write load test scripts that cover: authentication flow, client CRUD operations, work entry creation, and report generation (including CSV/PDF export). Define realistic load profiles with ramp-up, sustained load, and ramp-down stages. Include performance thresholds (p95 latency < 500ms, error rate < 1%). Document the baseline results.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -125,14 +113,7 @@ Spring Boot monolith with REST and GraphQL APIs — suitable for Gatling or k6 l
 ### Step 1: Paste into Devin
 
 ```
-Create a Gatling load test suite for
-uc-spring-boot-upgrade-microservice-extraction. Write
-simulation scripts that cover: user authentication,
-article CRUD operations, comment creation, and tag
-listing. Include both REST API and GraphQL endpoint
-scenarios. Define load profiles with graduated ramp-up
-(10 to 100 users over 2 minutes) and sustained load.
-Set performance thresholds and document baseline results.
+Create a Gatling load test suite for uc-spring-boot-upgrade-microservice-extraction. Write simulation scripts that cover: user authentication, article CRUD operations, comment creation, and tag listing. Include both REST API and GraphQL endpoint scenarios. Define load profiles with graduated ramp-up (10 to 100 users over 2 minutes) and sustained load. Set performance thresholds and document baseline results.
 ```
 
 ### Step 2: Research with Ask Devin

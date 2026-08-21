@@ -21,38 +21,22 @@
 Paste this prompt into Devin to try building a migration test harness for the CardDemo application:
 
 ```
-Design and implement a migration test harness for
-uc-legacy-modernization-cobol-to-java. Create the following:
+Design and implement a migration test harness for uc-legacy-modernization-cobol-to-java. Create the following:
 
 1. TEST_STRATEGY.md — Document the testing approach:
-   - Golden-file tests: which programs to capture outputs
-     for, what inputs to use, how to compare
-   - Differential tests: how to run old (COBOL) and new
-     (Java) implementations side-by-side
-   - Batch reconciliation: what totals, counts, and
-     checksums to verify after each batch run
-   - Contract tests: what file formats, record layouts,
-     and interface contracts to codify
+   - Golden-file tests: which programs to capture outputs for, what inputs to use, how to compare
+   - Differential tests: how to run old (COBOL) and new (Java) implementations side-by-side
+   - Batch reconciliation: what totals, counts, and checksums to verify after each batch run
+   - Contract tests: what file formats, record layouts, and interface contracts to codify
 
-2. golden-files/ — Parse the ASCII data files in
-   app/data/ASCII/ using the field layouts defined in the
-   copybooks (app/cpy/). For each data file, produce a
-   structured JSON representation that serves as the golden
-   reference.
+2. golden-files/ — Parse the ASCII data files in app/data/ASCII/ using the field layouts defined in the copybooks (app/cpy/). For each data file, produce a structured JSON representation that serves as the golden reference.
 
 3. test-harness/ — Create a Java or Python project with:
-   - A parser utility that reads fixed-width COBOL data
-     files based on copybook PIC clause definitions
-   - A comparison utility that diffs two outputs
-     field-by-field and reports mismatches
-   - Reconciliation check functions: record count
-     validation, numeric field sum validation,
-     cross-reference integrity checks
+   - A parser utility that reads fixed-width COBOL data files based on copybook PIC clause definitions
+   - A comparison utility that diffs two outputs field-by-field and reports mismatches
+   - Reconciliation check functions: record count validation, numeric field sum validation, cross-reference integrity checks
 
-4. RECONCILIATION_CHECKS.md — For each batch job in
-   app/jcl/, document: what it reads, what it writes, what
-   reconciliation checks should pass, and what business
-   rules it enforces.
+4. RECONCILIATION_CHECKS.md — For each batch job in app/jcl/, document: what it reads, what it writes, what reconciliation checks should pass, and what business rules it enforces.
 ```
 
 ---
@@ -130,44 +114,22 @@ AWS Mainframe Modernization CardDemo (Apache 2.0). Contains ASCII data files (ac
 ### Step 1: Paste into Devin — Test Harness Design
 
 ```
-Design and implement a migration test harness for
-uc-legacy-modernization-cobol-to-java. Create the following:
+Design and implement a migration test harness for uc-legacy-modernization-cobol-to-java. Create the following:
 
-1. TEST_STRATEGY.md — Document the testing approach for
-   migrating this COBOL application:
-   - Golden-file tests: which programs to capture outputs
-     for, what inputs to use, how to compare
-   - Differential tests: how to run old (COBOL) and new
-     (Java) implementations side-by-side
-   - Batch reconciliation: what totals, counts, and
-     checksums to verify after each batch run
-   - Contract tests: what file formats, record layouts,
-     and interface contracts to codify
+1. TEST_STRATEGY.md — Document the testing approach for migrating this COBOL application:
+   - Golden-file tests: which programs to capture outputs for, what inputs to use, how to compare
+   - Differential tests: how to run old (COBOL) and new (Java) implementations side-by-side
+   - Batch reconciliation: what totals, counts, and checksums to verify after each batch run
+   - Contract tests: what file formats, record layouts, and interface contracts to codify
 
-2. golden-files/ — Parse the ASCII data files in
-   app/data/ASCII/ using the field layouts defined in the
-   copybooks (app/cpy/). For each data file, produce a
-   structured JSON representation that serves as the golden
-   reference. Document what each field means based on the
-   copybook definitions.
+2. golden-files/ — Parse the ASCII data files in app/data/ASCII/ using the field layouts defined in the copybooks (app/cpy/). For each data file, produce a structured JSON representation that serves as the golden reference. Document what each field means based on the copybook definitions.
 
 3. test-harness/ — Create a Java or Python project with:
-   - A parser utility that reads fixed-width COBOL data
-     files based on copybook PIC clause definitions
-   - A comparison utility that diffs two outputs
-     field-by-field and reports mismatches with field
-     names and positions
-   - Reconciliation check functions: record count
-     validation, numeric field sum validation,
-     cross-reference integrity checks (e.g., every card
-     in cardxref.txt has a matching account in
-     acctdata.txt)
+   - A parser utility that reads fixed-width COBOL data files based on copybook PIC clause definitions
+   - A comparison utility that diffs two outputs field-by-field and reports mismatches with field names and positions
+   - Reconciliation check functions: record count validation, numeric field sum validation, cross-reference integrity checks (e.g., every card in cardxref.txt has a matching account in acctdata.txt)
 
-4. RECONCILIATION_CHECKS.md — For each batch job in
-   app/jcl/, document: what it reads, what it writes, what
-   reconciliation checks should pass (record counts, totals,
-   referential integrity), and what business rules it
-   enforces.
+4. RECONCILIATION_CHECKS.md — For each batch job in app/jcl/, document: what it reads, what it writes, what reconciliation checks should pass (record counts, totals, referential integrity), and what business rules it enforces.
 ```
 
 ### Step 2: Research with Ask Devin

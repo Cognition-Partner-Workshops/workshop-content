@@ -95,14 +95,7 @@ produce it. With DeepWiki over the repo, Devin typically maps an unfamiliar
 estate in minutes (coverage depends on repo structure).
 
 ```
-Using the uc-api-migration-mulesoft-to-boomi repo, run the estate
-assessment (make inventory) over the vendored MuleSoft source at
-contracts/source/employee-services-api.xml and walk me through the
-report: every flow, its endpoint, connectors and SQL used, DataWeave
-transform count, error handlers, the complexity score, and — most
-importantly — which flows map cleanly to Boomi processes and which are
-flagged for redesign (object store usage, Salesforce callback flows,
-static web content) and why.
+Using the uc-api-migration-mulesoft-to-boomi repo, run the estate assessment (make inventory) over the vendored MuleSoft source at contracts/source/employee-services-api.xml and walk me through the report: every flow, its endpoint, connectors and SQL used, DataWeave transform count, error handlers, the complexity score, and — most importantly — which flows map cleanly to Boomi processes and which are flagged for redesign (object store usage, Salesforce callback flows, static web content) and why.
 ```
 
 Expected: the per-flow inventory from `inventory/report/estate.md` — the 7
@@ -123,13 +116,10 @@ catches a divergence.
 ```
 !convert-mulesoft-to-boomi
 
-Convert the employee goals route from the MuleSoft estate into a Boomi
-process component in Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-boomi.
+Convert the employee goals route from the MuleSoft estate into a Boomi process component in Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-boomi.
 
-- MuleSoft source: contracts/source/employee-services-api.xml
-  (the get:\employee\(employeeId)\goals flow and validate-token-subflow)
-- Scope: GET /api/employee/{employeeId}/goals, plus the shared
-  "Common - Validate Token" subprocess it requires
+- MuleSoft source: contracts/source/employee-services-api.xml (the get:\employee\(employeeId)\goals flow and validate-token-subflow)
+- Scope: GET /api/employee/{employeeId}/goals, plus the shared "Common - Validate Token" subprocess it requires
 - Namespace: migration/emp-goals
 ```
 
@@ -169,28 +159,17 @@ agent dividing and conquering across the wave, each child on its own namespace
 branch with its own verified PR. Paste:
 
 ```
-Act as the orchestrator for a MuleSoft-to-Boomi migration, using child
-Devin sessions to parallelize the work in
-Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-boomi.
+Act as the orchestrator for a MuleSoft-to-Boomi migration, using child Devin sessions to parallelize the work in Cognition-Partner-Workshops/uc-api-migration-mulesoft-to-boomi.
 
-Spawn one child Devin session per route group below. Give each child its
-own namespace branch (migration/child1, child2, ...) and tell it to
-follow the !convert-mulesoft-to-boomi playbook (the repo's Skill supplies
-the make validate / make parity mechanics): treat the recorded MuleSoft
-behavior as the source of truth, reproduce it exactly, and iterate until
-the component gate and every parity case for its routes are green.
+Spawn one child Devin session per route group below. Give each child its own namespace branch (migration/child1, child2, ...) and tell it to follow the !convert-mulesoft-to-boomi playbook (the repo's Skill supplies the make validate / make parity mechanics): treat the recorded MuleSoft behavior as the source of truth, reproduce it exactly, and iterate until the component gate and every parity case for its routes are green.
 
 Route groups:
 1. OAuth + health: POST /oauth/token, GET /health
 2. Learning status: GET /api/employee/{employeeId}/learning-status
 3. Pay date: GET /api/employee/{employeeId}/next-pay-date
-4. PTO: GET /api/employee/{employeeId}/pto/balance +
-   POST /api/employee/{employeeId}/pto/schedule
+4. PTO: GET /api/employee/{employeeId}/pto/balance + POST /api/employee/{employeeId}/pto/schedule
 
-After launching, monitor the children until every route group is
-converted with green gates. Summarize results and call out any parity
-divergences the children caught (status codes, field types, array
-ordering, or database side effects that did not match the source).
+After launching, monitor the children until every route group is converted with green gates. Summarize results and call out any parity divergences the children caught (status codes, field types, array ordering, or database side effects that did not match the source).
 ```
 
 Each child runs in its own isolated VM with its own scoped credentials and

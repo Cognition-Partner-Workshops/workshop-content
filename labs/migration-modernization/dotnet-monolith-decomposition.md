@@ -22,28 +22,17 @@
 Paste this prompt into Devin to try extracting a domain from the QuickApp monolith:
 
 ```
-Analyze the QuickApp monolith (quickapp-monolith) and
-extract the Order Management domain into a standalone
-.NET Web API microservice. Work on branch
-workshop-<attendee_id>.
+Analyze the QuickApp monolith (quickapp-monolith) and extract the Order Management domain into a standalone .NET Web API microservice. Work on branch workshop-<attendee_id>.
 
 Deliverables:
-1. New .NET Web API for the order-service with its own
-   models, controllers, services, and EF Core DbContext
-2. Shared contracts — DTOs and events in a shared library
-   for inter-service communication
+1. New .NET Web API for the order-service with its own models, controllers, services, and EF Core DbContext
+2. Shared contracts — DTOs and events in a shared library for inter-service communication
 3. Dockerfile — multi-stage build for the order-service
-4. Docker Compose — local development setup running the
-   monolith and order-service together (SQLite per service)
-5. Monolith refactoring — replace in-process Order calls
-   with an HTTP client that calls the new service
-6. Integration smoke test — verify order creation flows
-   through both services
+4. Docker Compose — local development setup running the monolith and order-service together (SQLite per service)
+5. Monolith refactoring — replace in-process Order calls with an HTTP client that calls the new service
+6. Integration smoke test — verify order creation flows through both services
 
-Push the new order-service to quickapp-microservices on
-branch workshop-<attendee_id>. Create a PR.
-Push the monolith refactoring to quickapp-monolith on
-branch workshop-<attendee_id>. Create a PR.
+Push the new order-service to quickapp-microservices on branch workshop-<attendee_id>. Create a PR. Push the monolith refactoring to quickapp-monolith on branch workshop-<attendee_id>. Create a PR.
 ```
 
 ---
@@ -126,28 +115,17 @@ Each participant creates a `workshop-<attendee_id>` branch from `main` and pushe
 ### Step 1: Paste into Devin — Domain Extraction
 
 ```
-Analyze the QuickApp monolith (quickapp-monolith) and
-extract the Order Management domain into a standalone
-.NET Web API microservice. Work on branch
-workshop-<attendee_id>.
+Analyze the QuickApp monolith (quickapp-monolith) and extract the Order Management domain into a standalone .NET Web API microservice. Work on branch workshop-<attendee_id>.
 
 Deliverables:
-1. New .NET Web API for the order-service with its own
-   models, controllers, services, and EF Core DbContext
-2. Shared contracts — DTOs and events in a shared library
-   for inter-service communication
+1. New .NET Web API for the order-service with its own models, controllers, services, and EF Core DbContext
+2. Shared contracts — DTOs and events in a shared library for inter-service communication
 3. Dockerfile — multi-stage build for the order-service
-4. Docker Compose — local development setup running the
-   monolith and order-service together (SQLite per service)
-5. Monolith refactoring — replace in-process Order calls
-   with an HTTP client that calls the new service
-6. Integration smoke test — verify order creation flows
-   through both services
+4. Docker Compose — local development setup running the monolith and order-service together (SQLite per service)
+5. Monolith refactoring — replace in-process Order calls with an HTTP client that calls the new service
+6. Integration smoke test — verify order creation flows through both services
 
-Push the new order-service to quickapp-microservices on
-branch workshop-<attendee_id>. Create a PR.
-Push the monolith refactoring to quickapp-monolith on
-branch workshop-<attendee_id>. Create a PR.
+Push the new order-service to quickapp-microservices on branch workshop-<attendee_id>. Create a PR. Push the monolith refactoring to quickapp-monolith on branch workshop-<attendee_id>. Create a PR.
 ```
 
 ### Step 2: Research with Ask Devin

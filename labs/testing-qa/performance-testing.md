@@ -34,12 +34,7 @@ Profile, benchmark, and optimize application performance. This challenge covers 
 Paste this into a new Devin session to get started immediately:
 
 ```
-Run timesheet-app locally and profile the API endpoints.
-Identify the slowest endpoints and database queries. Add
-request timing middleware to measure response times.
-Optimize the top 3 slowest operations (query optimization,
-adding indexes, caching). Create a simple benchmark script
-to measure before/after performance.
+Run timesheet-app locally and profile the API endpoints. Identify the slowest endpoints and database queries. Add request timing middleware to measure response times. Optimize the top 3 slowest operations (query optimization, adding indexes, caching). Create a simple benchmark script to measure before/after performance.
 ```
 
 <a id="target-outcomes"></a>
@@ -90,12 +85,7 @@ Node.js/Express backend with SQLite — good candidate for query optimization an
 ### Step 1: Paste into Devin
 
 ```
-Run timesheet-app locally and profile the API endpoints.
-Identify the slowest endpoints and database queries. Add
-request timing middleware to measure response times.
-Optimize the top 3 slowest operations (query optimization,
-adding indexes, caching). Create a simple benchmark script
-to measure before/after performance.
+Run timesheet-app locally and profile the API endpoints. Identify the slowest endpoints and database queries. Add request timing middleware to measure response times. Optimize the top 3 slowest operations (query optimization, adding indexes, caching). Create a simple benchmark script to measure before/after performance.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -129,11 +119,7 @@ Complex Next.js application with Prisma ORM — many opportunities for database 
 ### Step 1: Paste into Devin
 
 ```
-Start calcom locally with `yarn dev`. Profile the booking
-page load time and the availability check API. Identify
-slow database queries using Prisma query logging. Optimize
-the top 3 performance bottlenecks. Create before/after
-measurements.
+Start calcom locally with `yarn dev`. Profile the booking page load time and the availability check API. Identify slow database queries using Prisma query logging. Optimize the top 3 performance bottlenecks. Create before/after measurements.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -167,12 +153,7 @@ Spring Boot monolith with MyBatis and SQLite — opportunities for query optimiz
 ### Step 1: Paste into Devin
 
 ```
-Run uc-spring-boot-upgrade-microservice-extraction locally
-and profile the article listing and feed endpoints. Enable
-SQL logging to identify slow queries. Add Spring Boot
-Actuator for metrics. Optimize the top 3 performance
-bottlenecks (query optimization, caching with Spring
-Cache, pagination improvements).
+Run uc-spring-boot-upgrade-microservice-extraction locally and profile the article listing and feed endpoints. Enable SQL logging to identify slow queries. Add Spring Boot Actuator for metrics. Optimize the top 3 performance bottlenecks (query optimization, caching with Spring Cache, pagination improvements).
 ```
 
 ### Step 2: Research with Ask Devin

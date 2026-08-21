@@ -32,13 +32,7 @@ Diagnose and fix failing CI pipelines. This exercises Devin's ability to read CI
 Paste this into a new Devin session to get started immediately:
 
 ```
-The CI pipeline for timesheet-app is failing. Look at the
-GitHub Actions workflow logs, identify the root cause, and
-fix it. If the failure is a dependency issue, update the
-lockfile. If it's a test failure, investigate and fix the
-test or the code. If it's a configuration issue, fix the
-workflow YAML. Add a comment to the PR explaining the root
-cause.
+The CI pipeline for timesheet-app is failing. Look at the GitHub Actions workflow logs, identify the root cause, and fix it. If the failure is a dependency issue, update the lockfile. If it's a test failure, investigate and fix the test or the code. If it's a configuration issue, fix the workflow YAML. Add a comment to the PR explaining the root cause.
 ```
 
 <a id="target-outcomes"></a>
@@ -91,13 +85,7 @@ Node.js application — diagnose npm-related CI failures (dependency conflicts, 
 ### Step 1: Paste into Devin
 
 ```
-The CI pipeline for timesheet-app is failing. Look at the
-GitHub Actions workflow logs, identify the root cause, and
-fix it. If the failure is a dependency issue, update the
-lockfile. If it's a test failure, investigate and fix the
-test or the code. If it's a configuration issue, fix the
-workflow YAML. Add a comment to the PR explaining the root
-cause.
+The CI pipeline for timesheet-app is failing. Look at the GitHub Actions workflow logs, identify the root cause, and fix it. If the failure is a dependency issue, update the lockfile. If it's a test failure, investigate and fix the test or the code. If it's a configuration issue, fix the workflow YAML. Add a comment to the PR explaining the root cause.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -131,13 +119,7 @@ Spring Boot/Gradle application — diagnose Gradle build failures, test failures
 ### Step 1: Paste into Devin
 
 ```
-The CI pipeline for
-uc-spring-boot-upgrade-microservice-extraction is failing.
-Examine the GitHub Actions logs, identify the root cause
-(build failure, test failure, dependency issue, Java
-version mismatch), and fix it. If multiple issues exist,
-fix them in priority order. Document the root cause
-analysis in the PR description.
+The CI pipeline for uc-spring-boot-upgrade-microservice-extraction is failing. Examine the GitHub Actions logs, identify the root cause (build failure, test failure, dependency issue, Java version mismatch), and fix it. If multiple issues exist, fix them in priority order. Document the root cause analysis in the PR description.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -192,14 +174,10 @@ Create a Playbook that encodes your team's CI triage methodology:
 Playbook: CI Failure Triage
 
 1. Read the GitHub Actions workflow logs for the failed run
-2. Categorize the failure: build error, test failure,
-   dependency issue, environment mismatch, or flaky test
-3. For build errors: check dependency versions, lockfiles,
-   and compiler configuration
-4. For test failures: run the failing test locally,
-   check for environment dependencies
-5. For flaky tests: run 3x to confirm non-determinism,
-   add retry or fix the root cause
+2. Categorize the failure: build error, test failure, dependency issue, environment mismatch, or flaky test
+3. For build errors: check dependency versions, lockfiles, and compiler configuration
+4. For test failures: run the failing test locally, check for environment dependencies
+5. For flaky tests: run 3x to confirm non-determinism, add retry or fix the root cause
 6. Push a fix and document the root cause
 ```
 

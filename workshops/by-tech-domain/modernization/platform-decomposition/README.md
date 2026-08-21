@@ -97,9 +97,7 @@ Deliverables:
 6. GitHub Actions CI/CD pipeline — build, test, push to ECR, trigger ArgoCD sync
 7. Monolith refactoring — replace in-process Inventory calls with an HTTP client that calls the new service
 
-Push the new inventory-service code and all service-level IaC to ordermanager-microservices on branch workshop-<participant>. Create a PR.
-Push the monolith refactoring changes to ordermanager-monolith on branch workshop-<participant>. Create a PR.
-Build and test both services locally to verify they work together.
+Push the new inventory-service code and all service-level IaC to ordermanager-microservices on branch workshop-<participant>. Create a PR. Push the monolith refactoring changes to ordermanager-monolith on branch workshop-<participant>. Create a PR. Build and test both services locally to verify they work together.
 ```
 
 **What to expect:** Devin will read all four repos, analyze the domain boundaries, create a task plan, and begin extracting the Inventory module. This typically takes 10–15 minutes to produce initial PRs.

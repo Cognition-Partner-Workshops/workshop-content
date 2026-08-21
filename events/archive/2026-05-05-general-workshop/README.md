@@ -309,8 +309,7 @@ Perform a comprehensive technical assessment of timesheet-app. Produce the follo
    - Integration points (external services, environment dependencies)
    - Build and deployment pipeline summary
 
-2. **Engineering Standards Gap Analysis** (`docs/GAP_ANALYSIS.md`):
-   Compare the codebase against these engineering best practices and document gaps:
+2. **Engineering Standards Gap Analysis** (`docs/GAP_ANALYSIS.md`): Compare the codebase against these engineering best practices and document gaps:
    - **Code organization:** Consistent project structure, separation of concerns, no circular dependencies
    - **Error handling:** Centralized error handling, consistent error response format, proper HTTP status codes
    - **Testing:** Unit test coverage, integration tests, E2E tests, test isolation
@@ -321,8 +320,7 @@ Perform a comprehensive technical assessment of timesheet-app. Produce the follo
 
    For each gap, rate severity (Critical/High/Medium/Low) and estimate effort to remediate (Small/Medium/Large).
 
-3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`):
-   Prioritize the gaps into a phased plan: Phase 1 (quick wins — high impact, low effort), Phase 2 (important — high impact, medium effort), Phase 3 (polish — lower impact improvements). Include sample Devin prompts for each remediation item so the team can immediately start fixing gaps.
+3. **Remediation Roadmap** (`docs/REMEDIATION_ROADMAP.md`): Prioritize the gaps into a phased plan: Phase 1 (quick wins — high impact, low effort), Phase 2 (important — high impact, medium effort), Phase 3 (polish — lower impact improvements). Include sample Devin prompts for each remediation item so the team can immediately start fixing gaps.
 
 Open a PR with all three documents.
 ```

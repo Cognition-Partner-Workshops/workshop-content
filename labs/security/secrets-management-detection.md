@@ -29,13 +29,7 @@ Scan a codebase for hardcoded secrets, credentials, and sensitive data. Implemen
 Paste this prompt into Devin to get started immediately:
 
 ```
-Install and run gitleaks on timesheet-app to scan for
-hardcoded secrets and credentials. Migrate any findings
-to environment variables using a .env.example file
-(without actual secret values). Add a pre-commit hook
-using husky that runs gitleaks on staged files. Add a
-GitHub Actions step that fails PRs introducing new
-secrets.
+Install and run gitleaks on timesheet-app to scan for hardcoded secrets and credentials. Migrate any findings to environment variables using a .env.example file (without actual secret values). Add a pre-commit hook using husky that runs gitleaks on staged files. Add a GitHub Actions step that fails PRs introducing new secrets.
 ```
 
 ## Target Outcomes
@@ -79,13 +73,7 @@ Node.js application — scan for hardcoded API keys, database credentials, and J
 ### Step 1: Paste into Devin
 
 ```
-Install and run gitleaks on timesheet-app to scan for
-hardcoded secrets and credentials. Migrate any findings
-to environment variables using a .env.example file
-(without actual secret values). Add a pre-commit hook
-using husky that runs gitleaks on staged files. Add a
-GitHub Actions step that fails PRs introducing new
-secrets.
+Install and run gitleaks on timesheet-app to scan for hardcoded secrets and credentials. Migrate any findings to environment variables using a .env.example file (without actual secret values). Add a pre-commit hook using husky that runs gitleaks on staged files. Add a GitHub Actions step that fails PRs introducing new secrets.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -120,14 +108,7 @@ Spring Boot application — scan for hardcoded database credentials, Spring Secu
 ### Step 1: Paste into Devin
 
 ```
-Install and run gitleaks on
-uc-cve-remediation-regulatory-compliance to scan the
-full git history for leaked secrets. Also review
-application.properties and application.yml for
-hardcoded credentials. Migrate all sensitive
-configuration to environment variable placeholders
-(e.g., ${DB_PASSWORD}). Add a GitHub Actions workflow
-step that runs gitleaks on every PR.
+Install and run gitleaks on uc-cve-remediation-regulatory-compliance to scan the full git history for leaked secrets. Also review application.properties and application.yml for hardcoded credentials. Migrate all sensitive configuration to environment variable placeholders (e.g., ${DB_PASSWORD}). Add a GitHub Actions workflow step that runs gitleaks on every PR.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -162,13 +143,7 @@ Spring Boot monolith — scan for secrets in application config, JWT signing key
 ### Step 1: Paste into Devin
 
 ```
-Run gitleaks on
-uc-spring-boot-upgrade-microservice-extraction to
-detect any hardcoded secrets. Review the application
-configuration for hardcoded database URLs, JWT secrets,
-and API keys. Externalize all sensitive values to
-environment variables. Add a pre-commit hook for
-secrets detection.
+Run gitleaks on uc-spring-boot-upgrade-microservice-extraction to detect any hardcoded secrets. Review the application configuration for hardcoded database URLs, JWT secrets, and API keys. Externalize all sensitive values to environment variables. Add a pre-commit hook for secrets detection.
 ```
 
 ### Step 2: Research with Ask Devin

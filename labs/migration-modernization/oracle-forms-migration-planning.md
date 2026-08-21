@@ -21,28 +21,12 @@
 Paste this prompt into Devin to try modernization planning on the Oracle Forms HRMS application:
 
 ```
-Analyze the Oracle Forms/PL/SQL application in
-ts-plsql-oracle-forms-hrms and produce a modernization plan.
-Create the following artifacts:
+Analyze the Oracle Forms/PL/SQL application in ts-plsql-oracle-forms-hrms and produce a modernization plan. Create the following artifacts:
 
-1. MODERNIZATION_BLUEPRINT.md — For each major functional
-   area (employee management, payroll, leave, performance
-   reviews, security), evaluate modernization strategies:
-   (a) Lift-and-shift to APEX, (b) Rewrite as Spring Boot +
-   Angular/React, (c) Rewrite as .NET + Blazor, (d) Hybrid:
-   keep PL/SQL packages as API, build new UI layer. For each
-   area, recommend the best strategy with justification.
-2. COMPONENT_MAPPING.md — Map each Oracle Forms module to its
-   target Java/web component. For each mapping: source file,
-   target file, business rules to preserve, data access
-   patterns to convert, and UI elements to recreate.
-3. CUTOVER_PLAN.md — Sequence the migration into phases, with
-   dependencies, rollback strategies, and acceptance criteria
-   per phase. The first phase should be the lowest-risk form.
-4. RISK_REGISTER.md — Document the top 10 migration risks
-   including: PL/SQL business logic that may not translate
-   cleanly, circular dependency compilation issues, PII
-   fields requiring special handling, and environment gaps.
+1. MODERNIZATION_BLUEPRINT.md — For each major functional area (employee management, payroll, leave, performance reviews, security), evaluate modernization strategies: (a) Lift-and-shift to APEX, (b) Rewrite as Spring Boot + Angular/React, (c) Rewrite as .NET + Blazor, (d) Hybrid: keep PL/SQL packages as API, build new UI layer. For each area, recommend the best strategy with justification.
+2. COMPONENT_MAPPING.md — Map each Oracle Forms module to its target Java/web component. For each mapping: source file, target file, business rules to preserve, data access patterns to convert, and UI elements to recreate.
+3. CUTOVER_PLAN.md — Sequence the migration into phases, with dependencies, rollback strategies, and acceptance criteria per phase. The first phase should be the lowest-risk form.
+4. RISK_REGISTER.md — Document the top 10 migration risks including: PL/SQL business logic that may not translate cleanly, circular dependency compilation issues, PII fields requiring special handling, and environment gaps.
 ```
 
 ---
@@ -118,39 +102,12 @@ Oracle Forms 11g/12c HRMS application. Contains Forms XML exports, PLL libraries
 ### Step 1: Paste into Devin — Migration Planning
 
 ```
-Analyze the Oracle Forms/PL/SQL application in
-ts-plsql-oracle-forms-hrms and produce a modernization plan.
-Create the following artifacts:
+Analyze the Oracle Forms/PL/SQL application in ts-plsql-oracle-forms-hrms and produce a modernization plan. Create the following artifacts:
 
-1. MODERNIZATION_BLUEPRINT.md — For each major functional
-   area (employee management, payroll, leave, performance
-   reviews, security), evaluate modernization strategies:
-   (a) Lift-and-shift to APEX, (b) Rewrite as Spring Boot +
-   Angular/React, (c) Rewrite as .NET + Blazor, (d) Hybrid:
-   keep PL/SQL packages as API, build new UI layer. For each
-   area, recommend the best strategy with justification
-   considering: business logic complexity, data coupling,
-   team skill availability, and risk tolerance.
-2. COMPONENT_MAPPING.md — Map each Oracle Forms module to its
-   target Java/web component. For each mapping specify:
-   source Forms module and its PLL/package dependencies,
-   target component (controller, service, entity, UI
-   template), business rules that must be preserved,
-   data access patterns to convert (PL/SQL cursor → JPA
-   repository), and UI elements to recreate (LOVs, blocks,
-   alerts).
-3. CUTOVER_PLAN.md — Sequence the migration into phases with:
-   which modules migrate in each phase, data migration
-   requirements, integration bridges needed during transition,
-   rollback strategies, and acceptance criteria per phase
-   gate. The first phase should be the lowest-risk,
-   most-isolated form.
-4. RISK_REGISTER.md — Document the top 10 migration risks:
-   PL/SQL business logic that may not translate cleanly,
-   circular dependency compilation issues, PII fields
-   requiring special handling, validation drift between PLL
-   and PL/SQL packages, environment gaps (no Oracle DB in
-   target environment), and any other risks identified.
+1. MODERNIZATION_BLUEPRINT.md — For each major functional area (employee management, payroll, leave, performance reviews, security), evaluate modernization strategies: (a) Lift-and-shift to APEX, (b) Rewrite as Spring Boot + Angular/React, (c) Rewrite as .NET + Blazor, (d) Hybrid: keep PL/SQL packages as API, build new UI layer. For each area, recommend the best strategy with justification considering: business logic complexity, data coupling, team skill availability, and risk tolerance.
+2. COMPONENT_MAPPING.md — Map each Oracle Forms module to its target Java/web component. For each mapping specify: source Forms module and its PLL/package dependencies, target component (controller, service, entity, UI template), business rules that must be preserved, data access patterns to convert (PL/SQL cursor → JPA repository), and UI elements to recreate (LOVs, blocks, alerts).
+3. CUTOVER_PLAN.md — Sequence the migration into phases with: which modules migrate in each phase, data migration requirements, integration bridges needed during transition, rollback strategies, and acceptance criteria per phase gate. The first phase should be the lowest-risk, most-isolated form.
+4. RISK_REGISTER.md — Document the top 10 migration risks: PL/SQL business logic that may not translate cleanly, circular dependency compilation issues, PII fields requiring special handling, validation drift between PLL and PL/SQL packages, environment gaps (no Oracle DB in target environment), and any other risks identified.
 ```
 
 ### Step 2: Research with Ask Devin

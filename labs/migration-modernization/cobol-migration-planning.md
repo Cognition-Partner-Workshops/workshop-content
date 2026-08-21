@@ -21,31 +21,12 @@
 Paste this prompt into Devin to try modernization planning on the CardDemo COBOL application:
 
 ```
-Analyze the COBOL application in
-uc-legacy-modernization-cobol-to-java and produce a
-modernization plan. Create the following artifacts:
+Analyze the COBOL application in uc-legacy-modernization-cobol-to-java and produce a modernization plan. Create the following artifacts:
 
-1. MODERNIZATION_BLUEPRINT.md — For each major functional
-   area of the application, evaluate these modernization
-   strategies: (a) Strangler pattern — wrap with APIs,
-   incrementally replace, (b) Replatform — keep COBOL, move
-   to cloud runtime, (c) Refactor — restructure COBOL for
-   maintainability without rewriting, (d) Rewrite — translate
-   to modern language (Java/Kotlin/Python). For each area,
-   recommend the best strategy with justification.
-2. DOMAIN_DECOMPOSITION.md — Identify bounded contexts by
-   analyzing which programs share copybooks, which JCL jobs
-   group together, and which data files are shared vs.
-   isolated. Map each bounded context to a candidate
-   microservice or module.
-3. CUTOVER_PLAN.md — Sequence the migration into phases. Each
-   phase should specify: which programs migrate, which data
-   stores are affected, what integration points need temporary
-   bridges, what the rollback plan is, and what the acceptance
-   criteria are for moving to the next phase.
-4. RISK_REGISTER.md — Document the top 10 migration risks
-   with likelihood, impact, mitigation strategy, and early
-   warning indicators.
+1. MODERNIZATION_BLUEPRINT.md — For each major functional area of the application, evaluate these modernization strategies: (a) Strangler pattern — wrap with APIs, incrementally replace, (b) Replatform — keep COBOL, move to cloud runtime, (c) Refactor — restructure COBOL for maintainability without rewriting, (d) Rewrite — translate to modern language (Java/Kotlin/Python). For each area, recommend the best strategy with justification.
+2. DOMAIN_DECOMPOSITION.md — Identify bounded contexts by analyzing which programs share copybooks, which JCL jobs group together, and which data files are shared vs. isolated. Map each bounded context to a candidate microservice or module.
+3. CUTOVER_PLAN.md — Sequence the migration into phases. Each phase should specify: which programs migrate, which data stores are affected, what integration points need temporary bridges, what the rollback plan is, and what the acceptance criteria are for moving to the next phase.
+4. RISK_REGISTER.md — Document the top 10 migration risks with likelihood, impact, mitigation strategy, and early warning indicators.
 ```
 
 ---
@@ -121,42 +102,12 @@ AWS Mainframe Modernization CardDemo (Apache 2.0). A credit card management syst
 ### Step 1: Paste into Devin — Modernization Planning
 
 ```
-Analyze the COBOL application in
-uc-legacy-modernization-cobol-to-java and produce a
-modernization plan. Create the following artifacts:
+Analyze the COBOL application in uc-legacy-modernization-cobol-to-java and produce a modernization plan. Create the following artifacts:
 
-1. MODERNIZATION_BLUEPRINT.md — For each major functional
-   area of the application, evaluate these modernization
-   strategies: (a) Strangler pattern — wrap with APIs,
-   incrementally replace, (b) Replatform — keep COBOL, move
-   to cloud runtime, (c) Refactor — restructure COBOL for
-   maintainability without rewriting, (d) Rewrite — translate
-   to modern language (Java/Kotlin/Python). For each area,
-   recommend the best strategy with justification, considering:
-   business logic complexity, data coupling, team skill
-   availability, and risk tolerance.
-2. DOMAIN_DECOMPOSITION.md — Identify bounded contexts in
-   the application by analyzing which programs share
-   copybooks, which JCL jobs group together, and which data
-   files are shared vs. isolated. Map each bounded context to
-   a candidate microservice or module. Identify the extraction
-   seams (points where domains interact) and rate each seam's
-   extraction difficulty (easy/medium/hard) based on data
-   coupling.
-3. CUTOVER_PLAN.md — Sequence the migration into phases. Each
-   phase should specify: which programs migrate, which data
-   stores are affected, what integration points need temporary
-   bridges, what the rollback plan is, and what the acceptance
-   criteria are for moving to the next phase. The first phase
-   should be the lowest-risk, highest-value extraction.
-4. RISK_REGISTER.md — Document the top 10 migration risks:
-   hidden business rules in tribal knowledge, environment gaps
-   (mainframe-specific runtimes), data representativeness for
-   testing, shared data coupling between domains, and any
-   other risks identified during analysis. For each risk,
-   provide: likelihood (high/medium/low), impact
-   (high/medium/low), mitigation strategy, and early warning
-   indicators.
+1. MODERNIZATION_BLUEPRINT.md — For each major functional area of the application, evaluate these modernization strategies: (a) Strangler pattern — wrap with APIs, incrementally replace, (b) Replatform — keep COBOL, move to cloud runtime, (c) Refactor — restructure COBOL for maintainability without rewriting, (d) Rewrite — translate to modern language (Java/Kotlin/Python). For each area, recommend the best strategy with justification, considering: business logic complexity, data coupling, team skill availability, and risk tolerance.
+2. DOMAIN_DECOMPOSITION.md — Identify bounded contexts in the application by analyzing which programs share copybooks, which JCL jobs group together, and which data files are shared vs. isolated. Map each bounded context to a candidate microservice or module. Identify the extraction seams (points where domains interact) and rate each seam's extraction difficulty (easy/medium/hard) based on data coupling.
+3. CUTOVER_PLAN.md — Sequence the migration into phases. Each phase should specify: which programs migrate, which data stores are affected, what integration points need temporary bridges, what the rollback plan is, and what the acceptance criteria are for moving to the next phase. The first phase should be the lowest-risk, highest-value extraction.
+4. RISK_REGISTER.md — Document the top 10 migration risks: hidden business rules in tribal knowledge, environment gaps (mainframe-specific runtimes), data representativeness for testing, shared data coupling between domains, and any other risks identified during analysis. For each risk, provide: likelihood (high/medium/low), impact (high/medium/low), mitigation strategy, and early warning indicators.
 ```
 
 ### Step 2: Research with Ask Devin

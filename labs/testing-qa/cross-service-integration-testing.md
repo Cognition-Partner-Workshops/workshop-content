@@ -33,25 +33,17 @@ Write integration tests that validate the HTTP contract between the refactored m
 Paste this into a new Devin session to get started immediately:
 
 ```
-Write integration tests for the HTTP contract between the
-QuickApp monolith and the extracted Order microservice.
+Write integration tests for the HTTP contract between the QuickApp monolith and the extracted Order microservice.
 
 Context:
-- The monolith in quickapp-monolith now calls the Order
-  service via an HTTP client
-- The Order service in quickapp-microservices exposes REST
-  endpoints for order management
+- The monolith in quickapp-monolith now calls the Order service via an HTTP client
+- The Order service in quickapp-microservices exposes REST endpoints for order management
 - Both services share contract DTOs from Shared.Contracts
 
 Deliverables:
-1. Integration test project (tests/Integration/) targeting
-   both services
-2. Docker Compose test configuration
-   (docker-compose.test.yml) that spins up the monolith,
-   order-service, and PostgreSQL with test seed data
-3. Contract tests covering: create order (POST), get order
-   by ID (GET), list orders (GET), update order status
-   (PUT), and error responses (404, 400)
+1. Integration test project (tests/Integration/) targeting both services
+2. Docker Compose test configuration (docker-compose.test.yml) that spins up the monolith, order-service, and PostgreSQL with test seed data
+3. Contract tests covering: create order (POST), get order by ID (GET), list orders (GET), update order status (PUT), and error responses (404, 400)
 ```
 
 <a id="target-outcomes"></a>

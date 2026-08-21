@@ -84,15 +84,12 @@ delegate to Cloud — the Cloud agent runs on its own VM while you continue
 working locally.
 
 ```
-Create a GitHub Actions workflow called security-scan.yml
-on the Cognition-Partner-Workshops/otterworks repo that:
+Create a GitHub Actions workflow called security-scan.yml on the Cognition-Partner-Workshops/otterworks repo that:
 
 1. Triggers on pull_request events (opened, synchronize).
-2. Runs a Trivy scan targeting HIGH and CRITICAL severity
-   findings.
+2. Runs a Trivy scan targeting HIGH and CRITICAL severity findings.
 3. Reports results as a GitHub check run.
-4. Posts a PR comment summarizing findings by service
-   directory.
+4. Posts a PR comment summarizing findings by service directory.
 ```
 
 ### Create the Devin Automation
@@ -101,9 +98,7 @@ Navigate to **Automations** in the Devin web app. Describe what you want
 in the chat input:
 
 ```
-When a security scan check run fails on
-Cognition-Partner-Workshops/otterworks, start a Devin
-session that:
+When a security scan check run fails on Cognition-Partner-Workshops/otterworks, start a Devin session that:
 
 1. Reads the scan findings attached to the check run.
 2. Triages HIGH and CRITICAL findings by service directory.
@@ -111,8 +106,7 @@ session that:
 4. Runs each affected service's tests.
 5. Pushes the fix to the same branch.
 
-Cap at 2 invocations per PR. Set an ACU limit of 50 per
-session.
+Cap at 2 invocations per PR. Set an ACU limit of 50 per session.
 ```
 
 The automation fires each time the scanner reports findings. Devin handles
@@ -148,9 +142,7 @@ locally:
 Create a session in Desktop with this prompt, then delegate to Cloud:
 
 ```
-Review the security scan results for otterworks.
-Triage all HIGH and CRITICAL findings by severity.
-For each finding:
+Review the security scan results for otterworks. Triage all HIGH and CRITICAL findings by severity. For each finding:
 
 1. Identify the affected file and the fix.
 2. Check out a branch from main.
@@ -158,8 +150,7 @@ For each finding:
 4. Run the affected service's tests.
 5. Push the fix.
 
-Group related fixes per service into single PRs.
-Skip findings in test files.
+Group related fixes per service into single PRs. Skip findings in test files.
 ```
 
 Monitor progress in the Agent Command Center as PRs appear.
@@ -174,20 +165,14 @@ to Cloud. The parent triages findings and spawns one child session per
 service.
 
 ```
-You are coordinating a security remediation across the
-Cognition-Partner-Workshops/otterworks repository.
+You are coordinating a security remediation across the Cognition-Partner-Workshops/otterworks repository.
 
-Run the security scan and capture the output. Create a
-SECURITY_BACKLOG.md listing all CRITICAL and HIGH
-findings organized by service or directory.
+Run the security scan and capture the output. Create a SECURITY_BACKLOG.md listing all CRITICAL and HIGH findings organized by service or directory.
 
-Then launch parallel child sessions — one per affected
-service — with scoped instructions:
+Then launch parallel child sessions — one per affected service — with scoped instructions:
 - Each child works only on its assigned service directory
-- Each child upgrades the vulnerable dependency, runs
-  the service tests, and pushes to the same branch
-- After all children complete, summarize results in
-  REMEDIATION_SUMMARY.md
+- Each child upgrades the vulnerable dependency, runs the service tests, and pushes to the same branch
+- After all children complete, summarize results in REMEDIATION_SUMMARY.md
 ```
 
 The Agent Command Center shows the parent session and all child sessions

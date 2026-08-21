@@ -29,21 +29,7 @@ Already familiar with Devin? Skip the background and start the hands-on work
 immediately. Copy the prompt below into a Devin session and go.
 
 ```
-Analyze the Ab Initio codebase in ts-python-abinitio-etl to produce a
-comprehensive migration assessment. Start with scripts/setenv.ksh and the
-psets/ parameter sets to understand the environment and run parameters. Then
-analyze the graphs in graphs/ and the KornShell wrappers in scripts/ — for each
-pipeline, document: (1) what it reads and writes, (2) which DML record formats
-from dml/ it binds, (3) which PSET parameters it depends on, (4) which Ab Initio
-constructs it uses (reformat, join, rollup, partition-by-key, the CDC
-compare-by-key component, nested/variable-length records), and (5) a complexity
-rating. Map the DML record formats in dml/ to target schemas, calling out
-delimiters, packed decimals, nested records, variable-length arrays, and
-null(...) defaults. Analyze scripts/run_daily_orders.ksh and
-scripts/run_customer_cdc.ksh for the execution dependency chain. Produce an
-ABINITIO_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram,
-DML→schema mapping, PSET/parameter matrix, complexity scores, risk areas, and a
-recommended migration sequence.
+Analyze the Ab Initio codebase in ts-python-abinitio-etl to produce a comprehensive migration assessment. Start with scripts/setenv.ksh and the psets/ parameter sets to understand the environment and run parameters. Then analyze the graphs in graphs/ and the KornShell wrappers in scripts/ — for each pipeline, document: (1) what it reads and writes, (2) which DML record formats from dml/ it binds, (3) which PSET parameters it depends on, (4) which Ab Initio constructs it uses (reformat, join, rollup, partition-by-key, the CDC compare-by-key component, nested/variable-length records), and (5) a complexity rating. Map the DML record formats in dml/ to target schemas, calling out delimiters, packed decimals, nested records, variable-length arrays, and null(...) defaults. Analyze scripts/run_daily_orders.ksh and scripts/run_customer_cdc.ksh for the execution dependency chain. Produce an ABINITIO_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram, DML→schema mapping, PSET/parameter matrix, complexity scores, risk areas, and a recommended migration sequence.
 ```
 
 Then continue to [Lab 2](#lab-2-target-mapping) and
@@ -129,20 +115,7 @@ defines the environment; `utils/dml_parser.py` shows how the DML layouts are rea
 #### Step 1: Paste into Devin
 
 ```
-Analyze the Ab Initio codebase in ts-python-abinitio-etl to produce a
-comprehensive migration assessment. Start with scripts/setenv.ksh and the
-psets/ parameter sets to understand the environment and run parameters. Then
-analyze the graphs in graphs/ and the KornShell wrappers in scripts/ — for each
-pipeline, document: (1) what it reads and writes, (2) which DML record formats
-from dml/ it binds, (3) which PSET parameters it depends on, (4) which Ab Initio
-constructs it uses (reformat, join, rollup, partition-by-key, CDC
-compare-by-key, nested/variable-length records), and (5) a complexity rating.
-Map the DML record formats in dml/ to target schemas, calling out delimiters,
-packed decimals, nested records, variable-length arrays, and null(...) defaults.
-Analyze scripts/run_daily_orders.ksh and scripts/run_customer_cdc.ksh for the
-execution dependency chain. Produce an ABINITIO_MIGRATION_ASSESSMENT.md with:
-artifact inventory, data lineage diagram, DML->schema mapping, PSET/parameter
-matrix, complexity scores, risk areas, and a recommended migration sequence.
+Analyze the Ab Initio codebase in ts-python-abinitio-etl to produce a comprehensive migration assessment. Start with scripts/setenv.ksh and the psets/ parameter sets to understand the environment and run parameters. Then analyze the graphs in graphs/ and the KornShell wrappers in scripts/ — for each pipeline, document: (1) what it reads and writes, (2) which DML record formats from dml/ it binds, (3) which PSET parameters it depends on, (4) which Ab Initio constructs it uses (reformat, join, rollup, partition-by-key, CDC compare-by-key, nested/variable-length records), and (5) a complexity rating. Map the DML record formats in dml/ to target schemas, calling out delimiters, packed decimals, nested records, variable-length arrays, and null(...) defaults. Analyze scripts/run_daily_orders.ksh and scripts/run_customer_cdc.ksh for the execution dependency chain. Produce an ABINITIO_MIGRATION_ASSESSMENT.md with: artifact inventory, data lineage diagram, DML->schema mapping, PSET/parameter matrix, complexity scores, risk areas, and a recommended migration sequence.
 ```
 
 #### Step 2: Research with Ask Devin
@@ -179,16 +152,7 @@ reconciliation harness as the reference target architecture.
 #### Step 1: Paste into Devin
 
 ```
-Using the assessment from the previous session and the reference project in
-uc-data-migration-abinitio-to-pyspark/ (docs/ABINITIO_TO_PYSPARK_MIGRATION_MAP.md
-and src/), create a detailed migration plan mapping each Ab Initio graph to its
-PySpark equivalent. For each pipeline specify: (1) which target layer it maps to
-(staging/intermediate/marts/curated), (2) which Ab Initio constructs need
-translation (DML record -> StructType, reformat -> select, join, rollup ->
-groupBy, partition-by-key -> repartition, CDC compare-by-key -> full_outer join +
-row hash), (3) estimated effort and risk. Pay special attention to DML null(...)
-defaults, packed decimals, nested records, and variable-length arrays. Add the
-migration plan to the PR.
+Using the assessment from the previous session and the reference project in uc-data-migration-abinitio-to-pyspark/ (docs/ABINITIO_TO_PYSPARK_MIGRATION_MAP.md and src/), create a detailed migration plan mapping each Ab Initio graph to its PySpark equivalent. For each pipeline specify: (1) which target layer it maps to (staging/intermediate/marts/curated), (2) which Ab Initio constructs need translation (DML record -> StructType, reformat -> select, join, rollup -> groupBy, partition-by-key -> repartition, CDC compare-by-key -> full_outer join + row hash), (3) estimated effort and risk. Pay special attention to DML null(...) defaults, packed decimals, nested records, and variable-length arrays. Add the migration plan to the PR.
 ```
 
 > For the Databricks target, point Devin at
@@ -223,16 +187,14 @@ a trustworthy migration.
 ```
 !convert-abinitio-to-pyspark
 
-Convert the Ab Initio transactions detail pipeline from the ts-python-abinitio-etl
-estate into a PySpark job in uc-data-migration-abinitio-to-pyspark.
+Convert the Ab Initio transactions detail pipeline from the ts-python-abinitio-etl estate into a PySpark job in uc-data-migration-abinitio-to-pyspark.
 
 - DML: dml/transaction_detail.dml (nested merchant_info + line_items[] array)
 - Source layout/orchestration: scripts/run_daily_orders.ksh
 - Target: src/jobs/curated_transactions.py writing out/<NS>/curated/transactions
 - Namespace: dev
 
-Add a reconciliation control for the channel default and build until the
-reconciliation report is green.
+Add a reconciliation control for the channel default and build until the reconciliation report is green.
 ```
 
 > **Databricks target:** invoke `!convert-abinitio-to-databricks` against
@@ -291,24 +253,15 @@ from the playbook and the shared context layer.
 #### Step 1: Paste into Devin
 
 ```
-You are the parent coordinator for an Ab Initio migration across
-ts-python-abinitio-etl. Create child Devin sessions to divide and conquer the
-conversion into uc-data-migration-abinitio-to-pyspark — one child per pipeline:
+You are the parent coordinator for an Ab Initio migration across ts-python-abinitio-etl. Create child Devin sessions to divide and conquer the conversion into uc-data-migration-abinitio-to-pyspark — one child per pipeline:
 
-- Child 1: dml/transaction_detail.dml (+ scripts/run_daily_orders.ksh) ->
-  src/jobs/curated_transactions.py, with a channel-default reconciliation control.
-- Child 2: graphs/cdc_processor.py (+ psets/pset_templates/customer_cdc.pset) ->
-  src/jobs/customer_cdc.py (compare-by-key + row hash), with a CDC parity control.
-- Child 3: dml/order_items.dml -> src/jobs/int_order_items.py (explode the
-  variable-length item arrays), with a completeness + control-total check.
+- Child 1: dml/transaction_detail.dml (+ scripts/run_daily_orders.ksh) -> src/jobs/curated_transactions.py, with a channel-default reconciliation control.
+- Child 2: graphs/cdc_processor.py (+ psets/pset_templates/customer_cdc.pset) -> src/jobs/customer_cdc.py (compare-by-key + row hash), with a CDC parity control.
+- Child 3: dml/order_items.dml -> src/jobs/int_order_items.py (explode the variable-length item arrays), with a completeness + control-total check.
 
-Each child follows the !convert-abinitio-to-pyspark playbook, uses its own
-namespace (NS=child1, child2, ...), treats the Ab Initio source as the source of
-truth, and builds until its reconciliation report is green.
+Each child follows the !convert-abinitio-to-pyspark playbook, uses its own namespace (NS=child1, child2, ...), treats the Ab Initio source as the source of truth, and builds until its reconciliation report is green.
 
-Once all children complete, consolidate into a CONVERSION_SUMMARY.md listing each
-pipeline, its target, the controls added, and any source-parity divergences the
-children caught.
+Once all children complete, consolidate into a CONVERSION_SUMMARY.md listing each pipeline, its target, the controls added, and any source-parity divergences the children caught.
 ```
 
 > **Databricks target:** swap the playbook to `!convert-abinitio-to-databricks`,

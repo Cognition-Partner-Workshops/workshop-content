@@ -27,11 +27,7 @@ Upgrade outdated and vulnerable dependencies in a project. This is a foundationa
 Paste this prompt into Devin to get started immediately:
 
 ```
-Resolve this GitHub Issue:
-https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/2
-Audit the npm dependencies for known vulnerabilities,
-upgrade all vulnerable packages to their latest secure
-versions, and ensure the build and tests still pass.
+Resolve this GitHub Issue: https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/2 Audit the npm dependencies for known vulnerabilities, upgrade all vulnerable packages to their latest secure versions, and ensure the build and tests still pass.
 ```
 
 ## Target Outcomes
@@ -73,11 +69,7 @@ Node.js application with npm dependencies — use `npm audit` to identify and fi
 ### Step 1: Paste into Devin
 
 ```
-Resolve this GitHub Issue:
-https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/2
-Audit the npm dependencies for known vulnerabilities,
-upgrade all vulnerable packages to their latest secure
-versions, and ensure the build and tests still pass.
+Resolve this GitHub Issue: https://github.com/Cognition-Partner-Workshops/timesheet-app/issues/2 Audit the npm dependencies for known vulnerabilities, upgrade all vulnerable packages to their latest secure versions, and ensure the build and tests still pass.
 ```
 
 ### Step 2: Research with Ask Devin
@@ -114,12 +106,7 @@ Spring Boot 2.6.3 application with known vulnerable dependencies and OWASP Depen
 ### Step 1: Paste into Devin
 
 ```
-Upgrade uc-cve-remediation-regulatory-compliance from
-Spring Boot 2.6.3 to the latest stable 2.7.x or 3.x,
-updating all transitive dependencies. Run
-./gradlew dependencyCheckAnalyze before and after to
-document which CVEs are resolved. Verify the build
-still passes.
+Upgrade uc-cve-remediation-regulatory-compliance from Spring Boot 2.6.3 to the latest stable 2.7.x or 3.x, updating all transitive dependencies. Run ./gradlew dependencyCheckAnalyze before and after to document which CVEs are resolved. Verify the build still passes.
 ```
 
 ### Step 2: Research with Ask Devin
