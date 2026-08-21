@@ -109,10 +109,9 @@ OW-UI-101  high     open        MISSING  The unread-count badge errors on every 
 OW-UI-102  high     open        MISSING  Settings page calls a route that does not exist
 OW-UI-103  medium   open        MISSING  Text file detail page never shows the file contents
 OW-UI-104  medium   open        MISSING  Download action gives no visible feedback
-OW-UI-105  medium   open        MISSING  Permanent delete from Trash is not confirmed
 ```
 
-Five registered defects, zero reproductions. The registry is deliberately the
+Four registered defects, zero reproductions. The registry is deliberately the
 before-state: it records what a human saw, and the expected behavior each fix is
 graded against — not the diagnosis, and not the fix.
 
@@ -269,7 +268,7 @@ for:
 ```
 $ make ui-gate
 - Graded findings: OW-UI-101
-- Suppressed (still open): OW-UI-102, OW-UI-103, OW-UI-104, OW-UI-105
+- Suppressed (still open): OW-UI-102, OW-UI-103, OW-UI-104
 - Result: **PASS**
 ```
 
@@ -293,12 +292,12 @@ spec output, and that summary in the body. The reports and screenshots in
 <a id="part-5"></a>
 ## Part 5 — Fan Out the Rest of the Backlog
 
-Four findings remain and none of them depend on each other. That is one session
+Three findings remain and none of them depend on each other. That is one session
 each, not one session for the batch.
 
 ```
 Take the remaining open findings in qa/registry.yaml
-(OW-UI-102 through OW-UI-105) and create one Devin
+(OW-UI-102 through OW-UI-104) and create one Devin
 session per finding, each running
 !visual-ui-defect-remediation for its own finding on
 its own branch.
@@ -310,17 +309,20 @@ PR. Do not let two children touch the same finding or
 the same registry entry.
 ```
 
-The orchestrator spawns four children and watches them to green. Each child
-gets its own VM, its own stack, its own throwaway users and its own branch —
-which is why four browser sessions that all register accounts and delete files
-can run at the same time without colliding. Isolation is what makes the
+The orchestrator spawns one child per finding and watches them to green. Each
+child gets its own VM, its own stack, its own throwaway users and its own branch
+— which is why several browser sessions that all register accounts and delete
+files can run at the same time without colliding. Isolation is what makes the
 parallelism safe.
 
-Watch for the honest outcome: a child that finds its finding is a product
-decision rather than a bug (`OW-UI-102` — either back the settings surface with
-a real endpoint or disable the controls visibly) reports a blocker with evidence
-instead of inventing a backend. That is the correct result, and it is visible in
-the table without opening four sessions.
+Watch for the honest outcome. A run of this fan-out over an earlier version of
+the registry included a fifth finding — permanent delete from Trash filed as
+unconfirmed. Its child drove the app, found the confirmation dialog already
+there, naming the file, with Cancel keeping the item, and its reproduction spec
+passed against the unfixed app. `make ui-repro` refuses to call that reproduced,
+so the child reported a blocker with screenshots instead of manufacturing a fix,
+and the entry was withdrawn from the registry. A child that declines to "fix" a
+non-defect is the control working.
 
 **Key Takeaways**
 
@@ -386,8 +388,12 @@ Not from reading the diffs. From four properties of the loop:
 4. **The gate sweeps routes, not just the finding.** Any unregistered console or
    network error on any authenticated route fails the run, so a fix that breaks a
    neighboring page cannot pass.
+5. **A suppression that matches nothing fails the run.** A stale allowlist entry
+   is the one way a passing gate can be meaningless, so the sweep reports it and
+   the registry has to be reconciled.
 
-Ask Devin to attack the gate rather than trusting the description:
+That fifth property came out of the audit below rather than the design. Ask
+Devin to attack the gate rather than trusting the description:
 
 ```
 Try to make `make ui-gate` pass while OW-UI-101 is
@@ -397,7 +403,13 @@ and try a typo in its status. Show me what each attempt
 does and paste the exit codes.
 ```
 
-Every attempt exits non-zero. That is the demo of the controls.
+The last two exit non-zero on a hard error. The first is the interesting one:
+Devin reports that `make ui-gate` passes — and that it passes for the wrong
+reason, because the finding's suppression waves through errors that no longer
+occur. Left alone, that entry would mask the next regression on those routes
+forever, so the sweep now fails when a suppression matches nothing.
+
+The audit found a real hole in the controls. That is the point of running it.
 
 **Key Takeaways**
 
