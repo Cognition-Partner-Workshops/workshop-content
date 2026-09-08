@@ -82,16 +82,7 @@ Start with a question no static scanner answers: what does this system expose to
 the internet right now, and who is allowed to call it?
 
 ```
-Read the OtterWorks repo and map its runtime attack
-surface as an attacker would see it.
-
-Which routes are reachable through the API gateway
-without a token? Where does the gateway derive caller
-identity, and what does it forward to the backends?
-Which services enforce object ownership themselves
-rather than trusting the gateway?
-
-Answer with file references.
+Read the OtterWorks repo and map its runtime attack surface as an attacker would see it. Which routes are reachable through the API gateway without a token? Where does the gateway derive caller identity, and what does it forward to the backends? Which services enforce object ownership themselves rather than trusting the gateway? Answer with file references.
 ```
 
 Devin reads the gateway middleware chain, the public-path list, and the
@@ -169,13 +160,7 @@ not a route that is protecting anything, so the probe reported `inconclusive`
 and sent us to look at the write path instead.
 
 ```
-DAST-BOLA-DOCUMENTS came back inconclusive because the
-owner is refused as well as the attacker. That means
-the read-side check is not what is protecting these
-documents.
-
-Look at how a document gets its owner_id on create.
-Can the attacker set it?
+DAST-BOLA-DOCUMENTS came back inconclusive because the owner is refused as well as the attacker. That means the read-side check is not what is protecting these documents. Look at how a document gets its owner_id on create. Can the attacker set it?
 ```
 
 Devin finds that the create endpoint accepts `owner_id` from the request body.
@@ -208,14 +193,7 @@ says which endpoints nobody tried — and that number decays every time somebody
 merges a new route.
 
 ```
-Before we fix anything: how much of the attack surface
-did that scan actually reach?
-
-Derive the edge-reachable routes from the source rather
-than from a crawl — the gateway's route table plus each
-service's own route definitions — and compare them with
-the requests the scan issued. Show me the routes nothing
-attacked, and which services you could not parse.
+Before we fix anything: how much of the attack surface did that scan actually reach? Derive the edge-reachable routes from the source rather than from a crawl — the gateway's route table plus each service's own route definitions — and compare them with the requests the scan issued. Show me the routes nothing attacked, and which services you could not parse.
 ```
 
 Devin reads route definitions out of five frameworks — FastAPI decorators, Flask
@@ -225,10 +203,7 @@ through the gateway's proxy table, and diffs the result against the paths
 recorded in the report:
 
 ```
-Coverage of the edge-reachable surface, from the last scan:
-  reached by a probe:              64/69
-  attacked by a written probe:      7/69
-  attacked as a logged-in caller:   6/69
+Coverage of the edge-reachable surface, from the last scan: reached by a probe:              64/69 attacked by a written probe:      7/69 attacked as a logged-in caller:   6/69
 ```
 
 Three depths, deliberately. Every route is swept unauthenticated the moment it is
@@ -344,19 +319,7 @@ Three findings are left, in three different services, with nothing to do with
 each other. One session working through them serially is the slow way.
 
 ```
-Three DAST findings remain on my tenant:
-DAST-CREDENTIAL-BRUTE-FORCE (auth-service, Java),
-DAST-EXPOSED-TELEMETRY (api-gateway, Go), and
-DAST-MISSING-SECURITY-HEADERS (api-gateway, Go).
-
-Launch one child session per finding. Give each child
-the !dast-remediation playbook, its own branch off main,
-and its own target to scan so the scans do not collide.
-Each child re-runs make dast-verify for its own finding
-and opens its own PR.
-
-Monitor them and report back with a table of finding,
-session, PR, and verify result.
+Three DAST findings remain on my tenant: DAST-CREDENTIAL-BRUTE-FORCE (auth-service, Java), DAST-EXPOSED-TELEMETRY (api-gateway, Go), and DAST-MISSING-SECURITY-HEADERS (api-gateway, Go). Launch one child session per finding. Give each child the !dast-remediation playbook, its own branch off main, and its own target to scan so the scans do not collide. Each child re-runs make dast-verify for its own finding and opens its own PR. Monitor them and report back with a table of finding, session, PR, and verify result.
 ```
 
 Each child gets its own VM, its own scoped credentials, and its own tenant

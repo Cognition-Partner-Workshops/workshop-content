@@ -52,8 +52,7 @@ Start in Ask Devin (chat) mode on `ts-abinitio-loan-servicing` to explore the
 estate before any session runs:
 
 ```
-How is OUTSTANDING_LOAN_BALANCE in LOAN_PORTFOLIO_MART computed, and what
-would a full end-to-end lineage analysis of it involve?
+How is OUTSTANDING_LOAN_BALANCE in LOAN_PORTFOLIO_MART computed, and what would a full end-to-end lineage analysis of it involve?
 ```
 
 The answer should surface the multi-hop derivation implemented in
@@ -80,11 +79,7 @@ In the session that completed the `OUTSTANDING_LOAN_BALANCE` analysis (see
 [Prerequisites](#prerequisites)), paste:
 
 ```
-Turn this flow into a top-quality reusable skill called
-attribute-lineage-analysis. Parameterize on any mart column: exact procedure,
-estate file conventions, deliverable formats, mandatory validation gates
-(answer-key check + in-browser viz test with a screen recording), and
-pitfalls you hit.
+Turn this flow into a top-quality reusable skill called attribute-lineage-analysis. Parameterize on any mart column: exact procedure, estate file conventions, deliverable formats, mandatory validation gates (answer-key check + in-browser viz test with a screen recording), and pitfalls you hit.
 ```
 
 The result is a Skill at
@@ -106,11 +101,7 @@ the mart in parallel. In a coordinator session on
 `ts-abinitio-loan-servicing`, paste:
 
 ```
-Run 3 parallel child sessions using the attribute-lineage-analysis skill,
-one each for CUMULATIVE_PRINCIPAL_PAID, ACCRUED_INTEREST, and
-WRITTEN_OFF_AMOUNT. Then consolidate all four attributes into one
-portfolio-wide lineage & impact report and publish it to Confluence as a new
-timestamped child page under the Ab Initio lineage demos parent page.
+Run 3 parallel child sessions using the attribute-lineage-analysis skill, one each for CUMULATIVE_PRINCIPAL_PAID, ACCRUED_INTEREST, and WRITTEN_OFF_AMOUNT. Then consolidate all four attributes into one portfolio-wide lineage & impact report and publish it to Confluence as a new timestamped child page under the Ab Initio lineage demos parent page.
 ```
 
 Each child session runs the Skill end to end for its attribute — column-level

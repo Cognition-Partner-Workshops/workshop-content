@@ -95,14 +95,7 @@ repo, Devin typically maps an unfamiliar service in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-java-spring-boot-internet-banking repo, map the
-transaction area of the core-banking-service module: the
-TransactionController (/api/v1/transaction), TransactionService,
-TransactionRepository, and the TransactionEntity mapped to the
-banking_core_transaction table. Explain how a transaction links to
-an account (BankAccountEntity.number), what the existing endpoints
-do, and how the Flyway migrations under
-src/main/resources/db/migration build the schema.
+Using the ts-java-spring-boot-internet-banking repo, map the transaction area of the core-banking-service module: the TransactionController (/api/v1/transaction), TransactionService, TransactionRepository, and the TransactionEntity mapped to the banking_core_transaction table. Explain how a transaction links to an account (BankAccountEntity.number), what the existing endpoints do, and how the Flyway migrations under src/main/resources/db/migration build the schema.
 ```
 
 Expected: a tour of the write-side transaction flow — `fundTransfer` and

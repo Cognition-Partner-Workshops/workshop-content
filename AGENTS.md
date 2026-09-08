@@ -51,7 +51,11 @@ This repo serves two attendee modes. Most content targets the **hands-on lab att
 
 ### Prompts
 - All paste-into-Devin prompts use triple-backtick fenced code blocks (for GitHub copy button)
-- Line-wrap prompts at ~80 chars for readability
+- Write each prompt as a **single line with no newline breaks** inside the fenced
+  block (do not hard-wrap at 80 chars). Line breaks are preserved when pasted
+  into the Devin UI and make the prompt read badly there; let the renderer
+  soft-wrap instead. If a prompt genuinely needs several steps, write them as
+  sentences in one paragraph, not as a list.
 - Do NOT include "Open a PR" in prompts — Devin does this by default
 - Prompts must include repo names, file paths, and expected output format
 
@@ -73,7 +77,10 @@ Every module and workshop should incorporate applicable principles from `referen
 - Branch naming: `devin/<timestamp>-<description>`
 - All workshop content merges to `main` — do not leave starting-state content on feature branches
 - Workshop instructions never point participants to `devin/...` branches
-- Participants create `workshop-<attendee_id>` branches from `main`
+- Participants create `workshop-<attendee_id>` branches from `main`, unless the
+  module says otherwise (e.g. `demos/engineering-productivity/` starts from the
+  long-lived `workshop` branch of `otterworks`, which is `main` plus that demo
+  set's before-state)
 
 ## Reference Files
 

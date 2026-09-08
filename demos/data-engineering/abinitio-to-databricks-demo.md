@@ -105,11 +105,7 @@ repo, Devin typically maps an unfamiliar estate in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-python-abinitio-etl repo, give me a map of the Ab Initio estate:
-the graphs in graphs/, the DML record formats in dml/, the PSET parameter sets
-in psets/, and the KornShell wrappers in scripts/. For each pipeline, tell me
-what it reads and writes, which DML it binds, and whether it is set-based (good
-for dbt) or procedural/multi-output (better as a PySpark/notebook job).
+Using the ts-python-abinitio-etl repo, give me a map of the Ab Initio estate: the graphs in graphs/, the DML record formats in dml/, the PSET parameter sets in psets/, and the KornShell wrappers in scripts/. For each pipeline, tell me what it reads and writes, which DML it binds, and whether it is set-based (good for dbt) or procedural/multi-output (better as a PySpark/notebook job).
 ```
 
 Expected: a tour of `graphs/cdc_processor.py` and `graphs/parallel_loader.py`,
