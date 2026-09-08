@@ -47,7 +47,7 @@ In Cognition-Partner-Workshops/otterworks, the CI Pipeline workflow is failing o
 - Every push to `workshop-<attendee_id>` runs `CI Pipeline` (per-service jobs
   gated by `detect-changes`) and `cd-tenant.yml`, which deploys the branch to
   the attendee's tenant regardless of CI status — so the racy gateway is also
-  what is running at `https://api-t-<attendee_id>.otterworks.app`.
+  what is running at `https://api-t-<attendee_id>.demo.otterworks.app`.
 
 ---
 
@@ -96,7 +96,7 @@ that motivated the original change still works on the tenant — a 502 from a
 missing upstream carries a request ID you can grep in the pod log:
 
 ```
-curl -s https://api-t-<attendee_id>.otterworks.app/api/v1/reports/does-not-exist -H "Authorization: Bearer $TOKEN"
+curl -s https://api-t-<attendee_id>.demo.otterworks.app/api/v1/reports/does-not-exist -H "Authorization: Bearer $TOKEN"
 ```
 
 Expected on an unreachable route: `{"error":"service unavailable","target":"...","request_id":"..."}`.
