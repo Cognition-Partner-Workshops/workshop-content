@@ -56,7 +56,10 @@ Run them in order for a full "sprint in an hour", or run any one standalone.
 `main` is the golden app. The long-lived **`workshop`** branch is `main` plus the
 before-state for these demos (the merged fixture commits for demos 3 and 4);
 CI is intentionally red on it. Attendees branch `workshop-<attendee_id>` from
-`workshop` and open PRs back into `workshop`, never into `main`. Pushing
+`workshop` and open PRs back into `workshop`, never into `main` (demo 4 uses a
+per-attendee `review-base-<attendee_id>` base so the fixture diff is
+reviewable — see its Part 1). `CI Pipeline` and `security-scan` run on pushes to
+`workshop-**` and on PRs into `workshop` / `review-base-**`. Pushing
 `workshop-<attendee_id>` deploys a private tenant automatically
 (`.github/workflows/cd-tenant.yml`), reachable at `https://t-<attendee_id>.otterworks.app`
 and `https://api-t-<attendee_id>.otterworks.app`. The perpetual shared tenant is
