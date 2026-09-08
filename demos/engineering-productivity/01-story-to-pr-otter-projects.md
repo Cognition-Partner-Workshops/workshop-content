@@ -68,7 +68,12 @@ Devin Automation webhook. The automation prompt is the ticket rendered as one
 line from the project's prompt template; the payload also carries
 `callback_url` so the session posts progress back to
 `POST /api/webhooks/devin?ticket=OTTER-7`. Setup is in
-`demo-platform/otter-projects/docs/api.md` ("Devin Automation webhook").
+`demo-platform/otter-projects/docs/api.md` ("Devin Automation webhook"). In the
+Demo org this is the automation named **"Otter Projects — ticket assigned to
+Devin → story-to-PR session (OtterWorks)"** (webhook trigger, `run_as`
+organization); its webhook URL and secret are configured on the deployed Otter
+Projects instance, and the sessions it starts read `PROJECTS_API_KEY` from the
+org's secrets to call back to the board.
 
 ---
 
