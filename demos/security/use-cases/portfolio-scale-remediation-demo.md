@@ -91,25 +91,7 @@ Paste this prompt into Devin to scan both repositories and produce a single
 consolidated findings report:
 
 ```
-You are coordinating a security remediation across 2
-repositories. First, run security scans on both repos
-to build a consolidated findings report:
-
-Repo 1 — Cognition-Partner-Workshops/timesheet-app:
-Run npm audit --json and capture the output. Also run
-npx eslint . --format json to check for
-security-related lint violations.
-
-Repo 2 — Cognition-Partner-Workshops/
-uc-cve-remediation-regulatory-compliance:
-Run ./gradlew dependencyCheckAnalyze and capture the
-OWASP Dependency-Check report.
-
-Create a consolidated SECURITY_BACKLOG.md that lists
-findings across both repos, organized by severity
-(CRITICAL > HIGH > MEDIUM). For each finding, note:
-the repo, the dependency or file, the CVE or rule ID,
-and the CVSS score where available.
+You are coordinating a security remediation across 2 repositories. First, run security scans on both repos to build a consolidated findings report: Repo 1 — Cognition-Partner-Workshops/timesheet-app: Run npm audit --json and capture the output. Also run npx eslint . --format json to check for security-related lint violations. Repo 2 — Cognition-Partner-Workshops/ uc-cve-remediation-regulatory-compliance: Run ./gradlew dependencyCheckAnalyze and capture the OWASP Dependency-Check report. Create a consolidated SECURITY_BACKLOG.md that lists findings across both repos, organized by severity (CRITICAL > HIGH > MEDIUM). For each finding, note: the repo, the dependency or file, the CVE or rule ID, and the CVSS score where available.
 ```
 
 Devin clones both repos, runs the scanners, and produces `SECURITY_BACKLOG.md`.

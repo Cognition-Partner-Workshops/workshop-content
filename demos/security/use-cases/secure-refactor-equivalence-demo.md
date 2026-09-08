@@ -86,15 +86,7 @@ Start from where a security report stops: three findings and a service nobody on
 the call has read.
 
 ```
-A security assessment flagged three source-level findings in
-the OtterWorks document-service. These need code changes,
-not version bumps.
-
-Before changing anything, report for each finding: the file,
-the class, the exact methods, the CWE, the insecure pattern
-in the code today, and the HTTP route that reaches it.
-
-Use make eq-list and answer with the table.
+A security assessment flagged three source-level findings in the OtterWorks document-service. These need code changes, not version bumps. Before changing anything, report for each finding: the file, the class, the exact methods, the CWE, the insecure pattern in the code today, and the HTTP route that reaches it. Use make eq-list and answer with the table.
 ```
 
 ```
@@ -132,26 +124,11 @@ This is the half most remediation work skips: pin what the code does *now*,
 including the parts nobody would think to write down.
 
 ```
-Characterize the current externally observable behavior of
-all three subjects before any change: inputs, outputs,
-ordering, side effects and error cases, at the class level
-and through the HTTP routes.
-
-Run make eq-baseline and make eq-tests, and tell me what is
-under contract and what the attack cases assert.
+Characterize the current externally observable behavior of all three subjects before any change: inputs, outputs, ordering, side effects and error cases, at the class level and through the HTTP routes. Run make eq-baseline and make eq-tests, and tell me what is under contract and what the attack cases assert.
 ```
 
 ```
-OW-SEC-401  baseline  contract-title-fragment-is-case-insensitive              contract  ok
-OW-SEC-401  baseline  contract-count-matches-filter                            contract  ok
-OW-SEC-401  baseline  contract-sort-title-ascending                             contract  ok
-OW-SEC-401  baseline  contract-limit-and-offset                                contract  ok
-OW-SEC-401  baseline  contract-http-filtered-list                               contract  ok
-OW-SEC-402  baseline  contract-missing-export-raises-file-not-found             contract  ok
-OW-SEC-402  baseline  attack-traversal-reads-outside-the-archive                attack    ok    still exploitable (expected before-state)
-OW-SEC-403  baseline  attack-offline-token-forgery                              attack    ok    still exploitable (expected before-state)
-
-baseline: ok
+OW-SEC-401  baseline  contract-title-fragment-is-case-insensitive              contract  ok OW-SEC-401  baseline  contract-count-matches-filter                            contract  ok OW-SEC-401  baseline  contract-sort-title-ascending                             contract  ok OW-SEC-401  baseline  contract-limit-and-offset                                contract  ok OW-SEC-401  baseline  contract-http-filtered-list                               contract  ok OW-SEC-402  baseline  contract-missing-export-raises-file-not-found             contract  ok OW-SEC-402  baseline  attack-traversal-reads-outside-the-archive                attack    ok    still exploitable (expected before-state) OW-SEC-403  baseline  attack-offline-token-forgery                              attack    ok    still exploitable (expected before-state) baseline: ok
 ```
 
 ```
@@ -225,13 +202,7 @@ answered it before.
 ## Part 4 — Refactor, Interface Unchanged
 
 ```
-Refactor all three subjects with the secure pattern for each
-finding. Constraints: the public interface stays exactly as
-it is — same class names, same method names, same signatures,
-same return shapes — and no behavior changes except the
-attacks closing.
-
-Explain each pattern you applied and what it preserves.
+Refactor all three subjects with the secure pattern for each finding. Constraints: the public interface stays exactly as it is — same class names, same method names, same signatures, same return shapes — and no behavior changes except the attacks closing. Explain each pattern you applied and what it preserves.
 ```
 
 The three patterns, and the part of each that is easy to get wrong:
@@ -390,17 +361,7 @@ reports "not vulnerable" forever.
 Three findings in one service is one session. A remediation backlog is not.
 
 ```
-Here are the remaining findings from the assessment. Launch
-one child session per finding, each with the
-!secure-refactor-equivalence playbook, its own branch off
-main and its own scoped PR.
-
-Every child runs the full loop — eq-baseline, eq-exploit,
-refactor, eq-verify, eq-exploit, eq-tests — and reports in
-the same evidence format.
-
-Monitor them and give me a table of finding, CWE, subject
-class, pattern applied, session, PR and gate result.
+Here are the remaining findings from the assessment. Launch one child session per finding, each with the !secure-refactor-equivalence playbook, its own branch off main and its own scoped PR. Every child runs the full loop — eq-baseline, eq-exploit, refactor, eq-verify, eq-exploit, eq-tests — and reports in the same evidence format. Monitor them and give me a table of finding, CWE, subject class, pattern applied, session, PR and gate result.
 ```
 
 Each child gets its own VM, its own scoped credentials and its own branch, so
@@ -411,14 +372,7 @@ Isolation is what makes the parallelism safe rather than exciting.
 Then the report a security team can actually file:
 
 ```
-Produce a single auditor-ready report covering all findings:
-for each one the CWE, the file/class/method, the insecure
-pattern, the secure pattern applied, the evidence that the
-exploit is closed, the evidence that behavior is unchanged,
-the residual risk and any compensating control still needed.
-
-Include the commands and their exit codes so a reader can
-re-derive every claim.
+Produce a single auditor-ready report covering all findings: for each one the CWE, the file/class/method, the insecure pattern, the secure pattern applied, the evidence that the exploit is closed, the evidence that behavior is unchanged, the residual risk and any compensating control still needed. Include the commands and their exit codes so a reader can re-derive every claim.
 ```
 
 Residual risk is a required field, not a flourish. The export route has no
@@ -445,11 +399,7 @@ refactor. A branch cannot choose the easier contract for itself.
 still in place" spreadsheet:
 
 ```
-Every Monday at 07:00 UTC, run make eq-list and make eq-gate
-on Cognition-Partner-Workshops/otterworks and report which
-findings are still open, which have evidence recorded, and
-any finding whose evidence has gone stale. Do not change any
-code.
+Every Monday at 07:00 UTC, run make eq-list and make eq-gate on Cognition-Partner-Workshops/otterworks and report which findings are still open, which have evidence recorded, and any finding whose evidence has gone stale. Do not change any code.
 ```
 
 **On an event.** A [Devin Automation](https://docs.devin.ai/product-guides/automations)

@@ -106,10 +106,7 @@ Devin typically maps an unfamiliar estate in minutes (coverage depends on repo
 structure).
 
 ```
-Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate:
-the banking and insurance programs, what each one reads and writes, the
-LIBNAMEs, the macros and PROC FORMATs they depend on, and which programs are
-set-based (good for dbt) vs procedural/multi-output (better as PySpark).
+Using the ts-sas-legacy-analytics repo, give me a map of the SAS estate: the banking and insurance programs, what each one reads and writes, the LIBNAMEs, the macros and PROC FORMATs they depend on, and which programs are set-based (good for dbt) vs procedural/multi-output (better as PySpark).
 ```
 
 Expected: a tour of `Programs/Banking/*`, `Programs/Insurance/*`, the `Macro/`

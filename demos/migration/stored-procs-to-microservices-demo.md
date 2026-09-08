@@ -184,15 +184,7 @@ analysis/PROCS_INVENTORY.md.
 Then the question that decides the plan.
 
 ```
-For the four modules (plans, rating, invoicing, dunning) in
-Cognition-Partner-Workshops/otterworks, tell me which business rules are
-implemented *only* in SQL and would be lost if someone rewrote these procedures
-from the documentation. Quote the exact lines.
-
-Pay specific attention to: rounding direction and where it happens in the
-arithmetic, date boundaries (inclusive vs exclusive), the order in which
-credits, caps, and tiers apply, and any ORDER BY whose result a caller depends
-on. Write it to analysis/RULES_AT_RISK.md.
+For the four modules (plans, rating, invoicing, dunning) in Cognition-Partner-Workshops/otterworks, tell me which business rules are implemented *only* in SQL and would be lost if someone rewrote these procedures from the documentation. Quote the exact lines. Pay specific attention to: rounding direction and where it happens in the arithmetic, date boundaries (inclusive vs exclusive), the order in which credits, caps, and tiers apply, and any ORDER BY whose result a caller depends on. Write it to analysis/RULES_AT_RISK.md.
 ```
 
 That last sentence is not decoration. Those four categories are where ports
@@ -242,34 +234,14 @@ Now Devin derives the rules — and, more importantly, tells you what it is not
 sure about.
 
 ```
-In Cognition-Partner-Workshops/otterworks, derive the business rules of the
-rating module from services/legacy-billing/db/procs/rating.sql and write the
-ledger at procs/rules/rating.rules.yaml, following the format and field set of
-the approved procs/rules/plans.rules.yaml exactly.
-
-For each rule: the statement, the source file and line range it comes from, the
-scenarios under procs/scenarios/rating/ that exercise it, your confidence, and —
-wherever the SQL is ambiguous, surprising, or could be read two ways — an
-explicit question for me.
-
-Leave every decision status pending. Do not answer your own questions and do not
-approve anything. Then show me the questions as a list, with the lines of SQL
-each one is about.
+In Cognition-Partner-Workshops/otterworks, derive the business rules of the rating module from services/legacy-billing/db/procs/rating.sql and write the ledger at procs/rules/rating.rules.yaml, following the format and field set of the approved procs/rules/plans.rules.yaml exactly. For each rule: the statement, the source file and line range it comes from, the scenarios under procs/scenarios/rating/ that exercise it, your confidence, and — wherever the SQL is ambiguous, surprising, or could be read two ways — an explicit question for me. Leave every decision status pending. Do not answer your own questions and do not approve anything. Then show me the questions as a list, with the lines of SQL each one is about.
 ```
 
 Read the questions and answer them; that is the human-in-the-loop step, and the
 gate enforces it:
 
 ```
-Here are the decisions on procs/rules/rating.rules.yaml. Record each one with me
-as the reviewer and today's date, and record my answer to every question
-verbatim next to the rule it belongs to.
-
-<your decisions here, rule by rule: approved as stated, or changed with the
-reason and the corrected statement>
-
-Then run `make procs-rules-gate MODULE=rating` and show me the output. Implement
-only what I approved.
+Here are the decisions on procs/rules/rating.rules.yaml. Record each one with me as the reviewer and today's date, and record my answer to every question verbatim next to the rule it belongs to. <your decisions here, rule by rule: approved as stated, or changed with the reason and the corrected statement> Then run `make procs-rules-gate MODULE=rating` and show me the output. Implement only what I approved.
 ```
 
 `make procs-rules-gate MODULE=rating` fails unless every rule has a decision
@@ -419,19 +391,7 @@ consume it. The plans screens under
 extracted service's API, and no screen contains a rule.
 
 ```
-In Cognition-Partner-Workshops/otterworks, add the React screens for the newly
-extracted rating module under frontend/client-app/src/features/billing/,
-following how the plans screens are built: a usage/rating view for a tenant and
-a period, driven only by the billing service's API.
-
-Requirements: every request has error handling and a visible dismissible error
-alert, loading state starts true and empty-state copy never shows while loading
-or after an error, stale responses from a previous tenant or period are never
-painted, inputs have labels, and errors are associated with their field. Add
-React Testing Library tests with the API mocked, including the failure paths.
-
-No business rule may live in the client — if a number needs computing, the
-service computes it.
+In Cognition-Partner-Workshops/otterworks, add the React screens for the newly extracted rating module under frontend/client-app/src/features/billing/, following how the plans screens are built: a usage/rating view for a tenant and a period, driven only by the billing service's API. Requirements: every request has error handling and a visible dismissible error alert, loading state starts true and empty-state copy never shows while loading or after an error, stale responses from a previous tenant or period are never painted, inputs have labels, and errors are associated with their field. Add React Testing Library tests with the API mocked, including the failure paths. No business rule may live in the client — if a number needs computing, the service computes it.
 ```
 
 Then harden what the extraction produced, which is safe to do precisely because
@@ -459,14 +419,7 @@ The same procedure runs unattended.
 rather than by a customer:
 
 ```
-Create a scheduled Devin that runs every weekday at 07:00 UTC against
-Cognition-Partner-Workshops/otterworks:
-
-Run `make procs-up NS=nightly && make procs-rules-gate ALL=1 && make
-procs-parity NS=nightly && make procs-down NS=nightly`. If everything passes,
-post a one-line summary. If anything fails, open an issue with the failing
-scenarios, the field-level diffs from procs/reports/parity.md, and the commits
-merged since the last green run.
+Create a scheduled Devin that runs every weekday at 07:00 UTC against Cognition-Partner-Workshops/otterworks: Run `make procs-up NS=nightly && make procs-rules-gate ALL=1 && make procs-parity NS=nightly && make procs-down NS=nightly`. If everything passes, post a one-line summary. If anything fails, open an issue with the failing scenarios, the field-level diffs from procs/reports/parity.md, and the commits merged since the last green run.
 ```
 
 **Event-driven** — an [Automation](https://docs.devin.ai/product-guides/automations)

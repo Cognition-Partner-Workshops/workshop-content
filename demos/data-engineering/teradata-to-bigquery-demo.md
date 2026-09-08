@@ -89,12 +89,7 @@ typically maps an unfamiliar estate in minutes (coverage depends on repo
 structure).
 
 ```
-Using the uc-dw-migration-teradata-to-bigquery repo, give me a map of the
-Teradata warehouse: the dimension and fact tables in ddl/tables/, the views in
-ddl/views/, the stored procedures and macros in dml/, the BTEQ scripts, and the
-Teradata-specific features each one depends on (SET/MULTISET, PI/PPI, COMPRESS,
-QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Note which objects are the parity
-harness's targets.
+Using the uc-dw-migration-teradata-to-bigquery repo, give me a map of the Teradata warehouse: the dimension and fact tables in ddl/tables/, the views in ddl/views/, the stored procedures and macros in dml/, the BTEQ scripts, and the Teradata-specific features each one depends on (SET/MULTISET, PI/PPI, COMPRESS, QUALIFY, ZEROIFNULL, CSUM, MAVG, HASHROW). Note which objects are the parity harness's targets.
 ```
 
 Expected: a tour of the 7 tables, 3 views, 3 stored procedures, 3 macros, and the

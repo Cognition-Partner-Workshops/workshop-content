@@ -271,20 +271,7 @@ pool). One human doing this hand-edits dozens of files consistently across
 languages they may not all know; Devin does it as one governed sweep.
 
 ```
-In Cognition-Partner-Workshops/otterworks, replatform the PostgreSQL
-data layer to Amazon Aurora Serverless v2 (provisioned as a namespaced
-Terraform module alongside modules/database, not replacing it). Do not
-change any schema or SQL.
-
-Across every service that connects to PostgreSQL, update only the
-connection layer to target the Aurora endpoint via the existing
-DB_HOST / DATABASE_URL config, add IAM database authentication and TLS,
-and keep the current PostgreSQL config wired for revert. Enumerate every
-file you change, per language (Java/Kotlin JDBC, Go database/sql, Rust
-sqlx, Python psycopg, C# Npgsql, Scala Slick, Ruby ActiveRecord, Node
-pool). Prove parity by running each service's existing DB-backed tests
-and the tests/api flow suite against Aurora, and report a before/after
-connection/latency comparison.
+In Cognition-Partner-Workshops/otterworks, replatform the PostgreSQL data layer to Amazon Aurora Serverless v2 (provisioned as a namespaced Terraform module alongside modules/database, not replacing it). Do not change any schema or SQL. Across every service that connects to PostgreSQL, update only the connection layer to target the Aurora endpoint via the existing DB_HOST / DATABASE_URL config, add IAM database authentication and TLS, and keep the current PostgreSQL config wired for revert. Enumerate every file you change, per language (Java/Kotlin JDBC, Go database/sql, Rust sqlx, Python psycopg, C# Npgsql, Scala Slick, Ruby ActiveRecord, Node pool). Prove parity by running each service's existing DB-backed tests and the tests/api flow suite against Aurora, and report a before/after connection/latency comparison.
 ```
 
 Expected: a single PR with the identical connection change applied

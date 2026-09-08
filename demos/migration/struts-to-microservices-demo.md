@@ -158,13 +158,7 @@ Then the judgment call that actually matters — what is business logic and what
 is framework plumbing.
 
 ```
-For each Action class in com.northstar.claims.web, classify every method into
-(a) domain business rules, (b) Struts/JSP framework plumbing, or (c)
-persistence. Call out anything you cannot cleanly classify and explain why.
-
-Then tell me specifically which business rules are embedded inside Action
-classes rather than in a service layer, since those are the ones a migration is
-most likely to drop. Write it to analysis/LOGIC_VS_PLUMBING.md.
+For each Action class in com.northstar.claims.web, classify every method into (a) domain business rules, (b) Struts/JSP framework plumbing, or (c) persistence. Call out anything you cannot cleanly classify and explain why. Then tell me specifically which business rules are embedded inside Action classes rather than in a service layer, since those are the ones a migration is most likely to drop. Write it to analysis/LOGIC_VS_PLUMBING.md.
 ```
 
 Then the boundaries and the debt.

@@ -95,14 +95,7 @@ produce it. With DeepWiki over the repo, Devin typically maps an unfamiliar
 estate in minutes (coverage depends on repo structure).
 
 ```
-Using the uc-api-migration-mulesoft-to-boomi repo, run the estate
-assessment (make inventory) over the vendored MuleSoft source at
-contracts/source/employee-services-api.xml and walk me through the
-report: every flow, its endpoint, connectors and SQL used, DataWeave
-transform count, error handlers, the complexity score, and — most
-importantly — which flows map cleanly to Boomi processes and which are
-flagged for redesign (object store usage, Salesforce callback flows,
-static web content) and why.
+Using the uc-api-migration-mulesoft-to-boomi repo, run the estate assessment (make inventory) over the vendored MuleSoft source at contracts/source/employee-services-api.xml and walk me through the report: every flow, its endpoint, connectors and SQL used, DataWeave transform count, error handlers, the complexity score, and — most importantly — which flows map cleanly to Boomi processes and which are flagged for redesign (object store usage, Salesforce callback flows, static web content) and why.
 ```
 
 Expected: the per-flow inventory from `inventory/report/estate.md` — the 7

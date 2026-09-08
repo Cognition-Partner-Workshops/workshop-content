@@ -93,14 +93,7 @@ repo, Devin typically maps an unfamiliar estate in minutes (coverage depends on
 repo structure).
 
 ```
-Using the ts-java-mulesoft-employee-api repo, give me a map of the
-MuleSoft API estate: the Mule XML flows in
-src/main/mule/employee-services-api.xml, what each flow does (OAuth,
-employee goals, learning, pay date, PTO), the RAML spec at
-src/main/resources/api/employee-services-api.raml, the database tables
-(api_clients, employee_goals, employee_learning, employee_pto), and how
-the authentication flow works (client credentials → token validation →
-protected endpoints).
+Using the ts-java-mulesoft-employee-api repo, give me a map of the MuleSoft API estate: the Mule XML flows in src/main/mule/employee-services-api.xml, what each flow does (OAuth, employee goals, learning, pay date, PTO), the RAML spec at src/main/resources/api/employee-services-api.raml, the database tables (api_clients, employee_goals, employee_learning, employee_pto), and how the authentication flow works (client credentials → token validation → protected endpoints).
 ```
 
 Expected: a tour of the Mule XML flows — `oauth-token-flow`,
