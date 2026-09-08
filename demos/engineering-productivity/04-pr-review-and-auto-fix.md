@@ -41,7 +41,7 @@ adding:
 - `POST /api/v1/documents/{document_id}/duplicate` — copy a document for the
   calling user.
 
-Both endpoints have unit tests that pass. On the same branch:
+The existing document-service unit tests still pass. On the same branch:
 
 - `.github/workflows/security-scan.yml` job `sast` (Semgrep,
   `p/owasp-top-ten` + `p/security-audit`) reports **1 blocking finding** in
@@ -61,9 +61,19 @@ compares with the automated review in [Part 4](#part-4).
 ## Part 1 — Open the PR
 
 The fixture diff is already on `workshop-<attendee_id>` because the branch is
-cut from `workshop`. Open the PR from the branch into `workshop` (GitHub UI or
-`gh pr create --base workshop --head workshop-<attendee_id> --title "document-service: add owner stats and duplicate endpoints" --body "Admin dashboard needs per-owner usage; also lets users duplicate a document."`).
-Wait for `security-scan` to finish — the `sast` job should be red.
+cut from `workshop` — which also means a PR into `workshop` would be empty.
+Instead, push a per-attendee base branch that sits just *before* the fixture
+commit, then open the PR against it so the diff is exactly the two new
+endpoints:
+
+```bash
+git push origin "$(git log --format=%H --grep='Merge fixture: api-gateway' -n1 origin/workshop)":refs/heads/review-base-<attendee_id>
+gh pr create --base review-base-<attendee_id> --head workshop-<attendee_id> --title "document-service: add owner stats and duplicate endpoints" --body "Admin dashboard needs per-owner usage; also lets users duplicate a document."
+```
+
+`CI Pipeline` and `security-scan` run on PRs into `review-base-**` (and on every
+push to `workshop-**`). Wait for `security-scan` to finish — the `sast` job
+should be red.
 
 ---
 
