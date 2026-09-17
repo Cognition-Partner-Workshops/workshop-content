@@ -314,7 +314,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Real-world application built with Angular. |
 | **Tech Stack** | Angular, TypeScript |
 | **License** | — |
-| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md), [UI Delivery & Visual Verification Demo](../demos/frontend-mobile/ui-delivery-and-visual-verification-demo.md) |
 
 ### ts-java-angular-jhipster
 | | |
@@ -445,7 +445,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Tech Stack** | Angular, TypeScript |
 | **License** | — |
 | **Cluster** | C3 (PetClinic ecosystem) |
-| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md), [Continuous Quality Engineering](../labs/testing-qa/continuous-quality-engineering.md) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md), [Repetitive Framework Upgrades](../labs/migration-modernization/repetitive-framework-upgrades.md), [Test Framework Migration](../labs/testing-qa/test-framework-migration.md), [Continuous Quality Engineering](../labs/testing-qa/continuous-quality-engineering.md), [UI Delivery & Visual Verification Demo](../demos/frontend-mobile/ui-delivery-and-visual-verification-demo.md) |
 
 ### petclinic-backend
 | | |
@@ -612,7 +612,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Description** | Open source admin template based on Bootstrap 5 and React.js. |
 | **Tech Stack** | React, Bootstrap 5, JavaScript |
 | **License** | MIT |
-| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md) (Bootstrap → Material UI) |
+| **Challenges** | [Framework Upgrade](../labs/migration-modernization/framework-upgrade.md) (Bootstrap → Material UI), [UI Delivery & Visual Verification Demo](../demos/frontend-mobile/ui-delivery-and-visual-verification-demo.md) |
 
 ### ts-cobol-carddemo
 | | |
@@ -646,7 +646,7 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Default Branch** | `main` |
 | **Cluster** | C15 (Flutter Mobile App Development) |
 | **Key Contents** | `lib/screens/` (38 screens organized by domain: auth, product, payment, settings, etc.), `lib/models/` (JSON-serialized data models with `.g.dart` codegen), `lib/api_service.dart` (API integration), `assets/` (product images, promotional mockups, fonts) |
-| **Challenges** | Unit test generation, multi-platform build/deploy, feature development from UI mockups |
+| **Challenges** | Unit test generation, multi-platform build/deploy, feature development from UI mockups, [UI Delivery & Visual Verification Demo](../demos/frontend-mobile/ui-delivery-and-visual-verification-demo.md) |
 
 ### jpetstore-6
 | | |
