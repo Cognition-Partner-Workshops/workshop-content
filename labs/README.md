@@ -14,7 +14,7 @@ All hands-on modules organized by engineering discipline. Each module is a self-
 | Category | Discipline / Job Title | Modules |
 |----------|----------------------|---------|
 | [Application Development](application-development/) | Software Developer, Full-Stack Engineer | 7 modules |
-| [Testing & QA](testing-qa/) | QA Engineer, SDET, Test Automation Engineer | 11 modules |
+| [Testing & QA](testing-qa/) | QA Engineer, SDET, Test Automation Engineer | 13 modules |
 | [Security](security/) | Security Engineer, AppSec Engineer | 7 modules |
 | [Compliance & Governance](compliance-governance/) | Compliance Officer, GRC Analyst | 3 modules |
 | [DevOps & CI/CD](devops-cicd/) | DevOps Engineer, Release Engineer | 5 modules |
