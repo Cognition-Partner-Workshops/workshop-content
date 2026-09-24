@@ -30,7 +30,6 @@ there. The Automation itself is documented in `docs/incident-responder/automatio
 - [Confidence = Programmatic Verification](#confidence)
 - [Run the Produced Artifact](#run-artifact)
 - [Confirm Completion in the Target Tools](#confirm)
-- [Screen Recording](#recording)
 - [Key Takeaways](#key-takeaways)
 
 ---
@@ -47,14 +46,16 @@ Alertmanager webhook JSON appended verbatim after it:
 
 You have been paged. The Alertmanager webhook payload for the firing alert is appended below; it is the whole brief, and nobody will type a follow-up prompt. The paging service lives in @Cognition-Partner-Workshops/otterworks (the document-service; its `incident-responder` Skill is auto-loaded and has every command you need).
 
+If the payload's top-level `status` is `resolved` (Alertmanager also notifies on resolve), do nothing: reply with one line naming the alert and its `endsAt`, and stop.
+
 Work in this order and do not skip a step:
 1. Read the payload: alert name, `service`, `scenario`, `severity`, the summary's metric and threshold, `startsAt`, and the `dashboard_url` / `traces_url` / `runbook_url` annotations. If the payload contains a Slack channel and message timestamp, that thread is where your RCA goes; otherwise the RCA goes in the PR description and your final message.
 2. Telemetry before code. Open the dashboard and trace links from the annotations and write down three facts with numbers: the user-facing symptom (p95, error ratio, memory, duplicate windows), what is NOT changing (request rate flat, no deploy), and what the traces say the time or resource is spent on. If those hosts are unreachable from your machine, say so and get the same numbers from your local reproduction in step 3 instead.
-3. Reproduce on your own machine: check out the repository, run `make incident-up`, then `make incident-arm SCENARIO=<scenario from the payload>` and `make incident-verify SCENARIO=<scenario> EXPECT=before`. The gate must go green (the alert fires locally and the before-thresholds are met) before you touch code. Open the local Grafana (http://localhost:3001, admin/otterworks) and Jaeger (http://localhost:16686) and capture the flat-traffic/rising-latency panel and the one trace that fans out — those two screenshots go in the PR.
+3. Reproduce on your own machine on the code the paging tenant actually runs: the alert's `branch` label names the branch that tenant deploys (`git fetch origin <branch> && git checkout <branch>`); `main` is right only if the label says `main`, the `namespace` is `otterworks-main`, or the payload names no tenant namespace at all. Never derive the branch from the namespace — if the payload has a tenant namespace but no `branch` label, stop and report that instead of guessing. Then run `make incident-up`, then `make incident-arm SCENARIO=<scenario from the payload>` and `make incident-verify SCENARIO=<scenario> EXPECT=before`. The gate must go green (the alert fires locally and the before-thresholds are met) before you touch code. Open the local Grafana (http://localhost:3001, admin/otterworks) and Jaeger (http://localhost:16686) and capture the flat-traffic/rising-latency panel and the one trace that fans out — those two screenshots go in the PR.
 4. Find the cause in code by following the span names and SQL text back to the function that emits them; check `git log -S` for when it arrived. Name the file, function and line.
 5. Make the smallest fix that removes the cause: a query change, a migration if an index is missing (a new Alembic revision; never edit an existing one), and one regression test that pins the property the alert measured. No refactors, no changes to alert rules, thresholds, `incident/scenarios.yaml`, `incident/expected.yaml`, seeds or dashboards. Run the service's lint (`ruff`) and its focused tests.
 6. Prove it with the same load: rebuild (`make incident-up`), run `make incident-verify SCENARIO=<scenario> EXPECT=after`, and record the before/after numbers side by side from the gate output (for n-plus-one that is p95 and SQL statements per request; for the others, the metric named in the alert). The alert must be inactive under the same load. If the gate is red, the fix is not done — read the trace for the new build and iterate; never edit the gate.
-7. Open one PR from a new branch `devin/<unix-timestamp>-<alert-slug>` against the branch the paging tenant tracks (`demo-incident` for the sandbox tenant; `main` if the payload does not name one) with: what users saw, what telemetry showed, the root cause (file:function:line), the fix in one sentence, the before/after table, the two screenshots, and the exact gate commands you ran with their output. Keep the diff to the query change, the migration, the test and (if needed) the model/service code the query touches.
+7. Open one PR from a new branch `devin/<unix-timestamp>-<alert-slug>` against the branch you checked out in step 3 (the alert's `branch` label; `main` only in the cases above) with: what users saw, what telemetry showed, the root cause (file:function:line), the fix in one sentence, the before/after table, the two screenshots, and the exact gate commands you ran with their output. Keep the diff to the query change, the migration, the test and (if needed) the model/service code the query touches.
 8. Post the RCA: one message in the alert's Slack thread if you have one (users saw / telemetry showed / root cause / fix / before-after / PR link), otherwise as your final message. Run `make incident-disarm` before you finish.
 
 Never push to any branch other than your own, never merge, and never silence the alert (rule edits, threshold changes, inhibitions) as a fix. If you cannot reproduce the alert locally, stop and report exactly what you saw instead of guessing at a fix.
@@ -65,7 +66,7 @@ in the repo to print the exact payload Alertmanager sent, and paste this into a
 new Devin session with that JSON appended:
 
 ```
-!incident_responder You have been paged in Cognition-Partner-Workshops/otterworks: DocumentListLatencyHigh (severity critical, service document-service, scenario n-plus-one) is firing — the p95 of GET /api/v1/documents/ is above 1 s while request rate is flat. Treat the Alertmanager payload appended below as the whole brief. Read the telemetry first (Grafana dashboard otterworks-incident-responder, Jaeger traces for document-service), then reproduce locally with make incident-up, make incident-arm SCENARIO=n-plus-one and make incident-verify SCENARIO=n-plus-one EXPECT=before, follow the SQL spans back to the function in services/document-service/app/services/document_service.py that emits them, make the smallest fix (one batched query, one new Alembic revision under services/document-service/alembic/versions/ if an index is missing, one regression test under services/document-service/tests/ pinning the statement count), rebuild and prove it with make incident-verify SCENARIO=n-plus-one EXPECT=after under the same load, and run make incident-disarm before finishing. Expected output: a PR against the demo-incident branch containing the RCA (what users saw, what telemetry showed, root cause as file:function:line, the fix in one sentence, a before/after table of p95 and SQL statements per request, and the two gate commands with their output) and the same RCA as one reply in the alert's Slack thread if the payload names a channel and message timestamp, otherwise as your final message. Do not change alert rules, thresholds, incident/scenarios.yaml, incident/expected.yaml, seeds or dashboards, and never push to any branch other than your own.
+!incident_responder You have been paged in Cognition-Partner-Workshops/otterworks: DocumentListLatencyHigh (severity critical, service document-service, scenario n-plus-one) is firing — the p95 of GET /api/v1/documents/ is above 1 s while request rate is flat. Treat the Alertmanager payload appended below as the whole brief. Read the telemetry first (Grafana dashboard otterworks-incident-responder, Jaeger traces for document-service), then check out the branch named by the payload's branch label (demo-incident for the sandbox tenant) and reproduce locally with make incident-up, make incident-arm SCENARIO=n-plus-one and make incident-verify SCENARIO=n-plus-one EXPECT=before, follow the SQL spans back to the function in services/document-service/app/services/document_service.py that emits them, make the smallest fix (one batched query, one new Alembic revision under services/document-service/alembic/versions/ if an index is missing, one regression test under services/document-service/tests/ pinning the statement count), rebuild and prove it with make incident-verify SCENARIO=n-plus-one EXPECT=after under the same load, and run make incident-disarm before finishing. Expected output: a PR against the demo-incident branch containing the RCA (what users saw, what telemetry showed, root cause as file:function:line, the fix in one sentence, a before/after table of p95 and SQL statements per request, and the two gate commands with their output) and the same RCA as one reply in the alert's Slack thread if the payload names a channel and message timestamp, otherwise as your final message. Do not change alert rules, thresholds, incident/scenarios.yaml, incident/expected.yaml, seeds or dashboards, and never push to any branch other than your own.
 ```
 
 ---
@@ -79,8 +80,9 @@ new Devin session with that JSON appended:
 that stay on `main` on purpose. A fix lives on the responder's own branch. The
 sandbox branch **`demo-incident`** is `main` plus whatever has been merged for
 this run; pushing to it deploys the isolated tenant `otterworks-incident`
-(`https://t-incident.otterworks.app`, `https://api-t-incident.otterworks.app`)
-through `.github/workflows/cd-tenant.yml`. The perpetual golden tenant
+(`https://t-incident.demo.otterworks.app`,
+`https://api-t-incident.demo.otterworks.app`) through
+`.github/workflows/cd-tenant.yml`. The perpetual golden tenant
 `t-main.otterworks.app` is never seeded, injected, or mutated.
 
 **Local stack.** `make incident-up` brings up document-service with Postgres and
@@ -205,7 +207,10 @@ What the session does, in order, and what to look for in its timeline:
    (request rate flat, no deploy), and where the time goes (one request fanning
    into ~100 identical SELECTs on `document_versions`). Flat volume with rising
    latency is a per-request cost growing with data, not capacity; the RCA says
-   which.
+   which. The hosted Grafana and Jaeger behind `*.otterworks.app` sit behind a
+   login, so from the session's machine they answer with a redirect; the prompt
+   tells the session to say so and take the same three numbers from its local
+   reproduction instead, which is what the validation run did.
 3. **Reproduces on its own machine** (next section) before touching code.
 
 If the session opens `document_service.py` first and reasons from the code
@@ -305,6 +310,23 @@ to 0.21 s; with the indexes applied it was 0.125 s. The RCA says the query
 change carried the recovery and the indexes keep the owner listing and the
 per-document version lookup off sequential scans as the tables grow.
 
+The absolute numbers move with the machine running the stack; the shape does
+not. The unattended validation run, on its own VM, measured p95 3.85 s → 0.10 s
+and 74 (gate) / 104 (trace) → 5 statements per request, and hit a different
+real divergence on the way: its first after gate was red on p95 alone (0.98 s
+with the batched query in place) because the list page still loaded every
+version body; the trace for the new build pointed at the remaining cost and the
+fix was iterated, not the threshold. Every run quotes its own gate output, so
+quote the numbers from the run on screen rather than these.
+
+The gate also refuses to be fooled by an idle stack: a threshold whose metric
+has no samples in the window fails with an explicit `no samples` message rather
+than comparing against `nan`, and the after gate requires the offered load to
+have actually reached the service (`request_rate >= 12 rps`, half the pinned
+profile). On a small laptop the after gate can trip that check — that is a
+host-sizing diagnostic, not a verdict on the fix; the Skill names the host size
+the stack was verified on.
+
 The session then posts the RCA as one reply in the alert's Slack thread — what
 users saw, what telemetry showed, root cause with file and function, the fix in
 one sentence, the before/after numbers, the PR link — opens the PR against
@@ -322,12 +344,11 @@ Playbook answers `RequestLogVolumeNearFull`, `DocumentServiceMemoryHigh` and
 `DocumentStatsRollupDuplicated` with the same order of work — payload, telemetry,
 `EXPECT=before`, smallest fix, `EXPECT=after`, RCA, PR. Each scenario has its own
 load profile, its own before-thresholds and its own paging alert in the catalog,
-and each responder works on its own `devin/<timestamp>-<alert-slug>` branch, so
-three pages arriving together are three independent PRs rather than one
-entangled one. Fanning out by hand looks like this, from a parent session:
+and each responder works on its own branch, so three pages arriving together
+are three independent PRs rather than one entangled one. Fanning out by hand looks like this, from a parent session:
 
 ```
-In Cognition-Partner-Workshops/otterworks, start three child sessions in parallel, one per scenario in incident/scenarios.yaml other than n-plus-one (log-flood, cache-leak, double-run). Each child runs the !incident_responder playbook against its scenario exactly as an Alertmanager page would: make incident-up, make incident-arm SCENARIO=<name>, make incident-verify SCENARIO=<name> EXPECT=before, the smallest fix in the file named under code_cause, one regression test under services/document-service/tests/, rebuild, make incident-verify SCENARIO=<name> EXPECT=after, then make incident-disarm, each on its own devin/<timestamp>-<alert-slug> branch with its own PR against demo-incident carrying the RCA and the before/after gate output. Do not change alert rules, thresholds, incident/scenarios.yaml or incident/expected.yaml. Report back one table: scenario, alert, before number, after number, PR link.
+In Cognition-Partner-Workshops/otterworks, start three child sessions in parallel, one per scenario in incident/scenarios.yaml other than n-plus-one (log-flood, cache-leak, double-run). Each child runs the !incident_responder playbook against its scenario exactly as an Alertmanager page would: make incident-up, make incident-arm SCENARIO=<name>, make incident-verify SCENARIO=<name> EXPECT=before, the smallest fix in the file named under code_cause, one regression test under services/document-service/tests/, rebuild, make incident-verify SCENARIO=<name> EXPECT=after, then make incident-disarm, each on its own branch with its own PR against demo-incident carrying the RCA and the before/after gate output. Do not change alert rules, thresholds, incident/scenarios.yaml or incident/expected.yaml. Report back one table: scenario, alert, before number, after number, PR link.
 ```
 
 The Automation's concurrency setting is one running session and a queue depth
@@ -369,10 +390,16 @@ Every claim in the RCA is a number the gate measured, not an estimate:
 Merge the PR into `demo-incident`. `.github/workflows/cd-tenant.yml` rebuilds
 only the changed service and deploys it to the `otterworks-incident` tenant;
 migrations run on container start, so the new Alembic revision is applied by the
-rollout. Under the same load the tenant's p95 falls, statements per request drop
-from 104 to 5, and `DocumentListLatencyHigh` resolves. On the browser view
-(`https://t-incident.otterworks.app`, or `http://localhost:3000` with
-`make incident-up UI=1`), "My documents" opens without the spinner.
+rollout. On the validation run the rollout landed about four minutes after the
+merge and the tenant's SQL statements per request stepped from 104 to 5 on the
+next scrape. The tenant runs the load at a quarter of the pinned profile
+(`INCIDENT_LOAD_SCALE=0.25`) because it has far less CPU headroom than the local
+stack, so its p95 is noisier than the local chart; the clean before/after p95
+curve (≈ 2.4 s → ≈ 0.13–0.21 s under the full 24 rps) is the local stack's,
+from `make incident-verify SCENARIO=n-plus-one EXPECT=after` on the merged
+branch. On the browser view (`https://t-incident.demo.otterworks.app`, or
+`http://localhost:3000` with `make incident-up UI=1`), "My documents" opens
+without the spinner.
 
 ---
 
@@ -381,31 +408,11 @@ from 104 to 5, and `DocumentListLatencyHigh` resolves. On the browser view
 
 | Tool | Where to look | What confirms completion |
 |---|---|---|
-| **Grafana** | `/d/otterworks-incident-responder` | Request rate still flat; p95 falling from ≈ 2.4 s to ≈ 0.13–0.21 s; SQL statements per request stepping 104 → 5 |
-| **Alertmanager** | `http://localhost:9093` (or the tenant's) | `DocumentListLatencyHigh` and `DocumentListQueryFanout` no longer firing |
+| **Grafana** | `/d/otterworks-incident-responder` (local stack) | Request rate still flat; p95 falling from ≈ 2.4 s to ≈ 0.13–0.21 s; SQL statements per request stepping 104 → 5. On the tenant's dashboard the 104 → 5 step is the reliable signal; its p95 is scaled-load and noisy |
+| **Alertmanager** | `http://localhost:9093` (or the shared cluster's, filtered to `namespace=otterworks-incident`) | `DocumentListLatencyHigh` and `DocumentListQueryFanout` no longer firing |
 | **Jaeger** | search `document-service`, `GET /api/v1/documents/` | A trace for the new build with 5 SQL spans instead of 104 |
 | **GitHub** | the PR against `demo-incident` | Query change + one migration + one test; before/after table (p95 2.43 s → 0.13 s, 104 → 5 statements); the two gate summary lines and report file names; the two screenshots |
 | **Slack** | the alert's thread | One acknowledgement, one RCA reply with the PR link — not a new message, not a DM |
-
----
-
-<a id="recording"></a>
-## Screen Recording
-
-`<recording>` — the recording of the authoring run. Read it as two segments:
-
-- **First ≈ 13 s — the golden tenant `t-main.otterworks.app`, read-only.** It
-  shows the tenant is reachable and that the API rejects unauthenticated calls
-  (HTTP 401). It does **not** show the slowness: `main`'s tenant holds only a
-  couple of documents and is never seeded or injected.
-- **The rest — the isolated local reproduction.** Flat traffic and rising p95 on
-  the Grafana dashboard, `X-DB-Queries: 104` on a single request, the Jaeger
-  trace fanning into the per-document SELECTs, and both
-  `DocumentListLatencyHigh` and `DocumentListQueryFanout` firing.
-
-The three on-screen moments that carry the thread: the flat-traffic /
-rising-latency chart, the trace waterfall fanning into ~100 queries, and the
-before/after p95 on one chart after the fix is deployed.
 
 ---
 
