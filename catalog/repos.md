@@ -240,6 +240,18 @@ Some repos are intentionally duplicated from the same upstream source so that di
 | **Key Contents** | OpenAPI 3.0 contract (7 endpoints), Spring Boot scaffold with Flyway migrations, REST Assured contract tests (8 test classes), Docker Compose for PostgreSQL 16, Devin Playbook (`!convert-mulesoft-to-spring-boot`), repo Skill with MuleSoft→Spring Boot mapping table |
 | **Challenges** | [MuleSoft to Spring Boot Demo](../demos/migration/mulesoft-to-spring-boot-demo.md) |
 
+### uc-integration-migration-biztalk-to-spring-boot
+| | |
+|---|---|
+| **URL** | https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot |
+| **Description** | Microsoft BizTalk Server integration estate, the source for migrating BizTalk to Java/Spring Boot 3.x (Spring Integration or Apache Camel). 60 self-contained BizTalk samples covering maps, orchestrations, schemas, pipelines, content-based routing, and adapters. Imported with full history from sandroasp/BizTalk-Server-Learning-Path (MIT). |
+| **Tech Stack** | BizTalk Server 2010–2020 (XLANG/s orchestrations, BizTalk Mapper/XSLT, XSD/flat-file schemas, pipelines, WCF-SQL/Service Bus adapters), C#, .NET Framework; target: Java 21, Spring Boot 3.x |
+| **License** | MIT |
+| **Default Branch** | `main` |
+| **Cluster** | — (standalone) |
+| **Key Contents** | 34 orchestrations (`.odx`), 169 maps (`.btm`), 211 schemas (`.xsd`), 10 pipelines (`.btp`), 62 BizTalk projects (`.btproj`), binding files, custom functoids and pipeline components (C#), BizTalk unit tests, sample input/output messages; README with a BizTalk to Spring Boot concept mapping |
+| **Challenges** | BizTalk to Spring Boot integration migration (no module yet) |
+
 ### uc-bdd-test-generation-cucumber
 | | |
 |---|---|

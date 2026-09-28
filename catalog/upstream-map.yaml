@@ -647,6 +647,13 @@ repos:
     cluster: C1
     note: "Lab 2 — framework upgrade copy of the Spring Boot monolith"
 
+  uc-integration-migration-biztalk-to-spring-boot:
+    upstream: sandroasp/BizTalk-Server-Learning-Path
+    upstream_url: https://github.com/sandroasp/BizTalk-Server-Learning-Path
+    import_method: clone-and-push
+    cluster: null
+    note: "BizTalk Server integration estate (orchestrations, maps, schemas, pipelines, CBR, adapters). Source for BizTalk-to-Spring-Boot migration. Upstream master renamed to main; added migration README and .gitignore."
+
   uc-java-upgrade-broadleaf-commerce:
     upstream: BroadleafCommerce/BroadleafCommerce
     upstream_url: https://github.com/BroadleafCommerce/BroadleafCommerce
