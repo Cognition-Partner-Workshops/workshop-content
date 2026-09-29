@@ -245,12 +245,12 @@ Some repos are intentionally duplicated from the same upstream source so that di
 |---|---|
 | **URL** | https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot |
 | **Description** | Microsoft BizTalk Server integration estate, the source for migrating BizTalk to Java/Spring Boot 3.x (Spring Integration or Apache Camel). 60 self-contained BizTalk samples covering maps, orchestrations, schemas, pipelines, content-based routing, and adapters. Imported with full history from sandroasp/BizTalk-Server-Learning-Path (MIT). |
-| **Tech Stack** | BizTalk Server 2010–2020 (XLANG/s orchestrations, BizTalk Mapper/XSLT, XSD/flat-file schemas, pipelines, WCF-SQL/Service Bus adapters), C#, .NET Framework; target: Java 21, Spring Boot 3.x |
+| **Tech Stack** | BizTalk Server 2010–2020 (XLANG/s orchestrations, BizTalk Mapper/XSLT, XSD/flat-file schemas, pipelines, WCF-SQL/Service Bus adapters), C#, .NET Framework; target: Java 17, Spring Boot 3.5 (Saxon-HE for XSLT carry-over) |
 | **License** | MIT |
 | **Default Branch** | `main` |
 | **Cluster** | — (standalone) |
-| **Key Contents** | 34 orchestrations (`.odx`), 169 maps (`.btm`), 211 schemas (`.xsd`), 10 pipelines (`.btp`), 62 BizTalk projects (`.btproj`), binding files, custom functoids and pipeline components (C#), BizTalk unit tests, sample input/output messages; README with a BizTalk to Spring Boot concept mapping |
-| **Challenges** | BizTalk to Spring Boot integration migration (no module yet) |
+| **Key Contents** | 34 orchestrations (`.odx`), 169 maps (`.btm`), 211 schemas (`.xsd`), 10 pipelines (`.btp`), 62 BizTalk projects (`.btproj`), binding files, custom functoids and pipeline components (C#), BizTalk unit tests, sample input/output messages; `spring-boot-app/` empty Spring Boot target with `--map` CLI; `tools/parity/` fixture inventory (6 maps with recorded BizTalk output) and canonical-XML parity gate; playbook source and Skill |
+| **Challenges** | [BizTalk to Spring Boot Demo](../demos/migration/biztalk-to-spring-boot-demo.md) |
 
 ### uc-bdd-test-generation-cucumber
 | | |
