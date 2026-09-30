@@ -19,6 +19,7 @@ The repo-specific build and parity mechanics come from that repo's Skill
 - [Repository](#repository)
 - [Before, After, and the Verification Loop](#before-after)
 - [The Migration Arc](#migration-arc)
+- [Reference Runs](#reference-runs)
 - [Part 1 — Devin Does the Migration](#part-1)
   - [Act 1 — Orient over the BizTalk estate](#act-1)
   - [Act 2 — Migrate one map live, with verification](#act-2)
@@ -117,6 +118,34 @@ representative messages for the flows that have no recording.
 
 ---
 
+<a id="reference-runs"></a>
+## Reference Runs
+
+Each step below has already been run once in the Demo org with the prompts in
+this document. Open the session to follow along or to compare a live run
+against a known result. PRs 4–9 are left open by design so `main` stays the
+before-state.
+
+| Step | Session | Output |
+|---|---|---|
+| Part 1, Act 1 — Orient over the estate | [session](https://partner-workshops.devinenterprise.com/sessions/4ff0392e25344c258aadbc7601e2ae53) | estate walkthrough + verifiability split, no PR |
+| Part 1, Act 2 — Migrate `MapPerson` live | [session](https://partner-workshops.devinenterprise.com/sessions/5aea925ecc9546389189469940622324) | [PR 4](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/4), `PASS` |
+| Part 1, Act 3 — Orchestrator (parent) | [session](https://partner-workshops.devinenterprise.com/sessions/eff761974d624beaa643e53bd319b0fe) | five child sessions below |
+| Act 3, child 1 — `MapListParteners` | [session](https://partner-workshops.devinenterprise.com/sessions/05a6e92cf3a84dc3ac442dfd8b33b5d6) | [PR 8](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/8), `FAIL` — recorded input and output disagree; fixture left untouched and flagged |
+| Act 3, child 2 — `DataMap` | [session](https://partner-workshops.devinenterprise.com/sessions/a5b2131a73924f33bb0df53ddcbfa361) | [PR 5](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/5), `PASS` |
+| Act 3, child 3 — `Enrollment_to_5010_834` | [session](https://partner-workshops.devinenterprise.com/sessions/a1254a3be8a445aeb781e205252d1b11) | [PR 9](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/9), `PASS` (Java rewrite of C# functoids) |
+| Act 3, child 4 — `MapOrderUsingCount` | [session](https://partner-workshops.devinenterprise.com/sessions/cbb4319cfcbf4ac9966c92b2c2ede46a) | [PR 6](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/6), `PASS` |
+| Act 3, child 5 — `NameValueSolution3` | [session](https://partner-workshops.devinenterprise.com/sessions/22ab4b65d84a4398914dd2c78ab08f3b) | [PR 7](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/7), `PASS` (Java rewrite) |
+| Part 1, Act 4 — Programmatic verification | — | the build and parity results in the PRs above |
+| Part 2 — Run the produced artifact | [session](https://partner-workshops.devinenterprise.com/sessions/c98e292f366e4ed9841c1a529b571386) | run-only, no PR: jar output matches BizTalk's recording, `run --all` `PASS`, `main` untouched |
+
+The Act 2 and Act 3 sessions ran before the Spring Boot target and parity
+harness were merged to `main`, so their prompts carry one extra leading line
+naming the branch those files were on at the time; the prompts in this
+document are otherwise identical.
+
+---
+
 <a id="part-1"></a>
 ## Part 1 — Devin Does the Migration
 
@@ -142,6 +171,8 @@ the rest as needing goldens from the team. The inventory also sets the
 boundary of the autonomous work: maps with an oracle are Devin's; `.odx`
 orchestrations, pipelines, and ports need bindings, external systems, and
 sample traffic from the team before they can be verified.
+
+Reference run: [Act 1 session](https://partner-workshops.devinenterprise.com/sessions/4ff0392e25344c258aadbc7601e2ae53).
 
 <a id="act-2"></a>
 ### Act 2 — Migrate one map live, with verification
@@ -195,6 +226,9 @@ transform that drops data the downstream system receives today; the recorded
 BizTalk output caught it. The full write-up is in the playbook → *Worked
 example*.
 
+Reference run: [Act 2 session](https://partner-workshops.devinenterprise.com/sessions/5aea925ecc9546389189469940622324) →
+[PR 4](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/4).
+
 <a id="act-3"></a>
 ### Act 3 — Fan out in parallel
 
@@ -226,6 +260,17 @@ Act as the orchestrator for a BizTalk-to-Spring-Boot map migration in Cognition-
 
 The children write to their own namespace branches; this is the same verified
 migration loop as a single session — run five times at once, from one parent.
+
+Reference run: [orchestrator session](https://partner-workshops.devinenterprise.com/sessions/eff761974d624beaa643e53bd319b0fe)
+with children for
+[MapListParteners](https://partner-workshops.devinenterprise.com/sessions/05a6e92cf3a84dc3ac442dfd8b33b5d6) ([PR 8](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/8), `FAIL` on an inconsistent fixture),
+[DataMap](https://partner-workshops.devinenterprise.com/sessions/a5b2131a73924f33bb0df53ddcbfa361) ([PR 5](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/5)),
+[Enrollment_to_5010_834](https://partner-workshops.devinenterprise.com/sessions/a1254a3be8a445aeb781e205252d1b11) ([PR 9](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/9)),
+[MapOrderUsingCount](https://partner-workshops.devinenterprise.com/sessions/cbb4319cfcbf4ac9966c92b2c2ede46a) ([PR 6](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/6)), and
+[NameValueSolution3](https://partner-workshops.devinenterprise.com/sessions/22ab4b65d84a4398914dd2c78ab08f3b) ([PR 7](https://github.com/Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot/pull/7)).
+The `MapListParteners` child is the gate telling the truth: the recorded input
+and BizTalk output disagree with each other, so the child left the fixture
+alone and flagged the estate data issue in the PR instead of forcing a `PASS`.
 
 <a id="act-4"></a>
 ### Act 4 — Confidence = programmatic verification
@@ -266,6 +311,14 @@ java -jar spring-boot-app/target/biztalk-migration-0.1.0-SNAPSHOT.jar --map=MapP
 python3 tools/parity/parity.py show working-with-maps/grouping-pattern-selecting-distinct-nodes/Sample3.MapPerson
 python3 tools/parity/parity.py run --all
 ```
+
+The same steps can be handed to Devin as a run-only check:
+
+```
+Run the produced artifact from the BizTalk-to-Spring-Boot migration in Cognition-Partner-Workshops/uc-integration-migration-biztalk-to-spring-boot. Check out the migration/map-person branch, build the Spring Boot target with cd spring-boot-app && ./mvnw -q verify, then run the migrated map from the CLI against the input BizTalk was tested with: java -jar spring-boot-app/target/biztalk-migration-0.1.0-SNAPSHOT.jar --map=MapPerson Working-with-Maps/Grouping-Pattern-Selecting-distinct-nodes/Msg/InputPersons.xml. Compare it with what BizTalk produced using python3 tools/parity/parity.py show working-with-maps/grouping-pattern-selecting-distinct-nodes/Sample3.MapPerson and python3 tools/parity/parity.py run --all. Show me the migrated output next to BizTalk's recorded output, point out the Person1 quirk (two Nationality elements, last Email), and confirm the before is untouched: on main, --map=MapPerson answers unknown map with registered: [] and tools/parity/runners.json is {}. Do not commit, push, or open a PR; this is a run-only check.
+```
+
+Reference run: [Part 2 session](https://partner-workshops.devinenterprise.com/sessions/c98e292f366e4ed9841c1a529b571386).
 
 ---
 
