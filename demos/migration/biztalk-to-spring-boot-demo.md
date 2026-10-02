@@ -227,6 +227,18 @@ Act as the orchestrator for a BizTalk-to-Spring-Boot map migration in Cognition-
 The children write to their own namespace branches; this is the same verified
 migration loop as a single session — run five times at once, from one parent.
 
+**What the fan-out typically surfaces.** Not every paired map passes, and that
+is the point of the gate. In a recorded run, four of the five children reached
+`PASS` (two as XSLT carry-over, two as Java rewrites of C# scripting functoids,
+one of which pins the `DateTime.UtcNow` wall-clock the original Test Map run
+captured), while `MapListParteners` **failed on exactly one line**: the
+BizTalk-recorded output contains `Real Madrid`, a value that appears nowhere in
+the recorded input (which has `DemoCompany2`, as the sample's own README
+documents). No faithful transform can pass that fixture. The child kept the
+map-faithful XSLT, pinned both facts in tests, left the fixture untouched, and
+handed the decision back: re-record the golden on BizTalk, or accept the input
+as authoritative. Bad evidence is caught the same way a bad migration is.
+
 <a id="act-4"></a>
 ### Act 4 — Confidence = programmatic verification
 
