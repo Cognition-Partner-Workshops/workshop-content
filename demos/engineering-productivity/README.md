@@ -1,8 +1,9 @@
 # Engineering Productivity Demos — Devin Across the SDLC
 
-Four single-thread demos that show Devin working the way an engineering team
+Five single-thread demos that show Devin working the way an engineering team
 actually works: pulling a story off a board, closing a security finding,
-unblocking a red pipeline, and reviewing a teammate's PR. Every demo runs against
+unblocking a red pipeline, reviewing a teammate's PR, and answering a
+production page with no prompt typed. Every demo runs against
 the same brownfield monorepo — [OtterWorks](https://github.com/Cognition-Partner-Workshops/otterworks),
 a polyglot document-management platform (Go, Java, Kotlin, Python, Rust, Ruby,
 Node, React/Angular) deployed to a shared EKS cluster with real GitHub Actions
@@ -16,7 +17,7 @@ they paste cleanly into the Devin UI.
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-- [The Four Demos](#the-four-demos)
+- [The Five Demos](#the-five-demos)
 - [Shared Setup](#shared-setup)
 - [What the Demo Org Needs](#demo-org)
 - [Key Takeaways](#key-takeaways)
@@ -35,17 +36,21 @@ they paste cleanly into the Devin UI.
 
 ---
 
-<a id="the-four-demos"></a>
-## The Four Demos
+<a id="the-five-demos"></a>
+## The Five Demos
 
-| # | Demo | Devin reads from | Devin writes to | Before-state on `workshop` |
-|---|------|------------------|-----------------|----------------------------|
+| # | Demo | Devin reads from | Devin writes to | Before-state |
+|---|------|------------------|-----------------|--------------|
 | 1 | [Story to PR via Otter Projects](01-story-to-pr-otter-projects.md) | Otter Projects ticket, source, deployed tenant API | PR, ticket comments and board column, tenant deploy | Ticket `OTTER-7` (mirrors issue [#1507](https://github.com/Cognition-Partner-Workshops/otterworks/issues/1507)); export returns 401 on the deployed tenant |
 | 2 | [Vulnerability and Dependency Remediation](02-vulnerability-dependency-remediation.md) | Trivy/Semgrep results in Actions, dependency trees, advisory gate | PR with the version pin, behavior transcript, green security scan | `commons-text` 1.9 (CVE-2022-42889) in three JVM services |
 | 3 | [CI/CD Failure Diagnosis and Fix](03-ci-failure-diagnosis-and-fix.md) | Failed Actions job log, race-detector report | Fix commit, rerun, root-cause writeup | `services/api-gateway/internal/proxy/router.go` upstream-error counter fails `go test -race` |
 | 4 | [PR Review and Safe Auto-Fix](04-pr-review-and-auto-fix.md) | PR diff, Devin Review + Semgrep findings, sibling code | Review comments, then approved fixes with tests | `services/document-service/app/api/documents.py` owner-stats and duplicate endpoints |
+| 5 | [Incident First Responder](05-incident-first-responder.md) | Alertmanager webhook payload, Grafana p95 / request rate, Jaeger trace, local reproduction gate | RCA in the alert's Slack thread, PR against `demo-incident`, tenant redeploy | On `main`: `services/document-service/app/services/document_service.py` N+1 in `list_documents` (`incident/scenarios.yaml`, scenario `n-plus-one`) |
 
-Run them in order for a full "sprint in an hour", or run any one standalone.
+Demos 1–4 start from the `workshop` branch; demo 5 starts from `main` (its
+before-state ships on `main`) and merges into the `demo-incident` sandbox
+branch. Run them in order for a full "sprint in an hour", or run any one
+standalone.
 
 ---
 
@@ -103,6 +108,7 @@ org needs:
 | Org secret `PROJECTS_BASE_URL` = `https://projects.otterworks.app` | 1 | Demo org Secrets |
 | Read-only AWS credentials for account-scoped `eks:DescribeCluster` + Kubernetes RBAC `view` on `otterworks-<id>` namespaces (pod logs, events) | 1, 3 (optional runtime verification) | Demo org Secrets `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`, `aws-auth` mapping |
 | Ops dashboard passcode for tenant checkout / bug injection | 1 (optional) | Demo org Secret `OTTERWORKS_OPS_PASSCODE` |
+| `!incident_responder` Playbook (source `.workshop/playbooks/incident-responder.devin.md`) and a Devin Automation with a **Webhook** trigger (spec in `docs/incident-responder/automation.md`), its URL set as Alertmanager's `DEVIN_WEBHOOK_URL`; optionally a Slack channel for the `slack:message` trigger variant and the RCA thread reply | 5 | Demo org Playbooks and Automations pages or the v3 API |
 | Devin API key (`cog_…`) and org ID to create sessions as a named user via `create_as_user_id` | facilitator scripting only | Demo org Settings → API |
 
 No demo requires AWS *write* access from a Devin session: deployments happen
