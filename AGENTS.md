@@ -51,11 +51,7 @@ This repo serves two attendee modes. Most content targets the **hands-on lab att
 
 ### Prompts
 - All paste-into-Devin prompts use triple-backtick fenced code blocks (for GitHub copy button)
-- Write each prompt as a **single line with no newline breaks** inside the fenced
-  block (do not hard-wrap at 80 chars). Line breaks are preserved when pasted
-  into the Devin UI and make the prompt read badly there; let the renderer
-  soft-wrap instead. If a prompt genuinely needs several steps, write them as
-  sentences in one paragraph, not as a list.
+- Write each prompt in normal paragraphs, the way you would write a message to a colleague. Keep each paragraph on one line (no hard wrap mid-sentence), put a blank line between paragraphs, and start a new paragraph where the subject changes (the context, the task, how to verify it, what to hand back) rather than running a long prompt together as one line. Paste keeps the line breaks as written, so the prompt reads in the Devin UI the same way it reads here.
 - Do NOT include "Open a PR" in prompts — Devin does this by default
 - Prompts must include repo names, file paths, and expected output format
 

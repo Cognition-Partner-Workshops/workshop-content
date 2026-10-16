@@ -37,8 +37,7 @@ Still applies under `demos/`:
 
 - All paste-into-Devin prompts use triple-backtick fenced code blocks; do not
   include "Open a PR" in prompts.
-- Each prompt is **one line with no newline breaks** inside the fence (no
-  80-char hard wrap) — line breaks carry into the Devin UI and read badly.
+- Each prompt is written in normal paragraphs: one line per paragraph (no hard wrap mid-sentence), a blank line between paragraphs, and a new paragraph where the subject changes instead of one long line.
 - No customer-identifying content; use generic placeholders.
 - Do not identify the user requester in PR descriptions or commit messages.
 - US English spelling. Verify file paths and counts against the actual repos.
