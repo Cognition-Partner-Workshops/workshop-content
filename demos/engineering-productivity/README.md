@@ -61,8 +61,8 @@ per-attendee `review-base-<attendee_id>` base so the fixture diff is
 reviewable — see its Part 1). `CI Pipeline` and `security-scan` run on pushes to
 `workshop-**` and on PRs into `workshop` / `review-base-**`. Pushing
 `workshop-<attendee_id>` deploys a private tenant automatically
-(`.github/workflows/cd-tenant.yml`), reachable at `https://t-<attendee_id>.otterworks.app`
-and `https://api-t-<attendee_id>.otterworks.app`. The perpetual shared tenant is
+(`.github/workflows/cd-tenant.yml`), reachable at `https://t-<attendee_id>.demo.otterworks.app`
+and `https://api-t-<attendee_id>.demo.otterworks.app`. The perpetual shared tenant is
 `t-main.otterworks.app`; nothing is ever injected or mutated there.
 
 **Runtime.** Each tenant is a namespace on the shared `otterworks-dev` EKS

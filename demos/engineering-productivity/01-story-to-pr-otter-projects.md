@@ -25,7 +25,7 @@ No one pastes anything into a chat window.
 2. Add the label `devin` (or set assignee to **devin**). The card moves to
    **In Progress** and a Devin session link appears on the ticket within a minute.
 3. Follow the session; when the PR link lands on the ticket, run the curl check
-   in [Part 3](#part-3) against `https://api-t-<attendee_id>.otterworks.app`.
+   in [Part 3](#part-3) against `https://api-t-<attendee_id>.demo.otterworks.app`.
 
 If the tracker webhook is not wired in your org, use the paste-in prompt in
 [Part 4](#part-4) — it is the same story in one line.
@@ -100,7 +100,7 @@ mirrors session state every 60 s even if the session never calls back).
 Open the session from the ticket. What you should see, in order:
 
 - **Reproduce first.** Devin registers a throwaway user on
-  `https://api-t-<attendee_id>.otterworks.app`, creates a document, and hits
+  `https://api-t-<attendee_id>.demo.otterworks.app`, creates a document, and hits
   export. It gets the same `401` the ticket describes and posts that as a comment
   on OTTER-7.
 - **Read both hops.** It inspects the gateway director in `router.go` (identity
@@ -133,7 +133,7 @@ security decision, and the ticket's acceptance criteria do not settle it.
 After the tenant redeploys, run the ticket's reproduction yourself:
 
 ```
-API=https://api-t-<attendee_id>.otterworks.app; TOKEN=$(curl -s -X POST $API/api/v1/auth/register -H 'Content-Type: application/json' -d '{"email":"otter7-<attendee_id>@example.com","password":"Passw0rd!x","name":"Otter Seven"}' | jq -r .access_token); DOC=$(curl -s -X POST $API/api/v1/documents/ -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d '{"title":"export check","content":"# hi","content_type":"markdown"}' | jq -r .id); curl -s -o /dev/null -w '%{http_code}\n' "$API/api/v1/documents/$DOC/export?format=markdown" -H "Authorization: Bearer $TOKEN"
+API=https://api-t-<attendee_id>.demo.otterworks.app; TOKEN=$(curl -s -X POST $API/api/v1/auth/register -H 'Content-Type: application/json' -d '{"email":"otter7-<attendee_id>@example.com","password":"Passw0rd!x","name":"Otter Seven"}' | jq -r .access_token); DOC=$(curl -s -X POST $API/api/v1/documents/ -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' -d '{"title":"export check","content":"# hi","content_type":"markdown"}' | jq -r .id); curl -s -o /dev/null -w '%{http_code}\n' "$API/api/v1/documents/$DOC/export?format=markdown" -H "Authorization: Bearer $TOKEN"
 ```
 
 Expected: the document is created without `owner_id` in the body, and the last
@@ -150,7 +150,7 @@ If the Otter Projects webhook is not configured, paste this into a new session.
 It is the same ticket in one line:
 
 ```
-In Cognition-Partner-Workshops/otterworks, work OTTER-7 (mirrored as GitHub issue #1507): document export returns 401 for an authenticated user. Start from branch workshop-<attendee_id> (based on the workshop branch). First reproduce against the deployed tenant https://api-t-<attendee_id>.otterworks.app by registering a user, creating a document with only the JWT (note the 400 owner_id is required behavior), and calling GET /api/v1/documents/{id}/export?format=markdown; record the exact status codes. Then trace the identity path through services/api-gateway/internal/proxy/router.go and services/document-service/app/api/documents.py (_extract_user_id, _require_user_id, _ensure_owner) and the tenant's document-service configuration under infrastructure/helm to determine why the forwarded identity is lost. Fix it in document-service with unit tests in services/document-service/tests covering a valid JWT, an unverifiable JWT with X-User-ID forwarded by the gateway, and no identity, plus the create-without-owner_id case. Run poetry run pytest --cov=app in services/document-service, push to workshop-<attendee_id>, wait for the cd-tenant workflow to redeploy, and rerun the reproduction to show 200 for the owner, 403 for another user, and 401 with no token. Put the before/after tenant transcript and the root cause in the PR description and target the PR at the workshop branch.
+In Cognition-Partner-Workshops/otterworks, work OTTER-7 (mirrored as GitHub issue #1507): document export returns 401 for an authenticated user. Start from branch workshop-<attendee_id> (based on the workshop branch). First reproduce against the deployed tenant https://api-t-<attendee_id>.demo.otterworks.app by registering a user, creating a document with only the JWT (note the 400 owner_id is required behavior), and calling GET /api/v1/documents/{id}/export?format=markdown; record the exact status codes. Then trace the identity path through services/api-gateway/internal/proxy/router.go and services/document-service/app/api/documents.py (_extract_user_id, _require_user_id, _ensure_owner) and the tenant's document-service configuration under infrastructure/helm to determine why the forwarded identity is lost. Fix it in document-service with unit tests in services/document-service/tests covering a valid JWT, an unverifiable JWT with X-User-ID forwarded by the gateway, and no identity, plus the create-without-owner_id case. Run poetry run pytest --cov=app in services/document-service, push to workshop-<attendee_id>, wait for the cd-tenant workflow to redeploy, and rerun the reproduction to show 200 for the owner, 403 for another user, and 401 with no token. Put the before/after tenant transcript and the root cause in the PR description and target the PR at the workshop branch.
 ```
 
 When the session is done, post its PR URL to OTTER-7 with the tracker API so the
