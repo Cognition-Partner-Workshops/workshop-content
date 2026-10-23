@@ -78,6 +78,22 @@ Every module and workshop should incorporate applicable principles from `referen
   long-lived `workshop` branch of `otterworks`, which is `main` plus that demo
   set's before-state)
 
+## Platform Resources
+
+- **DeepWiki** (AI-generated architectural documentation for repos) is located at:
+  `https://partner-workshops.devinenterprise.com/org/internal/wiki`
+  — not `deepwiki.com`. Use this enterprise URL when referencing DeepWiki in workshop content.
+- **Ask Devin** (no VM) is for gathering requirements and doing investigation against
+  the static code *before* assigning work to a Devin Session. Use it for architecture
+  mapping, codebase questions, and cross-repo comparisons.
+- **Devin Session** (full VM with tools — MCP, shell, browser) is where Devin executes
+  the task: code changes, PRs, builds, test runs, and deployments.
+
+When writing discovery/orientation sections, distinguish between:
+1. Browsing DeepWiki (navigate to the URL — no prompt needed)
+2. Ask Devin prompts (investigation/requirements against static code, no VM)
+3. Devin Session prompts (full execution with VM and tools)
+
 ## Reference Files
 
 - General themes: `reference/general-themes/` (8 files)
